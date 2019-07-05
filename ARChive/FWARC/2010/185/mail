@@ -1,0 +1,317 @@
+From sacadmin Thu May 20 09:13:39 2010
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o4KGDdJL023492;
+	Thu, 20 May 2010 09:13:39 -0700 (PDT)
+Received: (from ehring@localhost)
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit) id o4KGDdQn023488;
+	Thu, 20 May 2010 09:13:39 -0700 (PDT)
+Date: Thu, 20 May 2010 09:13:39 -0700 (PDT)
+From: Stephen Ehring <ehring@sac.sfbay.sun.com>
+Message-Id: <201005201613.o4KGDdQn023488@sac.sfbay.sun.com>
+To: FWARC-record@sac.sfbay.sun.com
+Subject: PRI Changes for Direct Attached Disks [FWARC/2010/185 FastTrack timeout 05/27/2010]
+Status: RO
+Content-Length: 614
+
+
+Template Version: @(#)sac_nextcase 1.70 03/30/10 SMI
+This information is Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
+1. Introduction
+    1.1. Project/Component Working Name:
+	 PRI Changes for Direct Attached Disks
+    1.2. Name of Document Author/Supplier:
+	 Author:  Stephen Kelly
+    1.3  Date of This Document:
+	20 May, 2010
+4. Technical Description
+    See the case directory for more detail
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		unknown
+    6.5. ARC review type: FastTrack
+    6.6. ARC Exposure: open
+
+
+From sacadmin Thu May 20 09:19:15 2010
+Received: from sunmail6brm.central.sun.com (sunmail6brm.Central.Sun.COM [129.147.4.169])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o4KGJF6U023512
+	for <fwarc@sac.sfbay.sun.com>; Thu, 20 May 2010 09:19:15 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail6brm.central.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id o4KGJCSF010212
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 20 May 2010 11:19:14 -0500 (CDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0L2Q00L1V8022200@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 20 May 2010 09:19:14 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0L2Q0052Z7ZZBMF0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 20 May 2010 09:19:11 -0700 (PDT)
+Received: from rcsinet15.oracle.com (rcsinet15.oracle.com [148.87.113.117])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id o4KGJAoY007881	for
+ <fwarc@sun.com>; Thu, 20 May 2010 16:19:11 +0000 (GMT)
+Received: from acsmt355.oracle.com (acsmt355.oracle.com [141.146.40.155])
+	by rcsinet15.oracle.com (Switch-3.4.2/Switch-3.4.1)
+ with ESMTP id o4KFd73f008879	for <fwarc@sun.com>; Thu,
+ 20 May 2010 16:19:10 +0000 (GMT)
+Received: from abhmt005.oracle.com by acsmt353.oracle.com	with ESMTP id
+ 285107771274372335; Thu, 20 May 2010 09:18:55 -0700
+Received: from dhcp-ubur-189-205.East.Sun.COM (/129.148.189.205)
+	by default (Oracle Beehive Gateway v4.0)	with ESMTP ; Thu,
+ 20 May 2010 09:18:54 -0700
+Date: Thu, 20 May 2010 12:18:52 -0400
+From: Stephen Ehring <stephen.ehring@oracle.com>
+Subject: FWARC 2010/185 PRI Changes for Direct Attached Disks
+To: fwarc@sun.com, Thomas Pothier <tom.pothier@oracle.com>,
+        Stephen Kelly <stephen.kelly@oracle.com>
+Message-id: <78EE3426-C24D-4FFE-BD15-94E90874C501@oracle.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.936)
+Content-type: text/plain; charset=US-ASCII; format=flowed; delsp=yes
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+X-Source-IP: acsmt355.oracle.com [141.146.40.155]
+X-Auth-Type: Internal IP
+X-CT-RefId: str=0001.0A090209.4BF560FE.0144:SCFMA4539814,ss=1,fgs=0
+Status: RO
+Content-Length: 5328
+
+I'm sponsoring this fast track case for Stephen Kelly. The case  
+updates how direct attached disks are represented in various  
+platforms' PRIs.
+
+The case is set to expire on 05/27/2010. The interfaces can be  
+released in a micro/minor version of the OS and any version of the  
+firmware. An updated PRI specification is in the case materials  
+directory.
+
+1. Introduction
+    1.1. Project/Component Working Name:
+         PRI Changes for Direct Attached Disks
+
+    1.2. Name of Document Author/Supplier:
+         Stephen Kelly
+
+    1.3. Date of This Document:
+         05/17/10
+
+2. Project Summary
+
+         This document describes how the Physical Resource Inventory  
+(PRI) can be
+         used to enumerate disks in systems where multipathing is  
+enabled.
+
+3. Business Summary
+
+         On previous platforms, firmware was able to correctly determine
+         what the future path of a disk would be under Solaris using a
+         combination of the pci path to the hba and the phy number at
+         which the bay and hba attached.  The FMA disk enumerator in  
+the OS
+         then cross-referenced these paths in order to obtain the nac
+         names of the bays, and later to inform the user of the
+         physical location of disks in the system.  With multipathing
+         enabled the pci-path and phy number are abstracted by Solaris
+         and replaced by the Globally Unique Identifier (GUID) of the
+         disk.  Rather than create a bogus path for Solaris to parse,
+         firmware should provide the same information as it did before,
+         but in a more generic form.
+
+4. Technical Description:
+     4.1. Details:
+
+        The component nodes that represent directly connected disks  
+and their
+        respective controllers will be updated in the following way.
+
+        Representation of a directly attached disk will require at  
+least two
+        component nodes:
+
+	1) A new component node which represents the Host Bus Adapter (hba)
+	   controller where topo-hc-name = "hba".
+
+	2) A component node which represents the physical slot (bay) where a
+	   disk would connect to, where topo-hc-name = "bay".
+
+
+	Since disk drives can be hot-swapped, there is no way to
+	deterministically depict any and all possible disk drives; thus the
+	representation of directly attached disks will terminate at the disk
+	bay.
+
+      4.1.1 topo-hc-name = "hba"
+
+	A new component node that represents a (SCSI) Host Bus Adapter which
+	contains ports that disk drives can be connected to. Properties  
+required
+	of the hba node include:
+
+	   type = "io";
+	   topo-hc-name = "hba";
+	   id = ID#;
+	   nac = "<NAC STRING>";
+	   path = "<HBA PCI PATH>";
+
+
+      4.1.2 phy_number
+
+        Name		Tag		Required
+         ----		---		--------
+         phy_number	PROP_DATA	no
+
+          Description
+          -----------
+          An array of 8 bit values that specifies how the represented  
+drive bay is
+          physically attached to an hba or set of hbas.  The values  
+are relatively
+          indexed by the id properties in node parents with topo-hc- 
+name="hba".
+
+            phy_number[0] = PHY connection to hba with the lowest id  
+property
+            phy_number[1] = PHY connection to hba with the next lowest  
+id property
+            etc..
+
+          This property is required for topo-hc-name="bay" component  
+nodes
+          directly attached to a controller that may invoke  
+multipathing.
+
+        Example md nodes:
+
+          Bay connected to a single hba:
+          -----------------------------
+
+           +--------+         +-------+
+           |   hba  | phy = 6 |  bay  |
+           | id = 1 |---------|       |
+           +--------+         +-------+
+
+
+           node component hba1 {
+	       topo-hc-name = "hba";
+	       id = 1;
+                fwd -> bay
+           }
+
+           node component bay {
+	       back -> hba1;
+	       topo-hc-name = "bay";
+	       phy_number = [ 6 ];
+           }
+
+
+          Bay connected to multiple hbas:
+          ------------------------------
+
+           +--------+
+           |   hba  | phy = 3 +-------+
+           | id = 0 |---------|       |
+           +--------+         |  bay  |
+                              |       |
+           +--------+ phy = 7 |       |
+           |   hba  |---------|       |
+           | id = 4 |         +-------+
+           +--------+
+
+           node component hba0 {
+	       topo-hc-name = "hba";
+	       id = 0;
+                fwd -> bay
+           }
+
+           node component hba4 {
+	       topo-hc-name = "hba";
+	       id = 4;
+                fwd -> bay
+           }
+
+           node component bay {
+	       back -> hba0;
+	       back -> hba4;
+	       topo-hc-name = "bay";
+	       phy_number = [ 3 7 ];
+           }
+
+
+     4.2. Exported Interfaces:
+
+         Interface             Classification  	Comments
+         ---------             --------------     
+----------------------------
+         topo-hc-name="bay"    Uncommitted       Described in section  
+4.1
+         phy_number            Uncommitted       Described in section  
+4.2
+
+
+5. Reference Documents:
+   [1] Physical Resource Inventory (PRI) FWARC case
+	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/700/
+
+   [2] Physical Resource Inventory (PRI) Specification
+	http://sac.sfbay.sun.com/arc/FWARC/Specifications/PRI_Specification.txt
+
+
+From sacadmin Tue Jun  1 12:20:55 2010
+Received: from sunmail6brm.central.sun.com (sunmail6brm.Central.Sun.COM [129.147.4.169])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o51JKt4Z021296
+	for <fwarc@sac.sfbay.sun.com>; Tue, 1 Jun 2010 12:20:55 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail6brm.central.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id o51JKsu4007442
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 1 Jun 2010 14:20:55 -0500 (CDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0L3C00G0BOEVX900@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 01 Jun 2010 13:20:55 -0600 (MDT)
+Received: from sca-ea-mail-1.sun.com ([192.18.43.24])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0L3C003TOOEUIRA0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 01 Jun 2010 13:20:54 -0600 (MDT)
+Received: from acsinet15.oracle.com (acsinet15.oracle.com [141.146.126.227])
+	by sca-ea-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id o51JKsfR012959	for
+ <fwarc@sun.com>; Tue, 01 Jun 2010 19:20:54 +0000 (GMT)
+Received: from acsmt354.oracle.com (acsmt354.oracle.com [141.146.40.154])
+	by acsinet15.oracle.com (Switch-3.4.2/Switch-3.4.1)
+ with ESMTP id o51Cq5Oj005839	for <fwarc@sun.com>; Tue,
+ 01 Jun 2010 19:20:53 +0000 (GMT)
+Received: from abhmt004.oracle.com by acsmt354.oracle.com	with ESMTP id
+ 287417371275420015; Tue, 01 Jun 2010 12:20:15 -0700
+Received: from dhcp-ubur-189-205.East.Sun.COM (/129.148.189.205)
+	by default (Oracle Beehive Gateway v4.0)	with ESMTP ; Tue,
+ 01 Jun 2010 12:20:15 -0700
+Date: Tue, 01 Jun 2010 15:20:13 -0400
+From: Stephen Ehring <stephen.ehring@oracle.com>
+Subject: Re: FWARC 2010/185 PRI Changes for Direct Attached Disks
+In-reply-to: <78EE3426-C24D-4FFE-BD15-94E90874C501@oracle.com>
+To: Stephen Ehring <stephen.ehring@oracle.com>
+Cc: fwarc@sun.com, Thomas Pothier <tom.pothier@oracle.com>,
+        Stephen Kelly <stephen.kelly@oracle.com>
+Message-id: <CC3DCC42-0AEF-4F13-9886-FEB9D80F3BB6@oracle.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.936)
+Content-type: text/plain; charset=US-ASCII; format=flowed; delsp=yes
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+X-Source-IP: acsmt354.oracle.com [141.146.40.154]
+X-Auth-Type: Internal IP
+X-CT-RefId: str=0001.0A090204.4C055D95.0128:SCFMA4539814,ss=1,fgs=0
+References: <78EE3426-C24D-4FFE-BD15-94E90874C501@oracle.com>
+Status: RO
+Content-Length: 116
+
+The timer for this case has expired, it is now closed as approved. The  
+PRI specification has been updated.
+
+Steve
+

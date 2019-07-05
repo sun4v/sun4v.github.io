@@ -1,0 +1,478 @@
+From sacadmin Tue Jun 24 11:01:12 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m5OI1Bdr019627
+	for <fwarc@sac.sfbay.sun.com>; Tue, 24 Jun 2008 11:01:12 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m5OI18Km017007
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 24 Jun 2008 19:01:10 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K2Z00C03BDXVO00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Tue, 24 Jun 2008 11:01:09 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K2Z007FKBDWFIE0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Tue, 24 Jun 2008 11:01:09 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m5OI183L017077	for
+ <fwarc@Sun.COM>; Tue, 24 Jun 2008 18:01:08 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K2Z001019CYQ200@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Tue, 24 Jun 2008 12:01:08 -0600 (MDT)
+Received: from [131.106.57.2] ([64.80.90.219])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0K2Z00HBFBDI2QE0@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Tue, 24 Jun 2008 12:00:55 -0600 (MDT)
+Date: Tue, 24 Jun 2008 14:00:53 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: FWARC/2008/402 - Niagara2 NIU Hypervisor API Extensions v2 -
+ fast-track timeout July 1, 2008
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>
+Message-id: <54771A46-F8B2-41AA-A51F-7BC673A00ADE@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.924)
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_P9sCKfC5owQeDZ3yBZn6Tw)"
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 1940
+
+
+--Boundary_(ID_P9sCKfC5owQeDZ3yBZn6Tw)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+
+I am sponsoring this fast-track case for David Finberg. This case
+extends the NIU Hypervisor API for the KT processor based platforms
+to support and make use of multiple NIU devices.
+
+The Niagara-2 NIU Hypervisor API specification was approved under
+FWARC/2006/524 and extended by FWARC/2008/248 to support
+NIU Hybrid IO.
+
+This case will be approved for minor/micro/patch OS binding and
+minor/micro binding for the firmware.
+
+All of the changes are highlighted in the API document which can be  
+found at:
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2008/402/materials/niu-hvapi-v2.txt
+
+
+
+
+--Boundary_(ID_P9sCKfC5owQeDZ3yBZn6Tw)
+Content-type: text/html; charset=US-ASCII
+Content-transfer-encoding: QUOTED-PRINTABLE
+
+<html><body style=3D"word-wrap: break-word; -webkit-nbsp-mode: space;=
+ -webkit-line-break: after-white-space; ">I am sponsoring this fast-t=
+rack case for David Finberg. This case<br>extends the NIU Hypervisor =
+API for the KT processor based platforms<div>to support and make use =
+of multiple NIU devices.<br><div><br>The Niagara-2 NIU Hypervisor API=
+ specification was approved under<br>FWARC/2006/524 and extended by F=
+WARC/2008/248 to support&nbsp;</div><div>NIU Hybrid IO.<br><br>This c=
+ase will be approved for minor/micro/patch OS binding and<br>minor/mi=
+cro binding for the firmware.<br><br>All of the changes are highlight=
+ed in the API&nbsp;document which can be found at:<br><br><a href=
+=3D"http://sac.eng/Archives/CaseLog/arc/FWARC/2008/402/materials/niu-=
+hvapi-v2.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/2008/402/mate=
+rials/niu-hvapi-v2.txt</a><a href=3D"http://sac.eng/Archives/CaseLog/=
+arc/FWARC/2008/248/materials/niu-hvapi.txt"></a></div><div><br></div>=
+<div><br></div><div><br></div></div></body></html>
+
+--Boundary_(ID_P9sCKfC5owQeDZ3yBZn6Tw)--
+
+From sacadmin Tue Jun 24 11:54:44 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m5OIshlR020719
+	for <fwarc@sac.sfbay.Sun.COM>; Tue, 24 Jun 2008 11:54:43 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m5OIsW1b025799
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 25 Jun 2008 02:54:42 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K2Z00I0LDV3HV00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 24 Jun 2008 11:54:39 -0700 (PDT)
+Received: from dm-sfbay-02.sfbay.sun.com ([129.146.11.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K2Z00DTLDV2GD60@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 24 Jun 2008 11:54:38 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-02.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id m5OIscee015394; Tue, 24 Jun 2008 11:54:38 -0700 (PDT)
+Received: from [192.168.0.9] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id m5OIsbTm020822; Tue,
+ 24 Jun 2008 11:54:37 -0700 (PDT)
+Date: Tue, 24 Jun 2008 11:54:36 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: FWARC/2008/402 - Niagara2 NIU Hypervisor API Extensions v2 -
+ fast-track timeout July 1, 2008
+To: Narayan Venkat <Narayan.Venkat@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>
+Message-id: <486142EC.7020006@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.14 (Windows/20080421)
+Status: RO
+Content-Length: 573
+
+
+I'm a bit concerned about the definition of
+devhandle in the document.
+
+I want to make sure we don't end up in the same
+situation we had with some other stuff.
+
+We probably need a binding document for the
+how the NIU will appear in the device tree.
+On KT, does it show up as a root device or
+a pcie device? If it's a root device, then
+we already have the binding for the devhandle
+as we do the other stuff. If it's a pcie device,
+then what we have isn't really sufficient.
+
+It's hard to see how we're going to do this on
+KT without a device binding for KT's NIU.
+
+-David
+
+
+From sacadmin Tue Jun 24 12:12:26 2008
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m5OJCP8k022049
+	for <fwarc@sac.sfbay.sun.com>; Tue, 24 Jun 2008 12:12:26 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m5OJCNdD017056
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 24 Jun 2008 13:12:25 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K2Z00K1DEOOA900@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 24 Jun 2008 12:12:24 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K2Z00D99EOOGDA0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 24 Jun 2008 12:12:24 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m5OJCOa2013651	for
+ <fwarc@sun.com>; Tue, 24 Jun 2008 19:12:24 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K2Z00A01E5D3P00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 24 Jun 2008 13:12:24 -0600 (MDT)
+Received: from dhcp-ubur03-184-20.East.Sun.COM ([129.148.184.20])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K2Z00008EO8DZC0@mail-amer.sun.com>; Tue,
+ 24 Jun 2008 13:12:08 -0600 (MDT)
+Date: Tue, 24 Jun 2008 15:12:08 -0400
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: Re: FWARC/2008/402 - Niagara2 NIU Hypervisor API Extensions v2 -
+ fast-track timeout July 1, 2008
+In-reply-to: <486142EC.7020006@sun.com>
+Sender: Stephen.Ehring@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: Narayan Venkat <Narayan.Venkat@Sun.COM>, Firmware Arch <fwarc@Sun.COM>
+Message-id: <48614708.70206@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <486142EC.7020006@sun.com>
+User-Agent: Thunderbird 2.0.0.14 (Macintosh/20080421)
+Status: RO
+Content-Length: 704
+
+David Kahn wrote:
+> We probably need a binding document for the
+> how the NIU will appear in the device tree.
+> On KT, does it show up as a root device or
+> a pcie device? If it's a root device, then
+> we already have the binding for the devhandle
+> as we do the other stuff. If it's a pcie device,
+> then what we have isn't really sufficient.
+
+ From what I understand, the NIU will appear exactly how it did with N2, 
+but there will be two root node children (and hence 4 total "network" 
+nodes).
+
+The devhandle is just the sun4v bus device number as defined in the 
+sun4v bus binding. Maybe it would be more clear to replace 'devhandle' 
+with 'sun4v device number' or 'sun4v bus device number'.
+
+Steve
+
+From sacadmin Tue Jun 24 12:17:21 2008
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m5OJHLfe022249
+	for <fwarc@sac.sfbay.sun.com>; Tue, 24 Jun 2008 12:17:21 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m5OJHJ98018286
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 24 Jun 2008 13:17:20 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K2Z00K11EWVTO00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 24 Jun 2008 12:17:19 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K2Z00DVFEWUGDA0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 24 Jun 2008 12:17:18 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m5OJHIOW015970	for
+ <fwarc@sun.com>; Tue, 24 Jun 2008 19:17:18 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K2Z00601DSWEM00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 24 Jun 2008 13:17:18 -0600 (MDT)
+Received: from [131.106.57.2] ([64.80.90.219])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0K2Z008BIEWQ0SH0@mail-amer.sun.com>; Tue,
+ 24 Jun 2008 13:17:15 -0600 (MDT)
+Date: Tue, 24 Jun 2008 15:17:13 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: FWARC/2008/402 - Niagara2 NIU Hypervisor API Extensions v2 -
+ fast-track timeout July 1, 2008
+In-reply-to: <486142EC.7020006@sun.com>
+Sender: Narayan.Venkat@sun.com
+To: David Kahn <David.Kahn@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>, Firmware Arch <fwarc@sun.com>,
+        David Finberg <David.Finberg@sun.com>
+Message-id: <AF0D17F1-1DDB-433F-A36F-E30DB0EA90F5@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.924)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <486142EC.7020006@sun.com>
+Status: RO
+Content-Length: 1133
+
+Hi Dave
+
+This is the on chip NIU and not a PCI-E device. This is
+the same as the NIU in a Niagara-2. N2 is a single socket
+system whereas KT is multi-socket and hence multiple NIUs.
+
+The iodevice node appears as a child of the phys_io node
+in the MD, and is defined by FWARC/2006/556. The device
+appear the same way it did on N2. The bindings for N2
+will still hold true in this case. Maybe the confusion here
+is the use of term 'devhandle' to identify the device.
+
+-Narayan
+
+
+On Jun 24, 2008, at 2:54 PM, David Kahn wrote:
+
+>
+> I'm a bit concerned about the definition of
+> devhandle in the document.
+>
+> I want to make sure we don't end up in the same
+> situation we had with some other stuff.
+>
+> We probably need a binding document for the
+> how the NIU will appear in the device tree.
+> On KT, does it show up as a root device or
+> a pcie device? If it's a root device, then
+> we already have the binding for the devhandle
+> as we do the other stuff. If it's a pcie device,
+> then what we have isn't really sufficient.
+>
+> It's hard to see how we're going to do this on
+> KT without a device binding for KT's NIU.
+>
+> -David
+>
+
+
+From sacadmin Tue Jun 24 12:23:47 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m5OJNkYM022436
+	for <fwarc@sac.sfbay.Sun.COM>; Tue, 24 Jun 2008 12:23:47 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m5OJNjEE006337
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 25 Jun 2008 03:23:45 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K2Z00I01F7KS300@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 24 Jun 2008 12:23:44 -0700 (PDT)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K2Z009BOF7KT0E0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 24 Jun 2008 12:23:44 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id m5OJNhO4010819; Tue, 24 Jun 2008 12:23:43 -0700 (PDT)
+Received: from [192.168.0.9] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id m5OJNg14021353; Tue,
+ 24 Jun 2008 12:23:43 -0700 (PDT)
+Date: Tue, 24 Jun 2008 12:23:42 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: FWARC/2008/402 - Niagara2 NIU Hypervisor API Extensions v2 -
+ fast-track timeout July 1, 2008
+In-reply-to: <AF0D17F1-1DDB-433F-A36F-E30DB0EA90F5@Sun.COM>
+To: Narayan Venkat <Narayan.Venkat@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, David Finberg <David.Finberg@sun.com>
+Message-id: <486149BE.3000003@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <486142EC.7020006@sun.com>
+ <AF0D17F1-1DDB-433F-A36F-E30DB0EA90F5@Sun.COM>
+User-Agent: Thunderbird 2.0.0.14 (Windows/20080421)
+Status: RO
+Content-Length: 684
+
+
+
+Narayan Venkat wrote:
+> Hi Dave
+> 
+> This is the on chip NIU and not a PCI-E device. This is
+> the same as the NIU in a Niagara-2. N2 is a single socket
+> system whereas KT is multi-socket and hence multiple NIUs.
+> 
+> The iodevice node appears as a child of the phys_io node
+> in the MD, and is defined by FWARC/2006/556. The device
+> appear the same way it did on N2. The bindings for N2
+> will still hold true in this case. Maybe the confusion here
+> is the use of term 'devhandle' to identify the device.
+
+devhandle is fine assuming they are children of the
+root node in the device tree. The sun4v bus binding
+already specifies what it is for children of the root
+node.
+
+-David
+
+From sacadmin Mon Jul  7 06:32:12 2008
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m67DWCOD012950
+	for <fwarc@sac.sfbay.sun.com>; Mon, 7 Jul 2008 06:32:12 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m67DWCU1015231
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 7 Jul 2008 06:32:12 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K3N0040B1LOVZ00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Mon, 07 Jul 2008 06:32:12 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K3N00FYT1LN0HD0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Mon, 07 Jul 2008 06:32:11 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m67DWBeS013245	for
+ <fwarc@Sun.COM>; Mon, 07 Jul 2008 13:32:11 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K3N004011K6RH00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Mon, 07 Jul 2008 07:32:11 -0600 (MDT)
+Received: from dhcp-ubur03-180-55.East.Sun.COM ([129.148.180.55])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K3N00L2P1L7CY90@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Mon, 07 Jul 2008 07:32:04 -0600 (MDT)
+Date: Mon, 07 Jul 2008 09:31:55 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: FWARC/2008/402 - Niagara2 NIU Hypervisor API Extensions v2 -
+ fast-track timeout July 1, 2008
+In-reply-to: <54771A46-F8B2-41AA-A51F-7BC673A00ADE@sun.com>
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: David Finberg <David.Finberg@sun.com>,
+        Narayan Venkat <Narayan.Venkat@sun.com>
+Message-id: <58965D9E-110C-4A07-9E3C-57D51CD8EA80@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.919.2)
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_2JwgoAB+9/8xN/ZJJpCccA)"
+X-PMX-Version: 5.4.1.325704
+References: <54771A46-F8B2-41AA-A51F-7BC673A00ADE@sun.com>
+Status: RO
+Content-Length: 2524
+
+
+--Boundary_(ID_2JwgoAB+9/8xN/ZJJpCccA)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+
+This fast-track case has timed out and is now approved.
+
+IAM file has been updated.
+
+Thanks
+-Narayan
+
+On Jun 24, 2008, at 2:00 PM, Narayan Venkat wrote:
+
+> I am sponsoring this fast-track case for David Finberg. This case
+> extends the NIU Hypervisor API for the KT processor based platforms
+> to support and make use of multiple NIU devices.
+>
+> The Niagara-2 NIU Hypervisor API specification was approved under
+> FWARC/2006/524 and extended by FWARC/2008/248 to support
+> NIU Hybrid IO.
+>
+> This case will be approved for minor/micro/patch OS binding and
+> minor/micro binding for the firmware.
+>
+> All of the changes are highlighted in the API document which can be  
+> found at:
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2008/402/materials/niu-hvapi-v2.txt
+>
+>
+>
+
+
+--Boundary_(ID_2JwgoAB+9/8xN/ZJJpCccA)
+Content-type: text/html; charset=US-ASCII
+Content-transfer-encoding: QUOTED-PRINTABLE
+
+<html><body style=3D"word-wrap: break-word; -webkit-nbsp-mode: space;=
+ -webkit-line-break: after-white-space; ">This fast-track case has ti=
+med out and is now approved.<br><br>IAM file has been updated.<br><br=
+>Thanks<br>-Narayan<br><br><div><div>On Jun 24, 2008, at 2:00 PM, Nar=
+ayan Venkat wrote:</div><br class=3D"Apple-interchange-newline"><bloc=
+kquote type=3D"cite"><div style=3D"word-wrap: break-word; -webkit-nbs=
+p-mode: space; -webkit-line-break: after-white-space; ">I am sponsori=
+ng this fast-track case for David Finberg. This case<br>extends the N=
+IU Hypervisor API for the KT processor based platforms<div>to support=
+ and make use of multiple NIU devices.<br><div><br>The Niagara-2 NIU =
+Hypervisor API specification was approved under<br>FWARC/2006/524 and=
+ extended by FWARC/2008/248 to support&nbsp;</div><div>NIU Hybrid IO.=
+<br><br>This case will be approved for minor/micro/patch OS binding a=
+nd<br>minor/micro binding for the firmware.<br><br>All of the changes=
+ are highlighted in the API&nbsp;document which can be found at:<br><=
+br><a href=3D"http://sac.eng/Archives/CaseLog/arc/FWARC/2008/402/mate=
+rials/niu-hvapi-v2.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/200=
+8/402/materials/niu-hvapi-v2.txt</a><a href=3D"http://sac.eng/Archive=
+s/CaseLog/arc/FWARC/2008/248/materials/niu-hvapi.txt"></a></div><div>=
+<br></div><div><br></div><div><br></div></div></div></blockquote></di=
+v><br></body></html>
+
+--Boundary_(ID_2JwgoAB+9/8xN/ZJJpCccA)--
+

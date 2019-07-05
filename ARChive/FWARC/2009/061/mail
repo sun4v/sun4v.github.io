@@ -1,0 +1,2153 @@
+From sacadmin Thu Jan 29 21:52:16 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n0U5qGVQ006708
+	for <fwarc@sac.sfbay.sun.com>; Thu, 29 Jan 2009 21:52:16 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n0U5qGAe012554
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 29 Jan 2009 21:52:16 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KE900L01SB38O00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 29 Jan 2009 21:52:15 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KE900JISSB2LY90@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 29 Jan 2009 21:52:15 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n0U5qEnj007023	for
+ <fwarc@sun.com>; Thu, 29 Jan 2009 21:52:14 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0KE900A01S8FRR00@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 29 Jan 2009 21:52:14 -0800 (PST)
+Received: from [129.150.33.47] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0KE900BEKSB1IE70@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 29 Jan 2009 21:52:14 -0800 (PST)
+Date: Thu, 29 Jan 2009 21:52:14 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Fast-track : 2009/061 - "path" property requirement in PRI
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: Tom Pothier <Tom.Pothier@sun.com>,
+        Scott Davenport <Scott.Davenport@sun.com>
+Message-id: <4982958E.60508@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_V+mbatusmu4TVyCGFSaOcQ)"
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.19 (Windows/20081209)
+Status: RO
+Content-Length: 4514
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_V+mbatusmu4TVyCGFSaOcQ)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+I am sponsoring this fast-track case for Tom Pothier.
+
+The proposal is to use the "path" property of the pciexrc
+node to create the root complex topo dev property. Currently
+the sun4v PI enumerator uses the "cfg-handle" property to
+create the topo dev property, but this is a single integer
+value, so it's very hard to represent something like "/pci@600/pci@0".
+
+Currently "path" is optional, the proposal is to make it required,
+and deprecate "cfg-handle" in the component and IO device nodes.
+
+A diff file, updated PRI specifications and interface table
+are available in case directory at,
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/16-to-17.diff.txt
+http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/PRI_Specification_17.txt
+http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/Interface_Table.txt
+
+
+Proposed changes are as follows :
+
+Section 1.3.9 :
+
+The "path" property IS a required property on nodes where
+the topo-hc-name property is set to "pciexrc".
+
+Section 1.3.18 :
+
+The "cfg-handle" is NOT a required property.
+
+Section 1.3.19 :
+
+Type correction, the name of the property should be "topo-hc-name"
+
+
+Section 1.12.1 :
+
+Replaced "cfg-handle" with "path" property.
+
+
+Timer is set for one week from today, February 5th, 2009.
+
+
+This case is seeking following release bindings,
+
+Release Binding:
+ firmware: minor/micro firmware release
+ OS: minor/micro/patch OS release.
+
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_V+mbatusmu4TVyCGFSaOcQ)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<tt><font size="-1"><big>I am sponsoring this fast-track case for Tom
+Pothier.</big><br>
+<br>
+</font>The proposal is to use the "path" property of the pciexrc<br>
+node
+to create the root complex topo dev property. Currently<br>
+the sun4v PI
+enumerator uses the "cfg-handle" property to<br>
+create the topo dev
+property, but this is a single integer<br>
+value, so it's very hard to
+represent something like "/pci@600/pci@0".
+<br>
+<br>
+Currently "path" is optional, the proposal is to make it required,<br>
+and deprecate "cfg-handle" in the component and IO device nodes.<br>
+<br>
+A diff file, updated PRI specifications and interface table<br>
+are available in case directory at,<br>
+<br>
+<a class="moz-txt-link-freetext" href="http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/16-to-17.diff.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/16-to-17.diff.txt</a><br>
+<a class="moz-txt-link-freetext" href="http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/PRI_Specification_17.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/PRI_Specification_17.txt</a><br>
+<a class="moz-txt-link-freetext" href="http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/Interface_Table.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/Interface_Table.txt</a><br>
+<br>
+<br>
+Proposed changes are as follows :
+<br>
+<br>
+Section 1.3.9 : <br>
+<br>
+The "path" property IS a required property on
+nodes where<br>
+the topo-hc-name property is set to "pciexrc".
+<br>
+<br>
+Section 1.3.18 :
+<br>
+<br>
+The "cfg-handle" is NOT a required property.
+<br>
+<br>
+Section 1.3.19 :
+<br>
+<br>
+Type correction, the name of the property should be
+"topo-hc-name"
+<br>
+<br>
+<br>
+Section 1.12.1 :
+<br>
+<br>
+Replaced "cfg-handle" with "path" property.
+<br>
+<br>
+<br>
+Timer is set for one week from today, February 5th, 2009.<br>
+<br>
+<br>
+</tt>
+<pre>This case is seeking following release bindings,
+
+Release Binding:
+ firmware: minor/micro firmware release
+ OS: minor/micro/patch OS release.
+</pre>
+<br>
+<tt><br>
+</tt>
+<pre class="moz-signature" cols="80"><tt>-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</tt></pre>
+</body>
+</html>
+
+--Boundary_(ID_V+mbatusmu4TVyCGFSaOcQ)--
+
+From sacadmin Fri Jan 30 00:43:01 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n0U8h1o7028028
+	for <fwarc@sac.sfbay.sun.com>; Fri, 30 Jan 2009 00:43:01 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n0U8gw5X004626
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 30 Jan 2009 08:42:59 GMT
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KEA00A0107K0S00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 30 Jan 2009 00:42:56 -0800 (PST)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KEA007BK07JCO30@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 30 Jan 2009 00:42:55 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id n0U8gt0e053658; Fri, 30 Jan 2009 00:42:55 -0800 (PST)
+Received: from [192.168.0.19] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n0U8gsXO010264; Fri,
+ 30 Jan 2009 00:42:54 -0800 (PST)
+Date: Fri, 30 Jan 2009 00:42:49 -0800
+From: David Kahn <David.Kahn@Sun.COM>
+Subject: Re: Fast-track : 2009/061 - "path" property requirement in PRI
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Firmware ARC <fwarc@Sun.COM>, Tom Pothier <Tom.Pothier@Sun.COM>,
+        Scott Davenport <Scott.Davenport@Sun.COM>
+Message-id: <4982BD89.2040203@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.19 (Windows/20081209)
+Status: RO
+Content-Length: 586
+
+
+
+Hitendra Zhangada wrote:
+
+> The proposal is to use the "path" property of the pciexrc
+> node to create the root complex topo dev property. Currently
+> the sun4v PI enumerator uses the "cfg-handle" property to
+> create the topo dev property, but this is a single integer
+> value, so it's very hard to represent something like "/pci@600/pci@0".
+
+I have no idea what those abbreviations and acronyms are.
+
+What's the topo dev property?
+
+What's the sun4v PI enumerator?
+
+Can you really just deprecate cfg-handle?
+
+How did we do this on Maramba, and why wasn't it a problem there?
+
+-David
+
+From sacadmin Fri Jan 30 07:51:46 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n0UFpkwb023031
+	for <fwarc@sac.sfbay.sun.com>; Fri, 30 Jan 2009 07:51:46 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n0UFpfxa044961
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 30 Jan 2009 08:51:46 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KEA00E41K28DZ00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 30 Jan 2009 07:51:44 -0800 (PST)
+Received: from dm-sfbay-02.sfbay.sun.com ([129.146.11.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KEA00B8PK28YT20@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 30 Jan 2009 07:51:44 -0800 (PST)
+Received: from cronopios.sfbay.sun.com
+ (cronopios.SFBay.Sun.COM [129.146.96.110])	by dm-sfbay-02.sfbay.sun.com
+ (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n0UFph7S025724; Fri,
+ 30 Jan 2009 07:51:43 -0800 (PST)
+Received: from cronopios.sfbay.sun.com (localhost [127.0.0.1])
+	by cronopios.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n0UFfrvv006088;
+ Fri, 30 Jan 2009 07:41:53 -0800 (PST)
+Received: (from rath@localhost)	by cronopios.sfbay.sun.com
+ (8.13.8+Sun/8.13.8/Submit) id n0UFfrEU006087; Fri,
+ 30 Jan 2009 07:41:53 -0800 (PST)
+Date: Fri, 30 Jan 2009 07:41:53 -0800
+From: Kevin Rathbun <Kevin.Rathbun@sun.com>
+Subject: Re: Fast-track : 2009/061 - "path" property requirement in PRI
+In-reply-to: <4982BD89.2040203@sun.com>
+To: David Kahn <David.Kahn@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware ARC <fwarc@sun.com>, Tom Pothier <Tom.Pothier@sun.com>,
+        Scott Davenport <Scott.Davenport@sun.com>
+Reply-to: Kevin Rathbun <Kevin.Rathbun@sun.com>
+Message-id: <20090130154152.GY24670@frylock>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+Content-disposition: inline
+X-PMX-Version: 5.4.1.325704
+References: <4982BD89.2040203@sun.com>
+X-Authentication-warning: cronopios.sfbay.sun.com: rath set sender to
+ Kevin.Rathbun@Sun.COM using -f
+User-Agent: Mutt/1.5.17 (2008-01-17)
+Status: RO
+Content-Length: 1228
+
+On Fri, Jan 30, 2009 at 12:42:49AM -0800, David Kahn wrote:
+>
+>
+> Hitendra Zhangada wrote:
+>
+>> The proposal is to use the "path" property of the pciexrc
+>> node to create the root complex topo dev property. Currently
+>> the sun4v PI enumerator uses the "cfg-handle" property to
+>> create the topo dev property, but this is a single integer
+>> value, so it's very hard to represent something like "/pci@600/pci@0".
+>
+> I have no idea what those abbreviations and acronyms are.
+>
+> What's the topo dev property?
+>
+> What's the sun4v PI enumerator?
+>
+> Can you really just deprecate cfg-handle?
+
+I believe the summary is incorrect but the spec update is correct.
+The spec update deletes the cfg-handle from the component node for
+the root complex, which was added for the sun4v Platform Independence
+project (plat-independent ereports) which has not shipped on any
+platforms yet and so the impact of this spec update is just to remove
+it from the kt dev gate.
+
+The summary also mentioned removing it from the IO device nodes,
+but that should not be true, as those cfg-handle properties are
+there to creat the guest md and are consumed by obp.
+
+kvn
+
+>
+> How did we do this on Maramba, and why wasn't it a problem there?
+>
+> -David
+
+From sacadmin Fri Jan 30 07:52:14 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n0UFqEi1023061
+	for <fwarc@sac.sfbay.sun.com>; Fri, 30 Jan 2009 07:52:14 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n0UFqBSn027301
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 30 Jan 2009 07:52:14 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KEA0073JK31SP00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 30 Jan 2009 07:52:13 -0800 (PST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KEA00796K2ZRM00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 30 Jan 2009 07:52:12 -0800 (PST)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n0UFqB9h008730	for
+ <fwarc@sun.com>; Fri, 30 Jan 2009 15:52:11 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0KEA00201IPBAK00@mail-amer.sun.com>
+ (original mail from Tom.Pothier@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 30 Jan 2009 08:52:11 -0700 (MST)
+Received: from [129.148.9.87] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0KEA00GOPK2I71A0@mail-amer.sun.com>; Fri,
+ 30 Jan 2009 08:51:56 -0700 (MST)
+Date: Fri, 30 Jan 2009 10:51:54 -0500
+From: Tom Pothier <Tom.Pothier@sun.com>
+Subject: Re: Fast-track : 2009/061 - "path" property requirement in PRI
+In-reply-to: <4982BD89.2040203@sun.com>
+Sender: Tom.Pothier@sun.com
+To: David Kahn <David.Kahn@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware ARC <fwarc@sun.com>,
+        Scott Davenport <Scott.Davenport@sun.com>
+Message-id: <4983221A.7080606@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4982BD89.2040203@sun.com>
+User-Agent: Thunderbird 2.0.0.16 (X11/20080807)
+Status: RO
+Content-Length: 1116
+
+On 01/30/09 03:42, David Kahn wrote:
+>
+>
+> Hitendra Zhangada wrote:
+>
+>> The proposal is to use the "path" property of the pciexrc
+>> node to create the root complex topo dev property. Currently
+>> the sun4v PI enumerator uses the "cfg-handle" property to
+>> create the topo dev property, but this is a single integer
+>> value, so it's very hard to represent something like "/pci@600/pci@0".
+>
+> I have no idea what those abbreviations and acronyms are.
+>
+> What's the topo dev property?
+
+It's a property which allows the device node to be properly identified 
+and be matched with an ereport correctly.
+>
+> What's the sun4v PI enumerator?
+
+It's the sun4v Platform Independent FMA Topology Enumerator 
+(PSARC/2008/300).
+>
+> Can you really just deprecate cfg-handle?
+
+Yes, it was introduced for the sun4v PI enumerator. It turns out that 
+it's insufficient for our needs. Thus this case.
+>
+> How did we do this on Maramba, and why wasn't it a problem there?
+
+Maramba does not use the sun4v PI enumerator, it uses the existing 
+topology enumerator. KT (and SN) will be the first platform to use it.
+
+thx,
+-t
+>
+> -David
+
+From sacadmin Fri Jan 30 07:55:11 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n0UFtBlU023325
+	for <fwarc@sac.sfbay.sun.com>; Fri, 30 Jan 2009 07:55:11 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n0UFt4HR028765
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 30 Jan 2009 07:55:11 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KEA00B15K7Y2700@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 30 Jan 2009 08:55:10 -0700 (MST)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KEA00K3WK7UZZA0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 30 Jan 2009 08:55:07 -0700 (MST)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n0UFt6mZ007819	for
+ <fwarc@sun.com>; Fri, 30 Jan 2009 15:55:06 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0KEA00F01K2AHA00@mail-amer.sun.com>
+ (original mail from Tom.Pothier@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 30 Jan 2009 08:55:06 -0700 (MST)
+Received: from [129.148.9.87] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0KEA00GX4K7O71A0@mail-amer.sun.com>; Fri,
+ 30 Jan 2009 08:55:02 -0700 (MST)
+Date: Fri, 30 Jan 2009 10:55:00 -0500
+From: Tom Pothier <Tom.Pothier@sun.com>
+Subject: Re: Fast-track : 2009/061 - "path" property requirement in PRI
+In-reply-to: <20090130154152.GY24670@frylock>
+Sender: Tom.Pothier@sun.com
+To: Kevin Rathbun <Kevin.Rathbun@sun.com>
+Cc: David Kahn <David.Kahn@sun.com>,
+        Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware ARC <fwarc@sun.com>,
+        Scott Davenport <Scott.Davenport@sun.com>
+Message-id: <498322D4.7040504@sun.com>
+MIME-version: 1.0
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4982BD89.2040203@sun.com> <20090130154152.GY24670@frylock>
+User-Agent: Thunderbird 2.0.0.16 (X11/20080807)
+Status: RO
+Content-Length: 2058
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+On 01/30/09 10:41, Kevin Rathbun wrote:
+<blockquote cite="mid:20090130154152.GY24670@frylock" type="cite">
+  <pre wrap="">On Fri, Jan 30, 2009 at 12:42:49AM -0800, David Kahn wrote:
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">
+Hitendra Zhangada wrote:
+
+    </pre>
+    <blockquote type="cite">
+      <pre wrap="">The proposal is to use the "path" property of the pciexrc
+node to create the root complex topo dev property. Currently
+the sun4v PI enumerator uses the "cfg-handle" property to
+create the topo dev property, but this is a single integer
+value, so it's very hard to represent something like "/pci@600/pci@0".
+      </pre>
+    </blockquote>
+    <pre wrap="">I have no idea what those abbreviations and acronyms are.
+
+What's the topo dev property?
+
+What's the sun4v PI enumerator?
+
+Can you really just deprecate cfg-handle?
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+I believe the summary is incorrect but the spec update is correct.
+The spec update deletes the cfg-handle from the component node for
+the root complex, which was added for the sun4v Platform Independence
+project (plat-independent ereports) which has not shipped on any
+platforms yet and so the impact of this spec update is just to remove
+it from the kt dev gate.
+
+The summary also mentioned removing it from the IO device nodes,
+but that should not be true, as those cfg-handle properties are
+there to creat the guest md and are consumed by obp.
+  </pre>
+</blockquote>
+<br>
+Yes, sorry you're right. The spec says that it's deprecated where
+topo-hc-name="pciexrc" only.<br>
+<br>
+thx,<br>
+-t<br>
+<blockquote cite="mid:20090130154152.GY24670@frylock" type="cite">
+  <pre wrap="">
+kvn
+
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">How did we do this on Maramba, and why wasn't it a problem there?
+
+-David
+    </pre>
+  </blockquote>
+</blockquote>
+</body>
+</html>
+
+From sacadmin Fri Jan 30 17:15:45 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n0V1Fi42002969
+	for <fwarc@sac.sfbay.sun.com>; Fri, 30 Jan 2009 17:15:44 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n0V1FdIe003669
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Sat, 31 Jan 2009 01:15:43 GMT
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KEB00301A654800@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 30 Jan 2009 17:15:41 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KEB007MGA64SQB0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 30 Jan 2009 17:15:40 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n0V1FejO003387	for
+ <fwarc@sun.com>; Fri, 30 Jan 2009 17:15:40 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0KEB00201A3M5700@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 30 Jan 2009 17:15:40 -0800 (PST)
+Received: from [192.168.1.6] ([71.136.66.126])
+ by fe-sfbay-10.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb
+ 28 2007)) with ESMTPSA id <0KEB0034XA5ZPA70@fe-sfbay-10.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 30 Jan 2009 17:15:36 -0800 (PST)
+Date: Fri, 30 Jan 2009 17:15:36 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Fast-track : 2009/061 - "path" property requirement in PRI
+In-reply-to: <20090130154152.GY24670@frylock>
+Sender: Hitendra.Zhangada@sun.com
+To: Kevin Rathbun <Kevin.Rathbun@sun.com>
+Cc: Firmware ARC <fwarc@sun.com>, Tom Pothier <Tom.Pothier@sun.com>,
+        Scott Davenport <Scott.Davenport@sun.com>
+Message-id: <4983A638.5050704@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_xKtvUMKrRtLRFtsyhpgCDw)"
+X-PMX-Version: 5.4.1.325704
+References: <4982BD89.2040203@sun.com> <20090130154152.GY24670@frylock>
+User-Agent: Thunderbird 2.0.0.19 (Windows/20081209)
+Status: RO
+Content-Length: 5407
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_xKtvUMKrRtLRFtsyhpgCDw)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+Kevin Rathbun wrote:
+> On Fri, Jan 30, 2009 at 12:42:49AM -0800, David Kahn wrote:
+>   
+>> Hitendra Zhangada wrote:
+>>
+>>     
+>>> The proposal is to use the "path" property of the pciexrc
+>>> node to create the root complex topo dev property. Currently
+>>> the sun4v PI enumerator uses the "cfg-handle" property to
+>>> create the topo dev property, but this is a single integer
+>>> value, so it's very hard to represent something like "/pci@600/pci@0".
+>>>       
+>> I have no idea what those abbreviations and acronyms are.
+>>
+>> What's the topo dev property?
+>>
+>> What's the sun4v PI enumerator?
+>>
+>> Can you really just deprecate cfg-handle?
+>>     
+>
+> I believe the summary is incorrect but the spec update is correct.
+> The spec update deletes the cfg-handle from the component node for
+> the root complex, which was added for the sun4v Platform Independence
+> project (plat-independent ereports) which has not shipped on any
+> platforms yet and so the impact of this spec update is just to remove
+> it from the kt dev gate.
+>
+> The summary also mentioned removing it from the IO device nodes,
+> but that should not be true, as those cfg-handle properties are
+> there to creat the guest md and are consumed by obp.
+>   
+
+Thanks for the corrections.   Yes, "cfg-handle" property is removed,
+as Kevin mentioned above, from the component node for the
+root complex.  I will correct the interface table to be more clear.
+
+The reason I added the note about the IO Device node is that
+there is a change in section 1.12.1 of the PRI specification.
+This is a section where IO Device properties are described.
+The change is to replace "cfg-handle" with "path" but
+I think that only applies to root complex  and not for
+other nodes. 
+
+
+I will edit/correct the interface table accordingly on Monday.
+
+
+Thanks.
+
+> kvn
+>
+>   
+>> How did we do this on Maramba, and why wasn't it a problem there?
+>>
+>> -David
+>>     
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_xKtvUMKrRtLRFtsyhpgCDw)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+Kevin Rathbun wrote:
+<blockquote cite="mid:20090130154152.GY24670@frylock" type="cite">
+  <pre wrap="">On Fri, Jan 30, 2009 at 12:42:49AM -0800, David Kahn wrote:
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">
+Hitendra Zhangada wrote:
+
+    </pre>
+    <blockquote type="cite">
+      <pre wrap="">The proposal is to use the "path" property of the pciexrc
+node to create the root complex topo dev property. Currently
+the sun4v PI enumerator uses the "cfg-handle" property to
+create the topo dev property, but this is a single integer
+value, so it's very hard to represent something like "/pci@600/pci@0".
+      </pre>
+    </blockquote>
+    <pre wrap="">I have no idea what those abbreviations and acronyms are.
+
+What's the topo dev property?
+
+What's the sun4v PI enumerator?
+
+Can you really just deprecate cfg-handle?
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+I believe the summary is incorrect but the spec update is correct.
+The spec update deletes the cfg-handle from the component node for
+the root complex, which was added for the sun4v Platform Independence
+project (plat-independent ereports) which has not shipped on any
+platforms yet and so the impact of this spec update is just to remove
+it from the kt dev gate.
+
+The summary also mentioned removing it from the IO device nodes,
+but that should not be true, as those cfg-handle properties are
+there to creat the guest md and are consumed by obp.
+  </pre>
+</blockquote>
+<br>
+Thanks for the corrections.&nbsp;&nbsp; Yes, "cfg-handle" property is removed,<br>
+as Kevin mentioned above, from the component node for the<br>
+root complex.&nbsp; I will correct the interface table to be more clear.<br>
+<br>
+The reason I added the note about the IO Device node is that <br>
+there is a change in section 1.12.1 of the PRI specification.<br>
+This is a section where IO Device properties are described.<br>
+The change is to replace "cfg-handle" with "path" but<br>
+I think that only applies to root complex&nbsp; and not for<br>
+other nodes.&nbsp; <br>
+<br>
+<br>
+I will edit/correct the interface table accordingly on Monday.<br>
+<br>
+<br>
+Thanks.<br>
+<br>
+<blockquote cite="mid:20090130154152.GY24670@frylock" type="cite">
+  <pre wrap="">
+kvn
+
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">How did we do this on Maramba, and why wasn't it a problem there?
+
+-David
+    </pre>
+  </blockquote>
+</blockquote>
+<br>
+<br>
+<pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_xKtvUMKrRtLRFtsyhpgCDw)--
+
+From sacadmin Tue Feb  3 16:02:36 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n1402atZ004740
+	for <fwarc@sac.sfbay.sun.com>; Tue, 3 Feb 2009 16:02:36 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n1402RTO003123
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 4 Feb 2009 00:02:34 GMT
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KEI00E03LG9LC00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 03 Feb 2009 16:02:33 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KEI0019KLG8ZLC0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 03 Feb 2009 16:02:32 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n1402WCi011432	for
+ <fwarc@sun.com>; Tue, 03 Feb 2009 16:02:32 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0KEI00E01L6XQ200@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 03 Feb 2009 16:02:32 -0800 (PST)
+Received: from [129.153.85.32] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0KEI004BWLG7S030@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 03 Feb 2009 16:02:32 -0800 (PST)
+Date: Tue, 03 Feb 2009 16:02:31 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Fast-track : 2009/061 - "path" property requirement in PRI
+In-reply-to: <4983A638.5050704@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: Tom Pothier <Tom.Pothier@sun.com>,
+        Scott Davenport <Scott.Davenport@sun.com>
+Message-id: <4988DB17.5040501@Sun.COM>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_vflZ7lSTv11P9Ka7AZjN5Q)"
+X-PMX-Version: 5.4.1.325704
+References: <4982BD89.2040203@sun.com> <20090130154152.GY24670@frylock>
+ <4983A638.5050704@sun.com>
+User-Agent: Thunderbird 2.0.0.16 (X11/20080807)
+Status: RO
+Content-Length: 9259
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_vflZ7lSTv11P9Ka7AZjN5Q)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+On 01/30/09 17:15, Hitendra Zhangada wrote:
+> Kevin Rathbun wrote:
+>> On Fri, Jan 30, 2009 at 12:42:49AM -0800, David Kahn wrote:
+>>   
+>>> Hitendra Zhangada wrote:
+>>>
+>>>     
+>>>> The proposal is to use the "path" property of the pciexrc
+>>>> node to create the root complex topo dev property. Currently
+>>>> the sun4v PI enumerator uses the "cfg-handle" property to
+>>>> create the topo dev property, but this is a single integer
+>>>> value, so it's very hard to represent something like "/pci@600/pci@0".
+>>>>       
+>>> I have no idea what those abbreviations and acronyms are.
+>>>
+>>> What's the topo dev property?
+>>>
+>>> What's the sun4v PI enumerator?
+>>>
+>>> Can you really just deprecate cfg-handle?
+>>>     
+>>
+>> I believe the summary is incorrect but the spec update is correct.
+>> The spec update deletes the cfg-handle from the component node for
+>> the root complex, which was added for the sun4v Platform Independence
+>> project (plat-independent ereports) which has not shipped on any
+>> platforms yet and so the impact of this spec update is just to remove
+>> it from the kt dev gate.
+>>
+>> The summary also mentioned removing it from the IO device nodes,
+>> but that should not be true, as those cfg-handle properties are
+>> there to creat the guest md and are consumed by obp.
+>>   
+>
+> Thanks for the corrections.   Yes, "cfg-handle" property is removed,
+> as Kevin mentioned above, from the component node for the
+> root complex.  I will correct the interface table to be more clear.
+>
+> The reason I added the note about the IO Device node is that
+> there is a change in section 1.12.1 of the PRI specification.
+> This is a section where IO Device properties are described.
+> The change is to replace "cfg-handle" with "path" but
+> I think that only applies to root complex  and not for
+> other nodes. 
+>
+>
+> I will edit/correct the interface table accordingly on Monday.
+
+I have updated the PRI specification, Interface table and the diff
+file for this case.  The change from the first proposal is mainly
+changes to section 1.12.1.  The "cfg-handle" property is NOT deprecated
+in IO device node but instead "path" property is added as a required
+property for nodes where topo-hc-name="pciexrc", otherwise it is
+not required.  The links are same as before (remember to refresh),
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/16-to-17.diff.txt
+http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/PRI_Specification_17.txt
+http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/Interface_Table.txt
+
+
+
+The timer remains the same as February 5th since most of the
+changes are the same as before.  But if you need more time
+then please let me know. 
+
+I would like at least one "lgtm" or "+1" for this case.
+
+
+Summary of changes are as follows :
+
+
+Currently "path" is optional, the proposal is to make it required
+property if the "topo-hc-name" property value is set to "pciexrc"
+and deprecate "cfg-handle" in the component device node of PRI.
+
+
+
+Section 1.3.9 :
+
+The "path" property IS a required property on nodes where
+the "topo-hc-name" property value is set to "pciexrc".
+
+Section 1.3.18 of PRI specification version 1.6 :
+
+The "cfg-handle" property is removed from the component node of PRI.
+
+Section 1.3.19 (1.3.18 in version 1.7) :
+
+Typo correction, the name of the property should be "topo-hc-name"
+
+
+Section 1.12.1 :
+
+Added "path" property as a required property if the
+"topo-hc-name" property value is set to "pciexrc".
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_vflZ7lSTv11P9Ka7AZjN5Q)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<tt>On 01/30/09 17:15, Hitendra Zhangada wrote:</tt>
+<blockquote cite="mid:4983A638.5050704@sun.com" type="cite">
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+  <tt>Kevin Rathbun wrote:
+  </tt>
+  <blockquote cite="mid:20090130154152.GY24670@frylock" type="cite">
+    <pre wrap=""><tt>On Fri, Jan 30, 2009 at 12:42:49AM -0800, David Kahn wrote:
+  </tt></pre>
+    <blockquote type="cite">
+      <pre wrap=""><tt>Hitendra Zhangada wrote:
+
+    </tt></pre>
+      <blockquote type="cite">
+        <pre wrap=""><tt>The proposal is to use the "path" property of the pciexrc
+node to create the root complex topo dev property. Currently
+the sun4v PI enumerator uses the "cfg-handle" property to
+create the topo dev property, but this is a single integer
+value, so it's very hard to represent something like "/pci@600/pci@0".
+      </tt></pre>
+      </blockquote>
+      <pre wrap=""><tt>I have no idea what those abbreviations and acronyms are.
+
+What's the topo dev property?
+
+What's the sun4v PI enumerator?
+
+Can you really just deprecate cfg-handle?
+    </tt></pre>
+    </blockquote>
+    <pre wrap=""><!----><tt>
+I believe the summary is incorrect but the spec update is correct.
+The spec update deletes the cfg-handle from the component node for
+the root complex, which was added for the sun4v Platform Independence
+project (plat-independent ereports) which has not shipped on any
+platforms yet and so the impact of this spec update is just to remove
+it from the kt dev gate.
+
+The summary also mentioned removing it from the IO device nodes,
+but that should not be true, as those cfg-handle properties are
+there to creat the guest md and are consumed by obp.
+  </tt></pre>
+  </blockquote>
+  <tt><br>
+Thanks for the corrections.&nbsp;&nbsp; Yes, "cfg-handle" property is removed,<br>
+as Kevin mentioned above, from the component node for the<br>
+root complex.&nbsp; I will correct the interface table to be more clear.<br>
+  <br>
+The reason I added the note about the IO Device node is that <br>
+there is a change in section 1.12.1 of the PRI specification.<br>
+This is a section where IO Device properties are described.<br>
+The change is to replace "cfg-handle" with "path" but<br>
+I think that only applies to root complex&nbsp; and not for<br>
+other nodes.&nbsp; <br>
+  <br>
+  <br>
+I will edit/correct the interface table accordingly on Monday.<br>
+  </tt>
+</blockquote>
+<tt><br>
+I have updated the PRI specification, Interface table and the diff<br>
+file for this case.&nbsp; The change from the first proposal is mainly<br>
+changes to section 1.12.1.&nbsp; The "cfg-handle" property is NOT deprecated<br>
+in IO device node but instead "path" property is added as a required<br>
+property for nodes where topo-hc-name="pciexrc", otherwise it is<br>
+not required.&nbsp; The links are same as before (remember to refresh),<br>
+</tt><tt><br>
+<a class="moz-txt-link-freetext"
+ href="http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/16-to-17.diff.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/16-to-17.diff.txt</a><br>
+<a class="moz-txt-link-freetext"
+ href="http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/PRI_Specification_17.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/PRI_Specification_17.txt</a><br>
+<a class="moz-txt-link-freetext"
+ href="http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/Interface_Table.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/Interface_Table.txt</a><br>
+<br>
+<br>
+</tt><tt><br>
+The timer remains the same as February 5th since most of the<br>
+changes are the same as before.&nbsp; But if you need more time <br>
+then please let me know.&nbsp; <br>
+<br>
+I would like at least one "lgtm" or "+1" for this case.<br>
+<br>
+<br>
+Summary of changes </tt><tt>are as follows :
+<br>
+<br>
+<br>
+</tt><tt>Currently "path" is optional, the proposal is to make it
+required<br>
+property if the </tt><tt>"topo-hc-name" property value is set to
+"pciexrc"<br>
+</tt><tt>and deprecate "cfg-handle" in the component device node of PRI.<br>
+</tt><tt><br>
+<br>
+</tt><tt><br>
+Section 1.3.9 : <br>
+<br>
+The "path" property IS a required property on
+nodes where<br>
+the "topo-hc-name" property value is set to "pciexrc".
+<br>
+<br>
+Section 1.3.18 of PRI specification version 1.6 :
+<br>
+<br>
+The "cfg-handle" property is removed from the component node of PRI.
+<br>
+<br>
+Section 1.3.19 (1.3.18 in version 1.7) :
+<br>
+<br>
+Typo correction, the name of the property should be
+"topo-hc-name"
+<br>
+<br>
+<br>
+Section 1.12.1 :
+<br>
+<br>
+Added "path" property as a required property if the<br>
+"topo-hc-name" property value is set to "pciexrc".
+<br>
+<br>
+<br>
+</tt>
+<pre class="moz-signature" cols="72"><tt>-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</tt></pre>
+</body>
+</html>
+
+--Boundary_(ID_vflZ7lSTv11P9Ka7AZjN5Q)--
+
+From sacadmin Fri Feb  6 10:10:25 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n16IAOOt027236
+	for <fwarc@sac.sfbay.sun.com>; Fri, 6 Feb 2009 10:10:24 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n16IA2kK026628
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 6 Feb 2009 18:10:23 GMT
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KEN00109P5B4J00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 06 Feb 2009 11:10:23 -0700 (MST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KEN00A2SP5AU4D0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 06 Feb 2009 11:10:22 -0700 (MST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n16IAMAR007965	for
+ <fwarc@sun.com>; Fri, 06 Feb 2009 10:10:22 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KEN00J00NLDYA00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 06 Feb 2009 10:10:22 -0800 (PST)
+Received: from [129.150.38.15] ([unknown] [129.150.38.15])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ with ESMTPSA id <0KEN00MJRP50YX80@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 06 Feb 2009 10:10:19 -0800 (PST)
+Date: Fri, 06 Feb 2009 10:10:12 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Fast-track : 2009/061 - "path" property requirement in PRI
+In-reply-to: <4988DB17.5040501@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: Tom Pothier <Tom.Pothier@sun.com>,
+        Scott Davenport <Scott.Davenport@sun.com>
+Message-id: <498C7D04.2070004@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_shv0b3xemq242m3qGTZOSQ)"
+X-PMX-Version: 5.4.1.325704
+References: <4982BD89.2040203@sun.com> <20090130154152.GY24670@frylock>
+ <4983A638.5050704@sun.com> <4988DB17.5040501@Sun.COM>
+User-Agent: Thunderbird 2.0.0.19 (Windows/20081209)
+Status: RO
+Content-Length: 10972
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_shv0b3xemq242m3qGTZOSQ)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+Hitendra Zhangada wrote:
+> On 01/30/09 17:15, Hitendra Zhangada wrote:
+>> Kevin Rathbun wrote:
+>>> On Fri, Jan 30, 2009 at 12:42:49AM -0800, David Kahn wrote:
+>>>   
+>>>> Hitendra Zhangada wrote:
+>>>>
+>>>>     
+>>>>> The proposal is to use the "path" property of the pciexrc
+>>>>> node to create the root complex topo dev property. Currently
+>>>>> the sun4v PI enumerator uses the "cfg-handle" property to
+>>>>> create the topo dev property, but this is a single integer
+>>>>> value, so it's very hard to represent something like "/pci@600/pci@0".
+>>>>>       
+>>>> I have no idea what those abbreviations and acronyms are.
+>>>>
+>>>> What's the topo dev property?
+>>>>
+>>>> What's the sun4v PI enumerator?
+>>>>
+>>>> Can you really just deprecate cfg-handle?
+>>>>     
+>>>
+>>> I believe the summary is incorrect but the spec update is correct.
+>>> The spec update deletes the cfg-handle from the component node for
+>>> the root complex, which was added for the sun4v Platform Independence
+>>> project (plat-independent ereports) which has not shipped on any
+>>> platforms yet and so the impact of this spec update is just to remove
+>>> it from the kt dev gate.
+>>>
+>>> The summary also mentioned removing it from the IO device nodes,
+>>> but that should not be true, as those cfg-handle properties are
+>>> there to creat the guest md and are consumed by obp.
+>>>   
+>>
+>> Thanks for the corrections.   Yes, "cfg-handle" property is removed,
+>> as Kevin mentioned above, from the component node for the
+>> root complex.  I will correct the interface table to be more clear.
+>>
+>> The reason I added the note about the IO Device node is that
+>> there is a change in section 1.12.1 of the PRI specification.
+>> This is a section where IO Device properties are described.
+>> The change is to replace "cfg-handle" with "path" but
+>> I think that only applies to root complex  and not for
+>> other nodes. 
+>>
+>>
+>> I will edit/correct the interface table accordingly on Monday.
+>
+> I have updated the PRI specification, Interface table and the diff
+> file for this case.  The change from the first proposal is mainly
+> changes to section 1.12.1.  The "cfg-handle" property is NOT deprecated
+> in IO device node but instead "path" property is added as a required
+> property for nodes where topo-hc-name="pciexrc", otherwise it is
+> not required.  The links are same as before (remember to refresh),
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/16-to-17.diff.txt
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/PRI_Specification_17.txt
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/Interface_Table.txt
+>
+>
+>
+> The timer remains the same as February 5th since most of the
+> changes are the same as before.  But if you need more time
+> then please let me know. 
+>
+> I would like at least one "lgtm" or "+1" for this case.
+
+Can I get at least one "lgtm"?  The timer has timed-out yesterday
+but before I approve this case, getting at least one "lgtm" would
+be nice.  If I don't get at least one "lgtm" then I will let this case
+approved by COB today.
+
+
+Thanks.
+>
+>
+> Summary of changes are as follows :
+>
+>
+> Currently "path" is optional, the proposal is to make it required
+> property if the "topo-hc-name" property value is set to "pciexrc"
+> and deprecate "cfg-handle" in the component device node of PRI.
+>
+>
+>
+> Section 1.3.9 :
+>
+> The "path" property IS a required property on nodes where
+> the "topo-hc-name" property value is set to "pciexrc".
+>
+> Section 1.3.18 of PRI specification version 1.6 :
+>
+> The "cfg-handle" property is removed from the component node of PRI.
+>
+> Section 1.3.19 (1.3.18 in version 1.7) :
+>
+> Typo correction, the name of the property should be "topo-hc-name"
+>
+>
+> Section 1.12.1 :
+>
+> Added "path" property as a required property if the
+> "topo-hc-name" property value is set to "pciexrc".
+>
+>
+> -- 
+> Hitendra Zhangada
+> ====================================
+> SPS Common SW Features Engineering
+> Systems Group, Sun Microsystems, Inc.
+> Sun Ph# (858) 625 3757, Sun Ext. x53757
+> Internal homepage http://esp.west/~hitu
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_shv0b3xemq242m3qGTZOSQ)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+Hitendra Zhangada wrote:
+<blockquote cite="mid:4988DB17.5040501@Sun.COM" type="cite">
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+  <tt>On 01/30/09 17:15, Hitendra Zhangada wrote:</tt>
+  <blockquote cite="mid:4983A638.5050704@sun.com" type="cite">
+    <meta content="text/html;charset=ISO-8859-1"
+ http-equiv="Content-Type">
+    <tt>Kevin Rathbun wrote: </tt>
+    <blockquote cite="mid:20090130154152.GY24670@frylock" type="cite">
+      <pre wrap=""><tt>On Fri, Jan 30, 2009 at 12:42:49AM -0800, David Kahn wrote:
+  </tt></pre>
+      <blockquote type="cite">
+        <pre wrap=""><tt>Hitendra Zhangada wrote:
+
+    </tt></pre>
+        <blockquote type="cite">
+          <pre wrap=""><tt>The proposal is to use the "path" property of the pciexrc
+node to create the root complex topo dev property. Currently
+the sun4v PI enumerator uses the "cfg-handle" property to
+create the topo dev property, but this is a single integer
+value, so it's very hard to represent something like "/pci@600/pci@0".
+      </tt></pre>
+        </blockquote>
+        <pre wrap=""><tt>I have no idea what those abbreviations and acronyms are.
+
+What's the topo dev property?
+
+What's the sun4v PI enumerator?
+
+Can you really just deprecate cfg-handle?
+    </tt></pre>
+      </blockquote>
+      <pre wrap=""><!----><tt>
+I believe the summary is incorrect but the spec update is correct.
+The spec update deletes the cfg-handle from the component node for
+the root complex, which was added for the sun4v Platform Independence
+project (plat-independent ereports) which has not shipped on any
+platforms yet and so the impact of this spec update is just to remove
+it from the kt dev gate.
+
+The summary also mentioned removing it from the IO device nodes,
+but that should not be true, as those cfg-handle properties are
+there to creat the guest md and are consumed by obp.
+  </tt></pre>
+    </blockquote>
+    <tt><br>
+Thanks for the corrections.&nbsp;&nbsp; Yes, "cfg-handle" property is removed,<br>
+as Kevin mentioned above, from the component node for the<br>
+root complex.&nbsp; I will correct the interface table to be more clear.<br>
+    <br>
+The reason I added the note about the IO Device node is that <br>
+there is a change in section 1.12.1 of the PRI specification.<br>
+This is a section where IO Device properties are described.<br>
+The change is to replace "cfg-handle" with "path" but<br>
+I think that only applies to root complex&nbsp; and not for<br>
+other nodes.&nbsp; <br>
+    <br>
+    <br>
+I will edit/correct the interface table accordingly on Monday.<br>
+    </tt></blockquote>
+  <tt><br>
+I have updated the PRI specification, Interface table and the diff<br>
+file for this case.&nbsp; The change from the first proposal is mainly<br>
+changes to section 1.12.1.&nbsp; The "cfg-handle" property is NOT deprecated<br>
+in IO device node but instead "path" property is added as a required<br>
+property for nodes where topo-hc-name="pciexrc", otherwise it is<br>
+not required.&nbsp; The links are same as before (remember to refresh),<br>
+  </tt><tt><br>
+  <a moz-do-not-send="true" class="moz-txt-link-freetext"
+ href="http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/16-to-17.diff.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/16-to-17.diff.txt</a><br>
+  <a moz-do-not-send="true" class="moz-txt-link-freetext"
+ href="http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/PRI_Specification_17.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/PRI_Specification_17.txt</a><br>
+  <a moz-do-not-send="true" class="moz-txt-link-freetext"
+ href="http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/Interface_Table.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/Interface_Table.txt</a><br>
+  <br>
+  <br>
+  </tt><tt><br>
+The timer remains the same as February 5th since most of the<br>
+changes are the same as before.&nbsp; But if you need more time <br>
+then please let me know.&nbsp; <br>
+  <br>
+I would like at least one "lgtm" or "+1" for this case.<br>
+  </tt></blockquote>
+<br>
+Can I get at least one "lgtm"?&nbsp; The timer has timed-out yesterday <br>
+but before I approve this case, getting at least one "lgtm" would<br>
+be nice.&nbsp; If I don't get at least one "lgtm" then I will let this case<br>
+approved by COB today.<br>
+<br>
+<br>
+Thanks.<br>
+<blockquote cite="mid:4988DB17.5040501@Sun.COM" type="cite"><tt><br>
+  <br>
+Summary of changes </tt><tt>are as follows :
+  <br>
+  <br>
+  <br>
+  </tt><tt>Currently "path" is optional, the proposal is to make it
+required<br>
+property if the </tt><tt>"topo-hc-name" property value is set to
+"pciexrc"<br>
+  </tt><tt>and deprecate "cfg-handle" in the component device node of
+PRI.<br>
+  </tt><tt><br>
+  <br>
+  </tt><tt><br>
+Section 1.3.9 : <br>
+  <br>
+The "path" property IS a required property on
+nodes where<br>
+the "topo-hc-name" property value is set to "pciexrc".
+  <br>
+  <br>
+Section 1.3.18 of PRI specification version 1.6 :
+  <br>
+  <br>
+The "cfg-handle" property is removed from the component node of PRI.
+  <br>
+  <br>
+Section 1.3.19 (1.3.18 in version 1.7) :
+  <br>
+  <br>
+Typo correction, the name of the property should be
+"topo-hc-name"
+  <br>
+  <br>
+  <br>
+Section 1.12.1 :
+  <br>
+  <br>
+Added "path" property as a required property if the<br>
+"topo-hc-name" property value is set to "pciexrc".
+  <br>
+  <br>
+  <br>
+  </tt>
+  <pre class="moz-signature" cols="72"><tt>-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage <a moz-do-not-send="true"
+ class="moz-txt-link-freetext" href="http://esp.west/%7Ehitu">http://esp.west/~hitu</a>
+</tt></pre>
+</blockquote>
+<br>
+<br>
+<pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_shv0b3xemq242m3qGTZOSQ)--
+
+From sacadmin Fri Feb  6 12:06:57 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n16K6u6U026399
+	for <fwarc@sac.sfbay.sun.com>; Fri, 6 Feb 2009 12:06:57 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n16K6o6h006216
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 6 Feb 2009 20:06:55 GMT
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KEN00C01UJJKL00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 06 Feb 2009 13:06:55 -0700 (MST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KEN004TUUJIP860@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 06 Feb 2009 13:06:54 -0700 (MST)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n16K6sde024029	for
+ <fwarc@sun.com>; Fri, 06 Feb 2009 20:06:54 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KEN00G00T2LNZ00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 06 Feb 2009 13:06:54 -0700 (MST)
+Received: from dhcp-ubur03-180-160.East.Sun.COM ([unknown] [129.148.180.160])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ with ESMTPSA id <0KEN009RAUJHFU00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 06 Feb 2009 13:06:54 -0700 (MST)
+Date: Fri, 06 Feb 2009 15:06:53 -0500
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: Fast-track : 2009/061 - "path" property requirement in PRI
+In-reply-to: <498C7D04.2070004@sun.com>
+Sender: Eric.Sharakan@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware ARC <fwarc@sun.com>, Tom Pothier <Tom.Pothier@sun.com>,
+        Scott Davenport <Scott.Davenport@sun.com>
+Message-id: <9D8081FF-C11D-4B42-BFE4-3926FE96BA9A@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.930.3)
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_lNsNl3D2kfX1bBT2AcALAA)"
+X-PMX-Version: 5.4.1.325704
+References: <4982BD89.2040203@sun.com> <20090130154152.GY24670@frylock>
+ <4983A638.5050704@sun.com> <4988DB17.5040501@Sun.COM>
+ <498C7D04.2070004@sun.com>
+Status: RO
+Content-Length: 11676
+
+
+--Boundary_(ID_lNsNl3D2kfX1bBT2AcALAA)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+
+On Feb 6, 2009, at 1:10 PM, Hitendra Zhangada wrote:
+
+> Hitendra Zhangada wrote:
+>>
+>> On 01/30/09 17:15, Hitendra Zhangada wrote:
+>>>
+>>> Kevin Rathbun wrote:
+>>>>
+>>>> On Fri, Jan 30, 2009 at 12:42:49AM -0800, David Kahn wrote:
+>>>>
+>>>>> Hitendra Zhangada wrote:
+>>>>>
+>>>>>
+>>>>>> The proposal is to use the "path" property of the pciexrc
+>>>>>> node to create the root complex topo dev property. Currently
+>>>>>> the sun4v PI enumerator uses the "cfg-handle" property to
+>>>>>> create the topo dev property, but this is a single integer
+>>>>>> value, so it's very hard to represent something like "/pci@600/ 
+>>>>>> pci@0".
+>>>>>>
+>>>>> I have no idea what those abbreviations and acronyms are.
+>>>>>
+>>>>> What's the topo dev property?
+>>>>>
+>>>>> What's the sun4v PI enumerator?
+>>>>>
+>>>>> Can you really just deprecate cfg-handle?
+>>>>>
+>>>> I believe the summary is incorrect but the spec update is correct.
+>>>> The spec update deletes the cfg-handle from the component node for
+>>>> the root complex, which was added for the sun4v Platform  
+>>>> Independence
+>>>> project (plat-independent ereports) which has not shipped on any
+>>>> platforms yet and so the impact of this spec update is just to  
+>>>> remove
+>>>> it from the kt dev gate.
+>>>>
+>>>> The summary also mentioned removing it from the IO device nodes,
+>>>> but that should not be true, as those cfg-handle properties are
+>>>> there to creat the guest md and are consumed by obp.
+>>>>
+>>>
+>>> Thanks for the corrections.   Yes, "cfg-handle" property is removed,
+>>> as Kevin mentioned above, from the component node for the
+>>> root complex.  I will correct the interface table to be more clear.
+>>>
+>>> The reason I added the note about the IO Device node is that
+>>> there is a change in section 1.12.1 of the PRI specification.
+>>> This is a section where IO Device properties are described.
+>>> The change is to replace "cfg-handle" with "path" but
+>>> I think that only applies to root complex  and not for
+>>> other nodes.
+>>>
+>>>
+>>> I will edit/correct the interface table accordingly on Monday.
+>>
+>> I have updated the PRI specification, Interface table and the diff
+>> file for this case.  The change from the first proposal is mainly
+>> changes to section 1.12.1.  The "cfg-handle" property is NOT  
+>> deprecated
+>> in IO device node but instead "path" property is added as a required
+>> property for nodes where topo-hc-name="pciexrc", otherwise it is
+>> not required.  The links are same as before (remember to refresh),
+>>
+>> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/16-to-17.diff.txt
+>> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/PRI_Specification_17.txt
+>> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/Interface_Table.txt
+>>
+>>
+>>
+>> The timer remains the same as February 5th since most of the
+>> changes are the same as before.  But if you need more time
+>> then please let me know.
+>>
+>> I would like at least one "lgtm" or "+1" for this case.
+>
+> Can I get at least one "lgtm"?  The timer has timed-out yesterday
+> but before I approve this case, getting at least one "lgtm" would
+> be nice.  If I don't get at least one "lgtm" then I will let this case
+> approved by COB today.
+
+FWIW (since I'm a FWARC intern), LGTM.
+
+-Eric
+
+>
+>
+>
+> Thanks.
+>>
+>>
+>> Summary of changes are as follows :
+>>
+>>
+>> Currently "path" is optional, the proposal is to make it required
+>> property if the "topo-hc-name" property value is set to "pciexrc"
+>> and deprecate "cfg-handle" in the component device node of PRI.
+>>
+>>
+>>
+>> Section 1.3.9 :
+>>
+>> The "path" property IS a required property on nodes where
+>> the "topo-hc-name" property value is set to "pciexrc".
+>>
+>> Section 1.3.18 of PRI specification version 1.6 :
+>>
+>> The "cfg-handle" property is removed from the component node of PRI.
+>>
+>> Section 1.3.19 (1.3.18 in version 1.7) :
+>>
+>> Typo correction, the name of the property should be "topo-hc-name"
+>>
+>>
+>> Section 1.12.1 :
+>>
+>> Added "path" property as a required property if the
+>> "topo-hc-name" property value is set to "pciexrc".
+>>
+>>
+>>  --
+>> Hitendra Zhangada
+>> ====================================
+>> SPS Common SW Features Engineering
+>> Systems Group, Sun Microsystems, Inc.
+>> Sun Ph# (858) 625 3757, Sun Ext. x53757
+>> Internal homepage http://esp.west/~hitu
+>
+>
+> -- 
+> Hitendra Zhangada
+> =============================================
+> SPS Common SW Features Engineering
+> Systems Group, Sun Microsystems, Inc.
+> Work Ph# (858) 625 3757, Ext. x53757
+> SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_lNsNl3D2kfX1bBT2AcALAA)
+Content-type: text/html; charset=US-ASCII
+Content-transfer-encoding: QUOTED-PRINTABLE
+
+<html><body style=3D"word-wrap: break-word; -webkit-nbsp-mode: space;=
+ -webkit-line-break: after-white-space; "><div><div>On Feb 6, 2009, a=
+t 1:10 PM, Hitendra Zhangada wrote:</div><br class=3D"Apple-interchan=
+ge-newline"><blockquote type=3D"cite"> <div bgcolor=3D"#ffffff" text=
+=3D"#000000"> Hitendra Zhangada wrote: <blockquote cite=3D"mid:4988DB=
+17.5040501@Sun.COM" type=3D"cite">    <tt>On 01/30/09 17:15, Hitendra=
+ Zhangada wrote:</tt>  <blockquote cite=3D"mid:4983A638.5050704@sun.c=
+om" type=3D"cite">        <tt>Kevin Rathbun wrote: </tt>    <blockquo=
+te cite=3D"mid:20090130154152.GY24670@frylock" type=3D"cite">      <p=
+re wrap=3D""><tt>On Fri, Jan 30, 2009 at 12:42:49AM -0800, David Kahn=
+ wrote:
+  </tt></pre>      <blockquote type=3D"cite">        <pre wrap=3D""><=
+tt>Hitendra Zhangada wrote:
+
+    </tt></pre>        <blockquote type=3D"cite">          <pre wrap=
+=3D""><tt>The proposal is to use the "path" property of the pciexrc
+node to create the root complex topo dev property. Currently
+the sun4v PI enumerator uses the "cfg-handle" property to
+create the topo dev property, but this is a single integer
+value, so it's very hard to represent something like "/pci@600/pci@0"=
+.
+      </tt></pre>        </blockquote>        <pre wrap=3D""><tt>I ha=
+ve no idea what those abbreviations and acronyms are.
+
+What's the topo dev property?
+
+What's the sun4v PI enumerator?
+
+Can you really just deprecate cfg-handle?
+    </tt></pre>      </blockquote>      <pre wrap=3D""><!----><tt>I b=
+elieve the summary is incorrect but the spec update is correct.
+The spec update deletes the cfg-handle from the component node for
+the root complex, which was added for the sun4v Platform Independence
+project (plat-independent ereports) which has not shipped on any
+platforms yet and so the impact of this spec update is just to remove
+it from the kt dev gate.
+
+The summary also mentioned removing it from the IO device nodes,
+but that should not be true, as those cfg-handle properties are
+there to creat the guest md and are consumed by obp.
+  </tt></pre>    </blockquote>    <tt><br> Thanks for the corrections=
+.&nbsp;&nbsp; Yes, "cfg-handle" property is removed,<br> as Kevin men=
+tioned above, from the component node for the<br> root complex.&nbsp;=
+ I will correct the interface table to be more clear.<br>    <br> The=
+ reason I added the note about the IO Device node is that <br> there =
+is a change in section 1.12.1 of the PRI specification.<br> This is a=
+ section where IO Device properties are described.<br> The change is =
+to replace "cfg-handle" with "path" but<br> I think that only applies=
+ to root complex&nbsp; and not for<br> other nodes.&nbsp; <br>    <br=
+>    <br> I will edit/correct the interface table accordingly on Mond=
+ay.<br>    </tt></blockquote>  <tt><br> I have updated the PRI specif=
+ication, Interface table and the diff<br> file for this case.&nbsp; T=
+he change from the first proposal is mainly<br> changes to section 1.=
+12.1.&nbsp; The "cfg-handle" property is NOT deprecated<br> in IO dev=
+ice node but instead "path" property is added as a required<br> prope=
+rty for nodes where topo-hc-name=3D"pciexrc", otherwise it is<br> not=
+ required.&nbsp; The links are same as before (remember to refresh),<=
+br>  </tt><tt><br>  <a moz-do-not-send=3D"true" class=3D"moz-txt-link=
+-freetext" href=3D"http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061=
+/Materials/16-to-17.diff.txt">http://sac.eng/Archives/CaseLog/arc/FWA=
+RC/2009/061/Materials/16-to-17.diff.txt</a><br>  <a moz-do-not-send=
+=3D"true" class=3D"moz-txt-link-freetext" href=3D"http://sac.eng/Arch=
+ives/CaseLog/arc/FWARC/2009/061/Materials/PRI_Specification_17.txt">h=
+ttp://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/PRI_Speci=
+fication_17.txt</a><br>  <a moz-do-not-send=3D"true" class=3D"moz-txt=
+-link-freetext" href=3D"http://sac.eng/Archives/CaseLog/arc/FWARC/200=
+9/061/Materials/Interface_Table.txt">http://sac.eng/Archives/CaseLog/=
+arc/FWARC/2009/061/Materials/Interface_Table.txt</a><br>  <br>  <br> =
+ </tt><tt><br> The timer remains the same as February 5th since most =
+of the<br> changes are the same as before.&nbsp; But if you need more=
+ time <br> then please let me know.&nbsp; <br>  <br> I would like at =
+least one "lgtm" or "+1" for this case.<br>  </tt></blockquote> <br> =
+Can I get at least one "lgtm"?&nbsp; The timer has timed-out yesterda=
+y <br> but before I approve this case, getting at least one "lgtm" wo=
+uld<br> be nice.&nbsp; If I don't get at least one "lgtm" then I will=
+ let this case<br> approved by COB today.</div></blockquote><div><br>=
+</div>FWIW (since I'm a FWARC intern), LGTM.</div><div><br></div><div=
+>-Eric</div><div><br><blockquote type=3D"cite"><div bgcolor=3D"#fffff=
+f" text=3D"#000000"><br> <br> <br> Thanks.<br> <blockquote cite=3D"mi=
+d:4988DB17.5040501@Sun.COM" type=3D"cite"><tt><br>  <br> Summary of c=
+hanges </tt><tt>are as follows :  <br>  <br>  <br>  </tt><tt>Currentl=
+y "path" is optional, the proposal is to make it required<br> propert=
+y if the </tt><tt>"topo-hc-name" property value is set to "pciexrc"<b=
+r>  </tt><tt>and deprecate "cfg-handle" in the component device node =
+of PRI.<br>  </tt><tt><br>  <br>  </tt><tt><br> Section 1.3.9 : <br> =
+ <br> The "path" property IS a required property on nodes where<br> t=
+he "topo-hc-name" property value is set to "pciexrc".  <br>  <br> Sec=
+tion 1.3.18 of PRI specification version 1.6 :  <br>  <br> The "cfg-h=
+andle" property is removed from the component node of PRI.  <br>  <br=
+> Section 1.3.19 (1.3.18 in version 1.7) :  <br>  <br> Typo correctio=
+n, the name of the property should be "topo-hc-name"  <br>  <br>  <br=
+> Section 1.12.1 :  <br>  <br> Added "path" property as a required pr=
+operty if the<br> "topo-hc-name" property value is set to "pciexrc". =
+ <br>  <br>  <br>  </tt>  <pre class=3D"moz-signature" cols=3D"72"><t=
+t>--=20
+Hitendra Zhangada
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage <a moz-do-not-send=3D"true" class=3D"moz-txt-link-f=
+reetext" href=3D"http://esp.west/%7Ehitu">http://esp.west/~hitu</a>
+</tt></pre> </blockquote> <br> <br> <pre class=3D"moz-signature" cols=
+=3D"80">--=20
+Hitendra Zhangada
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class=3D"moz-txt-link-freetext" href=3D"http=
+://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre> </div> </blockquote></div><br></body></html>
+
+--Boundary_(ID_lNsNl3D2kfX1bBT2AcALAA)--
+
+From sacadmin Fri Feb  6 21:24:48 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n175Om4k029684
+	for <fwarc@sac.sfbay.sun.com>; Fri, 6 Feb 2009 21:24:48 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n175OlN1014703
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 6 Feb 2009 21:24:47 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KEO00L03KDA3E00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 06 Feb 2009 21:24:46 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KEO00688KDABDC0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 06 Feb 2009 21:24:46 -0800 (PST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n175OkEX002443	for
+ <fwarc@sun.com>; Fri, 06 Feb 2009 21:24:46 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KEO00300K7AN400@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 06 Feb 2009 21:24:46 -0800 (PST)
+Received: from [192.168.1.6] ([unknown] [71.136.64.143])
+ by fe-sfbay-09.sun.com (Sun Java(tm) System Messaging Server 7.0-3.01 64bit
+ (built Dec 23 2008)) with ESMTPSA id <0KEO004KFKD97B70@fe-sfbay-09.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 06 Feb 2009 21:24:46 -0800 (PST)
+Date: Fri, 06 Feb 2009 21:24:45 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Fast-track : 2009/061 - "path" property requirement in PRI
+In-reply-to: <9D8081FF-C11D-4B42-BFE4-3926FE96BA9A@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: Tom Pothier <Tom.Pothier@sun.com>,
+        Scott Davenport <Scott.Davenport@sun.com>
+Message-id: <498D1B1D.1040500@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_0il9rriHk1pxTpUcceKF0g)"
+X-PMX-Version: 5.4.1.325704
+References: <4982BD89.2040203@sun.com> <20090130154152.GY24670@frylock>
+ <4983A638.5050704@sun.com> <4988DB17.5040501@Sun.COM>
+ <498C7D04.2070004@sun.com> <9D8081FF-C11D-4B42-BFE4-3926FE96BA9A@Sun.COM>
+User-Agent: Thunderbird 2.0.0.19 (Windows/20081209)
+Status: RO
+Content-Length: 13106
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_0il9rriHk1pxTpUcceKF0g)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+Eric Sharakan wrote:
+> On Feb 6, 2009, at 1:10 PM, Hitendra Zhangada wrote:
+>
+>> Hitendra Zhangada wrote:
+>>> On 01/30/09 17:15, Hitendra Zhangada wrote:
+>>>> Kevin Rathbun wrote:
+>>>>> On Fri, Jan 30, 2009 at 12:42:49AM -0800, David Kahn wrote:
+>>>>>   
+>>>>>> Hitendra Zhangada wrote:
+>>>>>>
+>>>>>>     
+>>>>>>> The proposal is to use the "path" property of the pciexrc
+>>>>>>> node to create the root complex topo dev property. Currently
+>>>>>>> the sun4v PI enumerator uses the "cfg-handle" property to
+>>>>>>> create the topo dev property, but this is a single integer
+>>>>>>> value, so it's very hard to represent something like "/pci@600/pci@0".
+>>>>>>>       
+>>>>>> I have no idea what those abbreviations and acronyms are.
+>>>>>>
+>>>>>> What's the topo dev property?
+>>>>>>
+>>>>>> What's the sun4v PI enumerator?
+>>>>>>
+>>>>>> Can you really just deprecate cfg-handle?
+>>>>>>     
+>>>>> I believe the summary is incorrect but the spec update is correct.
+>>>>> The spec update deletes the cfg-handle from the component node for
+>>>>> the root complex, which was added for the sun4v Platform Independence
+>>>>> project (plat-independent ereports) which has not shipped on any
+>>>>> platforms yet and so the impact of this spec update is just to remove
+>>>>> it from the kt dev gate.
+>>>>>
+>>>>> The summary also mentioned removing it from the IO device nodes,
+>>>>> but that should not be true, as those cfg-handle properties are
+>>>>> there to creat the guest md and are consumed by obp.
+>>>>>   
+>>>>
+>>>> Thanks for the corrections.   Yes, "cfg-handle" property is removed,
+>>>> as Kevin mentioned above, from the component node for the
+>>>> root complex.  I will correct the interface table to be more clear.
+>>>>
+>>>> The reason I added the note about the IO Device node is that
+>>>> there is a change in section 1.12.1 of the PRI specification.
+>>>> This is a section where IO Device properties are described.
+>>>> The change is to replace "cfg-handle" with "path" but
+>>>> I think that only applies to root complex  and not for
+>>>> other nodes. 
+>>>>
+>>>>
+>>>> I will edit/correct the interface table accordingly on Monday.
+>>>
+>>> I have updated the PRI specification, Interface table and the diff
+>>> file for this case.  The change from the first proposal is mainly
+>>> changes to section 1.12.1.  The "cfg-handle" property is NOT deprecated
+>>> in IO device node but instead "path" property is added as a required
+>>> property for nodes where topo-hc-name="pciexrc", otherwise it is
+>>> not required.  The links are same as before (remember to refresh),
+>>>
+>>> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/16-to-17.diff.txt
+>>> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/PRI_Specification_17.txt
+>>> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/Interface_Table.txt
+>>>
+>>>
+>>>
+>>> The timer remains the same as February 5th since most of the
+>>> changes are the same as before.  But if you need more time
+>>> then please let me know. 
+>>>
+>>> I would like at least one "lgtm" or "+1" for this case.
+>>
+>> Can I get at least one "lgtm"?  The timer has timed-out yesterday
+>> but before I approve this case, getting at least one "lgtm" would
+>> be nice.  If I don't get at least one "lgtm" then I will let this case
+>> approved by COB today.
+>
+> FWIW (since I'm a FWARC intern), LGTM.
+
+Great.   This case is now approved!
+
+This case is approved for,
+
+Release Binding:
+ firmware: minor/micro firmware release
+ OS: minor/micro/patch OS release.
+
+
+I will update IAM file on Monday.
+
+
+
+>
+> -Eric
+>
+>>
+>>
+>>
+>> Thanks.
+>>>
+>>>
+>>> Summary of changes are as follows :
+>>>
+>>>
+>>> Currently "path" is optional, the proposal is to make it required
+>>> property if the "topo-hc-name" property value is set to "pciexrc"
+>>> and deprecate "cfg-handle" in the component device node of PRI.
+>>>
+>>>
+>>>
+>>> Section 1.3.9 :
+>>>
+>>> The "path" property IS a required property on nodes where
+>>> the "topo-hc-name" property value is set to "pciexrc".
+>>>
+>>> Section 1.3.18 of PRI specification version 1.6 :
+>>>
+>>> The "cfg-handle" property is removed from the component node of PRI.
+>>>
+>>> Section 1.3.19 (1.3.18 in version 1.7) :
+>>>
+>>> Typo correction, the name of the property should be "topo-hc-name"
+>>>
+>>>
+>>> Section 1.12.1 :
+>>>
+>>> Added "path" property as a required property if the
+>>> "topo-hc-name" property value is set to "pciexrc".
+>>>
+>>>
+>>> -- 
+>>> Hitendra Zhangada
+>>> ====================================
+>>> SPS Common SW Features Engineering
+>>> Systems Group, Sun Microsystems, Inc.
+>>> Sun Ph# (858) 625 3757, Sun Ext. x53757
+>>> Internal homepage http://esp.west/~hitu
+>>
+>>
+>> -- 
+>> Hitendra Zhangada
+>> =============================================
+>> SPS Common SW Features Engineering
+>> Systems Group, Sun Microsystems, Inc.
+>> Work Ph# (858) 625 3757, Ext. x53757
+>> SUN Internal homepage http://esp.west/~hitu
+>>     
+>
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_0il9rriHk1pxTpUcceKF0g)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+Eric Sharakan wrote:
+<blockquote cite="mid:9D8081FF-C11D-4B42-BFE4-3926FE96BA9A@Sun.COM"
+ type="cite">
+  <div>
+  <div>On Feb 6, 2009, at 1:10 PM, Hitendra Zhangada wrote:</div>
+  <br class="Apple-interchange-newline">
+  <blockquote type="cite">
+    <div bgcolor="#ffffff" text="#000000"> Hitendra Zhangada wrote:
+    <blockquote cite="mid:4988DB17.5040501@Sun.COM" type="cite"> <tt>On
+01/30/09 17:15, Hitendra Zhangada wrote:</tt>
+      <blockquote cite="mid:4983A638.5050704@sun.com" type="cite"> <tt>Kevin
+Rathbun wrote: </tt>
+        <blockquote cite="mid:20090130154152.GY24670@frylock"
+ type="cite">
+          <pre wrap=""><tt>On Fri, Jan 30, 2009 at 12:42:49AM -0800, David Kahn wrote:
+  </tt></pre>
+          <blockquote type="cite">
+            <pre wrap=""><tt>Hitendra Zhangada wrote:
+
+    </tt></pre>
+            <blockquote type="cite">
+              <pre wrap=""><tt>The proposal is to use the "path" property of the pciexrc
+node to create the root complex topo dev property. Currently
+the sun4v PI enumerator uses the "cfg-handle" property to
+create the topo dev property, but this is a single integer
+value, so it's very hard to represent something like "/pci@600/pci@0".
+      </tt></pre>
+            </blockquote>
+            <pre wrap=""><tt>I have no idea what those abbreviations and acronyms are.
+
+What's the topo dev property?
+
+What's the sun4v PI enumerator?
+
+Can you really just deprecate cfg-handle?
+    </tt></pre>
+          </blockquote>
+          <pre wrap=""><!----><tt>I believe the summary is incorrect but the spec update is correct.
+The spec update deletes the cfg-handle from the component node for
+the root complex, which was added for the sun4v Platform Independence
+project (plat-independent ereports) which has not shipped on any
+platforms yet and so the impact of this spec update is just to remove
+it from the kt dev gate.
+
+The summary also mentioned removing it from the IO device nodes,
+but that should not be true, as those cfg-handle properties are
+there to creat the guest md and are consumed by obp.
+  </tt></pre>
+        </blockquote>
+        <tt><br>
+Thanks for the corrections.&nbsp;&nbsp; Yes, "cfg-handle" property is removed,<br>
+as Kevin mentioned above, from the component node for the<br>
+root complex.&nbsp; I will correct the interface table to be more clear.<br>
+        <br>
+The reason I added the note about the IO Device node is that <br>
+there is a change in section 1.12.1 of the PRI specification.<br>
+This is a section where IO Device properties are described.<br>
+The change is to replace "cfg-handle" with "path" but<br>
+I think that only applies to root complex&nbsp; and not for<br>
+other nodes.&nbsp; <br>
+        <br>
+        <br>
+I will edit/correct the interface table accordingly on Monday.<br>
+        </tt></blockquote>
+      <tt><br>
+I have updated the PRI specification, Interface table and the diff<br>
+file for this case.&nbsp; The change from the first proposal is mainly<br>
+changes to section 1.12.1.&nbsp; The "cfg-handle" property is NOT deprecated<br>
+in IO device node but instead "path" property is added as a required<br>
+property for nodes where topo-hc-name="pciexrc", otherwise it is<br>
+not required.&nbsp; The links are same as before (remember to refresh),<br>
+      </tt><tt><br>
+      <a moz-do-not-send="true" class="moz-txt-link-freetext"
+ href="http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/16-to-17.diff.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/16-to-17.diff.txt</a><br>
+      <a moz-do-not-send="true" class="moz-txt-link-freetext"
+ href="http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/PRI_Specification_17.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/PRI_Specification_17.txt</a><br>
+      <a moz-do-not-send="true" class="moz-txt-link-freetext"
+ href="http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/Interface_Table.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/2009/061/Materials/Interface_Table.txt</a><br>
+      <br>
+      <br>
+      </tt><tt><br>
+The timer remains the same as February 5th since most of the<br>
+changes are the same as before.&nbsp; But if you need more time <br>
+then please let me know.&nbsp; <br>
+      <br>
+I would like at least one "lgtm" or "+1" for this case.<br>
+      </tt></blockquote>
+    <br>
+Can I get at least one "lgtm"?&nbsp; The timer has timed-out yesterday <br>
+but before I approve this case, getting at least one "lgtm" would<br>
+be nice.&nbsp; If I don't get at least one "lgtm" then I will let this case<br>
+approved by COB today.</div>
+  </blockquote>
+  <div><br>
+  </div>
+FWIW (since I'm a FWARC intern), LGTM.</div>
+</blockquote>
+<br>
+Great.&nbsp;&nbsp; This case is now approved!<br>
+<br>
+This case is approved for,<br>
+<br>
+<pre>Release Binding:
+ firmware: minor/micro firmware release
+ OS: minor/micro/patch OS release.
+
+
+I will update IAM file on Monday.
+
+</pre>
+<br>
+<blockquote cite="mid:9D8081FF-C11D-4B42-BFE4-3926FE96BA9A@Sun.COM"
+ type="cite">
+  <div><br>
+  </div>
+  <div>-Eric</div>
+  <div><br>
+  <blockquote type="cite">
+    <div bgcolor="#ffffff" text="#000000"><br>
+    <br>
+    <br>
+Thanks.<br>
+    <blockquote cite="mid:4988DB17.5040501@Sun.COM" type="cite"><tt><br>
+      <br>
+Summary of changes </tt><tt>are as follows : <br>
+      <br>
+      <br>
+      </tt><tt>Currently "path" is optional, the proposal is to make it
+required<br>
+property if the </tt><tt>"topo-hc-name" property value is set to
+"pciexrc"<br>
+      </tt><tt>and deprecate "cfg-handle" in the component device node
+of PRI.<br>
+      </tt><tt><br>
+      <br>
+      </tt><tt><br>
+Section 1.3.9 : <br>
+      <br>
+The "path" property IS a required property on nodes where<br>
+the "topo-hc-name" property value is set to "pciexrc". <br>
+      <br>
+Section 1.3.18 of PRI specification version 1.6 : <br>
+      <br>
+The "cfg-handle" property is removed from the component node of PRI. <br>
+      <br>
+Section 1.3.19 (1.3.18 in version 1.7) : <br>
+      <br>
+Typo correction, the name of the property should be "topo-hc-name" <br>
+      <br>
+      <br>
+Section 1.12.1 : <br>
+      <br>
+Added "path" property as a required property if the<br>
+"topo-hc-name" property value is set to "pciexrc". <br>
+      <br>
+      <br>
+      </tt>
+      <pre class="moz-signature" cols="72"><tt>-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage <a moz-do-not-send="true"
+ class="moz-txt-link-freetext" href="http://esp.west/%7Ehitu">http://esp.west/~hitu</a>
+</tt></pre>
+    </blockquote>
+    <br>
+    <br>
+    <pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a moz-do-not-send="true"
+ class="moz-txt-link-freetext" href="http://esp.west/%7Ehitu">http://esp.west/~hitu</a>
+    </pre>
+    </div>
+  </blockquote>
+  </div>
+  <br>
+</blockquote>
+<br>
+<br>
+<pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_0il9rriHk1pxTpUcceKF0g)--
+

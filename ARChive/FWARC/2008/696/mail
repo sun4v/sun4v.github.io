@@ -1,0 +1,294 @@
+From sacadmin Tue Nov 11 17:17:16 2008
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id mAC1HGUW013337
+	for <fwarc@sac.sfbay.sun.com>; Tue, 11 Nov 2008 17:17:16 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id mAC1HGBu028382;
+	Tue, 11 Nov 2008 17:17:16 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KA7003014WR6000@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 11 Nov 2008 17:17:15 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KA700BEK4WR3Z70@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 11 Nov 2008 17:17:15 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id mAC1HFoh027488;
+ Tue, 11 Nov 2008 17:17:15 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0KA7003014R1H800@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Tue,
+ 11 Nov 2008 17:17:15 -0800 (PST)
+Received: from [129.150.37.62] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0KA7001OJ4WQ9C10@fe-sfbay-10.sun.com>; Tue,
+ 11 Nov 2008 17:17:15 -0800 (PST)
+Date: Tue, 11 Nov 2008 17:17:15 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Self-Review : 2008/696 - Virtual Domain Service Domain Name Properties
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <491A2E9B.1090504@sun.com>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_o9b8SVjDCc4LFYD+BheE3g)"
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.17 (Windows/20080914)
+Status: RO
+Content-Length: 7023
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_o9b8SVjDCc4LFYD+BheE3g)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+I am sponsoring this self-review case for Michael Christensen.
+This case introduces two new properties to the machine description
+data for Logical Domains (LDoms).  These two properties left out
+of FWARC case 2008/563 in an error.  This case corrects that error.
+
+Section 4 of the attached one-pager have the details on these
+two new properties.  Both one-pager and updated vio-md-nodes document
+is available in the materials directory at,
+
+http://sac.eng.sun.com/arc/FWARC/2008/696/Materials/vlds-dnames-1pager.txt
+http://sac.eng.sun.com/arc/FWARC/2008/696/Materials/vio-md-nodes-v9.pdf
+
+Release Binding:
+
+ firmware: minor/micro firmware release
+ OS: minor/micro/patch OS release.
+
+
+ 
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_o9b8SVjDCc4LFYD+BheE3g)
+Content-type: text/plain; name=vlds-dnames-1pager.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=vlds-dnames-1pager.txt
+
+
+1. Introduction
+  1.1. Project/Component Working Name:
+
+	Virtual Domain Service Domain Name Properties
+
+  1.2. Name of Document Author/Supplier:
+
+	Michael Christensen
+
+  1.3. Date of This Document:
+	11/11/2008
+
+  1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		HS PAC
+
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Jerri-Ann Meyer
+
+	1.4.4. The name of your business unit:
+		Software
+
+  1.5. Email Aliases:
+   	1.5.1. Responsible Manager: Jay.Jayachandra@sun.com
+   	1.5.2. Responsible Engineer: Michael.Christensen@sun.com
+   	1.5.3. Marketing Manager: Trefor.Jones@sun.com
+	1.5.4. Interest List: ldoms-internal@sun.com
+
+2. Project Summary
+
+  2.1. Project Description:
+
+	This case is an extension of FWARC/2005/633 "LDoms: Project
+	Q Logical Domaining Umbrella (sun4v/hypervisor/LDoms)"
+	that is required to support the ds_dom_name_to_hdl and
+	ds_dom_hdl_to_name interfaces that are part of
+	PSARC/2008/568 Domain Service's Logical Domains (RFE 6689118).
+
+	This case describes two new properties to the machine description
+	data for Logical Domains (LDoms). It proposes that the
+	property "vlds-domain-name" property be added to the
+	"virtual-domain-service" MD node and the "vlds-remote-domain-name"
+	property be added to each "vlds-port" MD node.
+	
+  2.2. Risks and Assumptions:
+
+	See FWARC/2005/633
+
+3. Business Summary
+  3.1. Problem Area:
+
+	See FWARC/2005/633
+
+  3.2. Market/Requester:
+
+	See FWARC/2005/633
+
+  3.3. Business Justification:
+
+	See FWARC/2005/633
+
+  3.4. Competitive Analysis:
+
+	See FWARC/2005/633
+
+  3.5. Opportunity Window/Exposure:
+
+	See FWARC/2005/633
+
+  3.6. How will you know when you are done?:
+
+	See FWARC/2005/633
+
+4. Technical Description:
+
+  4.1 Overview
+
+  4.1.1  Virtual Domain Name properties
+
+   	Following properties will be added to the Machine Description
+	"virtual-domain-service" node and "vlds-port" node, respectively,
+	to allow for the implementation of the ds_dom_hdl_to_name and
+	ds_dom_name_to_hdl interfaces in PSARC/2008/568 Logical Domain's
+	Domain Services. 
+
+	"virtual-domain-service" node
+        -----------------------------
+
+	New Properties:
+
+	Name                  Tag        Req'd?    Description
+	--------------------------------------------------------------------
+        vlds-domain-name      PROP_STR   No        A string that indicates the
+                                                   domain name of the domain
+                                                   containing the
+                                                   SUNW,virtual-domain-service
+                                                   device.
+
+
+       "vlds-port" node
+       ----------------
+
+	New Properties:
+
+	Name                  Tag        Req'd?    Description
+	--------------------------------------------------------------------
+	vlds-remote-domain-   PROP_STR   No        A string that indicates
+           name                                    the domain name of the domain to
+                                                   which a vlds-port node is
+                                                   associated.
+
+  4.2 Imported Interfaces :
+
+       Interface              Classification     Comments
+       ====================================================================
+
+       sun4v Machine           Sun Private     MD nodes definitions as
+       Description nodes                       defined by FWARC/2005/633
+
+       sun4v virtual devices   Sun Private     MD nodes definitions as
+       machine description                     defined by FWARC/2006/072
+       data
+
+       sun4v virtual domain    Sun Private     MD nodes definitions as
+       service machine                         defined by FWARC/2008/563
+       description data
+
+
+  4.3 Exported Interfaces:
+
+
+       Interface                Classification     Comments
+       ====================================================================
+
+	vlds-domain-name         Sun Private    A null-terminated string
+                                                indicating the LDoms domain
+                                                name of the domain containing
+                                                the virtual-domain-service
+
+	vlds-remote-domain-name  Sun Private    A null-terminated string
+                                                indicating the LDoms domain
+                                                name of the domain to which
+                                                a vlds-port is associated.
+
+
+5. Reference Documents:
+
+       None
+
+6. Resources and Schedule:
+  6.1. Projected Availability:
+	
+	See FWARC/2005/633
+
+  6.2. Cost of Effort:
+
+	See FWARC/2005/633
+
+  6.3. Cost of Capital Resources:
+
+	Capital resources are subsumed as part of overall product development.
+
+  6.4. Product Approval Committee requested information:
+  	6.4.1. Consolidation Name:
+		Delivery of firmware will be platform teams
+		Delivery of sun4v OS will be platform teams (ON) 
+		
+  	6.4.2. Contributing OpCo/BU/Division Name:
+		
+		Software
+		
+	6.4.3. Type of PAC Review and Approval expected:
+		Fast-track
+
+       6.4.4. Project Boundary Conditions:
+		N/A
+
+	6.4.5. Is this a necessary project for OEM agreements:
+		No.
+
+	6.4.6. Notes/Dependencies:
+		SUN SPARC CPU specification
+
+	6.4.7. Target RTI Date/Release:
+	        N/A - Not a separate deliverable.
+
+	6.4.8. Target Code Design Review Date:
+		Q4CY08
+
+	6.4.9. Update approval addition:
+	        N/A
+
+  6.5. ARC review type:
+		Fast-track
+
+7. Prototype Availability: 
+  7.1. Prototype Availability:
+	Q4CY08
+
+  7.2. Prototype Cost:
+	Done using existing resources.
+
+
+
+
+--Boundary_(ID_o9b8SVjDCc4LFYD+BheE3g)--
+

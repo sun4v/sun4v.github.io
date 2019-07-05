@@ -1,0 +1,760 @@
+From sacadmin Fri Sep 28 17:13:32 2007
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l8T0DWKN020457
+	for <FWARC@sac.sfbay.sun.com>; Fri, 28 Sep 2007 17:13:32 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com (sca-es-mail-2.Sun.COM [192.18.43.133])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id l8T0ASFE019537
+	for <FWARC@sac.sfbay.sun.com>; Fri, 28 Sep 2007 17:10:28 -0700 (PDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id l8T0AMlb026666
+	for <FWARC@sac.sfbay.sun.com>; Fri, 28 Sep 2007 17:10:23 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JP300C01SCRVT00@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM) for FWARC@sac.sfbay.sun.com;
+ Fri, 28 Sep 2007 17:10:22 -0700 (PDT)
+Received: from [129.150.37.4] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JP30005WSH9E060@fe-sfbay-10.sun.com> for
+ FWARC@sac.sfbay.sun.com; Fri, 28 Sep 2007 17:10:22 -0700 (PDT)
+Date: Fri, 28 Sep 2007 17:11:53 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: N2/VF Random Number Generator HV API update [FWARC/2007/558
+ FastTrack timeout 10/02/2007]
+In-reply-to: <200709252308.l8PN80LT024993@noho.sfbay.sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: FWARC@sac.sfbay.sun.com
+Cc: Joshua.Pincus@Sun.COM
+Message-id: <46FD9849.4030207@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+References: <200709252308.l8PN80LT024993@noho.sfbay.sun.com>
+User-Agent: Thunderbird 2.0.0.6 (Windows/20070728)
+Status: RO
+Content-Length: 4528
+
+David Kahn wrote:
+> N2/VF Random Number Generator - Hypervisor API
+>
+>     Introduction
+>
+> 	This document describes an update to the 
+> 	Niagara Random Number Generator (RNG) Hypervisor API
+> 	which became available on Niagara-2 based platforms.
+>
+> 	This document describes a new RNG interface which addresses
+> 	some deficiencies in the 1.0 API as well as providing support
+> 	for systems with multiple RNGs.  In order to maintain support for
+> 	already released products based on FWARC/2006/481, all of the
+> 	original Hypervisor function numbers will be left intact.
+>
+>         This API provides a source of entropy for higher layers
+>         of system software.  One major application that uses this
+>         interface is the Solaris Cryptographic Framework.
+>
+>     API Versioning
+>
+> 	This interface will abide by FWARC/2006/052 with respect
+> 	to versioning.  The interface presented here represents
+> 	version 2.0.
+>
+> 	This revised API is not backwards compatible with respect to
+> 	most of the 1.0 API calls.  However, the Hypervisor will
+> 	emulate the 1.0 API if requested to do so.
+>
+> 	This FWARC case updates the API as described in 2006/481.
+>
+> 	See section on Export Interfaces below for specific API
+> 	group-number.
+>
+>     References
+>
+> 	FWARC/2006/052 sun4v version API update
+> 	FWARC/2006/072 sun4v virtual devices machine description data
+> 	FWARC/2006/481 N2 Random Number Generator - Hypervisor API (deprecated)
+>
+>   
+This case defines version 2.0 APIs but 1.0 version of APIs are still 
+supported as mentioned
+above (that HV will emulate the 1.0 API), is this correct?   I see word 
+"deprecated" above
+in the reference for 2006/481 but do not see any of the interfaces 
+deprecated in the interface
+table below and hence I want to make sure that nothing is deprecated by 
+this case.  This
+case simply defines version 2.0 of the APIs.
+
+The original case had RNG_GET_DIAG_CONTROL but I don't see it in this 
+case but
+I do see following note in section 4,
+
+		Note that the caller must have Diagnostic Control of the RNG in
+		order to invoke this operation (see rng_get_diag_control).
+
+
+There is no section defining rng_get_diag_control in the specification.
+
+> ========================================================================
+> Exported Interfaces
+>
+> HV Fast Trap:
+>
+> 	0x131		Sun Private	RNG_CTL_READ		API v2.0
+> 	0x132		Sun Private	RNG_CTL_WRITE		API v2.0
+> 	0x133		Sun Private	RNG_DATA_READ_DIAG	API v2.0
+> 	0x134		Sun Private	RNG_DATA_READ		API v2.0
+>
+> RNG API Group Number:
+>
+> 	0x0104		Sun Private	Niagara Random Number Generator
+>   
+
+This case is "open" but above interfaces are classified as "Sun 
+Private".  I know all past
+interfaces have been Sun Private too but since now we have decided to 
+make all FWARC
+cases "open" does it make sense for them to be "private"?  I don't know 
+answer to this
+question but something to think/discuss about.  Probably, "uncommitted" 
+instead of
+"Sun Private" is more appropriate.
+
+Any thoughts on this?
+
+> RNG Device Specific propvals for rng virtual device nodes:
+>
+>     Niagara 2:
+>
+> 	name		uncommitted	value: "random-number-generator"
+> 	compatible	uncommitted	value: "SUNW,n2-rng"
+> 	reg		uncommitted	value: unique virtual device register
+> 						address.
+> 	rng-#units	uncommitted	value: 1
+>
+>     Victoria Falls:
+>
+> 	name		uncommitted	value: "random-number-generator"
+> 	compatible	uncommitted	value: "SUNW,vf-rng"
+> 	reg		uncommitted	value: unique virtual device register
+> 						address.
+> 	rng-#units	uncommitted	value: number of available RNGs as a
+> 					       32-bit encoded value.
+>
+> RNG MD propvals for rng virtual device metadata node:
+>
+>     Niagara 2:
+>
+> 	name		uncommitted	value: "random-number-generator"
+> 	cfg-handle	uncommitted	value: devhandle for device
+> 	compatible	uncommitted	value: "SUNW,n2-rng"
+> 	rng-#units	uncommitted	value: 1
+>
+>     Victoria Falls:
+>
+> 	name		uncommitted	value: "random-number-generator"
+> 	cfg-handle	uncommitted	value: devhandle for device
+> 	compatible	uncommitted	value: "SUNW,vf-rng"
+> 	rng-#units	uncommitted	value: number of available RNGs.
+>
+> 6. Resources and Schedule
+>     6.4. Steering Committee requested information
+>    	6.4.1. Consolidation C-team Name:
+> 		SysFW
+>     6.5. ARC review type: FastTrack
+>     6.6. ARC Exposure: open
+>
+>   
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Fri Sep 28 17:47:40 2007
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l8T0le9j020565
+	for <FWARC@sac.sfbay.sun.com>; Fri, 28 Sep 2007 17:47:40 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id l8T0iZeN009978;
+	Fri, 28 Sep 2007 17:44:35 -0700 (PDT)
+Received: from [192.168.0.2] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l8T0iZLc089755;
+	Fri, 28 Sep 2007 17:44:35 -0700 (PDT)
+Message-ID: <46FD9FFC.9040208@sun.com>
+Date: Fri, 28 Sep 2007 17:44:44 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 2.0.0.6 (Windows/20070728)
+MIME-Version: 1.0
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+CC: FWARC@sac.sfbay.sun.com, Joshua.Pincus@sun.com
+Subject: Re: N2/VF Random Number Generator HV API update [FWARC/2007/558 FastTrack
+ timeout 10/02/2007]
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 1702
+
+
+
+Hitendra Zhangada wrote:
+
+
+> This case is "open" but above interfaces are classified as "Sun Private".  I
+> know all past interfaces have been Sun Private too but since now we have
+> decided to make all FWARC cases "open" does it make sense for them to be
+> "private"?  I don't know answer to this question but something to
+> think/discuss about.  Probably, "uncommitted" instead of "Sun Private" is
+> more appropriate.
+
+The interfaces are not uncommitted. They are Sun Private.
+
+The interface taxonomy is separate from the case being "open".
+"open" just means that the case information and materials
+can be published externally and they don't contain any proprietary
+information, and that has nothing to do with the interface taxonomy.
+
+Joshua will have to respond to your other questions when he
+gets back. If the intent is to deprecate the v1.0 interfaces,
+they should be in the interface table as v1.0, ..., deprecated.
+The HV will continue to emulate the v1.0 interfaces because
+drivers and the OS that uses them have already been released.
+
+> The original case had RNG_GET_DIAG_CONTROL but I don't see it in this case but
+> I do see following note in section 4,
+> 
+>         Note that the caller must have Diagnostic Control of the RNG in
+>         order to invoke this operation (see rng_get_diag_control).
+> 
+> 
+> There is no section defining rng_get_diag_control in the specification. 
+
+That reference should probably be to section 1.4 of the document, I guess.
+Joshua will fix it when he gets back. diagnostic control is only available
+to trusted guests. Basically, any guest can read random numbers, but only
+the trusted guest can configure and get diagnostic control of the RNG.
+
+-David
+
+
+From sacadmin Sun Sep 30 03:05:18 2007
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l8UA5IhL013508
+	for <FWARC@sac.sfbay.sun.com>; Sun, 30 Sep 2007 03:05:18 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com (sca-es-mail-1.Sun.COM [192.18.43.132])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id l8UA2BZd024495
+	for <FWARC@sac.sfbay.sun.com>; Sun, 30 Sep 2007 03:02:11 -0700 (PDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id l8UA26X2019410
+	for <FWARC@sac.sfbay.sun.com>; Sun, 30 Sep 2007 03:02:06 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JP600001EAI1T00@fe-sfbay-10.sun.com>
+ (original mail from Joshua.Pincus@Sun.COM) for FWARC@sac.sfbay.sun.com; Sun,
+ 30 Sep 2007 03:02:06 -0700 (PDT)
+Received: from [192.168.0.2] ([76.202.57.166])
+ by fe-sfbay-10.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb
+ 28 2007)) with ESMTPSA id <0JP600JQYEJINL10@fe-sfbay-10.sun.com>; Sun,
+ 30 Sep 2007 03:02:06 -0700 (PDT)
+Date: Sun, 30 Sep 2007 03:00:59 -0700
+From: Joshua Pincus <Joshua.Pincus@Sun.COM>
+Subject: Re: N2/VF Random Number Generator HV API update [FWARC/2007/558
+ FastTrack timeout 10/02/2007]
+In-reply-to: <46FD9FFC.9040208@sun.com>
+Sender: Joshua.Pincus@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>, FWARC@sac.sfbay.sun.com
+Reply-to: Joshua.Pincus@Sun.COM
+Message-id: <46FF73DB.8000504@sun.com>
+Organization: Sun Microsystems, Inc.
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_s+OPGRZu4vvXQHAh3ctAog)"
+References: <46FD9FFC.9040208@sun.com>
+User-Agent: Thunderbird 1.5.0.13 (Windows/20070809)
+Status: RO
+Content-Length: 2046
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_s+OPGRZu4vvXQHAh3ctAog)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+Hi,
+
+>> The original case had RNG_GET_DIAG_CONTROL but I don't see it in this 
+>> case but
+>> I do see following note in section 4,
+>>
+>>         Note that the caller must have Diagnostic Control of the RNG in
+>>         order to invoke this operation (see rng_get_diag_control).
+>>
+>>
+>> There is no section defining rng_get_diag_control in the specification. 
+> 
+> That reference should probably be to section 1.4 of the document, I guess.
+> Joshua will fix it when he gets back. diagnostic control is only available
+> to trusted guests. Basically, any guest can read random numbers, but only
+> the trusted guest can configure and get diagnostic control of the RNG.
+
+We got rid of RNG_GET_DIAG_CONTROL, and I should have been more careful 
+to document why we got rid of it and what takes its place.  Essentially,
+there is no need for this API call as the ldoms manager and vBSC 
+designate which domain is primary.  Only the primary domain is trusted, 
+and it can be the only one that get diagnostic access to the RNGs.  The 
+HV maintains a rngaccessible property in the primary domain that marks 
+it as capable of using the diagnostic API calls.
+
+We got rid of RNG_GET_DIAG_CONTROL since we don't swap diagnostic 
+control around.  Only one domain can have that kind of control and its
+access if mitigated by the ldoms manager.
+
+JP
+
+
+--Boundary_(ID_s+OPGRZu4vvXQHAh3ctAog)
+Content-type: text/x-vcard; name=joshua.pincus.vcf; charset=utf-8
+Content-transfer-encoding: 7BIT
+Content-disposition: attachment; filename=joshua.pincus.vcf
+
+begin:vcard
+fn:Joshua Pincus
+n:Pincus;Joshua
+org:Sun Microsystems, Inc.;Common Technologies
+adr:;;12 Network Circle;Menlo Park;CA;94025;USA
+email;internet:joshua.pincus@sun.com
+title:Hypervisor Firmware QA
+tel;work:650-352-5985
+tel;fax:650-786-7816
+x-mozilla-html:FALSE
+version:2.1
+end:vcard
+
+
+--Boundary_(ID_s+OPGRZu4vvXQHAh3ctAog)--
+
+From sacadmin Sun Sep 30 03:14:02 2007
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l8UAE2cA013558
+	for <FWARC@sac.sfbay.sun.com>; Sun, 30 Sep 2007 03:14:02 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com (sca-es-mail-2.Sun.COM [192.18.43.133])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id l8UAAup4026026
+	for <FWARC@sac.sfbay.sun.com>; Sun, 30 Sep 2007 03:10:56 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id l8UAAoAF014916
+	for <FWARC@sac.sfbay.sun.com>; Sun, 30 Sep 2007 03:10:50 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JP600E01ESSV400@fe-sfbay-09.sun.com>
+ (original mail from Joshua.Pincus@Sun.COM) for FWARC@sac.sfbay.sun.com; Sun,
+ 30 Sep 2007 03:10:50 -0700 (PDT)
+Received: from [192.168.0.2] ([76.202.57.166])
+ by fe-sfbay-09.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb
+ 28 2007)) with ESMTPSA id <0JP600DUPEY2DJA0@fe-sfbay-09.sun.com>; Sun,
+ 30 Sep 2007 03:10:50 -0700 (PDT)
+Date: Sun, 30 Sep 2007 03:09:44 -0700
+From: Joshua Pincus <Joshua.Pincus@Sun.COM>
+Subject: Re: N2/VF Random Number Generator HV API update [FWARC/2007/558
+ FastTrack timeout 10/02/2007]
+In-reply-to: <46FF73DB.8000504@sun.com>
+Sender: Joshua.Pincus@Sun.COM
+To: Joshua.Pincus@Sun.COM
+Cc: David Kahn <David.Kahn@Sun.COM>,
+        Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>, FWARC@sac.sfbay.sun.com
+Reply-to: Joshua.Pincus@Sun.COM
+Message-id: <46FF75E8.7070809@sun.com>
+Organization: Sun Microsystems, Inc.
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_dPBkvZfiI1Yo7HdxPfogNw)"
+References: <46FD9FFC.9040208@sun.com> <46FF73DB.8000504@sun.com>
+User-Agent: Thunderbird 1.5.0.13 (Windows/20070809)
+Status: RO
+Content-Length: 2136
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_dPBkvZfiI1Yo7HdxPfogNw)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+Hi,
+
+Let me try that response again in English:
+
+Joshua Pincus wrote:
+> Hi,
+> 
+>>> The original case had RNG_GET_DIAG_CONTROL but I don't see it in this 
+>>> case but
+>>> I do see following note in section 4,
+>>>
+>>>         Note that the caller must have Diagnostic Control of the RNG in
+>>>         order to invoke this operation (see rng_get_diag_control).
+>>>
+>>>
+>>> There is no section defining rng_get_diag_control in the specification. 
+>>
+>> That reference should probably be to section 1.4 of the document, I 
+>> guess.
+>> Joshua will fix it when he gets back. diagnostic control is only 
+>> available
+>> to trusted guests. Basically, any guest can read random numbers, but only
+>> the trusted guest can configure and get diagnostic control of the RNG.
+
+We got rid of RNG_GET_DIAG_CONTROL, and I should have been more careful
+to document why we got rid of it and what takes its place.  Essentially,
+there is no need for this API call as the ldoms manager and vBSC
+designate which domain is primary.  Only the primary domain is trusted,
+and it can be the only one that gets diagnostic access to the RNGs.  The
+HV maintains a rngaccessible property in the primary domain that marks
+it as capable of using the diagnostic API calls.
+
+We got rid of RNG_GET_DIAG_CONTROL since we don't swap diagnostic
+control around.  Only one domain can have that kind of control and its
+access is mitigated by the ldoms manager.
+
+JP
+
+
+--Boundary_(ID_dPBkvZfiI1Yo7HdxPfogNw)
+Content-type: text/x-vcard; name=joshua.pincus.vcf; charset=utf-8
+Content-transfer-encoding: 7BIT
+Content-disposition: attachment; filename=joshua.pincus.vcf
+
+begin:vcard
+fn:Joshua Pincus
+n:Pincus;Joshua
+org:Sun Microsystems, Inc.;Common Technologies
+adr:;;12 Network Circle;Menlo Park;CA;94025;USA
+email;internet:joshua.pincus@sun.com
+title:Hypervisor Firmware QA
+tel;work:650-352-5985
+tel;fax:650-786-7816
+x-mozilla-html:FALSE
+version:2.1
+end:vcard
+
+
+--Boundary_(ID_dPBkvZfiI1Yo7HdxPfogNw)--
+
+From sacadmin Mon Oct  1 18:29:51 2007
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l921TpUh006748
+	for <FWARC@sac.sfbay.sun.com>; Mon, 1 Oct 2007 18:29:51 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id l921QijX020998;
+	Mon, 1 Oct 2007 18:26:44 -0700 (PDT)
+Received: from [192.168.0.2] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l921QiKk021242;
+	Mon, 1 Oct 2007 18:26:44 -0700 (PDT)
+Message-ID: <47019E61.3080702@sun.com>
+Date: Mon, 01 Oct 2007 18:26:57 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 2.0.0.6 (Windows/20070728)
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+CC: Joshua.Pincus@sun.com
+Subject: Re: N2/VF Random Number Generator HV API update [FWARC/2007/558 FastTrack
+ timeout 10/02/2007]
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 959
+
+
+The materials have been updated. The new materials
+are in the materials directory, and include the updated
+spec and diffs from the previous version.
+
+The updates clarify that the v1.0 interfaces are being
+deprecated (including in the interface table) and the
+dangling reference to a v1.0 interface was removed.
+
+Some text was added to explain that in both v1.0 and v2.0
+only trusted domains can get access to the control and
+diag interfaces. v1.0 had an explicit interface for
+getting diagnostic control, but that interface wasn't
+needed, but it will still be emulated by the new implementation
+for old clients that negotiate the v1.0 APIs. Either way,
+only the control domain is able to access to the control
+and diagnostic interfaces. Any guest can read random
+numbers, and that API is unchanged between v1.0 and
+v2.0.
+
+I'm extending the timeout 1 day to Oct 3 since the
+changes were only clarifications. If anybody needs
+more time, let me know.
+
+-David
+
+
+
+From sacadmin Fri Oct  5 13:03:57 2007
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l95K3v0J008165
+	for <FWARC@sac.sfbay.sun.com>; Fri, 5 Oct 2007 13:03:57 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com (sca-es-mail-2.Sun.COM [192.18.43.133])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id l95K0kOG001275
+	for <FWARC@sac.sfbay.sun.com>; Fri, 5 Oct 2007 13:00:46 -0700 (PDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id l95K0fb5015666
+	for <FWARC@sac.sfbay.sun.com>; Fri, 5 Oct 2007 13:00:41 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JPG00G01FELLX00@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM) for FWARC@sac.sfbay.sun.com;
+ Fri, 05 Oct 2007 13:00:41 -0700 (PDT)
+Received: from [129.150.36.210] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JPG006S2FL3N680@fe-sfbay-10.sun.com> for
+ FWARC@sac.sfbay.sun.com; Fri, 05 Oct 2007 13:00:41 -0700 (PDT)
+Date: Fri, 05 Oct 2007 13:02:12 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: N2/VF Random Number Generator HV API update [FWARC/2007/558
+ FastTrack timeout 10/02/2007]
+In-reply-to: <47019E61.3080702@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: FWARC@sac.sfbay.sun.com
+Cc: Joshua.Pincus@Sun.COM
+Message-id: <47069844.4000500@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_PnYv3tUziGfm0qsUjovajw)"
+References: <47019E61.3080702@sun.com>
+User-Agent: Thunderbird 2.0.0.6 (Windows/20070728)
+Status: RO
+Content-Length: 5642
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_PnYv3tUziGfm0qsUjovajw)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+David Kahn wrote:
+>
+> The materials have been updated. The new materials
+> are in the materials directory, and include the updated
+> spec and diffs from the previous version.
+>
+> The updates clarify that the v1.0 interfaces are being
+> deprecated (including in the interface table) and the
+> dangling reference to a v1.0 interface was removed.
+>
+> Some text was added to explain that in both v1.0 and v2.0
+> only trusted domains can get access to the control and
+> diag interfaces. v1.0 had an explicit interface for
+> getting diagnostic control, but that interface wasn't
+> needed, but it will still be emulated by the new implementation
+> for old clients that negotiate the v1.0 APIs. Either way,
+> only the control domain is able to access to the control
+> and diagnostic interfaces. Any guest can read random
+> numbers, and that API is unchanged between v1.0 and
+> v2.0.
+>
+> I'm extending the timeout 1 day to Oct 3 since the
+> changes were only clarifications. If anybody needs
+> more time, let me know.
+
+Sorry for late reply.  I don't need more time and I am fine with the
+updated specification.  The only comment I have  is related to
+the interfaces classification for deprecated interfaces.  "deprecated"
+is not an ARC classification.  We used to have "obsolete" but that
+has become a modifier now.  I see followings in,
+
+http://sac.eng/cgi-bin/bp.cgi?NAME=interface_taxonomy.bp
+
+
+      ====
+
+
+
+      Modifiers
+
+Modifiers may prefix a compatibility level to modify its meaning.
+
+
+*Obsolete*
+
+    The Obsolete modifier indicates an interface that is "deprecated"
+    and/or no longer advised for general use. An existing interface may
+    be downgraded from some other status (such as Committed or
+    Uncommitted) by the application of the Obsolete modifier to
+    encourage customers to migrate from that interface before it may be
+    removed (or incompatibly changed).
+
+======
+
+
+I think the classifications for the deprecated interfaces needs to 
+change as follows,
+
+    Obsolete Uncommitted
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_PnYv3tUziGfm0qsUjovajw)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+David Kahn wrote:
+<blockquote cite="mid:47019E61.3080702@sun.com" type="cite"><br>
+The materials have been updated. The new materials
+  <br>
+are in the materials directory, and include the updated
+  <br>
+spec and diffs from the previous version.
+  <br>
+  <br>
+The updates clarify that the v1.0 interfaces are being
+  <br>
+deprecated (including in the interface table) and the
+  <br>
+dangling reference to a v1.0 interface was removed.
+  <br>
+  <br>
+Some text was added to explain that in both v1.0 and v2.0
+  <br>
+only trusted domains can get access to the control and
+  <br>
+diag interfaces. v1.0 had an explicit interface for
+  <br>
+getting diagnostic control, but that interface wasn't
+  <br>
+needed, but it will still be emulated by the new implementation
+  <br>
+for old clients that negotiate the v1.0 APIs. Either way,
+  <br>
+only the control domain is able to access to the control
+  <br>
+and diagnostic interfaces. Any guest can read random
+  <br>
+numbers, and that API is unchanged between v1.0 and
+  <br>
+v2.0.
+  <br>
+  <br>
+I'm extending the timeout 1 day to Oct 3 since the
+  <br>
+changes were only clarifications. If anybody needs
+  <br>
+more time, let me know.
+  <br>
+</blockquote>
+<br>
+Sorry for late reply.&nbsp; I don't need more time and I am fine with the<br>
+updated specification.&nbsp; The only comment I have&nbsp; is related to<br>
+the interfaces classification for deprecated interfaces.&nbsp; "deprecated"<br>
+is not an ARC classification.&nbsp; We used to have "obsolete" but that<br>
+has become a modifier now.&nbsp; I see followings in,<br>
+<br>
+<a class="moz-txt-link-freetext" href="http://sac.eng/cgi-bin/bp.cgi?NAME=interface_taxonomy.bp">http://sac.eng/cgi-bin/bp.cgi?NAME=interface_taxonomy.bp</a><br>
+<br>
+<h3>====</h3>
+<h3><br>
+</h3>
+<h3>Modifiers</h3>
+<div class="section">
+<p>Modifiers may prefix a compatibility level to modify its meaning.
+</p>
+</div>
+<br>
+<dl>
+  <span class="sacbody"><dt><b>Obsolete</b>
+  </dt>
+  <dd>
+    <p>The Obsolete modifier indicates an interface that is
+"deprecated"
+and/or no longer advised for general use. An existing interface
+may be downgraded from some other status (such as Committed or
+Uncommitted) by the application of the Obsolete modifier to
+encourage customers to migrate from that interface before it may
+be removed (or incompatibly changed).
+    </p>
+  </dd>
+  </span><dt>======</dt>
+</dl>
+<br>
+I think the classifications for the deprecated interfaces needs to
+change as follows,<br>
+<br>
+&nbsp;&nbsp;&nbsp; Obsolete Uncommitted<br>
+<br>
+<br>
+<pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_PnYv3tUziGfm0qsUjovajw)--
+
+From sacadmin Fri Oct  5 13:36:08 2007
+Received: from dm-sfbay-02.sfbay.sun.com (dm-sfbay-02 [129.146.11.31])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l95Ka885008637
+	for <FWARC@sac.sfbay.sun.com>; Fri, 5 Oct 2007 13:36:08 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-02.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id l95KWvd7032366;
+	Fri, 5 Oct 2007 13:32:57 -0700 (PDT)
+Received: from [192.168.0.2] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l95KWuDP025126;
+	Fri, 5 Oct 2007 13:32:56 -0700 (PDT)
+Message-ID: <47069F78.5000203@sun.com>
+Date: Fri, 05 Oct 2007 13:32:56 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 2.0.0.6 (Windows/20070728)
+MIME-Version: 1.0
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+CC: FWARC@sac.sfbay.sun.com, Joshua.Pincus@sun.com
+Subject: Re: N2/VF Random Number Generator HV API update [FWARC/2007/558 FastTrack
+ timeout 10/02/2007]
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 346
+
+
+
+
+> I think the classifications for the deprecated interfaces needs to 
+> change as follows,
+> 
+>    Obsolete Uncommitted
+
+
+I made the change (manually) to the materials, updated
+the trap registry and marked the case as closed approved.
+The old file is there as old*
+
+This case is approved as stated.
+
+Thanks for the correction.
+
+Thanks,
+David
+
+

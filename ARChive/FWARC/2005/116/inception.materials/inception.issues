@@ -1,0 +1,272 @@
+Inception: 2005/116 sunv4 core API
+March 7, 2005
+===========================================================
+
+Project team issues:
+
+1. API versioning
+
+STATUS: The project team needs to resolve how they are going
+to implement API versioning before commitment review. Many of
+the issues raised by the FWARC memebers related to this issue.
+
+2. mmu_demap_*
+    (use of cpulist)
+
+STATUS: The use of cpulist is not well defined and does not match 
+the single 'cpu' arguments in the APS's. This issue needs to be
+resolved by the project team before commitment review.
+
+3. memory_scrub
+    (definining error boundaries - this one will go to the SWG working group - 
+the call convention and errors will not change ... just the normative text on 
+behaviour)
+4. memory_sync
+    same as 3 above.
+
+STATUS: The above two issues need to be resolved by the project team 
+before commitment reivew.
+
+
+David Kahn
+
+3.2. Technical
+	Delete NVRAM_READ & NVRAM_WRITE from function number table.
+	Delete CPU_WATCHDOG
+6.2.4 and 6.2.4.1 Technical
+	Delete cpu_watchdog API
+
+STATUS: The above two issues can be closed once the project team has
+resubmitted an API specification with the offending sections and table 
+entries removed.
+
+5.1.1. API Version (issue already flagged by project team) - Technical
+	Contains the old text and the new text.
+6.1. CPU List - Technical
+	I believe this was also flagged by the project team.
+	The description of the cpu list is vague and doesn't
+	match the single 'cpu' arguments in the api's listed
+	below it.
+
+STATUS: The above two issues are closely related to issues 1 and 2 raised 
+by the project team, and can be closed as duplicates.
+
+6.2.9. Editorial
+	CPU_MONDO_SEND is listed as CPU_SEND_MONDO in the
+	function number table in 3.2
+
+STATUS: The above issue can be closed once the project team has
+resubmitted an API specification with the error corrected.
+
+
+Hitendra Zhangada
+
+1.  I think there are some interfaces which are from HV to Guest,
+     e.g., traps from HV on errors etc.  Which specification/ARC case
+     defines these interfaces?
+
+STATUS: The project team should create a section '1.1' that calls out 
+all related FWARC cases. Other FWARC cases that are related to this one 
+and producing their own specs may want to leverage this section.
+
+2.  Similarly what specification/ARC case defines the HV and Guest
+     to SP interface (mailbox etc.)?  Is the vBSC case defines these
+     interfaces?
+3.  What specification/ARC case defines the SP CLIs?
+
+STATUS: These cases can be called out by the section 1.1 described in 
+Hitendra's issue #1.
+
+Now some comments and questions related to core API specification,
+version 0.16 dated March 2, 2005 (I have not looked at the latest
+spec. which got copied in the case directory late last week).
+
+4.  Section 3.2, we probably want to create registry so that new
+     API function numbers can be added and are managed via registry.
+
+STATUS: The case owner and intern will work with the project team to 
+create a registry of all trap numbers and function numbers used by the 
+sun4v API. The registry will state that re-use of function numbers is not 
+allowed.
+
+5.  Section 4 can probably be deleted since machine descriptor
+     will have its own specification and ARC case.
+
+STATUS: The project team can delete this section once it creates the 
+'related cases' section described in Hitendra's issue #1.
+
+6.  Section 5.1.1, it is not clear how the version# is established
+     at start of day by guest.  Some explanation on this would be useful.
+     Since there HV can interrupt guests, does the API version cover
+     the HV to guest interfaces as well?  Can HV send interrupts to
+     guest before the version# is established?  Also, it seems like
+     guest can not use any of the APIs until the version# is
+     established, is this true?
+
+STATUS: closed as already covered by the project team's issues.
+
+7.  Section 5.1.2, the description states that all cpus are stopped.
+     How does HV do this?  Does it use CPU xcalls?
+
+STATUS: closed. Case submitter responded that CPU xcalls are used.
+
+8.  Section 5.1.4, the second last sentence in the description states
+     that, "...  real trap table (rtba) entry point on one of the CPUs.
+     Is this "one" a typo for "all"?  The description prior to this
+     sentence talks about capturing all CPUs etc.
+9.  Section 6.1, is the CPU id referred in the CPU list the same as
+     the CPUID (interruptable ID)? or the one assigned by HV in the
+     cpu_myid?  I think it is the later, right?  Either way, I think
+     a description on what is CPU id would be nice in this section.
+
+STATUS: For the previous two issues, the project team needs to elaborate 
+on the wording of those sections to anwser the questions. Once that has 
+been done, these issues can be closed.
+
+10.  Section 6.2.4, Is there a way to set MAX value for the watchdog
+      time out?  Can we have -1 = MAX value?  Since the EINVAL is
+      returned for "too long" there seems to be a per implementation
+      MAX value.  Is there a way for guest to find out the max value?
+11.  Section 6.2.4, the single line paragraph states that " ..  the
+      previously specified time-out period", this sentence is not
+      clear, I think the sentence needs to be "Upon success the service
+      returns seconds remaining from the previous time-out period".
+
+STATUS: The above two issue can be closed (section 6.2.4 will be removed 
+as per David Kahn's issue).
+
+12.  Section 7.1.1, the first sentence is not clear due to spelling
+      errors.
+13.  Section 7.2, the second table, the last row on the page 16,
+      what does "so" stand for in "so page"?  What is "so page"?
+
+STATUS: The project team will work with Hitendra on the wording of 
+these two sections. They can be closed once Hitendra approves of 
+the new wording.
+
+14.  Section 7.3.6 and 7.3.7, I think the description should also
+      mentioned something about the single unified I and D TLBs.
+      A description similar to 7.3.8 related to single unified TLB
+      is needed for these sections.
+
+STATUS: The project team should have a single introductory statement 
+that describes how the mmu flags argument works for those APIs that 
+use it. Once the project team completes this and resubmits the API 
+spec, this issue can be closed.
+
+15.  Section 7.3.11, I do not understand the second paragraph related
+      to avoiding complicated address mapping issues.  What complications
+      does this refer to?
+
+STATUS: The project team will fix the wording to clarify 'complications'. 
+Issue can be closed once new spec is submitted.
+
+16.  Section 12, is the HV dump part of Solaris dump?  How does user
+      access HV dump information?  Are there any changes to existing
+      tools related to guest OS (Solaris) dumps?
+
+STATUS: This issue as closed as already described in the spec in fine 
+enough detail.
+
+
+Tony Sumpter
+
+STATUS: Most of Tony's issue were editorial. They can be close when the 
+project team resubmits the specification. For non-editorial issues, their 
+status is mentioned below.
+
+Issues - FWARC/2005/116 sun4v core API
+() refs to api.pdf Rev 0.16 dated March 4, 2005
+
+1.
+(2.) "0x80 and above" -> "0x80 to 0xff inclusive"
+     "faster form" -> "hyper-fast form"
+(2.1) "instruction semantics" -> "function semantics"
+(2.2) "instruction semantics" -> "function semantics"
+
+2.
+(2.1) Need to clarify whether all of %o0 through %o4 are always volatile
+or only the ones explicitly used by the function.
+Need to clarify if return status is always set.
+
+STATUS: Tony will work off-line with the project team to find a way to 
+clarify the above issue that satisfies both parties.
+
+3.
+(2.1) Need to clarify if further arguments in memory are allowed or not
+with hyper-fast traps. 
+
+3.
+(2.2) Need to clarify whether all of %o0 through %o4 are always volatile
+or only the ones explicitly used by the function.
+Need to clarify which outputs are always set.
+Need to clarify %o5 output.
+Need to clarify if return status is always set.
+
+4.
+(2.3) "any additional result value being returned in %o1" is
+inconsistent with rest of paragraph and preceding tables.
+
+5.
+(3.) Need to specify how unused trap numbers and function numbers are assigned for API extensions. Need to specify if platform specific
+APIs can re-use numbers.
+
+STATUS: This will be combined with the creation of a registry, which 
+was Hitendra's issue #4
+
+6.
+(3.1) Need to say something about 0x86 through 0xfe.
+
+7.
+(3.2) Need to specify how many bits in %o5 the function number is.
+Need to say something about the numbers which are not listed.
+
+8.
+(3.3) Need to specify how many bits in the return status are significant.
+Need to say something about the numbers which are not listed.
+
+9.
+(4.) Machine description will be required for completeness.
+
+10.
+(?) Relationship to the sun4v architecture spec (or SunSPARC 2.0)
+needs to be noted.
+
+11.
+(5.) For all API entries, the number of bits in each argument
+that are significant needs to be stated. [PRM style bit layouts
+might be appropriate.]
+
+12.
+(5.) A more rigorous enumeration of domain state is required. These
+states to be related to the sun4v architecure spec.
+
+13.
+(5.1.2) "service processor" is not defined in the document.
+
+STATUS: Tony will work off-line with the project team to resolve this 
+issue. It can be closed per approval of Tony.
+
+14.
+(5.1.2) Need a description of exit_code values somewhere which includes
+unrequested exits.
+
+15.
+(5.1.3) No algorithm for determining the complete size of the machine
+description is given.
+
+16.
+(5.1.4) An exact description of the state after SIR needs to be provided
+as part of the resolution to issue 12 above. Eg register states.
+
+17.
+(5.1.4) What happens if the processor cannot support SIR?
+
+18.
+(6.) A more rigorous enumeration of CPU state is required.
+
+19.
+(6.2.1) What is the state of %npc, %pstate, etc.?
+
+20.
+(6.2.2) "running state" is not mentioned in (6.)

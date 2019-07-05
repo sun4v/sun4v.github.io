@@ -1,0 +1,4771 @@
+From sacadmin Mon Feb  6 18:32:42 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k172WfIQ009407
+	for <fwarc@sac.eng.Sun.COM>; Mon, 6 Feb 2006 18:32:42 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k172WYc23061;
+	Mon, 6 Feb 2006 19:32:34 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IUA00B05PQ44Z00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 06 Feb 2006 18:32:28 -0800 (PST)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IUA0065EPQ4ZC40@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 06 Feb 2006 18:32:28 -0800 (PST)
+Received: from d1-sfbay-02.sun.com ([192.18.39.112])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k172WSVs000221; Mon,
+ 06 Feb 2006 18:32:28 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-02.sun.com by d1-sfbay-02.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IUA00801IXQN800@d1-sfbay-02.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Mon,
+ 06 Feb 2006 18:32:28 -0800 (PST)
+Received: from [129.153.85.39] by d1-sfbay-02.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IUA006DIPQ3L670@d1-sfbay-02.sun.com>; Mon,
+ 06 Feb 2006 18:32:27 -0800 (PST)
+Date: Mon, 06 Feb 2006 18:32:27 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: 2006/074 - fast-track - sun4v interrupt cookies
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>,
+   Eric Sharakan <Eric.Sharakan@Sun.COM>
+Message-id: <43E806BB.3040704@Sun.COM>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_MyO0caqNpyDmK8FUpkowmQ)"
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 6011
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_MyO0caqNpyDmK8FUpkowmQ)
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+I am sponsoring this fast-track for Narayan Venkat.  It defines
+two sun4v APIs for delivering guest specified cookies in the second
+and third words of the dev_mondo payload.
+
+The timer for this case is set for a week from today,
+February 13th, 2006.
+
+The material is copied into the case directory,
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/074/materials/intr-cookie-1pager.txt
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/074/materials/intr-cookie-api.txt
+
+One-pager is attached for your convenience.
+
+
+Thanks.
+
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+--Boundary_(ID_MyO0caqNpyDmK8FUpkowmQ)
+Content-type: text/plain; name=intr-cookie-1pager.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=intr-cookie-1pager.txt
+
+1. Introduction
+   1.1. Project/Component Working Name:
+	sun4v interrupt cookies
+
+   1.2. Name of Document Author/Supplier:
+	Narayan.Venkat@sun.com
+
+   1.3. Date of This Document:
+        Mon Feb  6 18:23:46 PST 2006
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		HS PAC
+
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Tony Barreca
+
+	1.4.4. The name of your business unit:
+		Scalable Systems Group (SSG)
+			(Central Engineering)
+
+   1.5. Email Aliases:
+    	1.5.1. Responsible Manager: David.Banman@Sun.Com
+    	1.5.2. Responsible Engineer: Narayan.Venkat@sun.com
+    	1.5.3. Marketing Manager: Neil.Sadaranganey@sun.com
+	1.5.4. Interest List: sun4v-iteam@sun.com
+
+2. Project Summary
+   2.1. Project Description:
+
+	This case is a part of the sun4v umbrella case FWARC/2005/510 and
+	the Logical Domains umbrella case FWARC/2005/633. The functionality
+	will be delivered as part of the LDoms project.
+
+	This case describes extensions to the existing sun4v interrupt
+	API to support delivering guest specified cookies in the
+	second and third words of the dev_mondo payload. It proposes 
+	additions to the interrupt APIs specified as part of sun4v core API
+	case FWARC/2005/116.
+	
+   2.2. Risks and Assumptions:
+
+	See FWARC/2005/633
+
+3. Business Summary
+   3.1. Problem Area:
+
+	See FWARC/2005/633
+
+   3.2. Market/Requester:
+
+	See FWARC/2005/633
+
+   3.3. Business Justification:
+
+	See FWARC/2005/633
+
+   3.4. Competitive Analysis:
+
+	See FWARC/2005/633
+
+   3.5. Opportunity Window/Exposure:
+
+	See FWARC/2005/633
+
+   3.6. How will you know when you are done?:
+
+	See FWARC/2005/633
+
+4. Technical Description:
+
+   4.1 Overview
+
+	In current sun4v systems, when a dev_mondo trap is delivered to a guest
+	by the HV, an entry is added to the guest's dev_mondo queue. Currently 
+	each dev_mondo queue entry contains a system interrupt number in the 
+	first 64-bit word; (bytes 0 through 7) of the dev_mondo packet. This 
+	system interrupt number is obtained by making a call to the 
+	INTR_DEVINO2SYSINO API. The sysino is often used to index into a 
+	fixed-size interrupt table to obtain the PIL, interrupt handler and 
+	arguments. In addition to the interrupt number in the first word,
+	if the second and third word of the entry contained an arbitrary guest
+	defined values, call it interrupt cookies or a function pointer and 
+	argument, the guest can process the interrupt in a more efficient way.
+	This document describes an extension to the existing interrupt 
+	Hypervisor API to support this functionality.
+
+	The dev_mondo handler in a guest can be coded to handle both the 
+	interrupt number and interrupt cookies. The cookies may not be present
+	in the second and third word, but if present the guest has a means to 
+	expedite the interrupt handling.	
+	
+    4.2 Imported Interfaces :
+
+      Interface              Classification     Comments
+      =======================================================================
+
+      sun4v core API            Sun Private     Core APIs defined by
+                                                FWARC/2005/116
+
+
+    4.3 Exported Interfaces:
+
+      Interface               Classification     Comments
+      ========================================================================
+
+      INTR_GET_COOKIE           Sun Private     Trap 0x80 function number 0xa7
+      INTR_SET_COOKIE           Sun Private     Trap 0x80 function number 0xa8
+
+
+5. Reference Documents:
+	
+	The updated sun4v API specification detailing the new APIs is provided.
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+	
+	See FWARC/2005/633
+
+   6.2. Cost of Effort:
+
+	See FWARC/2005/633
+
+   6.3. Cost of Capital Resources:
+
+	Capital resources are subsumed as part of overall product development.
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation Name:
+		Delivery of firmware will be platform teams
+		Delivery of sun4v OS will be platform teams (ON) 
+		
+   	6.4.2. Contributing OpCo/BU/Division Name:
+		
+		Scalable Systems Group
+		
+	6.4.3. Type of PAC Review and Approval expected:
+		Standard
+
+        6.4.4. Project Boundary Conditions:
+		N/A
+
+	6.4.5. Is this a necessary project for OEM agreements:
+		No.
+
+	6.4.6. Notes/Dependencies:
+		SUN SPARC CPU specification
+
+	6.4.7. Target RTI Date/Release:
+	        N/A - Not a separate deliverable.
+
+	6.4.8. Target Code Design Review Date:
+		Q1CY06 for Niagara-I version 1.0
+
+	6.4.9. Update approval addition:
+	        N/A
+
+   6.5. ARC review type:
+		Full Review
+
+7. Prototype Availability: 
+   7.1. Prototype Availability:
+	Q1CY06
+
+   7.2. Prototype Cost:
+	Done using existing resources.
+
+
+
+
+
+--Boundary_(ID_MyO0caqNpyDmK8FUpkowmQ)--
+
+From sacadmin Wed Feb  8 19:21:23 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k193LLIQ007455
+	for <fwarc@sac.eng.Sun.COM>; Wed, 8 Feb 2006 19:21:23 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k193LDK8016150;
+	Thu, 9 Feb 2006 11:21:19 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IUE00H0HHBDT100@brm-avmta-1.central.sun.com>; Wed,
+ 08 Feb 2006 20:21:13 -0700 (MST)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IUE002R2HBCZQE0@brm-avmta-1.central.sun.com>; Wed,
+ 08 Feb 2006 20:21:13 -0700 (MST)
+Received: from d1-sfbay-01.sun.com ([192.18.39.111])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k193LCVs005283; Wed,
+ 08 Feb 2006 19:21:12 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-01.sun.com by d1-sfbay-01.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IUE00201F8YUK00@d1-sfbay-01.sun.com>
+ (original mail from Girish.Goyal@Sun.COM); Wed,
+ 08 Feb 2006 19:21:11 -0800 (PST)
+Received: from sun.com ([129.146.96.105])
+ by d1-sfbay-01.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0IUE000N3HBAYP10@d1-sfbay-01.sun.com>; Wed,
+ 08 Feb 2006 19:21:10 -0800 (PST)
+Date: Wed, 08 Feb 2006 19:18:45 -0800
+From: Girish Goyal <Girish.Goyal@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <43E806BB.3040704@Sun.COM>
+Sender: Girish.Goyal@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+   Eric Sharakan <Eric.Sharakan@sun.com>
+Message-id: <43EAB495.7010306@sun.com>
+MIME-version: 1.0
+Content-type: text/html; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <43E806BB.3040704@Sun.COM>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 7006
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+  <title></title>
+</head>
+<body text="#000000" bgcolor="#ffffff">
+Does the hypervisor treat the additional arguments (interrupt<br>
+cookies) as opaque data?&nbsp; If so, why is hypervisor being asked<br>
+to track guest specific state here? What impact does this<br>
+have on a guest migration?<br>
+<br>
+Overall, I see no reason why this state can't be kept track<br>
+within the guest (such as intr_vector table in solaris) and<br>
+easily obtained in an efficient manner. Can someone provide<br>
+additional information to indicate why this interface is<br>
+needed.<br>
+<br>
+Thanks,<br>
+Girish<br>
+<br>
+<br>
+On 02/06/06 18:32, Hitendra Zhangada wrote:<br>
+<blockquote type="cite" cite="mid43E806BB.3040704@Sun.COM">
+  <pre wrap="">I am sponsoring this fast-track for Narayan Venkat.  It defines
+two sun4v APIs for delivering guest specified cookies in the second
+and third words of the dev_mondo payload.
+
+The timer for this case is set for a week from today,
+February 13th, 2006.
+
+The material is copied into the case directory,
+
+<a class="moz-txt-link-freetext" href="http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/074/materials/intr-cookie-1pager.txt">http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/074/materials/intr-cookie-1pager.txt</a>
+<a class="moz-txt-link-freetext" href="http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/074/materials/intr-cookie-api.txt">http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/074/materials/intr-cookie-api.txt</a>
+
+One-pager is attached for your convenience.
+
+
+Thanks.
+
+
+
+  </pre>
+  <pre wrap="">
+<hr width="90%" size="4">
+
+1. Introduction
+   1.1. Project/Component Working Name:
+	sun4v interrupt cookies
+
+   1.2. Name of Document Author/Supplier:
+	<a class="moz-txt-link-abbreviated" href="mailto:Narayan.Venkat@sun.com">Narayan.Venkat@sun.com</a>
+
+   1.3. Date of This Document:
+        Mon Feb  6 18:23:46 PST 2006
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		HS PAC
+
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Tony Barreca
+
+	1.4.4. The name of your business unit:
+		Scalable Systems Group (SSG)
+			(Central Engineering)
+
+   1.5. Email Aliases:
+    	1.5.1. Responsible Manager: <a class="moz-txt-link-abbreviated" href="mailto:David.Banman@Sun.Com">David.Banman@Sun.Com</a>
+    	1.5.2. Responsible Engineer: <a class="moz-txt-link-abbreviated" href="mailto:Narayan.Venkat@sun.com">Narayan.Venkat@sun.com</a>
+    	1.5.3. Marketing Manager: <a class="moz-txt-link-abbreviated" href="mailto:Neil.Sadaranganey@sun.com">Neil.Sadaranganey@sun.com</a>
+	1.5.4. Interest List: <a class="moz-txt-link-abbreviated" href="mailto:sun4v-iteam@sun.com">sun4v-iteam@sun.com</a>
+
+2. Project Summary
+   2.1. Project Description:
+
+	This case is a part of the sun4v umbrella case FWARC/2005/510 and
+	the Logical Domains umbrella case FWARC/2005/633. The functionality
+	will be delivered as part of the LDoms project.
+
+	This case describes extensions to the existing sun4v interrupt
+	API to support delivering guest specified cookies in the
+	second and third words of the dev_mondo payload. It proposes 
+	additions to the interrupt APIs specified as part of sun4v core API
+	case FWARC/2005/116.
+	
+   2.2. Risks and Assumptions:
+
+	See FWARC/2005/633
+
+3. Business Summary
+   3.1. Problem Area:
+
+	See FWARC/2005/633
+
+   3.2. Market/Requester:
+
+	See FWARC/2005/633
+
+   3.3. Business Justification:
+
+	See FWARC/2005/633
+
+   3.4. Competitive Analysis:
+
+	See FWARC/2005/633
+
+   3.5. Opportunity Window/Exposure:
+
+	See FWARC/2005/633
+
+   3.6. How will you know when you are done?:
+
+	See FWARC/2005/633
+
+4. Technical Description:
+
+   4.1 Overview
+
+	In current sun4v systems, when a dev_mondo trap is delivered to a guest
+	by the HV, an entry is added to the guest's dev_mondo queue. Currently 
+	each dev_mondo queue entry contains a system interrupt number in the 
+	first 64-bit word; (bytes 0 through 7) of the dev_mondo packet. This 
+	system interrupt number is obtained by making a call to the 
+	INTR_DEVINO2SYSINO API. The sysino is often used to index into a 
+	fixed-size interrupt table to obtain the PIL, interrupt handler and 
+	arguments. In addition to the interrupt number in the first word,
+	if the second and third word of the entry contained an arbitrary guest
+	defined values, call it interrupt cookies or a function pointer and 
+	argument, the guest can process the interrupt in a more efficient way.
+	This document describes an extension to the existing interrupt 
+	Hypervisor API to support this functionality.
+
+	The dev_mondo handler in a guest can be coded to handle both the 
+	interrupt number and interrupt cookies. The cookies may not be present
+	in the second and third word, but if present the guest has a means to 
+	expedite the interrupt handling.	
+	
+    4.2 Imported Interfaces :
+
+      Interface              Classification     Comments
+      =======================================================================
+
+      sun4v core API            Sun Private     Core APIs defined by
+                                                FWARC/2005/116
+
+
+    4.3 Exported Interfaces:
+
+      Interface               Classification     Comments
+      ========================================================================
+
+      INTR_GET_COOKIE           Sun Private     Trap 0x80 function number 0xa7
+      INTR_SET_COOKIE           Sun Private     Trap 0x80 function number 0xa8
+
+
+5. Reference Documents:
+	
+	The updated sun4v API specification detailing the new APIs is provided.
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+	
+	See FWARC/2005/633
+
+   6.2. Cost of Effort:
+
+	See FWARC/2005/633
+
+   6.3. Cost of Capital Resources:
+
+	Capital resources are subsumed as part of overall product development.
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation Name:
+		Delivery of firmware will be platform teams
+		Delivery of sun4v OS will be platform teams (ON) 
+		
+   	6.4.2. Contributing OpCo/BU/Division Name:
+		
+		Scalable Systems Group
+		
+	6.4.3. Type of PAC Review and Approval expected:
+		Standard
+
+        6.4.4. Project Boundary Conditions:
+		N/A
+
+	6.4.5. Is this a necessary project for OEM agreements:
+		No.
+
+	6.4.6. Notes/Dependencies:
+		SUN SPARC CPU specification
+
+	6.4.7. Target RTI Date/Release:
+	        N/A - Not a separate deliverable.
+
+	6.4.8. Target Code Design Review Date:
+		Q1CY06 for Niagara-I version 1.0
+
+	6.4.9. Update approval addition:
+	        N/A
+
+   6.5. ARC review type:
+		Full Review
+
+7. Prototype Availability: 
+   7.1. Prototype Availability:
+	Q1CY06
+
+   7.2. Prototype Cost:
+	Done using existing resources.
+
+
+
+
+  </pre>
+</blockquote>
+<br>
+</body>
+</html>
+
+
+From sacadmin Wed Feb  8 20:41:55 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k194fsIQ008848
+	for <fwarc@sac.eng.Sun.COM>; Wed, 8 Feb 2006 20:41:54 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k194fnNH019090;
+	Thu, 9 Feb 2006 12:41:51 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IUE00L01L1QD300@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 08 Feb 2006 20:41:50 -0800 (PST)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IUE0096VL1Q3380@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 08 Feb 2006 20:41:50 -0800 (PST)
+Received: from fe-amer-05.sun.com ([192.18.108.179])
+	by brmea-mail-3.sun.com (8.12.10/8.12.9) with ESMTP id k194foQj019696; Wed,
+ 08 Feb 2006 21:41:50 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IUE00B01KN8VH00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Wed,
+ 08 Feb 2006 21:41:50 -0700 (MST)
+Received: from [192.168.1.101] ([129.150.65.29])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep  9
+ 2005)) with ESMTPSA id <0IUE003UAL1NQBB0@mail-amer.sun.com>; Wed,
+ 08 Feb 2006 21:41:50 -0700 (MST)
+Date: Wed, 08 Feb 2006 23:42:18 -0500
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <43EAB495.7010306@sun.com>
+Sender: Narayan.Venkat@sun.com
+To: Girish Goyal <Girish.Goyal@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+   Firmware Arch <fwarc@sun.com>, Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+   Eric Sharakan <Eric.Sharakan@sun.com>
+Message-id: <43EAC82A.7010607@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <43E806BB.3040704@Sun.COM> <43EAB495.7010306@sun.com>
+User-Agent: Mozilla Thunderbird 0.8 (X11/20041020)
+Status: RO
+Content-Length: 7561
+
+Girish Goyal wrote:
+> Does the hypervisor treat the additional arguments (interrupt
+> cookies) as opaque data?  If so, why is hypervisor being asked
+> to track guest specific state here? What impact does this
+> have on a guest migration?
+
+That is correct. The arguments are treated as opaque data. Since
+the arguments will be used only when specified, at the time
+of migration, the values would be cleared making the guest
+to fallback to default approach of using only the sysino.
+
+> 
+> Overall, I see no reason why this state can't be kept track
+> within the guest (such as intr_vector table in solaris) and
+> easily obtained in an efficient manner. Can someone provide
+> additional information to indicate why this interface is
+> needed.
+> 
+
+Having the sysino as the only approach limits a guest to
+always looking up an intr_vector table. This also limits the
+number of unique sysinos the HV can generate to the size of
+Solaris intr_vector table. The ino essentially is an index and
+nothing more than that. Having a cookie provides guests the
+opportunity for an additional level of indirection. It is
+not necessary that the HV triggered dev_mondo has to always
+map directly to a intr_vector table index. The cookie enables
+decoupling the dev_mondo sysino from a guest intr_vector
+table index and thereby allowing guests to manage interrupts
+more efficiently.
+
+Having said all this, adding this interface does not preclude
+any guest from continuing to use the sysino as a intr_vector
+table index. Also using the interface is completely optional
+and a guest can choose not to use it ..
+
+I hope this helps.
+
+Thanks
+-Narayan
+
+
+> Thanks,
+> Girish
+> 
+> 
+> On 02/06/06 18:32, Hitendra Zhangada wrote:
+> 
+>>I am sponsoring this fast-track for Narayan Venkat.  It defines
+>>two sun4v APIs for delivering guest specified cookies in the second
+>>and third words of the dev_mondo payload.
+>>
+>>The timer for this case is set for a week from today,
+>>February 13th, 2006.
+>>
+>>The material is copied into the case directory,
+>>
+>>http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/074/materials/intr-cookie-1pager.txt
+>>http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/074/materials/intr-cookie-api.txt
+>>
+>>One-pager is attached for your convenience.
+>>
+>>
+>>Thanks.
+>>
+>>
+>>
+>>  
+>>
+>>------------------------------------------------------------------------
+>>
+>>
+>>1. Introduction
+>>   1.1. Project/Component Working Name:
+>>	sun4v interrupt cookies
+>>
+>>   1.2. Name of Document Author/Supplier:
+>>	Narayan.Venkat@sun.com
+>>
+>>   1.3. Date of This Document:
+>>        Mon Feb  6 18:23:46 PST 2006
+>>
+>>   1.4. Name of Major Document Customer(s)/Consumer(s):
+>>	1.4.1. The PAC or CPT you expect to review your project:
+>>		HS PAC
+>>
+>>	1.4.2. The ARC(s) you expect to review your project:
+>>		FWARC
+>>
+>>	1.4.3. The Director/VP who is "Sponsoring" this project:
+>>		Tony Barreca
+>>
+>>	1.4.4. The name of your business unit:
+>>		Scalable Systems Group (SSG)
+>>			(Central Engineering)
+>>
+>>   1.5. Email Aliases:
+>>    	1.5.1. Responsible Manager: David.Banman@Sun.Com
+>>    	1.5.2. Responsible Engineer: Narayan.Venkat@sun.com
+>>    	1.5.3. Marketing Manager: Neil.Sadaranganey@sun.com
+>>	1.5.4. Interest List: sun4v-iteam@sun.com
+>>
+>>2. Project Summary
+>>   2.1. Project Description:
+>>
+>>	This case is a part of the sun4v umbrella case FWARC/2005/510 and
+>>	the Logical Domains umbrella case FWARC/2005/633. The functionality
+>>	will be delivered as part of the LDoms project.
+>>
+>>	This case describes extensions to the existing sun4v interrupt
+>>	API to support delivering guest specified cookies in the
+>>	second and third words of the dev_mondo payload. It proposes 
+>>	additions to the interrupt APIs specified as part of sun4v core API
+>>	case FWARC/2005/116.
+>>	
+>>   2.2. Risks and Assumptions:
+>>
+>>	See FWARC/2005/633
+>>
+>>3. Business Summary
+>>   3.1. Problem Area:
+>>
+>>	See FWARC/2005/633
+>>
+>>   3.2. Market/Requester:
+>>
+>>	See FWARC/2005/633
+>>
+>>   3.3. Business Justification:
+>>
+>>	See FWARC/2005/633
+>>
+>>   3.4. Competitive Analysis:
+>>
+>>	See FWARC/2005/633
+>>
+>>   3.5. Opportunity Window/Exposure:
+>>
+>>	See FWARC/2005/633
+>>
+>>   3.6. How will you know when you are done?:
+>>
+>>	See FWARC/2005/633
+>>
+>>4. Technical Description:
+>>
+>>   4.1 Overview
+>>
+>>	In current sun4v systems, when a dev_mondo trap is delivered to a guest
+>>	by the HV, an entry is added to the guest's dev_mondo queue. Currently 
+>>	each dev_mondo queue entry contains a system interrupt number in the 
+>>	first 64-bit word; (bytes 0 through 7) of the dev_mondo packet. This 
+>>	system interrupt number is obtained by making a call to the 
+>>	INTR_DEVINO2SYSINO API. The sysino is often used to index into a 
+>>	fixed-size interrupt table to obtain the PIL, interrupt handler and 
+>>	arguments. In addition to the interrupt number in the first word,
+>>	if the second and third word of the entry contained an arbitrary guest
+>>	defined values, call it interrupt cookies or a function pointer and 
+>>	argument, the guest can process the interrupt in a more efficient way.
+>>	This document describes an extension to the existing interrupt 
+>>	Hypervisor API to support this functionality.
+>>
+>>	The dev_mondo handler in a guest can be coded to handle both the 
+>>	interrupt number and interrupt cookies. The cookies may not be present
+>>	in the second and third word, but if present the guest has a means to 
+>>	expedite the interrupt handling.	
+>>	
+>>    4.2 Imported Interfaces :
+>>
+>>      Interface              Classification     Comments
+>>      =======================================================================
+>>
+>>      sun4v core API            Sun Private     Core APIs defined by
+>>                                                FWARC/2005/116
+>>
+>>
+>>    4.3 Exported Interfaces:
+>>
+>>      Interface               Classification     Comments
+>>      ========================================================================
+>>
+>>      INTR_GET_COOKIE           Sun Private     Trap 0x80 function number 0xa7
+>>      INTR_SET_COOKIE           Sun Private     Trap 0x80 function number 0xa8
+>>
+>>
+>>5. Reference Documents:
+>>	
+>>	The updated sun4v API specification detailing the new APIs is provided.
+>>
+>>6. Resources and Schedule:
+>>   6.1. Projected Availability:
+>>	
+>>	See FWARC/2005/633
+>>
+>>   6.2. Cost of Effort:
+>>
+>>	See FWARC/2005/633
+>>
+>>   6.3. Cost of Capital Resources:
+>>
+>>	Capital resources are subsumed as part of overall product development.
+>>
+>>   6.4. Product Approval Committee requested information:
+>>   	6.4.1. Consolidation Name:
+>>		Delivery of firmware will be platform teams
+>>		Delivery of sun4v OS will be platform teams (ON) 
+>>		
+>>   	6.4.2. Contributing OpCo/BU/Division Name:
+>>		
+>>		Scalable Systems Group
+>>		
+>>	6.4.3. Type of PAC Review and Approval expected:
+>>		Standard
+>>
+>>        6.4.4. Project Boundary Conditions:
+>>		N/A
+>>
+>>	6.4.5. Is this a necessary project for OEM agreements:
+>>		No.
+>>
+>>	6.4.6. Notes/Dependencies:
+>>		SUN SPARC CPU specification
+>>
+>>	6.4.7. Target RTI Date/Release:
+>>	        N/A - Not a separate deliverable.
+>>
+>>	6.4.8. Target Code Design Review Date:
+>>		Q1CY06 for Niagara-I version 1.0
+>>
+>>	6.4.9. Update approval addition:
+>>	        N/A
+>>
+>>   6.5. ARC review type:
+>>		Full Review
+>>
+>>7. Prototype Availability: 
+>>   7.1. Prototype Availability:
+>>	Q1CY06
+>>
+>>   7.2. Prototype Cost:
+>>	Done using existing resources.
+>>
+>>
+>>
+>>
+>>  
+>>
+> 
+
+
+From sacadmin Wed Feb  8 23:28:26 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k197SQIQ012856
+	for <fwarc@sac.eng.sun.com>; Wed, 8 Feb 2006 23:28:26 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k197SPC09200;
+	Wed, 8 Feb 2006 23:28:25 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IUE0060FSR94500@brm-avmta-1.central.sun.com>; Thu,
+ 09 Feb 2006 00:28:21 -0700 (MST)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IUE00ILLSR8JTB0@brm-avmta-1.central.sun.com>; Thu,
+ 09 Feb 2006 00:28:20 -0700 (MST)
+Received: from d1-sfbay-03.sun.com ([192.18.39.113])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k197SKVs013574; Wed,
+ 08 Feb 2006 23:28:20 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-03.sun.com by d1-sfbay-03.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IUE00101SR6RM00@d1-sfbay-03.sun.com>
+ (original mail from Girish.Goyal@Sun.COM); Wed,
+ 08 Feb 2006 23:28:19 -0800 (PST)
+Received: from [129.150.20.149] by d1-sfbay-03.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IUE00GSMSR0GG40@d1-sfbay-03.sun.com>; Wed,
+ 08 Feb 2006 23:28:18 -0800 (PST)
+Date: Wed, 08 Feb 2006 23:28:11 -0800
+From: Girish Goyal <Girish.Goyal@Sun.COM>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <43EAC82A.7010607@sun.com>
+Sender: Girish.Goyal@Sun.COM
+To: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+   Firmware Arch <fwarc@Sun.COM>, Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>,
+   Eric Sharakan <Eric.Sharakan@Sun.COM>
+Message-id: <43EAEF0B.5060402@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <43E806BB.3040704@Sun.COM> <43EAB495.7010306@sun.com>
+ <43EAC82A.7010607@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.3)
+ Gecko/20040910
+Status: RO
+Content-Length: 2829
+
+On 2/8/2006 8:42 PM, Narayan Venkat wrote:
+
+> Girish Goyal wrote:
+>
+>> Does the hypervisor treat the additional arguments (interrupt
+>> cookies) as opaque data?  If so, why is hypervisor being asked
+>> to track guest specific state here? What impact does this
+>> have on a guest migration?
+>
+>
+> That is correct. The arguments are treated as opaque data. Since
+> the arguments will be used only when specified, at the time
+> of migration, the values would be cleared making the guest
+> to fallback to default approach of using only the sysino.
+>
+>>
+>> Overall, I see no reason why this state can't be kept track
+>> within the guest (such as intr_vector table in solaris) and
+>> easily obtained in an efficient manner. Can someone provide
+>> additional information to indicate why this interface is
+>> needed.
+>>
+>
+> Having the sysino as the only approach limits a guest to
+> always looking up an intr_vector table. This also limits the
+> number of unique sysinos the HV can generate to the size of
+> Solaris intr_vector table. 
+
+This case does not increase the unique number of sysino or provide
+an alternative to sysino, hence it does not address above concerns.
+Also, a guest is not limited to using intr_table. That seems to be the
+current implementation in solaris.
+
+> The ino essentially is an index and
+> nothing more than that. Having a cookie provides guests the
+> opportunity for an additional level of indirection.
+
+Which can be done at the guest level as well without having
+the hypervisor to keep that state. Note that registering opaque
+interrupt cookies with the hypervisor requires a guest to reregister
+those cookies after a migration. Hence, migration is not fully
+transparent.
+
+> It is
+> not necessary that the HV triggered dev_mondo has to always
+> map directly to a intr_vector table index. The cookie enables
+> decoupling the dev_mondo sysino from a guest intr_vector
+> table index and thereby allowing guests to manage interrupts
+> more efficiently.
+
+What do you mean by manage interrupts more efficiently here?
+Are you talking about performance or space requirements?
+How much savings are we talking about here between hypervisor
+keeping this state as oppsoed to the guest?
+
+>
+> Having said all this, adding this interface does not preclude
+> any guest from continuing to use the sysino as a intr_vector
+> table index. Also using the interface is completely optional
+> and a guest can choose not to use it ..
+>
+Since this interface is optional and has no impact on sysino space,
+it does not address the issues/concerns you raised above. It's
+simply moving some guest state to the hypervisor, which can
+easily be handled at the guest level to start with.
+
+In past, goal has been to keep the hypervisor simple and not
+add any unnecessary state, especially if a guest can easily do
+the same.
+
+Thanks,
+Girish
+
+
+From sacadmin Thu Feb  9 07:09:14 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k19F9DIQ022537
+	for <fwarc@sac.eng.Sun.COM>; Thu, 9 Feb 2006 07:09:14 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k19F9BT07627;
+	Thu, 9 Feb 2006 08:09:11 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IUF00J01E392F00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 09 Feb 2006 07:09:09 -0800 (PST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IUF00DO7E39II20@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 09 Feb 2006 07:09:09 -0800 (PST)
+Received: from fe-amer-02.sun.com ([192.18.108.176])
+	by brmea-mail-1.sun.com (8.12.10/8.12.9) with ESMTP id k19F98SD012797; Thu,
+ 09 Feb 2006 08:09:08 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IUF00701DLSZL00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Thu,
+ 09 Feb 2006 08:09:08 -0700 (MST)
+Received: from [192.168.1.103] ([72.70.103.122])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep  9
+ 2005)) with ESMTPSA id <0IUF0002ZE36WPG1@mail-amer.sun.com>; Thu,
+ 09 Feb 2006 08:09:08 -0700 (MST)
+Date: Thu, 09 Feb 2006 10:09:08 -0500
+From: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <43EAEF0B.5060402@sun.com>
+Sender: Narayan.Venkat@Sun.COM
+To: Girish Goyal <Girish.Goyal@Sun.COM>
+Cc: Narayan Venkat <Narayan.Venkat@Sun.COM>,
+   Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+   Firmware Arch <fwarc@Sun.COM>, Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>,
+   Eric Sharakan <Eric.Sharakan@Sun.COM>
+Message-id: <A1CF88F1-E60F-4ABF-A73A-0A2FE35D6659@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.746.2)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <43E806BB.3040704@Sun.COM> <43EAB495.7010306@sun.com>
+ <43EAC82A.7010607@sun.com> <43EAEF0B.5060402@sun.com>
+Status: RO
+Content-Length: 4717
+
+
+On Feb 9, 2006, at 2:28 AM, Girish Goyal wrote:
+
+> On 2/8/2006 8:42 PM, Narayan Venkat wrote:
+>
+>> Girish Goyal wrote:
+>>
+>>> Does the hypervisor treat the additional arguments (interrupt
+>>> cookies) as opaque data?  If so, why is hypervisor being asked
+>>> to track guest specific state here? What impact does this
+>>> have on a guest migration?
+>>
+>>
+>> That is correct. The arguments are treated as opaque data. Since
+>> the arguments will be used only when specified, at the time
+>> of migration, the values would be cleared making the guest
+>> to fallback to default approach of using only the sysino.
+>>
+>>>
+>>> Overall, I see no reason why this state can't be kept track
+>>> within the guest (such as intr_vector table in solaris) and
+>>> easily obtained in an efficient manner. Can someone provide
+>>> additional information to indicate why this interface is
+>>> needed.
+>>>
+>>
+>> Having the sysino as the only approach limits a guest to
+>> always looking up an intr_vector table. This also limits the
+>> number of unique sysinos the HV can generate to the size of
+>> Solaris intr_vector table.
+>
+> This case does not increase the unique number of sysino or provide
+> an alternative to sysino, hence it does not address above concerns.
+> Also, a guest is not limited to using intr_table. That seems to be the
+> current implementation in solaris.
+
+I dont see why you say it does not provide an alternative to
+the sysino. We are providing an extension that allows guests to
+not use sysino as an index but instead access the table entry
+directly. Increasing or reducing the number of sysinos is beyond
+the scope of this case and also up to a specific platform Hypervisor
+implementation. Having said that, please see explanation below.
+
+>
+>> The ino essentially is an index and
+>> nothing more than that. Having a cookie provides guests the
+>> opportunity for an additional level of indirection.
+>
+> Which can be done at the guest level as well without having
+> the hypervisor to keep that state. Note that registering opaque
+> interrupt cookies with the hypervisor requires a guest to reregister
+> those cookies after a migration. Hence, migration is not fully
+> transparent.
+
+The HV already keeps a number of guest states that you have to
+anyhow reregister following migration. I don't see why having this
+makes it any more restrictive.
+
+>
+>> It is
+>> not necessary that the HV triggered dev_mondo has to always
+>> map directly to a intr_vector table index. The cookie enables
+>> decoupling the dev_mondo sysino from a guest intr_vector
+>> table index and thereby allowing guests to manage interrupts
+>> more efficiently.
+>
+> What do you mean by manage interrupts more efficiently here?
+> Are you talking about performance or space requirements?
+> How much savings are we talking about here between hypervisor
+> keeping this state as oppsoed to the guest?
+
+Primarily I am talking about the need to do multi levels of
+indirection in a guest. If the guest does not specify a cookie,
+it will need to use the interrupt to index into a table to obtain
+any interrupt properties. In current implementations, since
+sysinos map directly to a Solaris INO it is an direct index into
+the Solaris intr_vector table this is not a big issue. That itself
+could benefit because you can specify the address of the intr_vector
+table entry as one of the cookies. But it is not necessary that all
+guests might support the same number of INOs as the Hypervisor.
+It also does not make sense to restrict the Hypervisor's INO
+space to only deliver the number of interrupts a guest supports.
+(This is what the current implementation in Ontario does). Guests
+under these circumstances will have to provide a level of indirection
+to map INOs generated by the HV to a smaller INO space it supports.
+The cookie will provide a fast path to an entry into a interrupt
+map table without need of doing a slow multilevel table lookup.
+Since all this lookup and mapping will need to be done in the interrupt
+code path I dont see why that is not considered to be beneficial.
+
+>
+>>
+>> Having said all this, adding this interface does not preclude
+>> any guest from continuing to use the sysino as a intr_vector
+>> table index. Also using the interface is completely optional
+>> and a guest can choose not to use it ..
+>>
+> Since this interface is optional and has no impact on sysino space,
+> it does not address the issues/concerns you raised above. It's
+> simply moving some guest state to the hypervisor, which can
+> easily be handled at the guest level to start with.
+>
+> In past, goal has been to keep the hypervisor simple and not
+> add any unnecessary state, especially if a guest can easily do
+> the same.
+
+See comments above ..
+
+-Narayan
+
+
+From sacadmin Thu Feb  9 09:29:04 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k19HT3IQ026151
+	for <fwarc@sac.eng.sun.com>; Thu, 9 Feb 2006 09:29:03 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k19HT2B29463
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Thu, 9 Feb 2006 09:29:02 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IUF00903KKCTT00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 09 Feb 2006 10:29:00 -0700 (MST)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IUF001CXKKCTOE0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 09 Feb 2006 10:29:00 -0700 (MST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k19HSxLn028142; Thu, 09 Feb 2006 09:28:59 -0800 (PST)
+Received: from [127.0.0.1] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k19HSwJi002925;
+ Thu, 09 Feb 2006 09:28:58 -0800 (PST)
+Date: Thu, 09 Feb 2006 09:28:57 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+To: Girish Goyal <Girish.Goyal@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>,
+   Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+   Firmware Arch <fwarc@sun.com>, Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+   Eric Sharakan <Eric.Sharakan@sun.com>
+Message-id: <43EB7BD9.9020706@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+User-Agent: Thunderbird 1.5 (Windows/20051201)
+Status: RO
+Content-Length: 1113
+
+
+Today, there is support in dev-mondo
+for 3 user defined words to be sent
+with the 8 word mondo record (on rock,
+the support is in hardware). On other
+processors where the support is not directly
+in the hardware, the hv can provide the
+additional data in each dev-mondo record.
+
+We only use one of the three words.
+The first word. It contains sysino.
+
+The only thing this case does is it allows
+the guest to specify the contents of the
+next two words that will be delivered in
+each dev-mondo record.
+
+There is no attachment to intr_table or
+anything else in this case. What the guest
+does with this data or even if it uses it
+at all is up to the guest operating system.
+
+If you have questions about the guest OS and
+what it's going to do with these extra two
+arguments, you should be talking to the
+people doing the guest implementation
+off of the fwarc alias.
+
+As far as interfaces go, we only care here
+that the interface is clean and correct.
+As far as I can tell, it is.
+
+If you have any additional questions about
+the interface itself as related to fwarc
+approval or discussion, please let us know.
+
+-David
+
+
+From sacadmin Thu Feb  9 14:57:14 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k19MvEIQ005554
+	for <fwarc@sac.eng.sun.com>; Thu, 9 Feb 2006 14:57:14 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k19MvDm08353;
+	Thu, 9 Feb 2006 14:57:13 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IUF00I03ZRC2000@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 09 Feb 2006 14:57:12 -0800 (PST)
+Received: from nwkes-gis-mail-1.sun.com ([10.4.134.5])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IUF00H1QZRC6010@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 09 Feb 2006 14:57:12 -0800 (PST)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwkes-gis-mail-1.sun.com (8.12.9/8.12.9) with ESMTP id k19MvCIU029105; Thu,
+ 09 Feb 2006 14:57:12 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IUF00101ZGL5600@d1-sfbay-10.sun.com>
+ (original mail from Girish.Goyal@Sun.COM); Thu,
+ 09 Feb 2006 14:57:12 -0800 (PST)
+Received: from sun.com ([129.146.96.105])
+ by d1-sfbay-10.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0IUF00J87ZRBY170@d1-sfbay-10.sun.com>; Thu,
+ 09 Feb 2006 14:57:12 -0800 (PST)
+Date: Thu, 09 Feb 2006 14:54:46 -0800
+From: Girish Goyal <Girish.Goyal@Sun.COM>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <43EB7BD9.9020706@sun.com>
+Sender: Girish.Goyal@Sun.COM
+To: Narayan Venkat <Narayan.Venkat@Sun.COM>,
+   Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>,
+   Eric Sharakan <Eric.Sharakan@Sun.COM>
+Message-id: <43EBC836.5060803@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <43EB7BD9.9020706@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 1617
+
+I have the following questions/comments on this FWARC case:
+
+ 1. This case assumes that the second and third
+    64-bit words in the dev_mondo payload are zero.
+    That assumption is wrong in the case of a device
+    error packet being delivered via dev_mondo queue.
+
+    Fire/PCIE error interrupt packet uses all eight
+    64-bit words, passing unique device handle in the
+    second word and %stick value in the third word.
+  
+ 2. This case needs to spell out if opaque interrupt
+    cookies can be associated with a "devino" where
+    error packet is delivered via dev_mondo queue.
+    If yes, which value will be delivered in second
+    and third words of the error packet via dev_mondo
+    queue.
+
+ 3. How will a guest distinguish between an error
+    packet delivered via dev_mondo queue from the
+    interrupt delivered with opaque cookies?
+
+ 4. Can a device choose to support interrupt cookies
+    for a subset of "devino" associated with a device?
+    If so, the description of the EWOULDBLOCK error
+    should be rephrased as it currently says "(virtual)
+    device does not support cookies".
+
+ 5. Since interrupt cookies may be uncached/discarded
+    by the hypervisor, can a programming note be added
+    here as to under what circumstances that will
+    happen, such as guest migration.
+
+ 6. Future hardware support for passing up to 3 user
+    defined words as part of dev_mondo seems to be
+    one of the key reason for adding only two 64-bits
+    opaque data here (as opposed to seven as allowed
+    by the dev_mondo). It'll be desirable to add this
+    information here.
+         
+Regards,
+Girish
+
+
+
+From sacadmin Thu Feb  9 15:15:31 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k19NFUIQ006215
+	for <fwarc@sac.eng.Sun.COM>; Thu, 9 Feb 2006 15:15:31 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k19NFM2W010266;
+	Fri, 10 Feb 2006 07:15:28 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IUG00L0D0LO9000@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 09 Feb 2006 15:15:24 -0800 (PST)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IUG00L480LODIB0@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 09 Feb 2006 15:15:24 -0800 (PST)
+Received: from d1-sfbay-03.sun.com ([192.18.39.113])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k19NFOVs025177; Thu,
+ 09 Feb 2006 15:15:24 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-03.sun.com by d1-sfbay-03.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IUF00F01Y057O00@d1-sfbay-03.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Thu,
+ 09 Feb 2006 15:15:24 -0800 (PST)
+Received: from [129.153.85.39] by d1-sfbay-03.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IUG00FTW0LMR100@d1-sfbay-03.sun.com>; Thu,
+ 09 Feb 2006 15:15:24 -0800 (PST)
+Date: Thu, 09 Feb 2006 15:15:22 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <43EBC836.5060803@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Girish Goyal <Girish.Goyal@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+   Eric Sharakan <Eric.Sharakan@sun.com>
+Message-id: <43EBCD0A.4090204@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <43EB7BD9.9020706@sun.com> <43EBC836.5060803@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 3221
+
+Girish Goyal wrote On 02/09/06 14:54,:
+> I have the following questions/comments on this FWARC case:
+> 
+>  1. This case assumes that the second and third
+>     64-bit words in the dev_mondo payload are zero.
+>     That assumption is wrong in the case of a device
+>     error packet being delivered via dev_mondo queue.
+> 
+>     Fire/PCIE error interrupt packet uses all eight
+>     64-bit words, passing unique device handle in the
+>     second word and %stick value in the third word.
+
+I don't believe the Fire/PCIE error interrupt packet usage
+of the the error packet is defined in past.  In other words,
+what to expect in the packets is not defined.  May be this
+case should establish the Fire/PCIE error packet format
+and describe how cookies would be passed for both normal
+interrupts and error interrupts.
+
+>   
+>  2. This case needs to spell out if opaque interrupt
+>     cookies can be associated with a "devino" where
+>     error packet is delivered via dev_mondo queue.
+>     If yes, which value will be delivered in second
+>     and third words of the error packet via dev_mondo
+>     queue.
+
+I agree.
+
+> 
+>  3. How will a guest distinguish between an error
+>     packet delivered via dev_mondo queue from the
+>     interrupt delivered with opaque cookies?
+
+Yes, that needs to be defined if we were to use two packets
+with two different values (one for normal interrupt and other
+for error interrupts).
+
+> 
+>  4. Can a device choose to support interrupt cookies
+>     for a subset of "devino" associated with a device?
+>     If so, the description of the EWOULDBLOCK error
+>     should be rephrased as it currently says "(virtual)
+>     device does not support cookies".
+> 
+>  5. Since interrupt cookies may be uncached/discarded
+>     by the hypervisor, can a programming note be added
+>     here as to under what circumstances that will
+>     happen, such as guest migration.
+
+A similar text already exists in the specification.  It says,
+HV may return zero in these fields.  I don't think it makes
+sense to list all sort of implementation implication in
+the specification.  In other words, IMO this not is not needed.
+
+> 
+>  6. Future hardware support for passing up to 3 user
+>     defined words as part of dev_mondo seems to be
+>     one of the key reason for adding only two 64-bits
+>     opaque data here (as opposed to seven as allowed
+>     by the dev_mondo). It'll be desirable to add this
+>     information here.
+
+I don't think #6 is relevant.  I don't think this case defines
+two words because some HW may support it.  It is HV implementation
+which decides where it stores the values, in HW or in memory.
+Thus, I don't think we need to mention anything about #6.
+
+
+Thanks for raising this and other questions.  I will work with
+Narayan to make sure your questions and suggestions are followed
+up.  In some cases we may decide to not accept your suggestions
+but at least we will respond to it one way or other (I already
+did for couple of your suggestions above).
+
+
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Thu Feb  9 21:24:11 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1A5OAIQ019827
+	for <fwarc@sac.eng.Sun.COM>; Thu, 9 Feb 2006 21:24:10 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k1A5O2Q0006851
+	for <@sunmail3.sfbay.sun.com:fwarc@sun.com>; Fri, 10 Feb 2006 13:24:09 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IUG00B05HO6UJ00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 09 Feb 2006 21:24:06 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IUG00HN6HO55ZC0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 09 Feb 2006 21:24:05 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k1A5O5Te003798; Thu, 09 Feb 2006 21:24:05 -0800 (PST)
+Received: from [127.0.0.1] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k1A5O1Ji078588;
+ Thu, 09 Feb 2006 21:24:02 -0800 (PST)
+Date: Thu, 09 Feb 2006 21:24:00 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+To: Girish Goyal <Girish.Goyal@sun.com>
+Cc: Narayan Venkat <narayan.venkat@sun.com>,
+   Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+   Firmware Arch <fwarc@sun.com>, Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+   Eric Sharakan <Eric.Sharakan@sun.com>
+Message-id: <43EC2370.2080706@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+User-Agent: Thunderbird 1.5 (Windows/20051201)
+Status: RO
+Content-Length: 1855
+
+
+Please put this case into "waiting need spec".
+(not quite derailed, but I want to discuss
+some of this with Ash, etc.)
+
+-David
+
+
+Girish Goyal wrote:
+> I have the following questions/comments on this FWARC case:
+> 
+>  1. This case assumes that the second and third
+>     64-bit words in the dev_mondo payload are zero.
+>     That assumption is wrong in the case of a device
+>     error packet being delivered via dev_mondo queue.
+> 
+>     Fire/PCIE error interrupt packet uses all eight
+>     64-bit words, passing unique device handle in the
+>     second word and %stick value in the third word.
+>   
+>  2. This case needs to spell out if opaque interrupt
+>     cookies can be associated with a "devino" where
+>     error packet is delivered via dev_mondo queue.
+>     If yes, which value will be delivered in second
+>     and third words of the error packet via dev_mondo
+>     queue.
+> 
+>  3. How will a guest distinguish between an error
+>     packet delivered via dev_mondo queue from the
+>     interrupt delivered with opaque cookies?
+> 
+>  4. Can a device choose to support interrupt cookies
+>     for a subset of "devino" associated with a device?
+>     If so, the description of the EWOULDBLOCK error
+>     should be rephrased as it currently says "(virtual)
+>     device does not support cookies".
+> 
+>  5. Since interrupt cookies may be uncached/discarded
+>     by the hypervisor, can a programming note be added
+>     here as to under what circumstances that will
+>     happen, such as guest migration.
+> 
+>  6. Future hardware support for passing up to 3 user
+>     defined words as part of dev_mondo seems to be
+>     one of the key reason for adding only two 64-bits
+>     opaque data here (as opposed to seven as allowed
+>     by the dev_mondo). It'll be desirable to add this
+>     information here.
+>          
+> Regards,
+> Girish
+> 
+> 
+
+From sacadmin Fri Feb 10 07:46:04 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1AFk4IQ002660
+	for <fwarc@sac.eng.sun.com>; Fri, 10 Feb 2006 07:46:04 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k1AFk4B23820
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Fri, 10 Feb 2006 07:46:04 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IUH00215AGO7800@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 10 Feb 2006 08:46:01 -0700 (MST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IUH0024MAGN4600@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 10 Feb 2006 08:46:00 -0700 (MST)
+Received: from phys-mpk-1 (phys-mpk-1.SFBay.Sun.COM [129.146.11.81])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k1AFjxTe007594	for <fwarc@sun.com>; Fri,
+ 10 Feb 2006 07:45:59 -0800 (PST)
+Received: from conversion-daemon.mpk-mail1.sfbay.sun.com by
+ mpk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IUH00601AETYN@mpk-mail1.sfbay.sun.com>
+ (original mail from sherri.shieh@sun.com) for fwarc@sun.com; Fri,
+ 10 Feb 2006 07:45:59 -0800 (PST)
+Received: from [129.150.24.164]
+ (vpn-129-150-24-164.SFBay.Sun.COM [129.150.24.164]) by mpk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTP id <0IUH002OPAGM9T@mpk-mail1.sfbay.sun.com>; Fri,
+ 10 Feb 2006 07:45:59 -0800 (PST)
+Date: Fri, 10 Feb 2006 07:46:08 -0800
+From: Sherri Shieh <sherri.shieh@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <43EC2370.2080706@sun.com>
+To: David Kahn <David.Kahn@sun.com>
+Cc: Girish Goyal <Girish.Goyal@sun.com>,
+   Narayan Venkat <Narayan.Venkat@sun.com>,
+   Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+   Firmware Arch <fwarc@sun.com>, Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+   Eric Sharakan <Eric.Sharakan@sun.com>
+Reply-to: sherri.shieh@sun.com
+Message-id: <43ECB540.2050900@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <43EC2370.2080706@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 2621
+
+OK, I updated the IAM file.
+
+- Sherri
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sherri Shieh
+Program Manager, Systems Architecture
+Sun Microsystems, Inc.
+Phone: 650-786-5245/x85245
+Email: Sherri.Shieh@sun.com    
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+David Kahn wrote:
+
+>
+> Please put this case into "waiting need spec".
+> (not quite derailed, but I want to discuss
+> some of this with Ash, etc.)
+>
+> -David
+>
+>
+> Girish Goyal wrote:
+>
+>> I have the following questions/comments on this FWARC case:
+>>
+>>  1. This case assumes that the second and third
+>>     64-bit words in the dev_mondo payload are zero.
+>>     That assumption is wrong in the case of a device
+>>     error packet being delivered via dev_mondo queue.
+>>
+>>     Fire/PCIE error interrupt packet uses all eight
+>>     64-bit words, passing unique device handle in the
+>>     second word and %stick value in the third word.
+>>    2. This case needs to spell out if opaque interrupt
+>>     cookies can be associated with a "devino" where
+>>     error packet is delivered via dev_mondo queue.
+>>     If yes, which value will be delivered in second
+>>     and third words of the error packet via dev_mondo
+>>     queue.
+>>
+>>  3. How will a guest distinguish between an error
+>>     packet delivered via dev_mondo queue from the
+>>     interrupt delivered with opaque cookies?
+>>
+>>  4. Can a device choose to support interrupt cookies
+>>     for a subset of "devino" associated with a device?
+>>     If so, the description of the EWOULDBLOCK error
+>>     should be rephrased as it currently says "(virtual)
+>>     device does not support cookies".
+>>
+>>  5. Since interrupt cookies may be uncached/discarded
+>>     by the hypervisor, can a programming note be added
+>>     here as to under what circumstances that will
+>>     happen, such as guest migration.
+>>
+>>  6. Future hardware support for passing up to 3 user
+>>     defined words as part of dev_mondo seems to be
+>>     one of the key reason for adding only two 64-bits
+>>     opaque data here (as opposed to seven as allowed
+>>     by the dev_mondo). It'll be desirable to add this
+>>     information here.
+>>          Regards,
+>> Girish
+>>
+>>
+
+From sacadmin Tue Apr 25 17:44:48 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k3Q0ilIQ007919
+	for <fwarc@sac.eng.sun.com>; Tue, 25 Apr 2006 17:44:47 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k3Q0il018194;
+	Tue, 25 Apr 2006 17:44:47 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYB008030QMXO00@brm-avmta-1.central.sun.com>; Tue,
+ 25 Apr 2006 18:44:46 -0600 (MDT)
+Received: from nwkes-gis-mail-1.sun.com ([10.4.134.5])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYB008XY0QMIW00@brm-avmta-1.central.sun.com>; Tue,
+ 25 Apr 2006 18:44:46 -0600 (MDT)
+Received: from d1-sfbay-01.sun.com (d1-sfbay-01 [192.18.39.111])
+	by nwkes-gis-mail-1.sun.com (8.12.9/8.12.9) with ESMTP id k3Q0ij6O011242; Tue,
+ 25 Apr 2006 17:44:45 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-01.sun.com by d1-sfbay-01.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IYA00L01ZWJOK00@d1-sfbay-01.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Tue,
+ 25 Apr 2006 17:44:45 -0700 (PDT)
+Received: from [129.153.85.10] by d1-sfbay-01.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IYB00MKP0QL2P00@d1-sfbay-01.sun.com>; Tue,
+ 25 Apr 2006 17:44:45 -0700 (PDT)
+Date: Tue, 25 Apr 2006 17:44:45 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: 2006/074 - fast-track - sun4v interrupt cookies
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>, LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <444EC27D.1030608@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 621
+
+The latest specification is available for this case and so
+I am restarting the timer for this case.  The new timer is
+a week from today, May 2, 2006.
+
+The specification is copied in the materials directory.
+An interface table for the interfaces will be provided
+in couple of days.
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/074/materials/vintr-cookie-support.txt
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Fri Apr 28 15:06:44 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k3SM6iIQ008216
+	for <fwarc@sac.eng.sun.com>; Fri, 28 Apr 2006 15:06:44 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k3SM6hb19998;
+	Fri, 28 Apr 2006 15:06:43 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYG0080DDF6R300@brm-avmta-1.central.sun.com>; Fri,
+ 28 Apr 2006 16:06:42 -0600 (MDT)
+Received: from nwkes-gis-mail-1.sun.com ([10.4.134.5])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYG00KIEDF69UC0@brm-avmta-1.central.sun.com>; Fri,
+ 28 Apr 2006 16:06:42 -0600 (MDT)
+Received: from d1-sfbay-03.sun.com ([192.18.39.113])
+	by nwkes-gis-mail-1.sun.com (8.12.9/8.12.9) with ESMTP id k3SM6f6O022513; Fri,
+ 28 Apr 2006 15:06:41 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-03.sun.com by d1-sfbay-03.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IYG00C01CQBV400@d1-sfbay-03.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Fri,
+ 28 Apr 2006 15:06:41 -0700 (PDT)
+Received: from [129.150.35.10] by d1-sfbay-03.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IYG00IELDF48C50@d1-sfbay-03.sun.com>; Fri,
+ 28 Apr 2006 15:06:41 -0700 (PDT)
+Date: Fri, 28 Apr 2006 15:06:41 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <444EC27D.1030608@Sun.COM>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <445291F1.4010406@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <444EC27D.1030608@Sun.COM>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 5114
+
+Hitendra Zhangada wrote:
+
+> The latest specification is available for this case and so
+> I am restarting the timer for this case.  The new timer is
+> a week from today, May 2, 2006.
+> 
+> The specification is copied in the materials directory.
+> An interface table for the interfaces will be provided
+> in couple of days.
+> 
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/074/materials/vintr-cookie-support.txt 
+
+I started to work on the interface table which made me look at the
+case which defined the intr_* APIs (FWARC/2005/116).  One difference
+is that the names of the intr_* APIs did not include the underscore
+between GET and ENABLE, SET and ENABLE etc.  I suggest we stay
+consistent in the naming convention.  What this means is that
+the API names change as follows.
+
+	VINTR_GET_COOKIE	==>>	VINTR_GETCOOKIE
+	VINTR_SET_COOKIE	==>>	VINTR_SETCOOKIE
+	VINTR_GET_ENABLED	==>>	VINTR_GETENABLED
+	VINTR_SET_ENABLED	==>>	VINTR_SETENABLED
+	VINTR_GET_STATE		==>>	VINTR_GETSTATE
+	VINTR_SET_STATE		==>>	VINTR_SETSTATE
+	VINTR_GET_TARGET	==>>	VINTR_GETTARGET
+	VINTR_SET_TARGET	==>>	VINTR_SETTARGET
+
+If there is no objection from the project team then I would like
+to see the API names changed.
+
+Further, the section 3.2.3 defines the new APIs in a general way.
+I suggest we flush out the details for completeness.  I propose
+following addition to the specification.  Again, if project team
+is fine with these changes then we can update the specification
+accordingly (I can help with this).
+
+Note that, none of these changes are substantial and hence I do
+not see need to change the timer (May 2nd).  However the project team
+must respond to the issues I am raising in this mail for this case to
+get approved.  If anyone else needs more time then please let me know.
+
+
+Replace section 3.2.3 and add sections as below.
+
+3.2.3 intr_getenabled
+
+         trap           #FAST_TRAP
+         function#      VINTR_GETENABLED
+         arg0           devhandle
+         arg1           devino
+
+         ret0           status
+         ret1           intr_enabled
+	
+	Returns state in intr_enabled for the interrupt defined by
+         devino. Return values are: INTR_ENABLED or INTR_DISABLED
+	
+3.2.3.1 Errors
+
+	EINVAL		Invalid devhandle or devino
+	ENOTSUPPORTED	(Virtual) device does not support the interface
+
+	
+3.2.4 intr_setenabled
+
+         trap            #FAST_TRAP
+         function#       VINTR_SETENABLED
+         arg0            devhandle
+         arg1            devino
+         arg2            intr_enabled
+
+         ret0            status
+
+	Sets the 'enabled' state of the interrupt sysino legal values
+         for intr_enabled are: INTR_ENABLED or INTR_DISABLED
+	
+3.2.4.1 Errors
+
+	EINVAL		Invalid devhandle or devino
+	ENOTSUPPORTED	(Virtual) device does not support the interface
+
+3.2.5 intr_getstate
+
+         trap           #FAST_TRAP
+         function#      VINTR_GETSTATE
+         arg0           devhandle
+         arg1           devino
+
+         ret0           status
+         ret1           intr_state
+	
+	Returns the current state of the interrupt given by the devino
+         argument.
+	
+3.2.5.1 Errors
+
+	EINVAL		Invalid devhandle or devino
+	ENOTSUPPORTED	(Virtual) device does not support the interface
+
+	
+3.2.6 intr_setstate
+
+         trap            #FAST_TRAP
+         function#       VINTR_SETSTATE
+         arg0            devhandle
+         arg1            devino
+         arg2            intr_state
+
+         ret0            status
+
+	Sets the current state of the interrupt given by the devino
+         argument to the value given in the argument intr_state.
+
+         Note: Setting the state to INTR_IDLE clears any pending interrupt
+               for devino.
+	
+3.2.6.1 Errors
+
+	EINVAL		Invalid devhandle or devino
+	ENOTSUPPORTED	(Virtual) device does not support the interface
+
+
+3.2.7 intr_gettarget
+
+         trap           #FAST_TRAP
+         function#      VINTR_GETTARGET
+         arg0           devhandle
+         arg1           devino
+
+         ret0           status
+         ret1           cpuid
+	
+	Returns the cpuid that is the current target of the interrupt given
+         by the devino argument.
+
+         The cpuid value returned is undefined if the target has not been set
+         via vintr_settarget.
+	
+3.2.7.1 Errors
+
+	EINVAL		Invalid devhandle or devino
+	ENOTSUPPORTED	(Virtual) device does not support the interface
+
+	
+3.2.8 intr_settarget
+
+         trap            #FAST_TRAP
+         function#       VINTR_SETTARGET
+         arg0            devhandle
+         arg1            devino
+         arg2            cpuid
+
+         ret0            status
+
+	Set the target cpu for the interrupt defined by the argument devino
+         to the target cpu value defined by the argument cpuid.
+	
+3.2.8.1 Errors
+
+	EINVAL		Invalid devhandle or devino
+         ENOCPU          Invalid cpuid
+	ENOTSUPPORTED	(Virtual) device does not support the interface
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Fri Apr 28 15:36:56 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k3SMauIQ010032
+	for <fwarc@sac.eng.sun.com>; Fri, 28 Apr 2006 15:36:56 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k3SMaqK10496;
+	Fri, 28 Apr 2006 15:36:52 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IYG00H05ETCDK00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 28 Apr 2006 15:36:48 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IYG00FRHETC0I00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 28 Apr 2006 15:36:48 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k3SMaloc014443; Fri, 28 Apr 2006 15:36:48 -0700 (PDT)
+Received: from [127.0.0.1] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k3SMalZO059379;
+ Fri, 28 Apr 2006 15:36:47 -0700 (PDT)
+Date: Fri, 28 Apr 2006 15:36:54 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Message-id: <44529906.2030602@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+User-Agent: Thunderbird 1.5.0.2 (Windows/20060308)
+Status: RO
+Content-Length: 863
+
+
+
+Hitendra Zhangada wrote:
+
+
+> Further, the section 3.2.3 defines the new APIs in a general way.
+> I suggest we flush out the details for completeness.  I propose
+> following addition to the specification.
+
+I agree that each interface must be fully described. (not
+with the "same as yada except for foo" as currently written.
+
+Prior to approval, the case must deal with versioning as well.
+
+ENOTSUPPORTED describes the behavior when interfaces aren't
+present or supported, but the version of the API group needs
+to be specified as to which version supports which interfaces
+and that needs to be included in the registry.
+
+Also, if it's not obvious, it should permit guest A to use
+one set of interfaces, while guest B uses the other set of
+interfaces. (I think it's obvious, but it doesn't say that,
+so somebody else might interpret things differently.)
+
+-David
+
+
+From sacadmin Fri Apr 28 16:42:24 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k3SNgOIQ011720
+	for <fwarc@sac.eng.Sun.COM>; Fri, 28 Apr 2006 16:42:24 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k3SNgMm00707;
+	Fri, 28 Apr 2006 17:42:22 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYG00817HUJ6C00@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 28 Apr 2006 16:42:19 -0700 (PDT)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYG005DLHUHFO90@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 28 Apr 2006 16:42:17 -0700 (PDT)
+Received: from d1-sfbay-03.sun.com ([192.18.39.113])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k3SNgHgL016461; Fri,
+ 28 Apr 2006 16:42:17 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-03.sun.com by d1-sfbay-03.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IYG00H01GIXGJ00@d1-sfbay-03.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Fri,
+ 28 Apr 2006 16:42:17 -0700 (PDT)
+Received: from [129.150.32.205] by d1-sfbay-03.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IYG00IP5HUG8D60@d1-sfbay-03.sun.com>; Fri,
+ 28 Apr 2006 16:42:17 -0700 (PDT)
+Date: Fri, 28 Apr 2006 16:42:16 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <44529906.2030602@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <4452A858.9080901@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <44529906.2030602@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 1461
+
+David Kahn wrote:
+
+> 
+> 
+> Hitendra Zhangada wrote:
+> 
+> 
+>> Further, the section 3.2.3 defines the new APIs in a general way.
+>> I suggest we flush out the details for completeness.  I propose
+>> following addition to the specification.
+> 
+> 
+> I agree that each interface must be fully described. (not
+> with the "same as yada except for foo" as currently written.
+> 
+> Prior to approval, the case must deal with versioning as well.
+> 
+> ENOTSUPPORTED describes the behavior when interfaces aren't
+> present or supported, but the version of the API group needs
+> to be specified as to which version supports which interfaces
+> and that needs to be included in the registry.
+
+It is specified in the specification, section 3, 4th paragraph.
+Copy/pasted below.
+
+    The interrupt functions will be delivered as part of a new API group
+    numbered 0x2.
+
+This is sufficient, right?
+
+I will update the registry after the case gets approved.
+
+> 
+> Also, if it's not obvious, it should permit guest A to use
+> one set of interfaces, while guest B uses the other set of
+> interfaces. (I think it's obvious, but it doesn't say that,
+> so somebody else might interpret things differently.)
+
+Isn't this controlled by the API versioning?
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Fri Apr 28 22:29:22 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k3T5TMIQ017397
+	for <fwarc@sac.eng.sun.com>; Fri, 28 Apr 2006 22:29:22 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k3T5TLb03564;
+	Fri, 28 Apr 2006 22:29:21 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYG00401XWXU700@brm-avmta-1.central.sun.com>; Fri,
+ 28 Apr 2006 23:29:21 -0600 (MDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYG00CN2XWW3OD0@brm-avmta-1.central.sun.com>; Fri,
+ 28 Apr 2006 23:29:21 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k3T5TKoc015470; Fri, 28 Apr 2006 22:29:20 -0700 (PDT)
+Received: from [127.0.0.1] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k3T5TDZO069127;
+ Fri, 28 Apr 2006 22:29:16 -0700 (PDT)
+Date: Fri, 28 Apr 2006 22:29:20 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Message-id: <4452F9B0.6030205@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+User-Agent: Thunderbird 1.5.0.2 (Windows/20060308)
+Status: RO
+Content-Length: 1664
+
+
+
+Hitendra Zhangada wrote:
+
+> It is specified in the specification, section 3, 4th paragraph.
+> Copy/pasted below.
+> 
+>    The interrupt functions will be delivered as part of a new API group
+>    numbered 0x2.
+> 
+> This is sufficient, right?
+
+Not sure about the API group numbers, but yes.
+
+
+>> Also, if it's not obvious, it should permit guest A to use
+>> one set of interfaces, while guest B uses the other set of
+>> interfaces. (I think it's obvious, but it doesn't say that,
+>> so somebody else might interpret things differently.)
+> 
+> Isn't this controlled by the API versioning?
+
+It would be if the APIs were in the same group number.
+That would force the client to pick version A or B,
+and once it does that, it would get an error if tried
+to use the other version.
+
+If they are in different groups, then you have to describe
+
+- What is the behavior of the old intr APIs when the guest
+   does not negotiate a version of the new api group?
+   (They probably behave like the currently do, and calling
+   one of the new APIs probably returns ENOTSUPPORTED?)
+
+- What is the behavior of the old APIs when the guest does
+   negotiatate a version of the new API group?
+   (They probably return ENOTSUPPORTED? But what happens if I
+   already invoked the old API prior to negotiating a
+   version of the new API group? I guess it's a corner case,
+   but OBP might use the old API and then boot the client program
+   which then negotiates a version of the new API group, what
+   happens then?)
+
+I think I understand the intent here, but I'm making assumptions
+in order to get there. Let's clear all that up, if it isn't
+already covered by the materials.
+
+-David
+
+
+From sacadmin Sat Apr 29 11:25:55 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k3TIPsIQ023595
+	for <fwarc@sac.eng.Sun.COM>; Sat, 29 Apr 2006 11:25:55 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k3TIPf06008867;
+	Sun, 30 Apr 2006 02:25:53 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYH00F07XV4TQ00@brm-avmta-1.central.sun.com>; Sat,
+ 29 Apr 2006 12:25:52 -0600 (MDT)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYH00M5FXV3KFC0@brm-avmta-1.central.sun.com>; Sat,
+ 29 Apr 2006 12:25:52 -0600 (MDT)
+Received: from d1-sfbay-06.sun.com ([192.18.39.116])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k3TIPpgL001087; Sat,
+ 29 Apr 2006 11:25:51 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-06.sun.com by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IYH00K01VXD1N00@d1-sfbay-06.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Sat,
+ 29 Apr 2006 11:25:50 -0700 (PDT)
+Received: from [129.150.32.93] by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IYH00IJIXV1LO30@d1-sfbay-06.sun.com>; Sat,
+ 29 Apr 2006 11:25:50 -0700 (PDT)
+Date: Sat, 29 Apr 2006 11:25:49 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <4452F9B0.6030205@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: LDoms Internal <ldoms-internal@sun.com>
+Message-id: <4453AFAD.6060907@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <4452F9B0.6030205@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 2256
+
+David Kahn wrote:
+
+> Hitendra Zhangada wrote:
+> 
+>> It is specified in the specification, section 3, 4th paragraph.
+>> Copy/pasted below.
+>>
+>>    The interrupt functions will be delivered as part of a new API group
+>>    numbered 0x2.
+>>
+>> This is sufficient, right?
+> 
+> 
+> Not sure about the API group numbers, but yes.
+> 
+> 
+>>> Also, if it's not obvious, it should permit guest A to use
+>>> one set of interfaces, while guest B uses the other set of
+>>> interfaces. (I think it's obvious, but it doesn't say that,
+>>> so somebody else might interpret things differently.)
+>>
+>>
+>> Isn't this controlled by the API versioning?
+> 
+> 
+> It would be if the APIs were in the same group number.
+> That would force the client to pick version A or B,
+> and once it does that, it would get an error if tried
+> to use the other version.
+> 
+> If they are in different groups, then you have to describe
+> 
+> - What is the behavior of the old intr APIs when the guest
+>   does not negotiate a version of the new api group?
+>   (They probably behave like the currently do, and calling
+>   one of the new APIs probably returns ENOTSUPPORTED?)
+> 
+> - What is the behavior of the old APIs when the guest does
+>   negotiatate a version of the new API group?
+>   (They probably return ENOTSUPPORTED? But what happens if I
+>   already invoked the old API prior to negotiating a
+>   version of the new API group? I guess it's a corner case,
+>   but OBP might use the old API and then boot the client program
+>   which then negotiates a version of the new API group, what
+>   happens then?)
+> 
+> I think I understand the intent here, but I'm making assumptions
+> in order to get there. Let's clear all that up, if it isn't
+> already covered by the materials.
+
+The earlier intr_* are part of group 1 and the vintr_* defined by this
+case are part of group 2 and hence they are in different groups.
+
+I will work with Narayan on Monday to clear this up and update the
+specification with all of the comments thus far.
+
+
+Thanks for the comments.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Mon May  1 09:37:35 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k41GbYIQ009475
+	for <fwarc@sac.eng.Sun.COM>; Mon, 1 May 2006 09:37:35 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k41GbQ2J008235;
+	Tue, 2 May 2006 00:37:33 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYL00G01I6H1J00@brm-avmta-1.central.sun.com>; Mon,
+ 01 May 2006 10:37:29 -0600 (MDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYL008DDI6GXG60@brm-avmta-1.central.sun.com>; Mon,
+ 01 May 2006 10:37:28 -0600 (MDT)
+Received: from fe-amer-01.sun.com ([192.18.108.175])
+	by brmea-mail-3.sun.com (8.12.10/8.12.9) with ESMTP id k41GbSaN027500; Mon,
+ 01 May 2006 10:37:28 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IYL00501HWLKA00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Mon,
+ 01 May 2006 10:37:28 -0600 (MDT)
+Received: from [129.148.180.227] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IYL00E6OI6FL8Q4@mail-amer.sun.com>; Mon,
+ 01 May 2006 10:37:28 -0600 (MDT)
+Date: Mon, 01 May 2006 12:36:03 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <445291F1.4010406@sun.com>
+Sender: Narayan.Venkat@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>, Firmware Arch <fwarc@sun.com>,
+   LDoms Internal <ldoms-internal@sun.com>
+Message-id: <9D321332-9E2B-4B97-A9B3-C165F45E372F@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.749.3)
+Content-type: text/plain; format=flowed; delsp=yes; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <444EC27D.1030608@Sun.COM> <445291F1.4010406@sun.com>
+Status: RO
+Content-Length: 5526
+
+Hi
+
+I will send out a revised doc with the interfaces fully specified
+later today ..
+
+Thanks
+
+-Narayan
+
+On Apr 28, 2006, at 6:06 PM, Hitendra Zhangada wrote:
+
+> Hitendra Zhangada wrote:
+>
+>> The latest specification is available for this case and so
+>> I am restarting the timer for this case.  The new timer is
+>> a week from today, May 2, 2006.
+>> The specification is copied in the materials directory.
+>> An interface table for the interfaces will be provided
+>> in couple of days.
+>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/074/ 
+>> materials/vintr-cookie-support.txt
+>
+> I started to work on the interface table which made me look at the
+> case which defined the intr_* APIs (FWARC/2005/116).  One difference
+> is that the names of the intr_* APIs did not include the underscore
+> between GET and ENABLE, SET and ENABLE etc.  I suggest we stay
+> consistent in the naming convention.  What this means is that
+> the API names change as follows.
+>
+> 	VINTR_GET_COOKIE	==>>	VINTR_GETCOOKIE
+> 	VINTR_SET_COOKIE	==>>	VINTR_SETCOOKIE
+> 	VINTR_GET_ENABLED	==>>	VINTR_GETENABLED
+> 	VINTR_SET_ENABLED	==>>	VINTR_SETENABLED
+> 	VINTR_GET_STATE		==>>	VINTR_GETSTATE
+> 	VINTR_SET_STATE		==>>	VINTR_SETSTATE
+> 	VINTR_GET_TARGET	==>>	VINTR_GETTARGET
+> 	VINTR_SET_TARGET	==>>	VINTR_SETTARGET
+>
+> If there is no objection from the project team then I would like
+> to see the API names changed.
+>
+> Further, the section 3.2.3 defines the new APIs in a general way.
+> I suggest we flush out the details for completeness.  I propose
+> following addition to the specification.  Again, if project team
+> is fine with these changes then we can update the specification
+> accordingly (I can help with this).
+>
+> Note that, none of these changes are substantial and hence I do
+> not see need to change the timer (May 2nd).  However the project team
+> must respond to the issues I am raising in this mail for this case to
+> get approved.  If anyone else needs more time then please let me know.
+>
+>
+> Replace section 3.2.3 and add sections as below.
+>
+> 3.2.3 intr_getenabled
+>
+>         trap           #FAST_TRAP
+>         function#      VINTR_GETENABLED
+>         arg0           devhandle
+>         arg1           devino
+>
+>         ret0           status
+>         ret1           intr_enabled
+> 	
+> 	Returns state in intr_enabled for the interrupt defined by
+>         devino. Return values are: INTR_ENABLED or INTR_DISABLED
+> 	
+> 3.2.3.1 Errors
+>
+> 	EINVAL		Invalid devhandle or devino
+> 	ENOTSUPPORTED	(Virtual) device does not support the interface
+>
+> 	
+> 3.2.4 intr_setenabled
+>
+>         trap            #FAST_TRAP
+>         function#       VINTR_SETENABLED
+>         arg0            devhandle
+>         arg1            devino
+>         arg2            intr_enabled
+>
+>         ret0            status
+>
+> 	Sets the 'enabled' state of the interrupt sysino legal values
+>         for intr_enabled are: INTR_ENABLED or INTR_DISABLED
+> 	
+> 3.2.4.1 Errors
+>
+> 	EINVAL		Invalid devhandle or devino
+> 	ENOTSUPPORTED	(Virtual) device does not support the interface
+>
+> 3.2.5 intr_getstate
+>
+>         trap           #FAST_TRAP
+>         function#      VINTR_GETSTATE
+>         arg0           devhandle
+>         arg1           devino
+>
+>         ret0           status
+>         ret1           intr_state
+> 	
+> 	Returns the current state of the interrupt given by the devino
+>         argument.
+> 	
+> 3.2.5.1 Errors
+>
+> 	EINVAL		Invalid devhandle or devino
+> 	ENOTSUPPORTED	(Virtual) device does not support the interface
+>
+> 	
+> 3.2.6 intr_setstate
+>
+>         trap            #FAST_TRAP
+>         function#       VINTR_SETSTATE
+>         arg0            devhandle
+>         arg1            devino
+>         arg2            intr_state
+>
+>         ret0            status
+>
+> 	Sets the current state of the interrupt given by the devino
+>         argument to the value given in the argument intr_state.
+>
+>         Note: Setting the state to INTR_IDLE clears any pending  
+> interrupt
+>               for devino.
+> 	
+> 3.2.6.1 Errors
+>
+> 	EINVAL		Invalid devhandle or devino
+> 	ENOTSUPPORTED	(Virtual) device does not support the interface
+>
+>
+> 3.2.7 intr_gettarget
+>
+>         trap           #FAST_TRAP
+>         function#      VINTR_GETTARGET
+>         arg0           devhandle
+>         arg1           devino
+>
+>         ret0           status
+>         ret1           cpuid
+> 	
+> 	Returns the cpuid that is the current target of the interrupt given
+>         by the devino argument.
+>
+>         The cpuid value returned is undefined if the target has not  
+> been set
+>         via vintr_settarget.
+> 	
+> 3.2.7.1 Errors
+>
+> 	EINVAL		Invalid devhandle or devino
+> 	ENOTSUPPORTED	(Virtual) device does not support the interface
+>
+> 	
+> 3.2.8 intr_settarget
+>
+>         trap            #FAST_TRAP
+>         function#       VINTR_SETTARGET
+>         arg0            devhandle
+>         arg1            devino
+>         arg2            cpuid
+>
+>         ret0            status
+>
+> 	Set the target cpu for the interrupt defined by the argument devino
+>         to the target cpu value defined by the argument cpuid.
+> 	
+> 3.2.8.1 Errors
+>
+> 	EINVAL		Invalid devhandle or devino
+>         ENOCPU          Invalid cpuid
+> 	ENOTSUPPORTED	(Virtual) device does not support the interface
+>
+>
+> -- 
+> Hitendra Zhangada
+> =============================================
+> SPS Common SW Features Engineering
+> Scalable Systems Group, Sun Microsystems, Inc.
+> Work Ph# (858) 625 3757, Ext. x53757
+> SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Mon May  1 16:34:08 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k41NY7IQ000980
+	for <fwarc@sac.eng.sun.com>; Mon, 1 May 2006 16:34:08 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k41NXxms029268;
+	Tue, 2 May 2006 00:34:06 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYM00B031GUEX00@brm-avmta-1.central.sun.com>; Mon,
+ 01 May 2006 17:34:06 -0600 (MDT)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYM0032U1GT5F70@brm-avmta-1.central.sun.com>; Mon,
+ 01 May 2006 17:34:05 -0600 (MDT)
+Received: from d1-sfbay-04.sun.com ([192.18.39.114])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k41NY4gL007775; Mon,
+ 01 May 2006 16:34:04 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-04.sun.com by d1-sfbay-04.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IYM003010RI3N00@d1-sfbay-04.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Mon,
+ 01 May 2006 16:34:04 -0700 (PDT)
+Received: from [129.153.85.10] by d1-sfbay-04.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IYM00NH31GS4H60@d1-sfbay-04.sun.com>; Mon,
+ 01 May 2006 16:34:04 -0700 (PDT)
+Date: Mon, 01 May 2006 16:34:04 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <4453AFAD.6060907@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <44569AEC.9050504@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <4452F9B0.6030205@sun.com> <4453AFAD.6060907@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 852
+
+Hitendra Zhangada wrote On 04/29/06 11:25,:
+
+> The earlier intr_* are part of group 1 and the vintr_* defined by this
+> case are part of group 2 and hence they are in different groups.
+> 
+> I will work with Narayan on Monday to clear this up and update the
+> specification with all of the comments thus far.
+
+FYI.  I am still working with Narayan to tighten up the specification.
+He did provide me with an update today morning but it needs few more
+changes.  The APIs themselves are not changing but the description
+which precedes the APIs will change.
+
+The timer will be extended once new specification is available.
+
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Fri May  5 11:56:09 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k45Iu8IQ003026
+	for <fwarc@sac.eng.sun.com>; Fri, 5 May 2006 11:56:09 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k45ItoxC000576;
+	Fri, 5 May 2006 19:56:07 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYT00K0139IGR00@brm-avmta-1.central.sun.com>; Fri,
+ 05 May 2006 12:56:06 -0600 (MDT)
+Received: from nwkes-gis-mail-1.sun.com ([10.4.134.5])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYT00DI839HL290@brm-avmta-1.central.sun.com>; Fri,
+ 05 May 2006 12:56:05 -0600 (MDT)
+Received: from d1-sfbay-03.sun.com ([192.18.39.113])
+	by nwkes-gis-mail-1.sun.com (8.12.9/8.12.9) with ESMTP id k45Iu56O016134; Fri,
+ 05 May 2006 11:56:05 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-03.sun.com by d1-sfbay-03.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IYT001012H16I00@d1-sfbay-03.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Fri,
+ 05 May 2006 11:56:05 -0700 (PDT)
+Received: from [129.150.35.86] by d1-sfbay-03.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IYT00EZN39F5K10@d1-sfbay-03.sun.com>; Fri,
+ 05 May 2006 11:56:05 -0700 (PDT)
+Date: Fri, 05 May 2006 11:56:02 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <44569AEC.9050504@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: LDoms Internal <ldoms-internal@sun.com>,
+   Girish Goyal <Girish.Goyal@sun.com>
+Message-id: <445B9FC2.8070600@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <4452F9B0.6030205@sun.com> <4453AFAD.6060907@sun.com>
+ <44569AEC.9050504@Sun.COM>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 1717
+
+Hitendra Zhangada wrote:
+
+> Hitendra Zhangada wrote On 04/29/06 11:25,:
+> 
+>> The earlier intr_* are part of group 1 and the vintr_* defined by this
+>> case are part of group 2 and hence they are in different groups.
+>>
+>> I will work with Narayan on Monday to clear this up and update the
+>> specification with all of the comments thus far.
+> 
+> 
+> FYI.  I am still working with Narayan to tighten up the specification.
+> He did provide me with an update today morning but it needs few more
+> changes.  The APIs themselves are not changing but the description
+> which precedes the APIs will change.
+> 
+> The timer will be extended once new specification is available.
+
+Updated specification is now available.  It has addressed all of the
+comments raised till now.  The updates are mainly in section 3.  It
+clarifies how group 1 and 2 APIs are used together and cases in which
+ENOTSUPPORTED would be returned.  The names of the APIs match APIs in
+group 1.
+
+The latest specification is copied to the case directory,
+
+http://sac.sfbay.sun.com/arc/FWARC/2006/074/materials/vintr-cookie-support-v2.2.txt
+
+I will remove earlier versions of this specification prior to approval.
+
+The timer is now set for May 8th (Monday).  If there are any remaining
+issues then lets resolve them by e-mail and if needed we can discuss
+briefly on Monday during FWARC meeting.
+
+
+BTW, there is FWARC review meeting coming Monday and we will be reviewing
+http://sac.sfbay.sun.com/arc/FWARC/2006/246/
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Fri May  5 17:39:30 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k460dSIQ024657
+	for <fwarc@sac.eng.sun.com>; Fri, 5 May 2006 17:39:30 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k460dRbk011207;
+	Sat, 6 May 2006 01:39:28 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IYT00J01J5RY400@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 05 May 2006 17:39:27 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IYT00J4BJ5RZBD0@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 05 May 2006 17:39:27 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k460dQoc027961; Fri, 05 May 2006 17:39:26 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k460dOZO081707;
+ Fri, 05 May 2006 17:39:25 -0700 (PDT)
+Date: Fri, 05 May 2006 17:39:24 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>,
+   Girish Goyal <Girish.Goyal@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Message-id: <445BF03C.9050801@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+User-Agent: Thunderbird 1.5.0.2 (Windows/20060308)
+Status: RO
+Content-Length: 3062
+
+
+still some problems. please extend the timer till the
+version stuff is fixed.
+
+Hitendra Zhangada wrote:
+
+> The latest specification is copied to the case directory,
+> 
+> http://sac.sfbay.sun.com/arc/FWARC/2006/074/materials/vintr-cookie-support-v2.2.txt 
+
+In 1.1, there's something missing from the first sentence of
+the 2nd paragraph.
+
+In 1.2,
+
+> All future interrupt sources and Hypervisors supporting these new interrupt
+> sources are required to use the mechanism of setting interrupt cookies.
+
+> Legacy interrupt sources (for example the existing PCI-E infrastructure
+> on Ontario/Erie) may have cookie support in the Hypervisor, but the
+> corresponding guest OS nexus drivers must continue to provide support for
+> existing hypervisor defined sysinos so as to continue to function on
+> legacy firmware implementations.
+
+I don't know what this means. If the hv implements the interfaces
+defined by this specification, then it supports the new mechanism.
+If it doesn't, then it doesn't. It was nothing to do with interrrupt
+sources.
+
+Really the issue here is support for the existing software
+that uses sysino. If the guest doesn't negotiate use of the new
+APIs via the versioning interface, then *all* interrupt sources
+*must* comply with the exising interfaces, which means that sysino
+must be supported.
+
+> The 64-bit unsigned value in word 0 of a dev-mondo entry is considered a
+> guest OS supplied interrupt cookie if greater than or equal to 2048, or
+> a sysino if in the range 0 to 2047.
+> 
+> A future API specification may deprecate the INTR_DEVINO2SYSINO API call and
+> remove the 0 through 2047 forbidden cookie range by using the Hypervisor
+> versioning API.
+
+Again, not sure why this is necessary. A guest either uses the old
+sysino interface or it uses the new cookie interface. It must not use
+both at the same time.
+
+If it negotiates use of the new cookie interface, then it will never
+see a sysino in word 0 of the dev-mondo.
+
+> A guest may upgrade to using the interrupt APIs in group 0x2 following a
+> version negotiation, even if it had previously accessed interrupts APIs in
+> group 0x1.  Subsequent accesses to interrupt APIs in group 0x1 will fail with
+> ENOTSUPPORTED.
+> 
+> If a guest wants to use group 0x1 APIs for a given interrupt source after
+> it has registered group 0x2, the guest must first unregister group 0x2 with
+> the Hypervisor prior to using the APIs from group 0x1 (APIs 0xa0 through 0xa6).
+
+Again, IMO, this is broken. A guest that wants to use group 2, must negotiate
+for its use before making any of these calls, and there's no going back to
+group 1 once that's been negotiated.
+
+The meta problem is that the existing interfaces are part of the core
+group 0x1, and the new interfaces are part of a new group, 0x2. That
+makes it harder to specify how versioning affects this stuff. Still.
+it's possible to do it so it works here. I would say that if the guest
+uses the existing interfaces and then switches to group 2 later, the
+results are simply undefined. It must use one or the other, not both.
+
+-David
+
+
+
+
+
+
+
+
+
+From sacadmin Fri May  5 18:05:25 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k4615PIQ025389
+	for <fwarc@sac.eng.sun.com>; Fri, 5 May 2006 18:05:25 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k4615IM02580;
+	Fri, 5 May 2006 18:05:18 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYT00C0FKCRBT00@brm-avmta-1.central.sun.com>; Fri,
+ 05 May 2006 19:05:15 -0600 (MDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYT00AYPKCDSW00@brm-avmta-1.central.sun.com>; Fri,
+ 05 May 2006 19:05:11 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k46150oc004474; Fri, 05 May 2006 18:05:00 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k4614xZO082525;
+ Fri, 05 May 2006 18:04:59 -0700 (PDT)
+Date: Fri, 05 May 2006 18:04:58 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <445BF03C.9050801@sun.com>
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>,
+   Girish Goyal <Girish.Goyal@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Message-id: <445BF63A.3010305@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <445BF03C.9050801@sun.com>
+User-Agent: Thunderbird 1.5.0.2 (Windows/20060308)
+Status: RO
+Content-Length: 132
+
+
+Also, why does 3.2.1.1 list EWOULDBLOCK,
+and why is EWOULDBLOCK listed in 3.2.2.1
+
+Why would vintr_getcookie return EWOULDBLOCK?
+
+
+
+From sacadmin Fri May  5 18:06:42 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k4616fIQ025402
+	for <fwarc@sac.eng.sun.com>; Fri, 5 May 2006 18:06:42 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k4616UvI017838;
+	Sat, 6 May 2006 02:06:40 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IYT00M01KF3ZV00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 05 May 2006 18:06:39 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IYT00JQMKF3ZKB0@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 05 May 2006 18:06:39 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k4616coc004774; Fri, 05 May 2006 18:06:38 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k4616bZO082632;
+ Fri, 05 May 2006 18:06:37 -0700 (PDT)
+Date: Fri, 05 May 2006 18:06:37 -0700
+From: David Kahn <David.Kahn@Sun.COM>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <445BF03C.9050801@sun.com>
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, LDoms Internal <ldoms-internal@Sun.COM>,
+   Girish Goyal <Girish.Goyal@Sun.COM>, Greg Onufer <greg.onufer@Sun.COM>
+Message-id: <445BF69D.4070303@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <445BF03C.9050801@sun.com>
+User-Agent: Thunderbird 1.5.0.2 (Windows/20060308)
+Status: RO
+Content-Length: 197
+
+
+I'm also a little concerned about the limit of
+2k unique interrupts.
+
+Maybe that number should come from the MD?
+2k is fine as a default, but who knows how many
+we'll need in the future?
+
+-David
+
+
+From sacadmin Fri May  5 18:11:34 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k461BYIQ025421
+	for <fwarc@sac.eng.Sun.COM>; Fri, 5 May 2006 18:11:34 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k461BXg03342;
+	Fri, 5 May 2006 19:11:33 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYT00C05KN8GE00@brm-avmta-1.central.sun.com>; Fri,
+ 05 May 2006 19:11:32 -0600 (MDT)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYT00A3WKN8SW10@brm-avmta-1.central.sun.com>; Fri,
+ 05 May 2006 19:11:32 -0600 (MDT)
+Received: from d1-sfbay-05.sun.com ([192.18.39.115])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k461BWgL017434; Fri,
+ 05 May 2006 18:11:32 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-05.sun.com by d1-sfbay-05.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IYT00201JFRUD00@d1-sfbay-05.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Fri,
+ 05 May 2006 18:11:32 -0700 (PDT)
+Received: from [129.150.34.117] by d1-sfbay-05.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IYT002ANKN6WL00@d1-sfbay-05.sun.com>; Fri,
+ 05 May 2006 18:11:31 -0700 (PDT)
+Date: Fri, 05 May 2006 18:11:25 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <445BF03C.9050801@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: LDoms Internal <ldoms-internal@sun.com>,
+   Girish Goyal <Girish.Goyal@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Message-id: <445BF7BD.9090308@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <445BF03C.9050801@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 5071
+
+David Kahn wrote:
+> still some problems. please extend the timer till the
+> version stuff is fixed.
+> 
+
+Will do.  I am not sure if it needs fixing or clarification.  In
+either case, the case won't time-out until your questions are answered.
+
+See some comments below based on how I understood these APIs.
+
+Narayan, please correct me as necessary and answer David's questions.
+
+> Hitendra Zhangada wrote:
+> 
+>> The latest specification is copied to the case directory,
+>>
+>> http://sac.sfbay.sun.com/arc/FWARC/2006/074/materials/vintr-cookie-support-v2.2.txt 
+> 
+> 
+> 
+> In 1.1, there's something missing from the first sentence of
+> the 2nd paragraph.
+
+I see the issue.  This will get corrected.  I think what the sentence
+is trying to say is,
+
+   The sysino API was intended for the Hypervisor to return any 64-bit
+   value to represent an interrupt source.
+
+> 
+> In 1.2,
+> 
+>> All future interrupt sources and Hypervisors supporting these new 
+>> interrupt
+>> sources are required to use the mechanism of setting interrupt cookies.
+> 
+
+What this is saying is that we want to discourage use of "sysino" for
+future platforms.  We can not deprecate it now since both interfaces
+needs to be supported but for future platforms we want to only the
+cookie based APIs.  Now, a guest can use sysino as a cookie if that's
+what they want but they need to use new APIs.
+
+> 
+>> Legacy interrupt sources (for example the existing PCI-E infrastructure
+>> on Ontario/Erie) may have cookie support in the Hypervisor, but the
+>> corresponding guest OS nexus drivers must continue to provide support for
+>> existing hypervisor defined sysinos so as to continue to function on
+>> legacy firmware implementations.
+> 
+
+This is saying that we can not remove sysino APIs from guest since it
+may need to run on legacy firmware implementations which may not support
+new APIs.
+
+> 
+> I don't know what this means. If the hv implements the interfaces
+> defined by this specification, then it supports the new mechanism.
+> If it doesn't, then it doesn't. It was nothing to do with interrrupt
+> sources.
+> 
+> Really the issue here is support for the existing software
+> that uses sysino. If the guest doesn't negotiate use of the new
+> APIs via the versioning interface, then *all* interrupt sources
+> *must* comply with the exising interfaces, which means that sysino
+> must be supported.
+> 
+>> The 64-bit unsigned value in word 0 of a dev-mondo entry is considered a
+>> guest OS supplied interrupt cookie if greater than or equal to 2048, or
+>> a sysino if in the range 0 to 2047.
+>>
+>> A future API specification may deprecate the INTR_DEVINO2SYSINO API 
+>> call and
+>> remove the 0 through 2047 forbidden cookie range by using the Hypervisor
+>> versioning API.
+> 
+> 
+> Again, not sure why this is necessary. A guest either uses the old
+> sysino interface or it uses the new cookie interface. It must not use
+> both at the same time.
+
+The way Narayan explained to me, the APIs to use depends upon interrupt
+source.  In other words, both group 1 and group 2 APIs may be used by
+a guest.  The way I understand it, the sysino API will cover the range
+of 0 to 2047 and other may need to use group 2 APIs.
+
+> If it negotiates use of the new cookie interface, then it will never
+> see a sysino in word 0 of the dev-mondo.
+> 
+>> A guest may upgrade to using the interrupt APIs in group 0x2 following a
+>> version negotiation, even if it had previously accessed interrupts 
+>> APIs in
+>> group 0x1.  Subsequent accesses to interrupt APIs in group 0x1 will 
+>> fail with
+>> ENOTSUPPORTED.
+>>
+>> If a guest wants to use group 0x1 APIs for a given interrupt source after
+>> it has registered group 0x2, the guest must first unregister group 0x2 
+>> with
+>> the Hypervisor prior to using the APIs from group 0x1 (APIs 0xa0 
+>> through 0xa6).
+> 
+> 
+> Again, IMO, this is broken. A guest that wants to use group 2, must 
+> negotiate
+> for its use before making any of these calls, and there's no going back to
+> group 1 once that's been negotiated.
+
+The last paragraph was specifically requested by me.  Here is the reason,
+let say OBP uses group 2 APIs at start of day and it then boots Solaris.
+Solaris may not support group 2 APIs.  The only way, Solaris can use
+group 1 APIs is by unregistering group 2.  OBP may need to do this prior
+to booting Solaris since OBP does not know what Solaris may or may not
+support in terms of group numbers.
+
+> 
+> The meta problem is that the existing interfaces are part of the core
+> group 0x1, and the new interfaces are part of a new group, 0x2. That
+> makes it harder to specify how versioning affects this stuff. Still.
+> it's possible to do it so it works here. I would say that if the guest
+> uses the existing interfaces and then switches to group 2 later, the
+> results are simply undefined. It must use one or the other, not both.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Fri May  5 18:32:33 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k461WWIQ025547
+	for <fwarc@sac.eng.sun.com>; Fri, 5 May 2006 18:32:33 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k461WRjO024152;
+	Sat, 6 May 2006 02:32:31 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IYT00205LM6KU00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 05 May 2006 18:32:30 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IYT00JJ9LM6ZFE0@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 05 May 2006 18:32:30 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k461WUTF029248; Fri, 05 May 2006 18:32:30 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k461WSZO083590;
+ Fri, 05 May 2006 18:32:28 -0700 (PDT)
+Date: Fri, 05 May 2006 18:32:28 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>,
+   Girish Goyal <Girish.Goyal@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Message-id: <445BFCAC.5000909@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+User-Agent: Thunderbird 1.5.0.2 (Windows/20060308)
+Status: RO
+Content-Length: 4200
+
+
+Here's how I look at it. If there's an
+intent to do something other that this,
+it has to be justified, because it doesn't
+make sense to me.
+
+
+There are several cases to consider.
+
+Old guest running on old firmware.
+Guest only uses group 1.
+
+Old guest running on new firmware
+Guest only uses group 1. It never
+negotiates use of group 2.
+
+New guest running on old firmware
+New guest tries to negotiate use of group 2
+and fails, so reverts to only using group 1.
+
+New guest running on new firmware
+New guest negotiates use of group 2, succeeds
+and uses only group 2.
+
+There should be no other combinations allowed,
+including use of mixed modes.
+
+The negotiation is per guest, so any new platform fw
+that supports old guests must support use of
+group 1. Also, in the case where old guests
+are supported with new fw, the hv must support
+use of the group per guest. One guest can be
+using group 1 and another can be using group 2
+on the same platform, IFF old guests are supported
+on that platform.
+
+
+
+
+Hitendra Zhangada wrote:
+
+>> In 1.2,
+>>
+>>> All future interrupt sources and Hypervisors supporting these new 
+>>> interrupt
+>>> sources are required to use the mechanism of setting interrupt cookies.
+>>
+> 
+> What this is saying is that we want to discourage use of "sysino" for
+> future platforms.  We can not deprecate it now since both interfaces
+> needs to be supported but for future platforms we want to only the
+> cookie based APIs.  Now, a guest can use sysino as a cookie if that's
+> what they want but they need to use new APIs.
+
+That's not what it's saying, and it doesn't need to say that
+at all. It's putting it in terms of the interrupt sources,
+and it needs to be in terms of the platform fw, which either
+supports group 2 APIs or it doesn't. Just delete this.
+We can deprecate group 1 only when the guests using group 1
+are deprecated.
+
+> 
+>>
+>>> Legacy interrupt sources (for example the existing PCI-E infrastructure
+>>> on Ontario/Erie) may have cookie support in the Hypervisor, but the
+>>> corresponding guest OS nexus drivers must continue to provide support 
+>>> for
+>>> existing hypervisor defined sysinos so as to continue to function on
+>>> legacy firmware implementations.
+>>
+> 
+> This is saying that we can not remove sysino APIs from guest since it
+> may need to run on legacy firmware implementations which may not support
+> new APIs.
+
+Again, I don't think it's saying that. We must continue to support
+group 1 until the guests using it are deprecated. platform fw must
+support group 1 iff it supports a guest that uses group 1.
+
+
+>> Again, not sure why this is necessary. A guest either uses the old
+>> sysino interface or it uses the new cookie interface. It must not use
+>> both at the same time.
+> 
+> The way Narayan explained to me, the APIs to use depends upon interrupt
+> source.  In other words, both group 1 and group 2 APIs may be used by
+> a guest.  The way I understand it, the sysino API will cover the range
+> of 0 to 2047 and other may need to use group 2 APIs.
+
+Well, if that's the intent, then I vote to reject. :)
+You either have a new guest supporting group 1 and 2, and
+uses 2 if available, or an old guest just using group 1.
+There should not be a need for a mixed use mode, unless I'm
+missing something here.
+
+
+>> Again, IMO, this is broken. A guest that wants to use group 2, must 
+>> negotiate
+>> for its use before making any of these calls, and there's no going 
+>> back to
+>> group 1 once that's been negotiated.
+> 
+> The last paragraph was specifically requested by me.  Here is the reason,
+> let say OBP uses group 2 APIs at start of day and it then boots Solaris.
+> Solaris may not support group 2 APIs.  The only way, Solaris can use
+> group 1 APIs is by unregistering group 2.  OBP may need to do this prior
+> to booting Solaris since OBP does not know what Solaris may or may not
+> support in terms of group numbers.
+
+That sort of problem exists whenever we make incompatible changes,
+and has to be dealt with some other way. I agree it could be an
+issue. The OS might need to do the versioning through OBP, so OBP
+can convert from using group 1 to group 2 as part of the switch
+to group 2, if the platform supports both groups.
+
+-David
+
+
+
+From sacadmin Fri May  5 18:43:28 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k461hQIQ025595
+	for <fwarc@sac.eng.sun.com>; Fri, 5 May 2006 18:43:27 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k461hNa4026548;
+	Sat, 6 May 2006 02:43:26 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IYT00303M4DM900@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 05 May 2006 18:43:25 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IYT00J8DM4CZFF0@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 05 May 2006 18:43:24 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k461hOoc012950; Fri, 05 May 2006 18:43:24 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k461hNZO083884;
+ Fri, 05 May 2006 18:43:23 -0700 (PDT)
+Date: Fri, 05 May 2006 18:43:23 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>,
+   Girish Goyal <Girish.Goyal@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Message-id: <445BFF3B.4040607@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+User-Agent: Thunderbird 1.5.0.2 (Windows/20060308)
+Status: RO
+Content-Length: 908
+
+
+I think the wording I'm looking for is something like this:
+
+If a guest successfully negotiates the use of group 2 APIs,
+then the following APIs in group 1 may not be used after
+a successful version negotiation to use the group 2 APIs:
+
+	intr_yada ...
+
+Any prior use of those interfaces from group 1 will result
+in undefined behavior if those interrupts are not removed
+prior to the negotiation to use group 2.
+(need more detailed wording here to define "removed" and to
+figure out how they can be removed if negotiation is the
+only way OBP can determine if group 2 exists. I suppose
+OBP can know if group 2 exists since it ships with the
+fw, so it could be an MD variable).
+
+
+
+The idea is that the guest negotiates this with OBP,
+and OBP transitions to using group 2, removing any
+interrupts added using group 1 interfaces first.
+What interrupts does OBP use? I thought it didn't
+use interrupts.
+
+
+-David
+
+
+From sacadmin Fri May  5 19:03:24 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k4623OIQ026165
+	for <fwarc@sac.eng.Sun.COM>; Fri, 5 May 2006 19:03:24 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k4623Ng12137;
+	Fri, 5 May 2006 20:03:23 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYT00M03N1MWO00@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 05 May 2006 19:03:22 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYT00000N1MSDF0@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 05 May 2006 19:03:22 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k4623LTF005563; Fri, 05 May 2006 19:03:21 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k4623KZO084505;
+ Fri, 05 May 2006 19:03:20 -0700 (PDT)
+Date: Fri, 05 May 2006 19:03:20 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>,
+   Girish Goyal <Girish.Goyal@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Message-id: <445C03E8.9020908@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+User-Agent: Thunderbird 1.5.0.2 (Windows/20060308)
+Status: RO
+Content-Length: 659
+
+
+Why does vintr_setcookie have side effects
+if the cookie value is zero?
+
+I guess the issue is in the text, for supporting
+simultaneous use of sysino and cookie interfaces,
+which should go away (particularly since they are
+defined in terms of the device), and then the side effects
+can go away. Nothing wrong with zero as a cookie
+value if you are using group 2 only.
+
+vintr_getcookie should return failure or
+an undedfined value if
+the cookie hasn't been set by vintr_setcookie.
+Again, nothing wrong with the value 0.
+The text needs some work.
+
+What should vintr_setenabled/vintr_setstate
+do if the cookie
+hasn't been set? (Same with the others.)
+
+-David
+
+
+
+
+From sacadmin Fri May  5 19:11:40 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k462BdIQ026225
+	for <fwarc@sac.eng.sun.com>; Fri, 5 May 2006 19:11:40 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k462Babf003597;
+	Sat, 6 May 2006 03:11:38 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IYT00603NFBPM00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 05 May 2006 19:11:35 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IYT005E3NFADO00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 05 May 2006 19:11:34 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k462BYoc018549; Fri, 05 May 2006 19:11:34 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k462BWZO084780;
+ Fri, 05 May 2006 19:11:33 -0700 (PDT)
+Date: Fri, 05 May 2006 19:11:32 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>,
+   Girish Goyal <Girish.Goyal@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Message-id: <445C05D4.8010906@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+User-Agent: Thunderbird 1.5.0.2 (Windows/20060308)
+Status: RO
+Content-Length: 570
+
+
+It seems to me that we really only need one or
+two new interfaces to accomplish what we want here.
+
+I assume what we want to accomplish is to be able to let the
+guest use whatever value it wants to see in dev-mondo.
+The default is sysino as it is today.
+
+intr_setcookie and intr_getcookie.
+
+In the absence of an intr_setcookie call, the hv
+uses sysino as it does today.
+
+If intr_setcookie is called, then it uses the
+cookie value instead.
+
+Am i missing something? Why isn't it just this simple?
+No new groups to define and no worries about mixed
+modes either.
+
+-David
+
+
+From sacadmin Mon May  8 08:04:00 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k48F3xIQ005055
+	for <fwarc@sac.eng.Sun.COM>; Mon, 8 May 2006 08:04:00 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k48F3wE12321;
+	Mon, 8 May 2006 09:03:58 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYY00K0PCIL3Z00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 08 May 2006 08:03:57 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYY00K4YCIL1M00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 08 May 2006 08:03:57 -0700 (PDT)
+Received: from fe-amer-02.sun.com ([192.18.108.176])
+	by brmea-mail-3.sun.com (8.12.10/8.12.9) with ESMTP id k48F3vKe029737; Mon,
+ 08 May 2006 09:03:57 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IYY00201CCPF600@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Mon,
+ 08 May 2006 09:03:57 -0600 (MDT)
+Received: from [129.148.180.81] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IYY0083LCIJJSK6@mail-amer.sun.com>; Mon,
+ 08 May 2006 09:03:57 -0600 (MDT)
+Date: Mon, 08 May 2006 11:03:57 -0400
+From: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <445BF69D.4070303@sun.com>
+Sender: Narayan.Venkat@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: Narayan Venkat <Narayan.Venkat@Sun.COM>,
+   Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+   Firmware Arch <fwarc@Sun.COM>, LDoms Internal <ldoms-internal@Sun.COM>,
+   Girish Goyal <Girish.Goyal@Sun.COM>, Greg Onufer <greg.onufer@Sun.COM>
+Message-id: <6F5966D2-E9AD-4429-BE05-E6EB03BBBFE9@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.749.3)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <445BF03C.9050801@sun.com> <445BF69D.4070303@sun.com>
+Status: RO
+Content-Length: 496
+
+
+On May 5, 2006, at 9:06 PM, David Kahn wrote:
+
+>
+> I'm also a little concerned about the limit of
+> 2k unique interrupts.
+>
+> Maybe that number should come from the MD?
+> 2k is fine as a default, but who knows how many
+> we'll need in the future?
+
+That is correct. The lower limit will be provided to
+the guest via a MD property. Currently this will be
+set to 2047. In the future we will change this to
+zero and thereby allowing the guest to set any value
+for the cookie ..
+
+Thanks
+
+-Narayan
+  
+
+From sacadmin Mon May  8 08:06:09 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k48F69IQ005100
+	for <fwarc@sac.eng.sun.com>; Mon, 8 May 2006 08:06:09 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k48F68w10457;
+	Mon, 8 May 2006 08:06:08 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYY00K0NCM7BX00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 08 May 2006 08:06:07 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYY00KHQCM51J00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 08 May 2006 08:06:05 -0700 (PDT)
+Received: from fe-amer-02.sun.com ([192.18.108.176])
+	by brmea-mail-4.sun.com (8.12.10/8.12.9) with ESMTP id k48F65IH017216; Mon,
+ 08 May 2006 09:06:05 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IYY00201CCPF600@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Mon,
+ 08 May 2006 09:06:05 -0600 (MDT)
+Received: from [129.148.180.81] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IYY00ANZCM49RH7@mail-amer.sun.com>; Mon,
+ 08 May 2006 09:06:05 -0600 (MDT)
+Date: Mon, 08 May 2006 11:06:04 -0400
+From: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <445C05D4.8010906@sun.com>
+Sender: Narayan.Venkat@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: Narayan Venkat <Narayan.Venkat@Sun.COM>,
+   Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+   Firmware Arch <fwarc@Sun.COM>, LDoms Internal <ldoms-internal@Sun.COM>,
+   Girish Goyal <Girish.Goyal@Sun.COM>, Greg Onufer <greg.onufer@Sun.COM>
+Message-id: <35D66F1C-77B3-46FF-A257-604E1E0F838A@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.749.3)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <445C05D4.8010906@sun.com>
+Status: RO
+Content-Length: 1110
+
+>
+> It seems to me that we really only need one or
+> two new interfaces to accomplish what we want here.
+>
+> I assume what we want to accomplish is to be able to let the
+> guest use whatever value it wants to see in dev-mondo.
+> The default is sysino as it is today.
+>
+> intr_setcookie and intr_getcookie.
+>
+> In the absence of an intr_setcookie call, the hv
+> uses sysino as it does today.
+>
+> If intr_setcookie is called, then it uses the
+> cookie value instead.
+>
+> Am i missing something? Why isn't it just this simple?
+> No new groups to define and no worries about mixed
+> modes either.
+
+What you are suggesting above will require doing a lookup by
+cookie in the Hypervisor, each time an interrupt API is invoked.
+Since the guest can set any cookie value for each interrupt
+source, doing this lookup in the interrupt processing path
+will be expensive. Secondly, goal here is to use devhandle
+and devino as they uniquely identify the interrupt source.
+It was OK using the sysino in the case of group 0x1 APIs as
+the HV generated the sysino value and the lookup was easier
+for the HV.
+
+Thanks
+
+-Narayan
+  
+
+From sacadmin Mon May  8 08:47:18 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k48FlIIQ007333
+	for <fwarc@sac.eng.sun.com>; Mon, 8 May 2006 08:47:18 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k48FlHo11871;
+	Mon, 8 May 2006 08:47:17 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYY00I0BEISCO00@brm-avmta-1.central.sun.com>; Mon,
+ 08 May 2006 09:47:16 -0600 (MDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYY00H6AEIS6N70@brm-avmta-1.central.sun.com>; Mon,
+ 08 May 2006 09:47:16 -0600 (MDT)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-2.sun.com (8.12.10/8.12.9) with ESMTP id k48FlGxW002434; Mon,
+ 08 May 2006 09:47:16 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IYY00L01EDNHM00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Mon,
+ 08 May 2006 09:47:16 -0600 (MDT)
+Received: from [129.148.180.81] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IYY003BGEIROG20@mail-amer.sun.com>; Mon,
+ 08 May 2006 09:47:16 -0600 (MDT)
+Date: Mon, 08 May 2006 11:47:15 -0400
+From: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <445BF7BD.9090308@sun.com>
+Sender: Narayan.Venkat@Sun.COM
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Narayan Venkat <Narayan.Venkat@Sun.COM>, Firmware Arch <fwarc@Sun.COM>,
+   LDoms Internal <ldoms-internal@Sun.COM>,
+   Girish Goyal <Girish.Goyal@Sun.COM>, Greg Onufer <greg.onufer@Sun.COM>
+Message-id: <E481E9E8-E569-422A-9A65-34844F35C3E2@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.749.3)
+Content-type: text/plain; format=flowed; delsp=yes; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <445BF03C.9050801@sun.com> <445BF7BD.9090308@sun.com>
+Status: RO
+Content-Length: 5391
+
+Hi
+
+>>> http://sac.sfbay.sun.com/arc/FWARC/2006/074/materials/vintr- 
+>>> cookie-support-v2.2.txt
+>> In 1.1, there's something missing from the first sentence of
+>> the 2nd paragraph.
+>
+> I see the issue.  This will get corrected.  I think what the sentence
+> is trying to say is,
+>
+>   The sysino API was intended for the Hypervisor to return any 64-bit
+>   value to represent an interrupt source.
+>
+
+Sorry about that. I have fixed this ..
+
+>> In 1.2,
+>>> All future interrupt sources and Hypervisors supporting these new  
+>>> interrupt
+>>> sources are required to use the mechanism of setting interrupt  
+>>> cookies.
+>
+> What this is saying is that we want to discourage use of "sysino" for
+> future platforms.  We can not deprecate it now since both interfaces
+> needs to be supported but for future platforms we want to only the
+> cookie based APIs.  Now, a guest can use sysino as a cookie if that's
+> what they want but they need to use new APIs.
+
+The last sentence is implementation specific. It is not required
+by this project. It is up to the guest what values it uses for the
+cookie. So I would not mention the last sentence as it is confusing.
+
+>>> Legacy interrupt sources (for example the existing PCI-E  
+>>> infrastructure
+>>> on Ontario/Erie) may have cookie support in the Hypervisor, but the
+>>> corresponding guest OS nexus drivers must continue to provide  
+>>> support for
+>>> existing hypervisor defined sysinos so as to continue to function on
+>>> legacy firmware implementations.
+>
+> This is saying that we can not remove sysino APIs from guest since it
+> may need to run on legacy firmware implementations which may not  
+> support
+> new APIs.
+
+Yes.
+
+>> I don't know what this means. If the hv implements the interfaces
+>> defined by this specification, then it supports the new mechanism.
+>> If it doesn't, then it doesn't. It was nothing to do with interrrupt
+>> sources.
+>> Really the issue here is support for the existing software
+>> that uses sysino. If the guest doesn't negotiate use of the new
+>> APIs via the versioning interface, then *all* interrupt sources
+>> *must* comply with the exising interfaces, which means that sysino
+>> must be supported.
+
+Registering the new group applies only to interrupts triggered by
+sun4v channel (LDC) devices. The goal here is to continue using the
+sysino values generated by the Hypervisor obtained via the
+DEVINO2SYSINO API for existing interrupt sources like PCI-E and
+and Virtual Devices.
+
+
+>>> The 64-bit unsigned value in word 0 of a dev-mondo entry is  
+>>> considered a
+>>> guest OS supplied interrupt cookie if greater than or equal to  
+>>> 2048, or
+>>> a sysino if in the range 0 to 2047.
+>>>
+>>> A future API specification may deprecate the INTR_DEVINO2SYSINO  
+>>> API call and
+>>> remove the 0 through 2047 forbidden cookie range by using the  
+>>> Hypervisor
+>>> versioning API.
+>> Again, not sure why this is necessary. A guest either uses the old
+>> sysino interface or it uses the new cookie interface. It must not use
+>> both at the same time.
+>
+> The way Narayan explained to me, the APIs to use depends upon  
+> interrupt
+> source.  In other words, both group 1 and group 2 APIs may be used by
+> a guest.  The way I understand it, the sysino API will cover the range
+> of 0 to 2047 and other may need to use group 2 APIs.
+>
+
+The limit of 2047 is to prevent the overlap. The cookie APIs will be  
+currently
+used only by LDC based devices under group 0x2. PCI-E device intr  
+will continue
+to use sysino to configure interrupts. Since the guest does not know  
+what sysino
+will be assigned by the HV, the guest is not allowed to use values up  
+to 2047
+as cookie values.
+
+>> If it negotiates use of the new cookie interface, then it will never
+>> see a sysino in word 0 of the dev-mondo.
+>>> A guest may upgrade to using the interrupt APIs in group 0x2  
+>>> following a
+>>> version negotiation, even if it had previously accessed  
+>>> interrupts APIs in
+>>> group 0x1.  Subsequent accesses to interrupt APIs in group 0x1  
+>>> will fail with
+>>> ENOTSUPPORTED.
+>>>
+>>> If a guest wants to use group 0x1 APIs for a given interrupt  
+>>> source after
+>>> it has registered group 0x2, the guest must first unregister  
+>>> group 0x2 with
+>>> the Hypervisor prior to using the APIs from group 0x1 (APIs 0xa0  
+>>> through 0xa6).
+>> Again, IMO, this is broken. A guest that wants to use group 2,  
+>> must negotiate
+>> for its use before making any of these calls, and there's no going  
+>> back to
+>> group 1 once that's been negotiated.
+>
+> The last paragraph was specifically requested by me.  Here is the  
+> reason,
+> let say OBP uses group 2 APIs at start of day and it then boots  
+> Solaris.
+> Solaris may not support group 2 APIs.  The only way, Solaris can use
+> group 1 APIs is by unregistering group 2.  OBP may need to do this  
+> prior
+> to booting Solaris since OBP does not know what Solaris may or may not
+> support in terms of group numbers.
+
+I have been thinking about this a little more. Currently only the  
+interrupt
+APIs are covered by group 0x2 and are not used by OBP. Essentially  
+the case
+we are trying to address here is that OBP might use these APIs at some
+point in the future - correct ? How likely is that. If not very  
+likely we
+should not allow this capability unless we know there is a requirement.
+We should mark this as undefined behavior ..
+
+Thanks
+
+-Narayan
+
+
+From sacadmin Mon May  8 10:46:44 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k48HkhIQ013190
+	for <fwarc@sac.eng.sun.com>; Mon, 8 May 2006 10:46:44 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k48HkcHW019417;
+	Mon, 8 May 2006 18:46:41 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IYY00F0BK1R1M00@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 08 May 2006 10:46:39 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IYY00GLJK1Q42B0@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 08 May 2006 10:46:39 -0700 (PDT)
+Received: from fe-amer-01.sun.com ([192.18.108.175])
+	by brmea-mail-2.sun.com (8.12.10/8.12.9) with ESMTP id k48HkcxW023075; Mon,
+ 08 May 2006 11:46:38 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IYY00I01JF9LG00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Mon,
+ 08 May 2006 11:46:38 -0600 (MDT)
+Received: from [129.148.180.81] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IYY00G23K1PXKF0@mail-amer.sun.com>; Mon,
+ 08 May 2006 11:46:38 -0600 (MDT)
+Date: Mon, 08 May 2006 13:46:37 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <445BF63A.3010305@sun.com>
+Sender: Narayan.Venkat@sun.com
+To: David Kahn <David.Kahn@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+   Firmware Arch <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>,
+   Girish Goyal <Girish.Goyal@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Message-id: <D71DC87A-C1EC-4BD9-971E-2849CA039F61@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.749.3)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <445BF03C.9050801@sun.com> <445BF63A.3010305@sun.com>
+Status: RO
+Content-Length: 487
+
+
+On May 5, 2006, at 9:04 PM, David Kahn wrote:
+
+>
+> Also, why does 3.2.1.1 list EWOULDBLOCK,
+> and why is EWOULDBLOCK listed in 3.2.2.1
+>
+> Why would vintr_getcookie return EWOULDBLOCK?
+>
+
+Both operations will return EWOULDBLOCK if an update
+to the cookies is being done if the HV interrupt handler
+is reading the cookie and dispatching it to the guest.
+Instead of waiting in the HV for the operation to
+complete, this will allow us return back to the guest
+with EWOULDBLOCK.
+
+-Narayan
+
+
+From sacadmin Mon May  8 11:00:24 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k48I0OIQ014491
+	for <fwarc@sac.eng.Sun.COM>; Mon, 8 May 2006 11:00:24 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k48I0ME20629;
+	Mon, 8 May 2006 12:00:22 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYY0090VKOEBM00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 08 May 2006 11:00:15 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYY004KGKOE5440@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 08 May 2006 11:00:14 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k48I0DTF023695; Mon, 08 May 2006 11:00:13 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k48I0BZO034566;
+ Mon, 08 May 2006 11:00:12 -0700 (PDT)
+Date: Mon, 08 May 2006 11:00:11 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <35D66F1C-77B3-46FF-A257-604E1E0F838A@sun.com>
+To: Narayan Venkat <Narayan.Venkat@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+   Firmware Arch <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>,
+   Girish Goyal <Girish.Goyal@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Message-id: <445F872B.1000105@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <445C05D4.8010906@sun.com>
+ <35D66F1C-77B3-46FF-A257-604E1E0F838A@sun.com>
+User-Agent: Thunderbird 1.5.0.2 (Windows/20060308)
+Status: RO
+Content-Length: 1576
+
+
+
+Narayan Venkat wrote:
+>>
+>> It seems to me that we really only need one or
+>> two new interfaces to accomplish what we want here.
+>>
+>> I assume what we want to accomplish is to be able to let the
+>> guest use whatever value it wants to see in dev-mondo.
+>> The default is sysino as it is today.
+>>
+>> intr_setcookie and intr_getcookie.
+>>
+>> In the absence of an intr_setcookie call, the hv
+>> uses sysino as it does today.
+>>
+>> If intr_setcookie is called, then it uses the
+>> cookie value instead.
+>>
+>> Am i missing something? Why isn't it just this simple?
+>> No new groups to define and no worries about mixed
+>> modes either.
+> 
+> What you are suggesting above will require doing a lookup by
+> cookie in the Hypervisor, each time an interrupt API is invoked.
+
+Why? Do we do that now?
+
+> Since the guest can set any cookie value for each interrupt
+> source, doing this lookup in the interrupt processing path
+> will be expensive.
+
+Why? Is it expensive now?
+
+> Secondly, goal here is to use devhandle
+> and devino as they uniquely identify the interrupt source.
+
+You can use devhandle, devino in the 2 new interfaces if
+you want to, I guess.
+
+> It was OK using the sysino in the case of group 0x1 APIs as
+> the HV generated the sysino value and the lookup was easier
+> for the HV.
+
+The HV will still generate sysino. The 2 new APIs will only
+change what the guest sees in dev-mondo.
+
+In general, there's hardware assist for what gets put into
+dev-mondo, so I don't see the problem. Am I missing something?
+I don't see this as all that difficult to implement.
+
+-David
+
+
+From sacadmin Mon May  8 11:08:10 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k48I89IQ014978
+	for <fwarc@sac.eng.sun.com>; Mon, 8 May 2006 11:08:10 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k48I869s000253;
+	Mon, 8 May 2006 19:08:07 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYY00103L1G0S00@brm-avmta-1.central.sun.com>; Mon,
+ 08 May 2006 12:08:04 -0600 (MDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYY00J79L1GK560@brm-avmta-1.central.sun.com>; Mon,
+ 08 May 2006 12:08:04 -0600 (MDT)
+Received: from fe-amer-04.sun.com ([192.18.108.178])
+	by brmea-mail-2.sun.com (8.12.10/8.12.9) with ESMTP id k48I83xW006155; Mon,
+ 08 May 2006 12:08:04 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IYY00001KOVF200@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Mon,
+ 08 May 2006 12:08:03 -0600 (MDT)
+Received: from [129.148.180.81] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IYY00DTTL1BEE80@mail-amer.sun.com>; Mon,
+ 08 May 2006 12:08:00 -0600 (MDT)
+Date: Mon, 08 May 2006 14:07:59 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <445F872B.1000105@sun.com>
+Sender: Narayan.Venkat@sun.com
+To: David Kahn <David.Kahn@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+   Firmware Arch <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>,
+   Girish Goyal <Girish.Goyal@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Message-id: <05FEA819-8080-45BB-A995-88759E9D865E@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.749.3)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <445C05D4.8010906@sun.com>
+ <35D66F1C-77B3-46FF-A257-604E1E0F838A@sun.com> <445F872B.1000105@sun.com>
+Status: RO
+Content-Length: 2223
+
+Hi
+
+If you are saying we should still use the sysino to invoke
+the various calls like get/set state etc. The devhdl/devino
+should be only used to set the cookie ? If thats what you
+are suggesting, then I agree there is no overhead. That is the
+same as the existing APIs. But that would mean we would
+still be restricted to the sysino limitations we have
+today. Except for the cosmetic reason of getting the HV
+to return cookies instead of INOs, we have not increased
+the size of the name space. We still can only have a
+fixed number of SYSINOs - except the guest gets to associate
+a arbitary number with each sysino ..
+
+-Narayan
+
+
+>>> It seems to me that we really only need one or
+>>> two new interfaces to accomplish what we want here.
+>>>
+>>> I assume what we want to accomplish is to be able to let the
+>>> guest use whatever value it wants to see in dev-mondo.
+>>> The default is sysino as it is today.
+>>>
+>>> intr_setcookie and intr_getcookie.
+>>>
+>>> In the absence of an intr_setcookie call, the hv
+>>> uses sysino as it does today.
+>>>
+>>> If intr_setcookie is called, then it uses the
+>>> cookie value instead.
+>>>
+>>> Am i missing something? Why isn't it just this simple?
+>>> No new groups to define and no worries about mixed
+>>> modes either.
+>> What you are suggesting above will require doing a lookup by
+>> cookie in the Hypervisor, each time an interrupt API is invoked.
+>
+> Why? Do we do that now?
+>
+>> Since the guest can set any cookie value for each interrupt
+>> source, doing this lookup in the interrupt processing path
+>> will be expensive.
+>
+> Why? Is it expensive now?
+>
+>> Secondly, goal here is to use devhandle
+>> and devino as they uniquely identify the interrupt source.
+>
+> You can use devhandle, devino in the 2 new interfaces if
+> you want to, I guess.
+>
+>> It was OK using the sysino in the case of group 0x1 APIs as
+>> the HV generated the sysino value and the lookup was easier
+>> for the HV.
+>
+> The HV will still generate sysino. The 2 new APIs will only
+> change what the guest sees in dev-mondo.
+>
+> In general, there's hardware assist for what gets put into
+> dev-mondo, so I don't see the problem. Am I missing something?
+> I don't see this as all that difficult to implement.
+
+
+From sacadmin Mon May  8 13:04:09 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k48K48IQ018069
+	for <fwarc@sac.eng.sun.com>; Mon, 8 May 2006 13:04:08 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k48K45eB020700;
+	Mon, 8 May 2006 21:04:07 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IYY0060BQERB900@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 08 May 2006 13:04:03 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IYY00JB7QERJ4E0@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 08 May 2006 13:04:03 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k48K42TF025086; Mon, 08 May 2006 13:04:02 -0700 (PDT)
+Received: from [192.168.100.13] (x-files [129.146.96.102])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k48K41ZO039080;
+ Mon, 08 May 2006 13:04:02 -0700 (PDT)
+Date: Mon, 08 May 2006 13:03:47 -0700
+From: Greg Onufer <greg.onufer@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <445F872B.1000105@sun.com>
+To: David Kahn <David.Kahn@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>,
+   Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+   Firmware Arch <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>,
+   Girish Goyal <Girish.Goyal@sun.com>
+Message-id: <945E4EFB-41BF-41B4-9F4F-DD0BB11AA77B@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.749.3)
+Content-type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <445C05D4.8010906@sun.com>
+ <35D66F1C-77B3-46FF-A257-604E1E0F838A@sun.com> <445F872B.1000105@sun.com>
+Status: RO
+Content-Length: 475
+
+On May 8, 2006, at 11:00 AM, David Kahn wrote:
+> In general, there's hardware assist for what gets put into
+> dev-mondo, so I don't see the problem. Am I missing something?
+> I don't see this as all that difficult to implement.
+
+Fire doesn't have that support, adding the code to lookup the cookie  
+isn't difficult but probably isn't something the LDoms team wants to  
+tackle right now.  It'll also add a tiny bit of latency to all Fire  
+device interrupts.
+
+Cheers!greg
+
+
+
+From sacadmin Mon May  8 14:19:22 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k48LJLIQ019555
+	for <fwarc@sac.eng.sun.com>; Mon, 8 May 2006 14:19:21 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k48LJGw07058;
+	Mon, 8 May 2006 14:19:16 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYY00005TW34G00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 08 May 2006 14:19:15 -0700 (PDT)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYY00NB6TW21T00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 08 May 2006 14:19:14 -0700 (PDT)
+Received: from d1-sfbay-04.sun.com ([192.18.39.114])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k48LJEgL015371; Mon,
+ 08 May 2006 14:19:14 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-04.sun.com by d1-sfbay-04.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IYY00A01T7UK400@d1-sfbay-04.sun.com>
+ (original mail from Girish.Goyal@Sun.COM); Mon,
+ 08 May 2006 14:19:14 -0700 (PDT)
+Received: from Sun.COM ([129.146.96.105])
+ by d1-sfbay-04.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0IYY00A4LTW2ZM00@d1-sfbay-04.sun.com>; Mon,
+ 08 May 2006 14:19:14 -0700 (PDT)
+Date: Mon, 08 May 2006 14:15:53 -0700
+From: Girish Goyal <Girish.Goyal@Sun.COM>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <05FEA819-8080-45BB-A995-88759E9D865E@Sun.COM>
+Sender: Girish.Goyal@Sun.COM
+To: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Cc: David Kahn <David.Kahn@Sun.COM>,
+   Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+   Firmware Arch <fwarc@Sun.COM>, LDoms Internal <ldoms-internal@Sun.COM>,
+   Greg Onufer <greg.onufer@Sun.COM>
+Message-id: <445FB509.4020504@Sun.COM>
+MIME-version: 1.0
+Content-type: text/html; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <445C05D4.8010906@sun.com>
+ <35D66F1C-77B3-46FF-A257-604E1E0F838A@sun.com> <445F872B.1000105@sun.com>
+ <05FEA819-8080-45BB-A995-88759E9D865E@Sun.COM>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 4901
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+  <title></title>
+</head>
+<body text="#000000" bgcolor="#ffffff">
+<tt>Narayan,<br>
+<br>
+I noticed some incorrect assumptions in the FWARC case<br>
+as to the existing/legacy interrupt support. For example,<br>
+section 1.1 says:<br>
+<br>
+</tt>
+<pre><tt>  The sysino API was intended to all the Hypervisor to return any 64-bit
+  value to represent an interrupt source. The arbitrary sysino value was
+  intended such that any algorithm might be employed in generating a sysino for
+  the corresponding device handle and interrupt number.
+  In practise the implementation was simply to concatenate the devhandle and
+  ino values into a single 64-bit sysino number.
+
+Above is not correct as sysino was expected to be a fairly small
+value which can be used as an index into the intr_vector table.
+That's why devino_to_sysino API was invented. Note that if the
+sysino was going to be any arbitrary value, then it would have
+required extra lookup (as opposed to simple indexing into an
+intr_vector table) on the guest side, causing unnecessary overhead
+in processing an interrupt.
+</tt></pre>
+<tt>Overall, based upon the email exchange, it seems it's not<br>
+clear what are the real requirements here and how that's <br>
+being archived. I think it will help if you can summarize<br>
+that for the benefit of folks who are interested in this<br>
+case. For example, there are several ways to allow more<br>
+"sysino", without having to invent a new API. Is that the<br>
+only requirement? How is that information communicated to<br>
+the guest so that a guest can allocate proper size dev_mondo<br>
+queue (without the risk of overflowing it).<br>
+<br>
+Can you also elaborate or send a pointer to how interrupt<br>
+cookies are being used within a guest.<br>
+<br>
+BTW, I am sending this to the FWARC alias as it's relevant<br>
+to this FWARC case review.<br>
+<br>
+Thanks,<br>
+Girish<br>
+</tt><br>
+On 05/08/06 11:07, Narayan Venkat wrote:<br>
+<blockquote type="cite"
+ cite="mid05FEA819-8080-45BB-A995-88759E9D865E@Sun.COM">
+  <pre wrap="">Hi
+
+If you are saying we should still use the sysino to invoke
+the various calls like get/set state etc. The devhdl/devino
+should be only used to set the cookie ? If thats what you
+are suggesting, then I agree there is no overhead. That is the
+same as the existing APIs. But that would mean we would
+still be restricted to the sysino limitations we have
+today. Except for the cosmetic reason of getting the HV
+to return cookies instead of INOs, we have not increased
+the size of the name space. We still can only have a
+fixed number of SYSINOs - except the guest gets to associate
+a arbitary number with each sysino ..
+
+-Narayan
+
+
+  </pre>
+  <blockquote type="cite">
+    <blockquote type="cite">
+      <blockquote type="cite">
+        <pre wrap="">It seems to me that we really only need one or
+two new interfaces to accomplish what we want here.
+
+I assume what we want to accomplish is to be able to let the
+guest use whatever value it wants to see in dev-mondo.
+The default is sysino as it is today.
+
+intr_setcookie and intr_getcookie.
+
+In the absence of an intr_setcookie call, the hv
+uses sysino as it does today.
+
+If intr_setcookie is called, then it uses the
+cookie value instead.
+
+Am i missing something? Why isn't it just this simple?
+No new groups to define and no worries about mixed
+modes either.
+        </pre>
+      </blockquote>
+      <pre wrap="">What you are suggesting above will require doing a lookup by
+cookie in the Hypervisor, each time an interrupt API is invoked.
+      </pre>
+    </blockquote>
+    <pre wrap="">Why? Do we do that now?
+
+    </pre>
+    <blockquote type="cite">
+      <pre wrap="">Since the guest can set any cookie value for each interrupt
+source, doing this lookup in the interrupt processing path
+will be expensive.
+      </pre>
+    </blockquote>
+    <pre wrap="">Why? Is it expensive now?
+
+    </pre>
+    <blockquote type="cite">
+      <pre wrap="">Secondly, goal here is to use devhandle
+and devino as they uniquely identify the interrupt source.
+      </pre>
+    </blockquote>
+    <pre wrap="">You can use devhandle, devino in the 2 new interfaces if
+you want to, I guess.
+
+    </pre>
+    <blockquote type="cite">
+      <pre wrap="">It was OK using the sysino in the case of group 0x1 APIs as
+the HV generated the sysino value and the lookup was easier
+for the HV.
+      </pre>
+    </blockquote>
+    <pre wrap="">The HV will still generate sysino. The 2 new APIs will only
+change what the guest sees in dev-mondo.
+
+In general, there's hardware assist for what gets put into
+dev-mondo, so I don't see the problem. Am I missing something?
+I don't see this as all that difficult to implement.
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+  </pre>
+</blockquote>
+<br>
+</body>
+</html>
+
+
+From sacadmin Tue May  9 05:59:16 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k49CxFIQ004759
+	for <fwarc@sac.eng.sun.com>; Tue, 9 May 2006 05:59:15 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k49CxDtH012885;
+	Tue, 9 May 2006 13:59:14 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IZ0005011EPX400@brm-avmta-1.central.sun.com>; Tue,
+ 09 May 2006 06:59:13 -0600 (MDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IZ000LME1EPWJ50@brm-avmta-1.central.sun.com>; Tue,
+ 09 May 2006 06:59:13 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k49CxCTF004999; Tue, 09 May 2006 05:59:12 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k49CxAZO060834;
+ Tue, 09 May 2006 05:59:10 -0700 (PDT)
+Date: Tue, 09 May 2006 05:59:10 -0700
+From: David Kahn <David.Kahn@Sun.COM>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <D71DC87A-C1EC-4BD9-971E-2849CA039F61@sun.com>
+To: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+   Firmware Arch <fwarc@Sun.COM>, LDoms Internal <ldoms-internal@Sun.COM>,
+   Girish Goyal <Girish.Goyal@Sun.COM>, Greg Onufer <greg.onufer@Sun.COM>,
+   Ashley Saulsbury <ashley.saulsbury@Sun.COM>
+Message-id: <4460921E.5060905@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <445BF03C.9050801@sun.com> <445BF63A.3010305@sun.com>
+ <D71DC87A-C1EC-4BD9-971E-2849CA039F61@sun.com>
+User-Agent: Thunderbird 1.5.0.2 (Windows/20060308)
+Status: RO
+Content-Length: 1349
+
+
+New materials have been submitted for this case
+that address all issues I had with the case. I
+deposited v2.4 of the spec into the materials
+directory.
+
+In summary, the existing INTR* interfaces
+are being moved from API group 1 to API group 2.
+The versioning stuff hasn't shipped yet, so
+this change is ok provided it makes it into s10u3.
+
+If, for some reason, the API group change isn't
+integrated with (whatever changes are necessary
+in the OS for) s10u3, the project team agreed to
+submit a follow-up case to correct this since
+we'll be stuck with the INTR* interfaces in
+API group 1 at that point.
+
+These changes and the new interfaces will need to
+be recorded in the API registry upon case approval.
+(AI: Case owner).
+
+The existing INTR* stuff will be v1.0 of API group 2.
+The new VINTR* interfaces will be v2.0 of API group 2.
+The document explains how this works.
+
+I've taken the liberty of resetting the timer to
+Wed May 10, so the project has a chance at integrating
+into S10u3 this week.
+
+As usual, the approval being requested is for
+a minor firmware release and a micro/patch OS release,
+with the caveats listed above for s10u3. The commitment
+level of all interfaces is "evolving".
+
+Note to Hitu: I'm doing this on your behalf to help
+move this project along since s10u3 closes real soon now.
+I hope you don't mind. Thanks.
+
+-David
+
+
+
+
+From sacadmin Tue May  9 09:32:19 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k49GWJIQ013703
+	for <fwarc@sac.eng.sun.com>; Tue, 9 May 2006 09:32:19 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k49GWIE20719;
+	Tue, 9 May 2006 09:32:18 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IZ000E0DB9TFP00@brm-avmta-1.central.sun.com>; Tue,
+ 09 May 2006 10:32:17 -0600 (MDT)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IZ000LYUB9TWEE0@brm-avmta-1.central.sun.com>; Tue,
+ 09 May 2006 10:32:17 -0600 (MDT)
+Received: from d1-sfbay-02.sun.com ([192.18.39.112])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k49GWDgN015332; Tue,
+ 09 May 2006 09:32:13 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-02.sun.com by d1-sfbay-02.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IZ000401B0XQG00@d1-sfbay-02.sun.com>
+ (original mail from Girish.Goyal@Sun.COM); Tue,
+ 09 May 2006 09:32:13 -0700 (PDT)
+Received: from Sun.COM ([129.146.96.105])
+ by d1-sfbay-02.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0IZ000IFLB9OLU10@d1-sfbay-02.sun.com>; Tue,
+ 09 May 2006 09:32:13 -0700 (PDT)
+Date: Tue, 09 May 2006 09:28:51 -0700
+From: Girish Goyal <Girish.Goyal@Sun.COM>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <4460921E.5060905@sun.com>
+Sender: Girish.Goyal@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: David Kahn <David.Kahn@Sun.COM>, Narayan Venkat <Narayan.Venkat@Sun.COM>,
+   Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+   LDoms Internal <ldoms-internal@Sun.COM>, Greg Onufer <greg.onufer@Sun.COM>,
+   Ashley Saulsbury <ashley.saulsbury@Sun.COM>
+Message-id: <4460C343.7020502@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <445BF03C.9050801@sun.com> <445BF63A.3010305@sun.com>
+ <D71DC87A-C1EC-4BD9-971E-2849CA039F61@sun.com> <4460921E.5060905@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 1789
+
+For the record, API versioning support has already
+been putback to the ONNV gate (build 36) on 3/10/06
+and it's going in S10U3B2. New API group for the
+interrupt services impacts both Solaris and FW.
+It'll have to be coordinated separately to ensure
+that all combinations of the solaris and firmware
+with/without API versioning work properly.
+
+Girish
+
+
+On 05/09/06 05:59, David Kahn wrote:
+
+>New materials have been submitted for this case
+>that address all issues I had with the case. I
+>deposited v2.4 of the spec into the materials
+>directory.
+>
+>In summary, the existing INTR* interfaces
+>are being moved from API group 1 to API group 2.
+>The versioning stuff hasn't shipped yet, so
+>this change is ok provided it makes it into s10u3.
+>
+>If, for some reason, the API group change isn't
+>integrated with (whatever changes are necessary
+>in the OS for) s10u3, the project team agreed to
+>submit a follow-up case to correct this since
+>we'll be stuck with the INTR* interfaces in
+>API group 1 at that point.
+>
+>These changes and the new interfaces will need to
+>be recorded in the API registry upon case approval.
+>(AI: Case owner).
+>
+>The existing INTR* stuff will be v1.0 of API group 2.
+>The new VINTR* interfaces will be v2.0 of API group 2.
+>The document explains how this works.
+>
+>I've taken the liberty of resetting the timer to
+>Wed May 10, so the project has a chance at integrating
+>into S10u3 this week.
+>
+>As usual, the approval being requested is for
+>a minor firmware release and a micro/patch OS release,
+>with the caveats listed above for s10u3. The commitment
+>level of all interfaces is "evolving".
+>
+>Note to Hitu: I'm doing this on your behalf to help
+>move this project along since s10u3 closes real soon now.
+>I hope you don't mind. Thanks.
+>
+>-David
+>
+>
+>
+>  
+>
+
+
+
+From sacadmin Tue May  9 10:18:55 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k49HIsHx018853
+	for <fwarc@sac.eng.sun.com>; Tue, 9 May 2006 10:18:54 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k49HImi2018094
+	for <@sunmail2.sfbay.sun.com:fwarc@sun.com>; Tue, 9 May 2006 18:18:53 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IZ000405DFHLG00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 09 May 2006 10:18:53 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IZ0004BADFG9V00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 09 May 2006 10:18:52 -0700 (PDT)
+Received: from relay12.sun.com ([217.140.40.34])
+	by brmea-mail-4.sun.com (8.12.10/8.12.9) with ESMTP id k49HIpIH015411	for
+ <fwarc@sun.com>; Tue, 09 May 2006 11:18:52 -0600 (MDT)
+Received: from mms13es.sun.com (mms13es.sun.com [160.41.223.54])
+ by relay12.sun.com with ESMTP for fwarc@sun.com; Tue,
+ 09 May 2006 17:18:51 +0000 (Z)
+Received: from mms11bas.mms.eu.btsyntegra.com
+ (mms11bas.mms.eu.btsyntegra.com [217.140.40.10]) by mms13es.sun.com with ESMTP
+ for fwarc@sun.com; Tue, 09 May 2006 17:18:51 +0000 (Z)
+Received: from smtp113.sbc.mail.mud.yahoo.com
+ (smtp113.sbc.mail.mud.yahoo.com [68.142.198.212])
+ by relay11.sun.com for fwarc@sun.com; Tue, 09 May 2006 17:18:51 +0000 (Z)
+Received: (qmail 5862 invoked from network); Tue, 09 May 2006 17:18:50 +0000
+Received: from unknown (HELO ?192.168.2.2?) (hituz@71.136.116.247 with plain)
+ by smtp113.sbc.mail.mud.yahoo.com with SMTP; Tue, 09 May 2006 17:18:49 +0000
+Date: Tue, 09 May 2006 10:18:47 -0700
+From: Hitendra Zhangada <hitendra.zhangada@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <4460921E.5060905@sun.com>
+To: Firmware Arch <fwarc@sun.com>
+Cc: LDoms Internal <ldoms-internal@sun.com>,
+        Girish Goyal <Girish.Goyal@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Message-id: <4460CEF7.4090807@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <445BF03C.9050801@sun.com> <445BF63A.3010305@sun.com>
+ <D71DC87A-C1EC-4BD9-971E-2849CA039F61@sun.com> <4460921E.5060905@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 933
+
+David Kahn wrote:
+
+>
+> These changes and the new interfaces will need to
+> be recorded in the API registry upon case approval.
+> (AI: Case owner).
+
+
+I will take care of it once the APIs are approved (tomorrow).
+
+<snip>
+
+> As usual, the approval being requested is for
+> a minor firmware release and a micro/patch OS release,
+> with the caveats listed above for s10u3. The commitment
+> level of all interfaces is "evolving".
+>
+> Note to Hitu: I'm doing this on your behalf to help
+> move this project along since s10u3 closes real soon now.
+> I hope you don't mind. Thanks.
+
+Not at all.  Thanks a lot for your help with moving this case
+forward.  I hope there are no other issues from anyone else :)
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Tue May  9 16:55:58 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k49NtvTU006512
+	for <fwarc@sac.eng.sun.com>; Tue, 9 May 2006 16:55:57 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k49NthXS016645;
+	Wed, 10 May 2006 00:55:54 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IZ000301VT3QT00@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 09 May 2006 16:55:51 -0700 (PDT)
+Received: from nwkes-gis-mail-1.sun.com ([10.4.134.5])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IZ0007BQVT3A3A0@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 09 May 2006 16:55:51 -0700 (PDT)
+Received: from d1-sfbay-06.sun.com ([192.18.39.116])
+	by nwkes-gis-mail-1.sun.com (8.12.9/8.12.9) with ESMTP id k49Nto6O023396; Tue,
+ 09 May 2006 16:55:50 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-06.sun.com by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IZ000A01VHOC500@d1-sfbay-06.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Tue,
+ 09 May 2006 16:55:50 -0700 (PDT)
+Received: from [129.153.85.10] by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IZ0007FNVT26U30@d1-sfbay-06.sun.com>; Tue,
+ 09 May 2006 16:55:50 -0700 (PDT)
+Date: Tue, 09 May 2006 16:55:50 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <4460CEF7.4090807@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: LDoms Internal <ldoms-internal@sun.com>,
+        Girish Goyal <Girish.Goyal@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Message-id: <44612C06.7020501@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <445BF03C.9050801@sun.com> <445BF63A.3010305@sun.com>
+ <D71DC87A-C1EC-4BD9-971E-2849CA039F61@sun.com> <4460921E.5060905@sun.com>
+ <4460CEF7.4090807@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 862
+
+Hitendra Zhangada wrote On 05/09/06 10:18,:
+> David Kahn wrote:
+> 
+>>
+>> These changes and the new interfaces will need to
+>> be recorded in the API registry upon case approval.
+>> (AI: Case owner).
+> 
+> I will take care of it once the APIs are approved (tomorrow).
+
+FYI.  I have created an interface table to include all of
+the APIs.  The table is available at,
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/074/materials/interface_table.txt
+
+After case gets timed out tomorrow, I will update the
+registry.  I will move all existing INTR APIs to Group 2,
+version 1.0 and will add VINTR APIs as Group 2, version 2.0.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Wed May 10 17:55:32 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4B0tV6N002648
+	for <fwarc@sac.eng.sun.com>; Wed, 10 May 2006 17:55:31 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k4B0tShq024084;
+	Thu, 11 May 2006 01:55:28 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IZ200K01T8AIH00@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 10 May 2006 17:55:22 -0700 (PDT)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IZ200HDLT8AHA70@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 10 May 2006 17:55:22 -0700 (PDT)
+Received: from d1-sfbay-01.sun.com ([192.18.39.111])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k4B0tMgL011289; Wed,
+ 10 May 2006 17:55:22 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-01.sun.com by d1-sfbay-01.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IZ200I01SESMA00@d1-sfbay-01.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Wed,
+ 10 May 2006 17:55:22 -0700 (PDT)
+Received: from [129.150.35.12] by d1-sfbay-01.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IZ200FVZT88VL00@d1-sfbay-01.sun.com>; Wed,
+ 10 May 2006 17:55:22 -0700 (PDT)
+Date: Wed, 10 May 2006 17:55:20 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/074 - fast-track - sun4v interrupt cookies
+In-reply-to: <44612C06.7020501@Sun.COM>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: LDoms Internal <ldoms-internal@Sun.COM>,
+        Girish Goyal <Girish.Goyal@Sun.COM>, Greg Onufer <greg.onufer@Sun.COM>
+Message-id: <44628B78.30808@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <445BF03C.9050801@sun.com> <445BF63A.3010305@sun.com>
+ <D71DC87A-C1EC-4BD9-971E-2849CA039F61@sun.com> <4460921E.5060905@sun.com>
+ <4460CEF7.4090807@sun.com> <44612C06.7020501@Sun.COM>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 1186
+
+Hitendra Zhangada wrote:
+
+> Hitendra Zhangada wrote On 05/09/06 10:18,:
+> 
+>> David Kahn wrote:
+>>
+>>>
+>>> These changes and the new interfaces will need to
+>>> be recorded in the API registry upon case approval.
+>>> (AI: Case owner).
+>>
+>>
+>> I will take care of it once the APIs are approved (tomorrow).
+> 
+> 
+> FYI.  I have created an interface table to include all of
+> the APIs.  The table is available at,
+> 
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/074/materials/interface_table.txt 
+> 
+> 
+> After case gets timed out tomorrow, I will update the
+> registry.  I will move all existing INTR APIs to Group 2,
+> version 1.0 and will add VINTR APIs as Group 2, version 2.0.
+
+This case has timed-out and hence approved.  I have updated the
+IAM file, HV registry and have also deleted older specifications
+from the materials directory.
+
+This case is approved for integration into a minor firmware release
+and a micro/patch OS release.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+

@@ -1,0 +1,2667 @@
+From sacadmin Fri Sep 15 10:41:31 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8FHfVZ6001680
+	for <fwarc@sac.eng.sun.com>; Fri, 15 Sep 2006 10:41:31 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k8FHfVx00140;
+	Fri, 15 Sep 2006 10:41:31 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J5N00815AH6CR00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 15 Sep 2006 10:41:30 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J5N00AFNAH1W170@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 15 Sep 2006 10:41:26 -0700 (PDT)
+Received: from fe-amer-02.sun.com ([192.18.108.176])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8FHfFfm019297; Fri,
+ 15 Sep 2006 11:41:15 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J5N00C01A0M3T00@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Fri,
+ 15 Sep 2006 11:41:15 -0600 (MDT)
+Received: from [129.150.34.43] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J5N00MKFAGP9TG6@mail-amer.sun.com>; Fri,
+ 15 Sep 2006 11:41:14 -0600 (MDT)
+Date: Fri, 15 Sep 2006 10:41:18 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <450AE5BE.3000303@sun.com>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_2Nd3EwBLke/TocC124ietQ)"
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 4613
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_2Nd3EwBLke/TocC124ietQ)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+I am sponsoring this fast-track for Ryan Maeda.  This case introduces
+two MD platform node properties.  See description in the attached
+specification.  The timer for this case is set to September 22, 2006.
+
+Please include ldoms-internal@sun.com (reply to all) for any
+discussions on this case.
+
+This project is seeking approval for a minor/micro binding for firmware
+changes and a micro/minor/patch binding for the OS.
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_2Nd3EwBLke/TocC124ietQ)
+Content-type: text/plain; name=md_prop_spec.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=md_prop_spec.txt
+
+#pragma	ident	"@(#)md_prop_spec.txt	1.6	06/09/15 SMI"
+
+1. Technical Description:
+
+   1.1 Overview
+
+     The current Machine Description definition does not provide a way
+     for a guest to determine the maximum number of virtual CPUs it should
+     support, or the amount of time a CPU mondo may take.
+
+     This leads to guest software such as Solaris using hard coded constants
+     that are applied to all sun4v platforms. However, the appropriate value
+     for these parameters are platform specific. This leads to suboptimal
+     values being used on some platforms.
+
+     By introducing properties in the MD which provide more appropriate
+     platform specific values for these parameters, the guest has the
+     opportunity to make more sensible decisions based on actual platform
+     constraints.
+
+
+   1.1.1  max-vcpus platform node property
+
+     Additional property added to platform node as described below.
+
+     Name             Tag        Req'd?    Description
+     ----------------------------------------------------------------------
+     max-vcpus       PROP_VAL     No       A 64-bit unsigned integer that
+                                           represents the theoretical maximum
+                                           number of virtual CPUs a guest can
+                                           have for a particular platform.
+
+                                           If defined, the guest software
+                                           can assume that it will not see
+                                           more virtual CPUs than specified
+                                           by this property.
+
+     Note: The presence of this property does not place any requirement on
+     the guest to support the number of virtual CPUs specified. The guest
+     is free to further constrain the number of virtual CPUs that it will
+     support.
+
+
+   1.1.2  mondo-latency platform node property
+
+     Additional property added to the platform node as described below.
+
+     Name             Tag        Req'd?    Description
+     ----------------------------------------------------------------------
+     mondo-latency   PROP_VAL     No       A 64 bit unsigned integer which
+                                           represents the upper bound on the
+                                           amount of time a guest should
+                                           expect to wait for a cpu mondo to
+                                           be delivered. Values are specified
+                                           in units of system ticks.
+
+     Note: System tick frequency is specified by the "stick-frequency"
+     property in the "platform" MD node (FWARC 2005/115).
+
+
+   1.2 Imported Interfaces:
+
+     Interface              Classification     Comments
+     ====================================================================
+
+     sun4v Machine          Sun Private        MD nodes definitions as
+     Description nodes                         defined by FWARC 2005/115
+
+
+   1.3 Exported Interfaces:
+
+
+     Interface              Classification     Comments
+     ====================================================================
+
+     "max-vcpus"            Sun Private        A platform MD node property
+                                               to describe the maximum number
+                                               of vcpus in a guest.
+
+     "mondo-latency"        Sun Private        A platform MD node property
+                                               to describe cpu mondo latency.
+
+
+--Boundary_(ID_2Nd3EwBLke/TocC124ietQ)--
+
+From sacadmin Fri Sep 15 11:18:43 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8FIIgne004351
+	for <fwarc@sac.eng.sun.com>; Fri, 15 Sep 2006 11:18:42 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k8FIIbTB028945;
+	Fri, 15 Sep 2006 19:18:41 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J5N0080RC72F500@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 15 Sep 2006 11:18:38 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J5N00AS5C70W190@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 15 Sep 2006 11:18:36 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id k8FIIavq015987; Fri, 15 Sep 2006 11:18:36 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k8FIIZkc043951; Fri,
+ 15 Sep 2006 11:18:35 -0700 (PDT)
+Date: Fri, 15 Sep 2006 11:18:34 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware ARC <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>,
+        Ryan Maeda <Ryan.Maeda@sun.com>
+Message-id: <450AEE7A.9020704@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 1.5.0.7 (Windows/20060909)
+Status: RO
+Content-Length: 2995
+
+
+What node do the properties appear in?
+Shouldn't that be part of the specification?
+
+-David
+
+
+Hitendra Zhangada wrote:
+
+>    1.1.1  max-vcpus platform node property
+> 
+>      Additional property added to platform node as described below.
+> 
+>      Name             Tag        Req'd?    Description
+>      ----------------------------------------------------------------------
+>      max-vcpus       PROP_VAL     No       A 64-bit unsigned integer that
+>                                            represents the theoretical maximum
+>                                            number of virtual CPUs a guest can
+>                                            have for a particular platform.
+> 
+>                                            If defined, the guest software
+>                                            can assume that it will not see
+>                                            more virtual CPUs than specified
+>                                            by this property.
+> 
+>      Note: The presence of this property does not place any requirement on
+>      the guest to support the number of virtual CPUs specified. The guest
+>      is free to further constrain the number of virtual CPUs that it will
+>      support.
+> 
+> 
+>    1.1.2  mondo-latency platform node property
+> 
+>      Additional property added to the platform node as described below.
+> 
+>      Name             Tag        Req'd?    Description
+>      ----------------------------------------------------------------------
+>      mondo-latency   PROP_VAL     No       A 64 bit unsigned integer which
+>                                            represents the upper bound on the
+>                                            amount of time a guest should
+>                                            expect to wait for a cpu mondo to
+>                                            be delivered. Values are specified
+>                                            in units of system ticks.
+> 
+>      Note: System tick frequency is specified by the "stick-frequency"
+>      property in the "platform" MD node (FWARC 2005/115).
+> 
+> 
+>    1.2 Imported Interfaces:
+> 
+>      Interface              Classification     Comments
+>      ====================================================================
+> 
+>      sun4v Machine          Sun Private        MD nodes definitions as
+>      Description nodes                         defined by FWARC 2005/115
+> 
+> 
+>    1.3 Exported Interfaces:
+> 
+> 
+>      Interface              Classification     Comments
+>      ====================================================================
+> 
+>      "max-vcpus"            Sun Private        A platform MD node property
+>                                                to describe the maximum number
+>                                                of vcpus in a guest.
+> 
+>      "mondo-latency"        Sun Private        A platform MD node property
+>                                                to describe cpu mondo latency.
+> 
+
+From sacadmin Fri Sep 15 11:26:02 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8FIQ2W5004411
+	for <fwarc@sac.eng.sun.com>; Fri, 15 Sep 2006 11:26:02 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k8FIQ0O24367;
+	Fri, 15 Sep 2006 11:26:00 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J5N0001RCJ91400@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 15 Sep 2006 11:25:57 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J5N00AGLCJ7VCA0@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 15 Sep 2006 11:25:56 -0700 (PDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8FIPtRr019512; Fri,
+ 15 Sep 2006 12:25:55 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J5N00201CBDQ900@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Fri,
+ 15 Sep 2006 12:25:55 -0600 (MDT)
+Received: from [129.150.34.43] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J5N00BZWCJ6AOS2@mail-amer.sun.com>; Fri,
+ 15 Sep 2006 12:25:55 -0600 (MDT)
+Date: Fri, 15 Sep 2006 11:25:58 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <450AEE7A.9020704@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <450AF036.8020602@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <450AEE7A.9020704@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 494
+
+David Kahn wrote:
+
+>
+> What node do the properties appear in?
+> Shouldn't that be part of the specification?
+
+It is, see below in section 1.1.1.
+
+
+>>    1.1.1  max-vcpus platform node property
+>>
+>>      Additional property added to platform node as described below.
+>
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Fri Sep 15 12:28:02 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8FJS1f9006357
+	for <fwarc@sac.eng.Sun.COM>; Fri, 15 Sep 2006 12:28:01 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k8FJS0I00998;
+	Fri, 15 Sep 2006 13:28:00 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J5N00D0BFEN4H00@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 15 Sep 2006 12:27:59 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J5N00B8PFEMHQ10@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 15 Sep 2006 12:27:58 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id k8FJRwDx020917; Fri, 15 Sep 2006 12:27:58 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k8FJRuEa046827; Fri,
+ 15 Sep 2006 12:27:57 -0700 (PDT)
+Date: Fri, 15 Sep 2006 12:27:56 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware ARC <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Message-id: <450AFEBC.8020801@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 1.5.0.7 (Windows/20060909)
+Status: RO
+Content-Length: 233
+
+
+
+Hitendra Zhangada wrote:
+
+> It is, see below in section 1.1.1.
+> 
+> 
+>>>    1.1.1  max-vcpus platform node property
+>>>
+>>>      Additional property added to platform node as described below.
+
+So it is. My mistake. Thanks.
+
+-David
+
+From sacadmin Fri Sep 15 18:47:39 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8G1ldZo020276
+	for <fwarc@sac.eng.sun.com>; Fri, 15 Sep 2006 18:47:39 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k8G1lWnT014907;
+	Sat, 16 Sep 2006 02:47:38 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J5N00K01WZCBG00@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 15 Sep 2006 18:47:36 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J5N00JBAWZC5J10@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 15 Sep 2006 18:47:36 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k8G1lZkN002415; Fri, 15 Sep 2006 18:47:35 -0700 (PDT)
+Received: from [129.146.96.102] (x-files [129.146.96.102])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k8G1lZPv003540; Fri,
+ 15 Sep 2006 18:47:35 -0700 (PDT)
+Date: Fri, 15 Sep 2006 18:47:35 -0700
+From: Greg Onufer <greg.onufer@sun.com>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <450AE5BE.3000303@sun.com>
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware ARC <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Message-id: <450B57B7.7000705@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <450AE5BE.3000303@sun.com>
+User-Agent: Thunderbird 2.0b1pre (X11/20060915)
+Status: RO
+Content-Length: 1886
+
+Hitendra Zhangada wrote:
+>      Name             Tag        Req'd?    Description
+>      ----------------------------------------------------------------------
+>      max-vcpus       PROP_VAL     No       A 64-bit unsigned integer that
+>                                            represents the theoretical maximum
+>                                            number of virtual CPUs a guest can
+>                                            have for a particular platform.
+
+Prior work deprecated 'vcpus' for 'cpus' (and 'pci' for 'vpci', and so 
+on)... why is this bringing back the 'v'?  The current sun4v spec on 
+opensparc.org has "cpu" nodes, not "vcpu" nodes.
+
+>      Name             Tag        Req'd?    Description
+>      ----------------------------------------------------------------------
+>      mondo-latency   PROP_VAL     No       A 64 bit unsigned integer which
+>                                            represents the upper bound on the
+>                                            amount of time a guest should
+>                                            expect to wait for a cpu mondo to
+>                                            be delivered. Values are specified
+>                                            in units of system ticks.
+
+Device mondos might have different latencies than cpu mondos, I suggest 
+that 'cpu-mondo-latency' is more precise name.
+
+What does it mean by 'delivered'?  Placed in the recipient's queue or 
+the recipient has taken the queue non-empty trap?  That should be 
+spelled out.  If the latter, then the value should not be described as 
+the upper bound the guest should expect to wait but rather the lower 
+bound since guests that spend a lot of time with pstate.ie disabled 
+would need to wait longer but that's their policy given their 
+implementation, not a property of the virtual platform they are running on.
+
+Cheers!greg
+
+
+From sacadmin Sat Sep 16 09:05:53 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8GG5qRk005301
+	for <fwarc@sac.eng.sun.com>; Sat, 16 Sep 2006 09:05:53 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k8GG5lFU020112;
+	Sat, 16 Sep 2006 17:05:50 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J5P00F0J0POX200@nwk-avmta-2.sfbay.sun.com>; Sat,
+ 16 Sep 2006 09:05:48 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.6]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J5P0051J0PNLH50@nwk-avmta-2.sfbay.sun.com>; Sat,
+ 16 Sep 2006 09:05:47 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8GG5lFp008626; Sat,
+ 16 Sep 2006 09:05:47 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J5P00E010ODJZ00@d1-sfbay-09.sun.com>
+ (original mail from Ryan.Maeda@Sun.COM); Sat, 16 Sep 2006 09:05:47 -0700 (PDT)
+Received: from [192.168.1.5] ([129.150.20.7])
+ by d1-sfbay-09.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0J5P001KY0PM8QMV@d1-sfbay-09.sun.com>; Sat,
+ 16 Sep 2006 09:05:47 -0700 (PDT)
+Date: Sat, 16 Sep 2006 09:06:04 -0700
+From: Ryan Maeda <Ryan.Maeda@sun.com>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <450B57B7.7000705@sun.com>
+Sender: Ryan.Maeda@sun.com
+To: Greg Onufer <greg.onufer@sun.com>
+Cc: Ryan Maeda <Ryan.Maeda@sun.com>,
+        Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware ARC <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Message-id: <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.750)
+Content-type: text/plain; format=flowed; delsp=yes; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <450AE5BE.3000303@sun.com> <450B57B7.7000705@sun.com>
+Status: RO
+Content-Length: 6835
+
+On Sep 15, 2006, at 6:47 PM, Greg Onufer wrote:
+> Hitendra Zhangada wrote:
+>>      Name             Tag        Req'd?    Description
+>>       
+>> --------------------------------------------------------------------- 
+>> -
+>>      max-vcpus       PROP_VAL     No       A 64-bit unsigned  
+>> integer that
+>>                                            represents the  
+>> theoretical maximum
+>>                                            number of virtual CPUs  
+>> a guest can
+>>                                            have for a particular  
+>> platform.
+>
+> Prior work deprecated 'vcpus' for 'cpus' (and 'pci' for 'vpci', and  
+> so on)...
+> why is this bringing back the 'v'?  The current sun4v spec on  
+> opensparc.org
+> has "cpu" nodes, not "vcpu" nodes.
+
+Fair enough. I have no problem changing this to 'max-cpus'.
+
+>>      Name             Tag        Req'd?    Description
+>>       
+>> --------------------------------------------------------------------- 
+>> -
+>>      mondo-latency   PROP_VAL     No       A 64 bit unsigned  
+>> integer which
+>>                                            represents the upper  
+>> bound on the
+>>                                            amount of time a guest  
+>> should
+>>                                            expect to wait for a  
+>> cpu mondo to
+>>                                            be delivered. Values  
+>> are specified
+>>                                            in units of system ticks.
+>
+> Device mondos might have different latencies than cpu mondos, I  
+> suggest that
+> 'cpu-mondo-latency' is more precise name.
+
+Ok, I'll make that change as well.
+
+> What does it mean by 'delivered'?  Placed in the recipient's queue  
+> or the
+> recipient has taken the queue non-empty trap?  That should be  
+> spelled out.
+> If the latter, then the value should not be described as the upper  
+> bound
+> the guest should expect to wait but rather the lower bound since  
+> guests
+> that spend a lot of time with pstate.ie disabled would need to wait  
+> longer
+> but that's their policy given their implementation, not a property  
+> of the
+> virtual platform they are running on.
+
+In order to make this as useful as possible for the guest, I
+think what we really want this to mean is the time it takes
+for the queue non-empty trap to be taken, assuming that the
+guest has interrupts enabled. That's the real property of the
+virtual platform.
+
+As you say, if the guest spends a lot of time with pstate.ie
+disabled, it should take that into account on top of the value
+of this property.
+
+I've included an updated spec below which incorporates proposed
+changes for all the above comments.
+
+-Ryan
+
+-=-=-=-=-=-
+
+#pragma ident   "@(#)md_prop_spec.txt   1.7     06/09/16 SMI"
+
+1. Technical Description:
+
+    1.1 Overview
+
+      The current Machine Description definition does not provide a way
+      for a guest to determine the maximum number of virtual CPUs it  
+should
+      support, or the amount of time a CPU mondo may take.
+
+      This leads to guest software such as Solaris using hard coded  
+constants
+      that are applied to all sun4v platforms. However, the  
+appropriate value
+      for these parameters are platform specific. This leads to  
+suboptimal
+      values being used on some platforms.
+
+      By introducing properties in the MD which provide more appropriate
+      platform specific values for these parameters, the guest has the
+      opportunity to make more sensible decisions based on actual  
+platform
+      constraints.
+
+
+    1.1.1  max-cpus platform node property
+
+      Additional property added to platform node as described below.
+
+      Name                 Tag      Req'd?   Description
+       
+----------------------------------------------------------------------
+      max-cpus           PROP_VAL    No      A 64-bit unsigned  
+integer that
+                                             represents the  
+theoretical maximum
+                                             number of virtual CPUs a  
+guest can
+                                             have for a particular  
+platform.
+
+                                             If defined, the guest  
+software
+                                             can assume that it will  
+not see
+                                             more virtual CPUs than  
+specified
+                                             by this property.
+
+      Note: The presence of this property does not place any  
+requirement on
+      the guest to support the number of virtual CPUs specified. The  
+guest
+      is free to further constrain the number of virtual CPUs that it  
+will
+      support.
+
+
+    1.1.2  cpu-mondo-latency platform node property
+
+      Additional property added to the platform node as described below.
+
+      Name                 Tag      Req'd?  Description
+       
+----------------------------------------------------------------------
+      cpu-mondo-latency  PROP_VAL    No     A 64 bit unsigned integer  
+which
+                                            represents the upper  
+bound on the
+                                            amount of time a guest  
+should
+                                            expect to wait for the  
+recipient
+                                            of a cpu mondo to take  
+the queue
+                                            non-empty trap, assuming  
+that the
+                                            recipient has interrupts  
+enabled.
+
+                                            Values are specified in  
+units of
+                                            system ticks.
+
+      Note: If a guest expects to spend an appreciable amount of time
+      executing with interrupts disabled, it is responsible for taking
+      that time into account over and above the value specified by this
+      property.
+
+      Note: System tick frequency is specified by the "stick-frequency"
+      property in the "platform" MD node (FWARC 2005/115).
+
+
+    1.2 Imported Interfaces:
+
+      Interface              Classification     Comments
+       
+====================================================================
+
+      sun4v Machine          Sun Private        MD nodes definitions as
+      Description nodes                         defined by FWARC  
+2005/115
+
+
+    1.3 Exported Interfaces:
+
+
+      Interface              Classification     Comments
+       
+====================================================================
+
+      "max-cpus"             Sun Private        A platform MD node  
+property
+                                                to describe the  
+maximum number
+                                                of virtual cpus in a  
+guest.
+
+      "cpu-mondo-latency"    Sun Private        A platform MD node  
+property
+                                                to describe cpu mondo  
+latency.
+
+
+From sacadmin Sat Sep 16 20:00:26 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8H30QHb024634
+	for <fwarc@sac.eng.Sun.COM>; Sat, 16 Sep 2006 20:00:26 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k8H30P510513;
+	Sat, 16 Sep 2006 21:00:25 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J5P00A03V0OKF00@nwk-avmta-1.sfbay.Sun.COM>; Sat,
+ 16 Sep 2006 20:00:25 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J5P00GSYV0NZ4D0@nwk-avmta-1.sfbay.Sun.COM>; Sat,
+ 16 Sep 2006 20:00:23 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.108.184])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8H30MZl026650; Sat,
+ 16 Sep 2006 21:00:22 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5P00201V059300@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Sat,
+ 16 Sep 2006 21:00:22 -0600 (MDT)
+Received: from [129.150.32.106] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J5P001POV0L2Q00@mail-amer.sun.com>; Sat,
+ 16 Sep 2006 21:00:22 -0600 (MDT)
+Date: Sat, 16 Sep 2006 20:00:25 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: Greg Onufer <greg.onufer@Sun.COM>, LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <450CBA49.9050703@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <450AE5BE.3000303@sun.com> <450B57B7.7000705@sun.com>
+ <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 1339
+
+Ryan Maeda wrote:
+
+> On Sep 15, 2006, at 6:47 PM, Greg Onufer wrote:
+>
+>> Hitendra Zhangada wrote:
+>>
+>>>      Name             Tag        Req'd?    Description
+>>>       
+>>> --------------------------------------------------------------------- -
+>>>      max-vcpus       PROP_VAL     No       A 64-bit unsigned  
+>>> integer that
+>>>                                            represents the  
+>>> theoretical maximum
+>>>                                            number of virtual CPUs  a 
+>>> guest can
+>>>                                            have for a particular  
+>>> platform.
+>>
+>>
+>> Prior work deprecated 'vcpus' for 'cpus' (and 'pci' for 'vpci', and  
+>> so on)...
+>> why is this bringing back the 'v'?  The current sun4v spec on  
+>> opensparc.org
+>> has "cpu" nodes, not "vcpu" nodes.
+>
+>
+> Fair enough. I have no problem changing this to 'max-cpus'.
+>
+FYI.  I have copied a copy of the updated spec. in the "materials"
+directory.
+
+http://sac.sfbay.sun.com/arc/FWARC/2006/545/materials/updated_md_prop_spec.txt
+
+
+I would like to keep the timer unchanged to Sept. 22, 2006 (Friday).
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Thu Sep 21 11:58:08 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8LIw8Rh005409
+	for <fwarc@sac.eng.sun.com>; Thu, 21 Sep 2006 11:58:08 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k8LIw6325204;
+	Thu, 21 Sep 2006 11:58:06 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J5Y00633I0UR200@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 21 Sep 2006 11:58:06 -0700 (PDT)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.6]) by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J5Y003UNI0RX530@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 21 Sep 2006 11:58:03 -0700 (PDT)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8LIw38v024826; Thu,
+ 21 Sep 2006 11:58:03 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5Y00901HXSGF00@d1-sfbay-10.sun.com>
+ (original mail from Girish.Goyal@Sun.COM); Thu,
+ 21 Sep 2006 11:58:03 -0700 (PDT)
+Received: from Sun.COM ([129.146.96.105])
+ by d1-sfbay-10.sun.com (Sun Java System Messaging Server 6.2-6.01 (built Apr 3
+ 2006)) with ESMTPSA id <0J5Y00IUZI0RK330@d1-sfbay-10.sun.com>; Thu,
+ 21 Sep 2006 11:58:03 -0700 (PDT)
+Date: Thu, 21 Sep 2006 11:55:11 -0700
+From: Girish Goyal <Girish.Goyal@Sun.COM>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM>
+Sender: Girish.Goyal@Sun.COM
+To: Ryan Maeda <Ryan.Maeda@Sun.COM>,
+        Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Greg Onufer <greg.onufer@Sun.COM>, Firmware ARC <fwarc@Sun.COM>,
+        LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <4512E00F.7020205@Sun.COM>
+MIME-version: 1.0
+Content-type: text/html; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <450AE5BE.3000303@sun.com> <450B57B7.7000705@sun.com>
+ <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 3329
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+  <title></title>
+</head>
+<body text="#000000" bgcolor="#ffffff">
+On 09/16/06 09:06, Ryan Maeda wrote:<br>
+<blockquote type="cite"
+ cite="midF9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM">
+  <pre wrap="">On Sep 15, 2006, at 6:47 PM, Greg Onufer wrote:
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">Hitendra Zhangada wrote:
+
+    </pre>
+  </blockquote>
+  <blockquote type="cite">
+    <blockquote type="cite">
+      <pre wrap="">     Name             Tag        Req'd?    Description
+      
+--------------------------------------------------------------------- 
+-
+     mondo-latency   PROP_VAL     No       A 64 bit unsigned  
+integer which
+                                           represents the upper  
+bound on the
+                                           amount of time a guest  
+should
+                                           expect to wait for a  
+cpu mondo to
+                                           be delivered. Values  
+are specified
+                                           in units of system ticks.
+      </pre>
+    </blockquote>
+    <pre wrap="">Device mondos might have different latencies than cpu mondos, I  
+suggest that
+'cpu-mondo-latency' is more precise name.
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+Ok, I'll make that change as well.
+
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">What does it mean by 'delivered'?  Placed in the recipient's queue  
+or the
+recipient has taken the queue non-empty trap?  That should be  
+spelled out.
+If the latter, then the value should not be described as the upper  
+bound
+the guest should expect to wait but rather the lower bound since  
+guests
+that spend a lot of time with pstate.ie disabled would need to wait  
+longer
+but that's their policy given their implementation, not a property  
+of the
+virtual platform they are running on.
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+In order to make this as useful as possible for the guest, I
+think what we really want this to mean is the time it takes
+for the queue non-empty trap to be taken, assuming that the
+guest has interrupts enabled. That's the real property of the
+virtual platform.
+  </pre>
+</blockquote>
+<tt><br>
+This property should not be dictating the latency in taking<br>
+the trap. Instead, it should mention the latency in queuing<br>
+an entry to the cpu-mondo queue.<br>
+<br>
+</tt><tt>Per sun4v architecture, if interrupts are enabled, a CPU<br>
+should take non-empty queue trap per priority defined by<br>
+each processor. Normally, you expect to take a non-empty<br>
+queue trap right away, provided no higher priority trap<br>
+is pending and interrupts are enabled.<br>
+<br>
+</tt><tt>If the trap can't be taken because hypervisor can keep the<br>
+CPU busy for some other reason, than that's going to impact<br>
+taking other traps as well, including soft interrupts,<br>
+dev-mondo, etc.<br>
+<br>
+Overall, I would like to understand why this property is being<br>
+added. </tt><tt>Not having a clear cut justification makes it difficult<br>
+to see if this property should be added to the MD to start<br>
+with and the overall scope/impact of it on guest software.<br>
+</tt><tt><br>
+Girish<br>
+</tt>
+</body>
+</html>
+
+
+From sacadmin Thu Sep 21 12:49:21 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8LJnKuF008735
+	for <fwarc@sac.eng.sun.com>; Thu, 21 Sep 2006 12:49:20 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k8LJnALO015600;
+	Thu, 21 Sep 2006 20:49:14 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J5Y00D0TKE0B800@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 21 Sep 2006 12:49:12 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J5Y003A6KDWCHF0@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 21 Sep 2006 12:49:08 -0700 (PDT)
+Received: from fe-amer-04.sun.com ([192.18.108.178])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8LJn8Hs000267; Thu,
+ 21 Sep 2006 13:49:08 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5Y00201K4BTO00@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Thu,
+ 21 Sep 2006 13:49:08 -0600 (MDT)
+Received: from [129.150.34.16] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J5Y00BE8KDS4MG2@mail-amer.sun.com>; Thu,
+ 21 Sep 2006 13:49:06 -0600 (MDT)
+Date: Thu, 21 Sep 2006 12:49:04 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <4512E00F.7020205@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Girish Goyal <Girish.Goyal@sun.com>
+Cc: Ryan Maeda <Ryan.Maeda@sun.com>, Greg Onufer <greg.onufer@sun.com>,
+        Firmware ARC <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Message-id: <4512ECB0.90000@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <450AE5BE.3000303@sun.com> <450B57B7.7000705@sun.com>
+ <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM> <4512E00F.7020205@Sun.COM>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 3511
+
+Girish Goyal wrote:
+
+>
+>This property should not be dictating the latency in taking
+>the trap. Instead, it should mention the latency in queuing
+>an entry to the cpu-mondo queue.
+>  
+>
+
+The property dictates the max value in number of stick a guest
+need to wait for CPU mondo to get deliver before it considers
+a time-out on it.  This is made clear in the description of
+the property, cut/paste below for reference.  If entry is queued
+but trap is not taken by the recipient CPU within the latency
+specified by the property then this is still a time-out situation.
+
+Once a mondo is sent to a CPU, the recipient CPU is expected to
+take the trap with-in the specified latency or else we have a
+time-out situation.  The latency is the time from mondo sent till
+recipient CPU to take non-empty trap. 
+
+     Name                 Tag      Req'd?  Description
+     ----------------------------------------------------------------------
+     cpu-mondo-latency  PROP_VAL    No     A 64 bit unsigned integer which
+                                           represents the upper bound on the
+                                           amount of time a guest should
+                                           expect to wait for the recipient
+                                           of a cpu mondo to take the queue
+                                           non-empty trap, assuming that the
+                                           recipient has interrupts enabled.
+
+                                           Values are specified in units of
+                                           system tickss
+
+>Per sun4v architecture, if interrupts are enabled, a CPU
+>should take non-empty queue trap per priority defined by
+>each processor. Normally, you expect to take a non-empty
+>queue trap right away, provided no higher priority trap
+>is pending and interrupts are enabled.
+>
+>If the trap can't be taken because hypervisor can keep the
+>CPU busy for some other reason, than that's going to impact
+>taking other traps as well, including soft interrupts,
+>dev-mondo, etc.
+>
+>Overall, I would like to understand why this property is being
+>added. Not having a clear cut justification makes it difficult
+>to see if this property should be added to the MD to start
+>with and the overall scope/impact of it on guest software.
+>  
+>
+Section 1.1 describes the reasons for this property, cut/paste below
+for reference.  Basically, we want to have per guest/platform specific
+time-out values instead of hard coded values for an architecture such
+as sun4v.  Isn't this clear?
+
+   1.1 Overview
+
+     The current Machine Description definition does not provide a way
+     for a guest to determine the maximum number of virtual CPUs it should
+     support, or the amount of time a CPU mondo may take.
+
+     This leads to guest software such as Solaris using hard coded constants
+     that are applied to all sun4v platforms. However, the appropriate value
+     for these parameters are platform specific. This leads to suboptimal
+     values being used on some platforms.
+
+     By introducing properties in the MD which provide more appropriate
+     platform specific values for these parameters, the guest has the
+     opportunity to make more sensible decisions based on actual platform
+     constraints.
+
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Thu Sep 21 12:49:44 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8LJnhV7009584
+	for <fwarc@sac.eng.sun.com>; Thu, 21 Sep 2006 12:49:43 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k8LJne315036;
+	Thu, 21 Sep 2006 12:49:41 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J5Y00A0PKEQVB00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 21 Sep 2006 12:49:38 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J5Y003YZKEJXD60@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 21 Sep 2006 12:49:31 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id k8LJnUhR017721; Thu, 21 Sep 2006 12:49:30 -0700 (PDT)
+Received: from [192.168.100.13] (x-files [129.146.96.102])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k8LJnTqt092054; Thu,
+ 21 Sep 2006 12:49:30 -0700 (PDT)
+Date: Thu, 21 Sep 2006 12:49:31 -0700
+From: Greg Onufer <greg.onufer@Sun.COM>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <4512E00F.7020205@Sun.COM>
+To: Girish Goyal <Girish.Goyal@Sun.COM>, Ryan Maeda <Ryan.Maeda@Sun.COM>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+        Firmware ARC <fwarc@Sun.COM>, LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <CCBC614B-19A8-4458-A81E-8AE1F111F70B@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.2)
+Content-type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <450AE5BE.3000303@sun.com> <450B57B7.7000705@sun.com>
+ <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM> <4512E00F.7020205@Sun.COM>
+Status: RO
+Content-Length: 1373
+
+On Sep 21, 2006, at 11:55 AM, Girish Goyal wrote:
+>> In order to make this as useful as possible for the guest, I think  
+>> what we really want this to mean is the time it takes for the  
+>> queue non-empty trap to be taken, assuming that the guest has  
+>> interrupts enabled. That's the real property of the virtual platform.
+>
+> This property should not be dictating the latency in taking
+> the trap. Instead, it should mention the latency in queuing
+> an entry to the cpu-mondo queue.
+
+If the intended use is for the sender to have a bound on when the  
+receiver takes the trap then Ryan's revised definition would be more  
+appropriate...
+
+> Overall, I would like to understand why this property is being
+> added. Not having a clear cut justification makes it difficult
+> to see if this property should be added to the MD
+
+... but, as you correctly point out, without a rationale it's hard to  
+determine whether the property is useful or not and, if it is,  
+whether it's defined correctly.
+
+There's no harm in having properties that define physical properties  
+of the VM even if not all guest software finds them useful.  But most  
+have obviously-correct meanings-- the l2 cache size property, for  
+example.  This one's a bit more nebulous and, if it cannot be clearly  
+defined in a useful way, should probably be removed from this FWARC  
+case.
+
+Cheers!greg
+
+
+
+From sacadmin Thu Sep 21 13:06:31 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8LK6UlY020724
+	for <fwarc@sac.eng.sun.com>; Thu, 21 Sep 2006 13:06:30 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k8LK6Glt019816;
+	Thu, 21 Sep 2006 21:06:29 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J5Y00C1FL6R5X00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 21 Sep 2006 13:06:27 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J5Y0030YL6QX580@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 21 Sep 2006 13:06:26 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k8LK6PYE013647; Thu, 21 Sep 2006 13:06:25 -0700 (PDT)
+Received: from [192.168.100.13] (x-files [129.146.96.102])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k8LK6OL9092784; Thu,
+ 21 Sep 2006 13:06:25 -0700 (PDT)
+Date: Thu, 21 Sep 2006 13:06:26 -0700
+From: Greg Onufer <greg.onufer@sun.com>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <4512ECB0.90000@sun.com>
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Girish Goyal <Girish.Goyal@sun.com>, Ryan Maeda <Ryan.Maeda@sun.com>,
+        Firmware ARC <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Message-id: <7CAAD716-82A8-484A-B00B-FC67A0F0BA9D@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.2)
+Content-type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <450AE5BE.3000303@sun.com> <450B57B7.7000705@sun.com>
+ <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM> <4512E00F.7020205@Sun.COM>
+ <4512ECB0.90000@sun.com>
+Status: RO
+Content-Length: 1513
+
+On Sep 21, 2006, at 12:49 PM, Hitendra Zhangada wrote:
+> The property dictates the max value in number of stick a guest
+> need to wait for CPU mondo to get deliver before it considers
+> a time-out on it.  This is made clear in the description of
+> the property, cut/paste below for reference.  If entry is queued
+> but trap is not taken by the recipient CPU within the latency
+> specified by the property then this is still a time-out situation.
+
+But most guest software has other considerations that make the  
+"hardware" delivery time a small factor.  How is this useful when,  
+for example, Solaris' timeout is on the order of one second,  
+significantly larger than the hardware delivery time?  The timeout is  
+supposed to be a "cannot happen" scenario (though, due to software  
+and hardware bugs it sometimes does) so a very long timeout is not  
+usually a problem.
+
+Is there an actual problem being solved?   The only use I can think  
+of for this property is to reduce the cpu mondo timeout in order to  
+detect failures more quickly without false positives.  But the guest  
+cannot use the value as-is, it still needs to compensate for its own  
+implementation.  Or, I suppose, if a platform were being proposed  
+where the latency for a cpu mondo was greater than 1 sec... perhaps  
+for time-slicing multiple virtual cpus on fewer physical cpus?  But  
+there are cleaner ways to architect that in sun4v without assuming  
+that only the send-mondo code is affected by increased latency.
+
+Cheers!greg
+
+
+
+
+From sacadmin Thu Sep 21 14:32:00 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8LLVxbD024408
+	for <fwarc@sac.eng.sun.com>; Thu, 21 Sep 2006 14:32:00 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k8LLVnjt007210;
+	Thu, 21 Sep 2006 22:31:57 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J5Y00K0VP588W00@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 21 Sep 2006 14:31:56 -0700 (PDT)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.5]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J5Y00D0BP57BD80@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 21 Sep 2006 14:31:55 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8LLVtlc015422; Thu,
+ 21 Sep 2006 14:31:55 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5Y00C01P2VGD00@d1-sfbay-09.sun.com>
+ (original mail from Girish.Goyal@Sun.COM); Thu,
+ 21 Sep 2006 14:31:55 -0700 (PDT)
+Received: from Sun.COM ([129.146.96.105])
+ by d1-sfbay-09.sun.com (Sun Java System Messaging Server 6.2-6.01 (built Apr 3
+ 2006)) with ESMTPSA id <0J5Y009DPP52Z790@d1-sfbay-09.sun.com>; Thu,
+ 21 Sep 2006 14:31:50 -0700 (PDT)
+Date: Thu, 21 Sep 2006 14:28:58 -0700
+From: Girish Goyal <Girish.Goyal@sun.com>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <4512ECB0.90000@sun.com>
+Sender: Girish.Goyal@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Ryan Maeda <Ryan.Maeda@sun.com>, Greg Onufer <Greg.Onufer@sun.com>,
+        Firmware ARC <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Message-id: <4513041A.1050703@Sun.COM>
+MIME-version: 1.0
+Content-type: text/html; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <450AE5BE.3000303@sun.com> <450B57B7.7000705@sun.com>
+ <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM> <4512E00F.7020205@Sun.COM>
+ <4512ECB0.90000@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 4562
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+  <title></title>
+</head>
+<body text="#000000" bgcolor="#ffffff">
+<tt>This case is missing a rationale for folks to decide if<br>
+this property is useful and defined properly or not.<br>
+<br>
+According to the CR 6469894, which tries to spell out the<br>
+need for this property, intent seems to be to increase<br>
+the timeout while handling certain cases in the hypervisor,<br>
+such as resetting a bus nexus and live migration. If so,<br>
+those cases will impact more than just the send mondo<br>
+timeout. For example, a watchdog can get triggered if a<br>
+guest is unable to pat the watchdog in a timely manner. <br>
+<br>
+If </tt><tt>CR 6469894 does indicate the intent, then there are<br>
+other ways to achieve that in a cleaner fashion.<br>
+</tt><tt><br>
+Girish</tt><br>
+<br>
+On 09/21/06 12:49, Hitendra Zhangada wrote:<br>
+<blockquote type="cite" cite="mid4512ECB0.90000@sun.com">
+  <pre wrap="">Girish Goyal wrote:
+
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">This property should not be dictating the latency in taking
+the trap. Instead, it should mention the latency in queuing
+an entry to the cpu-mondo queue.
+ 
+
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+The property dictates the max value in number of stick a guest
+need to wait for CPU mondo to get deliver before it considers
+a time-out on it.  This is made clear in the description of
+the property, cut/paste below for reference.  If entry is queued
+but trap is not taken by the recipient CPU within the latency
+specified by the property then this is still a time-out situation.
+
+Once a mondo is sent to a CPU, the recipient CPU is expected to
+take the trap with-in the specified latency or else we have a
+time-out situation.  The latency is the time from mondo sent till
+recipient CPU to take non-empty trap. 
+
+     Name                 Tag      Req'd?  Description
+     ----------------------------------------------------------------------
+     cpu-mondo-latency  PROP_VAL    No     A 64 bit unsigned integer which
+                                           represents the upper bound on the
+                                           amount of time a guest should
+                                           expect to wait for the recipient
+                                           of a cpu mondo to take the queue
+                                           non-empty trap, assuming that the
+                                           recipient has interrupts enabled.
+
+                                           Values are specified in units of
+                                           system tickss
+
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">Per sun4v architecture, if interrupts are enabled, a CPU
+should take non-empty queue trap per priority defined by
+each processor. Normally, you expect to take a non-empty
+queue trap right away, provided no higher priority trap
+is pending and interrupts are enabled.
+
+If the trap can't be taken because hypervisor can keep the
+CPU busy for some other reason, than that's going to impact
+taking other traps as well, including soft interrupts,
+dev-mondo, etc.
+
+Overall, I would like to understand why this property is being
+added. Not having a clear cut justification makes it difficult
+to see if this property should be added to the MD to start
+with and the overall scope/impact of it on guest software.
+ 
+
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->Section 1.1 describes the reasons for this property, cut/paste below
+for reference.  Basically, we want to have per guest/platform specific
+time-out values instead of hard coded values for an architecture such
+as sun4v.  Isn't this clear?
+
+   1.1 Overview
+
+     The current Machine Description definition does not provide a way
+     for a guest to determine the maximum number of virtual CPUs it should
+     support, or the amount of time a CPU mondo may take.
+
+     This leads to guest software such as Solaris using hard coded constants
+     that are applied to all sun4v platforms. However, the appropriate value
+     for these parameters are platform specific. This leads to suboptimal
+     values being used on some platforms.
+
+     By introducing properties in the MD which provide more appropriate
+     platform specific values for these parameters, the guest has the
+     opportunity to make more sensible decisions based on actual platform
+     constraints.
+
+
+
+  </pre>
+</blockquote>
+<br>
+</body>
+</html>
+
+
+From sacadmin Thu Sep 21 16:17:15 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8LNHF0w010372
+	for <fwarc@sac.eng.sun.com>; Thu, 21 Sep 2006 16:17:15 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k8LNHE301969;
+	Thu, 21 Sep 2006 16:17:14 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J5Y00425U0NXG00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 21 Sep 2006 16:17:11 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J5Y004C8U0NL800@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 21 Sep 2006 16:17:11 -0700 (PDT)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8LNH1w2025979; Thu,
+ 21 Sep 2006 17:17:01 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5Y00D01TFTS400@mail-amer.sun.com> (original mail from Arun.Rao@Sun.COM)
+ ; Thu, 21 Sep 2006 17:17:01 -0600 (MDT)
+Received: from [192.168.1.2] ([129.150.20.172])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-6.01 (built Apr  3
+ 2006)) with ESMTPSA id <0J5Y001V0U0CY530@mail-amer.sun.com>; Thu,
+ 21 Sep 2006 17:17:01 -0600 (MDT)
+Date: Thu, 21 Sep 2006 16:16:59 -0700
+From: Arun <Arun.Rao@Sun.COM>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <4513041A.1050703@Sun.COM>
+Sender: Arun.Rao@Sun.COM
+To: Girish Goyal <Girish.Goyal@Sun.COM>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+        Ryan Maeda <Ryan.Maeda@Sun.COM>, Greg Onufer <Greg.Onufer@Sun.COM>,
+        Firmware ARC <fwarc@Sun.COM>, LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <570217F4-2A07-48D2-85F3-E3FBF017837D@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.2)
+Content-type: text/plain; format=flowed; delsp=yes; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <450AE5BE.3000303@sun.com> <450B57B7.7000705@sun.com>
+ <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM> <4512E00F.7020205@Sun.COM>
+ <4512ECB0.90000@sun.com> <4513041A.1050703@Sun.COM>
+Status: RO
+Content-Length: 1930
+
+
+On Sep 21, 2006, at 2:28 PM, Girish Goyal wrote:
+
+> This case is missing a rationale for folks to decide if
+> this property is useful and defined properly or not.
+>
+> According to the CR 6469894, which tries to spell out the
+> need for this property, intent seems to be to increase
+> the timeout while handling certain cases in the hypervisor,
+> such as resetting a bus nexus and live migration. If so,
+> those cases will impact more than just the send mondo
+> timeout. For example, a watchdog can get triggered if a
+> guest is unable to pat the watchdog in a timely manner.
+>
+
+The sun4v architecture allows for many technologies to be implemented  
+that
+can cause large latencies for sending cpu cross calls.
+For example sub strand scheduling of virtual cpus, Live migration or  
+even
+error handling which could cause undue latency by sending e-reports  
+to the SP.
+
+One of the goals for sun4v is to allow legacy kernels to run  
+unmodified on undefined  future platforms
+that may implement some of these technologies with undefined  
+latencies to send a cpu cross call. Hard coded
+mondo timeout values detract from this goal.
+
+Historically, mondo timeout values have been hardcoded and derived  
+from empirical data to satisfy the largest
+latency system a kernel supports.   The cpu-mondo-latency property  
+can be considered a bare minimum
+cpu mondo time-out value for a guest.
+
+Having arbitrarily large cpu mondo timeouts increases the probability  
+of an errant CPU, that could be corrupting
+memory, to cause real customer data corruption before a timeout is  
+triggered. This  property allows a guest to
+pick reasonable timeout values based on a specific VM constraint  
+which can balance functionality and RAS features.
+
+In case of watchdog timeouts, the hypervisor can adjust for these  
+scenarios and not watchdog the guest. But guest OS
+timeouts are guest specific not in the control of the  hypervisor.
+
+Regards,
+Arun
+
+From sacadmin Thu Sep 21 16:47:01 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8LNl0ob008791
+	for <fwarc@sac.eng.Sun.COM>; Thu, 21 Sep 2006 16:47:00 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k8LNkxv09767;
+	Thu, 21 Sep 2006 17:46:59 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J5Y00723VE9WL00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 21 Sep 2006 16:46:57 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J5Y004JIVE6LG20@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 21 Sep 2006 16:46:54 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id k8LNkrsU010528; Thu, 21 Sep 2006 16:46:53 -0700 (PDT)
+Received: from [192.168.100.13] (x-files [129.146.96.102])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k8LNkrrj099907; Thu,
+ 21 Sep 2006 16:46:53 -0700 (PDT)
+Date: Thu, 21 Sep 2006 16:46:54 -0700
+From: Greg Onufer <Greg.Onufer@Sun.COM>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <570217F4-2A07-48D2-85F3-E3FBF017837D@sun.com>
+To: Arun <Arun.Rao@Sun.COM>
+Cc: Girish Goyal <Girish.Goyal@Sun.COM>,
+        Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+        Ryan Maeda <Ryan.Maeda@Sun.COM>, Firmware ARC <fwarc@Sun.COM>,
+        LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <227B59FB-A50C-4D19-85E9-3846D0155CA9@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.2)
+Content-type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <450AE5BE.3000303@sun.com> <450B57B7.7000705@sun.com>
+ <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM> <4512E00F.7020205@Sun.COM>
+ <4512ECB0.90000@sun.com> <4513041A.1050703@Sun.COM>
+ <570217F4-2A07-48D2-85F3-E3FBF017837D@sun.com>
+Status: RO
+Content-Length: 1162
+
+On Sep 21, 2006, at 4:16 PM, Arun wrote:
+> The sun4v architecture allows for many technologies to be  
+> implemented that
+> can cause large latencies for sending cpu cross calls.
+> For example sub strand scheduling of virtual cpus, Live migration  
+> or even
+> error handling which could cause undue latency by sending e-reports  
+> to the SP.
+>
+> One of the goals for sun4v is to allow legacy kernels to run  
+> unmodified on undefined  future platforms
+> that may implement some of these technologies with undefined  
+> latencies to send a cpu cross call. Hard coded
+> mondo timeout values detract from this goal.
+
+Isn't that addressing just one of the symptoms of one specific guest  
+implementation without solving the general problem?
+One that I might characterize as the lack of a virtual hi-res counter  
+for the guest (analogous to gethrtime vs. gethrvtime).
+
+What if another guest polled a very slow device register and used % 
+stick to see if the device had failed?   If %stick jumps because of  
+any of the technologies you described, it would fail unexpectedly.    
+It's the same problem but the proposed property does nothing for it.
+
+Cheers!greg
+
+
+
+From sacadmin Thu Sep 21 17:06:17 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8M06GsE016821
+	for <fwarc@sac.eng.Sun.COM>; Thu, 21 Sep 2006 17:06:17 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k8M067HM019104;
+	Fri, 22 Sep 2006 08:06:13 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J5Y00801WADPG00@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 21 Sep 2006 17:06:13 -0700 (PDT)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.6]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J5Y006FMWAC0V10@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 21 Sep 2006 17:06:12 -0700 (PDT)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8M06Ch4000177; Thu,
+ 21 Sep 2006 17:06:12 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5Y00E01W7M7U00@d1-sfbay-10.sun.com>
+ (original mail from Arun.Rao@Sun.COM); Thu, 21 Sep 2006 17:06:12 -0700 (PDT)
+Received: from [129.146.96.113] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J5Y00HU3WACAKOK@d1-sfbay-10.sun.com>; Thu,
+ 21 Sep 2006 17:06:12 -0700 (PDT)
+Date: Thu, 21 Sep 2006 17:04:06 -0700
+From: Arun Kumar Rao <Arun.Rao@sun.com>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <227B59FB-A50C-4D19-85E9-3846D0155CA9@Sun.COM>
+Sender: Arun.Rao@sun.com
+To: Greg Onufer <Greg.Onufer@sun.com>
+Cc: Girish Goyal <Girish.Goyal@sun.com>,
+        Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Ryan Maeda <Ryan.Maeda@sun.com>, Firmware ARC <fwarc@sun.com>,
+        LDoms Internal <ldoms-internal@sun.com>
+Message-id: <45132876.4010600@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <450AE5BE.3000303@sun.com> <450B57B7.7000705@sun.com>
+ <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM> <4512E00F.7020205@Sun.COM>
+ <4512ECB0.90000@sun.com> <4513041A.1050703@Sun.COM>
+ <570217F4-2A07-48D2-85F3-E3FBF017837D@sun.com>
+ <227B59FB-A50C-4D19-85E9-3846D0155CA9@Sun.COM>
+User-Agent: Thunderbird 2.0b1pre (X11/20060919)
+Status: RO
+Content-Length: 1019
+
+Greg Onufer wrote:
+>
+> Isn't that addressing just one of the symptoms of one specific guest 
+> implementation without solving the general problem?
+> One that I might characterize as the lack of a virtual hi-res counter 
+> for the guest (analogous to gethrtime vs. gethrvtime).
+The virtual Hi-res timer wold solve a different problem of tick jumps 
+due to live migration and so forth. Which is not what this property 
+specifies.
+
+> What if another guest polled a very slow device register and used 
+> %stick to see if the device had failed?   If %stick jumps because of 
+> any of the technologies you described, it would fail unexpectedly.   
+> It's the same problem but the proposed property does nothing for it.
+The cpu-mondo-latency property merely specifies the minimum value to use 
+for the timeout. A guest would use a virtual hi-res timer in conjunction 
+with this property. One doesn't necessarily preclude the other. There 
+could be events that cause long latency but don't have a %stick jump.
+
+Regards,
+Arun
+
+
+
+From sacadmin Thu Sep 21 17:10:54 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8M0ArWD025505
+	for <fwarc@sac.eng.sun.com>; Thu, 21 Sep 2006 17:10:54 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k8M0Amqb009805;
+	Fri, 22 Sep 2006 01:10:51 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J5Y00811WI0ZJ00@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 21 Sep 2006 17:10:48 -0700 (PDT)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.5]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J5Y006YPWHW0T10@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 21 Sep 2006 17:10:44 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8M0AipR003111; Thu,
+ 21 Sep 2006 17:10:44 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5Y00401WEPFG00@d1-sfbay-09.sun.com>
+ (original mail from Arun.Rao@Sun.COM); Thu, 21 Sep 2006 17:10:44 -0700 (PDT)
+Received: from [129.146.96.113] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J5Y00DHWWHVVOOA@d1-sfbay-09.sun.com>; Thu,
+ 21 Sep 2006 17:10:44 -0700 (PDT)
+Date: Thu, 21 Sep 2006 17:08:37 -0700
+From: Arun Kumar Rao <Arun.Rao@sun.com>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <45132876.4010600@sun.com>
+Sender: Arun.Rao@sun.com
+To: Arun Kumar Rao <Arun.Rao@sun.com>
+Cc: Greg Onufer <Greg.Onufer@sun.com>, Girish Goyal <Girish.Goyal@sun.com>,
+        Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Ryan Maeda <Ryan.Maeda@sun.com>, Firmware ARC <fwarc@sun.com>,
+        LDoms Internal <ldoms-internal@sun.com>
+Message-id: <45132985.4020406@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <450AE5BE.3000303@sun.com> <450B57B7.7000705@sun.com>
+ <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM> <4512E00F.7020205@Sun.COM>
+ <4512ECB0.90000@sun.com> <4513041A.1050703@Sun.COM>
+ <570217F4-2A07-48D2-85F3-E3FBF017837D@sun.com>
+ <227B59FB-A50C-4D19-85E9-3846D0155CA9@Sun.COM> <45132876.4010600@sun.com>
+User-Agent: Thunderbird 2.0b1pre (X11/20060919)
+Status: RO
+Content-Length: 778
+
+Arun Kumar Rao wrote:
+>
+>> What if another guest polled a very slow device register and used 
+>> %stick to see if the device had failed?   If %stick jumps because of 
+>> any of the technologies you described, it would fail unexpectedly.   
+>> It's the same problem but the proposed property does nothing for it.
+> The cpu-mondo-latency property merely specifies the minimum value to 
+> use for the timeout. A guest would use a virtual hi-res timer in 
+> conjunction with this property. One doesn't necessarily preclude the 
+> other. There could be events that cause long latency but don't have a 
+> %stick jump.
+>
+I should clarify this is for  cpu mondo delivery only, that both would 
+ideally be used in conjunction. This wasn't clear from the above paragraph.
+
+Regards,
+Arun
+
+
+From sacadmin Thu Sep 21 18:12:20 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8M1CKRX024641
+	for <fwarc@sac.eng.sun.com>; Thu, 21 Sep 2006 18:12:20 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k8M1CJl12364;
+	Thu, 21 Sep 2006 18:12:20 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J5Y00D0NZCIJ200@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 21 Sep 2006 18:12:18 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J5Y006T1ZCI0Q40@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 21 Sep 2006 18:12:18 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id k8M1CHXm013351; Thu, 21 Sep 2006 18:12:17 -0700 (PDT)
+Received: from [127.0.0.1] (x-files [129.146.96.102])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k8M1CHkh001910; Thu,
+ 21 Sep 2006 18:12:17 -0700 (PDT)
+Date: Thu, 21 Sep 2006 18:12:15 -0700
+From: Greg Onufer <Greg.Onufer@sun.com>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <45132876.4010600@sun.com>
+To: Arun Rao <Arun.Rao@sun.com>, Ryan Maeda <Ryan.Maeda@sun.com>
+Cc: Girish Goyal <Girish.Goyal@sun.com>,
+        Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware ARC <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Message-id: <06E871FD-4BCD-4746-91F7-F019BECE7B74@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.2)
+Content-type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <450AE5BE.3000303@sun.com> <450B57B7.7000705@sun.com>
+ <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM> <4512E00F.7020205@Sun.COM>
+ <4512ECB0.90000@sun.com> <4513041A.1050703@Sun.COM>
+ <570217F4-2A07-48D2-85F3-E3FBF017837D@sun.com>
+ <227B59FB-A50C-4D19-85E9-3846D0155CA9@Sun.COM> <45132876.4010600@sun.com>
+Status: RO
+Content-Length: 886
+
+On Sep 21, 2006, at 5:04 PM, Arun Kumar Rao wrote:
+> Greg Onufer wrote:
+>> Isn't that addressing just one of the symptoms of one specific  
+>> guest implementation without solving the general problem?
+>> One that I might characterize as the lack of a virtual hi-res  
+>> counter for the guest (analogous to gethrtime vs. gethrvtime).
+> The virtual Hi-res timer wold solve a different problem of tick  
+> jumps due to live migration and so forth. Which is not what this  
+> property specifies.
+
+Then Girish was right and this would be the time it takes for the  
+entry to make it into the remote queue, not for the trap to happen on  
+the target cpu.  That's when the mondo sending code claims success,  
+isn't it?  Except for when the queue gets full, naturally, but that  
+gets back to guest behavior and the guest accommodating its own  
+behavior in the timeout limits.
+
+Cheers!greg
+
+
+From sacadmin Thu Sep 21 18:53:52 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8M1rqgZ008021
+	for <fwarc@sac.eng.sun.com>; Thu, 21 Sep 2006 18:53:52 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k8M1rpl20691;
+	Thu, 21 Sep 2006 18:53:51 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J5Z00M0519R8300@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 21 Sep 2006 18:53:51 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J5Z004G819PLAA0@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 21 Sep 2006 18:53:49 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.108.183])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8M1rceR005534; Thu,
+ 21 Sep 2006 19:53:39 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5Z00J0116W2W00@mail-amer.sun.com> (original mail from Arun.Rao@Sun.COM)
+ ; Thu, 21 Sep 2006 19:53:38 -0600 (MDT)
+Received: from [192.168.1.2] ([129.150.20.172])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-6.01 (built Apr  3
+ 2006)) with ESMTPSA id <0J5Z0053A19DB9RN@mail-amer.sun.com>; Thu,
+ 21 Sep 2006 19:53:38 -0600 (MDT)
+Date: Thu, 21 Sep 2006 18:53:38 -0700
+From: Arun <Arun.Rao@Sun.COM>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <06E871FD-4BCD-4746-91F7-F019BECE7B74@sun.com>
+Sender: Arun.Rao@Sun.COM
+To: Greg Onufer <Greg.Onufer@Sun.COM>
+Cc: Ryan Maeda <Ryan.Maeda@Sun.COM>, Girish Goyal <Girish.Goyal@Sun.COM>,
+        Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+        Firmware ARC <fwarc@Sun.COM>, LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <5821AF53-0025-4F4F-ABEF-96F7D01909C7@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.2)
+Content-type: text/plain; format=flowed; delsp=yes; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <450AE5BE.3000303@sun.com> <450B57B7.7000705@sun.com>
+ <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM> <4512E00F.7020205@Sun.COM>
+ <4512ECB0.90000@sun.com> <4513041A.1050703@Sun.COM>
+ <570217F4-2A07-48D2-85F3-E3FBF017837D@sun.com>
+ <227B59FB-A50C-4D19-85E9-3846D0155CA9@Sun.COM> <45132876.4010600@sun.com>
+ <06E871FD-4BCD-4746-91F7-F019BECE7B74@sun.com>
+Status: RO
+Content-Length: 988
+
+
+On Sep 21, 2006, at 6:12 PM, Greg Onufer wrote:
+
+> Then Girish was right and this would be the time it takes for the  
+> entry to make it into the remote queue, not for the trap to happen  
+> on the target cpu.  That's when the mondo sending code claims  
+> success, isn't it?  Except for when the queue gets full, naturally,  
+> but that gets back to guest behavior and the guest accommodating  
+> its own behavior in the timeout limits.
+>
+
+It should also include the time to take the non-empty trap barring  
+the CPU full case as you pointed out.
+
+For example, in the sub strand scheduling case a virtual cpu might  
+not be scheduled to run on the physical strand but we would still  
+need to queue a mondo into the cpu queue. In this case the latency  
+would also include the scheduling latency, depending on hardware  
+implementation, either to schedule the vcpu to accept the mondo or  
+queue the mondo and wait for the vcpu to be scheduled so the trap is  
+taken.
+
+Regards,
+Arun.
+
+
+From sacadmin Thu Sep 21 19:20:39 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8M2Kc93003227
+	for <fwarc@sac.eng.Sun.COM>; Thu, 21 Sep 2006 19:20:39 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k8M2KVqA006762;
+	Fri, 22 Sep 2006 10:20:35 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J5Z00I072IANX00@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 21 Sep 2006 19:20:34 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J5Z0066P2IA0R70@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 21 Sep 2006 19:20:34 -0700 (PDT)
+Received: from fe-amer-01.sun.com ([192.18.108.175])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8M2KXl4028797; Thu,
+ 21 Sep 2006 20:20:34 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5Z00H012GJSK00@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Thu,
+ 21 Sep 2006 20:20:33 -0600 (MDT)
+Received: from [129.150.32.255] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J5Z00COH2I85KK1@mail-amer.sun.com>; Thu,
+ 21 Sep 2006 20:20:33 -0600 (MDT)
+Date: Thu, 21 Sep 2006 19:20:35 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <5821AF53-0025-4F4F-ABEF-96F7D01909C7@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: Greg Onufer <Greg.Onufer@sun.com>, Girish Goyal <Girish.Goyal@sun.com>,
+        LDoms Internal <ldoms-internal@sun.com>
+Message-id: <45134873.3000308@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <450AE5BE.3000303@sun.com> <450B57B7.7000705@sun.com>
+ <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM> <4512E00F.7020205@Sun.COM>
+ <4512ECB0.90000@sun.com> <4513041A.1050703@Sun.COM>
+ <570217F4-2A07-48D2-85F3-E3FBF017837D@sun.com>
+ <227B59FB-A50C-4D19-85E9-3846D0155CA9@Sun.COM> <45132876.4010600@sun.com>
+ <06E871FD-4BCD-4746-91F7-F019BECE7B74@sun.com>
+ <5821AF53-0025-4F4F-ABEF-96F7D01909C7@Sun.COM>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 2369
+
+Arun wrote:
+
+>
+> On Sep 21, 2006, at 6:12 PM, Greg Onufer wrote:
+>
+>> Then Girish was right and this would be the time it takes for the  
+>> entry to make it into the remote queue, not for the trap to happen  
+>> on the target cpu.  That's when the mondo sending code claims  
+>> success, isn't it?  Except for when the queue gets full, naturally,  
+>> but that gets back to guest behavior and the guest accommodating  its 
+>> own behavior in the timeout limits.
+>>
+>
+> It should also include the time to take the non-empty trap barring  
+> the CPU full case as you pointed out.
+>
+> For example, in the sub strand scheduling case a virtual cpu might  
+> not be scheduled to run on the physical strand but we would still  
+> need to queue a mondo into the cpu queue. In this case the latency  
+> would also include the scheduling latency, depending on hardware  
+> implementation, either to schedule the vcpu to accept the mondo or  
+> queue the mondo and wait for the vcpu to be scheduled so the trap is  
+> taken.
+
+Arun, if your replies does not close Greg and Girish's issues then this case
+can not time-out tomorrow.  The timer is set for tomorrow but that may not
+happen unless these issues are closed.
+
+It seems like we need offline discussions (hopefully over phone) to close
+on this mail thread. 
+
+Greg/Girish, from the mail thread I gather that both of you are against
+what is proposed and prefer different solution.  Is this correct?  If
+correct, then project team needs to go and talk to both of you and revise
+the specification or convince you both that what they are proposing is
+the correct solution.
+
+I wished these issues were brought up earlier instead of a day before the
+timer was set (the project team had already planned for code putback 
+assuming
+that silence is a good thing).  Anyway, issues are issues and we need to
+resolve them.
+
+FWARC members, does any of you have an agreement or dis-agreement on what
+is proposed based on the discussions so far?   Speaking for myself, I am
+fine with what is proposed.  It may need some wording changes but I am
+fine with the new property to dictate the CPU mondo latency.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Thu Sep 21 21:23:08 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8M4N7Sh021388
+	for <fwarc@sac.eng.Sun.COM>; Thu, 21 Sep 2006 21:23:08 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k8M4N6v22784;
+	Thu, 21 Sep 2006 22:23:06 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J5Z0040D86FE100@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 21 Sep 2006 21:23:03 -0700 (PDT)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.5]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J5Z006NP86E17B0@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 21 Sep 2006 21:23:03 -0700 (PDT)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8M4N21V012785; Thu,
+ 21 Sep 2006 21:23:02 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5Z00G017YHOV00@d1-sfbay-10.sun.com>
+ (original mail from Girish.Goyal@Sun.COM); Thu,
+ 21 Sep 2006 21:23:02 -0700 (PDT)
+Received: from [129.150.21.244] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J5Z00HZ586EAKFL@d1-sfbay-10.sun.com>; Thu,
+ 21 Sep 2006 21:23:02 -0700 (PDT)
+Date: Thu, 21 Sep 2006 21:23:05 -0700
+From: Girish Goyal <Girish.Goyal@Sun.COM>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <5821AF53-0025-4F4F-ABEF-96F7D01909C7@Sun.COM>
+Sender: Girish.Goyal@Sun.COM
+To: Arun <Arun.Rao@Sun.COM>
+Cc: Greg Onufer <Greg.Onufer@Sun.COM>, Ryan Maeda <Ryan.Maeda@Sun.COM>,
+        Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+        Firmware ARC <fwarc@Sun.COM>, LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <45136529.3090308@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <450AE5BE.3000303@sun.com> <450B57B7.7000705@sun.com>
+ <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM> <4512E00F.7020205@Sun.COM>
+ <4512ECB0.90000@sun.com> <4513041A.1050703@Sun.COM>
+ <570217F4-2A07-48D2-85F3-E3FBF017837D@sun.com>
+ <227B59FB-A50C-4D19-85E9-3846D0155CA9@Sun.COM> <45132876.4010600@sun.com>
+ <06E871FD-4BCD-4746-91F7-F019BECE7B74@sun.com>
+ <5821AF53-0025-4F4F-ABEF-96F7D01909C7@Sun.COM>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.3)
+ Gecko/20040910
+Status: RO
+Content-Length: 1566
+
+On 9/21/2006 6:53 PM, Arun wrote:
+
+>
+> On Sep 21, 2006, at 6:12 PM, Greg Onufer wrote:
+>
+>> Then Girish was right and this would be the time it takes for the  
+>> entry to make it into the remote queue, not for the trap to happen  
+>> on the target cpu.  That's when the mondo sending code claims  
+>> success, isn't it?  Except for when the queue gets full, naturally,  
+>> but that gets back to guest behavior and the guest accommodating  its 
+>> own behavior in the timeout limits.
+>>
+>
+> It should also include the time to take the non-empty trap barring  
+> the CPU full case as you pointed out.
+>
+> For example, in the sub strand scheduling case a virtual cpu might  
+> not be scheduled to run on the physical strand but we would still  
+> need to queue a mondo into the cpu queue. In this case the latency  
+> would also include the scheduling latency, depending on hardware  
+> implementation, either to schedule the vcpu to accept the mondo or  
+> queue the mondo and wait for the vcpu to be scheduled so the trap is  
+> taken.
+>
+> Regards,
+> Arun.
+>
+I see justification for cpu-mono-latency being made in the context of 
+sub-strand
+scheduling and live migration. This is only one of the symptom as both 
+Greg and
+I have indicated earlier.
+
+If these features are already ready, then let's review them to see going 
+this route
+is the proper approach. If these features are not ready, then why add 
+something
+now which may have to be backed out later on.
+
+Overall, I have not any proper justification for adding 
+cpu-mondo-latency property
+to the MD.
+
+Girish
+
+From sacadmin Thu Sep 21 21:34:06 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8M4Y671000224
+	for <fwarc@sac.eng.sun.com>; Thu, 21 Sep 2006 21:34:06 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k8M4XwmY021749;
+	Fri, 22 Sep 2006 05:34:03 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J5Z005078OPC800@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 21 Sep 2006 21:34:01 -0700 (PDT)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.5]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J5Z0065B8OP0QC0@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 21 Sep 2006 21:34:01 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8M4Y1iq013093; Thu,
+ 21 Sep 2006 21:34:01 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5Z00M018ODVF00@d1-sfbay-09.sun.com>
+ (original mail from Girish.Goyal@Sun.COM); Thu,
+ 21 Sep 2006 21:34:01 -0700 (PDT)
+Received: from [129.150.21.244] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J5Z00DHN8OOW11F@d1-sfbay-09.sun.com>; Thu,
+ 21 Sep 2006 21:34:01 -0700 (PDT)
+Date: Thu, 21 Sep 2006 21:34:04 -0700
+From: Girish Goyal <Girish.Goyal@sun.com>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <45134873.3000308@sun.com>
+Sender: Girish.Goyal@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware ARC <fwarc@sun.com>, Greg Onufer <Greg.Onufer@sun.com>,
+        LDoms Internal <ldoms-internal@sun.com>
+Message-id: <451367BC.2090609@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <450AE5BE.3000303@sun.com> <450B57B7.7000705@sun.com>
+ <F9279E76-D7D2-4F9E-A789-687DD7666492@Sun.COM> <4512E00F.7020205@Sun.COM>
+ <4512ECB0.90000@sun.com> <4513041A.1050703@Sun.COM>
+ <570217F4-2A07-48D2-85F3-E3FBF017837D@sun.com>
+ <227B59FB-A50C-4D19-85E9-3846D0155CA9@Sun.COM> <45132876.4010600@sun.com>
+ <06E871FD-4BCD-4746-91F7-F019BECE7B74@sun.com>
+ <5821AF53-0025-4F4F-ABEF-96F7D01909C7@Sun.COM> <45134873.3000308@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.3)
+ Gecko/20040910
+Status: RO
+Content-Length: 2737
+
+On 9/21/2006 7:20 PM, Hitendra Zhangada wrote:
+
+> Arun wrote:
+>
+>>
+>> On Sep 21, 2006, at 6:12 PM, Greg Onufer wrote:
+>>
+>>> Then Girish was right and this would be the time it takes for the  
+>>> entry to make it into the remote queue, not for the trap to happen  
+>>> on the target cpu.  That's when the mondo sending code claims  
+>>> success, isn't it?  Except for when the queue gets full, naturally,  
+>>> but that gets back to guest behavior and the guest accommodating  
+>>> its own behavior in the timeout limits.
+>>>
+>>
+>> It should also include the time to take the non-empty trap barring  
+>> the CPU full case as you pointed out.
+>>
+>> For example, in the sub strand scheduling case a virtual cpu might  
+>> not be scheduled to run on the physical strand but we would still  
+>> need to queue a mondo into the cpu queue. In this case the latency  
+>> would also include the scheduling latency, depending on hardware  
+>> implementation, either to schedule the vcpu to accept the mondo or  
+>> queue the mondo and wait for the vcpu to be scheduled so the trap is  
+>> taken.
+>
+>
+> Arun, if your replies does not close Greg and Girish's issues then 
+> this case
+> can not time-out tomorrow.  The timer is set for tomorrow but that may 
+> not
+> happen unless these issues are closed.
+>
+> It seems like we need offline discussions (hopefully over phone) to close
+> on this mail thread.
+> Greg/Girish, from the mail thread I gather that both of you are against
+> what is proposed and prefer different solution.  Is this correct?
+
+That's correct.
+
+>   If
+> correct, then project team needs to go and talk to both of you and revise
+> the specification or convince you both that what they are proposing is
+> the correct solution.
+>
+> I wished these issues were brought up earlier instead of a day before the
+> timer was set (the project team had already planned for code putback 
+> assuming
+> that silence is a good thing).  Anyway, issues are issues and we need to
+> resolve them.
+>
+May be the problem is with the process being used here. Any new API or
+new MD property should be discussed at hypervisor SWG first. I have
+not seen that happening for lots of FWARC cases being submitted by various
+teams. Also, a proper business justification will expedite the review 
+process
+and benefit all reviewers as they don't have to waste their cycles in trying
+to guess the rational and/or collect data on their own.
+
+Regards,
+Girish
+
+> FWARC members, does any of you have an agreement or dis-agreement on what
+> is proposed based on the discussions so far?   Speaking for myself, I am
+> fine with what is proposed.  It may need some wording changes but I am
+> fine with the new property to dictate the CPU mondo latency.
+>
+>
+> Thanks.
+>
+
+
+From sacadmin Fri Sep 22 05:23:01 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8MCN1U6023205
+	for <fwarc@sac.eng.sun.com>; Fri, 22 Sep 2006 05:23:01 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k8MCMu309151;
+	Fri, 22 Sep 2006 05:22:56 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J5Z00509UE6BD00@brm-avmta-1.central.sun.com>; Fri,
+ 22 Sep 2006 06:22:54 -0600 (MDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J5Z0095MUE5PMD0@brm-avmta-1.central.sun.com>; Fri,
+ 22 Sep 2006 06:22:53 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k8MCMqDA024880; Fri, 22 Sep 2006 05:22:52 -0700 (PDT)
+Received: from [127.0.0.1] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k8MCMndV011170; Fri,
+ 22 Sep 2006 05:22:50 -0700 (PDT)
+Date: Fri, 22 Sep 2006 05:22:49 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+To: Arun <Arun.Rao@sun.com>
+Cc: Girish Goyal <Girish.Goyal@sun.com>,
+        Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Ryan Maeda <Ryan.Maeda@sun.com>, Greg Onufer <Greg.Onufer@sun.com>,
+        Firmware ARC <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Message-id: <4513D599.80001@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 1.5.0.7 (Windows/20060909)
+Status: RO
+Content-Length: 2827
+
+
+
+Arun wrote:
+
+> The sun4v architecture allows for many technologies to be implemented that
+> can cause large latencies for sending cpu cross calls.
+> For example sub strand scheduling of virtual cpus, Live migration or even
+> error handling which could cause undue latency by sending e-reports to 
+> the SP.
+
+Normal error handling, ok. But we should be handling that latency
+now. I'm not even sure you can codify how long it might take
+in all situations, especially if there's more than one error
+that has to be handled. What are we going to do here? Guess?
+That doesn't really work.
+
+Live migration is a can of worms. I'm not even sure what type
+of live migration we're talking about here. There are several
+types of live migration. No matter what you do now, there will
+be different types of live migration in the future. Can the OS
+even support live migration without modifications? Nonetheless,
+I don't think it's possible to come up with one value here that
+could possibly support the latency for all types of live migration
+that might be considered for the future.
+
+> 
+> One of the goals for sun4v is to allow legacy kernels to run unmodified 
+> on undefined  future platforms that may implement some of these technologies
+ > with undefined latencies  to send a cpu cross call. Hard coded
+> mondo timeout values detract from this goal.
+
+I think the goal is to allow an old OS to run unmodified,
+but that doesn't mean you get all features that a platform
+supports when you use an old OS. You may need to install packages
+that weren't shipped with the release or even install a newer
+OS in order to take advantage of new features.
+
+> Historically, mondo timeout values have been hardcoded and derived from 
+> empirical data to satisfy the largest
+> latency system a kernel supports.   The cpu-mondo-latency property can 
+> be considered a bare minimum
+> cpu mondo time-out value for a guest.
+> 
+> Having arbitrarily large cpu mondo timeouts increases the probability of 
+> an errant CPU, that could be corrupting
+> memory, to cause real customer data corruption before a timeout is 
+> triggered. This  property allows a guest to
+> pick reasonable timeout values based on a specific VM constraint which 
+> can balance functionality and RAS features.
+> 
+> In case of watchdog timeouts, the hypervisor can adjust for these 
+> scenarios and not watchdog the guest. But guest OS
+> timeouts are guest specific not in the control of the  hypervisor.
+
+Based on what you said, above, I don't think we have a good
+definition for this property, and I'm not convinced it can
+even be properly defined in the way you want it to be defined.
+
+Hitu: I think this case should be derailed and then give the
+project team time to work out the issues, then we can reinstate
+it as a fast-track or schedule a meeting for it if necessary.
+
+-David
+
+From sacadmin Fri Sep 22 11:18:24 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8MIIOM4003415
+	for <fwarc@sac.eng.sun.com>; Fri, 22 Sep 2006 11:18:24 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k8MIIN300891;
+	Fri, 22 Sep 2006 11:18:23 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J6000L09AUMXU00@brm-avmta-1.central.sun.com>; Fri,
+ 22 Sep 2006 12:18:22 -0600 (MDT)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J6000KUVAULBA10@brm-avmta-1.central.sun.com>; Fri,
+ 22 Sep 2006 12:18:22 -0600 (MDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8MIILKF022116; Fri,
+ 22 Sep 2006 11:18:21 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J6000L01AQGE900@d1-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Fri,
+ 22 Sep 2006 11:18:21 -0700 (PDT)
+Received: from [129.153.85.35] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J6000D87AULW1ZG@d1-sfbay-09.sun.com>; Fri,
+ 22 Sep 2006 11:18:21 -0700 (PDT)
+Date: Fri, 22 Sep 2006 11:18:20 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <4513D599.80001@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: Girish Goyal <Girish.Goyal@Sun.COM>, Greg Onufer <Greg.Onufer@Sun.COM>,
+        LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <451428EC.80304@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <4513D599.80001@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 667
+
+David Kahn wrote On 09/22/06 05:22,:
+
+> 
+> Hitu: I think this case should be derailed and then give the
+> project team time to work out the issues, then we can reinstate
+> it as a fast-track or schedule a meeting for it if necessary.
+
+I am changing state of this case to "waiting need spec".  Once
+I have updated specification from the project team the case will
+move forward at that time.
+
+
+Thanks a lot for all of the comments on this case.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Fri Sep 29 18:49:17 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8U1nHf4027643
+	for <fwarc@sac.eng.Sun.COM>; Fri, 29 Sep 2006 18:49:17 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k8U1nGs15303;
+	Fri, 29 Sep 2006 19:49:16 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J6D00I01UE4SA00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 29 Sep 2006 18:49:16 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J6D00CLBUE4YEA0@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 29 Sep 2006 18:49:16 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.108.183])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8U1nFUl014551; Fri,
+ 29 Sep 2006 19:49:15 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J6D00801UAKAJ00@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Fri,
+ 29 Sep 2006 19:49:15 -0600 (MDT)
+Received: from [129.150.33.49] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J6D005NTUE2BDOJ@mail-amer.sun.com>; Fri,
+ 29 Sep 2006 19:49:15 -0600 (MDT)
+Date: Fri, 29 Sep 2006 18:49:15 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <451428EC.80304@Sun.COM>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <451DCD1B.4020804@sun.com>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_nH4YD44R5uR/rbmA77RqdA)"
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <4513D599.80001@sun.com> <451428EC.80304@Sun.COM>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 6160
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_nH4YD44R5uR/rbmA77RqdA)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+Hitendra Zhangada wrote:
+
+> David Kahn wrote On 09/22/06 05:22,:
+>
+>>
+>> Hitu: I think this case should be derailed and then give the
+>> project team time to work out the issues, then we can reinstate
+>> it as a fast-track or schedule a meeting for it if necessary.
+>
+>
+> I am changing state of this case to "waiting need spec".  Once
+> I have updated specification from the project team the case will
+> move forward at that time.
+
+The project teams has worked on the issues.  I have an updated
+specification for the two properties.  The latest proposal is attached
+and also copied in the case directory.
+
+http://sac.sfbay.sun.com/arc/FWARC/2006/545/materials/cpu_md_prop.txt
+
+
+I would like to start the timer and set it to timeout on October 3th
+(next Tuesday).  The reason for shorter time-out is that the case has
+not changed the fundamental concept of having properties to describe
+the max values for number of CPUs (there are no changes to the max-cpus
+property at all) and the cpu latency.  The only difference is the new
+name for the property and it's description.  The definition is not just
+limited to interrupt latency (modo timeout).  The new definition is for
+all inter CPU communications. 
+
+The shorter timeout will also help the project team with delivery of the
+implementation in Solaris.  Let me know if you can not review the spec.
+by COB Tuesday.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_nH4YD44R5uR/rbmA77RqdA)
+Content-type: text/plain; name=cpu_md_prop.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=cpu_md_prop.txt
+
+#pragma   ident   "@(#)md_prop_spec.txt   1.8   06/09/29 SMI" 
+
+1. Technical Description: 
+
+  1.1 Overview 
+
+    The current Machine Description definition does not provide a way 
+    for a guest to determine the maximum number of virtual CPUs it should 
+    support, or the amount of time a CPU mondo may take. 
+
+    This leads to guest software such as Solaris using hard coded constants 
+    that are applied to all sun4v platforms. However, the appropriate value 
+    for these parameters are platform specific. This leads to suboptimal 
+    values being used on some platforms. 
+
+    By introducing properties in the MD which provide more appropriate 
+    platform specific values for these parameters, the guest has the 
+    opportunity to make more sensible decisions based on actual platform 
+   constraints. 
+
+
+  1.1.1  max-cpus platform node property 
+
+    Additional property added to platform node as described below. 
+
+    Name                  Tag     Req'd?   Description 
+    ---------------------------------------------------------------------- 
+    max-cpus            PROP_VAL   No      A 64-bit unsigned integer that 
+                                           represents the theoretical maximum 
+                                           number of virtual CPUs a guest can 
+                                           have for a particular platform. 
+
+                                           If defined, the guest software 
+                                           can assume that it will not see 
+                                           more virtual CPUs than specified 
+                                           by this property. 
+
+    Note: The presence of this property does not place any requirement on 
+    the guest to support the number of virtual CPUs specified. The guest 
+    is free to further constrain the number of virtual CPUs that it will 
+    support. 
+
+
+  1.1.2  inter-cpu-latency platform node property 
+
+    Additional property added to the platform node as described below. 
+
+    Name                  Tag     Req'd?  Description 
+    ---------------------------------------------------------------------- 
+    inter-cpu-latency  PROP_VAL    No     A 64-bit unsigned integer containing
+                                          the maximum number of nanoseconds
+                                          of delay the system might encounter 
+                                          when two processors attempt to 
+                                          rendezvous (inter-processor
+                                          communication using interrupts,
+                                          shared memory, etc). 
+
+
+    Programming note: this value is intended to bound the amount of time the
+    privileged software should take into consideration when calculating 
+    timeouts to be used to detect non-responsive processors.  This value does
+    not account for additional time required due to the implementation of the
+    privileged code, such as executing for prolonged periods with interrupts 
+    disabled (pstate.ie==0).  The amount of time imposed by the system added
+    to the amount of time imposed by the guest together should be used as the 
+    basis for calculating timeout values. 
+
+
+
+  1.2 Imported Interfaces: 
+
+    Interface             Classification      Comments 
+    ==================================================================== 
+
+    sun4v Machine         Sun Private         MD nodes definitions as 
+    Description nodes                         defined by FWARC 2005/115 
+
+
+  1.3 Exported Interfaces: 
+
+
+    Interface              Classification     Comments 
+    ==================================================================== 
+
+    "max-cpus"             Sun Private        A platform MD node property 
+                                              to describe the maximum number 
+                                              of virtual cpus in a guest. 
+
+    "inter-cpu-latency"    Sun Private        A platform MD node property 
+                                              to describe inter cpu maximum
+                                              latency. 
+
+--Boundary_(ID_nH4YD44R5uR/rbmA77RqdA)--
+
+From sacadmin Wed Oct  4 10:00:05 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k94H04tU004243
+	for <fwarc@sac.eng.Sun.COM>; Wed, 4 Oct 2006 10:00:04 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k94H03823267;
+	Wed, 4 Oct 2006 11:00:03 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J6M00B09F807600@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 04 Oct 2006 10:00:00 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J6M00L06F7Z3VA0@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 04 Oct 2006 09:59:59 -0700 (PDT)
+Received: from fe-amer-01.sun.com ([192.18.108.175])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k94Gxw0R012308; Wed,
+ 04 Oct 2006 10:59:59 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J6M00F01EWWN100@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Wed,
+ 04 Oct 2006 10:59:58 -0600 (MDT)
+Received: from [129.150.35.73] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J6M000U4F7XZ3U3@mail-amer.sun.com>; Wed,
+ 04 Oct 2006 10:59:58 -0600 (MDT)
+Date: Wed, 04 Oct 2006 09:59:58 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/545 - fast-track : max-vcpus and mondo-latency MD properties
+In-reply-to: <451DCD1B.4020804@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <4523E88E.6070001@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <4513D599.80001@sun.com> <451428EC.80304@Sun.COM>
+ <451DCD1B.4020804@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 1394
+
+Hitendra Zhangada wrote:
+
+> The project teams has worked on the issues.  I have an updated
+> specification for the two properties.  The latest proposal is attached
+> and also copied in the case directory.
+>
+> http://sac.sfbay.sun.com/arc/FWARC/2006/545/materials/cpu_md_prop.txt
+>
+>
+> I would like to start the timer and set it to timeout on October 3th
+> (next Tuesday).  The reason for shorter time-out is that the case has
+> not changed the fundamental concept of having properties to describe
+> the max values for number of CPUs (there are no changes to the max-cpus
+> property at all) and the cpu latency.  The only difference is the new
+> name for the property and it's description.  The definition is not just
+> limited to interrupt latency (modo timeout).  The new definition is for
+> all inter CPU communications.
+
+
+> The shorter timeout will also help the project team with delivery of the
+> implementation in Solaris.  Let me know if you can not review the spec.
+> by COB Tuesday.
+
+
+This case has timed-out and hence approved.  The case is approved for
+a minor/micro binding for firmware changes and a micro/minor/patch
+binding for the OS changes.
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+

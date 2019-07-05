@@ -1,0 +1,496 @@
+From sacadmin Thu Jul 17 13:17:23 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m6HKHMkL021069
+	for <fwarc@sac.sfbay.sun.com>; Thu, 17 Jul 2008 13:17:22 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m6HKHICb010103;
+	Thu, 17 Jul 2008 21:17:21 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K4600J0130VN000@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 17 Jul 2008 13:17:19 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K4600FPM30VO250@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 17 Jul 2008 13:17:19 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m6HKHJLq018547; Thu,
+ 17 Jul 2008 20:17:19 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K4600M011YCUV00@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM); Thu,
+ 17 Jul 2008 14:17:19 -0600 (MDT)
+Received: from [192.168.100.100]
+ (c-24-62-231-112.hsd1.nh.comcast.net [24.62.231.112])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0K46004T030P6G90@mail-amer.sun.com>; Thu,
+ 17 Jul 2008 14:17:14 -0600 (MDT)
+Date: Thu, 17 Jul 2008 16:17:10 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: FWARC/2008/455: FMA IO Domain Service - timeout 7/24/2008
+Sender: Eric.Sharakan@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: ldoms-fma@sun.com, dawn tse <Dawn.Tse@sun.com>
+Message-id: <9FF4D884-8BC0-451E-A977-BBB9D422589F@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.928.1)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ micalg=sha1; boundary=Apple-Mail-76--352054037
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 6890
+
+
+--Apple-Mail-76--352054037
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed;
+	delsp=yes
+Content-Transfer-Encoding: 7bit
+
+Hi, I'm sponsoring this fast track case for Dawn Tse.  It adds a new  
+domain service to provide FMA PCI root complex ownership information.   
+This extends the set of domain services provided for FMA originally  
+specified in FWARC/2006/141.  The 1-pager & FMA IO Domain Service  
+Specification can be found in the materials directory:
+
+http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2008/455/materials/
+
+This case times out on 7/24/2008.
+
+Release Binding:
+minor/micro
+
+Thanks.
+
+-Eric
+
+
+1. Introduction
+     1.1. Project/Component Working Name:
+	FMA IO Domain Service
+
+     1.2. Name of Document Author/Supplier:
+	dawn.tse@sun.com
+
+     1.3. Date of This Document:
+     	July 17, 2008
+
+     1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		HS PAC
+
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Jerri-Ann Meyer
+
+	1.4.4. The name of your business unit:
+		Solaris Software
+
+     1.5. Email Aliases:
+      	1.5.1. Responsible Manager: jay.jayachandran@sun.com
+      	1.5.2. Responsible Engineer: dawn.tse@sun.com
+      	1.5.3. Marketing Manager: Neil.Sadaranganey@sun.com
+	1.5.4. Interest List: ldoms-fma@sun.com
+
+2. Project Summary
+     2.1. Project Description:
+
+	This project defines a Fault Management Architecture (FMA) domain
+	service required in a logical domain environment where ownership of one
+	or more PCI root complexes is removed from the control domain and
+	assigned to so-called root domains. This project extends the set of FMA
+	Domain Services originally specified in FWARC/2006/141.
+
+     2.2. Risks and Assumptions:
+
+	See FWARC/2006/141
+
+3. Business Summary
+     3.1. Problem Area:
+
+	See FWARC/2006/141
+
+     3.2. Market/Requester:
+
+	See FWARC/2006/141
+
+     3.3. Business Justification:
+
+	See FWARC/2006/141
+
+
+     3.4. Competitive Analysis:
+
+	See FWARC/2006/141
+
+
+     3.5. Opportunity Window/Exposure:
+
+	See FWARC/2006/141
+
+
+     3.6. How will you know when you are done?:
+
+	When FMA is able to utilize this service to successfully diagnose PCI
+	fabric errors that occur in root domains.
+
+
+4. Technical Description:
+
+	See material in case directory, and also available here:
+
+http://cpubringup.sfbay.sun.com/twiki/pub/LDoms/LDomsFmaIo/ZeusFMA-IO.pdf
+
+
+5. Reference Documents:
+	
+	FWARC/2006/141
+
+
+6. Resources and Schedule:
+     6.1. Projected Availability:
+	
+	LDoms 1.1
+
+     6.2. Cost of Effort:
+
+	One staff month
+
+     6.3. Cost of Capital Resources: N/A
+
+     6.4. Product Approval Committee requested information:
+     	6.4.1. Consolidation Name: LDoms Manager, Solaris
+     	6.4.2. Contributing OpCo/BU/Division Name: Solaris
+	6.4.3. Type of PAC Review and Approval expected: N/A
+         6.4.4. Project Boundary Conditions: N/A
+	6.4.5. Is this a necessary project for OEM agreements: No
+	6.4.6. Notes/Dependencies: None
+	6.4.7. Target RTI Date/Release: TBD
+	6.4.8. Target Code Design Review Date: TBD
+	6.4.9. Update approval addition: N/A
+
+     6.5. ARC review type: Fast Track
+
+7. Prototype Availability:
+     7.1. Prototype Availability:
+	Q1FY09
+
+     7.2. Prototype Cost:
+	Done using existing resources.
+
+
+
+--Apple-Mail-76--352054037
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA3MTAxODAzMjAxOFoXDTA4MTAxNzAzMjAx
+OFowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyOpo1o9G
+kC4zvPQvyj/wBYNQR3zjkMYMxkWmL184ofuULXo7qmNtiCDanb/U9CmkH/ZXm3itLKVtRIUo/Fr7
+oi4CRxDUkF8LarMoiGbsuQ0hF0QIwJXdGv9GtNwagdzOtsqzZ0pV0II3WB7+NaIQ8qJ2KIwseULZ
+aXX0BzdlINGBYufa5xG38/piJfwb5n7JE/O2pocT1kO+IM9yLm3840a7FKwcYV6/tpXYABKlpgfK
+ZUp56DDLXf/5qW8jHPGhd6yrOVf53QtXypHNXPJDR+NFWo5Os2drH5V2rxzCildmoxOmhZkVaG03
+anU0qE4nWSRH1CKvtvigQDGJg0++sQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQCAxj+ZJX9XVIa4NeiRkfeL
+WaXXlKRONtx3QP3K7B9/T983wXc26sacqER608AoRMz9GyECwpIHtkvcRoCRPoWLyoWBf7zwh8ha
+0CPkTAmFxl1ENtpq/43Di0DUSHrcCeGvigN4esQpYJtQAmCUm5i5tXbu70d192lfniLVgHPvYzCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQQtJ8t0o3bhp1zVjZgObu9jAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wODA3
+MTcyMDE3MTFaMCMGCSqGSIb3DQEJBDEWBBQA1CymYdeDTKPeBk4kRnPJADT43DCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdK
+N24adc1Y2YDm7vYwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEBBQAEggEAeN5E
+Xxi6glnRy8CkpsLRegPP0RpqMZwD6fl271r2Cfr34iIu2nsL2NIsyG55g0ZJMvUDrrIaUrxamAfJ
+rgZz7SrGleKbhV6m7GG+Ls6b8JmFpgfwepRfnex0gu+6+5jilY4g8pM4igl3Iq4CBhtTJBfcarNm
+IjqRy5+FsMs8bRGNr7KdwFa92H1H0eg1mpVq5+/5PmDKOUVQNMiOIow/g+87SctwGeT8gcrEiyDE
+g146QPCr/NXChYIpMTbZZ4DvwllgKApf9l6voXmOPL5TlGaNtKpiRMbVhewo7Izjx1fM4R7zqpeg
+FrAMDe/V0RaMO/D9o3wdetA6Kd4KlMeegAAAAAAAAA==
+
+--Apple-Mail-76--352054037--
+
+From sacadmin Fri Jul 25 08:28:04 2008
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m6PFS4FJ022729
+	for <fwarc@sac.sfbay.sun.com>; Fri, 25 Jul 2008 08:28:04 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m6PFS1aT009278;
+	Fri, 25 Jul 2008 09:28:03 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K4K0060LIYR8000@brm-avmta-1.central.sun.com>; Fri,
+ 25 Jul 2008 09:28:03 -0600 (MDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K4K005S7IYQR400@brm-avmta-1.central.sun.com>; Fri,
+ 25 Jul 2008 09:28:02 -0600 (MDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m6PFS2sL002005; Fri,
+ 25 Jul 2008 15:28:02 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K4K00B01HI3OR00@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM); Fri,
+ 25 Jul 2008 09:28:02 -0600 (MDT)
+Received: from [192.168.100.100]
+ (c-24-62-231-112.hsd1.ma.comcast.net [24.62.231.112])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0K4K00JNGIYFTLA0@mail-amer.sun.com>; Fri,
+ 25 Jul 2008 09:27:52 -0600 (MDT)
+Date: Fri, 25 Jul 2008 11:27:47 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: FWARC/2008/455: FMA IO Domain Service - timeout 7/24/2008
+In-reply-to: <9FF4D884-8BC0-451E-A977-BBB9D422589F@Sun.COM>
+Sender: Eric.Sharakan@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: ldoms-fma@sun.com, dawn tse <Dawn.Tse@sun.com>
+Message-id: <0BEF742C-55B6-4199-9D58-92F22D09FFD9@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.928.1)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ micalg=sha1; boundary=Apple-Mail-14-321786104
+X-PMX-Version: 5.4.1.325704
+References: <9FF4D884-8BC0-451E-A977-BBB9D422589F@Sun.COM>
+Status: RO
+Content-Length: 7211
+
+
+--Apple-Mail-14-321786104
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed;
+	delsp=yes
+Content-Transfer-Encoding: 7bit
+
+This case has timed out and is now approved.  The IAM file has been  
+updated.
+
+Thanks.
+
+-Eric
+
+On Jul 17, 2008, at 4:17 PM, Eric Sharakan wrote:
+
+> Hi, I'm sponsoring this fast track case for Dawn Tse.  It adds a new  
+> domain service to provide FMA PCI root complex ownership  
+> information.  This extends the set of domain services provided for  
+> FMA originally specified in FWARC/2006/141.  The 1-pager & FMA IO  
+> Domain Service Specification can be found in the materials directory:
+>
+> http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2008/455/materials/
+>
+> This case times out on 7/24/2008.
+>
+> Release Binding:
+> minor/micro
+>
+> Thanks.
+>
+> -Eric
+>
+>
+> 1. Introduction
+>    1.1. Project/Component Working Name:
+> 	FMA IO Domain Service
+>
+>    1.2. Name of Document Author/Supplier:
+> 	dawn.tse@sun.com
+>
+>    1.3. Date of This Document:
+>    	July 17, 2008
+>
+>    1.4. Name of Major Document Customer(s)/Consumer(s):
+> 	1.4.1. The PAC or CPT you expect to review your project:
+> 		HS PAC
+>
+> 	1.4.2. The ARC(s) you expect to review your project:
+> 		FWARC
+>
+> 	1.4.3. The Director/VP who is "Sponsoring" this project:
+> 		Jerri-Ann Meyer
+>
+> 	1.4.4. The name of your business unit:
+> 		Solaris Software
+>
+>    1.5. Email Aliases:
+>     	1.5.1. Responsible Manager: jay.jayachandran@sun.com
+>     	1.5.2. Responsible Engineer: dawn.tse@sun.com
+>     	1.5.3. Marketing Manager: Neil.Sadaranganey@sun.com
+> 	1.5.4. Interest List: ldoms-fma@sun.com
+>
+> 2. Project Summary
+>    2.1. Project Description:
+>
+> 	This project defines a Fault Management Architecture (FMA) domain
+> 	service required in a logical domain environment where ownership of  
+> one
+> 	or more PCI root complexes is removed from the control domain and
+> 	assigned to so-called root domains. This project extends the set of  
+> FMA
+> 	Domain Services originally specified in FWARC/2006/141.
+>
+>    2.2. Risks and Assumptions:
+>
+> 	See FWARC/2006/141
+>
+> 3. Business Summary
+>    3.1. Problem Area:
+>
+> 	See FWARC/2006/141
+>
+>    3.2. Market/Requester:
+>
+> 	See FWARC/2006/141
+>
+>    3.3. Business Justification:
+>
+> 	See FWARC/2006/141
+>
+>
+>    3.4. Competitive Analysis:
+>
+> 	See FWARC/2006/141
+>
+>
+>    3.5. Opportunity Window/Exposure:
+>
+> 	See FWARC/2006/141
+>
+>
+>    3.6. How will you know when you are done?:
+>
+> 	When FMA is able to utilize this service to successfully diagnose PCI
+> 	fabric errors that occur in root domains.
+>
+>
+> 4. Technical Description:
+>
+> 	See material in case directory, and also available here:
+>
+> http://cpubringup.sfbay.sun.com/twiki/pub/LDoms/LDomsFmaIo/ZeusFMA-IO.pdf
+>
+>
+> 5. Reference Documents:
+> 	
+> 	FWARC/2006/141
+>
+>
+> 6. Resources and Schedule:
+>    6.1. Projected Availability:
+> 	
+> 	LDoms 1.1
+>
+>    6.2. Cost of Effort:
+>
+> 	One staff month
+>
+>    6.3. Cost of Capital Resources: N/A
+>
+>    6.4. Product Approval Committee requested information:
+>    	6.4.1. Consolidation Name: LDoms Manager, Solaris
+>    	6.4.2. Contributing OpCo/BU/Division Name: Solaris
+> 	6.4.3. Type of PAC Review and Approval expected: N/A
+>        6.4.4. Project Boundary Conditions: N/A
+> 	6.4.5. Is this a necessary project for OEM agreements: No
+> 	6.4.6. Notes/Dependencies: None
+> 	6.4.7. Target RTI Date/Release: TBD
+> 	6.4.8. Target Code Design Review Date: TBD
+> 	6.4.9. Update approval addition: N/A
+>
+>    6.5. ARC review type: Fast Track
+>
+> 7. Prototype Availability:
+>    7.1. Prototype Availability:
+> 	Q1FY09
+>
+>    7.2. Prototype Cost:
+> 	Done using existing resources.
+>
+>
+
+
+--Apple-Mail-14-321786104
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA3MTAxODAzMjAxOFoXDTA4MTAxNzAzMjAx
+OFowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyOpo1o9G
+kC4zvPQvyj/wBYNQR3zjkMYMxkWmL184ofuULXo7qmNtiCDanb/U9CmkH/ZXm3itLKVtRIUo/Fr7
+oi4CRxDUkF8LarMoiGbsuQ0hF0QIwJXdGv9GtNwagdzOtsqzZ0pV0II3WB7+NaIQ8qJ2KIwseULZ
+aXX0BzdlINGBYufa5xG38/piJfwb5n7JE/O2pocT1kO+IM9yLm3840a7FKwcYV6/tpXYABKlpgfK
+ZUp56DDLXf/5qW8jHPGhd6yrOVf53QtXypHNXPJDR+NFWo5Os2drH5V2rxzCildmoxOmhZkVaG03
+anU0qE4nWSRH1CKvtvigQDGJg0++sQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQCAxj+ZJX9XVIa4NeiRkfeL
+WaXXlKRONtx3QP3K7B9/T983wXc26sacqER608AoRMz9GyECwpIHtkvcRoCRPoWLyoWBf7zwh8ha
+0CPkTAmFxl1ENtpq/43Di0DUSHrcCeGvigN4esQpYJtQAmCUm5i5tXbu70d192lfniLVgHPvYzCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQQtJ8t0o3bhp1zVjZgObu9jAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wODA3
+MjUxNTI3NDhaMCMGCSqGSIb3DQEJBDEWBBTxCHSXc0+5TJkc6tpbUuQ/cRt6mzCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdK
+N24adc1Y2YDm7vYwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEBBQAEggEApLQu
+ozT01h9otBS2QyRL7tqsSadQL9Qtg7ByU/qkqV1J1rtFgr6wVpLH+soGU0Rpp2gEWXFYOcArVvbV
+zzrggtGTfiY4D620CbQuwGhNCsVK+7XoFbXHHP0g/5Uyww3KXSv70tcQ4j337gbrS8cncCVcQ9Ja
+I3m+exBK2EqyPCcM8b9qBKKCTSlPc0L10R/K1XuyMHtmqe6OfdKo8tGjqYcswyqP0C7u8pFPlc6O
+gzI1X0FYzmaeFcDzdaLOQ2nb+2+C1KgI0PK2eFu5aBMGlWAEgXQfGfr82IYdGCer4qlIqs1dUSYa
+EYKz7Dc+KhjwEvH7X2B20TOPQAx+9fK9xAAAAAAAAA==
+
+--Apple-Mail-14-321786104--
+

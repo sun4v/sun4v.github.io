@@ -1,0 +1,104 @@
+Inception: 2005/115 sun4v machine description
+Submitter:      john.johnson@sun.com
+Owner:          Tony Sumpter
+Intern:         Balaji Nelamangala
+
+Ash gave an overview about the project. The following is highlights of his
+overview:
+
+* This project is about a mechanism in which guests will be able to discover 
+information (real addresses, source of CPUs, cache hierarchy, cpu id etc)
+
+Details are available at:
+http://sac.sfbay.sun.com/ARC/FWARC/2005/115/20050222_john.johnson.2
+
+Going through issue list --
+
+** Hitu
+
+1.  In md-transport-api-ch4.pdf, section 4.7.3, refers to
+    DAG but DAG itself is not defined.  It is defined in
+    the md-info.pdf which is a background information for
+    the specification.  I suggest, describing DAG and ARC
+    concepts in the introduction section of the specification.
+    This will be section 4 of this specification.
+
+DMK: This is common terminology and has been provided in the formative 
+section. It won't be part of the spec. 
+
+Status: CLOSED 
+
+2.  In md-transport-api-ch4.pdf, section 4.7.3, page 17, typo,
+    the first bullet on this page, remove "is".
+
+Response(R): Will fix the typo.
+
+3.  In md-bindings.pdf, section 4.5, typo, the last sentence
+    of the Description, remove "all".
+
+R: Will fix the typo.
+
+4.  In md-bindings.pdf, section 4.5.2, the properties table,
+    can we refer "id" as "cpuid" to be consistent with the
+    core API specification?
+
+DMK: The name was defined differently should be fine because these are
+for different name space.
+
+Status: CLOSED.
+
+5.  In md-bindings.pdf, section 4.5.4, need clarification for
+    my understanding, there are multiple Mblocks, one per
+    fragmented segment of memory, right?  In other words,
+    memory can be fragmented but each segment of memory is
+    represented as a contiguous range of real memory by Mblock
+    node, right?
+
+R: Yes.
+
+Status: CLOSED.
+
+6.  In md-bindings.pdf, section 4.5.5, is the properties table
+    missing "clock-frequency"?  The sun4v bindings defines
+    this property for root node.
+
+DMK: 4.5.5 is the platform node.
+
+Redman: We don't need this.
+
+Redman suggested to make this go away.
+
+DMK agreed with Redman and asked Hitu to fast-track to remove this.
+
+Resolution: no change as of now and will fast-track this removal in the
+future.
+
+Status: CLOSED - DMK and Redman will work together to take care of
+this issue & do fast-track in the near future.
+
+7.  In md-bindings.pdf, section 5.6.1, in the properties table,
+    can you give some examples of "compatible-type"?
+
+Status: CLOSED
+
+8. Interface table - no type defined and name defined (generic only)
+
+DMK: I did this as we did for bus bindings.
+
+AI: Hitu will work with Tony, the case owner.
+--
+
+VOTES to convert this case to fast-track:
+=========================================
+Redman, Hitu, Tony, DMK - approved
+
+Hitu asked for interface table clarification, but other FWARC members did
+not think interface table is necessary for this case since there is no dependency.
+Therefore, with majority decision we won't have interface table for this case.  
+
+THE NEXT STEP
+=============
+Ash will submit the final materials by tomorrow morning to Tony and Balaji.
+This case will be converted to be a fast-track case. 
+
+==========================================================================

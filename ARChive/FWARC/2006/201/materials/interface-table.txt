@@ -1,0 +1,22 @@
+
+================================================================================
+Imported Interfaces
+--------------------------------------------------------------------------------
+CPU_QCONF		Sun Private	FWARC/2005/116
+					queues 0x3e & 0x3f
+
+sun4v error report      Sun Private	FWARC/2006/200
+================================================================================
+
+================================================================================
+Exported Interfaces
+--------------------------------------------------------------------------------
+
+sun4v error report      Sun Private	structure and encodings defined in [1]
+extensions
+
+================================================================================
+
+1) Extended Sun4v Error Handling Interface
+
+http://sac.sfbay.sun.com/arc/FWARC/2006/201/materials/hv_sun4v_errorphilosophy-V2.0.txt

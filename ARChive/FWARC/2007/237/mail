@@ -1,0 +1,551 @@
+From sacadmin Wed Apr 25 17:14:29 2007
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l3Q0ETU8029970
+	for <FWARC@sac.sfbay.sun.com>; Wed, 25 Apr 2007 17:14:29 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id l3Q0DdRZ022291;
+	Wed, 25 Apr 2007 17:13:39 -0700 (PDT)
+Received: from [192.168.0.9] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l3Q0DcFT026989;
+	Wed, 25 Apr 2007 17:13:38 -0700 (PDT)
+Message-ID: <462FEECA.5070200@sun.com>
+Date: Wed, 25 Apr 2007 17:14:02 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 2.0.0.0 (Windows/20070326)
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+CC: Sree-Lakshmi Vemuri <Sree.Vemuri@sun.com>
+Subject: 2007/237 - Victoria Falls Perf Reg HV API - fast-track timeout May
+ 2 2007
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 580
+
+
+I'm sponsoring this fast track for Sree Vemuri.
+The fast-track timeout is May 2.
+
+The materials are in the "materials" case dir.
+
+Similar to all previous cpu-specific performance
+register APIs, this case adds 2 new HV APIs
+(0x106, 0x107), creates a new API group (0x205),
+and defines version 1.0 of these APIs. The API
+includes the function numbers used to access specific registers.
+
+I've updated the registry with the additions.
+
+All interfaces are classified as evolving.
+
+Release Binding:
+	firmware: minor/micro firmware release
+	OS: minor/micro/patch OS release.
+
+-David
+
+
+
+
+From sacadmin Tue May  1 10:55:05 2007
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l41Ht510016079
+	for <fwarc@sac.eng.sun.com>; Tue, 1 May 2007 10:55:05 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l41HsAmZ058196
+	for <@newsunmail1brm.central.sun.com:fwarc@sun.com>; Tue, 1 May 2007 11:54:10 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JHD0050LJ29BQ00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Tue, 01 May 2007 11:54:09 -0600 (MDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JHD003KKJ28LV30@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Tue, 01 May 2007 11:54:08 -0600 (MDT)
+Received: from fe-amer-01.sun.com ([192.18.108.175])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l41Hs7KZ025552	for
+ <fwarc@Sun.COM>; Tue, 01 May 2007 17:54:07 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JHD00201ITNF100@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Tue, 01 May 2007 11:54:07 -0600 (MDT)
+Received: from [129.150.36.198] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JHD00J8SJ26JDI0@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Tue, 01 May 2007 11:54:07 -0600 (MDT)
+Date: Tue, 01 May 2007 10:55:14 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2007/237 - Victoria Falls Perf Reg HV API - fast-track timeout May
+ 2 2007
+In-reply-to: <462FEECA.5070200@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Sree-Lakshmi Vemuri <Sree.Vemuri@sun.com>
+Message-id: <46377F02.1080100@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <462FEECA.5070200@sun.com>
+User-Agent: Thunderbird 2.0.0.0 (Windows/20070326)
+Status: RO
+Content-Length: 1296
+
+David Kahn wrote:
+> 
+> I'm sponsoring this fast track for Sree Vemuri.
+> The fast-track timeout is May 2.
+> 
+> The materials are in the "materials" case dir.
+> 
+> Similar to all previous cpu-specific performance
+> register APIs, this case adds 2 new HV APIs
+> (0x106, 0x107), creates a new API group (0x205),
+> and defines version 1.0 of these APIs. The API
+> includes the function numbers used to access specific registers.
+> 
+> I've updated the registry with the additions.
+> 
+> All interfaces are classified as evolving.
+> 
+
+As per latest Interface Taxonomy, Evolving have changed to Uncommitted
+and so the interfaces should be classified as Uncommitted.
+
+See http://sac.eng/cgi-bin/bp.cgi?NAME=interface_taxonomy.bp for details.
+
+Also, can we add an interface to the case material?  This can be in the
+spec. itself or a separate text document in the case directory or can
+be in the one-pager (but this case do not have one-pager).
+
+
+Thanks.
+
+
+> Release Binding:
+>     firmware: minor/micro firmware release
+>     OS: minor/micro/patch OS release.
+> 
+> -David
+> 
+> 
+> 
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Tue May  1 14:54:24 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l41LsNZA026493
+	for <fwarc@sac.eng.Sun.COM>; Tue, 1 May 2007 14:54:23 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l41LrPFJ022746
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 2 May 2007 05:53:27 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JHD00E03U511A00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 01 May 2007 14:53:25 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JHD004PNU50H040@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 01 May 2007 14:53:25 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id l41LrOQo009609; Tue, 01 May 2007 14:53:24 -0700 (PDT)
+Received: from [192.168.0.9] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l41LrMMs087803; Tue,
+ 01 May 2007 14:53:23 -0700 (PDT)
+Date: Tue, 01 May 2007 14:53:22 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2007/237 - Victoria Falls Perf Reg HV API - fast-track timeout May
+ 2 2007
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Sree-Lakshmi Vemuri <Sree.Vemuri@sun.com>
+Message-id: <4637B6D2.3090309@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0.0.0 (Windows/20070326)
+Status: RO
+Content-Length: 2107
+
+
+
+Hitendra Zhangada wrote:
+
+
+Yes, evolving changed to uncommitted but the rest of the
+HV APIs are evolving. If you want to call these uncommitted
+that's ok by me.
+
+> Also, can we add an interface to the case material?  This can be in the
+> spec. itself or a separate text document in the case directory or can
+> be in the one-pager (but this case do not have one-pager).
+
+The interfaces are well-defined in 3.1 and 3.2 of the
+document in the materials directory. That's sufficient.
+
+If you want a breakdown they are:
+
+HV fast-traps function numbers v1.0 (from section 3.2):
+
+	VFALLS_GET_PERFREG		0x106
+	VFALLS_SET_PERFREG		0x107
+
+HV API group number (from section 3.2):
+
+	0x205		Victoria Falls Performance Counters
+
+Performance register numbers (PerReg# in the following table
+from section 3.1):
+
+PerfReg# Node DRAM  Description     Local address   Global address
+-------- ---- ----  -----------     -------------   --------------
+    0     local  -   SPARC PCR		-		-
+
+    1	 local	all L2 Bank CRs		-		-
+
+    2       0    0   NODE0_MCU0_PCR  0x84.0000.0400  0xD0.0000.0400
+    3       0    0   NODE0_MCU0_PIC  0x84.0000.0408  0xD0.0000.0408
+    4       0    1   NODE0_MCU1_PCR  0x84.0000.1400  0xD0.0000.1400
+    5       0    1   NODE0_MCU1_PIC  0x84.0000.1408  0xD0.0000.1408
+
+    6       1    0   NODE1_MCU0_PCR  0x84.0000.0400  0xD4.0000.0400
+    7       1    0   NODE1_MCU0_PIC  0x84.0000.0408  0xD4.0000.0408
+    8       1    1   NODE1_MCU1_PCR  0x84.0000.1400  0xD4.0000.1400
+    9       1    1   NODE1_MCU1_PIC  0x84.0000.1408  0xD4.0000.1408
+
+   10       2    0   NODE2_MCU0_PCR  0x84.0000.0400  0xD8.0000.0400
+   11       2    0   NODE2_MCU0_PIC  0x84.0000.0408  0xD8.0000.0408
+   12       2    1   NODE2_MCU1_PCR  0x84.0000.1400  0xD8.0000.1400
+   13       2    1   NODE2_MCU1_PIC  0x84.0000.1408  0xD8.0000.1408
+
+   14       3    0   NODE3_MCU0_PCR  0x84.0000.0400  0xDC.0000.0400
+   15       3    0   NODE3_MCU0_PIC  0x84.0000.0408  0xDC.0000.0408
+   16       3    1   NODE3_MCU1_PCR  0x84.0000.1400  0xDC.0000.1400
+   17       3    1   NODE3_MCU1_PIC  0x84.0000.1408  0xDC.0000.1408
+
+
+-David
+
+
+
+From sacadmin Tue May  1 15:15:45 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l41MFii0027342
+	for <fwarc@sac.eng.Sun.COM>; Tue, 1 May 2007 15:15:45 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l41MEjH3027890
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 2 May 2007 06:14:48 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JHD00G01V4N9400@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 01 May 2007 15:14:47 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JHD004OBV4MH970@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 01 May 2007 15:14:47 -0700 (PDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l41MEkYh018800	for
+ <fwarc@sun.com>; Tue, 01 May 2007 22:14:46 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JHD00M01US1C300@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 01 May 2007 16:14:46 -0600 (MDT)
+Received: from [129.150.32.251] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JHD00IDAV4LAVJ0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 01 May 2007 16:14:46 -0600 (MDT)
+Date: Tue, 01 May 2007 15:15:54 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2007/237 - Victoria Falls Perf Reg HV API - fast-track timeout May
+ 2 2007
+In-reply-to: <4637B6D2.3090309@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Sree-Lakshmi Vemuri <Sree.Vemuri@sun.com>
+Message-id: <4637BC1A.6010501@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <4637B6D2.3090309@sun.com>
+User-Agent: Thunderbird 2.0.0.0 (Windows/20070326)
+Status: RO
+Content-Length: 2975
+
+David Kahn wrote:
+> 
+> 
+> Hitendra Zhangada wrote:
+> 
+> 
+> Yes, evolving changed to uncommitted but the rest of the
+> HV APIs are evolving. If you want to call these uncommitted
+> that's ok by me.
+> 
+
+I thought direction for ARCs was to use the new taxonomy.  I have been
+advising submitters to use Uncommitted instead of Evolving because of this.
+
+>> Also, can we add an interface to the case material?  This can be in the
+
+My bad.  What I meant was to add an interface table in the case material.
+Yes, the interfaces are clear but it is nice to have a table so that the
+classification of the interfaces are clear when they are referenced from
+other cases or when the interfaces are modified.
+
+Sorry about missing out "table" in my question.
+
+
+>> spec. itself or a separate text document in the case directory or can
+>> be in the one-pager (but this case do not have one-pager).
+> 
+> The interfaces are well-defined in 3.1 and 3.2 of the
+> document in the materials directory. That's sufficient.
+> 
+> If you want a breakdown they are:
+> 
+> HV fast-traps function numbers v1.0 (from section 3.2):
+> 
+>     VFALLS_GET_PERFREG        0x106
+>     VFALLS_SET_PERFREG        0x107
+> 
+> HV API group number (from section 3.2):
+> 
+>     0x205        Victoria Falls Performance Counters
+> 
+> Performance register numbers (PerReg# in the following table
+> from section 3.1):
+> 
+> PerfReg# Node DRAM  Description     Local address   Global address
+> -------- ---- ----  -----------     -------------   --------------
+>    0     local  -   SPARC PCR        -        -
+> 
+>    1     local    all L2 Bank CRs        -        -
+> 
+>    2       0    0   NODE0_MCU0_PCR  0x84.0000.0400  0xD0.0000.0400
+>    3       0    0   NODE0_MCU0_PIC  0x84.0000.0408  0xD0.0000.0408
+>    4       0    1   NODE0_MCU1_PCR  0x84.0000.1400  0xD0.0000.1400
+>    5       0    1   NODE0_MCU1_PIC  0x84.0000.1408  0xD0.0000.1408
+> 
+>    6       1    0   NODE1_MCU0_PCR  0x84.0000.0400  0xD4.0000.0400
+>    7       1    0   NODE1_MCU0_PIC  0x84.0000.0408  0xD4.0000.0408
+>    8       1    1   NODE1_MCU1_PCR  0x84.0000.1400  0xD4.0000.1400
+>    9       1    1   NODE1_MCU1_PIC  0x84.0000.1408  0xD4.0000.1408
+> 
+>   10       2    0   NODE2_MCU0_PCR  0x84.0000.0400  0xD8.0000.0400
+>   11       2    0   NODE2_MCU0_PIC  0x84.0000.0408  0xD8.0000.0408
+>   12       2    1   NODE2_MCU1_PCR  0x84.0000.1400  0xD8.0000.1400
+>   13       2    1   NODE2_MCU1_PIC  0x84.0000.1408  0xD8.0000.1408
+> 
+>   14       3    0   NODE3_MCU0_PCR  0x84.0000.0400  0xDC.0000.0400
+>   15       3    0   NODE3_MCU0_PIC  0x84.0000.0408  0xDC.0000.0408
+>   16       3    1   NODE3_MCU1_PCR  0x84.0000.1400  0xDC.0000.1400
+>   17       3    1   NODE3_MCU1_PIC  0x84.0000.1408  0xDC.0000.1408
+> 
+> 
+> -David
+> 
+> 
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Tue May  1 15:39:12 2007
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l41MdCmI028150
+	for <fwarc@sac.eng.sun.com>; Tue, 1 May 2007 15:39:12 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l41McGB0001324
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 1 May 2007 15:38:16 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JHD00I01W7SW300@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 01 May 2007 15:38:16 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JHD004XKW7RHB70@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 01 May 2007 15:38:16 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id l41McFvi028786; Tue, 01 May 2007 15:38:15 -0700 (PDT)
+Received: from [192.168.0.9] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l41McEih090639; Tue,
+ 01 May 2007 15:38:14 -0700 (PDT)
+Date: Tue, 01 May 2007 15:38:14 -0700
+From: David Kahn <David.Kahn@Sun.COM>
+Subject: Re: 2007/237 - Victoria Falls Perf Reg HV API - fast-track timeout May
+ 2 2007
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, Sree-Lakshmi Vemuri <Sree.Vemuri@Sun.COM>
+Message-id: <4637C156.6030807@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0.0.0 (Windows/20070326)
+Status: RO
+Content-Length: 247
+
+
+
+Hitendra Zhangada wrote:
+
+> What I meant was to add an interface table in the case material.
+
+It's a simple fast-track. What's there is sufficient.
+
+If you feel strongly about it, feel free to add one to
+the materials directory.
+
+Thanks,
+David
+
+
+From sacadmin Tue May  1 15:48:04 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l41Mm35F028391
+	for <fwarc@sac.eng.Sun.COM>; Tue, 1 May 2007 15:48:04 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l41Ml7Ma007263
+	for <@sunmail3mpk.sfbay.sun.com:fwarc@sun.com>; Wed, 2 May 2007 06:47:07 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JHD00603WMINU00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 01 May 2007 15:47:06 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JHD006RGWMI8J00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 01 May 2007 15:47:06 -0700 (PDT)
+Received: from fe-amer-02.sun.com ([192.18.108.176])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l41Ml5GX013157	for
+ <fwarc@sun.com>; Tue, 01 May 2007 22:47:05 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JHD00J01WK2G900@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 01 May 2007 16:47:05 -0600 (MDT)
+Received: from [129.150.32.158] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JHD00LJTWMGJEG0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 01 May 2007 16:47:05 -0600 (MDT)
+Date: Tue, 01 May 2007 15:48:13 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2007/237 - Victoria Falls Perf Reg HV API - fast-track timeout May
+ 2 2007
+In-reply-to: <4637C156.6030807@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Sree-Lakshmi Vemuri <Sree.Vemuri@sun.com>
+Message-id: <4637C3AD.8020907@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <4637C156.6030807@sun.com>
+User-Agent: Thunderbird 2.0.0.0 (Windows/20070326)
+Status: RO
+Content-Length: 646
+
+David Kahn wrote:
+> 
+> 
+> Hitendra Zhangada wrote:
+> 
+>> What I meant was to add an interface table in the case material.
+> 
+> It's a simple fast-track. What's there is sufficient.
+> 
+> If you feel strongly about it, feel free to add one to
+> the materials directory.
+
+If I would have owned the case then I would have done that without
+asking or resisting this simple request.
+
+I will create one if I have time.
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Thu May  3 17:29:04 2007
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l440T41G009165
+	for <fwarc@sac.eng.sun.com>; Thu, 3 May 2007 17:29:04 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l440S5fR023667
+	for <@sunmail3mpk.sfbay.sun.com:fwarc@sun.com>; Thu, 3 May 2007 17:28:05 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JHH00D01QMTIE00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 May 2007 17:28:05 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JHH00BAGQMPVO90@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 May 2007 17:28:01 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id l440S0lM029317; Thu, 03 May 2007 17:28:00 -0700 (PDT)
+Received: from [192.168.0.9] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l440RxL3031425; Thu,
+ 03 May 2007 17:27:59 -0700 (PDT)
+Date: Thu, 03 May 2007 17:27:38 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: [Fwd: 2007/237 - Victoria Falls Perf Reg HV API - fast-track
+ timeout May 2 2007]
+In-reply-to: <463A363F.3010204@Sun.Com>
+To: Firmware Arch <fwarc@sun.com>
+Cc: Paul.Vonasek@sun.com, Sree.Vemuri@sun.com,
+        Dave Marquardt <Dave.Marquardt@sun.com>
+Message-id: <463A7DFA.4060106@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <xejyejm6ymj5.fsf@Sun.COM> <463A363F.3010204@Sun.Com>
+User-Agent: Thunderbird 2.0.0.0 (Windows/20070326)
+Status: RO
+Content-Length: 104
+
+
+The timer has expired and this case is approved
+as specified in the email announcing the case.
+
+-David
+

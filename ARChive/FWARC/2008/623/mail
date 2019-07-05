@@ -1,0 +1,1636 @@
+From sacadmin Sat Oct  4 08:30:20 2008
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m94FUJuS024755
+	for <fwarc@sac.sfbay.sun.com>; Sat, 4 Oct 2008 08:30:20 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m94FUDKR007266
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Sat, 4 Oct 2008 08:30:19 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K880080J0EFJS00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Sat, 04 Oct 2008 08:30:15 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K8800EIH0EEPE70@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Sat, 04 Oct 2008 08:30:14 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m94FUEmW011516	for
+ <fwarc@sun.com>; Sat, 04 Oct 2008 15:30:14 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K880070109W5N00@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Sat, 04 Oct 2008 09:30:14 -0600 (MDT)
+Received: from [192.168.100.100]
+ (c-24-62-231-112.hsd1.ma.comcast.net [24.62.231.112])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0K88002D00E6CK50@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Sat, 04 Oct 2008 09:30:09 -0600 (MDT)
+Date: Sat, 04 Oct 2008 11:30:06 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: fasttrack FWARC/2008/623 - Improved Error Reporting for DR Domain
+ Services - timeout 10/10/2008
+Sender: Eric.Sharakan@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Jim Marks - Sun Microsystems <James.Marks@sun.com>,
+        Narayan Venkat <Narayan.Venkat@sun.com>,
+        Ryan Maeda <Ryan.Maeda@sun.com>
+Message-id: <F42DE10E-3A7B-46B8-ACCD-BB03007F0594@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.929.2)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ micalg=sha1; boundary=Apple-Mail-47-13870890
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 15839
+
+
+--Apple-Mail-47-13870890
+Content-Type: multipart/mixed;
+	boundary=Apple-Mail-46-13870838
+
+
+--Apple-Mail-46-13870838
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed;
+	delsp=yes
+Content-Transfer-Encoding: 7bit
+
+Hi, I am sponsoring this fast track case for Jim Marks.  Requested  
+binding is minor/micro/patch.
+
+This case adds a new field to the cpu & memory DR protocol response  
+payloads that holds an error string for the overall request.  The  
+minor number of the protocol version will be bumped as a result.  This  
+updates FWARC/2006/055 & FWARC/2008/540.
+
+The 1-pager can be found in the material directory, and is attached to  
+this message.
+
+This case times out on 10/10.  The intent was to file this yesterday  
+with a full 7-day timeout period, but the sponsor fell ill.  Given the  
+simplicity of the change and the upcoming Zeus build 12 deadline of  
+10/14, I'm requesting a slightly shorter timeout period.
+
+Thanks.
+
+-Eric
+
+
+--Apple-Mail-46-13870838
+Content-Disposition: attachment;
+	filename=dr_error_enhancements.txt
+Content-Type: text/plain;
+	x-unix-mode=0644;
+	name="dr_error_enhancements.txt"
+Content-Transfer-Encoding: 7bit
+
+
+
+1. Introduction
+
+1.1 Project/Component Working Name
+
+        Improved Error Reporting for DR Domain Services
+
+1.2 Name of Document Author/Supplier
+
+        Jim Marks
+
+1.3 Date of This Document
+
+        09/17/2008
+
+1.4 Name of Major Document Customer(s)/Consumer(s)
+
+        1.4.1 The PAC or CPT you expect to review your project
+
+        1.4.2 The ARC(s) you expect to review your project
+
+                FWARC
+
+        1.4.3 The Director/VP who is sponsoring this project
+
+                jerriann.meyer@sun.com
+
+        1.4.4 The Name of Your Business Unit
+
+                Solaris Core OS
+
+1.5 Email Aliases
+
+        1.5.1 Responsible Manager:      jay.jayachandran@sun.com
+
+        1.5.2 Responsible Engineer:     james.marks@sun.com
+
+        1.5.3 Marketing Manager:
+
+        1.5.4 Interest List:            ldoms-internal@sun.com
+
+2. Project Summary
+
+2.1 Project Description
+
+	Enhance the LDoms DR Domain Services to provide better
+	error reporting to the user for certain types of failure
+	for which no explanation is currently given.  The error
+	messages must describe the cause of the failure in the
+	target domain.
+
+2.2 Risks and Assumptions
+
+        None.
+
+3. Business Summary
+
+3.1 Problem Area
+
+	There are currently three Domain Services for Dynamic
+	Reconfiguration of an LDoms domain: DR CPU, DR VIO and DR
+	Memory.  (See reference below.) These services allow
+	management software to make dynamic configuration changes to a
+	target domain.  The existing version of these domain services
+	provides for passing an error string back from the guest for
+	certain types of failure.
+
+	For other types of failure, such as problems interacting with
+	other software components in the target domain, a generic
+	message is displayed to the user.  This message does not aid
+	the user in diagnosing the cause of the problem so that
+	attempts can be made to rectify it.
+
+	Example: if the guest domain that is the target of an 'ldm
+	rm-vcpu' request is running Solaris, and is not running the
+	reconfiguration daemon (drd), the request will be rejected.
+	The user will see this message in response to the ' 'ldm
+	rm-vcpu' command:
+
+		Unable to remove the requested VCPU(s) from LDom ldg1
+		Resource removal failed
+
+	Using the current version of the domain service is inadequate,
+	and the target domain cannot send as part of its error
+	response the reason for the failure.  It would be much more
+	helpful to the user to see a descriptive message like this:
+
+		Cannot communicate with reconfiguration daemon (drd) in
+		target domain.  drd(1M) SMF service may not be enabled.
+
+
+3.2 Market/Requestor
+
+        See FWARC/2005/633
+
+3.3 Business Justification
+
+        See FWARC/2005/633
+
+3.4 Competitive Analysis
+
+	This is a usability issue which needs to be rectified in order
+	for LDoms to be seen as a competitive virtualization solution.
+
+3.5 Opportunity Window/Exposure
+
+        See FWARC/2005/663.
+
+3.6 How will you know when you are done?
+
+        The work will be completed when the final code changes to
+        implement a new version (1.1) of the three DR Domain Services
+        are integrated into the Solaris NV and Solaris 10 Update gates
+        and the LDoms Manager gate.
+
+4. Technical Description
+
+4.1 Overview
+
+	This project will improve the error reporting capability
+	associated with dynamic reconfiguration of virtual cpus,
+	(VCPUs), virtual I/O devices, and memory.  The response
+	message formats of the three DR services all provide for
+	passing back an error string for certain types of failure.
+	For example, if attempting to remove multiple vcpus, and some
+	succeed and some fail, the user will see error messages
+	describing why the failed vcpus could not be removed.  On the
+	other hand, if the failure was a problem related to the entire
+	request, the protocol does not currently provide for passing
+	back a descriptive error message.  This project will make
+	small changes to the message formats (and semantics) so that
+	an error string can be returned for ALL failures.
+
+	The minor version number of the DR domain services will be
+	incremented such that the version will move from 1.0 to 1.1.
+	The target domain DR modules and the initiator module for DR
+	requests will be modified to conform to this new version of
+	the domain service.  If an initiator module using version 1.1
+	is interacting with a target domain DR module also using 1.1,
+	the new domain service will be utilized, and the user will see
+	the improved error messages.  If either of the modules is
+	running version 1.0, the peer will adjust downward, so that
+	version 1.0 of the domain service will be utilized, and the
+	error reporting behavior will remain at its current level.
+	For a more complete description of versioning see FWARC
+	2006/055 section 2.5.5 "DS Capability Version Negotiation &
+	Registration".
+
+4.2 Bug/RFE Number(s)
+
+	6719903 DR error message should be more helpful when 'drd' is disabled
+
+4.3 Scope
+
+        Not Applicable.
+
+4.4 Out of Scope
+
+        Not Applicable.
+
+4.5 Interfaces
+
+        4.5.1 Interfaces
+
+                The modified interface consists of a change to the
+                format of existing message exchanged between the
+                guest DR modules and the initiator module for DR
+                requests.  Section 3.4.5 of FWARC/2006/055 states:
+
+		"The message type DR_CPU_ERROR is a response to a
+		malformed request message.  No additional payload is
+		provided with this message type."  Similar statements
+		apply to DR VIO (for the DR_VIO_RES_FAILURE result
+		code) and DR Memory (for the DR_MEM_ERROR result
+		code).
+
+		This project will change the semantics of these error
+		response codes (described below) as well as the
+		corresponding response message as follows:
+
+        4.5.2 Imported Interfaces
+
+             Interface           Classification  Comments
+             =================================================================
+
+             Domain Services      Sun Private    DR CPU Domain Service
+             (CPU DR)                            message formats
+                                                 FWARC/2006/055
+             Domain Services      Sun Private    DR Memory Domain Service
+             (Memory DR)                         message formats
+                                                 FWARC/2008/540
+
+       4.5.3 Exported Interfaces
+
+             Interface           Classification  Comments
+             ================================================================
+
+             Domain Services      Sun Private    Domain Services
+             (CPU DR)                            messages formats
+                                                 FWARC/2006/055 with
+						 modified CPU DR response
+
+             Domain Services      Sun Private    Domain Services
+             (CPU Memory)                        messages formats
+                                                 FWARC/2008/540
+						 modified Memory DR response
+
+	4.5.4 DR CPU Message Format
+
+		The interface change consists of a modification to an
+		existing message format, by adding the new field 'err_msg'
+		as shown below.  It modifies section FWARC 2006/055
+		section 3.4.5 "CPU DR Error response"
+
+		Common message header (unchanged)
+
+		Offset Size   Field Name    Description
+		------ ----   ----------    -----------
+
+		0      8      req_num       Request number
+		8      4      msg_type      Message type
+                12     4      num_records   Number of records
+
+		Payload (immediately following above header)
+
+		Offset Size             Field Name     Description
+		------ ----             ----------     -----------
+
+		16     4*num_records	req_cpus       array of vcpu ids
+                                                       (applies to requests)
+		16     16*num_records   resp_cpu_stats array of status structs
+                                                       (applies to responses)
+		16     <variable>       err_msg        null-terminated string
+                                                       (applies to responses)
+
+		Note: the new err_msg field of the response message
+		payload applies only to response messages, and then
+		only when the 'msg_type' element of the header is
+		DR_CPU_ERROR.
+
+	4.5.5 DR VIO Message Format (unchanged)
+
+		The interface change does not involve any change to
+		the format of the response message.
+
+		The result codes also remain unchanged.  The DR VIO
+		case (FWARC 2008/299) already provides for passing
+		an error message on failures.
+
+
+	4.5.6 DR Memory Message Format
+
+	The interface change consists of a modification to an existing
+	message format, by adding a payload field for the case when
+	the 'msg_type' of the response header is DR_MEM_ERROR.  It
+	modifies FWARC 2008/540 section 1.5 of the messages document.
+
+		Message header (unchanged):
+
+		Offset Size   Field Name    Description
+		------ ----   ----------    -----------
+
+		0      4      msg_type      Message type
+		4      4      msg_arg       Message argument
+		8      8      req_num       Request number
+
+		Payload field (new) immediately following the header:
+
+		Offset Size   Field Name    Description
+		------ ----   ----------    -----------
+
+		16     <var>  err_msg       Error msg (null-terminated string)
+
+		The maximum length of the err_msg field including the
+		terminal null shall be 1024 characters.  The error
+		message will indicate the nature of the failure, such
+		as badly formatted request, intra-guest communication
+		failure, etc.
+
+   4.6 Doc Impact
+
+       None.
+
+   4.7 Admin/Config Impact
+
+   4.8 HA Impact
+
+       None.
+
+   4.9  I18N/L10N
+
+        Not affected.
+
+   4.10 Packaging & Delivery
+
+        This project defines a generic interface and is not tied to a
+        particular architecture.  No change to packages
+
+   4.11 Security Impact
+
+        None.
+
+   4.12 Dependencies
+
+        None.
+
+5. Reference Documents
+
+        FWARC 2005/633 LDoms: Project Q Logical Domaining Umbrella
+        FWARC 2006/055 Domain Services (section 3.4 CPU DR)
+	FWARC/2008/229 Virtual IO DR Domain Service
+	FWARC/2008/540 Memory DR Domain Service
+
+6. Resources and Schedule
+
+   6.1 Projected Availability
+
+       Available on <fill in prior to submission to FWARC>
+
+   6.2 Cost of Effort
+
+       1 person week
+
+   6.3 Cost of Capital Resources
+
+   6.4 Product Approval Committee requested information
+
+       6.4.1 Consolidation Or Component Name
+
+             OS-Networking (ON)
+
+             LDoms Manager (project private)
+
+       6.4.3 Type of CPT Approval Expected
+
+             Self-Review
+
+       6.4.4 Project Boundary Conditions
+
+       6.4.5 Is this a necessary project for OEM agreements:
+
+             No.
+
+      6.4.6 Notes
+
+      6.4.7 Target RTI Date/Release
+
+            LDoms 1.2
+
+      6.4.8 Target Code Design Review Date:
+
+      6.4.9 Update approval addition:
+
+            Not applicable
+
+   6.5 ARC review type
+
+        Self-Review (FWARC)
+
+   6.6 ARC Exposure
+
+        open (kernel portions)
+
+7. Prototype Availability:
+
+    7.1 Prototype Availability
+
+        Now
+
+    7.2 Prototype Cost:
+
+        Not applicable.
+
+--Apple-Mail-46-13870838
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed
+Content-Transfer-Encoding: 7bit
+
+
+
+--Apple-Mail-46-13870838--
+
+--Apple-Mail-47-13870890
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA3MTAxODAzMjAxOFoXDTA4MTAxNzAzMjAx
+OFowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyOpo1o9G
+kC4zvPQvyj/wBYNQR3zjkMYMxkWmL184ofuULXo7qmNtiCDanb/U9CmkH/ZXm3itLKVtRIUo/Fr7
+oi4CRxDUkF8LarMoiGbsuQ0hF0QIwJXdGv9GtNwagdzOtsqzZ0pV0II3WB7+NaIQ8qJ2KIwseULZ
+aXX0BzdlINGBYufa5xG38/piJfwb5n7JE/O2pocT1kO+IM9yLm3840a7FKwcYV6/tpXYABKlpgfK
+ZUp56DDLXf/5qW8jHPGhd6yrOVf53QtXypHNXPJDR+NFWo5Os2drH5V2rxzCildmoxOmhZkVaG03
+anU0qE4nWSRH1CKvtvigQDGJg0++sQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQCAxj+ZJX9XVIa4NeiRkfeL
+WaXXlKRONtx3QP3K7B9/T983wXc26sacqER608AoRMz9GyECwpIHtkvcRoCRPoWLyoWBf7zwh8ha
+0CPkTAmFxl1ENtpq/43Di0DUSHrcCeGvigN4esQpYJtQAmCUm5i5tXbu70d192lfniLVgHPvYzCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQQtJ8t0o3bhp1zVjZgObu9jAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wODEw
+MDQxNTMwMDdaMCMGCSqGSIb3DQEJBDEWBBTUCseOQRDY0ZLaCwgbB71FkCtcBjCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdK
+N24adc1Y2YDm7vYwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEBBQAEggEAhbHi
+2u31E71wyQDROwvKnraOHh5c/LEvNQWRGk4L5M+6YU4fX0QztgABV2Dxlpsq0Ify5ugLmWgrORMk
+7Ek8xHHxTNQ2uX573JrML93q3UmfE9S1Ab5DiPH/tSKZRWFJRH3it9qZOLvmGxhp4s8kKtValdWk
+mCag9aq7gHrnYiF+SDivHlbjZeVJAuhHWwXMe1TYfEWh6e0Cd+77rdMmXnLqrm4Fsp3elTJZRz0e
+8+owcFZOsSqwpBT7SG8mqxGZOC/OOZbNMjcWfohcwBjvPLfxbh6g3UhP+o4CsF6ArR6GcQ6ZMUgE
+1imfSZyeN+H184O4HFny0v1jjUMdTDx3ewAAAAAAAA==
+
+--Apple-Mail-47-13870890--
+
+From sacadmin Thu Oct  9 15:00:17 2008
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m99M0HTS024707
+	for <fwarc@sac.sfbay.sun.com>; Thu, 9 Oct 2008 15:00:17 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m99M0FwK019835
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 9 Oct 2008 15:00:17 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K8H00E0NRSFJ700@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 09 Oct 2008 15:00:15 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K8H0065LRSE8EE0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 09 Oct 2008 15:00:15 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m99M0EwT012708	for
+ <fwarc@sun.com>; Thu, 09 Oct 2008 15:00:14 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K8H00G01RQ6ZF00@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 09 Oct 2008 15:00:14 -0700 (PDT)
+Received: from [129.150.37.139] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K8H00776RSDCY30@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 09 Oct 2008 15:00:14 -0700 (PDT)
+Date: Thu, 09 Oct 2008 15:00:15 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: fasttrack FWARC/2008/623 - Improved Error Reporting for DR Domain
+ Services - timeout 10/10/2008
+In-reply-to: <F42DE10E-3A7B-46B8-ACCD-BB03007F0594@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Jim Marks - Sun Microsystems <James.Marks@sun.com>,
+        Ryan Maeda <Ryan.Maeda@sun.com>
+Message-id: <48EE7EEF.7030501@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <F42DE10E-3A7B-46B8-ACCD-BB03007F0594@Sun.COM>
+User-Agent: Thunderbird 2.0.0.17 (Windows/20080914)
+Status: RO
+Content-Length: 4570
+
+Eric Sharakan wrote:
+> Hi, I am sponsoring this fast track case for Jim Marks.  Requested 
+> binding is minor/micro/patch.
+>
+> This case adds a new field to the cpu & memory DR protocol response 
+> payloads that holds an error string for the overall request.  The 
+> minor number of the protocol version will be bumped as a result.  This 
+> updates FWARC/2006/055 & FWARC/2008/540.
+>
+> The 1-pager can be found in the material directory, and is attached to 
+> this message.
+>
+> This case times out on 10/10.  The intent was to file this yesterday 
+> with a full 7-day timeout period, but the sponsor fell ill.  Given the 
+> simplicity of the change and the upcoming Zeus build 12 deadline of 
+> 10/14, I'm requesting a slightly shorter timeout period.
+
+That is fine with me but I do have couple of comments.  These comments 
+should
+not result into timer extension unless they are not addressed soon :)
+
+
+1.  In section 4.5.6, you have mentioned max length for err_msg.  But no 
+such
+    max us mentioned for section 4.5.4.  It would have been nice if both 
+sections
+    were written in a similar format.  I think "max" for both CPU and Memory
+    message format is needed, right?
+
+2.  In section 4.5.4, I think the "offset" column is incorrect or is
+    mis-leading.  I think in this section you are starting with offset
+    of 16 since you are counting bytes for header but in the original
+    specification the offset start from 0, relative to the response field.
+
+		Offset Size             Field Name     Description
+		------ ----             ----------     -----------
+
+		16     4*num_records	req_cpus       array of vcpu ids
+                                                       (applies to requests)
+		16     16*num_records   resp_cpu_stats array of status structs
+                                                       (applies to responses)
+		16     <variable>       err_msg        null-terminated string
+                                                       (applies to responses)
+
+    Neither "req_cpus" or "resp_cpu_stats" are mentioned in the specification
+    under 2006/055 (under section 3.4).  What would have been better is to 
+    cut/paste the exact table from the original spec., like you did for
+    the "header" section, and then append the new "err_msg" field.  
+
+    Since the "request" message has not changed, there is no need to include
+    that in this section at all.
+
+    Above table can be changed to something like the followings (table is
+    cut/paste from the original specification),
+
+
+
+    The CPU status reports have the following format:
+
+        Offset Size Field name Description
+        ------ ---- ---------- -----------
+            0     4 cpu_id     Virtual CPU ID
+            4     4 result     Result of the operation
+            8     4 status     Status of the CPU
+            12    4 string_off String offset relative to start
+                               of CPU DR response packet
+            16 <var> err_msg   Null-terminated string
+
+3.  Same as above but for the section 4.5.6.  If you look at the spec. under
+    2008/540, the "offset" starts from 0, not from 16.  The offset needs to
+    start from 0 for both sections.
+
+    From example, MEM_QUERY response payload is defined as the following
+    in the 2008/540 (note that the "offset" column starts from 0),
+
+	1.4.8 MEM_QUERY response payload
+
+	Response header:
+
+	Field name	Value
+	----------	-----------
+	msg_type	DR_MEM_OK
+	msg_arg		<num_records>
+	req_num		<req_num>
+
+	Response payload record format:
+
+	Offset	Size	Field name	Description
+	------	----	----------	-----------
+	0	8	addr		Mblk address in bytes
+	8	8	size		Mblk size in bytes
+	16	8	perm		Amount of permanent memory in mblk
+	24	8	first_perm	First permanent RA in mblk
+	32	8	last_perm	Last permanent RA in mblk
+
+
+
+
+4.  The interface classification is listed as "Sun Private".  I know that's
+    how we have classified existing interfaces but are they truly private
+    to Sun?  I also noticed that this case is filed as "closed" case, is
+    there a strong reason for this case not to be "open" case?  The 
+reasoning
+    in the IM file is that this is closed case since interfaces are 
+"private"
+    to Sun, but my question is, is this really correct?  Since Solaris part
+    is open sourced, the interfaces are/should be available to OpenSolaris,
+    isn't this true?
+
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Fri Oct 10 11:47:55 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m9AIlskk027931
+	for <fwarc@sac.sfbay.sun.com>; Fri, 10 Oct 2008 11:47:55 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m9AIlhRM010851
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 10 Oct 2008 19:47:54 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K8J00209DJRKF00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 10 Oct 2008 11:47:51 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K8J00D93DJQQSF0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 10 Oct 2008 11:47:50 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m9AIloLu026314	for
+ <fwarc@sun.com>; Fri, 10 Oct 2008 18:47:50 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K8J00L01DBMVP00@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 10 Oct 2008 12:47:50 -0600 (MDT)
+Received: from dhcp-ubur03-180-70.East.Sun.COM ([129.148.180.70])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K8J00ND4DJ10R80@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 10 Oct 2008 12:47:26 -0600 (MDT)
+Date: Fri, 10 Oct 2008 14:47:19 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: fasttrack FWARC/2008/623 - Improved Error Reporting for DR Domain
+ Services - timeout 10/10/2008
+In-reply-to: <48EE7EEF.7030501@sun.com>
+Sender: Eric.Sharakan@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>,
+        Jim Marks - Sun Microsystems <James.Marks@sun.com>,
+        Ryan Maeda <Ryan.Maeda@sun.com>
+Message-id: <999A7655-09E5-4BE5-B1BF-5F0F9FAF3C31@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.929.2)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ micalg=sha1; boundary=Apple-Mail-1-544107681
+X-PMX-Version: 5.4.1.325704
+References: <F42DE10E-3A7B-46B8-ACCD-BB03007F0594@Sun.COM>
+ <48EE7EEF.7030501@sun.com>
+Status: RO
+Content-Length: 9220
+
+
+--Apple-Mail-1-544107681
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed;
+	delsp=yes
+Content-Transfer-Encoding: 7bit
+
+Hitu, thanks for your comments.  Changes to section 4 of the  
+specification can be found in the file  
+updated_dr_error_enhancements.txt in the materials directory.  I've  
+also changed the case exposure to "open".
+
+As Hitu suggests, I'd like to keep the timer expiration set for today.
+
+-Eric
+
+Detailed responses inline.
+
+On Oct 9, 2008, at 6:00 PM, Hitendra Zhangada wrote:
+
+> Eric Sharakan wrote:
+>> Hi, I am sponsoring this fast track case for Jim Marks.  Requested  
+>> binding is minor/micro/patch.
+>>
+>> This case adds a new field to the cpu & memory DR protocol response  
+>> payloads that holds an error string for the overall request.  The  
+>> minor number of the protocol version will be bumped as a result.   
+>> This updates FWARC/2006/055 & FWARC/2008/540.
+>>
+>> The 1-pager can be found in the material directory, and is attached  
+>> to this message.
+>>
+>> This case times out on 10/10.  The intent was to file this  
+>> yesterday with a full 7-day timeout period, but the sponsor fell  
+>> ill.  Given the simplicity of the change and the upcoming Zeus  
+>> build 12 deadline of 10/14, I'm requesting a slightly shorter  
+>> timeout period.
+>
+> That is fine with me but I do have couple of comments.  These  
+> comments should
+> not result into timer extension unless they are not addressed soon :)
+>
+>
+> 1.  In section 4.5.6, you have mentioned max length for err_msg.   
+> But no such
+>   max us mentioned for section 4.5.4.  It would have been nice if  
+> both sections
+>   were written in a similar format.  I think "max" for both CPU and  
+> Memory
+>   message format is needed, right?
+
+Correct.  I've updated the Spec so both 4.5.4 & 4.5.6 contain similar  
+wording.
+
+>
+>
+> 2.  In section 4.5.4, I think the "offset" column is incorrect or is
+>   mis-leading.  I think in this section you are starting with offset
+>   of 16 since you are counting bytes for header but in the original
+>   specification the offset start from 0, relative to the response  
+> field.
+>
+> 		Offset Size             Field Name     Description
+> 		------ ----             ----------     -----------
+>
+> 		16     4*num_records	req_cpus       array of vcpu ids
+>                                                      (applies to  
+> requests)
+> 		16     16*num_records   resp_cpu_stats array of status structs
+>                                                      (applies to  
+> responses)
+> 		16     <variable>       err_msg        null-terminated string
+>                                                      (applies to  
+> responses)
+>
+>   Neither "req_cpus" or "resp_cpu_stats" are mentioned in the  
+> specification
+>   under 2006/055 (under section 3.4).  What would have been better  
+> is to    cut/paste the exact table from the original spec., like you  
+> did for
+>   the "header" section, and then append the new "err_msg" field.
+>   Since the "request" message has not changed, there is no need to  
+> include
+>   that in this section at all.
+
+This was an attempt to delineate all the various possible payloads  
+that could seen in a cpu DR DS message.  Since it seems to be  
+generating confusion, I've removed this, and only now show the new  
+payload for the DR_CPU_ERROR case.
+>
+>
+>   Above table can be changed to something like the followings (table  
+> is
+>   cut/paste from the original specification),
+>
+>
+>
+>   The CPU status reports have the following format:
+>
+>       Offset Size Field name Description
+>       ------ ---- ---------- -----------
+>           0     4 cpu_id     Virtual CPU ID
+>           4     4 result     Result of the operation
+>           8     4 status     Status of the CPU
+>           12    4 string_off String offset relative to start
+>                              of CPU DR response packet
+>           16 <var> err_msg   Null-terminated string
+
+Actually, that's the payload for a successful response.  For an error  
+response, there is only the header, followed by the new string.  I've  
+updated the Spec to clearly show this.
+>
+>
+> 3.  Same as above but for the section 4.5.6.  If you look at the  
+> spec. under
+>   2008/540, the "offset" starts from 0, not from 16.  The offset  
+> needs to
+>   start from 0 for both sections.
+
+Again, I've made 4.5.4 & 4.5.6 read similarly.
+
+>
+>
+>   From example, MEM_QUERY response payload is defined as the following
+>   in the 2008/540 (note that the "offset" column starts from 0),
+>
+> 	1.4.8 MEM_QUERY response payload
+>
+> 	Response header:
+>
+> 	Field name	Value
+> 	----------	-----------
+> 	msg_type	DR_MEM_OK
+> 	msg_arg		<num_records>
+> 	req_num		<req_num>
+>
+> 	Response payload record format:
+>
+> 	Offset	Size	Field name	Description
+> 	------	----	----------	-----------
+> 	0	8	addr		Mblk address in bytes
+> 	8	8	size		Mblk size in bytes
+> 	16	8	perm		Amount of permanent memory in mblk
+> 	24	8	first_perm	First permanent RA in mblk
+> 	32	8	last_perm	Last permanent RA in mblk
+>
+>
+>
+>
+> 4.  The interface classification is listed as "Sun Private".  I know  
+> that's
+>   how we have classified existing interfaces but are they truly  
+> private
+>   to Sun?  I also noticed that this case is filed as "closed" case, is
+>   there a strong reason for this case not to be "open" case?  The  
+> reasoning
+>   in the IM file is that this is closed case since interfaces are  
+> "private"
+>   to Sun, but my question is, is this really correct?  Since Solaris  
+> part
+>   is open sourced, the interfaces are/should be available to  
+> OpenSolaris,
+>   isn't this true?
+
+Yes, you're right; I've verified there's no wording stating otherwise  
+in the 1-pager, and changed the exposure to "open" in the IAM file.
+
+-Eric
+--Apple-Mail-1-544107681
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA3MTAxODAzMjAxOFoXDTA4MTAxNzAzMjAx
+OFowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyOpo1o9G
+kC4zvPQvyj/wBYNQR3zjkMYMxkWmL184ofuULXo7qmNtiCDanb/U9CmkH/ZXm3itLKVtRIUo/Fr7
+oi4CRxDUkF8LarMoiGbsuQ0hF0QIwJXdGv9GtNwagdzOtsqzZ0pV0II3WB7+NaIQ8qJ2KIwseULZ
+aXX0BzdlINGBYufa5xG38/piJfwb5n7JE/O2pocT1kO+IM9yLm3840a7FKwcYV6/tpXYABKlpgfK
+ZUp56DDLXf/5qW8jHPGhd6yrOVf53QtXypHNXPJDR+NFWo5Os2drH5V2rxzCildmoxOmhZkVaG03
+anU0qE4nWSRH1CKvtvigQDGJg0++sQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQCAxj+ZJX9XVIa4NeiRkfeL
+WaXXlKRONtx3QP3K7B9/T983wXc26sacqER608AoRMz9GyECwpIHtkvcRoCRPoWLyoWBf7zwh8ha
+0CPkTAmFxl1ENtpq/43Di0DUSHrcCeGvigN4esQpYJtQAmCUm5i5tXbu70d192lfniLVgHPvYzCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQQtJ8t0o3bhp1zVjZgObu9jAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wODEw
+MTAxODQ3MjBaMCMGCSqGSIb3DQEJBDEWBBQtIJxEPH/WZZ3n9LpOa29TvpDHXjCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdK
+N24adc1Y2YDm7vYwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEBBQAEggEAUhrh
+my+/cfq+IZAMvLMZPEnQqOnIkdruZvYY0dT35FN8M9paRpz7TAHjKXZzbm0XaHywq46FmBeN4/Jk
+ekuCNRgm5uwrb2FVs9C9jxFJxKZptF6utJ7lItK5p1p6vAiDFWZyprX5OjMsq3Rkg+7yaLXPIDRl
+RE1YXxtm0sK5nh1S/uWqWdeVSyqlPQmNDUt0l7TQX52R3z3LQTeT1nOT9zzbm4ZezbxrimMbnwwB
+dmszD7RnkgvtMAXzNYKEidEhe++INaXsUoJhLNHsnyg1IyGnsrpbbA3EkEMSkivXmyivdIfA9sxM
+qcLGbJQu6+dd1FwKNzFSuBhy+i/x2VuRUgAAAAAAAA==
+
+--Apple-Mail-1-544107681--
+
+From sacadmin Fri Oct 10 12:03:42 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m9AJ3gTj029176
+	for <fwarc@sac.sfbay.sun.com>; Fri, 10 Oct 2008 12:03:42 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m9AJ3LxF017426
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 10 Oct 2008 20:03:41 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K8J00111EA3P700@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Fri, 10 Oct 2008 13:03:39 -0600 (MDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K8J007QREA2MTD0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Fri, 10 Oct 2008 13:03:38 -0600 (MDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m9AJ3cgA024996	for
+ <fwarc@Sun.COM>; Fri, 10 Oct 2008 19:03:38 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K8J00101DF9NB00@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Fri, 10 Oct 2008 13:03:38 -0600 (MDT)
+Received: from dhcp-ubur03-180-70.East.Sun.COM ([129.148.180.70])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K8J00NHLE9M0R90@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Fri, 10 Oct 2008 13:03:24 -0600 (MDT)
+Date: Fri, 10 Oct 2008 15:03:21 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: fasttrack FWARC/2008/623 - Improved Error Reporting for DR Domain
+ Services - timeout 10/10/2008
+In-reply-to: <999A7655-09E5-4BE5-B1BF-5F0F9FAF3C31@Sun.COM>
+Sender: Eric.Sharakan@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>,
+        Jim Marks - Sun Microsystems <James.Marks@sun.com>,
+        Ryan Maeda <Ryan.Maeda@sun.com>
+Message-id: <71FFFF9E-F008-4E81-864F-B79EB62CC1F5@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.929.2)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ micalg=sha1; boundary=Apple-Mail-4-545065387
+X-PMX-Version: 5.4.1.325704
+References: <F42DE10E-3A7B-46B8-ACCD-BB03007F0594@Sun.COM>
+ <48EE7EEF.7030501@sun.com> <999A7655-09E5-4BE5-B1BF-5F0F9FAF3C31@Sun.COM>
+Status: RO
+Content-Length: 9655
+
+
+--Apple-Mail-4-545065387
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed;
+	delsp=yes
+Content-Transfer-Encoding: 7bit
+
+After discussion with Hitu, I've made one other set of updates to the  
+specification, in place in the updated_dr_error_enhancements.txt file.
+
+I removed the common header info and reset each payload offset to  
+start at 0.
+
+-Eric
+
+On Oct 10, 2008, at 2:47 PM, Eric Sharakan wrote:
+
+> Hitu, thanks for your comments.  Changes to section 4 of the  
+> specification can be found in the file  
+> updated_dr_error_enhancements.txt in the materials directory.  I've  
+> also changed the case exposure to "open".
+>
+> As Hitu suggests, I'd like to keep the timer expiration set for today.
+>
+> -Eric
+>
+> Detailed responses inline.
+>
+> On Oct 9, 2008, at 6:00 PM, Hitendra Zhangada wrote:
+>
+>> Eric Sharakan wrote:
+>>> Hi, I am sponsoring this fast track case for Jim Marks.  Requested  
+>>> binding is minor/micro/patch.
+>>>
+>>> This case adds a new field to the cpu & memory DR protocol  
+>>> response payloads that holds an error string for the overall  
+>>> request.  The minor number of the protocol version will be bumped  
+>>> as a result.  This updates FWARC/2006/055 & FWARC/2008/540.
+>>>
+>>> The 1-pager can be found in the material directory, and is  
+>>> attached to this message.
+>>>
+>>> This case times out on 10/10.  The intent was to file this  
+>>> yesterday with a full 7-day timeout period, but the sponsor fell  
+>>> ill.  Given the simplicity of the change and the upcoming Zeus  
+>>> build 12 deadline of 10/14, I'm requesting a slightly shorter  
+>>> timeout period.
+>>
+>> That is fine with me but I do have couple of comments.  These  
+>> comments should
+>> not result into timer extension unless they are not addressed soon :)
+>>
+>>
+>> 1.  In section 4.5.6, you have mentioned max length for err_msg.   
+>> But no such
+>>  max us mentioned for section 4.5.4.  It would have been nice if  
+>> both sections
+>>  were written in a similar format.  I think "max" for both CPU and  
+>> Memory
+>>  message format is needed, right?
+>
+> Correct.  I've updated the Spec so both 4.5.4 & 4.5.6 contain  
+> similar wording.
+>
+>>
+>>
+>> 2.  In section 4.5.4, I think the "offset" column is incorrect or is
+>>  mis-leading.  I think in this section you are starting with offset
+>>  of 16 since you are counting bytes for header but in the original
+>>  specification the offset start from 0, relative to the response  
+>> field.
+>>
+>> 		Offset Size             Field Name     Description
+>> 		------ ----             ----------     -----------
+>>
+>> 		16     4*num_records	req_cpus       array of vcpu ids
+>>                                                     (applies to  
+>> requests)
+>> 		16     16*num_records   resp_cpu_stats array of status structs
+>>                                                     (applies to  
+>> responses)
+>> 		16     <variable>       err_msg        null-terminated string
+>>                                                     (applies to  
+>> responses)
+>>
+>>  Neither "req_cpus" or "resp_cpu_stats" are mentioned in the  
+>> specification
+>>  under 2006/055 (under section 3.4).  What would have been better  
+>> is to    cut/paste the exact table from the original spec., like  
+>> you did for
+>>  the "header" section, and then append the new "err_msg" field.
+>>  Since the "request" message has not changed, there is no need to  
+>> include
+>>  that in this section at all.
+>
+> This was an attempt to delineate all the various possible payloads  
+> that could seen in a cpu DR DS message.  Since it seems to be  
+> generating confusion, I've removed this, and only now show the new  
+> payload for the DR_CPU_ERROR case.
+>>
+>>
+>>  Above table can be changed to something like the followings (table  
+>> is
+>>  cut/paste from the original specification),
+>>
+>>
+>>
+>>  The CPU status reports have the following format:
+>>
+>>      Offset Size Field name Description
+>>      ------ ---- ---------- -----------
+>>          0     4 cpu_id     Virtual CPU ID
+>>          4     4 result     Result of the operation
+>>          8     4 status     Status of the CPU
+>>          12    4 string_off String offset relative to start
+>>                             of CPU DR response packet
+>>          16 <var> err_msg   Null-terminated string
+>
+> Actually, that's the payload for a successful response.  For an  
+> error response, there is only the header, followed by the new  
+> string.  I've updated the Spec to clearly show this.
+>>
+>>
+>> 3.  Same as above but for the section 4.5.6.  If you look at the  
+>> spec. under
+>>  2008/540, the "offset" starts from 0, not from 16.  The offset  
+>> needs to
+>>  start from 0 for both sections.
+>
+> Again, I've made 4.5.4 & 4.5.6 read similarly.
+>
+>>
+>>
+>>  From example, MEM_QUERY response payload is defined as the following
+>>  in the 2008/540 (note that the "offset" column starts from 0),
+>>
+>> 	1.4.8 MEM_QUERY response payload
+>>
+>> 	Response header:
+>>
+>> 	Field name	Value
+>> 	----------	-----------
+>> 	msg_type	DR_MEM_OK
+>> 	msg_arg		<num_records>
+>> 	req_num		<req_num>
+>>
+>> 	Response payload record format:
+>>
+>> 	Offset	Size	Field name	Description
+>> 	------	----	----------	-----------
+>> 	0	8	addr		Mblk address in bytes
+>> 	8	8	size		Mblk size in bytes
+>> 	16	8	perm		Amount of permanent memory in mblk
+>> 	24	8	first_perm	First permanent RA in mblk
+>> 	32	8	last_perm	Last permanent RA in mblk
+>>
+>>
+>>
+>>
+>> 4.  The interface classification is listed as "Sun Private".  I  
+>> know that's
+>>  how we have classified existing interfaces but are they truly  
+>> private
+>>  to Sun?  I also noticed that this case is filed as "closed" case, is
+>>  there a strong reason for this case not to be "open" case?  The  
+>> reasoning
+>>  in the IM file is that this is closed case since interfaces are  
+>> "private"
+>>  to Sun, but my question is, is this really correct?  Since Solaris  
+>> part
+>>  is open sourced, the interfaces are/should be available to  
+>> OpenSolaris,
+>>  isn't this true?
+>
+> Yes, you're right; I've verified there's no wording stating  
+> otherwise in the 1-pager, and changed the exposure to "open" in the  
+> IAM file.
+>
+> -Eric
+
+
+--Apple-Mail-4-545065387
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA3MTAxODAzMjAxOFoXDTA4MTAxNzAzMjAx
+OFowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyOpo1o9G
+kC4zvPQvyj/wBYNQR3zjkMYMxkWmL184ofuULXo7qmNtiCDanb/U9CmkH/ZXm3itLKVtRIUo/Fr7
+oi4CRxDUkF8LarMoiGbsuQ0hF0QIwJXdGv9GtNwagdzOtsqzZ0pV0II3WB7+NaIQ8qJ2KIwseULZ
+aXX0BzdlINGBYufa5xG38/piJfwb5n7JE/O2pocT1kO+IM9yLm3840a7FKwcYV6/tpXYABKlpgfK
+ZUp56DDLXf/5qW8jHPGhd6yrOVf53QtXypHNXPJDR+NFWo5Os2drH5V2rxzCildmoxOmhZkVaG03
+anU0qE4nWSRH1CKvtvigQDGJg0++sQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQCAxj+ZJX9XVIa4NeiRkfeL
+WaXXlKRONtx3QP3K7B9/T983wXc26sacqER608AoRMz9GyECwpIHtkvcRoCRPoWLyoWBf7zwh8ha
+0CPkTAmFxl1ENtpq/43Di0DUSHrcCeGvigN4esQpYJtQAmCUm5i5tXbu70d192lfniLVgHPvYzCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQQtJ8t0o3bhp1zVjZgObu9jAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wODEw
+MTAxOTAzMjFaMCMGCSqGSIb3DQEJBDEWBBSC86rJtA4bJFRb2nI7ulyTU948gTCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdK
+N24adc1Y2YDm7vYwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEBBQAEggEAYgZO
+qGZ4MjRfzbTj9MMGl6zbHfKVqhWTQaq1g0RlEa6+32lf+OuJ1oQmSbaByl1o8ZuC2IwfbnRIoy62
+iNFsTm35aZ7kwVu4uOLZqdClsjaoNysGhUw0cUuRHSELgEUKUrQmyD6vFoS8SnEwLCrpOAwhDRch
+RhWte41cxZ3J9GbFDiGwdBc55FuNzbRy2gF+/4Qnfgrk6Qtyr8uGOwqwJQcgKFW5XMkk5K/aUgC/
+S8FRTjByIUDlIvhZCSRcZxamfD4GMmsvXX1WOHM4wAuwcTJOOPrM05d+dvs7/GeZpUSgGAuiiZQT
+fgtuY8Zmx8gZCC5uICpNAmedSj5gcBBz3AAAAAAAAA==
+
+--Apple-Mail-4-545065387--
+
+From sacadmin Fri Oct 10 12:43:45 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m9AJhiqq000822
+	for <fwarc@sac.sfbay.Sun.COM>; Fri, 10 Oct 2008 12:43:44 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m9AJhUWO009972
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Sat, 11 Oct 2008 03:43:43 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K8J00I03G4U2T00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Fri, 10 Oct 2008 12:43:42 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K8J0061XG4UL760@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Fri, 10 Oct 2008 12:43:42 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m9AJhg90000301	for
+ <fwarc@Sun.COM>; Fri, 10 Oct 2008 12:43:42 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K8J00I01G0AU300@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Fri, 10 Oct 2008 12:43:42 -0700 (PDT)
+Received: from [129.150.34.84] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K8J006XUG4SU340@fe-sfbay-09.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Fri, 10 Oct 2008 12:43:41 -0700 (PDT)
+Date: Fri, 10 Oct 2008 12:43:40 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: fasttrack FWARC/2008/623 - Improved Error Reporting for DR Domain
+ Services - timeout 10/10/2008
+In-reply-to: <71FFFF9E-F008-4E81-864F-B79EB62CC1F5@Sun.COM>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Eric Sharakan <Eric.Sharakan@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>,
+        Jim Marks - Sun Microsystems <James.Marks@Sun.COM>,
+        Ryan Maeda <Ryan.Maeda@Sun.COM>
+Message-id: <48EFB06C.3060208@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <F42DE10E-3A7B-46B8-ACCD-BB03007F0594@Sun.COM>
+ <48EE7EEF.7030501@sun.com> <999A7655-09E5-4BE5-B1BF-5F0F9FAF3C31@Sun.COM>
+ <71FFFF9E-F008-4E81-864F-B79EB62CC1F5@Sun.COM>
+User-Agent: Thunderbird 2.0.0.17 (Windows/20080914)
+Status: RO
+Content-Length: 7042
+
+Eric Sharakan wrote:
+> After discussion with Hitu, I've made one other set of updates to the 
+> specification, in place in the updated_dr_error_enhancements.txt file.
+>
+> I removed the common header info and reset each payload offset to 
+> start at 0.
+
+Thanks.  I am happy with the changes.  The case is "open" now but
+the interfaces are "private", that is fine with me.  I talked to Eric about
+it and that's what the project team wants to do. 
+
+BTW, the parent case where we defined domain services (2006/055)
+was not open case and so the original specification etc. is NOT available
+from opensolaris.org.  For that case the exposure is listed as "Manual".
+
+As far as I am concerned this case can time-out today.
+
+>
+> -Eric
+>
+> On Oct 10, 2008, at 2:47 PM, Eric Sharakan wrote:
+>
+>> Hitu, thanks for your comments.  Changes to section 4 of the 
+>> specification can be found in the file 
+>> updated_dr_error_enhancements.txt in the materials directory.  I've 
+>> also changed the case exposure to "open".
+>>
+>> As Hitu suggests, I'd like to keep the timer expiration set for today.
+>>
+>> -Eric
+>>
+>> Detailed responses inline.
+>>
+>> On Oct 9, 2008, at 6:00 PM, Hitendra Zhangada wrote:
+>>
+>>> Eric Sharakan wrote:
+>>>> Hi, I am sponsoring this fast track case for Jim Marks.  Requested 
+>>>> binding is minor/micro/patch.
+>>>>
+>>>> This case adds a new field to the cpu & memory DR protocol response 
+>>>> payloads that holds an error string for the overall request.  The 
+>>>> minor number of the protocol version will be bumped as a result.  
+>>>> This updates FWARC/2006/055 & FWARC/2008/540.
+>>>>
+>>>> The 1-pager can be found in the material directory, and is attached 
+>>>> to this message.
+>>>>
+>>>> This case times out on 10/10.  The intent was to file this 
+>>>> yesterday with a full 7-day timeout period, but the sponsor fell 
+>>>> ill.  Given the simplicity of the change and the upcoming Zeus 
+>>>> build 12 deadline of 10/14, I'm requesting a slightly shorter 
+>>>> timeout period.
+>>>
+>>> That is fine with me but I do have couple of comments.  These 
+>>> comments should
+>>> not result into timer extension unless they are not addressed soon :)
+>>>
+>>>
+>>> 1.  In section 4.5.6, you have mentioned max length for err_msg.  
+>>> But no such
+>>>  max us mentioned for section 4.5.4.  It would have been nice if 
+>>> both sections
+>>>  were written in a similar format.  I think "max" for both CPU and 
+>>> Memory
+>>>  message format is needed, right?
+>>
+>> Correct.  I've updated the Spec so both 4.5.4 & 4.5.6 contain similar 
+>> wording.
+>>
+>>>
+>>>
+>>> 2.  In section 4.5.4, I think the "offset" column is incorrect or is
+>>>  mis-leading.  I think in this section you are starting with offset
+>>>  of 16 since you are counting bytes for header but in the original
+>>>  specification the offset start from 0, relative to the response field.
+>>>
+>>>         Offset Size             Field Name     Description
+>>>         ------ ----             ----------     -----------
+>>>
+>>>         16     4*num_records    req_cpus       array of vcpu ids
+>>>                                                     (applies to 
+>>> requests)
+>>>         16     16*num_records   resp_cpu_stats array of status structs
+>>>                                                     (applies to 
+>>> responses)
+>>>         16     <variable>       err_msg        null-terminated string
+>>>                                                     (applies to 
+>>> responses)
+>>>
+>>>  Neither "req_cpus" or "resp_cpu_stats" are mentioned in the 
+>>> specification
+>>>  under 2006/055 (under section 3.4).  What would have been better is 
+>>> to    cut/paste the exact table from the original spec., like you 
+>>> did for
+>>>  the "header" section, and then append the new "err_msg" field.
+>>>  Since the "request" message has not changed, there is no need to 
+>>> include
+>>>  that in this section at all.
+>>
+>> This was an attempt to delineate all the various possible payloads 
+>> that could seen in a cpu DR DS message.  Since it seems to be 
+>> generating confusion, I've removed this, and only now show the new 
+>> payload for the DR_CPU_ERROR case.
+>>>
+>>>
+>>>  Above table can be changed to something like the followings (table is
+>>>  cut/paste from the original specification),
+>>>
+>>>
+>>>
+>>>  The CPU status reports have the following format:
+>>>
+>>>      Offset Size Field name Description
+>>>      ------ ---- ---------- -----------
+>>>          0     4 cpu_id     Virtual CPU ID
+>>>          4     4 result     Result of the operation
+>>>          8     4 status     Status of the CPU
+>>>          12    4 string_off String offset relative to start
+>>>                             of CPU DR response packet
+>>>          16 <var> err_msg   Null-terminated string
+>>
+>> Actually, that's the payload for a successful response.  For an error 
+>> response, there is only the header, followed by the new string.  I've 
+>> updated the Spec to clearly show this.
+>>>
+>>>
+>>> 3.  Same as above but for the section 4.5.6.  If you look at the 
+>>> spec. under
+>>>  2008/540, the "offset" starts from 0, not from 16.  The offset 
+>>> needs to
+>>>  start from 0 for both sections.
+>>
+>> Again, I've made 4.5.4 & 4.5.6 read similarly.
+>>
+>>>
+>>>
+>>>  From example, MEM_QUERY response payload is defined as the following
+>>>  in the 2008/540 (note that the "offset" column starts from 0),
+>>>
+>>>     1.4.8 MEM_QUERY response payload
+>>>
+>>>     Response header:
+>>>
+>>>     Field name    Value
+>>>     ----------    -----------
+>>>     msg_type    DR_MEM_OK
+>>>     msg_arg        <num_records>
+>>>     req_num        <req_num>
+>>>
+>>>     Response payload record format:
+>>>
+>>>     Offset    Size    Field name    Description
+>>>     ------    ----    ----------    -----------
+>>>     0    8    addr        Mblk address in bytes
+>>>     8    8    size        Mblk size in bytes
+>>>     16    8    perm        Amount of permanent memory in mblk
+>>>     24    8    first_perm    First permanent RA in mblk
+>>>     32    8    last_perm    Last permanent RA in mblk
+>>>
+>>>
+>>>
+>>>
+>>> 4.  The interface classification is listed as "Sun Private".  I know 
+>>> that's
+>>>  how we have classified existing interfaces but are they truly private
+>>>  to Sun?  I also noticed that this case is filed as "closed" case, is
+>>>  there a strong reason for this case not to be "open" case?  The 
+>>> reasoning
+>>>  in the IM file is that this is closed case since interfaces are 
+>>> "private"
+>>>  to Sun, but my question is, is this really correct?  Since Solaris 
+>>> part
+>>>  is open sourced, the interfaces are/should be available to 
+>>> OpenSolaris,
+>>>  isn't this true?
+>>
+>> Yes, you're right; I've verified there's no wording stating otherwise 
+>> in the 1-pager, and changed the exposure to "open" in the IAM file.
+>>
+>> -Eric
+>
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Mon Oct 13 04:45:22 2008
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m9DBjM2d005821
+	for <fwarc@sac.sfbay.sun.com>; Mon, 13 Oct 2008 04:45:22 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m9DBjMnw004893
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 13 Oct 2008 04:45:22 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K8O00707DZLMF00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 13 Oct 2008 04:45:21 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K8O004EFDZLW930@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 13 Oct 2008 04:45:21 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m9DBjLEr017899	for
+ <fwarc@sun.com>; Mon, 13 Oct 2008 11:45:21 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K8O00J01DUCJ200@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Mon, 13 Oct 2008 05:45:21 -0600 (MDT)
+Received: from [192.168.100.100]
+ (c-24-62-231-112.hsd1.ma.comcast.net [24.62.231.112])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0K8O00C7QDZJR150@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 13 Oct 2008 05:45:21 -0600 (MDT)
+Date: Mon, 13 Oct 2008 07:45:15 -0400
+From: Eric Sharakan <Eric.Sharakan@Sun.COM>
+Subject: Re: fasttrack FWARC/2008/623 - Improved Error Reporting for DR Domain
+ Services - timeout 10/10/2008
+In-reply-to: <F42DE10E-3A7B-46B8-ACCD-BB03007F0594@Sun.COM>
+Sender: Eric.Sharakan@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Jim Marks - Sun Microsystems <James.Marks@Sun.COM>,
+        Ryan Maeda <Ryan.Maeda@Sun.COM>
+Message-id: <CA69A7B2-66EC-453A-A9E7-1FBFF2BAE996@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.929.2)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ micalg=sha1; boundary=Apple-Mail-1-777983118
+X-PMX-Version: 5.4.1.325704
+References: <F42DE10E-3A7B-46B8-ACCD-BB03007F0594@Sun.COM>
+Status: RO
+Content-Length: 4532
+
+
+--Apple-Mail-1-777983118
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed;
+	delsp=yes
+Content-Transfer-Encoding: 7bit
+
+Case has timed out and is now approved.  IAM file has been updated.
+
+-Eric
+
+On Oct 4, 2008, at 11:30 AM, Eric Sharakan wrote:
+
+> Hi, I am sponsoring this fast track case for Jim Marks.  Requested  
+> binding is minor/micro/patch.
+>
+> This case adds a new field to the cpu & memory DR protocol response  
+> payloads that holds an error string for the overall request.  The  
+> minor number of the protocol version will be bumped as a result.   
+> This updates FWARC/2006/055 & FWARC/2008/540.
+>
+> The 1-pager can be found in the material directory, and is attached  
+> to this message.
+>
+> This case times out on 10/10.  The intent was to file this yesterday  
+> with a full 7-day timeout period, but the sponsor fell ill.  Given  
+> the simplicity of the change and the upcoming Zeus build 12 deadline  
+> of 10/14, I'm requesting a slightly shorter timeout period.
+>
+> Thanks.
+>
+> -Eric
+>
+> <dr_error_enhancements.txt>
+
+
+--Apple-Mail-1-777983118
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA3MTAxODAzMjAxOFoXDTA4MTAxNzAzMjAx
+OFowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyOpo1o9G
+kC4zvPQvyj/wBYNQR3zjkMYMxkWmL184ofuULXo7qmNtiCDanb/U9CmkH/ZXm3itLKVtRIUo/Fr7
+oi4CRxDUkF8LarMoiGbsuQ0hF0QIwJXdGv9GtNwagdzOtsqzZ0pV0II3WB7+NaIQ8qJ2KIwseULZ
+aXX0BzdlINGBYufa5xG38/piJfwb5n7JE/O2pocT1kO+IM9yLm3840a7FKwcYV6/tpXYABKlpgfK
+ZUp56DDLXf/5qW8jHPGhd6yrOVf53QtXypHNXPJDR+NFWo5Os2drH5V2rxzCildmoxOmhZkVaG03
+anU0qE4nWSRH1CKvtvigQDGJg0++sQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQCAxj+ZJX9XVIa4NeiRkfeL
+WaXXlKRONtx3QP3K7B9/T983wXc26sacqER608AoRMz9GyECwpIHtkvcRoCRPoWLyoWBf7zwh8ha
+0CPkTAmFxl1ENtpq/43Di0DUSHrcCeGvigN4esQpYJtQAmCUm5i5tXbu70d192lfniLVgHPvYzCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQQtJ8t0o3bhp1zVjZgObu9jAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wODEw
+MTMxMTQ1MTZaMCMGCSqGSIb3DQEJBDEWBBSHNkHPfTz6Qher8nZHxagi0t7vODCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdK
+N24adc1Y2YDm7vYwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEBBQAEggEAALsS
+GrDyWuDS7TrQjmP9iEFE3iflg0M3S5+mFgPmfVBzyBG+9T4ESYvvIErZHjx1VeAx9wbJ5+VLaO4u
+gGyjONrB8iAeXsGl6lRwQpvfDOkHRhxv56LqazrFYhb6boaQCP5KTC0ziiF5Dkx83yyyN3Av7M60
+lAl+TDEzsy1tt0fdp0txtdnBXBmLztow4+4CHJBfbPm21heaurEhzJVGny9Np+165oPj1FoAvynJ
+AEveS/FctAKIsAiwphATaWZtXeU9eqh0biXuBtGfgmFt62+GndrA+mvXOInpORMqpC8A7yw0gv1I
+QmKQ92qx59sjFC6M51v3FkgPHLCRu5WJgAAAAAAAAA==
+
+--Apple-Mail-1-777983118--
+

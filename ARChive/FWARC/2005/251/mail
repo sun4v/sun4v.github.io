@@ -1,0 +1,69 @@
+From sacadmin Fri Apr 15 15:26:34 2005
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j3FMQXSp003059
+	for <FWARC@sac.sfbay.sun.com>; Fri, 15 Apr 2005 15:26:33 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j3FMOhAH018989;
+	Fri, 15 Apr 2005 15:24:43 -0700 (PDT)
+Received: from [127.0.0.1] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j3FMOhha001461;
+	Fri, 15 Apr 2005 15:24:43 -0700 (PDT)
+Message-ID: <42603F27.4010209@sun.com>
+Date: Fri, 15 Apr 2005 15:24:39 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+CC: Greg Onufer <Greg.Onufer@sun.com>
+Subject: 2005/251 - Hypervisor Diag API
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 414
+
+
+I'm sponsoring this fast-track case for Greg Onufer.
+
+It adds two hypervisor fast-traps, which have
+been added to the registry:
+
+0x80 0x200 FWARC/2005/251  Diagnostic - DIAG_RA2PA
+0x80 0x201 FWARC/2005/251  Diagnostic - DIAG_HEXEC
+
+The interfaces are classified as Sun Private,
+and request a release binding of micro/patch.
+
+The spec is in the materials directory.
+
+This case times out on 22 April 2005.
+
+-David
+
+
+From sacadmin Tue May 10 01:36:07 2005
+Received: from noho.SFBay.Sun.COM (noho [10.6.92.101])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j4A8a7s0016910
+	for <fwarc-record@sac.SFBay.Sun.COM>; Tue, 10 May 2005 01:36:07 -0700 (PDT)
+Received: from noho.SFBay.Sun.COM (localhost [127.0.0.1])
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0) with ESMTP id j4A8a2uo028901;
+	Tue, 10 May 2005 01:36:02 -0700 (PDT)
+Received: (from dmk@localhost)
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0/Submit) id j4A8a2mg028900;
+	Tue, 10 May 2005 01:36:02 -0700 (PDT)
+Date: Tue, 10 May 2005 01:36:02 -0700 (PDT)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Message-Id: <200505100836.j4A8a2mg028900@noho.SFBay.Sun.COM>
+To: fwarc-record@sac.sfbay.sun.com
+Subject: Re: 2005/251 - Hypervisor Diag API
+Cc: Greg.Onufer@sun.com
+Status: RO
+Content-Length: 77
+
+For the record ... this case timed out and is
+approved (April 22).
+
+-David
+
+
+

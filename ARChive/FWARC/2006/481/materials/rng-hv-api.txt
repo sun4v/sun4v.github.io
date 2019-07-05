@@ -1,0 +1,416 @@
+
+	Version: "@(#)rng-hv-api.txt 1.13     06/08/16 SMI"
+
+Niagara 2 Random Number Generator - Hypervisor API
+
+    Introduction
+
+	This document describes a new Niagara Random Number Generator
+	(RNG) Hypervisor API which becomes available on Niagara-2
+	based platforms.
+
+	This interface provides an source of entropy used by the
+	Solaris Cryptographic Framework to ultimately provide RNG
+	functionality to higher layers of software.
+
+    API Versioning
+
+	This interface will abide by FWARC/2006/052 with respect
+	to versioning.  The interface presented here represents
+	version 1.0.
+
+	See section on Export Interfaces below for specific API
+	group-number.
+
+    References
+
+	FWARC/2006/052 sun4v version API update
+	Niagara-2 PRM, v1.2 (Mar 3, 2006), Chp 15 Stream Processing Unit
+	- https://systemsweb.sfbay.sun.com/n2/team/specs/specs.html
+
+    Function Number
+
+	The following function numbers define the primary RNG entrypoints
+	per the Sun4v Hypervisor API:
+
+		RNG_GET_DIAG_CONTROL	0x130
+		RNG_CTL_READ		0x131
+		RNG_CTL_WRITE		0x132
+		RNG_DATA_READ_DIAG	0x133
+		RNG_DATA_READ		0x134
+
+    RNG API Definitions
+
+	1.	General
+
+		This API supports Logical Domains (LDOMs) and non-LDOMs
+		configurations.  In the presence of LDOMs certain RNG
+		entrypoints are only allowed to be called within Trusted
+		LDOM Domains, e.g. Control Domain.  In non-LDOMs configurations
+		all operations are allowed.  The operations are restricted
+		as follows:
+
+		Trusted Domain(s) ONLY		Any Domain
+		----------------------		----------
+		RNG_GET_DIAG_CONTROL		RNG_DATA_READ
+		RNG_CTL_READ
+		RNG_CTL_WRITE
+		RNG_DATA_READ_DIAG
+
+	1.1	RNG API Data Types
+
+	1.1.1	RNG Control Register data structure
+
+		This data structure is used as an argument to the CTL
+		write/read operations to specify/retrieve the contents of
+		the RNG Control Register.
+
+		#define	NRNGCTL		4	/* Number of control regs */
+
+		typedef uint64_t rng_ctl_t[NRNGCTL];	/* size = 32 bytes */
+
+	1.1.2	RNG State
+
+		Specifies the state of the RNG and is set during rng_ctl_write
+		operations.
+
+		typedef enum {
+			RNG_STATE_UNCONFIGURED,
+			RNG_STATE_CONFIGURED,
+			RNG_STATE_HEALTHCHECK,
+			RNG_STATE_ERROR
+		} rng_state_t;
+
+		When "configured" the RNG is available for general RNG_DATA_READ
+		operations.  In "health check" mode the RNG is generally 
+		unavailable and assumed to be going through a health check
+		sequence via a Trusted domain.  Once the health check is complete
+		the Trusted domain will return the RNG to a "configured" state.
+		If the health check determines that the RNG is faulty then it
+		will be left in the "error" state and thus unavailable for any
+		RNG_DATA_READ operations.
+
+	1.1.3	Maximum Data Read Length
+
+		Specifies the minimum/maximum length in bytes that can be read from
+		the hardware RNG Data Register by rng_data_read_diag.
+
+		#define	RNG_DATA_MINLEN		8
+		#define	RNG_DATA_MAXLEN		(128 * 1024)
+
+	1.2	Trusted Domains
+
+		Only Trusted domains are allowed configuration and diagnostic
+		control of the RNG.  In a non-LDOMs configuration the sole domain is
+		considered trusted, however in a LDOMs configuration trusted domains
+		are designated by the LDOM Configurator with enforcement of such
+		designation implemented within the Hypervisor.  Attempts by a
+		non-trusted domain to access Control or Diagnostic related API
+		entrypoints will fail with ENOACCESS errors.
+
+		Note that access to Control and Diagnostic entrypoints is dynamic
+		and can be taken away at anytime from a Guest.  Exactly one (1)
+		guest must exist as the trusted Guest to ensure proper RNG behavior.
+
+	1.3	RNG Mutual Exclusion
+
+		All of the RNG HV entrypoints are protected through mutual exclusion
+		by the HV to ensure that only one thread of control is operating on
+		the RNG at a time.  This is necessary to prevent against competing
+		threads (or OS Guests) from re-initializing the RNG hardware while
+		a Data read is possibly in progress from another thread.
+
+	2.	rng_get_diag_control
+
+		trap#		FAST_TRAP
+		function#	RNG_GET_DIAG_CONTROL
+		No args
+
+		ret0		status
+
+		This API gives the calling Guest OS diagnostic control over the RNG
+		for performing subsequent rng_ctl_write/rng_data_read_diag operations.
+		Only one Guest at a time is permitted to execute the aforementioned
+		diagnostic operations.  Control will remain with the current Guest
+		until another Guest takes control by invoking this same entrypoint.
+
+	2.1	Errors
+
+		ret0		Description
+		----		-----------
+		EOK		Success
+		EWOULDBLOCK	RNG currently in use by another thread.
+		ENOACCESS	Caller does not have permission to call this
+				entrypoint.
+
+	3.	rng_ctl_read
+
+		trap#		FAST_TRAP
+		function#	RNG_CTL_READ
+		arg0		rng_ctl_t pointer
+
+		ret0		status
+		ret1		state (rng_state_t)
+		ret2		ready delta (system ticks)
+
+		Note that the actual N2 RNG hardware control register does not return
+		the same contents that were written from a previous write operation.
+		Thus, the HV layer will keep a snapshot of what was written on a previous
+		rng_ctl_write and simply return this information whenever rng_ctl_read
+		is called.
+
+		This API will store the contents of the RNG Control registers into the
+		structure pointed to by *rng_ctl_t pointer* (arg0).  This address
+		must be a real address, physically contiguous, and aligned on an 8-byte
+		boundary.  If arg0 is NULL (0), then no Control register information
+		will be stored.  This API will also return the current *state* (ret1),
+		and the current *ready delta* (ret2) which specifies how many system
+		clock ticks from the present time that the RNG will be available for
+		further operations.  A value of zero indicates that the RNG is
+		immediately available.
+
+	3.1	Errors
+
+		ret0		Description
+		----		-----------
+		EOK		Success
+		EBADALIGN	Pointer address is improperly aligned.
+		ENORADDR	Pointer address is not a valid real address.
+		EWOULDBLOCK	RNG currently in use by another thread.  Caller
+				should retry.
+		ENOACCESS	Caller does not have permission to call this
+				entrypoint.
+
+	4.	rng_ctl_write
+
+		trap#		FAST_TRAP
+		function#	RNG_CTL_WRITE
+		arg0		rng_ctl_t pointer
+		arg1		new state (rng_state_t)
+		arg2		watchdog timeout (system ticks)
+
+		ret0		status
+		ret1		ready delta (system ticks)
+
+		API for initializing the RNG hardware by writing to the RNG Control
+		register with the contents of the structure pointed to by *rng_ctl_t
+		pointer* (arg0).  This address must be a real address, physically
+		contiguous, and aligned on an 8-byte boundary.  The state of the
+		RNG will be set to *new state* (arg1) and must be one of the state
+		values specified in section 1.1.2.
+
+		When setting the state to RNG_STATE_CONFIGURED the caller also
+		specifies a *watchdog timeout* (arg2), in system ticks (delta from
+		the current time), to indicate when the current configuration setting
+		will effectively expire.  Once this time has expired the HV will put
+		the RNG into the RNG_STATE_ERROR state thus making the RNG unavailable
+		for Data Reads.  Specifying a *watchdog timeout* value of zero (0)
+		indicates to the HV to not timeout the new configuration setting.
+		The intent of providing a timeout is to allow a Trusted Guest to enforce
+		a policy of periodic "health checks" of the RNG hardware if required.
+		The *watchdog timeout* argument is ignored when specifying any state
+		other than RNG_STATE_CONFIGURED.
+	
+		Note that the caller must have Diagnostic Control of the RNG in
+		order to invoke this operation (see rng_get_diag_control).
+
+		If this function returns EWOULDBLOCK, indicating that the hardware
+		isn't ready to respond to the request, then it also returns a system
+		clock tick value in *ready delta* (ret1) indicating how many system
+		clock ticks from the current time that the RNG will be available for
+		a subsequent operation.  This delay in having the RNG available
+		occurs after a previous rng_ctl_write operation and is to allow the
+		RNG to reach a steady state after it has been configured.  Note that
+		it is also possible for the caller to encounter an EWOULDBLOCK error
+		should another thread simply be doing a RNG operation at the same
+		time.  In this situation the returned *ready delta* will likely be
+		0 indicating that the RNG is immediately available for retrying.
+
+	4.1	Errors
+
+		ret0		Description
+		----		-----------
+		EOK		Success
+		EIO		The calling Guest does not currently have Diagnostic
+				Control to manipulate the RNG settings.  Caller
+				must first invoke rng_get_diag_control.
+		EINVAL		Specified state is not a valid value.
+		EBADALIGN	Pointer address is improperly aligned.
+		ENORADDR	Pointer address is not a valid real address.
+		EWOULDBLOCK	RNG currently in use by another thread or it has
+				not yet reached its steady state.  Caller should
+				retry in *ready delta* system clock ticks.
+		ENOACCESS	Caller does not have permission to call this
+				entrypoint.
+
+	5.	rng_data_read_diag
+
+		trap#		FAST_TRAP
+		function#	RNG_DATA_READ_DIAG
+		arg0		buffer address
+		arg1		buffer size
+
+		ret0		status
+		ret1		ready delta (system ticks)
+
+		API for reading 64-bit quantities from the RNG Data Register.
+		The contents of the RNG Data Register are repeatedly read and
+		stored into consecutive locations starting at the specified
+		*buffer address* (arg0).
+
+		Note that the caller must have Diagnostic Control of the RNG in
+		order to invoke this operation (see rng_get_diag_control).
+
+		The *buffer address* must be a real address, size aligned, and physically
+		contiguous.  The *buffer size* (arg1) specifies the size of the buffer
+		pointed to by *buffer address* in bytes and must be a multiple of 8.
+		If the size is greater than 8 then the RNG Data Register will be re-read
+		into consecutive locations in the buffer for each multiple of 8 specified
+		by the size.  For example, if a buffer size of 32 is specified then the
+		RNG Data Register will be read 4 times (32/8) with each read consecutively
+		stored into the buffer address.
+
+		If this function returns EWOULDBLOCK, indicating that the hardware
+		isn't ready to respond to the request, then it also returns a system
+		clock tick value in *ready delta* (ret1) indicating how many system
+		clock ticks from the current time that the RNG will be available for
+		a subsequent operation.  Note that it is also possible for the caller
+		to encounter an EWOULDBLOCK error should another thread simply be doing
+		a RNG operation at the same time.  In this situation the returned
+		*ready delta* will likely be 0 indicating that the RNG is immediately
+		available for retrying.
+
+	5.1	Errors
+
+		ret0		Description
+		----		-----------
+		EOK		Success
+		EIO		The calling Guest does not currently have Diagnostic
+				Control to manipulate the RNG settings.  Caller
+				must first invoke rng_get_diag_control.
+		EINVAL		Specified buffer size is not a multiple of 8 bytes
+				or is out of range: (RNG_DATA_MINLEN...RNG_DATA_MAXLEN).
+		EBADALIGN	Pointer address is improperly aligned.
+		ENORADDR	Pointer address is not a valid real address.
+		EWOULDBLOCK	RNG currently in use by another thread or it has
+				not yet reached its steady state.  Caller should
+				retry in *ready delta* system clock ticks.
+		ENOACCESS	Caller does not have permission to call this
+				entrypoint.
+
+	6.	rng_data_read
+
+		trap#		FAST_TRAP
+		function#	RNG_DATA_READ
+		arg0		buffer address
+
+		ret0		status
+		ret1		ready delta (system ticks)
+
+		API for reading a single 64-bit quantity from the RNG Data Register.
+		The contents of the RNG Data Register are stored into the specified
+		*buffer address* (arg0).  The *buffer address* must be a real address
+		and 8-byte aligned.
+
+		The RNG register must be in the RNG_STATE_CONFIGURED state in order
+		to successfully read from the Data Register.
+
+		If this function returns EWOULDBLOCK, indicating that the hardware
+		isn't ready to respond to the request, then it also returns a system
+		clock tick value in *ready delta* (ret1) indicating how many system
+		clock ticks from the current time that the RNG will be available for
+		a subsequent operation.  Note that it is also possible for the caller
+		to encounter an EWOULDBLOCK error should another thread simply be
+		doing a RNG operation at the same time.  In this situation the
+		returned *ready delta* will likely be 0 indicating that the RNG is
+		immediately available for retrying.
+
+	6.1	Errors
+
+		ret0		Description
+		-----		-----------
+		EOK		Success
+		EIO		RNG is currently Unconfigured or in a Healthcheck.
+		ENOACCESS	RNG is in the Error state and unavailable.
+		EBADALIGN	Pointer address is improperly aligned.
+		ENORADDR	Pointer address is not a valid real address.
+		EWOULDBLOCK	RNG currently in use by another thread or it has
+				not yet reached its steady state.  Caller should
+				retry in *ready delta* system clock ticks.
+
+	7.	Machine Description: RNG virtual-device node
+
+		Ref:	FWARC/2006/072	(name, cfg-handle, compatible)
+
+		The RNG hardware support on the Niagara 2 chip is represented as a
+		single virtual device and is represented in the Machine Description (MD)
+		graph for a Guest as a virtual-device node with the following properties:
+
+		Name		Tag		Req		Description
+		----		---		---		-----------
+		name		PROP_STR	Y		A string name for this node.
+								This value is currently defined
+								as "random-number-generator".
+		cfg-handle	PROP_VAL	Y		A 64-bit unsigned integer
+								identifying this device uniquely.
+		compatible	PROP_DATA	Y		An array of string names for
+								this node.  This value is
+								currently defined as "SUNW,n2-rng".
+
+	8.	Virtual RNG Device Node
+
+		Device nodes under /virtual-devices node will be created to represent
+		the respective RNG functionality for Niagara-2.
+
+	8.1	Properties
+
+		"name"				S
+			Type:		Prop-encoded-string
+			Contents:	Standard property nae, defines the device's name.
+			Value:		"random-number-generator"
+
+		"compatible"			S
+			Type:		Prop-encoded-array of prop-encoded-strings
+			Contents:	Standard property name, defined devices
+					with which this device is compatible.
+			Value:		"SUNW,n2-rng".
+
+		"reg"				S
+			Type:		Prop-encoded-array
+			Contents:	Standard property name.  Defines the
+					geographical address of this device for
+					this bus.  A single entry derived from
+					Machine Description (MD).
+			Value:		<32-bit number>
+
+	8.2	Open Firmware-defined Methods for Device Nodes
+
+		None.
+
+========================================================================
+Exported Interfaces
+
+HV Fast Trap:
+
+	0x130		Sun Private	RNG_GET_DIAG_CONTROL	API v1.0
+	0x131		Sun Private	RNG_CTL_READ		API v1.0
+	0x132		Sun Private	RNG_CTL_WRITE		API v1.0
+	0x133		Sun Private	RNG_DATA_READ_DIAG	API v1.0
+	0x134		Sun Private	RNG_DATA_READ		API v1.0
+
+RNG API Group Number:
+
+	0x0104		Sun Private	Niagara Random Number Generator
+
+RNG Device Specific propvals for rng virtual device nodes:
+
+	name		evolving	value: "random-number-generator"
+	compatible	evolving	value: "SUNW,n2-rng"
+	reg		evolving	value: unique virtual device register
+						address.
+
+RNG MD propvals for rng virtual device metadata node:
+
+	name		evolving	value: "random-number-generator"
+	cfg-handle	evolving	value: devhandle for device
+	compatible	evolving	value: "SUNW,n2-rng"

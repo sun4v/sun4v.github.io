@@ -1,0 +1,135 @@
+#pragma ident	"%Z%%M%	%I%	%E% SMI"
+
+			Interface table
+			===============
+
+Imported Interfaces
+		
+Interface Name 			Classification   	Comment
+                                      	 
+------------------------------------------------------------------------
+
+Hypervisor Error		Sun Private	FWARC/2005/116
+Code Values
+
+Hypervisor Calling		Sun Private	FWARC/2005/116
+Conventions
+
+Hypervisor Data			Sun Private	FWARC/2005/116
+Definitions
+
+
+
+
+Interfaces Exported
+		
+Interface Name			Classification   	Comment
+                                      	 
+------------------------------------------------------------------------
+
+
+						IOMMU GROUP
+
+
+PCI_IOMMU_MAP			Sun Private	hv function number 0xb0
+						pci_iommu_map
+
+PCI_IOMMU_DEMAP			Sun Private	hv function number 0xb1
+						pci_iommu_demap
+
+PCI_IOMMU_GETMAP		Sun Private	hv function number 0xb2
+						pci_iommu_getmap
+
+PCI_IOMMU_GETBYPASS		Sun Private	hv function number 0xb3
+						pci_iommu_getbypass
+
+
+
+						CONFIG SPACE and IO GROUP
+
+PCI_CONFIG_GET			Sun Private	hv function number 0xb4
+						pci_config_get
+
+PCI_CONFIG_PUT			Sun Private	hv function number 0xb5
+						pci_config_put
+
+PCI_PEEK			Sun Private	hv function number 0xb6
+						pci_peek
+
+PCI_POKE			Sun Private	hv function number 0xb7
+						pci_poke
+
+PCI_DMA_SYNC			Sun Private	hv function number 0xb8
+						pci_dma_sync
+
+
+
+						MSI-QUEUE MGMT GROUP
+
+PCI_MSIQ_CONF			Sun Private	hv function number 0xc0
+						pci_msiq_conf
+
+PCI_MSIQ_INFO			Sun Private	hv function number 0xc1
+						pci_msiq_info
+
+PCI_MSIQ_GETVALID		Sun Private	hv function number 0xc2
+						pci_msiq_getvalid
+
+PCI_MSIQ_SETVALID		Sun Private	hv function number 0xc3
+						pci_msiq_setvalid
+
+PCI_MSIQ_GETSTATE		Sun Private	hv function number 0xc4
+						pci_msiq_getstate
+
+PCI_MSIQ_SETSTATE		Sun Private	hv function number 0xc5
+						pci_msiq_setstate
+
+PCI_MSIQ_GETHEAD		Sun Private	hv function number 0xc6
+						pci_msiq_gethead
+
+PCI_MSIQ_SETHEAD		Sun Private	hv function number 0xc7
+						pci_msiq_sethead
+
+PCI_MSIQ_GETTAIL		Sun Private	hv function number 0xc8
+						pci_msiq_gettail
+
+
+
+						MSI & MSG GROUP
+
+PCI_MSI_GETVALID		Sun Private	hv function number 0xc9
+						pci_msi_getvalid
+
+PCI_MSI_SETVALID		Sun Private	hv function number 0xca
+						pci_msi_setvalid
+
+PCI_MSI_GETMSIQ			Sun Private	hv function number 0xcb
+						pci_msi_getmsiq
+
+PCI_MSI_SETMSIQ			Sun Private	hv function number 0xcc
+						pci_msi_setmsiq
+
+PCI_MSI_GETSTATE		Sun Private	hv function number 0xcd
+						pci_msi_getstate
+
+PCI_MSI_SETSTATE		Sun Private	hv function number 0xce
+						pci_msi_setstate
+
+PCI_MSG_GETMSIQ			Sun Private	hv function number 0xd0
+						pci_msg_getmsiq
+
+PCI_MSG_SETMSIQ			Sun Private	hv function number 0xd1
+						pci_msg_setmsiq
+
+PCI_MSG_GETVALID		Sun Private	hv function number 0xd2
+						pci_msg_getvalid
+
+PCI_MSG_SETVALID		Sun Private	hv function number 0xd3
+						pci_msg_setvalid
+
+
+						DATA STRUCTURES
+
+MSI/MSG data record		Sun Private	Data record format for MSIQ.
+
+

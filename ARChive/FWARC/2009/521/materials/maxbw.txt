@@ -1,0 +1,127 @@
+1. Introduction
+   1.1. Project/Component Working Name:
+        Bandwidth Resource Control
+
+   1.2. Name of Document Author/Supplier:
+        Wentao Yang
+
+   1.3. Date of This Document:
+        9/18/2009
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+        1.4.1. The PAC or CPT you expect to review your project:
+                None.
+
+        1.4.2. The ARC(s) you expect to review your project:
+                FWARC.
+
+        1.4.3. The Director/VP who is "Sponsoring" this project:
+                Jerri-Ann Meyer
+
+        1.4.4. The name of your business unit:
+                Systems Group
+                        (Sparc Platform Software)
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: john.falkenthal@sun.com
+        1.5.2. Responsible Engineer: eric.sharakan@sun.com
+        1.5.3. Marketing Manager: duncan.hardie@sun.com
+        1.5.4. Interest List: ldoms-internal@sun.com
+
+2. Project Summary
+
+   2.1. Project Description:
+
+	This case adds a new property, named 'maxbw', to the Machine
+	Description (MD) nodes 'virtual-device' and 'virtual-device-port'.
+	These properties are relevant for vsw (i.e. 'virtual-network-switch')
+	and vnet (i.e. 'virtual-network-port') devices only.  The 'maxbw'
+	property specifies a maximum bandwidth limit for the corresponding
+	virtual switch (for use when plumbed as a network interface) or virtual
+	network device.
+
+	The vsw driver will be modified to use the Crossbow APIs listed below
+	(section 4.2) to provide bandwidth resource control functionality
+	for virtual network devices.
+
+   2.2. Risks and Assumptions:
+
+	The bandwidth limits specified here require operating system changes
+	for them to be enforced.
+
+
+3. Business Summary
+   3.1. Problem Area:
+
+   	This is a feature commonly requested by customers for enforcing QOS
+	on LDoms virtual network infrastructure.
+
+   3.2. Market/Requester:
+        
+	SPARC CMT Platforms, to satisfy requirement for QOS controls.
+
+   3.3. Business Justification:
+        
+
+   3.4. Competitive Analysis:
+        
+
+   3.5. Opportunity Window/Exposure:
+        LDoms Manager software & Solaris software.
+
+   3.6. How will you know when you are done?:
+
+        When bandwidth limits set by an LDoms administrator are enforced by the
+        system.
+
+4. Technical Description:
+
+   4.1 Overview
+
+	See updated LDoms VIO MD Specification excerpt included with the case
+	materials.
+
+   4.2 Imported Interfaces
+
+	Interface			Classification		Comment
+	======================================================================
+	mac_client_set_resources	Consolidation Private	Defined by
+								PSARC/2006/357
+
+	MRP_MAXBW_MINVAL, MRP_MAXBW,	Consolidation Private	Defined by
+	MRP_MAXBW_RESETVAL					PSARC/2006/357
+
+	sys/mac_flow.h			Consolidation Private	Defined by
+								PSARC/2006/357
+
+5. Reference Documents:
+  [1] FWARC/2005/115 sun4v machine description
+  [2] FWARC/2006/072 sun4v virtual devices machine description data
+  [3] PSARC/2006/357 Crossbow: Network Virtualization and Resource Management
+
+6. Resources and Schedule:
+   6.1. Projected Availability:	Q4FY10
+
+   6.2. Cost of Effort: 3 person months
+
+   6.3. Cost of Capital Resources: N/A
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation or Component Name: LDoms Manager, Solaris
+	6.4.3. Type of CPT Review and Approval expected: N/A
+        6.4.4. Project Boundary Conditions: N/A
+	6.4.5. Is this a necessary project for OEM agreements: No.
+	6.4.6. Notes/Dependencies:
+		Depends on the PSARC/2006/357, also no patch binding required.
+	6.4.7. Target RTI Date/Release: TBD
+	6.4.8. Target Code Design Review Date: TBD
+	6.4.9. Update approval addition: N/A		
+
+   6.5. ARC review type: fast-track
+		
+7. Prototype Availability:
+   7.1. Prototype Availability:
+	Q2FY10
+
+   7.2. Prototype Cost:
+      1 person month

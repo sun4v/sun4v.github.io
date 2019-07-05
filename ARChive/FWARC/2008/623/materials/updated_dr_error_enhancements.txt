@@ -1,0 +1,178 @@
+4. Technical Description
+
+4.1 Overview
+
+	This project will improve the error reporting capability
+	associated with dynamic reconfiguration of virtual cpus,
+	(VCPUs), virtual I/O devices, and memory.  The response
+	message formats of the three DR services all provide for
+	passing back an error string for certain types of failure.
+	For example, if attempting to remove multiple vcpus, and some
+	succeed and some fail, the user will see error messages
+	describing why the failed vcpus could not be removed.  On the
+	other hand, if the failure was a problem related to the entire
+	request, the protocol does not currently provide for passing
+	back a descriptive error message.  This project will make
+	small changes to the message formats (and semantics) so that
+	an error string can be returned for ALL failures.
+
+	The minor version number of the DR domain services will be
+	incremented such that the version will move from 1.0 to 1.1.
+	The target domain DR modules and the initiator module for DR
+	requests will be modified to conform to this new version of
+	the domain service.  If an initiator module using version 1.1
+	is interacting with a target domain DR module also using 1.1,
+	the new domain service will be utilized, and the user will see
+	the improved error messages.  If either of the modules is
+	running version 1.0, the peer will adjust downward, so that
+	version 1.0 of the domain service will be utilized, and the
+	error reporting behavior will remain at its current level.
+	For a more complete description of versioning see FWARC
+	2006/055 section 2.5.5 "DS Capability Version Negotiation &
+	Registration".
+
+4.2 Bug/RFE Number(s)
+
+	6719903 DR error message should be more helpful when 'drd' is disabled
+
+4.3 Scope
+
+        Not Applicable.
+
+4.4 Out of Scope
+
+        Not Applicable.
+
+4.5 Interfaces
+
+        4.5.1 Interfaces
+
+                The modified interface consists of a change to the
+                format of existing message exchanged between the
+                guest DR modules and the initiator module for DR
+                requests.  Section 3.4.5 of FWARC/2006/055 states:
+
+		"The message type DR_CPU_ERROR is a response to a
+		malformed request message.  No additional payload is
+		provided with this message type."  Similar statements
+		apply to DR VIO (for the DR_VIO_RES_FAILURE result
+		code) and DR Memory (for the DR_MEM_ERROR result
+		code).
+
+		This project will change the semantics of these error
+		response codes (described below) as well as the
+		corresponding response message as follows:
+
+        4.5.2 Imported Interfaces
+
+             Interface           Classification  Comments
+             =================================================================
+
+             Domain Services      Sun Private    DR CPU Domain Service
+             (CPU DR)                            message formats
+                                                 FWARC/2006/055
+             Domain Services      Sun Private    DR Memory Domain Service
+             (Memory DR)                         message formats
+                                                 FWARC/2008/540
+
+       4.5.3 Exported Interfaces
+
+             Interface           Classification  Comments
+             ================================================================
+
+             Domain Services      Sun Private    Domain Services
+             (CPU DR)                            messages formats
+                                                 FWARC/2006/055 with
+						 modified CPU DR response
+
+             Domain Services      Sun Private    Domain Services
+             (CPU Memory)                        messages formats
+                                                 FWARC/2008/540
+						 modified Memory DR response
+
+	4.5.4 DR CPU Message Format
+
+		The interface change consists of a modification to an
+		existing message format, by adding the new field 'err_msg'
+		as shown below.  It modifies section FWARC 2006/055
+		section 3.4.5 "CPU DR Error response".
+
+		New payload for DR_CPU_ERROR mdsg_type:
+
+		Offset Size             Field Name     Description
+		------ ----             ----------     -----------
+
+		0      <variable>       err_msg        null-terminated string
+
+		The maximum length of the err_msg field including the
+		terminal null shall be 1024 characters.  The error
+		message will indicate the nature of the failure, such
+		as badly formatted request, intra-guest communication
+		failure, etc.
+
+		Note: the new err_msg field of the response message
+		payload applies only to response messages, and then
+		only when the 'msg_type' element of the header is
+		DR_CPU_ERROR.
+
+	4.5.5 DR VIO Message Format (unchanged)
+
+		The interface change does not involve any change to
+		the format of the response message.
+
+		The result codes also remain unchanged.  The DR VIO
+		case (FWARC 2008/299) already provides for passing
+		an error message on failures.
+
+
+	4.5.6 DR Memory Message Format
+
+		The interface change consists of a modification to an
+		existing message format, by adding the new field 'err_msg'
+		as shown below.  It modifies section FWARC 2008/540
+		section 1.5 "DR_MEM_ERROR response".
+
+		New payload for DR_MEM_ERROR:
+
+		Offset Size   Field Name    Description
+		------ ----   ----------    -----------
+
+		0      <var>  err_msg       Error msg (null-terminated string)
+
+		The maximum length of the err_msg field including the
+		terminal null shall be 1024 characters.  The error
+		message will indicate the nature of the failure, such
+		as badly formatted request, intra-guest communication
+		failure, etc.
+
+		Note: the new err_msg field of the response message
+		payload applies only to response messages, and then
+		only when the 'msg_type' element of the header is
+		DR_MEM_ERROR.
+
+   4.6 Doc Impact
+
+       None.
+
+   4.7 Admin/Config Impact
+
+   4.8 HA Impact
+
+       None.
+
+   4.9  I18N/L10N
+
+        Not affected.
+
+   4.10 Packaging & Delivery
+
+        This project defines a generic interface and is not tied to a
+        particular architecture.  No change to packages
+
+   4.11 Security Impact
+
+        None.
+
+   4.12 Dependencies
+
+        None.

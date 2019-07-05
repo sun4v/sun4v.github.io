@@ -1,0 +1,106 @@
+@(#)FWARC-diagapi.txt	1.1 Last Modified: 05/04/15 14:52:36
+
+1 Introduction
+
+This document describes the hypervisor diagnostic interfaces.
+
+This document is currently described as a chapter in or an appendix to the
+Sun4v API [1].
+
+Section 2.1 in [1] describes the calling convention used by this document.
+All API's described here use the Hypervisor fast trap (0x80). The function
+number is passed in %o5, arguments 0 .. 4 are passed in %o0 .. %o4
+respectively.  Results 0 - 4 are returned in %o0 .. %o4 respectively.
+Result %o0 is always the status of the call. Status values are defined in
+section 31.5 in [1]. Non-failure status is EOK and is not listed in the API's
+in the remainder of this document which is consistent with [1].
+
+
+2 References
+
+[1] UltraSPARC Virtual Machine Specification
+http://kenai.com/downloads/hypervisor/Hypervisor-api-2.0.pdf
+
+
+3 Diagnostic Services
+
+	Guests may be allowed to invoke their own diagnostic code with
+	hypervisor privileges.  Such code is often used for bring-up,
+	verification, and error injection purposes.  It is expected
+	that these services will only be used internally at Sun.
+
+	The hypervisor will disallow the services defined here unless
+	explicitly configured otherwise.  The diagnostic code may
+	destabilize the entire platform, including other guests,
+	as it runs without restriction.  There are no air bags.
+
+3.1 Diagnostic Services Function Number Definitions
+
+	DIAG_RA2PA			0x200
+	DIAG_HEXEC			0x201
+
+3.2 Diagnostic Services Data Definitions
+
+	Real addresses and physical addresses are defined in
+	Section 4, Addressing Models, of [1].
+
+
+3.3 Diagnostic Services API Definitions
+
+3.3.1 diag_ra2pa
+
+	trap#		FAST_TRAP
+	function#	DIAG_RA2PA
+	arg0		ra
+
+	ret1		pa
+
+	Translates a guest's real address into the underlying
+	platform's physical address.
+
+	This is required to specify the diagnostic code invoked by the
+	diag_hexec call as well as to pass pointers to guest data
+	structures to the diagnostic code.
+
+	It is not guaranteed that the entire span of an object is
+	physically-contiguous simply because it is contiguous in the
+	real address space.  Care must be taken when using code or
+	data larger than the smallest page size the platform supports.
+
+3.3.1.1	Errors
+
+	ENOACCESS	Guest not permitted to invoke diag_ra2pa
+	ENORADDR	Invalid r_addr
+
+
+3.3.2 diag_hexec
+
+	trap#		FAST_TRAP
+	function#	DIAG_HEXEC
+	arg0		codepa
+
+	ret0		ENOACCESS or undefined
+
+	Invokes diagnostic code located at physical address "codepa"
+	at the next higher trap level.  The diagnostic code executes
+	in a hyperprivileged environment.
+
+	The caller may specify other arguments and the invoked code
+	may return other return values.  The code is run in the
+	hyperprivileged, processor-specific environment of the
+	underlying hardware.  Arguments that are guest pointers
+	(virtual or real) will have to be converted to physical
+	addresses using diag_ra2pa prior to invoking this service.
+
+	The diagnostic code is expected to execute a SPARC v9 "done"
+	instruction to return to the caller.  How or if the code
+	returns cannot be enforced by the hypervisor.
+
+	If the guest is not permitted to make this call then ret0 will
+	contain ENOACCESS.  Otherwise the invoked diagnostic code is
+	expected to set ret0 appropriately.
+
+
+3.3.2.1 Errors
+
+	ENOACCESS	Guest not permitted to invoke diag_hexec

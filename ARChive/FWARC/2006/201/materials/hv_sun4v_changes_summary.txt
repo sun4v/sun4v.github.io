@@ -1,0 +1,100 @@
+
+	Summary of proposed changes to the Sun4v Error Handling Interface
+	-----------------------------------------------------------------
+
+	This document summarises the proposed changes to the Sun4v
+	Error Handling Interface as detailed in FWARC 2006/200, [1].
+	The changes are detailed in FWARC 2006/201, [2].
+
+	- Sections (1) through (4) inclusive are UNCHANGED apart from
+	  minor formatting and reference numbers.
+
+	- In Section (5) :-
+
+	  - (5.0) UNCHANGED
+	  - (5.1) UNCHANGED
+	  - (5.2)
+		- Table 5.2-I. Sun4v Error Report Format
+		   RA changed to ADDR
+		   New fields SZ, SECS, ASI, REG
+		- (5.2.1) UNCHANGED
+		- (5.2.1) UNCHANGED
+		- (5.2.3)
+		  - Table 5.2.3-I. Error Report Descriptors
+		    New fields SHT_R, DCORE
+		    New description
+		- (5.2.3.i) UNCHANGED
+		- (5.2.3.ii) UNCHANGED
+		- (5.2.3.iii) UNCHANGED
+		- (5.2.4)
+		  - Table 5.2.4-I. Format of the Error Attributes (ATTR) Field
+		    New fields, SHUT, ASI, ASR, PREG
+		  - Table 5.2.4-II. Applicable Error Attributes Map
+		    New fields, SHUT, ASI, ASR, PREG
+		  - (5.2.4.i) UNCHANGED
+		  - (5.2.4.ii)
+		    - RA changed to ADDR
+		  - (5.2.4.iii) UNCHANGED
+		  - (5.2.4.iv) UNCHANGED
+		  - (5.2.4.v) UNCHANGED
+		  - (5.2.4.vi) ***NEW***
+		  - (5.2.4.vii) ***NEW***
+		  - (5.2.4.viii) ***NEW***
+		  - (5.2.4.viiii) UNCHANGED from old (5.2.4.vi)
+		- (5.2.5) UNCHANGED
+		- (5.2.6)
+		  - RA changed to ADDR
+		  - added description for ASI report types
+		  - added note re how to handle (-1) value
+		- (5.2.7)
+		  - added description for ASI report types
+		- (5.2.8) ***NEW***
+		- (5.2.9) ***NEW***
+		- (5.2.10) ***NEW***
+		- (5.2.11) UNCHANGED from old (5.2.8)
+
+	- In Section (6) :-
+
+	- (6.0) UNCHANGED
+	- (6.1)
+		- (6.1.2.v) ***NEW***
+		- (6.1.2.vi) ***NEW***
+		- (6.1.2.vii) UNCHANGED from old (6.1.2.v)
+	- (6.2) UNCHANGED
+	- (6.3) UNCHANGED
+	- (6.4) UNCHANGED
+	- (6.5) UNCHANGED
+		
+	- In Section (7) :-
+
+	- (7.0) 
+
+	 	- "offsets 0x26-0x3f" changed to "offsets 0x32-0x3f"
+		
+	- In Section (8) :-
+
+	- added references [5], [6].
+
+	- In Appendix A :-
+
+	- (A.1)
+		- added "if (ATTR.ASI) ...." section
+		- added "if (DESC == 4) ...." section
+	- (A.2)
+
+		- added "if (DESC == 5) ...." section
+		- added "if (ATTR.ASR) ...." section
+		- added "if (ATTR.ASI) ...." section
+		- added "if (ATTR.PREG) ...." section
+
+
+
+
+
+	1. Sun4v Hypervisor Error Handling Interfaces 
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/200/materials-20060430/hv_sun4v_ver1.0.txt
+
+	2. Sun4v Hypervisor Error Handling Interfaces (Draft for review)
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/201/materials/hv_sun4v_errorphilosophy-V2.0.txt

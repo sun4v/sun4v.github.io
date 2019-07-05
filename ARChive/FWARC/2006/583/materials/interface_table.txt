@@ -1,0 +1,26 @@
+   Imported Interfaces 
+   -------------------
+
+   Interface name                        Classification        Comments
+   -----------------------               --------------        --------
+
+   VIO protocol,                         Sun Private           FWARC/2006/195
+   Data structures,
+   and values
+   
+
+   Exported Interfaces
+   -------------------
+
+   Interface name                        Classification        Comments
+   -----------------------               --------------        --------
+   
+   Descriptor Ring Data			 Sun Private		Section 1.1.4.2
+   message
+ 
+   proc_state field
+   values
+
+      VIO_DP_ACTIVE			 Sun Private		Section 1.1.4.2
+      VIO_DP_STOPPED			 Sun Private		Section 1.1.4.2
+

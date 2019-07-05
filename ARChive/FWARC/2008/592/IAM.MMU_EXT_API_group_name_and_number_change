@@ -1,0 +1,8 @@
+Name:		MMU_EXT API group name and number change
+Submitter:	Richard Barnette
+Owner:		Hitendra Zhangada
+Interest:	
+Status:         closed approved automatic 10/01/2008
+Exposure:	open
+Comment:	See 2008/401 for interface classifications of APIs itself
+Comment:	The function numbers got modified on 10/01/2008.

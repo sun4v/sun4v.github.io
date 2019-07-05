@@ -1,0 +1,37 @@
+Interface Table :
+
+    Imported Interfaces :
+
+        Interface                         Classification  Comments
+        ----------------------------------------------------------------------
+        Domain Services                   Sun Private     Domain Services protocol
+                                                          and messages formats
+                                                          FWARC/2006/055
+
+        sun4v Machine                     Sun Private     MD node changes to
+        Description nodes                                 support virtual devices
+                                                          defined by FWARC/2007/122
+
+
+    Exported Interfaces :
+
+        Interface name                    Classification   Comments
+        ----------------------------------------------------------------------- 
+
+        "dr-vio"                          Sun Private      Virtual IO DR service id 
+        
+         VIO DR Message header            Sun Private
+
+         Request message types:
+           DR_VIO_CONFIGURE               Sun Private      Configure new VIO Device/Service
+
+           DR_VIO_UNCONFIGURE             Sun Private      Unconfigure VIO Device/Service
+
+           DR_VIO_FORCE_UNCONFIG          Sun Private      Forcibly Unconfigure 
+                                                            VIO Device/Service
+
+           DR_VIO_STATUS                  Sun Private      Request the status of  
+                                                            VIO Device/Service
+
+         VIO DR Response message format   Sun Private      Response for VIO DR request
+

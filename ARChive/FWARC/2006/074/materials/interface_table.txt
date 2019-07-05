@@ -1,0 +1,26 @@
+Imported Interfaces :
+
+      Interface              Classification     Comments
+      =======================================================================
+
+      sun4v core API            Sun Private     Core APIs defined by
+                                                FWARC/2005/116
+
+
+Exported Interfaces:
+
+      All APIs below belong to Group 2, version 2.0.
+
+      Interface               Classification     Comments
+      ========================================================================
+
+      VINTR_GETCOOKIE          Sun Private     Trap 0x80 function number 0xa7
+      VINTR_SETCOOKIE          Sun Private     Trap 0x80 function number 0xa8
+      VINTR_GETENABLED         Sun Private     Trap 0x80 function number 0xa9
+      VINTR_SETENABLED         Sun Private     Trap 0x80 function number 0xaa
+      VINTR_GETSTATE           Sun Private     Trap 0x80 function number 0xab
+      VINTR_SETSTATE           Sun Private     Trap 0x80 function number 0xac
+      VINTR_GETTARGET          Sun Private     Trap 0x80 function number 0xad
+      VINTR_SETTARGET          Sun Private     Trap 0x80 function number 0xae
+
+

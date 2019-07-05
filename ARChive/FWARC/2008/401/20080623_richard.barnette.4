@@ -1,0 +1,458 @@
+From sac-owner Mon Jun 23 17:48:20 2008
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m5O0mKiP023108
+	for <one-pager@sac.eng.sun.com>; Mon, 23 Jun 2008 17:48:20 -0700 (PDT)
+Received: from sunmail3mpk.sfbay.sun.com (localhost [127.0.0.1])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m5O0mKoT019772
+	for <one-pager-not-2b-used-directly@sunmail3mpk.sfbay.sun.com>; Mon, 23 Jun 2008 17:48:20 -0700 (PDT)
+Received: (from noaccess@localhost)
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/Submit) id m5O0mKQu019771
+	for one-pager-not-2b-used-directly; Mon, 23 Jun 2008 17:48:20 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m5O0mIvn019741;
+	Mon, 23 Jun 2008 17:48:19 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K2X0040VZKIMQ00@brm-avmta-1.central.sun.com>; Mon,
+ 23 Jun 2008 18:48:18 -0600 (MDT)
+Received: from uask4it.sfbay.sun.com ([10.7.80.228])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K2X00L6SZKIPP20@brm-avmta-1.central.sun.com>; Mon,
+ 23 Jun 2008 18:48:18 -0600 (MDT)
+Received: from dhcp-usca11-234-234.SFBay.Sun.COM
+ (dhcp-usca11-234-234.SFBay.Sun.COM [129.145.234.234])
+	by uask4it.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id m5O0m7xs002504;
+ Mon, 23 Jun 2008 17:48:07 -0700 (PDT)
+Date: Mon, 23 Jun 2008 17:48:17 -0700
+From: Richard Barnette <Richard.Barnette@Sun.Com>
+Subject: [2008/401]MMU TLB page search Hypervisor API
+To: one-pager@Sun.Com
+Cc: rs-staff <rs-staff@Sun.Com>
+Message-id: <3C4213E2-C360-4862-8162-F287EC570765@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.924)
+Content-type: text/plain; charset=US-ASCII; format=flowed; delsp=yes
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 14341
+
+Copyright 2007 Sun Microsystems
+
+1. Introduction
+    1.1. Project/Component Working Name:
+	MMU TLB page search Hypervisor API
+
+    1.2. Name of Document Author/Supplier:
+	Richard Barnette (Richard.Barnette@sun.com)
+
+    1.3. Date of This Document:
+	06/16/08
+
+    1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		N/A
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Ravi Subbarao (Ravi.Subbaro@sun.com)
+	1.4.4. The name of your business unit:
+		Systems - Enterprise Software
+
+    1.5. Email Aliases:
+     	1.5.1. Responsible Manager:
+	    Umesh.Sharma@sun.com
+     	1.5.2. Responsible Engineer:
+	    Richard.Barnette@sun.com
+     	1.5.3. Marketing Manager:
+	    N/A
+	1.5.4. Interest List:
+	    hvrock-dev@sun.com
+
+2. Project Summary
+    2.1. Project Description:
+	This project adds new, optional hypervisor API calls and
+	associated MD properties for sun4v platforms.  When present, the
+	calls provides additional controls over TLB lookup behaviors.
+
+    2.2. Risks and Assumptions:
+	None.
+
+3. Business Summary
+    3.1. Problem Area:
+	TLB lookup on some future Sun processors conforming to the
+	UltraSPARC (sun4v) architecture will be more complex than in
+	existing CPUs.  For best performance and to enable features,
+	additional controls in the form of new API calls are needed.
+
+    3.2. Market/Requester:
+	Enterprise Systems
+
+    3.3. Business Justification:
+	The new API call will provide performance controls necessary to
+	tune the performance of Sun's future UltraSPARC architecture
+	Enterprise Server systems.
+
+    3.4. Competitive Analysis:
+	N/A.
+
+    3.5. Opportunity Window/Exposure:
+	N/A.
+
+    3.6. How will you know when you are done?:
+	The project is complete when the API is implemented and
+	tested according to the spec in this document on hardware
+	supporting the underlying capability.
+
+4. Technical Description:
+     4.1. Details:
+	As the capabilities of MMUs for SPARC processors increase, it is
+	no longer feasible in all cases to implement a TLB with a single
+	associative lookup.  UltraSPARC processors now allow for the
+	following inputs into the TLB lookup:
+	  * A Partition id (number of bits depends on CPU)
+	  * A tag from the VA (up to 51 bits)
+	  * A private context number (up to 16 bits)
+	  * One or more shared context numbers (up to 16 bits each)
+	Additionally, the TLB must be able to recognize mappings to as
+	many as 8 distinct page sizes.
+
+	The total number of inputs means that for CPU hardware to find
+	the mapping for a given memory access, multiple TLB probes may
+	be required.  With the CPU performing multiple probes, it may
+	be important for software to control either the number or order
+	of the probes:
+	  * Controlling the number of probes may improve performance by
+	    eliminating unnecessary probes.
+	  * Controlling the order of probes may improve performance by
+	    searching frequently accessed mappings before searching
+	    rarer ones.
+	  * Controlling the order of probes can make it possible to
+	    have multiple mappings for the same address without
+	    ambiguitiy, by indicating which mapping has precedence.
+
+	The API below provides control over the order and number of
+	probes performed by the MMU, where each probe can be different
+	in the following parameters:
+	  * Which context register (private or shared) is used to
+	    determine the context number.
+	  * The page size of the mapping to probe for.
+
+     4.1.1. New MD properties:
+	The properties below are part of the CPU node.  All of these
+	properties are required to be present for any CPU that supports
+	the new API calls described in this specification.  None are
+	present in the CPU node unless the CPU supports the calls.
+
+     Name			Tag
+	    Description
+      
+----------------------------------------------------------------------
+     mmu-search-#shared-contexts	PROP_VAL
+	    The number of shared contexts (in addition to the private
+	    context) supported in search list entries.  The
+	    interpretation is equivalent to the mmu-#shared-contexts
+	    property; however, the value may be different.
+
+     mmu-search-page-size-list	PROP_VAL
+	    The set of page sizes supported in search list entries.  The
+	    format is equivalent to the mmu-page-size-list property;
+	    however, the value may be different.
+
+     mmu-max-search-order	PROP_VAL
+	    The maximum number of entries allowed in a search list.  All
+	    search lists terminate after this many entries, with or
+	    without a terminator entry with its enable bit clear.
+
+     4.1.2. API specification:
+     4.1.2.1. Search lists for non-privileged accesses:
+	The new API introduces a new data type for specifying MMU search
+	lists.  A search list is the real address of an array of
+	one-byte search entries; the size of the array is specified in
+	the mmu-max-search-order property.  Each byte specifies a
+	context register and page size for a TLB probe, plus an enable
+	bit.
+
+	For MMU translations made in non-privileged mode, there is a
+	single search list for each virtual CPU.  The ordering of search
+	entries specifies handling for duplicate mappings: if the same
+	address has different mappings depending on the size or context
+	register, then the probe with the lower index takes precedence
+	over probes with higher indexes in the list.  Additionally,
+	probes to entries earlier in the search order may perform faster
+	than probes to later entries.  The non-privileged search order
+	may be altered and accessed using API calls described below.
+
+	For MMU translations made in privileged mode each virtual CPU
+	has two search lists for:  one for instruction fetches, and one
+	for data accesses.  Unlike a non-privileged search list,
+	mappings in the privileged search order must be unique.  If
+	different probes in the search list can produce different
+	mappings, the results are unspecified.  Like the non-privileged
+	search lists, probes to entries earlier in the search order may
+	perform faster than probes to later entries.  The privileged
+	search order may be altered and accessed using API calls
+	described below.
+
+	A virtual CPU can create a privileged mapping for any page size
+	listed in the applicable privileged search order and expect an
+	MMU hit on such a mapping.  The effect of mapping an address
+	using a size not in the privileged search list is unspecified.
+
+	The individual bytes of each search list table entry are laid
+	out as follows:
+	    | Enable | Context | Size |
+	       [7]     [6:3]     [2:0]
+
+	Enable - The Enable field is 1 to indicate a valid search entry.
+	    If a search entry has its Enable bit cleared, that entry
+	    and all higher-indexed entries are ignored.
+	Context - The Context field is 0 to indicate CONTEXT0 (the
+	    private context), 1 to indicate CONTEXT1 (the 1st shared
+	    context), and so forth.  The value of the field cannot
+	    exceed mmu-search-#shared-contexts (see below).  If shared
+	    contexts are not supported, the field must be 0.  The
+	    Context field is only supported for non-privileged search
+	    lists; privileged search lists must set Context to 0
+	    (indicating only CONTEXT0 is searched).
+	Size - The Size field encodes a standard page size field:
+		PageSize = 1 << (3 * Size + 13)
+	    The size must be one of the valid sizes indicated in
+	    mmu-search-page-size-list.
+
+     4.1.2.2. API function call summary:
+	These are the calls for configuring the new MMU mapping
+	resources:
+
+     #Name			Group#	Trap#	Func#	Major#	Minor#
+     #====			======	=====	=====	======	======
+     MMU_GET_NONPRIV_SEARCH	0x4	0x80	0x104	1	0
+     MMU_SET_NONPRIV_SEARCH	0x4	0x80	0x105	1	0
+     MMU_GET_PRIV_I_SEARCH	0x4	0x80	0x106	1	0
+     MMU_SET_PRIV_I_SEARCH	0x4	0x80	0x107	1	0
+     MMU_GET_PRIV_D_SEARCH	0x4	0x80	0x108	1	0
+     MMU_SET_PRIV_D_SEARCH	0x4	0x80	0x109	1	0
+
+
+     4.1.2.3.
+	trap: FAST_TRAP
+	function: MMU_GET_NONPRIV_SEARCH
+	arg0: searchlist
+	ret0: status
+
+	Fill in the provided search list with the current search list
+	for the calling virtual CPU, as set by the
+	MMU_SET_NONPRIV_SEARCH call.
+
+	Prior to the first call to set the search order, the default
+	search list will search all valid page sizes as specified in
+	mmu-page-size-list (N.B. not mmu-search-page-size-list), for
+	both the private context, plus all valid shared contexts as
+	specified in mmu-#shared-contexts.  The order of the search is
+	not specified.
+
+	Errors:
+	ENORADDR    The search list is not a valid real address.
+
+     4.1.2.4.
+	trap: FAST_TRAP
+	function: MMU_SET_NONPRIV_SEARCH
+	arg0: searchlist
+	ret0: status
+
+	Set the calling virtual CPU's non-privileged search list.  This
+	search list will be used for both instruction and data lookups
+	performed in non-privileged mode, or when using any of the
+	"AS_IF_USER" ASIs in privileged mode.
+
+	(N.B. the search list applies to non-privileged TLB lookups,
+	regardless of the context to be searched.  This is different
+	from TSB lookup, which searches based on the context number).
+
+	Errors:
+	ENORADDR    The search list is not a valid real address.
+	EINVAL	    A page size in the search list isn't valid.
+	EINVAL	    A context register number in the search list isn't
+		    valid.
+
+     4.1.2.5.
+	trap: FAST_TRAP
+	function: MMU_GET_PRIV_I_SEARCH
+	arg0: searchlist
+	ret0: status
+
+	Fill in the provided search list with the calling virtual CPU's
+	current search list for privileged instruction fetch
+	translations, as set by the MMU_SET_PRIV_I_SEARCH call.
+
+	Prior to the first call to set this search list,
+	the default list includes all valid page sizes as specified in
+	mmu-page-size-list (N.B. not mmu-search-page-size-list).
+
+	Errors:
+	ENORADDR    The search list is not a valid real address.
+
+     4.1.2.6.
+	trap: FAST_TRAP
+	function: MMU_SET_PRIV_I_SEARCH
+	arg0: searchlist
+	ret0: status
+
+	Set the calling virtual CPU's search list for privileged
+	instruction fetch translations.
+
+	Errors:
+	EINVAL	    A page size in sizelist isn't valid.
+	EINVAL	    A Context field in sizelist is not 0.
+	ENORADDR    The search list is not a valid real address.
+
+     4.1.2.7.
+	trap: FAST_TRAP
+	function: MMU_GET_PRIV_D_SEARCH
+	arg0: searchlist
+	ret0: status
+
+	Fill in the provided search list with the calling virtual CPU's
+	current search list for privileged data access translations, as
+	set by the MMU_SET_PRIV_D_SEARCH call.
+
+	Prior to the first call to set this search list,
+	the default list includes all valid page sizes as specified in
+	mmu-page-size-list (N.B. not mmu-search-page-size-list).
+
+	Errors:
+	ENORADDR    The search list is not a valid real address.
+
+     4.1.2.8.
+	trap: FAST_TRAP
+	function: MMU_SET_PRIV_D_SEARCH
+	arg0: searchlist
+	ret0: status
+
+	Set the calling virtual CPU's search list for privileged
+	data access translations.
+
+	Errors:
+	EINVAL	    A page size in sizelist isn't valid.
+	EINVAL	    A Context field in sizelist is not 0.
+	ENORADDR    The search list is not a valid real address.
+
+     4.1.3. Notes and caveats:
+	The mmu-page-size-list and mmu-search-page-size-list properties
+	are distinct, and may have different values; similarly for
+	mmu-#shared-contexts and mmu-search-#shared-contexts.  To
+	understand why, consider the case of a CPU that supports 8 page
+	sizes and 1 shared context (meaning 2 contexts total).  To
+	search every context for every page size requires 8*2=16 probes.
+	In such a case, a guest that is unaware of the search order API
+	cannot use all 8 page sizes and both context registers.
+
+     4.2. Bug/RFE Number(s):
+	N/A
+
+     4.3. In Scope:
+	N/A
+
+     4.4. Out of Scope:
+	N/A
+
+     4.5. Interfaces:
+     4.5.1. Imported Interfaces:
+     Interface			Classification	Comments
+      
+====================================================================
+     Machine Description (MD)	Sun Private	Defined by FWARC/2005/115
+     data structures
+
+     sun4v core API		Sun Private	Core APIs defined by
+						FWARC/2005/116
+
+     4.5.2. Exported Interfaces:
+     Interface			Classification	Comments
+      
+====================================================================
+     MMU_EXT			Committed	API group 0x4, v1.0
+     mmu-search-#size-bits	Committed	MD property
+     mmu-search-#context-bits	Committed	MD property
+     mmu-search-page-size-list	Committed	MD property
+     mmu-max-search-order	Committed	MD property
+     MMU_GET_NONPRIV_SEARCH	Committed	API call
+     MMU_SET_NONPRIV_SEARCH	Committed	API call
+     MMU_GET_PRIV_I_SEARCH	Committed	API call
+     MMU_SET_PRIV_I_SEARCH	Committed	API call
+     MMU_GET_PRIV_D_SEARCH	Committed	API call
+     MMU_SET_PRIV_D_SEARCH	Committed	API call
+
+     4.6. Doc Impact:
+	The UltraSPARC Virtual Machine Specification must be updated to
+	reflect this addition.
+
+     4.7. Admin/Config Impact:
+	No impact.
+
+     4.8. HA Impact:
+	No impact.
+
+     4.9. I18N/L10N Impact:
+	No impact.
+
+     4.10. Packaging & Delivery:
+	No impact.
+
+     4.11. Security Impact:
+	No impact.
+
+     4.12. Dependencies:
+	This interface depends on underlying hardware that provides
+	the capability.  The API and associated properties will not be
+	present on platforms that don't support the capability.
+
+5. Reference Documents:
+	(Proprietary material)
+
+6. Resources and Schedule:
+    6.1. Projected Availability:
+	(Proprietary material)
+
+    6.2. Cost of Effort:
+	(Proprietary material)
+
+    6.3. Cost of Capital Resources:
+	(Proprietary material)
+
+    6.4. Product Approval Committee requested information:
+	N/A.
+    	6.4.1. Consolidation or Component Name:
+	6.4.3. Type of CPT Review and Approval expected:
+	6.4.4. Project Boundary Conditions:
+	6.4.5. Is this a necessary project for OEM agreements:
+	6.4.6. Notes:
+	6.4.7. Target RTI Date/Release:
+	6.4.8. Target Code Design Review Date:
+	6.4.9. Update approval addition:
+
+    6.5. ARC review type:
+		FastTrack
+    6.6. ARC Exposure:
+		open
+        6.6.1. Rationale:
+
+7. Prototype Availability:
+    7.1. Prototype Availability:
+	(Proprietary material)
+
+    7.2. Prototype Cost:
+	(Proprietary material)
+
+--
+Richard Barnette            | Gather ye rosebuds while ye may,
+Sun Microsystems            | Old Time is still a-flying:
+Enterprise Systems Software | And this same flower that smiles to-day
+SCA11 2384 / USCA11-205     | To-morrow will be dying.
+(408) 276-7541 / x17541     |   -- Robert Herrick
+.                           |      "To the Virgins, to Make Much of  
+Time"
+
+

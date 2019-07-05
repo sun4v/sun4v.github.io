@@ -1,0 +1,843 @@
+From sacadmin Fri Dec 15 22:25:56 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id kBG6PtqD000013
+	for <fwarc@sac.eng.Sun.COM>; Fri, 15 Dec 2006 22:25:56 -0800 (PST)
+Received: from nwk-avmta-1.sfbay.sun.com (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id kBG6Pq48002156;
+	Sat, 16 Dec 2006 14:25:52 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0JAC00B02SJ3PE00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 15 Dec 2006 22:25:51 -0800 (PST)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0JAC00JA9SJ21K60@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 15 Dec 2006 22:25:51 -0800 (PST)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id kBG6Pobl027587; Fri,
+ 15 Dec 2006 23:25:50 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JAC00701SCSCY00@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Fri,
+ 15 Dec 2006 23:25:50 -0700 (MST)
+Received: from [129.150.32.15] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JAC00C2PSIZ8VP4@mail-amer.sun.com>; Fri,
+ 15 Dec 2006 23:25:49 -0700 (MST)
+Date: Fri, 15 Dec 2006 22:25:49 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: fast-track - 2006/700 - Physical Resource Inventory (PRI)
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: N2-FRUID_info@Sun.COM, Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>,
+        Eric Sharakan <Eric.Sharakan@Sun.COM>
+Message-id: <4583916D.9060203@sun.com>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_u+zTJQaRD8PrYw6JKsgpRw)"
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 23927
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_u+zTJQaRD8PrYw6JKsgpRw)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+I am sponsoring this case for Kevin Rathbun.  This case defines
+Physical Resource Inventory (PRI) structures.  The data in the
+PRI are represented very much like Machine Description structures.
+See details in the attached one-pager and the specification.
+
+The timer is set for December 22, 2006.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_u+zTJQaRD8PrYw6JKsgpRw)
+Content-type: text/plain; name=PRI_one-pager.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=PRI_one-pager.txt
+
+1. Introduction
+   1.1. Project/Component Working Name:
+        Physical Resource Inventory (PRI)
+
+   1.2. Name of Document Author/Supplier:
+        Kevin Rathbun
+
+   1.3. Date of This Document:
+        12/15/06
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+        1.4.1. The PAC or CPT you expect to review your project:
+                HS PAC
+
+        1.4.2. The ARC(s) you expect to review your project:
+                FWARC
+
+        1.4.3. The Director/VP who is "Sponsoring" this project:
+                Mike Sanfratello
+
+        1.4.4. The name of your business unit:
+                Systems Group (SG)
+                        (Sparc Platform Software)
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: gary.hethcoat@Sun.Com
+        1.5.2. Responsible Engineer: kevin.rathbun@sun.com
+        1.5.3. Marketing Manager: Nancy.Riley@Sun.COM
+        1.5.4. Interest List: N2-FRUID_info@sun.com
+
+2. Project Summary
+
+   2.1. Project Description:
+
+        This case will describe the Physical Resource Inventory (PRI).
+
+   2.2. Risks and Assumptions:
+
+        None.
+
+
+3. Business Summary
+   3.1. Problem Area:
+
+        With the advent of Logical Domain (LDOM) support in sun4v systems, it
+        is now possible for a guest to execute on a subset of the full system
+        resources. In this condition, the information contained in the guest
+        MD provided to that guest will only represent virtual resources that
+        have been allocated to it.
+        
+        Having complete identity information available to guest will reduce
+        time to diagnose by eliminating extra data gathering steps.  In many
+        cases gathering this data will involve extra phone calls and/or emails
+        to customer.  We need a way to provide specific FRUID information in 
+        FMA events to SP.  PRI intends to provide this information.
+
+   3.2. Market/Requester:
+        Huron/Maramba platforms, means to satisfy key requirement for
+        Serviceability (S12Y).
+
+   3.3. Business Justification:
+        Reduces problem remediation time (time spent by service team) 
+        Enables Automatic Radiance Case Creation and Routing (aka ACCR)
+        Estimated cost saving to Sun for Huron/Maramba only: @ $3.89 M 
+
+   3.4. Competitive Analysis:
+        As noted above, an enabler for ACCR, which improves Sun's service
+        call response time and accuracy.	
+
+   3.5. Opportunity Window/Exposure:
+        Solaris s10u4_b3
+
+   3.6. How will you know when you are done?:
+        When the changes are integrated into both Solaris Nevada
+        and S10u4_b3 as well as vBSC gates.
+
+4. Technical Description:
+
+    4.1 Overview 
+
+         The PRI is intended to contain physical information about a 
+         system.  Much of this information had previously been  contained in 
+         the Machine Description (MD), but with the advent of  Logical Domains 
+         (LDoms), it becomes essential to have a clean separation  between the 
+         physical and virtual views of a system.  To achieve this, much of  the 
+         physical information is no longer part of the MD within a guest domain.  
+         This provides a strictly virtual view of the system within an LDom. 
+
+         However, besides the service processor, other management  entities (e.g. 
+         FMA, the LDom Manager) still require a physical view of the  system.
+         This is now provided by the PRI.  The PRI includes not only the physical 
+         information which is no longer available in the MD (needed by FMA to  
+         perform diagnosis); it also contains additional information about the 
+         system,  necessary for the LDom Manager to successfully configure &
+         manage individual  logical domains, including acting as a template for
+         the LDom Manager to  construct MDs for the various logical domains it 
+         is managing. 
+
+         See the specification for details. 
+
+         
+    4.2. Bug/RFE Number(s):
+        6496303  identity information support (pri) for Huron
+    
+    4.3. In Scope:
+	Definition PRI structures
+
+    4.4. Out of Scope:
+        Implementation of libpri, ds_pri and other SW consumers of PRI.   
+
+    4.5  Interfaces :
+                
+    4.5.1  EXPORTED Interfaces
+
+      -----------------------------------------------------------------------
+       Interface              Classification            Description
+      -----------------------------------------------------------------------
+      
+      PRI structures           Sun Private             PRI structures defined
+                                                       by this case (2006/700)
+
+      -----------------------------------------------------------------------
+
+    4.5.2  IMPORTED Interfaces
+
+      -----------------------------------------------------------------------
+       Interface                 Classification          Description
+      -----------------------------------------------------------------------
+      
+      Machine Description (MD)    Sun Private            See FWARC/2005/115
+      data structures
+
+
+5. Reference Documents:
+  [1] libpri on sun4v (initial proposal by Ash Saulsbury)
+        http://sunwebcollab.east.sun.com/gm/document-1.9.2221866
+  [2] webrev of prototype libpri and ds_pri driver (tar file)
+        http://sunwebcollab.east.sun.com/gm/document-1.9.2221896
+  [3] sun4v machine description
+        http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/115/
+  [4] Domain Services
+        http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/055/
+
+6. Resources and Schedule:
+   6.1. Projected Availability:	Q3FY07
+
+   6.2. Cost of Effort: 3 person months
+
+   6.3. Cost of Capital Resources: N/A
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation or Component Name: vBSC, Solaris
+	6.4.3. Type of CPT Review and Approval expected: FastTrack
+        6.4.4. Project Boundary Conditions: N/A
+	6.4.5. Is this a necessary project for OEM agreements: No.
+	6.4.6. Notes: None
+	6.4.7. Target RTI Date/Release: S10u4_b3
+	6.4.8. Target Code Design Review Date: 01/05/2007
+	6.4.9. Update approval addition: N/A		
+
+   6.5. ARC review type: FastTrack
+		
+7. Prototype Availability:
+   7.1. Prototype Availability:
+	Q2FY07
+
+   7.2. Prototype Cost:
+      3 person months	
+
+--Boundary_(ID_u+zTJQaRD8PrYw6JKsgpRw)
+Content-type: text/plain; name=pri-spec.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=pri-spec.txt
+
+Version 1.0
+Date : 12/15/2006
+
+
+This is the specification for the Physical Resource Inventory (PRI). The PRI
+is intended to contain physical information about a system. Much of
+this information had previously been contained in the Machine Description (MD)
+provided to the guest. With the advent of Logical Domains (LDoms), it becomes 
+essential to have a clean separation between the physical and virtual views of 
+a system. To achieve this, much of the physical information is no longer part 
+of the MD within a guest domain. This provides a strictly virtual view of the 
+system within an LDom.
+
+However, besides the System Controller (SC), other management entities (e.g. 
+FMA, the LDom Manager) still require a physical view of the system. This is 
+now provided by the PRI. The PRI includes the physical information which is no 
+longer available in the MD (needed by FMA to perform diagnosis). It also
+includes additional information necessary for the LDom Manager to configure and
+manage individual logical domains, including acting as a template for the LDom 
+Manager to construct MDs for the various logical domains it is managing.
+
+The PRI is provided by the System Controller (SC) to the domain. The PRI
+contains physical information about system resources in a format identical
+to that used by the guest MD. The names for the nodes and properties used 
+to access that information are defined to be platform independent, as are 
+many of the values. Some of the values may be platform-dependent and may 
+require additional documentation to parse them.
+
+The PRI may be updated at anytime on the SC depending on the state of its 
+resources. Protocols and transports may be agreed upon with the domain for 
+delivering the PRI to it so that it may use the information for activities 
+such as configuring LDOM guest domains or diagnosing error data.
+
+One of the primary consumers of the PRI on the domain is the LDOM Manager. It
+uses the PRI to generate guest MDs by extracting information from it that
+serves as a template for new domains. The PRI may contain any of the nodes and 
+properties that may be found in a guest MD on a system. For this reason, this
+case imports all past and future cases that specify new nodes or properties for 
+the guest MD that may be used on a system. Since future cases cannot be 
+explicitly imported, any new cases that arise should specify that they apply
+to both the guest MD and the PRI.
+
+In addition to containing the information needed by the LDOM Manager for 
+creating guest MDs, the PRI also supplies the information it needs to generate
+the hypervisor data needed to boot a set of configured guest domains. This
+hypervisor data may include information about either the SC or other firmware
+components that it needs to know about. Some items in this specification in
+this category include the LDC endpoints and host prom information.
+
+Another of the primary consumers of the PRI are FMA modules such as diagnosis
+engines. There is a requirement to provide additional information in the PRI
+so that FMA may make diagnoses and act on them through fault, repair or logging
+actions. To enable this, the PRI contains system-wide information that may not
+be available in the guest MD in the domain on which FMA modules are running. As 
+an example, FMA modules running in the control domain (the single domain running
+the LDOM Manager) may handle ereports generated for resources owned by other
+guest domains in the system. It may access the PRI to get information it needs
+to diagnose and act on data in the ereports. For more background, see the FWARC
+case 2006/141 FMA Domain Services. 
+
+In addition to the requirements spelled out in the FMA Domain Services case, 
+there is a requirement to add additional information to the PRI so that FMA
+may generate reports with more specific details about components that have been
+diagnosed faulty. Some of this information is available in a FRUID present on 
+the component or on another component that is proxying the information. It
+is the responsibility of the SC to derive this information for components 
+present on a system and to populate the relevant property values in the PRI.
+
+The PRI also represents how components are contained within other components
+in a hierarchical fashion in the system. Each component can be identified as a 
+FRU or not based on a property. The parent component that contains each 
+component can also be found by following an arc property back to it. Based
+on this, for any component in a system, its closest parent component that is a
+FRU can be found so that it may be replaced if faulty. There should be only one
+parent component for each component, but a component may have multiple children
+components if they are all physically contained by it. The idea of a component
+physically containing another component is meant to indicate how they may be
+removed or replaced and is determined on a platform-specific basis.
+
+===============================================================================
+Components Node
+===============================================================================
+Name		Category	Required subordinates
+----		--------	---------------------
+components	core		component
+
+Description
+-----------
+This node is the parent of all component nodes and has a back arc to the
+root node.
+
+===============================================================================
+Component Node
+===============================================================================
+Name		Category	Required subordinates	Optional subordinates
+----		--------	---------------------	---------------------
+component	resource				component
+		required
+
+Description
+-----------
+Represents physical entities in the system in order to provide component
+information and system topology to the domain.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+type		PROP_STR	yes
+
+Description
+-----------
+This property contains the type of the component. Only types that have
+been submitted with an ARC case should be present.
+
+Current acceptable values for the type property include:
+
+systemboard		A system board.
+
+dimm			A single memory dimm.
+
+processor		A physical processor that is logically a single agent
+			on the system interconnect fabric. It may contain
+			several processor cores or strands.
+
+strand			A physical strand in the processor.
+
+Type-specific property requirements
+-----------------------------------
+The following requirements hold for component nodes of these types:
+
+For processor type nodes, the fwd property should link to a strand type node.
+If there are multiple component nodes for multiple processors in the system, 
+this can be used to determine which processor a strand is on.
+
+Only strand type nodes should have an id property as defined below.
+
+Only dimm type nodes should have a nac property as defined below. This is for
+continued support of an existing FMA requirement on niagara platforms.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+nac		PROP_STR	no
+
+Description
+-----------
+This property contains the NAC for the component, as described in the
+system nomenclature document for the system. It should only appear in
+dimm type component nodes.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+fru		PROP_VAL	no
+
+Description
+-----------
+This property is present and has a value of 1 if the component is a FRU.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+serial_number	PROP_STR	no
+
+Description
+-----------
+This property contains the component serial number contained in the FRUID.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+part_number	PROP_STR	no
+
+Description
+-----------
+This property contains the component part number contained in the FRUID.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+rev_number	PROP_STR	no
+
+Description
+-----------
+This property contains the component rev number contained in the FRUID.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+dash_number	PROP_STR	no
+
+Description
+-----------
+This property contains the component dash number contained in the FRUID.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+id		PROP_VAL	yes
+
+Description
+-----------
+This property contains the strand id on the processor and should only be
+present in strand type nodes.
+
+===============================================================================
+Firmware Node
+===============================================================================
+Name		Category	Required subordinates	Optional subordinates
+----		--------	---------------------	---------------------
+firmware	core		read_only_memory
+
+Description
+-----------
+This node contains information describing firmware constraints needed by the 
+LDOM Manager for configuring guest domains.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+max_guests	PROP_VAL	yes
+
+Description
+-----------
+This property describes the maximum number of guests that the firmware 
+supports.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+max_hv_ldcs	PROP_VAL	yes
+
+Description
+-----------
+This property describes the maximum number of hypervisor LDC endpoints that the 
+hypervisor supports.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+max_guest_ldcs	PROP_VAL	yes
+
+Description
+-----------
+This property describes the maximum number of guest LDC endpoints that the 
+hypervisor supports.
+
+===============================================================================
+Read_Only_Memory Node
+===============================================================================
+Name		 Category	Required subordinates	Optional subordinates
+----		 --------	---------------------	---------------------
+read_only_memory core		rom_img
+
+Description
+-----------
+This node contains information about the contents of read-only memory on the
+system, such as the host or system PROM.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+name		PROP_STR	yes
+
+Description
+-----------
+This property contains a human readable string for identifying the read-only 
+memory that this node represents. For example, "System PROM" may be used to
+indicate that this is the PROM for the system firmware.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+base		PROP_VAL	yes
+
+Description
+-----------
+This property contains the base address of the read-only memory in the system
+address space.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+size		PROP_VAL	yes
+
+Description
+-----------
+This property contains the size of the read-only memory in bytes.
+
+===============================================================================
+Rom_Img Node
+===============================================================================
+Name		Category	Required subordinates	Optional subordinates
+----		--------	---------------------	---------------------
+rom_img		core
+
+Description
+-----------
+This node contains information about a firmware component in read-only memory.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+name		PROP_STR	yes
+
+Description
+-----------
+This property contains a human readable string for identifying this firmware
+image in the read-only memory. For example, "Openboot" may be used to indicate
+that this image is the Openboot image used to boot the guest.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+offset		PROP_VAL	yes
+
+Description
+-----------
+This property contains the offset into read-only memory of this firmware image.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+size		PROP_VAL	yes
+
+Description
+-----------
+This property contains the size of the firmware image in bytes.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+alignment	PROP_VAL	no
+
+Description
+-----------
+This property contains any memory alignment requirements of the firmware image,
+for placing that image in memory so that it runs and boots successfully.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+min_allocation	PROP_VAL	no
+
+Description
+-----------
+This property contains any minimum memory allocation requirements of the 
+firmware image.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+guest_use	PROP_VAL	no
+
+Description
+-----------
+This property indicates that this firmware image is suitable for use as the 
+startup image for a guest.
+
+===============================================================================
+Ldc_Endpoints Node
+===============================================================================
+Name		Category	Required subordinates	Optional subordinates
+----		--------	---------------------	---------------------
+ldc_endpoints	core		ldc_endpoint
+
+Description
+-----------
+This node aggregates fwd arc links to all the ldc_endpoint nodes needed by the
+LDOM Manager for generating the information hypervisor needs to configure its 
+internal data structures to route packets between LDC channel endpoints.
+
+===============================================================================
+Ldc_Endpoint Node
+===============================================================================
+Name		Category	Required subordinates	Optional subordinates
+----		--------	---------------------	---------------------
+ldc_endpoint	core
+
+Description
+-----------
+This node contains the information hypervisor needs to configure its 
+internal data structures to route packets between LDC channel endpoints.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+resource_id	PROP_VAL	yes
+
+Description
+-----------
+This property contains a unique id for each ldc_endpoint node.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+target_type	PROP_VAL	yes
+
+Description
+-----------
+This property contains a value indicating one of several types of targets that 
+is on the other end of a pair of LDC endpoints.
+
+Acceptable values are
+
+	0	The target endpoint is in the guest
+	1	The target endpoint is in the hypervisor
+	2	The target endpoint is in the SC
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+channel		PROP_VAL	yes
+
+Description
+-----------
+This property contains the endpoint id for the channel endpoint this node
+represents. The channel endpoint may be owned by a guest, hypervisor or the SP.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+target_channel	PROP_VAL	yes
+
+Description
+-----------
+This property contains the endpoint id for the target endpoint on the other end
+of this channel. The target channel endpoint may be owned by a guest, hypervisor 
+or the SP.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+tx-ino		PROP_VAL	yes
+rx-ino		PROP_VAL	yes
+
+Description
+-----------
+These properties contains the same values as the corresponding tx-ino and rx-ino
+properties in the channel-endpoint node in the guest MD. The channel-endpoint 
+node has an id property value matching this ldc_endpoint node channel property 
+value. This enables hypervisor to target interrupts to the guest LDC endpoint.
+
+
+--Boundary_(ID_u+zTJQaRD8PrYw6JKsgpRw)--
+
+From sacadmin Mon Dec 18 18:33:25 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id kBJ2XP0L022614
+	for <fwarc@sac.eng.sun.com>; Mon, 18 Dec 2006 18:33:25 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id kBJ2XLBs009772;
+	Tue, 19 Dec 2006 02:33:22 GMT
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JAI003071RLRS00@brm-avmta-1.central.sun.com>; Mon,
+ 18 Dec 2006 19:33:21 -0700 (MST)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.5])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JAI009CM1RK0ZF0@brm-avmta-1.central.sun.com>; Mon,
+ 18 Dec 2006 19:33:20 -0700 (MST)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id kBJ2XKXS021454; Mon,
+ 18 Dec 2006 18:33:20 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JAI00K011K4SB00@d1-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Mon,
+ 18 Dec 2006 18:33:20 -0800 (PST)
+Received: from [129.153.85.36] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JAI00D871RKNRLY@d1-sfbay-10.sun.com>; Mon,
+ 18 Dec 2006 18:33:20 -0800 (PST)
+Date: Mon, 18 Dec 2006 18:33:20 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: fast-track - 2006/700 - Physical Resource Inventory (PRI)
+In-reply-to: <4583916D.9060203@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: N2-FRUID_info@sun.com, Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+        Eric Sharakan <Eric.Sharakan@sun.com>
+Message-id: <45874F70.6050402@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <4583916D.9060203@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20060120
+Status: RO
+Content-Length: 692
+
+Hitendra Zhangada wrote On 12/15/06 22:25,:
+> I am sponsoring this case for Kevin Rathbun.  This case defines
+> Physical Resource Inventory (PRI) structures.  The data in the
+> PRI are represented very much like Machine Description structures.
+> See details in the attached one-pager and the specification.
+> 
+> The timer is set for December 22, 2006.
+
+I forgot to mention that this case requests minor/micro/patch OS
+binding and minor/micro binding for the firmware.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Fri Dec 22 15:17:20 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id kBMNHKlw007912
+	for <fwarc@sac.eng.Sun.COM>; Fri, 22 Dec 2006 15:17:20 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id kBMNHIP21725;
+	Fri, 22 Dec 2006 16:17:18 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JAP004017CPRP00@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 22 Dec 2006 15:17:13 -0800 (PST)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.5]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JAP001KL7COR900@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 22 Dec 2006 15:17:12 -0800 (PST)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id kBMNHC8B029621; Fri,
+ 22 Dec 2006 15:17:12 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JAP000017BE4R00@d1-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Fri,
+ 22 Dec 2006 15:17:12 -0800 (PST)
+Received: from [129.153.85.36] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JAP00D5P7CONR29@d1-sfbay-10.sun.com>; Fri,
+ 22 Dec 2006 15:17:12 -0800 (PST)
+Date: Fri, 22 Dec 2006 15:17:12 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: fast-track - 2006/700 - Physical Resource Inventory (PRI)
+In-reply-to: <45874F70.6050402@Sun.COM>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: N2-FRUID_info@Sun.COM, Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>,
+        Eric Sharakan <Eric.Sharakan@Sun.COM>
+Message-id: <458C6778.7030301@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <4583916D.9060203@sun.com> <45874F70.6050402@Sun.COM>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20060120
+Status: RO
+Content-Length: 960
+
+Hitendra Zhangada wrote On 12/18/06 18:33,:
+> Hitendra Zhangada wrote On 12/15/06 22:25,:
+> 
+>> I am sponsoring this case for Kevin Rathbun.  This case defines
+>> Physical Resource Inventory (PRI) structures.  The data in the
+>> PRI are represented very much like Machine Description structures.
+>> See details in the attached one-pager and the specification.
+>>
+>> The timer is set for December 22, 2006.
+> 
+> 
+> I forgot to mention that this case requests minor/micro/patch OS
+> binding and minor/micro binding for the firmware.
+
+
+This case timed out today and hence approved.  It is approved for
+minor/micro/patch OS binding and minor/micro binding for the firmware.
+
+Thanks for the review.
+
+
+Happy Holidays and New Year to you all!
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+

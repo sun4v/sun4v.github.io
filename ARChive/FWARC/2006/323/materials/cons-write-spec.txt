@@ -1,0 +1,88 @@
+$Revision: 1.5 $ $Date: 2006/05/18 19:05:31 $
+
+1 Introduction
+
+  This document specifies a hypervisor API function to provide a
+  multi-character console output interface to supplement the core
+  console putchar interface.
+
+
+2 cons-write API Call
+
+  Entry:
+	trap#		FAST_TRAP
+	function#	CONS_WRITE
+	arg0		raddr
+	arg1		size
+
+  Exit:
+	ret0		status
+	ret1		characters written
+
+  Errors:
+	ENORADDR	Invalid real address
+	EWOULDBLOCK	Cannot complete operation without blocking
+	EIO		I/O error
+
+  Writes 'size' characters contained in the buffer
+  indicated by the 'raddr' argument to the console device.
+
+  On success, ret1 contains the actual number of characters
+  written to the console device which may be fewer than the
+  requested number of characters.
+
+  If ret0 (status) is non-zero, then no characters have been written
+  to the device and ret1 is not valid.
+
+
+3 cons-read API Call
+
+  Entry:
+	trap#		FAST_TRAP
+	function#	CONS_READ
+	arg0		raddr
+	arg1		size
+
+  Exit:
+	ret0		status
+	ret1		characters read or special value
+
+  Errors:
+	ENORADDR	Invalid real address
+	EWOULDBLOCK	Cannot complete operation without blocking
+	EIO		I/O error
+
+  Reads up to 'size' characters from the console device and
+  places them in the buffer specified by the 'raddr' argument.
+
+  On success, ret1 contains either a special value (CONS_BREAK,
+  CONS_HUP as per CONS_GETCHAR) or the number of characters placed
+  into the buffer which may be fewer than the requested number of
+  characters.
+
+  If ret0 (status) is non-zero, then no characters have been read from
+  the console device and ret1 is not valid.
+
+
+4 cons-write-buffer-size Machine Description Property
+
+  The optional integer property 'cons-write-buffer-size' in the machine
+  description's 'platform' node provides a hint as to the
+  size of the console device's internal output buffering.
+
+
+5 cons-read-buffer-size Machine Description Property
+
+  The optional integer property 'cons-read-buffer-size' in the machine
+  description's 'platform' node provides a hint as to the
+  size of the console devices's internal input buffering.
+
+
+6 References
+
+  [1] Sun4v Hypervisor API (FWARC/2005/116)
+	http://sac.sfbay/Archives/CaseLog/arc/FWARC/2005/116/
+	http://projectq.sfbay.sun.com/docs/api.pdf
+
+  [2] Sun4v Machine Description (FWARC/2005/115)
+	http://sac.sfbay/Archives/CaseLog/arc/FWARC/2005/115/

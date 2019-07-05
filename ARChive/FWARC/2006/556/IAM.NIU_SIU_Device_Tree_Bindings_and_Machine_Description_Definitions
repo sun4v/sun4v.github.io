@@ -1,0 +1,11 @@
+Name:		NIU/SIU Device Tree Bindings and Machine Description Definitions
+Submitter:	Stephen Ehring
+Owner:		Stephen Ehring
+Interest: 	J.Tapia@Sun.COM, NIU-SW-Stack-Development@sun.com, ashley.saulsbury@sun.com
+Status:         closed approved fast-track 10/20/2006
+Comment:	inception scheduled 10/23/2006	
+Comment:        waiting fast-track 10/06/2006
+Comment:        updated bindings defined by FWARC/2007/288
+Exposure:	open
+Comment:        updated bindings defined by FWARC/2007/494
+Comment:	

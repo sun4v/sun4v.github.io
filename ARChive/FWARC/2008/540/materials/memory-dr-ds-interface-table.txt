@@ -1,0 +1,38 @@
+Interface Table :
+
+Imported Interfaces :
+
+    Interface                            Classification  Comments
+    -------------------------------------------------------------------------
+    Domain Services                      Sun Private     Domain Services protocol
+                                                         and messages formats
+                                                         FWARC/2006/055
+
+    sun4v Machine                        Sun Private     Memory MD nodes defined
+    Description nodes                                    by FWARC/2005/115
+ 
+Exported Interfaces :
+
+    Interface name                       Classification   Comments
+    ----------------------------------------------------------------------- 
+
+    "dr-mem"                             Sun Private      Memory DR service id 
+        
+     Memory DR Message header            Sun Private
+
+     Memory DR Request message format    Sun Private      Memory DR request
+
+     Request message types:
+
+       DR_MEM_CONFIGURE                  Sun Private      Configure (add) memory
+       DR_MEM_UNCONFIGURE                Sun Private      Unconfigure (delete) memory
+       DR_MEM_UNCONF_STATUS              Sun Private      Get memory unconfigure status
+       DR_MEM_UNCONF_CANCEL              Sun Private      Cancel memory unconfigure
+       DR_MEM_QUERY                      Sun Private      Query memory info
+
+     Memory DR Response message format   Sun Private      Response for Mem DR request
+
+     Response message types:
+
+       DR_MEM_OK                         Sun Private      Request completed successfully
+       DR_MEM_ERROR                      Sun Private      Request failed (not attempted)

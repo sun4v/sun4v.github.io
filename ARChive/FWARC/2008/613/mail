@@ -1,0 +1,542 @@
+From sacadmin Fri Sep 26 23:00:31 2008
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8R60VOM003662;
+	Fri, 26 Sep 2008 23:00:31 -0700 (PDT)
+Received: (from dmk@localhost)
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit) id m8R60VtP003658;
+	Fri, 26 Sep 2008 23:00:31 -0700 (PDT)
+Date: Fri, 26 Sep 2008 23:00:31 -0700 (PDT)
+From: David Kahn <dmk@sac.sfbay.sun.com>
+Message-Id: <200809270600.m8R60VtP003658@sac.sfbay.sun.com>
+To: FWARC-record@sac.sfbay.sun.com
+Cc: Tayfun.Kocaoglu@Sun.COM
+Subject: KT IOS Performance Counters API [FWARC/2008/613 FastTrack]
+Status: RO
+Content-Length: 569
+
+
+Template Version: @(#)sac_nextcase %I% %G% SMI
+This information is Copyright 2008 Sun Microsystems
+1. Introduction
+    1.1. Project/Component Working Name:
+	 KT IOS Performance Counters API
+    1.2. Name of Document Author/Supplier:
+	 Author:  Tayfun Kocaoglu
+    1.3  Date of This Document:
+	26 September, 2008
+4. Technical Description
+    See the case directory for more detail
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		sysfw
+    6.5. ARC review type: FastTrack
+    6.6. ARC Exposure: open
+
+
+From sacadmin Fri Sep 26 23:12:30 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8R6CU10003748
+	for <fwarc@sac.sfbay.sun.com>; Fri, 26 Sep 2008 23:12:30 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m8R6CPZ3025883;
+	Sat, 27 Sep 2008 07:12:27 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K7U00I01BWQBC00@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 26 Sep 2008 23:12:26 -0700 (PDT)
+Received: from unknown.sfbay.sun.com ([10.6.92.101])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K7U00271BWQXD90@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 26 Sep 2008 23:12:26 -0700 (PDT)
+Received: from noho.sfbay.sun.com (localhost [127.0.0.1])
+	by unknown.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id m8R6CQZt024345;
+ Fri, 26 Sep 2008 23:12:26 -0700 (PDT)
+Received: (from dmk@localhost)	by noho.sfbay.sun.com (8.13.7+Sun/8.13.7/Submit)
+ id m8R6CP6I024344; Fri, 26 Sep 2008 23:12:25 -0700 (PDT)
+Date: Fri, 26 Sep 2008 23:12:25 -0700 (PDT)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Subject: KT IOS Performance Counters [FWARC/2008/613 FastTrack timeout
+ 10/3/2008]
+To: fwarc@sun.com
+Cc: Tayfun.Kocaoglu@sun.com
+Message-id: <200809270612.m8R6CP6I024344@noho.sfbay.sun.com>
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 415
+
+I'm sponsoring this fast-track case for Tayfun.
+
+The requested release binding is minor/micro/patch.
+
+The materials are in the materials directory. The file includes
+the intereface table at the end of the document.
+
+The case creates a new API group for KT IOS, and creates
+an API to get/set the various IOS perf regs and defines
+the argument values for the perf regs.
+
+The trap registry has been updated.
+
+-David
+
+
+
+From sacadmin Wed Oct  1 18:06:06 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m92165UP021697
+	for <fwarc@sac.sfbay.sun.com>; Wed, 1 Oct 2008 18:06:05 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m92163W8005388
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 2 Oct 2008 02:06:04 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K8300K07723MW00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Oct 2008 18:06:03 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K830096B722X3D0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Oct 2008 18:06:02 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m92162tJ007946	for
+ <fwarc@sun.com>; Wed, 01 Oct 2008 18:06:02 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K8300J016XHOM00@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 01 Oct 2008 18:06:02 -0700 (PDT)
+Received: from [129.153.85.16] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K8300L147214U00@fe-sfbay-09.sun.com>; Wed,
+ 01 Oct 2008 18:06:02 -0700 (PDT)
+Date: Wed, 01 Oct 2008 18:06:00 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: KT IOS Performance Counters [FWARC/2008/613 FastTrack timeout
+ 10/3/2008]
+In-reply-to: <200809270612.m8R6CP6I024344@noho.sfbay.sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: fwarc@sun.com
+Cc: Tayfun.Kocaoglu@sun.com
+Message-id: <48E41E78.3030404@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200809270612.m8R6CP6I024344@noho.sfbay.sun.com>
+User-Agent: Thunderbird 2.0.0.14 (X11/20080505)
+Status: RO
+Content-Length: 844
+
+On 09/26/08 23:12, David Kahn wrote:
+> I'm sponsoring this fast-track case for Tayfun.
+>
+> The requested release binding is minor/micro/patch.
+>
+> The materials are in the materials directory. The file includes
+> the intereface table at the end of the document.
+
+Dave, I think the interface classification needs to be "Committed"
+for this "open" case.
+
+For Rock APIs I used "Committed" classification.
+
+
+Thanks.
+
+>
+> The case creates a new API group for KT IOS, and creates
+> an API to get/set the various IOS perf regs and defines
+> the argument values for the perf regs.
+>
+> The trap registry has been updated.
+>
+> -David
+>
+>
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Thu Oct  2 07:14:39 2008
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m92EEdpo009407
+	for <fwarc@sac.sfbay.sun.com>; Thu, 2 Oct 2008 07:14:39 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m92EEdbA026036
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 2 Oct 2008 07:14:39 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K8400B0D7KF8900@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Oct 2008 07:14:39 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K84002RK7KD86D0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Oct 2008 07:14:37 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m92EEbop007800	for
+ <fwarc@sun.com>; Thu, 02 Oct 2008 14:14:37 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K84000016WHMA00@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 02 Oct 2008 08:14:37 -0600 (MDT)
+Received: from [192.168.100.100]
+ (c-24-62-231-112.hsd1.ma.comcast.net [24.62.231.112])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0K84005S17K8CM70@mail-amer.sun.com>; Thu,
+ 02 Oct 2008 08:14:34 -0600 (MDT)
+Date: Thu, 02 Oct 2008 10:14:31 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: KT IOS Performance Counters [FWARC/2008/613 FastTrack timeout
+ 10/3/2008]
+In-reply-to: <200809270612.m8R6CP6I024344@noho.sfbay.sun.com>
+Sender: Eric.Sharakan@sun.com
+To: David Kahn <dmk@noho.SFBay.Sun.COM>
+Cc: fwarc@sun.com, Tayfun.Kocaoglu@sun.com
+Message-id: <984DFA16-3739-4563-95C1-0913676B9B2F@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.929.2)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ micalg=sha1; boundary=Apple-Mail-9--163463709
+X-PMX-Version: 5.4.1.325704
+References: <200809270612.m8R6CP6I024344@noho.sfbay.sun.com>
+Status: RO
+Content-Length: 4765
+
+
+--Apple-Mail-9--163463709
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed;
+	delsp=yes
+Content-Transfer-Encoding: 7bit
+
+Sigh, more HV APIs exposing platform-specific functionality to the  
+guest, potentially breaking the sun4v model...
+
+I don't know whether this is really architectural commentary (and I  
+sure hope this goes without saying, but I'm not sure we're at that  
+point quite yet), but this needs to be designed such that the  
+following cases all behave correctly:
+
+1) Legacy OS (i.e. one that doesn't negotiate these APIs) on new FW  
+(i.e. with these APIs)
+2) New OS with these APIs (accessed ONLY in the platform-specific cpu  
+module) running on legacy FW
+3) New FW running on platforms without these IOS perf regs (i.e. it  
+must not advertise this group)
+
+-Eric
+
+On Sep 27, 2008, at 2:12 AM, David Kahn wrote:
+
+> I'm sponsoring this fast-track case for Tayfun.
+>
+> The requested release binding is minor/micro/patch.
+>
+> The materials are in the materials directory. The file includes
+> the intereface table at the end of the document.
+>
+> The case creates a new API group for KT IOS, and creates
+> an API to get/set the various IOS perf regs and defines
+> the argument values for the perf regs.
+>
+> The trap registry has been updated.
+>
+> -David
+>
+>
+
+
+--Apple-Mail-9--163463709
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA3MTAxODAzMjAxOFoXDTA4MTAxNzAzMjAx
+OFowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyOpo1o9G
+kC4zvPQvyj/wBYNQR3zjkMYMxkWmL184ofuULXo7qmNtiCDanb/U9CmkH/ZXm3itLKVtRIUo/Fr7
+oi4CRxDUkF8LarMoiGbsuQ0hF0QIwJXdGv9GtNwagdzOtsqzZ0pV0II3WB7+NaIQ8qJ2KIwseULZ
+aXX0BzdlINGBYufa5xG38/piJfwb5n7JE/O2pocT1kO+IM9yLm3840a7FKwcYV6/tpXYABKlpgfK
+ZUp56DDLXf/5qW8jHPGhd6yrOVf53QtXypHNXPJDR+NFWo5Os2drH5V2rxzCildmoxOmhZkVaG03
+anU0qE4nWSRH1CKvtvigQDGJg0++sQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQCAxj+ZJX9XVIa4NeiRkfeL
+WaXXlKRONtx3QP3K7B9/T983wXc26sacqER608AoRMz9GyECwpIHtkvcRoCRPoWLyoWBf7zwh8ha
+0CPkTAmFxl1ENtpq/43Di0DUSHrcCeGvigN4esQpYJtQAmCUm5i5tXbu70d192lfniLVgHPvYzCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQQtJ8t0o3bhp1zVjZgObu9jAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wODEw
+MDIxNDE0MzJaMCMGCSqGSIb3DQEJBDEWBBSD1fplzzu31vW3kXTH7q9cabTUozCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdK
+N24adc1Y2YDm7vYwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEBBQAEggEAE/MD
+QESrgocM5W4vSCAQIgjGErm2v1Ou6dXx2YlzO2cX4Vya2b27Hay+yyvioDZVXXnES56QkBaBrTSy
+7OVQnspDTw9r9epMI0G7up5/i/jPpdB+YwNvQrQiX2Nx3trOPAGK0UZguY0J4/RtYzG3EPxWH39h
+Airn9n1aFvKExstguV0pzHlwKGSBoneSsMzSrygkQpxcQx0qRPjPjOba89dxTVTuzR2D0GML84QS
+euYF1HnD+4GFphggs5839NY3dBgt5V5AwfAuNUVfTOrneVGz8EaGX2yvux/lEKzS0vMaYjNCGOvq
+PN7MO3+6thyo7dJUzs01yMf+NqrEO+FyKwAAAAAAAA==
+
+--Apple-Mail-9--163463709--
+
+From sacadmin Thu Oct  2 07:31:34 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m92EVXgI009796
+	for <fwarc@sac.sfbay.sun.com>; Thu, 2 Oct 2008 07:31:33 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m92EV5vw008783
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 2 Oct 2008 15:31:32 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K84003018CIS200@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Oct 2008 07:31:30 -0700 (PDT)
+Received: from dm-sfbay-02.sfbay.sun.com ([129.146.11.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K8400IN78CISK80@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Oct 2008 07:31:30 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-02.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id m92EVTmF000487; Thu, 02 Oct 2008 07:31:29 -0700 (PDT)
+Received: from [192.168.0.9] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id m92EVSTq000932; Thu,
+ 02 Oct 2008 07:31:29 -0700 (PDT)
+Date: Thu, 02 Oct 2008 07:31:28 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: KT IOS Performance Counters [FWARC/2008/613 FastTrack timeout
+ 10/3/2008]
+In-reply-to: <984DFA16-3739-4563-95C1-0913676B9B2F@Sun.COM>
+To: Eric Sharakan <Eric.Sharakan@sun.com>
+Cc: David Kahn <dmk@noho.sfbay.sun.com>, fwarc@sun.com,
+        Tayfun.Kocaoglu@sun.com
+Message-id: <48E4DB40.1050104@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200809270612.m8R6CP6I024344@noho.sfbay.sun.com>
+ <984DFA16-3739-4563-95C1-0913676B9B2F@Sun.COM>
+User-Agent: Thunderbird 2.0.0.17 (Windows/20080914)
+Status: RO
+Content-Length: 747
+
+
+
+Eric Sharakan wrote:
+> Sigh, more HV APIs exposing platform-specific functionality to the 
+> guest, potentially breaking the sun4v model...
+
+Eric, there's already precedents for doing this,
+and this is no different than what was done
+for Niagara/Fire, N2, VF, Rock, etc based
+platforms.
+
+Generic code can't use this stuff. These interfaces
+aren't intended for generic use.
+
+If we can ever convince the hardware teams to implement
+standard IOS performance counters, etc, then we can
+move away from this, but until that happens ...
+
+This should really be a minor blip on the generic
+sun4v radar screen.
+
+API group negotiation should handle cases 1 and
+3. Case 2 is up to developers to deal with, and
+should be exposed during code reviews.
+
+-David
+
+From sacadmin Thu Oct  2 12:26:59 2008
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m92JQwRn022695
+	for <fwarc@sac.sfbay.sun.com>; Thu, 2 Oct 2008 12:26:59 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m92JQw6P058178
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 2 Oct 2008 13:26:58 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K8400M0PM0X8900@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Oct 2008 12:26:57 -0700 (PDT)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K8400J55M0W3K90@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Oct 2008 12:26:56 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id m92JQtXg061588; Thu, 02 Oct 2008 12:26:55 -0700 (PDT)
+Received: from [192.168.0.9] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id m92JQtPo010423; Thu,
+ 02 Oct 2008 12:26:55 -0700 (PDT)
+Date: Thu, 02 Oct 2008 12:26:54 -0700
+From: David Kahn <David.Kahn@Sun.COM>
+Subject: Re: KT IOS Performance Counters [FWARC/2008/613 FastTrack timeout
+ 10/3/2008]
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: fwarc@Sun.COM, Tayfun.Kocaoglu@Sun.COM
+Message-id: <48E5207E.1090608@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.17 (Windows/20080914)
+Status: RO
+Content-Length: 119
+
+
+After discussion with Hitendra, I changed the interface
+classifications from "Sun Private" to "Uncommitted".
+
+-David
+
+
+From sacadmin Thu Oct  2 13:01:36 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m92K1ZJj023816
+	for <fwarc@sac.sfbay.Sun.COM>; Thu, 2 Oct 2008 13:01:35 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m92K1RdT021810
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 3 Oct 2008 04:01:34 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K8400C3XNMKZP00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Oct 2008 13:01:32 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K8400CV4NKRTQ00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Oct 2008 13:00:27 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m92K0RkY001687	for
+ <fwarc@sun.com>; Thu, 02 Oct 2008 13:00:27 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K8400801N5PLE00@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 02 Oct 2008 13:00:27 -0700 (PDT)
+Received: from [129.150.34.101] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K84004BXNK71M50@fe-sfbay-09.sun.com>; Thu,
+ 02 Oct 2008 13:00:08 -0700 (PDT)
+Date: Thu, 02 Oct 2008 13:00:08 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: KT IOS Performance Counters [FWARC/2008/613 FastTrack timeout
+ 10/3/2008]
+In-reply-to: <48E5207E.1090608@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: fwarc@sun.com
+Cc: Tayfun.Kocaoglu@sun.com
+Message-id: <48E52848.30700@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <48E5207E.1090608@sun.com>
+User-Agent: Thunderbird 2.0.0.17 (Windows/20080914)
+Status: RO
+Content-Length: 615
+
+David Kahn wrote:
+>
+> After discussion with Hitendra, I changed the interface
+> classifications from "Sun Private" to "Uncommitted".
+
+Thanks.  Like you said in the private mail lets use "Uncommitted"
+as minimum interface classification for all future API changes unless
+the interface is truly private to Sun.  We can raise the priority to
+"Committed" as and when necessary.
+
+
+>
+> -David
+>
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Fri Nov 21 11:49:35 2008
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id mALJnZEg016719
+	for <fwarc@sac.sfbay.sun.com>; Fri, 21 Nov 2008 11:49:35 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id mALJnSZe002687;
+	Fri, 21 Nov 2008 11:49:35 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KAP003018EM4400@brm-avmta-1.central.sun.com>; Fri,
+ 21 Nov 2008 12:49:34 -0700 (MST)
+Received: from unknown.sfbay.sun.com ([10.6.92.101])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KAP00J1G8EMPN60@brm-avmta-1.central.sun.com>; Fri,
+ 21 Nov 2008 12:49:34 -0700 (MST)
+Received: from noho.sfbay.sun.com (localhost [127.0.0.1])
+	by unknown.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id mALJnYrZ000566;
+ Fri, 21 Nov 2008 11:49:34 -0800 (PST)
+Received: (from dmk@localhost)	by noho.sfbay.sun.com (8.13.7+Sun/8.13.7/Submit)
+ id mALJnYIf000565; Fri, 21 Nov 2008 11:49:34 -0800 (PST)
+Date: Fri, 21 Nov 2008 11:49:34 -0800 (PST)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Subject: Re: KT IOS Performance Counters [FWARC/2008/613 FastTrack timeout
+ 10/3/2008]
+To: fwarc@sun.com
+Cc: Tayfun.Kocaoglu@sun.com
+Message-id: <200811211949.mALJnYIf000565@noho.sfbay.sun.com>
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 54
+
+This case is approved (timed out in October).
+
+-David
+

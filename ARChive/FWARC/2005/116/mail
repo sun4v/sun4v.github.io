@@ -1,0 +1,4719 @@
+From <IMAP4.psuedo.sims> Thu Mar 10 12:18:03 2005
+Date: Thu, 10 Mar 2005 12:18:03 -0800 (PST)
+From: Postmaster
+Subject: Message from mail server       
+Content-Length: 94
+Mime-Version: 1.0
+Status: RO
+X-IMAP: 1110407392 14
+
+Delete.
+This is a system message.                                
+
+
+
+
+
+
+
+
+
+
+
+
+
+--END+PSEUDO--
+
+From sacadmin Fri Mar  4 12:31:36 2005
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j24KVaSp004889
+	for <FWARC@sac.sfbay.sun.com>; Fri, 4 Mar 2005 12:31:36 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j24KUDjg010167
+	for <FWARC@sac.sfbay.sun.com>; Fri, 4 Mar 2005 12:30:13 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j24KUCKw095066
+	for <FWARC@sac.sfbay.sun.com>; Fri, 4 Mar 2005 12:30:12 -0800 (PST)
+Message-ID: <4228C553.1070101@sun.com>
+Date: Fri, 04 Mar 2005 12:30:11 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+Subject: 2005/116 - sun4v core API - updated materials
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Length: 111
+Status: RO
+X-Status: $$$$
+X-UID: 0000000001
+
+
+I just updated the core api.pdf file.
+
+The review version shows the date March 4 on the title sheet.
+
+-David
+
+
+From sacadmin Fri Mar  4 12:34:24 2005
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j24KYOSp004989
+	for <FWARC@sac.sfbay.sun.com>; Fri, 4 Mar 2005 12:34:24 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j24KX2jg011453
+	for <FWARC@sac.sfbay.sun.com>; Fri, 4 Mar 2005 12:33:02 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j24KX1Kw095367
+	for <FWARC@sac.sfbay.sun.com>; Fri, 4 Mar 2005 12:33:01 -0800 (PST)
+Message-ID: <4228C5FC.8090805@sun.com>
+Date: Fri, 04 Mar 2005 12:33:00 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+Subject: 2005/116 - sun4v core API - project team list of open issues
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Length: 520
+Status: RO
+X-Status: $$$$
+X-UID: 0000000002
+
+
+There's a few open issues from the project team.
+They just want to notify fwarc that these issues
+are being worked and will be closed before they
+seek committment review.
+
+Ashley's list of open items related to 0.16 March 4 api.pdf
+
+
+1. API versioning
+2. mmu_demap_*
+    (use of cpulist)
+3. memory_scrub
+    (definining error boundaries - this one will go to the SWG working group - 
+the call convention and errors will not change ... just the normative text on 
+behaviour)
+4. memory_sync
+    same as 3 above.
+
+-David
+
+
+From sacadmin Fri Mar  4 15:36:33 2005
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j24NaXSp010346
+	for <FWARC@sac.sfbay.sun.com>; Fri, 4 Mar 2005 15:36:33 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j24NZAjg003043
+	for <FWARC@sac.sfbay.sun.com>; Fri, 4 Mar 2005 15:35:11 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j24NZ9Kw004688
+	for <FWARC@sac.sfbay.sun.com>; Fri, 4 Mar 2005 15:35:10 -0800 (PST)
+Message-ID: <4228F0AD.8060000@sun.com>
+Date: Fri, 04 Mar 2005 15:35:09 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+Subject: 2005/116 - core API - issues
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Length: 518
+Status: RO
+X-Status: $$$$
+X-UID: 0000000003
+
+
+A few minor issues...
+
+3.2. Technical
+
+	Delete NVRAM_READ & NVRAM_WRITE from function number table.
+
+5.1.1. API Version (issue already flagged by project team) - Technical
+
+	Contains the old text and the new text.
+
+6.1. CPU List - Technical
+
+	I believe this was also flagged by the project team.
+	The description of the cpu list is vague and doesn't
+	match the single 'cpu' arguments in the api's listed
+	below it.
+
+6.2.9. Editorial
+
+	CPU_MONDO_SEND is listed as CPU_SEND_MONDO in the
+	function number table in 3.2
+
+
+
+From sacadmin Fri Mar  4 16:28:33 2005
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j250SXSp011390
+	for <FWARC@sac.sfbay.sun.com>; Fri, 4 Mar 2005 16:28:33 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j250RBjg023261;
+	Fri, 4 Mar 2005 16:27:11 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j250RAKw007203;
+	Fri, 4 Mar 2005 16:27:10 -0800 (PST)
+Message-ID: <4228FCDE.5080201@sun.com>
+Date: Fri, 04 Mar 2005 16:27:10 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+CC: John Johnson <John.Johnson@sun.com>
+Subject: Re: 2005/116 - core API - issues
+References: <4228F0AD.8060000@sun.com>
+In-Reply-To: <4228F0AD.8060000@sun.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Length: 775
+Status: RO
+X-Status: $$$$
+X-UID: 0000000004
+
+
+JJ pointed out that there's another one
+for the issue list:
+
+3.2. Technical
+
+	Delete CPU_WATCHDOG
+
+6.2.4 and 6.2.4.1 Technical
+
+	Delete cpu_watchdog API
+
+-David
+
+
+David Kahn wrote:
+> 
+> A few minor issues...
+> 
+> 3.2. Technical
+> 
+>     Delete NVRAM_READ & NVRAM_WRITE from function number table.
+> 
+> 5.1.1. API Version (issue already flagged by project team) - Technical
+> 
+>     Contains the old text and the new text.
+> 
+> 6.1. CPU List - Technical
+> 
+>     I believe this was also flagged by the project team.
+>     The description of the cpu list is vague and doesn't
+>     match the single 'cpu' arguments in the api's listed
+>     below it.
+> 
+> 6.2.9. Editorial
+> 
+>     CPU_MONDO_SEND is listed as CPU_SEND_MONDO in the
+>     function number table in 3.2
+> 
+> 
+> 
+
+From sacadmin Fri Mar  4 18:03:50 2005
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2523oSp029351
+	for <FWARC@sac.sfbay.sun.com>; Fri, 4 Mar 2005 18:03:50 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2522Rjg001654;
+	Fri, 4 Mar 2005 18:02:27 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2522QKw010537;
+	Fri, 4 Mar 2005 18:02:26 -0800 (PST)
+Message-ID: <42291331.3050100@sun.com>
+Date: Fri, 04 Mar 2005 18:02:25 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: David Kahn <David.Kahn@sun.com>
+CC: FWARC@sac.sfbay.sun.com, John Johnson <John.Johnson@sun.com>
+Subject: Re: 2005/116 - core API - issues
+References: <4228F0AD.8060000@sun.com> <4228FCDE.5080201@sun.com>
+In-Reply-To: <4228FCDE.5080201@sun.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Length: 911
+Status: RO
+X-Status: $$$$
+X-UID: 0000000005
+
+
+Yet another one .. cpuid.
+
+Here's my complete list. 9It does
+not include the project team list.)
+
+-David
+
+3.2. Technical
+
+	Delete NVRAM_READ & NVRAM_WRITE from function number table.
+	Delete CPU_WATCHDOG
+
+5.1.1. API Version (issue already flagged by project team) - Technical
+
+	Contains the old text and the new text.
+
+6.1. CPU List and cpuid - Technical
+
+	I believe this was also flagged by the project team.
+	The description of the cpu list is vague and doesn't
+	match the single 'cpu' arguments in the api's listed
+	below it.
+
+	The cpuid itself should be a 64-bit int.
+	The definition of a cpuid should use the same wording
+	used in the definition of devhandle. (it's the config
+	hi addr from the reg prop.)
+
+6.2.4 and 6.2.4.1 technical
+
+	delete cpu_watchdog api.
+
+6.2.9. Editorial
+
+	CPU_MONDO_SEND is listed as CPU_SEND_MONDO in the
+	function number table in 3.2. One or the other needs
+	to be changed.
+
+
+
+
+From sacadmin Sun Mar  6 18:04:22 2005
+Received: from phys-san-2 (phys-san-2.West.Sun.COM [129.153.85.71])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2724MSp002744
+	for <FWARC@sac.sfbay.sun.com>; Sun, 6 Mar 2005 18:04:22 -0800 (PST)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0ICY00401L2RQ1@san-mail1.west.sun.com>
+ (original mail from hitendra.zhangada@sun.com) for FWARC@sac.sfbay.sun.com;
+ Sun, 06 Mar 2005 18:02:58 -0800 (PST)
+Received: from [129.150.33.51]
+ (vpn-129-150-33-51.Central.Sun.COM [129.150.33.51]) by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0ICY00N1XLOW1U@san-mail1.west.sun.com>; Sun,
+ 06 Mar 2005 18:02:57 -0800 (PST)
+Date: Sun, 06 Mar 2005 18:02:56 -0800
+From: Hitendra Zhangada <hitendra.zhangada@sun.com>
+Subject: Re: 2005/116 - core API - issues
+In-reply-to: <42291331.3050100@sun.com>
+To: FWARC@sac.sfbay.sun.com
+Cc: John Johnson <John.Johnson@Sun.COM>
+Reply-to: hitendra.zhangada@sun.com
+Message-id: <422BB650.90406@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.2)
+ Gecko/20040804 Netscape/7.2 (ax)
+References: <4228F0AD.8060000@sun.com> <4228FCDE.5080201@sun.com>
+ <42291331.3050100@sun.com>
+Content-Length: 3718
+Status: RO
+X-Status: $$$$
+X-UID: 0000000006
+
+Few comments/issues etc. We can discuss at the meeting.  However,
+reply via e-mail may help expedite the FWARC review.
+
+
+General questions related to sun4v/HV etc. (probably not related
+to this case itself).
+
+1.  I think there are some interfaces which are from HV to Guest,
+     e.g., traps from HV on errors etc.  Which specification/ARC case
+     defines these interfaces?
+
+2.  Similarly what specification/ARC case defines the HV and Guest
+     to SP interface (mailbox etc.)?  Is the vBSC case defines these
+     interfaces?
+
+3.  What specification/ARC case defines the SP CLIs?
+
+
+Now some comments and questions related to core API specification,
+version 0.16 dated March 2, 2005 (I have not looked at the latest
+spec. which got copied in the case directory late last week).
+
+4.  Section 3.2, we probably want to create registry so that new
+     API function numbers can be added and are managed via registry.
+
+5.  Section 4 can probably be deleted since machine descriptor
+     will have its own specification and ARC case.
+
+6.  Section 5.1.1, it is not clear how the version# is established
+     at start of day by guest.  Some explanation on this would be useful.
+     Since there HV can interrupt guests, does the API version cover
+     the HV to guest interfaces as well?  Can HV send interrupts to
+     guest before the version# is established?  Also, it seems like
+     guest can not use any of the APIs until the version# is
+     established, is this true?
+
+7.  Section 5.1.2, the description states that all cpus are stopped.
+     How does HV do this?  Does it use CPU xcalls?
+
+8.  Section 5.1.4, the second last sentence in the description states
+     that, "...  real trap table (rtba) entry point on one of the CPUs.
+     Is this "one" a typo for "all"?  The description prior to this
+     sentence talks about capturing all CPUs etc.
+
+9.  Section 6.1, is the CPU id referred in the CPU list the same as
+     the CPUID (interruptable ID)? or the one assigned by HV in the
+     cpu_myid?  I think it is the later, right?  Either way, I think
+     a description on what is CPU id would be nice in this section.
+
+10.  Section 6.2.4, Is there a way to set MAX value for the watchdog
+      time out?  Can we have -1 = MAX value?  Since the EINVAL is
+      returned for "too long" there seems to be a per implementation
+      MAX value.  Is there a way for guest to find out the max value?
+
+11.  Section 6.2.4, the single line paragraph states that " ..  the
+      previously specified time-out period", this sentence is not
+      clear, I think the sentence needs to be "Upon success the service
+      returns seconds remaining from the previous time-out period".
+
+12.  Section 7.1.1, the first sentence is not clear due to spelling
+      errors.
+
+13.  Section 7.2, the second table, the last row on the page 16,
+      what does "so" stand for in "so page"?  What is "so page"?
+
+14.  Section 7.3.6 and 7.3.7, I think the description should also
+      mentioned something about the single unified I and D TLBs.
+      A description similar to 7.3.8 related to single unified TLB
+      is needed for these sections.
+
+15.  Section 7.3.11, I do not understand the second paragraph related
+      to avoiding complicated address mapping issues.  What complications
+      does this refer to?
+
+16.  Section 12, is the HV dump part of Solaris dump?  How does user
+      access HV dump information?  Are there any changes to existing
+      tools related to guest OS (Solaris) dumps?
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Sun Mar  6 19:55:10 2005
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j273tASp007879
+	for <FWARC@sac.sfbay.sun.com>; Sun, 6 Mar 2005 19:55:10 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j273rkjg012620;
+	Sun, 6 Mar 2005 19:53:46 -0800 (PST)
+Received: from [192.9.61.24] (punchin-jgj [192.9.61.24])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j273rjKw060466;
+	Sun, 6 Mar 2005 19:53:45 -0800 (PST)
+Message-ID: <422BD00F.6020404@sun.com>
+Date: Sun, 06 Mar 2005 19:52:47 -0800
+From: John Johnson <john.johnson@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7.5) Gecko/20041229
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: hitendra.zhangada@sun.com
+CC: FWARC@sac.sfbay.sun.com
+Subject: Re: 2005/116 - core API - issues
+References: <4228F0AD.8060000@sun.com> <4228FCDE.5080201@sun.com> <42291331.3050100@sun.com> <422BB650.90406@sun.com>
+In-Reply-To: <422BB650.90406@sun.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Content-Length: 6161
+Status: RO
+X-Status: $$$$
+X-UID: 0000000007
+
+Hitendra Zhangada wrote:
+> Few comments/issues etc. We can discuss at the meeting.  However,
+> reply via e-mail may help expedite the FWARC review.
+> 
+
+	Here are some initial thoughts.  We can discuss these further
+tomorrow.
+
+
+> 
+> General questions related to sun4v/HV etc. (probably not related
+> to this case itself).
+> 
+> 1.  I think there are some interfaces which are from HV to Guest,
+>     e.g., traps from HV on errors etc.  Which specification/ARC case
+>     defines these interfaces?
+> 
+
+	The virtual machine (inlcuding traps, regs, ASIs, etc) is described
+in the sun4v spec, which is included in the SunSPARC 1.0 and 2.0 specs.
+David Weaver has provided this link to the current spec:
+
+http://systemsweb.sfbay/archperf/SPARC-Arch-SWG/restricted/SS2-current-draft.pdf
+
+
+> 2.  Similarly what specification/ARC case defines the HV and Guest
+>     to SP interface (mailbox etc.)?  Is the vBSC case defines these
+>     interfaces?
+> 
+
+	The SP i/f for ontario will be in FWARC 2005/117.  We will do a
+generic SP i/f based on inter-partition networking as part of the LDOMs
+project.
+
+
+> 3.  What specification/ARC case defines the SP CLIs?
+> 
+
+	The ontario SP is ALOM-based; there is no new CLI for it.  I do
+not know if the current ALOM's CLI has been ARC'd, but ALOM is not part of
+this project.
+
+
+> 
+> Now some comments and questions related to core API specification,
+> version 0.16 dated March 2, 2005 (I have not looked at the latest
+> spec. which got copied in the case directory late last week).
+> 
+> 4.  Section 3.2, we probably want to create registry so that new
+>     API function numbers can be added and are managed via registry.
+> 
+
+	I thin dmk has suggested something similar.
+
+
+> 5.  Section 4 can probably be deleted since machine descriptor
+>     will have its own specification and ARC case.
+> 
+
+	Agreed.
+
+
+> 6.  Section 5.1.1, it is not clear how the version# is established
+>     at start of day by guest.  Some explanation on this would be useful.
+
+	We expect that one of the first things a guest will do is ensure
+that it and the hypervisor can agree on a version #.  Also note that the
+first guest SW to run is OBP, and OBP is delivered in the same flash prom
+image as the hypervisor; which makes it unlikely that they will not have
+compatible version #s.  When OBP boots the kernel, the kernel and OBP
+will have to re-negociate the version # with the hypervisor.
+
+
+>     Since there HV can interrupt guests, does the API version cover
+>     the HV to guest interfaces as well?  Can HV send interrupts to
+>     guest before the version# is established?
+
+	Only if the guest uses the API to enable an interrupt before
+checking the API version #s.  This would be a guest bug.
+
+
+> Also, it seems like
+>     guest can not use any of the APIs until the version# is
+>     established, is this true?
+> 
+
+	It's a guest bug if it uses an API without checking version #s,
+but there is no special check for this in the hypervisor.  Note that
+any check wouldn't prevent this from occuring in any case, since the
+hypervisor has no way of knowing when control passes from one piece of
+guest SW to another (e.g., when OBP passes control to the kernel).
+
+
+> 7.  Section 5.1.2, the description states that all cpus are stopped.
+>     How does HV do this?  Does it use CPU xcalls?
+> 
+
+	Yes.
+
+
+> 8.  Section 5.1.4, the second last sentence in the description states
+>     that, "...  real trap table (rtba) entry point on one of the CPUs.
+>     Is this "one" a typo for "all"?  The description prior to this
+>     sentence talks about capturing all CPUs etc.
+> 
+
+	Only one CPU is restarted.  The rest must be re-started with
+cpu_start.
+
+
+> 9.  Section 6.1, is the CPU id referred in the CPU list the same as
+>     the CPUID (interruptable ID)? or the one assigned by HV in the
+>     cpu_myid?  I think it is the later, right?  Either way, I think
+>     a description on what is CPU id would be nice in this section.
+> 
+
+	It's the latter.  We can work on the wording.
+
+
+> 10.  Section 6.2.4, Is there a way to set MAX value for the watchdog
+>      time out?  Can we have -1 = MAX value?  Since the EINVAL is
+>      returned for "too long" there seems to be a per implementation
+>      MAX value.  Is there a way for guest to find out the max value?
+> 
+> 11.  Section 6.2.4, the single line paragraph states that " ..  the
+>      previously specified time-out period", this sentence is not
+>      clear, I think the sentence needs to be "Upon success the service
+>      returns seconds remaining from the previous time-out period".
+> 
+
+	Watchdogs were not an ontario requirement, so we didn't implement
+them.  Section 6.2.4 will be removed.
+
+
+> 12.  Section 7.1.1, the first sentence is not clear due to spelling
+>      errors.
+> 
+
+	It's also a bit verbose.  The intent is to specify which page
+sizes are supported by the TSB.
+
+
+> 13.  Section 7.2, the second table, the last row on the page 16,
+>      what does "so" stand for in "so page"?  What is "so page"?
+> 
+
+	It means a side-effect page (where the mapping has the E-bit set).
+We can work on the wording.
+
+
+> 14.  Section 7.3.6 and 7.3.7, I think the description should also
+>      mentioned something about the single unified I and D TLBs.
+>      A description similar to 7.3.8 related to single unified TLB
+>      is needed for these sections.
+> 
+
+	We should have a single introductory statement that describes how
+the mmu flags argument works for those APIs that use it.
+
+
+> 15.  Section 7.3.11, I do not understand the second paragraph related
+>      to avoiding complicated address mapping issues.  What complications
+>      does this refer to?
+> 
+
+	To make this work without a return_target, you need to run the
+MMU enable code in a 1-1 map like native OBP now does.  The paragraph
+is probably a bit too foreboarding.
+
+
+> 16.  Section 12, is the HV dump part of Solaris dump?
+
+	Solaris puts this buffer in its data segment, which will be
+part of the core.
+
+
+How does user
+>      access HV dump information?  Are there any changes to existing
+>      tools related to guest OS (Solaris) dumps?
+> 
+
+	The data is hypervisor version specific.  The guest tools
+would not interpret it.
+
+							JJ
+
+From sacadmin Mon Mar  7 09:12:51 2005
+Received: from phys-bur-1 (phys-bur-1.East.Sun.COM [129.148.9.72])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j27HCoSp018707
+	for <FWARC@sac.sfbay.sun.com>; Mon, 7 Mar 2005 09:12:51 -0800 (PST)
+Received: from conversion-daemon.bur-mail1.east.sun.com by
+ bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0ICZ00F01RJZ8B@bur-mail1.east.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM) for FWARC@sac.sfbay.sun.com; Mon,
+ 07 Mar 2005 12:11:26 -0500 (EST)
+Received: from Sun.COM (bacall.East.Sun.COM [129.148.184.139])
+ by bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0ICZ00MU6RR258@bur-mail1.east.sun.com> for
+ FWARC@sac.sfbay.sun.com; Mon, 07 Mar 2005 12:11:26 -0500 (EST)
+Date: Mon, 07 Mar 2005 12:09:10 -0500
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: Re: 2005/116 - core API - issues
+In-reply-to: <422BD00F.6020404@sun.com>
+Cc: FWARC@sac.sfbay.sun.com
+Reply-to: Stephen.Ehring@Sun.COM
+Message-id: <422C8AB6.5030904@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+References: <4228F0AD.8060000@sun.com> <4228FCDE.5080201@sun.com>
+ <42291331.3050100@sun.com> <422BB650.90406@sun.com> <422BD00F.6020404@sun.com>
+Content-Length: 153
+Status: RO
+X-Status: $$$$
+X-UID: 0000000008
+
+The Issues file for this case has been updated with all outstanding issues.
+
+-- 
+Stephen Ehring
+Sun Microsystems
+(781)-442-2479
+stephen.ehring@sun.com
+
+
+
+From sacadmin Mon Mar  7 09:58:19 2005
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j27HwJSp022877
+	for <FWARC@sac.sfbay.sun.com>; Mon, 7 Mar 2005 09:58:19 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j27Husjg000264;
+	Mon, 7 Mar 2005 09:56:54 -0800 (PST)
+Received: from sun.com (d-nwk20-204-221 [129.149.204.221])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j27HusKw075983;
+	Mon, 7 Mar 2005 09:56:54 -0800 (PST)
+Message-ID: <422C961D.3010204@sun.com>
+Date: Mon, 07 Mar 2005 09:57:49 -0800
+From: Tony Sumpter <tony.sumpter@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4) Gecko/20030624
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+CC: John Johnson <john.johnson@sun.com>,
+   Ashley Saulsbury <ashley.saulsbury@sun.com>
+Subject: Re: 2005/116 - core API - issues
+References: <4228F0AD.8060000@sun.com> <4228FCDE.5080201@sun.com> <42291331.3050100@sun.com> <422BB650.90406@sun.com> <422BD00F.6020404@sun.com> <422C8AB6.5030904@Sun.COM>
+In-Reply-To: <422C8AB6.5030904@Sun.COM>
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Length: 2558
+Status: RO
+X-Status: $$$$
+X-UID: 0000000009
+
+My issues - I stopped after 20.
+Tony.
+--------------
+
+Issues - FWARC/2005/116 sun4v core API
+() refs to api.pdf Rev 0.16 dated March 4, 2005
+
+1.
+(2.) "0x80 and above" -> "0x80 to 0xff inclusive"
+     "faster form" -> "hyper-fast form"
+(2.1) "instruction semantics" -> "function semantics"
+(2.2) "instruction semantics" -> "function semantics"
+
+2.
+(2.1) Need to clarify whether all of %o0 through %o4 are always volatile
+or only the ones explicitly used by the function.
+Need to clarify if return status is always set.
+
+3.
+(2.1) Need to clarify if further arguments in memory are allowed or not
+with hyper-fast traps. 
+
+3.
+(2.2) Need to clarify whether all of %o0 through %o4 are always volatile
+or only the ones explicitly used by the function.
+Need to clarify which outputs are always set.
+Need to clarify %o5 output.
+Need to clarify if return status is always set.
+
+4.
+(2.3) "any additional result value being returned in %o1" is
+inconsistent with rest of paragraph and preceding tables.
+
+5.
+(3.) Need to specify how unused trap numbers and function numbers are assigned for API extensions. Need to specify if platform specific
+APIs can re-use numbers.
+
+6.
+(3.1) Need to say something about 0x86 through 0xfe.
+
+7.
+(3.2) Need to specify how many bits in %o5 the function number is.
+Need to say something about the numbers which are not listed.
+
+8.
+(3.3) Need to specify how many bits in the return status are significant.
+Need to say something about the numbers which are not listed.
+
+9.
+(4.) Machine description will be required for completeness.
+
+10.
+(?) Relationship to the sun4v architecture spec (or SunSPARC 2.0)
+needs to be noted.
+
+11.
+(5.) For all API entries, the number of bits in each argument
+that are significant needs to be stated. [PRM style bit layouts
+might be appropriate.]
+
+12.
+(5.) A more rigorous enumeration of domain state is required. These
+states to be related to the sun4v architecure spec.
+
+13.
+(5.1.2) "service processor" is not defined in the document.
+
+14.
+(5.1.2) Need a description of exit_code values somewhere which includes
+unrequested exits.
+
+15.
+(5.1.3) No algorithm for determining the complete size of the machine
+description is given.
+
+16.
+(5.1.4) An exact description of the state after SIR needs to be provided
+as part of the resolution to issue 12 above. Eg register states.
+
+17.
+(5.1.4) What happens if the processor cannot support SIR?
+
+18.
+(6.) A more rigorous enumeration of CPU state is required.
+
+19.
+(6.2.1) What is the state of %npc, %pstate, etc.?
+
+20.
+(6.2.2) "running state" is not mentioned in (6.)
+
+
+
+
+From sacadmin Mon Mar  7 11:18:49 2005
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j27JImSp028732
+	for <FWARC@sac.sfbay.sun.com>; Mon, 7 Mar 2005 11:18:48 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j27JHNAH027382;
+	Mon, 7 Mar 2005 11:17:23 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j27JHLKw079899;
+	Mon, 7 Mar 2005 11:17:22 -0800 (PST)
+Message-ID: <422CA8C1.80505@sun.com>
+Date: Mon, 07 Mar 2005 11:17:21 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Stephen Ehring <Stephen.Ehring@sun.com>
+CC: FWARC@sac.sfbay.sun.com, John johnson <John.Johnson@sun.com>,
+   Ashley Saulsbury <ashley.saulsbury@sun.com>
+Subject: Re: 2005/116 - core API - issues
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Length: 793
+Status: RO
+X-Status: $$$$
+X-UID: 0000000010
+
+Stephen Ehring wrote:
+ > The Issues file for this case has been updated with all outstanding issues.
+ >
+
+
+We didn't include the "project teams's" list first. A lot of
+the issues refer to these items, so please include this
+list first.
+
+-David
+
+
+> There's a few open issues from the project team.
+> They just want to notify fwarc that these issues
+> are being worked and will be closed before they
+> seek committment review.
+> 
+> Ashley's list of open items related to 0.16 March 4 api.pdf
+> 
+> 
+> 1. API versioning
+> 2. mmu_demap_*
+>     (use of cpulist)
+> 3. memory_scrub
+>     (definining error boundaries - this one will go to the SWG working group - 
+> the call convention and errors will not change ... just the normative text on 
+> behaviour)
+> 4. memory_sync
+>     same as 3 above.
+
+
+
+
+
+From sacadmin Mon Mar  7 11:21:33 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j27JLWSp028918
+	for <fwarc-members@sac.eng.Sun.COM>; Mon, 7 Mar 2005 11:21:33 -0800 (PST)
+Received: from jurassic.eng.sun.com (jurassic.SFBay.Sun.COM [129.146.87.130])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j27JK6220904;
+	Mon, 7 Mar 2005 12:20:06 -0700 (MST)
+Received: from Sun.COM (sr1-umpk-15.SFBay.Sun.COM [129.146.11.193])
+	by jurassic.eng.sun.com (8.13.3+Sun/8.13.3) with ESMTP id j27JK6lG811100;
+	Mon, 7 Mar 2005 11:20:06 -0800 (PST)
+Message-ID: <422CA966.5050304@Sun.COM>
+Date: Mon, 07 Mar 2005 11:20:06 -0800
+From: Landy Burnett <Landyana.Burnett@Sun.COM>
+Reply-To: Landyana.Burnett@Sun.COM
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: fwarc-members@Sun.COM
+CC: Ashley Saulsbury <ashley.saulsbury@Sun.COM>
+Subject: Updated material: FWARC 2005/116 
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Content-Length: 306
+Status: RO
+X-Status: $$$$
+X-UID: 0000000011
+
+Ashley submitted updated interface doc for today's meeting.
+
+/shared/sac/arc/FWARC/2005/116/api_updated.pdf
+
+
+-- 
+Landyana Burnett				landyana.burnett@sun.com
+Program Manager, System Architecture		650.786.3664
+Sun Microsystems, Inc.
+=======================================================================
+
+
+From sacadmin Tue Mar  8 11:48:42 2005
+Received: from phys-bur-1 (phys-bur-1.East.Sun.COM [129.148.9.72])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j28JmgSp012949
+	for <FWARC@sac.sfbay.sun.com>; Tue, 8 Mar 2005 11:48:42 -0800 (PST)
+Received: from conversion-daemon.bur-mail1.east.sun.com by
+ bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0ID100F01TH4OM@bur-mail1.east.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM) for FWARC@sac.sfbay.sun.com; Tue,
+ 08 Mar 2005 14:47:16 -0500 (EST)
+Received: from Sun.COM (bacall.East.Sun.COM [129.148.184.139])
+ by bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0ID100H6ZTMS4K@bur-mail1.east.sun.com> for
+ FWARC@sac.sfbay.sun.com; Tue, 08 Mar 2005 14:47:16 -0500 (EST)
+Date: Tue, 08 Mar 2005 14:45:00 -0500
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: 2005/116 - core API - post-inception issues
+In-reply-to: <4228F0AD.8060000@sun.com>
+Cc: FWARC@sac.sfbay.sun.com
+Reply-to: Stephen.Ehring@Sun.COM
+Message-id: <422E00BC.2070005@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+References: <4228F0AD.8060000@sun.com>
+Content-Length: 269
+Status: RO
+X-Status: $$$$
+X-UID: 0000000012
+
+The case issues file has been updated with all remaining open issues and their status after
+inception review. Feel free to send me any corrections if you'd like me to include them.
+
+The total pre-inception issues can be found in the inception.materials folder.
+
+Steve
+
+
+From sacadmin Thu Mar 10 12:18:37 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2AKIaSr007995
+	for <psarc-members@sac.eng.sun.com>; Thu, 10 Mar 2005 12:18:36 -0800 (PST)
+Received: from jurassic.eng.sun.com (jurassic.SFBay.Sun.COM [129.146.82.37])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2AKH9m02183;
+	Thu, 10 Mar 2005 12:17:09 -0800 (PST)
+Received: from Sun.COM (sr1-umpk-03.SFBay.Sun.COM [129.146.11.157])
+	by jurassic.eng.sun.com (8.13.3+Sun/8.13.3) with ESMTP id j2AKH8fD303804;
+	Thu, 10 Mar 2005 12:17:08 -0800 (PST)
+Message-ID: <4230AB44.6020008@Sun.COM>
+Date: Thu, 10 Mar 2005 12:17:08 -0800
+From: Landy Burnett <Landyana.Burnett@Sun.COM>
+Reply-To: Landyana.Burnett@Sun.COM
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: fwarc-members@Sun.COM, Ashley Saulsbury <ashley.saulsbury@Sun.COM>,
+   John Johnson <John.Johnson@Sun.COM>,
+   James Barnette Jr <Richard.Barnette@Sun.COM>, Tom@jurassic.eng.sun.com,
+   Caren@Sun.COM, Chris Chen <Chris.Chen@Sun.COM>,
+   Minh Nguyen <Minh.Nguyen@Sun.COM>, Holly Yang <Huizhong.Yang@Sun.COM>,
+   sun4v-iteam@Sun.COM, psarc-members@Sun.COM
+Subject: FWARC Meeting Minutes 03/07/2005 Inception: 2005/112 2005/116 
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Content-Length: 916
+Status: RO
+X-Status: $$$$
+X-UID: 0000000013
+
+Minutes from FWARC 03/07/2005 meeting have been posted.
+
+They are available at:
+
+(1) http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050307.arcbiz
+
+Audio:
+======
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050307.arcbiz.mp3
+
+(2) http://sac.eng/arc/FWARC/2005/112/20050307.2005.112.inception
+
+Audio:
+======
+http://sac.eng/arc/FWARC/2005/112/20050307.2005.112.inception.mp3
+
+(3) http://sac.eng/arc/FWARC/2005/116/20050307.2005.116.inception
+
+Audio:
+=====
+http://sac.eng/arc/FWARC/2005/116/20050307.2005.116.inception.mp3
+
+Sum-up is available at:
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050307.html
+
+If you have any feedback or correction, feel free to let me know.
+
+thanks
+-Landy
+x83664
+
+
+-- 
+Landyana Burnett				landyana.burnett@sun.com
+Program Manager, System Architecture		650.786.3664
+Sun Microsystems, Inc.
+=======================================================================
+
+
+From sacadmin Thu Mar 10 12:18:36 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2AKIaSp007995
+	for <fwarc-members@sac.eng.sun.com>; Thu, 10 Mar 2005 12:18:36 -0800 (PST)
+Received: from jurassic.eng.sun.com (jurassic.SFBay.Sun.COM [129.146.82.37])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2AKH9m02183;
+	Thu, 10 Mar 2005 12:17:09 -0800 (PST)
+Received: from Sun.COM (sr1-umpk-03.SFBay.Sun.COM [129.146.11.157])
+	by jurassic.eng.sun.com (8.13.3+Sun/8.13.3) with ESMTP id j2AKH8fD303804;
+	Thu, 10 Mar 2005 12:17:08 -0800 (PST)
+Message-ID: <4230AB44.6020008@Sun.COM>
+Date: Thu, 10 Mar 2005 12:17:08 -0800
+From: Landy Burnett <Landyana.Burnett@Sun.COM>
+Reply-To: Landyana.Burnett@Sun.COM
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: fwarc-members@Sun.COM, Ashley Saulsbury <ashley.saulsbury@Sun.COM>,
+   John Johnson <John.Johnson@Sun.COM>,
+   James Barnette Jr <Richard.Barnette@Sun.COM>, Tom@jurassic.eng.sun.com,
+   Caren@Sun.COM, Chris Chen <Chris.Chen@Sun.COM>,
+   Minh Nguyen <Minh.Nguyen@Sun.COM>, Holly Yang <Huizhong.Yang@Sun.COM>,
+   sun4v-iteam@Sun.COM, psarc-members@Sun.COM
+Subject: FWARC Meeting Minutes 03/07/2005 Inception: 2005/112 2005/116 
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Content-Length: 916
+Status: RO
+X-Status: $$$$
+X-UID: 0000000014
+
+Minutes from FWARC 03/07/2005 meeting have been posted.
+
+They are available at:
+
+(1) http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050307.arcbiz
+
+Audio:
+======
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050307.arcbiz.mp3
+
+(2) http://sac.eng/arc/FWARC/2005/112/20050307.2005.112.inception
+
+Audio:
+======
+http://sac.eng/arc/FWARC/2005/112/20050307.2005.112.inception.mp3
+
+(3) http://sac.eng/arc/FWARC/2005/116/20050307.2005.116.inception
+
+Audio:
+=====
+http://sac.eng/arc/FWARC/2005/116/20050307.2005.116.inception.mp3
+
+Sum-up is available at:
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050307.html
+
+If you have any feedback or correction, feel free to let me know.
+
+thanks
+-Landy
+x83664
+
+
+-- 
+Landyana Burnett				landyana.burnett@sun.com
+Program Manager, System Architecture		650.786.3664
+Sun Microsystems, Inc.
+=======================================================================
+
+
+From sacadmin Tue Mar 15 01:22:04 2005
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2F9M3Sp026108
+	for <FWARC@sac.sfbay.sun.com>; Tue, 15 Mar 2005 01:22:04 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2F9KYAH025092;
+	Tue, 15 Mar 2005 01:20:34 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2F9KWha068656;
+	Tue, 15 Mar 2005 01:20:33 -0800 (PST)
+Message-ID: <4236A8E0.4030900@sun.com>
+Date: Tue, 15 Mar 2005 01:20:32 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+CC: John Johnson <John.Johnson@sun.com>,
+   Ashley Saulsbury <ashley.saulsbury@sun.com>,
+   Landy Burnett <Landyana.Burnett@sun.com>
+Subject: 2005/116 - Core API - commitment.materials available
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 621
+
+
+Updated materials for this case are available in
+the commitment.materials subdir.
+
+api.pdf - updated API spec
+interface_table.txt - updated interface table
+issues_resolved.txt - annotated issues file from
+		the project team. (Ash)
+
+The project team has decided to defer the versioning
+API for now. There will be a follow-on case later
+that deals with the versioning API. For now, this
+case just reserves a trap and function number for
+the versioning API.
+
+Landy .. all issues have been addressed by
+the project team. Please schedule the commitment
+review for this case on March 21, using the
+first slot.
+
+Thanks,
+David
+
+
+From sacadmin Tue Mar 15 08:15:12 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2FGFBSp017805
+	for <psarc-members@sac.eng.sun.com>; Tue, 15 Mar 2005 08:15:11 -0800 (PST)
+Received: from jurassic.eng.sun.com (jurassic.SFBay.Sun.COM [129.146.85.105])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2FGDfw06270;
+	Tue, 15 Mar 2005 08:13:41 -0800 (PST)
+Received: from Sun.COM (sr-unwk-10.SFBay.Sun.COM [129.149.2.160])
+	by jurassic.eng.sun.com (8.13.3+Sun/8.13.3) with ESMTP id j2FGDf70997880;
+	Tue, 15 Mar 2005 08:13:41 -0800 (PST)
+Message-ID: <423709B5.6070005@Sun.COM>
+Date: Tue, 15 Mar 2005 08:13:41 -0800
+From: Landy Burnett <Landyana.Burnett@Sun.COM>
+Reply-To: Landyana.Burnett@Sun.COM
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: John Johnson <John.Johnson@Sun.COM>
+CC: Tony Sumpter <Tony.Sumpter@Sun.COM>,
+   Stephen Ehring <Stephen.Ehring@Sun.COM>, sun4v-iteam@Sun.COM,
+   psarc-members@Sun.COM, landy burnett <landyana.burnett@Sun.COM>
+Subject: Commitment Scheduled FWARC 2005/116 sun4v core API
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 1793
+
+Hi JJ,
+
+Your case is scheduled for inception review on March 21, 2004.
+
+FWARC require that final review materials be sent to fwarc-materials@sun.com
+at least ONE WEEK before your review.
+
+Let me know if you have further questions.
+
+Thanks,
+
+Landy
+x83664
+===============================================================================
+
+              Firmware Architecture Review Committee
+FWARC meets on Mondays (as needed):
+West Coast: 11:30am-1:30pm PST
+East Coast:  2:30pm-4:30pm EST
+
+Case submitters are asked to show up at least 15 minutes before the
+scheduled start time.
+
+All FWARC meetings are open: anyone from Engineering may attend
+(unless otherwise noted).
+
+TELECONFERENCE NUMBERS:  *** NEW DIAL IN NUMBERS ***
+	
+	Dial in - 1-866-XXX-XXXX (Within US)
+		- 1-865-XXX-XXXX (International Access)
+		
+	Participant Code: XXXXXX#
+	Host Code: XXXX
+	
+	AT&T Operator: 1-800-XXX-XXXX
+
+FWARC meetings may be recorded.
+
+===============================================================================
+03/21/2005
+----------
+11:00-11:30     study hall
+11:30-11:40     project issue id
+11:40-12:40     Commitment: 2005/116 sun4v core API
+		Submitter:	john.johnson@sun.com
+		Owner:		Tony Sumpter
+		Intern:		Stephen Ehring
+		Interest:	sun4v-iteam@sun.com,psarc@sun.com
+12:40- 1:30     Inception: 2005/115 sun4v machine description
+		Submitter:	john.johnson@sun.com
+		Owner:		Tony Sumpter
+		Intern:		 Balaji Nelamangala
+===============================================================================
+
+
+-- 
+Landyana Burnett				landyana.burnett@sun.com
+Program Manager, System Architecture		650.786.3664
+Sun Microsystems, Inc.
+=======================================================================
+
+
+From sacadmin Tue Mar 15 16:00:11 2005
+Received: from noho.SFBay.Sun.COM (noho [10.6.92.101])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2G00BSp026737
+	for <FWARC@sac.SFBay.Sun.COM>; Tue, 15 Mar 2005 16:00:11 -0800 (PST)
+Received: from noho.SFBay.Sun.COM (localhost [127.0.0.1])
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0) with ESMTP id j2FNwfB5007338;
+	Tue, 15 Mar 2005 15:58:41 -0800 (PST)
+Received: (from dmk@localhost)
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0/Submit) id j2FNwf67007337;
+	Tue, 15 Mar 2005 15:58:41 -0800 (PST)
+Date: Tue, 15 Mar 2005 15:58:41 -0800 (PST)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Message-Id: <200503152358.j2FNwf67007337@noho.SFBay.Sun.COM>
+To: FWARC@sac.sfbay.sun.com
+Subject: Re: 2005/116 - Core API - commitment.materials available
+Cc: John.Johnson@sun.com, Landyana.Burnett@sun.com, ashley.saulsbury@sun.com
+Status: RO
+Content-Length: 201
+
+api.pdf and the interface table were updated
+
+The only change was to remove the hyperfast traps 0x81 and 0x82.
+The descriptions were already removed, but the numbers were
+still in the tables.
+
+-David
+
+
+From sacadmin Wed Mar 16 18:14:54 2005
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2H2EsSp008313
+	for <FWARC@sac.sfbay.sun.com>; Wed, 16 Mar 2005 18:14:54 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2H2DNAH008745;
+	Wed, 16 Mar 2005 18:13:23 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2H2DLha078932;
+	Wed, 16 Mar 2005 18:13:22 -0800 (PST)
+Message-ID: <4238E7C1.7090907@sun.com>
+Date: Wed, 16 Mar 2005 18:13:21 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+CC: FWARC@sac.sfbay.sun.com, John.Johnson@sun.com, Landyana.Burnett@sun.com,
+   ashley.saulsbury@sun.com, Greg Onufer <Greg.Onufer@sun.com>
+Subject: Re: 2005/116 - Core API - commitment.materials available
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 466
+
+
+api.pdf was updated again. The only change is an additional
+table fully describing the content of the MMU fault
+status area in section 8.4 (pdf file pages 24-25)
+
+Current version number of api.pdf is 0.20-trim,
+dated March 16th.
+
+-David
+
+
+  wrote:
+> api.pdf and the interface table were updated
+> 
+> The only change was to remove the hyperfast traps 0x81 and 0x82.
+> The descriptions were already removed, but the numbers were
+> still in the tables.
+> 
+> -David
+> 
+
+From sacadmin Fri Mar 18 08:22:32 2005
+Received: from phys-bur-2 (phys-bur-2.East.Sun.COM [129.148.9.73])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2IGMWSp012752
+	for <FWARC@sac.sfbay.sun.com>; Fri, 18 Mar 2005 08:22:32 -0800 (PST)
+Received: from conversion-daemon.bur-mail1.east.sun.com by
+ bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IDK000012KSIQ@bur-mail1.east.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM) for FWARC@sac.sfbay.sun.com; Fri,
+ 18 Mar 2005 11:21:00 -0500 (EST)
+Received: from Sun.COM (bacall.East.Sun.COM [129.148.184.139])
+ by bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IDK0006H2R0GO@bur-mail1.east.sun.com>; Fri,
+ 18 Mar 2005 11:21:00 -0500 (EST)
+Date: Fri, 18 Mar 2005 11:18:39 -0500
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: Re: 2005/116 - Core API - commitment.materials available
+In-reply-to: <4238E7C1.7090907@sun.com>
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: FWARC@sac.sfbay.sun.com, John.Johnson@Sun.COM, Landyana.Kweh@Sun.COM,
+   Ashley.Saulsbury@Sun.COM, Greg Onufer <Greg.Onufer@Sun.COM>
+Reply-to: Stephen.Ehring@Sun.COM
+Message-id: <423AFF5F.20301@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+References: <4238E7C1.7090907@sun.com>
+Status: RO
+Content-Length: 810
+
+I believe there are two functions missing from the list in section 3.2 for fast trap functions. What
+are the function numbers for mmu_map_addr described in section 8.5.6 and mmu_unmap_addr described in
+section 8.5.8?
+
+Steve
+
+David Kahn wrote:
+> api.pdf was updated again. The only change is an additional
+> table fully describing the content of the MMU fault
+> status area in section 8.4 (pdf file pages 24-25)
+> 
+> Current version number of api.pdf is 0.20-trim,
+> dated March 16th.
+> 
+> -David
+> 
+> 
+>   wrote:
+> 
+>>api.pdf and the interface table were updated
+>>
+>>The only change was to remove the hyperfast traps 0x81 and 0x82.
+>>The descriptions were already removed, but the numbers were
+>>still in the tables.
+>>
+>>-David
+>>
+
+-- 
+Stephen Ehring
+Sun Microsystems
+(781)-442-2479
+stephen.ehring@sun.com
+
+
+
+From sacadmin Fri Mar 18 13:12:45 2005
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2ILCjSp000502
+	for <FWARC@sac.sfbay.sun.com>; Fri, 18 Mar 2005 13:12:45 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2ILBCAH014372;
+	Fri, 18 Mar 2005 13:11:12 -0800 (PST)
+Received: from [129.146.90.56] (pkg [129.146.90.56])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2ILBCha096676;
+	Fri, 18 Mar 2005 13:11:12 -0800 (PST)
+Message-ID: <423B43EF.8050808@sun.com>
+Date: Fri, 18 Mar 2005 13:11:11 -0800
+From: Greg Onufer <greg.onufer@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.2 (X11/20050318)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Stephen.Ehring@sun.com
+CC: David Kahn <David.Kahn@sun.com>, FWARC@sac.sfbay.sun.com,
+   John.Johnson@sun.com, Landyana.Kweh@sun.com, Ashley.Saulsbury@sun.com
+Subject: Re: 2005/116 - Core API - commitment.materials available
+References: <4238E7C1.7090907@sun.com> <423AFF5F.20301@Sun.COM>
+In-Reply-To: <423AFF5F.20301@Sun.COM>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 458
+
+Stephen Ehring wrote:
+> I believe there are two functions missing from the list in section 3.2 for fast trap functions. What
+> are the function numbers for mmu_map_addr described in section 8.5.6 and mmu_unmap_addr described in
+> section 8.5.8?
+
+They should be in Section 3.1.  The trap# in Section 8.5.6 and 8.5.8 (I 
+have 7.5.6 and 7.5.8 in the inception materials docs) is not FAST_TRAP 
+so those functions would not show up in Section 3.2.
+
+Cheers!greg
+
+
+From sacadmin Fri Mar 18 13:13:30 2005
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2ILDUSp000539
+	for <FWARC@sac.sfbay.sun.com>; Fri, 18 Mar 2005 13:13:30 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2ILBvAH014737;
+	Fri, 18 Mar 2005 13:11:57 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2ILBuha096807;
+	Fri, 18 Mar 2005 13:11:56 -0800 (PST)
+Message-ID: <423B441B.30009@sun.com>
+Date: Fri, 18 Mar 2005 13:11:55 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Stephen.Ehring@sun.com
+CC: FWARC@sac.sfbay.sun.com, John.Johnson@sun.com, Ashley.Saulsbury@sun.com,
+   Greg Onufer <Greg.Onufer@sun.com>
+Subject: Re: 2005/116 - Core API - commitment.materials available
+References: <4238E7C1.7090907@sun.com> <423AFF5F.20301@Sun.COM>
+In-Reply-To: <423AFF5F.20301@Sun.COM>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 447
+
+
+
+Stephen Ehring wrote:
+> I believe there are two functions missing from the list in section 3.2 for
+> fast trap functions. What are the function numbers for mmu_map_addr described
+> in section 8.5.6 and mmu_unmap_addr described in section 8.5.8?
+
+Those two function use their own trap numbers.
+See 2.1 and 3.1, those APIs are hyper-fast traps.
+
+In other words, the document is correct. There are
+no function numbers for these two APIs.
+
+-David
+
+
+
+From sacadmin Mon Mar 21 09:23:11 2005
+Received: from phys-bur-2 (phys-bur-2.East.Sun.COM [129.148.9.73])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2LHNBSp016971
+	for <FWARC@sac.sfbay.sun.com>; Mon, 21 Mar 2005 09:23:11 -0800 (PST)
+Received: from conversion-daemon.bur-mail1.east.sun.com by
+ bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IDP00701PJLA6@bur-mail1.east.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM) for FWARC@sac.sfbay.sun.com; Mon,
+ 21 Mar 2005 12:21:37 -0500 (EST)
+Received: from Sun.COM (bacall.East.Sun.COM [129.148.184.139])
+ by bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IDP00LLFPK1P7@bur-mail1.east.sun.com>; Mon,
+ 21 Mar 2005 12:21:37 -0500 (EST)
+Date: Mon, 21 Mar 2005 12:19:15 -0500
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: 2005/116 - core API - registry
+In-reply-to: <422C961D.3010204@sun.com>
+To: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Cc: FWARC@sac.sfbay.sun.com, John Johnson <John.Johnson@Sun.COM>,
+   Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>
+Reply-to: Stephen.Ehring@Sun.COM
+Message-id: <423F0213.3070109@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+References: <4228F0AD.8060000@sun.com> <4228FCDE.5080201@sun.com>
+ <42291331.3050100@sun.com> <422BB650.90406@sun.com> <422BD00F.6020404@sun.com>
+ <422C8AB6.5030904@Sun.COM> <422C961D.3010204@sun.com>
+Status: RO
+Content-Length: 352
+
+One of the AIs in the issues list was to create a registry of the trap numbers and function numbers
+for the hypervisor.
+
+I have created a registry based on the interface table of this case. It can be located at:
+
+http://sac.eng.sun.com/arc/FWARC/Registries/trap-registry.txt
+
+-- 
+Stephen Ehring
+Sun Microsystems
+(781)-442-2479
+stephen.ehring@sun.com
+
+
+
+From sacadmin Mon Mar 21 10:56:23 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2LIuMSp026382
+	for <fwarc@sac.eng.sun.com>; Mon, 21 Mar 2005 10:56:22 -0800 (PST)
+Received: from westmail2san.west.sun.com (westmail2san.West.Sun.COM [129.153.85.6])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2LIosL10185;
+	Mon, 21 Mar 2005 10:51:13 -0800 (PST)
+Received: from phys-san-2 (phys-san-2.West.Sun.COM [129.153.85.71])
+	by westmail2san.west.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2LIos69000420;
+	Mon, 21 Mar 2005 10:50:54 -0800 (PST)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IDP00I01T7918@san-mail1.west.sun.com>
+ (original mail from hitendra.zhangada@sun.com); Mon,
+ 21 Mar 2005 10:50:54 -0800 (PST)
+Received: from [129.153.85.35] (sr1-usan-05.West.Sun.COM [129.153.85.35])
+ by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IDP006AFTOT6U@san-mail1.west.sun.com>; Mon,
+ 21 Mar 2005 10:50:53 -0800 (PST)
+Date: Mon, 21 Mar 2005 10:50:53 -0800
+From: Hitendra Zhangada <hitendra.zhangada@sun.com>
+Subject: Issues : 2005/116 sun4v core API
+To: Firmware Arch <fwarc@sun.com>
+Cc: sun4v-iteam@sun.com, psarc@sun.com,
+   Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+   John Johnson <John.Johnson@sun.com>
+Reply-to: hitendra.zhangada@sun.com
+Message-id: <423F178D.60502@sun.com>
+Organization: Sun Microsystems Inc.
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7.6) Gecko/20050310
+Status: RO
+Content-Length: 1376
+
+The latest specification (version 0.20-trim) addresses most
+of the issues I raised during an inception review.  There are
+few issues still unresolved or needs clarification and I have
+couple of new issues.  These are listed below.
+
+1.  Section 6.1.3, need clarification, when domain is restarted
+     after SIR request which CPU will it start?  Will this be
+     randomly selected or the same CPU which requested the SIR
+     request will be restarted?
+
+2.  Section 7.1, this section tries to clarify what is cpu list
+     but it does not explain what is cpu id.  My expectation from
+     an inception review was that the definition of cpu id would be
+     added to this section.  Can we add one of the following texts
+     in section 7 after the second sentence?
+
+     "The CPU identifiers (cpu id) are assigned by hypervisor via
+      cpu_myid API".
+
+     Or
+
+     "The CPU identifiers (cpu id) are part of machine description
+      exported to OBP".
+
+
+3.  Section 8.5.7, typo, in the Note section, replace the first
+     "used" with "is".
+
+
+4.  Section 9.1.1, need clarification, Why scrubbing less memory
+     then client asked for is not an error?
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+From sacadmin Mon Mar 21 10:56:38 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2LIucSp026400
+	for <psarc@sac.eng.sun.com>; Mon, 21 Mar 2005 10:56:38 -0800 (PST)
+Received: from westmail2san.west.sun.com (westmail2san.West.Sun.COM [129.153.85.6])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2LIosL10185;
+	Mon, 21 Mar 2005 10:51:13 -0800 (PST)
+Received: from phys-san-2 (phys-san-2.West.Sun.COM [129.153.85.71])
+	by westmail2san.west.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2LIos69000420;
+	Mon, 21 Mar 2005 10:50:54 -0800 (PST)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IDP00I01T7918@san-mail1.west.sun.com>
+ (original mail from hitendra.zhangada@sun.com); Mon,
+ 21 Mar 2005 10:50:54 -0800 (PST)
+Received: from [129.153.85.35] (sr1-usan-05.West.Sun.COM [129.153.85.35])
+ by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IDP006AFTOT6U@san-mail1.west.sun.com>; Mon,
+ 21 Mar 2005 10:50:53 -0800 (PST)
+Date: Mon, 21 Mar 2005 10:50:53 -0800
+From: Hitendra Zhangada <hitendra.zhangada@sun.com>
+Subject: Issues : 2005/116 sun4v core API
+To: Firmware Arch <fwarc@sun.com>
+Cc: sun4v-iteam@sun.com, psarc@sun.com,
+   Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+   John Johnson <John.Johnson@sun.com>
+Reply-to: hitendra.zhangada@sun.com
+Message-id: <423F178D.60502@sun.com>
+Organization: Sun Microsystems Inc.
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7.6) Gecko/20050310
+Status: RO
+Content-Length: 1376
+
+The latest specification (version 0.20-trim) addresses most
+of the issues I raised during an inception review.  There are
+few issues still unresolved or needs clarification and I have
+couple of new issues.  These are listed below.
+
+1.  Section 6.1.3, need clarification, when domain is restarted
+     after SIR request which CPU will it start?  Will this be
+     randomly selected or the same CPU which requested the SIR
+     request will be restarted?
+
+2.  Section 7.1, this section tries to clarify what is cpu list
+     but it does not explain what is cpu id.  My expectation from
+     an inception review was that the definition of cpu id would be
+     added to this section.  Can we add one of the following texts
+     in section 7 after the second sentence?
+
+     "The CPU identifiers (cpu id) are assigned by hypervisor via
+      cpu_myid API".
+
+     Or
+
+     "The CPU identifiers (cpu id) are part of machine description
+      exported to OBP".
+
+
+3.  Section 8.5.7, typo, in the Note section, replace the first
+     "used" with "is".
+
+
+4.  Section 9.1.1, need clarification, Why scrubbing less memory
+     then client asked for is not an error?
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+From sacadmin Mon Mar 21 11:41:17 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2LJfHSp028368
+	for <fwarc@sac.eng.Sun.COM>; Mon, 21 Mar 2005 11:41:17 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2LJdhs27703
+	for <fwarc@sun.com>; Mon, 21 Mar 2005 12:39:43 -0700 (MST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2LJdhjg001541
+	for <fwarc@sun.com>; Mon, 21 Mar 2005 11:39:43 -0800 (PST)
+Received: from sun.com (d-mpk14-97-246 [129.146.97.246])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2LJdhha053350
+	for <fwarc@sun.com>; Mon, 21 Mar 2005 11:39:43 -0800 (PST)
+Message-ID: <423F233C.8010505@sun.com>
+Date: Mon, 21 Mar 2005 11:40:44 -0800
+From: Tony Sumpter <tony.sumpter@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4) Gecko/20030624
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: fwarc@sun.com
+Subject: Issues : FWARC/2005/116 sun4v core API
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 2103
+
+
+
+-------- Original Message --------
+Subject: Issues : FWARC/2005/116 sun4v core API
+Date: Mon, 21 Mar 2005 11:25:58 -0800
+From: Tony Sumpter <tony.sumpter@sun.com>
+To: Firmware Arch <fwarc@sun.com>
+CC: sun4v-iteam@sun.com,  psarc@sun.com,  Ashley Saulsbury <Ashley.Saulsbury@sun.com>, John Johnson <John.Johnson@sun.com>
+References: <423F178D.60502@sun.com>
+
+(I will provide the file for issue 11 in a moment.)
+
+FWARC/2005/116
+Commitment Issues.
+[my proposed answers in square brackets.]
+
+1. 6.1.1 mach_exit
+
+	It seems that an additional argument to request either restart or
+	"power-off" should be part of this call. Service Entity
+	can over-ride.
+
+	[Add the extra argument.]
+
+2. 6.1.3 mach_sir
+
+	"Immediately captured" needs clarification.
+
+	[Captured as soon as it is possible to interrupt them.]
+
+3. All explicit and implicit references to OBP and Solaris should
+  be removed, and no dependencies made on documents not referenced
+  in the document. Eg. in the following sections:
+
+	7 CPU Services
+	10 Device interrupt services
+	10.1 definitions
+
+	  devhandle "hi-cell" and "reg" property are OBP-isms.
+	  This doc. is not stated to depend on the Open Firmware bus
+	  binding.
+
+	  devino has OBP-isms
+	
+	[Just remove them.]
+
+4. 8.2 TSB specification
+
+	Change context to context index (which set of context registers)
+	to match SunSPARC hardware TSB walker design.
+
+	[Yes.]
+
+5. 8.5.1
+
+	Maximum of 16 TSBs seems arbitrary: Would prefer a minimum of
+	2 with a maximum coming from the MD.
+
+	[Yes.]
+
+6. 8.5.6
+
+	Is it invalid to provide a TTE with no valid bit set?
+
+	[?]
+
+7. 8.5.10 mmu_fault_area
+
+	Is disallowing real address 0 OK?
+
+	[Yes.]
+
+8. 12.1.2 cons_putchar
+
+	"currently" needs to be re-worded.
+
+	[Yes.]
+
+9. 13 Core dump services
+
+	The mentioned service for the guest to update the buffer
+	is not present.
+
+	[?]
+
+10. 14.1 ... control structure
+
+	Who owns the control structure? A malicious or faulty
+	guest must not be able to write it and cause a HV panic.
+
+	[Make it information only to guest.]
+
+11. Minor TCRs for to tighten up APIs
+
+	Provided in file "minor-api-tcrs.txt"
+
+	[Adopt them.]
+
+
+
+
+
+From sacadmin Mon Mar 21 11:47:36 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2LJlZSp028513
+	for <fwarc@sac.eng.Sun.COM>; Mon, 21 Mar 2005 11:47:36 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2LJjDs03429;
+	Mon, 21 Mar 2005 12:45:14 -0700 (MST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2LJOvjg022947;
+	Mon, 21 Mar 2005 11:24:57 -0800 (PST)
+Received: from sun.com (d-mpk14-91-109 [129.146.91.109])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2LJOvha052252;
+	Mon, 21 Mar 2005 11:24:57 -0800 (PST)
+Message-ID: <423F1FC6.1070706@sun.com>
+Date: Mon, 21 Mar 2005 11:25:58 -0800
+From: Tony Sumpter <tony.sumpter@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4) Gecko/20030624
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Firmware Arch <fwarc@sun.com>
+CC: sun4v-iteam@sun.com, psarc@sun.com,
+   Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+   John Johnson <John.Johnson@sun.com>
+Subject: Issues : FWARC/2005/116 sun4v core API
+References: <423F178D.60502@sun.com>
+In-Reply-To: <423F178D.60502@sun.com>
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 1743
+
+(I will provide the file for issue 11 in a moment.)
+
+FWARC/2005/116
+Commitment Issues.
+[my proposed answers in square brackets.]
+
+1. 6.1.1 mach_exit
+
+	It seems that an additional argument to request either restart or
+	"power-off" should be part of this call. Service Entity
+	can over-ride.
+
+	[Add the extra argument.]
+
+2. 6.1.3 mach_sir
+
+	"Immediately captured" needs clarification.
+
+	[Captured as soon as it is possible to interrupt them.]
+
+3. All explicit and implicit references to OBP and Solaris should
+   be removed, and no dependencies made on documents not referenced
+   in the document. Eg. in the following sections:
+
+	7 CPU Services
+	10 Device interrupt services
+	10.1 definitions
+
+	  devhandle "hi-cell" and "reg" property are OBP-isms.
+	  This doc. is not stated to depend on the Open Firmware bus
+	  binding.
+
+	  devino has OBP-isms
+	
+	[Just remove them.]
+
+4. 8.2 TSB specification
+
+	Change context to context index (which set of context registers)
+	to match SunSPARC hardware TSB walker design.
+
+	[Yes.]
+
+5. 8.5.1
+
+	Maximum of 16 TSBs seems arbitrary: Would prefer a minimum of
+	2 with a maximum coming from the MD.
+
+	[Yes.]
+
+6. 8.5.6
+
+	Is it invalid to provide a TTE with no valid bit set?
+
+	[?]
+
+7. 8.5.10 mmu_fault_area
+
+	Is disallowing real address 0 OK?
+
+	[Yes.]
+
+8. 12.1.2 cons_putchar
+
+	"currently" needs to be re-worded.
+
+	[Yes.]
+
+9. 13 Core dump services
+
+	The mentioned service for the guest to update the buffer
+	is not present.
+
+	[?]
+
+10. 14.1 ... control structure
+
+	Who owns the control structure? A malicious or faulty
+	guest must not be able to write it and cause a HV panic.
+
+	[Make it information only to guest.]
+
+11. Minor TCRs for to tighten up APIs
+
+	Provided in file "minor-api-tcrs.txt"
+
+	[Adopt them.]
+
+
+
+From sacadmin Mon Mar 21 11:48:48 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2LJmmSp028532
+	for <psarc@sac.eng.Sun.COM>; Mon, 21 Mar 2005 11:48:48 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2LJjDs03429;
+	Mon, 21 Mar 2005 12:45:14 -0700 (MST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2LJOvjg022947;
+	Mon, 21 Mar 2005 11:24:57 -0800 (PST)
+Received: from sun.com (d-mpk14-91-109 [129.146.91.109])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2LJOvha052252;
+	Mon, 21 Mar 2005 11:24:57 -0800 (PST)
+Message-ID: <423F1FC6.1070706@sun.com>
+Date: Mon, 21 Mar 2005 11:25:58 -0800
+From: Tony Sumpter <tony.sumpter@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4) Gecko/20030624
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Firmware Arch <fwarc@sun.com>
+CC: sun4v-iteam@sun.com, psarc@sun.com,
+   Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+   John Johnson <John.Johnson@sun.com>
+Subject: Issues : FWARC/2005/116 sun4v core API
+References: <423F178D.60502@sun.com>
+In-Reply-To: <423F178D.60502@sun.com>
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 1743
+
+(I will provide the file for issue 11 in a moment.)
+
+FWARC/2005/116
+Commitment Issues.
+[my proposed answers in square brackets.]
+
+1. 6.1.1 mach_exit
+
+	It seems that an additional argument to request either restart or
+	"power-off" should be part of this call. Service Entity
+	can over-ride.
+
+	[Add the extra argument.]
+
+2. 6.1.3 mach_sir
+
+	"Immediately captured" needs clarification.
+
+	[Captured as soon as it is possible to interrupt them.]
+
+3. All explicit and implicit references to OBP and Solaris should
+   be removed, and no dependencies made on documents not referenced
+   in the document. Eg. in the following sections:
+
+	7 CPU Services
+	10 Device interrupt services
+	10.1 definitions
+
+	  devhandle "hi-cell" and "reg" property are OBP-isms.
+	  This doc. is not stated to depend on the Open Firmware bus
+	  binding.
+
+	  devino has OBP-isms
+	
+	[Just remove them.]
+
+4. 8.2 TSB specification
+
+	Change context to context index (which set of context registers)
+	to match SunSPARC hardware TSB walker design.
+
+	[Yes.]
+
+5. 8.5.1
+
+	Maximum of 16 TSBs seems arbitrary: Would prefer a minimum of
+	2 with a maximum coming from the MD.
+
+	[Yes.]
+
+6. 8.5.6
+
+	Is it invalid to provide a TTE with no valid bit set?
+
+	[?]
+
+7. 8.5.10 mmu_fault_area
+
+	Is disallowing real address 0 OK?
+
+	[Yes.]
+
+8. 12.1.2 cons_putchar
+
+	"currently" needs to be re-worded.
+
+	[Yes.]
+
+9. 13 Core dump services
+
+	The mentioned service for the guest to update the buffer
+	is not present.
+
+	[?]
+
+10. 14.1 ... control structure
+
+	Who owns the control structure? A malicious or faulty
+	guest must not be able to write it and cause a HV panic.
+
+	[Make it information only to guest.]
+
+11. Minor TCRs for to tighten up APIs
+
+	Provided in file "minor-api-tcrs.txt"
+
+	[Adopt them.]
+
+
+
+From sacadmin Mon Mar 21 11:51:39 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2LJpdSp029018
+	for <fwarc-members@sac.eng.Sun.COM>; Mon, 21 Mar 2005 11:51:39 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2LJo4s11159;
+	Mon, 21 Mar 2005 12:50:04 -0700 (MST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2LJo3jg008920;
+	Mon, 21 Mar 2005 11:50:03 -0800 (PST)
+Received: from sun.com (d-mpk14-97-246 [129.146.97.246])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2LJo3ha054423;
+	Mon, 21 Mar 2005 11:50:03 -0800 (PST)
+Message-ID: <423F25A8.9070402@sun.com>
+Date: Mon, 21 Mar 2005 11:51:04 -0800
+From: Tony Sumpter <tony.sumpter@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4) Gecko/20030624
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Fwarc members <fwarc-members@sun.com>
+CC: sun4v-iteam@sun.com
+Subject: FWARC/2005/116 minor api TCRs file
+Content-Type: multipart/mixed;
+ boundary="------------070900030103030400090904"
+Status: RO
+Content-Length: 4857
+
+This is a multi-part message in MIME format.
+--------------070900030103030400090904
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+
+
+
+--------------070900030103030400090904
+Content-Type: text/plain; x-mac-type="0"; x-mac-creator="0";
+ name="minor-api-tcrs.txt"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline;
+ filename="minor-api-tcrs.txt"
+
+6.1.2 mach_desc
+
+	If buffer length is less than actual MD size, return
+	EINVAL
+
+7.2.1.1 cpu_start errors
+
+	Should return EBADALIGN for unaligned pc.
+	Should return EBADALIGN for unaligned rtba.
+	Should return EWOULDBLOCK if starting resource not available.
+
+7.2.2.1 cpu_stop errors
+
+	Should return EWOULDBLOCK if stopping resource not available.
+	Should return ENOTSUPPORTED if not supported on the platform.
+
+7.2.3 cpu_set_rtba
+
+	rtba alignment is to a (8 * 8 * 4) byte boundary.
+	Where is the real trap table described?
+
+7.2.4 cpu_get_rtba
+
+	Add "Errors" sub-section
+
+7.2.8 cpu_mondo_send
+
+	Second para: If no error is reported, the cpulist should still
+	be updated.
+
+	ENORADDR should also be returned for invalid cpulist address.
+	Add EINVAL for attempt to send to self.
+
+8.2 TSB spec.
+
+	Last para: Since 0xffff can be avoided by just use of max in MD,
+	what does last sentence add?
+
+8.4 MMU FSA
+
+	What happens if guest writes to MMUFSA?
+	What is status of 0x18-0x3f and 0x58-0x7f?
+	Can that be used as scratch during fault handling?
+
+8.5.1 mmu_tsb_ctxnon0
+
+	Return ENORADDR for invalid tsbdptr.
+	Return EBADALIGN for tsbdptr not aligned to 8 bytes.
+	Return EINVAL for inconsistent index page size and page
+	size bitmask.
+	Return EINVAL for reserved field not zero.
+	Return EBADALIGN for TSB base not aligned to TSB size in bytes.
+
+8.5.4 mmu_demap_ctx
+
+	"All mappings" needs expanding.
+
+8.5.5 mmu_demap_all
+
+	"All translations" needs expanding.
+
+	Inconsistent use of mappings and translations.
+
+8.5.6 mmu_map_addr
+
+	Note is strangely worded.
+
+	Is it invalid to provide a TTE without the valid bit set?
+
+	Is it invalid to specify incompatible cachablity and side-effect
+	with the given RA?
+	
+	EBADPGSI typo.
+
+8.5.7 mmu_map_perm_addr
+
+	Is any other context than zero allowed?
+
+	Similar comments to 8.5.6
+
+8.5.9 mmu_unmap_perm_addr
+
+	Return ENOMAP if the perm mapping was not found.
+
+8.5.10 mmu_fault_area
+
+	Need a get_fault_area API - returns the previously
+	specified area as described in mmu_fault_area.
+
+8.5.12 mmu_tsb_ctx0_info
+
+	Make ret1 set to ntsbs always.
+
+	Error description needs to be in standard format.
+
+	Errors to include EBADALIGN and ENORADDR for bufferptr.
+
+8.5.13 ctxnon0_info
+
+	Make ret1 set to ntsbs always.
+
+	Errors to include EBADALIGN and ENORADDR for bufferptr.
+
+9.1.1 mem_scrub
+
+	raddr+length and raddr+length-1: Use second.
+
+	This service is confused. The only time it is necessary
+	is from an error.
+
+	Need a Note about the hypervisor ensuring memory does
+	not need to be scrubbed on partition start?
+
+10.2.2 intr_getenabled
+
+	return codes should be symbolic as in 10.1
+
+10.2.5 intr_setstate
+
+	Return EINVAL for invalid intr_state also.
+
+11 TOD services
+
+	Is TOD spelt out anywhere?
+
+	"Unix" -> POSIX?
+
+11.1.1 tod_get
+
+	Return ENOTSUPPORTED or EINVAL if no TOD available?
+
+11.1.2 tod_set
+
+	see 11.1.1
+
+12.1.2 cons_putchar
+
+	It is possible to put a virtual BREAK?
+
+13. Core dump services
+
+	"back to Sun" -> ""
+
+	"hardware bugs" -> "configuration related bugs"
+
+13.1.1 dump_buf_conf
+
+	ret1 also has a value on failure - just always make it
+	the minimum size.
+
+	What does "performs a synchronization" mean?
+
+	EOK also for unconfigured.
+	Return EINVAL for if size is less than the minimum size.
+	Return ENOACCESS if the platform policy does not allow
+	this capability.
+
+13.1.2 dump_buf_info
+
+	Make size equals 0 indicate no buffer configured - matches
+	passing 0 to unconfigure it.
+
+14. Trap trace services
+
+	Define "limited" or remove the word.
+
+	Third para is same as first.
+
+	Any reason why a platform might not support this or not
+	record all trap types?
+
+14.1 ... control structure
+
+	Last para "fail offset" -> "tail offset"
+
+	Who owns the control structure?
+
+	Can guest write the buffer directly?
+
+14.3.1 ttrace_bufconf
+
+	Remove "in Section ""below" sentences.
+
+	"size" -> "nentries" (includes control structure.)
+	Minimum two: One control plus one record.
+
+	Last para - just return minimum size always. The value on
+	success is not useful.
+
+	bufconf API does an implicit ttrace disable.
+
+	What happens to freeze?
+
+	ENORADDR should not be returned for size to small.
+	Return EINVAL for invalid nentries.
+
+14.3.2 ttrace_bufinfo
+
+	Remove EINVAL - let nentries equaling zero indicate not defined
+	
+14.3.4 ttrace_freeze
+
+	Not clear if return value can be fed into subsequent call.
+	Remove ref to boolean type not defined anywhere.
+
+	References to future should be removed.
+
+	No freeze get.
+
+--------------070900030103030400090904--
+
+
+From sacadmin Mon Mar 21 12:42:10 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2LKg9Sp003703
+	for <fwarc@sac.eng.Sun.COM>; Mon, 21 Mar 2005 12:42:09 -0800 (PST)
+Received: from eastmail1bur.East.Sun.COM (eastmail1bur.East.Sun.COM [129.148.9.49])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2LKeZs20696
+	for <fwarc@Sun.COM>; Mon, 21 Mar 2005 13:40:36 -0700 (MST)
+Received: from phys-bur-2 (phys-bur-2.East.Sun.COM [129.148.9.73])
+	by eastmail1bur.East.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2LKeZQp019591
+	for <fwarc@sun.com>; Mon, 21 Mar 2005 15:40:35 -0500 (EST)
+Received: from conversion-daemon.bur-mail1.east.sun.com by
+ bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IDP00001YNB6V@bur-mail1.east.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM) for fwarc@sun.com; Mon,
+ 21 Mar 2005 15:40:35 -0500 (EST)
+Received: from Sun.COM (bacall.East.Sun.COM [129.148.184.139])
+ by bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IDP002UOYRMPE@bur-mail1.east.sun.com>; Mon,
+ 21 Mar 2005 15:40:35 -0500 (EST)
+Date: Mon, 21 Mar 2005 15:38:12 -0500
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: Issues : 2005/116 sun4v core API
+In-reply-to: <423F178D.60502@sun.com>
+Cc: Firmware Arch <fwarc@Sun.COM>, Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>,
+   John Johnson <John.Johnson@Sun.COM>
+Reply-to: Stephen.Ehring@Sun.COM
+Message-id: <423F30B4.3070805@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+References: <423F178D.60502@sun.com>
+Status: RO
+Content-Length: 224
+
+The commitment materials directory for the case has been updated with a list of open issues
+discussed during today's meeting and their resolution.
+
+-- 
+Stephen Ehring
+Sun Microsystems
+(781)-442-2479
+stephen.ehring@sun.com
+
+
+
+From sacadmin Tue Mar 22 15:22:35 2005
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2MNMZSp027759
+	for <FWARC@sac.sfbay.sun.com>; Tue, 22 Mar 2005 15:22:35 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2MNL0AH000791;
+	Tue, 22 Mar 2005 15:21:00 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2MNKwha050259;
+	Tue, 22 Mar 2005 15:20:58 -0800 (PST)
+Message-ID: <4240A859.8020301@sun.com>
+Date: Tue, 22 Mar 2005 15:20:57 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Stephen Ehring <Stephen.Ehring@sun.com>
+CC: Tony Sumpter <Tony.Sumpter@sun.com>, FWARC@sac.sfbay.sun.com,
+   John Johnson <John.Johnson@sun.com>,
+   Ashley Saulsbury <Ashley.Saulsbury@sun.com>
+Subject: Re: 2005/116 - core API - registry
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 436
+
+
+
+I modified the registry format to include case numbers,
+and added all the other APIs from all the other cases.
+
+-David
+
+Stephen Ehring wrote:
+> One of the AIs in the issues list was to create a registry of the trap
+> numbers and function numbers for the hypervisor.
+> 
+> I have created a registry based on the interface table of this case. It can
+> be located at:
+> 
+> http://sac.eng.sun.com/arc/FWARC/Registries/trap-registry.txt
+> 
+
+From sacadmin Wed Mar 23 15:47:17 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2NNlHSp025155
+	for <fwarc-members@sac.eng.sun.com>; Wed, 23 Mar 2005 15:47:17 -0800 (PST)
+Received: from jurassic.eng.sun.com (jurassic.SFBay.Sun.COM [129.146.81.144])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2NNjfZ10380;
+	Wed, 23 Mar 2005 15:45:41 -0800 (PST)
+Received: from Sun.COM (sr1-umpk-15.SFBay.Sun.COM [129.146.11.193])
+	by jurassic.eng.sun.com (8.13.3+Sun/8.13.3) with ESMTP id j2NNjcHk778900;
+	Wed, 23 Mar 2005 15:45:41 -0800 (PST)
+Message-ID: <4241FFA2.1030807@Sun.COM>
+Date: Wed, 23 Mar 2005 15:45:38 -0800
+From: Landy Burnett <Landyana.Burnett@Sun.COM>
+Reply-To: Landyana.Burnett@Sun.COM
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: fwarc-members@Sun.COM, John Johnson <John.Johnson@Sun.COM>,
+   Ashley Saulsbury <ashley.saulsbury@Sun.COM>,
+   Girish Goyal <Girish.Goyal@Sun.COM>,
+   Shanti Vasudevan <Shanti.Vasudevan@Sun.COM>, sun4v-iteam@Sun.COM,
+   psarc-members@Sun.COM
+Subject: FWARC Meeting Minutes 03/21/2005 Commitment: 2005/116 Inception:
+ 2005/115
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 959
+
+Minutes from FWARC 04/05/2005 meeting have been posted.
+
+They are available at:
+
+(1) http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050321.arcbiz
+
+Audio:
+======
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050321.arcbiz.mp3
+
+(2) http://sac.sfbay.sun.com/ARC/FWARC/2005/116/20050321.2005.116.commitment
+
+Audio:
+------
+http://sac.sfbay.sun.com/ARC/FWARC/2005/116/20050321.2005.116.commitment.mp3
+
+(3) http://sac.sfbay.sun.com/ARC/FWARC/2005/115/20050321.2005.115.inception
+
+Audio:
+------
+http://sac.sfbay.sun.com/ARC/FWARC/2005/115/20050321.2005.115.inception.mp3
+
+Sum-up is available at:
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050321.html
+
+If you have any feedback or correction, feel free to let me know.
+
+thanks
+-Landy
+x83664
+
+
+-- 
+Landyana Burnett				landyana.burnett@sun.com
+Program Manager, System Architecture		650.786.3664
+Sun Microsystems, Inc.
+=======================================================================
+
+
+From sacadmin Wed Mar 23 15:47:18 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2NNlHSr025155
+	for <psarc-members@sac.eng.sun.com>; Wed, 23 Mar 2005 15:47:17 -0800 (PST)
+Received: from jurassic.eng.sun.com (jurassic.SFBay.Sun.COM [129.146.81.144])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2NNjfZ10380;
+	Wed, 23 Mar 2005 15:45:41 -0800 (PST)
+Received: from Sun.COM (sr1-umpk-15.SFBay.Sun.COM [129.146.11.193])
+	by jurassic.eng.sun.com (8.13.3+Sun/8.13.3) with ESMTP id j2NNjcHk778900;
+	Wed, 23 Mar 2005 15:45:41 -0800 (PST)
+Message-ID: <4241FFA2.1030807@Sun.COM>
+Date: Wed, 23 Mar 2005 15:45:38 -0800
+From: Landy Burnett <Landyana.Burnett@Sun.COM>
+Reply-To: Landyana.Burnett@Sun.COM
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: fwarc-members@Sun.COM, John Johnson <John.Johnson@Sun.COM>,
+   Ashley Saulsbury <ashley.saulsbury@Sun.COM>,
+   Girish Goyal <Girish.Goyal@Sun.COM>,
+   Shanti Vasudevan <Shanti.Vasudevan@Sun.COM>, sun4v-iteam@Sun.COM,
+   psarc-members@Sun.COM
+Subject: FWARC Meeting Minutes 03/21/2005 Commitment: 2005/116 Inception:
+ 2005/115
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 959
+
+Minutes from FWARC 04/05/2005 meeting have been posted.
+
+They are available at:
+
+(1) http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050321.arcbiz
+
+Audio:
+======
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050321.arcbiz.mp3
+
+(2) http://sac.sfbay.sun.com/ARC/FWARC/2005/116/20050321.2005.116.commitment
+
+Audio:
+------
+http://sac.sfbay.sun.com/ARC/FWARC/2005/116/20050321.2005.116.commitment.mp3
+
+(3) http://sac.sfbay.sun.com/ARC/FWARC/2005/115/20050321.2005.115.inception
+
+Audio:
+------
+http://sac.sfbay.sun.com/ARC/FWARC/2005/115/20050321.2005.115.inception.mp3
+
+Sum-up is available at:
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050321.html
+
+If you have any feedback or correction, feel free to let me know.
+
+thanks
+-Landy
+x83664
+
+
+-- 
+Landyana Burnett				landyana.burnett@sun.com
+Program Manager, System Architecture		650.786.3664
+Sun Microsystems, Inc.
+=======================================================================
+
+
+From sacadmin Wed Mar 23 23:24:57 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2O7OvSp021779
+	for <fwarc@sac.eng.sun.com>; Wed, 23 Mar 2005 23:24:57 -0800 (PST)
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2O7JUw06098
+	for <fwarc@sun.com>; Wed, 23 Mar 2005 23:22:35 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2O7JTAH010171;
+	Wed, 23 Mar 2005 23:19:29 -0800 (PST)
+Received: from sun.com (vpn-129-150-27-120.SFBay.Sun.COM [129.150.27.120])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2O7JTha035110;
+	Wed, 23 Mar 2005 23:19:29 -0800 (PST)
+Message-ID: <42426A40.4040402@sun.com>
+Date: Wed, 23 Mar 2005 23:20:32 -0800
+From: Tony Sumpter <tony.sumpter@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4) Gecko/20030624
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Firmware ARC <fwarc@sun.com>
+CC: Ashley Saulsbury <ashley.saulsbury@sun.com>,
+   John Johnson <john.johnson@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Subject: FWARC/2005/116 sun4v core API commitment2 materials
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 416
+
+As decided in FWARC on 3/21/05, the commitment 2 materials for an
+e-mail vote for this case are now available at:
+
+http://sac.eng/arc/FWARC/2005/116/commitment2.materials/
+
+The file issues-commitment1-resolved.txt confirms that the
+resolutions from the 3/21 meeting have been applied.
+
+The interface table is updated.
+
+IAM file is updated to "waiting need vote".
+
+-----------
+My vote: Approved.
+-----------
+
+Tony.
+
+
+
+From sacadmin Wed Mar 23 23:37:24 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2O7bOSp021851
+	for <fwarc@sac.eng.sun.com>; Wed, 23 Mar 2005 23:37:24 -0800 (PST)
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2O7Znw15981
+	for <fwarc@sun.com>; Wed, 23 Mar 2005 23:35:49 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2O7ZmAH013517;
+	Wed, 23 Mar 2005 23:35:48 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2O7Zlha035830;
+	Wed, 23 Mar 2005 23:35:47 -0800 (PST)
+Message-ID: <42426DD2.5000305@sun.com>
+Date: Wed, 23 Mar 2005 23:35:46 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Tony Sumpter <tony.sumpter@sun.com>
+CC: Firmware ARC <fwarc@sun.com>, Ashley Saulsbury <ashley.saulsbury@sun.com>,
+   John Johnson <john.johnson@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Subject: Re: FWARC/2005/116 sun4v core API commitment2 materials
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 497
+
+
+Approve.
+
+-David
+
+
+Tony Sumpter wrote:
+> As decided in FWARC on 3/21/05, the commitment 2 materials for an
+> e-mail vote for this case are now available at:
+> 
+> http://sac.eng/arc/FWARC/2005/116/commitment2.materials/
+> 
+> The file issues-commitment1-resolved.txt confirms that the
+> resolutions from the 3/21 meeting have been applied.
+> 
+> The interface table is updated.
+> 
+> IAM file is updated to "waiting need vote".
+> 
+> -----------
+> My vote: Approved.
+> -----------
+> 
+> Tony.
+> 
+> 
+> 
+
+From sacadmin Wed Mar 23 23:40:53 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2O7erSp021888
+	for <fwarc@sac.eng.sun.com>; Wed, 23 Mar 2005 23:40:53 -0800 (PST)
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2O7dHZ01380
+	for <fwarc@sun.com>; Wed, 23 Mar 2005 23:39:17 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2O7dHAH014132;
+	Wed, 23 Mar 2005 23:39:17 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2O7dFha036028;
+	Wed, 23 Mar 2005 23:39:15 -0800 (PST)
+Message-ID: <42426EA2.6060808@sun.com>
+Date: Wed, 23 Mar 2005 23:39:14 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Tony Sumpter <tony.sumpter@sun.com>
+CC: Firmware ARC <fwarc@sun.com>, Ashley Saulsbury <ashley.saulsbury@sun.com>,
+   John Johnson <john.johnson@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Subject: Re: FWARC/2005/116 sun4v core API commitment2 materials
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 576
+
+
+I retract my vote.
+
+I'm noticing a number of gratuitous changes in
+the interface table.
+
+-David
+
+
+Tony Sumpter wrote:
+> As decided in FWARC on 3/21/05, the commitment 2 materials for an
+> e-mail vote for this case are now available at:
+> 
+> http://sac.eng/arc/FWARC/2005/116/commitment2.materials/
+> 
+> The file issues-commitment1-resolved.txt confirms that the
+> resolutions from the 3/21 meeting have been applied.
+> 
+> The interface table is updated.
+> 
+> IAM file is updated to "waiting need vote".
+> 
+> -----------
+> My vote: Approved.
+> -----------
+> 
+> Tony.
+> 
+> 
+> 
+
+From sacadmin Thu Mar 24 13:46:07 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2OLk7Sp018653
+	for <fwarc@sac.eng.sun.com>; Thu, 24 Mar 2005 13:46:07 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2OLiWw04866
+	for <fwarc@sun.com>; Thu, 24 Mar 2005 13:44:32 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2OLiVjg017815;
+	Thu, 24 Mar 2005 13:44:31 -0800 (PST)
+Received: from sun.com (vpn-129-150-29-221.SFBay.Sun.COM [129.150.29.221])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2OLiVha079163;
+	Thu, 24 Mar 2005 13:44:31 -0800 (PST)
+Message-ID: <424334FD.6020508@sun.com>
+Date: Thu, 24 Mar 2005 13:45:33 -0800
+From: Tony Sumpter <tony.sumpter@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4) Gecko/20030624
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: David Kahn <David.Kahn@sun.com>
+CC: Firmware ARC <fwarc@sun.com>, Ashley Saulsbury <ashley.saulsbury@sun.com>,
+   John Johnson <john.johnson@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Subject: Re: FWARC/2005/116 sun4v core API commitment2 materials
+References: <42426EA2.6060808@sun.com>
+In-Reply-To: <42426EA2.6060808@sun.com>
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 741
+
+David Kahn wrote:
+
+> 
+> I retract my vote.
+> 
+> I'm noticing a number of gratuitous changes in
+> the interface table.
+
+David is correct - sorry for wasting member's time.
+
+I will fix this and resend the request for a vote.
+
+Tony.
+
+> -David
+> 
+> 
+> Tony Sumpter wrote:
+> 
+>> As decided in FWARC on 3/21/05, the commitment 2 materials for an
+>> e-mail vote for this case are now available at:
+>>
+>> http://sac.eng/arc/FWARC/2005/116/commitment2.materials/
+>>
+>> The file issues-commitment1-resolved.txt confirms that the
+>> resolutions from the 3/21 meeting have been applied.
+>>
+>> The interface table is updated.
+>>
+>> IAM file is updated to "waiting need vote".
+>>
+>> -----------
+>> My vote: Approved.
+>> -----------
+>>
+>> Tony.
+>>
+>>
+>>
+
+
+
+From sacadmin Thu Mar 24 19:48:17 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2P3mHSp014637
+	for <fwarc@sac.eng.Sun.COM>; Thu, 24 Mar 2005 19:48:17 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2P3kes14522
+	for <fwarc@sun.com>; Thu, 24 Mar 2005 20:46:41 -0700 (MST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2P3kejg014730;
+	Thu, 24 Mar 2005 19:46:40 -0800 (PST)
+Received: from sun.com (vpn-129-150-29-221.SFBay.Sun.COM [129.150.29.221])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2P3keha002373;
+	Thu, 24 Mar 2005 19:46:40 -0800 (PST)
+Message-ID: <424389DE.2010105@sun.com>
+Date: Thu, 24 Mar 2005 19:47:42 -0800
+From: Tony Sumpter <tony.sumpter@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4) Gecko/20030624
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Firmware ARC <fwarc@sun.com>
+CC: Ashley Saulsbury <ashley.saulsbury@sun.com>,
+   John Johnson <john.johnson@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Subject: Re: FWARC/2005/116 sun4v core API commitment2 materials
+References: <42426EA2.6060808@sun.com> <424334FD.6020508@sun.com>
+In-Reply-To: <424334FD.6020508@sun.com>
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 1026
+
+The file api-delta.pdf has been added to the commitment2.materials
+directory to show the differences between the API spec.
+used for the 3/21 review and the one for commitment 2.
+
+api.pdf is unchanged.
+
+Tony.
+
+Tony Sumpter wrote:
+
+> David Kahn wrote:
+> 
+>>
+>> I retract my vote.
+>>
+>> I'm noticing a number of gratuitous changes in
+>> the interface table.
+> 
+> 
+> David is correct - sorry for wasting member's time.
+> 
+> I will fix this and resend the request for a vote.
+> 
+> Tony.
+> 
+>> -David
+>>
+>>
+>> Tony Sumpter wrote:
+>>
+>>> As decided in FWARC on 3/21/05, the commitment 2 materials for an
+>>> e-mail vote for this case are now available at:
+>>>
+>>> http://sac.eng/arc/FWARC/2005/116/commitment2.materials/
+>>>
+>>> The file issues-commitment1-resolved.txt confirms that the
+>>> resolutions from the 3/21 meeting have been applied.
+>>>
+>>> The interface table is updated.
+>>>
+>>> IAM file is updated to "waiting need vote".
+>>>
+>>> -----------
+>>> My vote: Approved.
+>>> -----------
+>>>
+>>> Tony.
+>>>
+>>>
+>>>
+> 
+> 
+> 
+
+
+
+From sacadmin Thu Mar 24 20:15:53 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2P4FrSp017099
+	for <fwarc@sac.eng.Sun.COM>; Thu, 24 Mar 2005 20:15:53 -0800 (PST)
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2P4EGs25728
+	for <fwarc@sun.com>; Thu, 24 Mar 2005 21:14:17 -0700 (MST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2P4EGAH027003;
+	Thu, 24 Mar 2005 20:14:16 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2P4EEha003607;
+	Thu, 24 Mar 2005 20:14:15 -0800 (PST)
+Message-ID: <42439016.1090302@sun.com>
+Date: Thu, 24 Mar 2005 20:14:14 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Tony Sumpter <tony.sumpter@sun.com>
+CC: Firmware ARC <fwarc@sun.com>, Ashley Saulsbury <ashley.saulsbury@sun.com>,
+   John Johnson <john.johnson@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Subject: Re: FWARC/2005/116 sun4v core API commitment2 materials
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 1231
+
+
+I looked at the changes.
+
+I vote "approve".
+
+The registy will need a manual update for some
+of these changes.
+
+-David
+
+
+Tony Sumpter wrote:
+> The file api-delta.pdf has been added to the commitment2.materials
+> directory to show the differences between the API spec.
+> used for the 3/21 review and the one for commitment 2.
+> 
+> api.pdf is unchanged.
+> 
+> Tony.
+> 
+> Tony Sumpter wrote:
+> 
+>> David Kahn wrote:
+>>
+>>>
+>>> I retract my vote.
+>>>
+>>> I'm noticing a number of gratuitous changes in
+>>> the interface table.
+>>
+>>
+>>
+>> David is correct - sorry for wasting member's time.
+>>
+>> I will fix this and resend the request for a vote.
+>>
+>> Tony.
+>>
+>>> -David
+>>>
+>>>
+>>> Tony Sumpter wrote:
+>>>
+>>>> As decided in FWARC on 3/21/05, the commitment 2 materials for an
+>>>> e-mail vote for this case are now available at:
+>>>>
+>>>> http://sac.eng/arc/FWARC/2005/116/commitment2.materials/
+>>>>
+>>>> The file issues-commitment1-resolved.txt confirms that the
+>>>> resolutions from the 3/21 meeting have been applied.
+>>>>
+>>>> The interface table is updated.
+>>>>
+>>>> IAM file is updated to "waiting need vote".
+>>>>
+>>>> -----------
+>>>> My vote: Approved.
+>>>> -----------
+>>>>
+>>>> Tony.
+>>>>
+>>>>
+>>>>
+>>
+>>
+>>
+> 
+> 
+> 
+
+From sacadmin Fri Mar 25 14:55:16 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2PMtGSp014735
+	for <fwarc@sac.eng.sun.com>; Fri, 25 Mar 2005 14:55:16 -0800 (PST)
+Received: from westmail1mpk.West.Sun.COM (westmail1mpk.West.Sun.COM [129.153.100.33])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2PMreZ20069
+	for <fwarc@sun.com>; Fri, 25 Mar 2005 14:53:40 -0800 (PST)
+Received: from phys-san-2 (phys-san-2.West.Sun.COM [129.153.85.71])
+	by westmail1mpk.West.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2PMrd38016257
+	for <fwarc@sun.com>; Fri, 25 Mar 2005 14:53:40 -0800 (PST)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IDX00201J35YU@san-mail1.west.sun.com>
+ (original mail from Hitendra.Zhangada@sun.com) for fwarc@sun.com; Fri,
+ 25 Mar 2005 14:53:39 -0800 (PST)
+Received: from [129.150.34.128]
+ (vpn-129-150-34-128.Central.Sun.COM [129.150.34.128])
+ by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IDX00LMYJLC43@san-mail1.west.sun.com>; Fri,
+ 25 Mar 2005 14:53:38 -0800 (PST)
+Date: Fri, 25 Mar 2005 14:53:37 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC/2005/116 sun4v core API commitment2 materials
+In-reply-to: <42439016.1090302@sun.com>
+To: Firmware ARC <fwarc@sun.com>
+Cc: Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+   John Johnson <John.Johnson@sun.com>, Greg Onufer <Greg.Onufer@sun.com>
+Message-id: <42449671.5080806@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.2)
+ Gecko/20040804 Netscape/7.2 (ax)
+References: <42439016.1090302@sun.com>
+Status: RO
+Content-Length: 332
+
+David Kahn wrote:
+
+> 
+> I looked at the changes.
+> 
+> I vote "approve".
+
+I vote "approve" as well.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Fri Mar 25 15:05:43 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2PN5hSp015177
+	for <fwarc@sac.eng.sun.com>; Fri, 25 Mar 2005 15:05:43 -0800 (PST)
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2PN46w26976
+	for <fwarc@sun.com>; Fri, 25 Mar 2005 15:04:06 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2PN46AH020665;
+	Fri, 25 Mar 2005 15:04:06 -0800 (PST)
+Received: from sun.com (vpn-129-150-28-147.SFBay.Sun.COM [129.150.28.147])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2PN45ha054539;
+	Fri, 25 Mar 2005 15:04:05 -0800 (PST)
+Message-ID: <42449925.8010608@sun.com>
+Date: Fri, 25 Mar 2005 15:05:09 -0800
+From: Tony Sumpter <tony.sumpter@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4) Gecko/20030624
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+CC: Firmware ARC <fwarc@sun.com>, Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+   John Johnson <John.Johnson@sun.com>, Greg Onufer <Greg.Onufer@sun.com>
+Subject: Re: FWARC/2005/116 sun4v core API commitment2 materials
+References: <42439016.1090302@sun.com> <42449671.5080806@sun.com>
+In-Reply-To: <42449671.5080806@sun.com>
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 299
+
+Hitendra Zhangada wrote:
+
+> David Kahn wrote:
+> 
+>>
+>> I looked at the changes.
+>>
+>> I vote "approve".
+> 
+> 
+> I vote "approve" as well.
+
+With my approval we have:
+
+	David Kahn		Approve
+	Hitendra Zhangada	Approve
+	Tony Sumpter		Approve
+	David Redman		no vote yet
+	Robert Houk		on vacation
+
+Tony.
+
+
+
+From sacadmin Tue Mar 29 12:47:01 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2TKl1Sp024922
+	for <fwarc@sac.eng.Sun.COM>; Tue, 29 Mar 2005 12:47:01 -0800 (PST)
+Received: from eastmail2bur.East.Sun.COM (eastmail2bur.East.Sun.COM [129.148.13.40])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2TKjLs16240
+	for <fwarc@sun.com>; Tue, 29 Mar 2005 13:45:22 -0700 (MST)
+Received: from UrQ.East.Sun.COM (urq.East.Sun.COM [129.148.181.218])
+	by eastmail2bur.East.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2TKjFOp024593;
+	Tue, 29 Mar 2005 15:45:15 -0500 (EST)
+Received: (from rdh@localhost)
+	by UrQ.East.Sun.COM (8.11.7p1+Sun/8.11.7) id j2TKj2Y04370;
+	Tue, 29 Mar 2005 15:45:02 -0500 (EST)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Message-ID: <16969.48718.533650.41863@gargle.gargle.HOWL>
+Date: Tue, 29 Mar 2005 15:45:02 -0500
+From: RDH <rdh@urq.east.sun.com>
+To: Firmware ARC <fwarc@sun.com>, Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+   John Johnson <John.Johnson@sun.com>, Greg Onufer <Greg.Onufer@sun.com>
+Subject: Re: FWARC/2005/116 sun4v core API commitment2 materials
+In-Reply-To: Hitendra Zhangada's message of 25 March 2005 14:53:37
+References: <42439016.1090302@sun.com>
+	<42449671.5080806@sun.com>
+X-Mailer: VM 7.17 under Emacs 20.3.1
+Reply-To: rdh@urq.east.sun.com
+Status: RO
+Content-Length: 181
+
+Hitendra Zhangada writes:
+> David Kahn wrote:
+> 
+> > 
+> > I looked at the changes.
+> > 
+> > I vote "approve".
+> 
+> I vote "approve" as well.
+
+I vote "not participating".
+
+					-RDH
+
+From sacadmin Tue Mar 29 17:16:42 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2U1GfSp018749
+	for <fwarc@sac.eng.sun.com>; Tue, 29 Mar 2005 17:16:42 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2U1F2w17267
+	for <fwarc@sun.com>; Tue, 29 Mar 2005 17:15:02 -0800 (PST)
+Received: from dropship.sfbay.sun.com (dropship.SFBay.Sun.COM [129.146.96.70])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2U1F1jg007049;
+	Tue, 29 Mar 2005 17:15:01 -0800 (PST)
+Received: from [129.146.96.70] (dropship.SFBay.Sun.COM [129.146.96.70])
+	by dropship.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2U1EEeB013356;
+	Tue, 29 Mar 2005 17:14:14 -0800 (PST)
+Message-ID: <4249FD66.8070403@sun.com>
+Date: Tue, 29 Mar 2005 17:14:14 -0800
+From: David Redman <david.redman@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7.6) Gecko/20050310
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: rdh@urq.east.sun.com
+CC: Firmware ARC <fwarc@sun.com>, Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+   John Johnson <John.Johnson@sun.com>, Greg Onufer <Greg.Onufer@sun.com>
+Subject: Re: FWARC/2005/116 sun4v core API commitment2 materials
+References: <42439016.1090302@sun.com>	<42449671.5080806@sun.com> <16969.48718.533650.41863@gargle.gargle.HOWL>
+In-Reply-To: <16969.48718.533650.41863@gargle.gargle.HOWL>
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 261
+
+RDH wrote:
+
+>Hitendra Zhangada writes:
+>  
+>
+>>David Kahn wrote:
+>>
+>>    
+>>
+>>>I looked at the changes.
+>>>
+>>>I vote "approve".
+>>>      
+>>>
+>>I vote "approve" as well.
+>>    
+>>
+>
+>I vote "not participating".
+>
+>					-RDH
+>
+>  
+>
+I vote "approve".
+
+dave.
+
+
+From sacadmin Tue Mar 29 17:29:29 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2U1TSSp018863
+	for <fwarc@sac.eng.sun.com>; Tue, 29 Mar 2005 17:29:28 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2U1RnZ00844
+	for <fwarc@sun.com>; Tue, 29 Mar 2005 17:27:49 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2U1Rmjg011507;
+	Tue, 29 Mar 2005 17:27:48 -0800 (PST)
+Received: from sun.com (vpn-129-150-25-69.SFBay.Sun.COM [129.150.25.69])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2U1Rmha013670;
+	Tue, 29 Mar 2005 17:27:48 -0800 (PST)
+Message-ID: <424A00D4.1070107@sun.com>
+Date: Tue, 29 Mar 2005 17:28:52 -0800
+From: Tony Sumpter <tony.sumpter@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4) Gecko/20030624
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Firmware ARC <fwarc@sun.com>
+CC: Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+   John Johnson <John.Johnson@sun.com>, Greg Onufer <Greg.Onufer@sun.com>
+Subject: Re: FWARC/2005/116 sun4v core API commitment2 materials
+References: <42439016.1090302@sun.com> <42449671.5080806@sun.com> <42449925.8010608@sun.com>
+In-Reply-To: <42449925.8010608@sun.com>
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 180
+
+The final vote is in:
+
+	David Kahn		Approve
+	Hitendra Zhangada	Approve
+	Tony Sumpter		Approve
+	David Redman		Approve
+	Robert Houk		not participating
+
+The case is approved.
+
+Tony.
+
+
+From sacadmin Wed May  4 06:57:42 2005
+Received: from phys-bur-2 (phys-bur-2.East.Sun.COM [129.148.9.73])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j44Dvgs0005810
+	for <fwarc@sac.eng.sun.com>; Wed, 4 May 2005 06:57:42 -0700 (PDT)
+Received: from conversion-daemon.bur-mail1.east.sun.com by
+ bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IFY00201XAXFE@bur-mail1.east.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM) for fwarc@sac.eng; Wed,
+ 04 May 2005 09:57:41 -0400 (EDT)
+Received: from Sun.COM (bacall.East.Sun.COM [129.148.184.139])
+ by bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IFY00CZAXG5O9@bur-mail1.east.sun.com>; Wed,
+ 04 May 2005 09:57:41 -0400 (EDT)
+Date: Wed, 04 May 2005 09:55:01 -0400
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: FWARC 2005/116 sun4v core API opinion for review by 05/11/2005
+To: sun4v-iteam@sun.com, psarc@sun.com, fwarc@sac.eng.sun.com
+Reply-to: Stephen.Ehring@Sun.COM
+Message-id: <4278D435.7030407@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 11035
+
+		
+ sun
+   microsystems              Systems Architecture Committee
+_________________________________________________________________
+
+Subject:	sun4v Core API
+
+Submitted by:	john.johnson@sun.com
+
+File:   	FWARC/2005/116/opinion.ascii
+
+Date:		March 29th, 2005
+
+Committee:      Tony Sumpter (opinion written by Stephen Ehring),
+                David Kahn,
+                Hitendra Zhangada,
+                David Redman.
+
+1.  Summary
+
+The project defines the core interfaces used for communicating with the
+Hypervisor on any machine that implements the sun4v architecture. The
+Hypervisor uses various SPARC traps to pass data between a client and the
+Hypervisor, and this FWARC case reserves certain trap numbers and defines
+the arguments that the traps consume and produce.
+
+A fundamental set of traps is defined by this case as specified in [1].
+Other traps and functions will be defined in the future to extend
+Hypervisor's functionality to satisfy OBP and Solaris requirements. This
+case establishes a registry of trap numbers and function numbers that will
+be updated whenever a new trap or function is added.
+
+2.  Decision & Precedence Information
+
+        The project  is  approved  as  specified  in  reference  [1]
+
+        The project may be delivered in a minor release of Solaris and a
+        minor release of OBP. The project defines the first release of
+        the Hypervisor
+
+        The project is related to the following other projects. They
+        may not be delivered until this project has been implemented
+        since they are extension of this project.
+        FWARC 2005/112 sun4v io-api
+        FWARC 2005/117 sun4v niagara and great lakes APIs
+        FWARC 2005/164 sun4v Niagara CPU API
+        FWARC 2005/173 Hypervisor Service API
+
+3. Interfaces
+
+___________________________________________________________________________
+                        Interfaces Exported
+___________________________________________________________________________
+Interface Name		Classification	Comment
+___________________________________________________________________________
+HYPERFAST TRAPS		Sun Private	argument/result format.
+___________________________________________________________________________
+FAST_TRAP		Sun Private	arg/result format trap 0x80
+___________________________________________________________________________
+CORE_TRAP		Sun Private	arg/result format trap 0xff
+___________________________________________________________________________
+HV Error IDs		Sun Private	Error code values.
+___________________________________________________________________________
+MMU Fault Status Area	Sun Private	Data Structure format & content
+___________________________________________________________________________
+Trap Trace Buffer	Sun Private	Data structure format & content
+___________________________________________________________________________
+Initial Guest State	Sun Private	Initial guest state
+___________________________________________________________________________
+API_VER			Sun Private	Trap 0xff function number 0x00
+						Note: reservation only
+___________________________________________________________________________
+API_PUTCHAR		Sun Private	Trap 0xff function number 0x01
+___________________________________________________________________________
+API_EXIT		Sun Private	Trap 0xff function number 0x02
+___________________________________________________________________________
+FAST_TRAP		Sun Private	trap 0x80 - fast-trap
+___________________________________________________________________________
+MMU_MAP_ADDR		Sun Private	trap 0x83 - mmu_map_addr
+___________________________________________________________________________
+MMU_UNMAP_ADDR		Sun Private	trap 0x84 - mmu_unmap_addr
+___________________________________________________________________________
+TTRACE_ADDENTRY		Sun Private	trap 0x85 - ttrace_addentry
+___________________________________________________________________________
+MACH_EXIT		Sun Private	Trap 0x80 function number 0x00
+___________________________________________________________________________
+MACH_DESC		Sun Private	Trap 0x80 function number 0x01
+___________________________________________________________________________
+MACH_SIR		Sun Private	Trap 0x80 function number 0x02
+___________________________________________________________________________
+CPU_START		Sun Private	Trap 0x80 function number 0x10
+___________________________________________________________________________
+CPU_STOP		Sun Private	Trap 0x80 function number 0x11
+___________________________________________________________________________
+CPU_YIELD		Sun Private	Trap 0x80 function number 0x12
+___________________________________________________________________________
+CPU_QCONF		Sun Private	Trap 0x80 function number 0x14
+___________________________________________________________________________
+CPU_QINFO		Sun Private	Trap 0x80 function number 0x15
+___________________________________________________________________________
+CPU_MYID		Sun Private	Trap 0x80 function number 0x16
+___________________________________________________________________________
+CPU_STATE		Sun Private	Trap 0x80 function number 0x17
+___________________________________________________________________________
+CPU_SET_RTBA		Sun Private	Trap 0x80 function number 0x18
+___________________________________________________________________________
+CPU_GET_RTBA		Sun Private	Trap 0x80 function number 0x19
+___________________________________________________________________________
+MMU_TSB_CTX0		Sun Private	Trap 0x80 function number 0x20
+___________________________________________________________________________
+MMU_TSB_CTXNON0		Sun Private	Trap 0x80 function number 0x21
+___________________________________________________________________________
+MMU_DEMAP_PAGE		Sun Private	Trap 0x80 function number 0x22
+___________________________________________________________________________
+MMU_DEMAP_CTX		Sun Private	Trap 0x80 function number 0x23
+___________________________________________________________________________
+MMU_DEMAP_ALL		Sun Private	Trap 0x80 function number 0x24
+___________________________________________________________________________
+MMU_MAP_PERM_ADDR	Sun Private	Trap 0x80 function number 0x25
+___________________________________________________________________________
+MMU_FAULT_AREA_CONF	Sun Private	Trap 0x80 function number 0x26
+___________________________________________________________________________
+MMU_ENABLE		Sun Private	Trap 0x80 function number 0x27
+___________________________________________________________________________
+MMU_UNMAP_PERM_ADDR	Sun Private	Trap 0x80 function number 0x28
+___________________________________________________________________________
+MMU_TSB_CTX0_INFO	Sun Private	Trap 0x80 function number 0x29
+___________________________________________________________________________
+MMU_TSB_CTXNON0_INFO	Sun Private	Trap 0x80 function number 0x2a
+___________________________________________________________________________
+MMU_FAULT_AREA_INFO	Sun Private	Trap 0x80 function number 0x2b
+___________________________________________________________________________
+MEM_SCRUB		Sun Private	Trap 0x80 function number 0x31
+___________________________________________________________________________
+MEM_SYNC		Sun Private	Trap 0x80 function number 0x32
+___________________________________________________________________________
+CPU_MONDO_SEND		Sun Private	Trap 0x80 function number 0x42
+___________________________________________________________________________
+TOD_GET			Sun Private	Trap 0x80 function number 0x50
+___________________________________________________________________________
+TOD_SET			Sun Private	Trap 0x80 function number 0x51
+___________________________________________________________________________
+CONS_GETCHAR		Sun Private	Trap 0x80 function number 0x60
+___________________________________________________________________________
+CONS_PUTCHAR		Sun Private	Trap 0x80 function number 0x61
+___________________________________________________________________________
+TTRACE_BUF_CONF		Sun Private	Trap 0x80 function number 0x90
+___________________________________________________________________________
+TTRACE_BUF_INFO		Sun Private	Trap 0x80 function number 0x91
+___________________________________________________________________________
+TTRACE_ENABLE		Sun Private	Trap 0x80 function number 0x92
+___________________________________________________________________________
+TTRACE_FREEZE		Sun Private	Trap 0x80 function number 0x93
+___________________________________________________________________________
+DUMP_BUF_UPDATE		Sun Private	Trap 0x80 function number 0x94
+___________________________________________________________________________
+DUMP_BUF_INFO		Sun Private	Trap 0x80 function number 0x95
+___________________________________________________________________________
+INTR_DEVINO2SYSINO	Sun Private	Trap 0x80 function number 0xa0
+___________________________________________________________________________
+INTR_GETENABLED		Sun Private	Trap 0x80 function number 0xa1
+___________________________________________________________________________
+INTR_SETENABLED		Sun Private	Trap 0x80 function number 0xa2
+___________________________________________________________________________
+INTR_GETSTATE		Sun Private	Trap 0x80 function number 0xa3
+___________________________________________________________________________
+INTR_SETSTATE		Sun Private	Trap 0x80 function number 0xa4
+___________________________________________________________________________
+INTR_GETTARGET		Sun Private	Trap 0x80 function number 0xa5
+___________________________________________________________________________
+INTR_SETTARGET		Sun Private	Trap 0x80 function number 0xa6
+___________________________________________________________________________
+
+
+4.  Opinion
+
+This  case  only  approves  the trap numbers and function numbers that are
+listed in the case materials. FWARC will approve other function and trap
+numbers as part of different cases as listed above in section 2.
+
+An issue was raised about how the guest client will extract versioning
+information from the hypervisor to determine compatibility. It was
+concluded that this will be defined by a later FWARC case.
+
+The FWARC members requested that a registry be created as part of this
+proposal to tabulate all of the hypervisor traps and function numbers for
+this case and any additional cases that extend this interface.
+
+The majority of other issues were editorial in nature to clarify
+definitions in the API specificiation.
+
+5.  Minority Opinion(s)
+
+None.
+
+6.  Advisory Information
+
+None.
+
+7.  Appendices
+
+7.1.  Appendix A: Technical Changes Required
+
+None.
+
+7.2.  Appendix B: Technical Changes Advised
+	
+None.
+
+7.3.  Appendix C: Reference Material
+
+     Unless otherwise noted, materials are relative to the case directory:
+     FWARC/2005/116/
+
+     1.  Sun4v Hypervisor Core API Specification
+         File: commitment2.materials/api.pdf
+
+     2.  mail log
+         File: mail
+
+
+
+
+From sacadmin Wed May  4 06:57:53 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j44Dvrs0005826
+	for <psarc@sac.eng.Sun.COM>; Wed, 4 May 2005 06:57:53 -0700 (PDT)
+Received: from eastmail1bur.East.Sun.COM (eastmail1bur.East.Sun.COM [129.148.9.49])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j44Dvgh29138;
+	Wed, 4 May 2005 07:57:42 -0600 (MDT)
+Received: from phys-bur-2 (phys-bur-2.East.Sun.COM [129.148.9.73])
+	by eastmail1bur.East.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j44DvfQp016137;
+	Wed, 4 May 2005 09:57:41 -0400 (EDT)
+Received: from conversion-daemon.bur-mail1.east.sun.com by
+ bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IFY00201XAXFE@bur-mail1.east.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM); Wed,
+ 04 May 2005 09:57:41 -0400 (EDT)
+Received: from Sun.COM (bacall.East.Sun.COM [129.148.184.139])
+ by bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IFY00CZAXG5O9@bur-mail1.east.sun.com>; Wed,
+ 04 May 2005 09:57:41 -0400 (EDT)
+Date: Wed, 04 May 2005 09:55:01 -0400
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: FWARC 2005/116 sun4v core API opinion for review by 05/11/2005
+To: sun4v-iteam@Sun.COM, psarc@Sun.COM, fwarc@sac.eng.sun.com
+Reply-to: Stephen.Ehring@Sun.COM
+Message-id: <4278D435.7030407@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 11035
+
+		
+ sun
+   microsystems              Systems Architecture Committee
+_________________________________________________________________
+
+Subject:	sun4v Core API
+
+Submitted by:	john.johnson@sun.com
+
+File:   	FWARC/2005/116/opinion.ascii
+
+Date:		March 29th, 2005
+
+Committee:      Tony Sumpter (opinion written by Stephen Ehring),
+                David Kahn,
+                Hitendra Zhangada,
+                David Redman.
+
+1.  Summary
+
+The project defines the core interfaces used for communicating with the
+Hypervisor on any machine that implements the sun4v architecture. The
+Hypervisor uses various SPARC traps to pass data between a client and the
+Hypervisor, and this FWARC case reserves certain trap numbers and defines
+the arguments that the traps consume and produce.
+
+A fundamental set of traps is defined by this case as specified in [1].
+Other traps and functions will be defined in the future to extend
+Hypervisor's functionality to satisfy OBP and Solaris requirements. This
+case establishes a registry of trap numbers and function numbers that will
+be updated whenever a new trap or function is added.
+
+2.  Decision & Precedence Information
+
+        The project  is  approved  as  specified  in  reference  [1]
+
+        The project may be delivered in a minor release of Solaris and a
+        minor release of OBP. The project defines the first release of
+        the Hypervisor
+
+        The project is related to the following other projects. They
+        may not be delivered until this project has been implemented
+        since they are extension of this project.
+        FWARC 2005/112 sun4v io-api
+        FWARC 2005/117 sun4v niagara and great lakes APIs
+        FWARC 2005/164 sun4v Niagara CPU API
+        FWARC 2005/173 Hypervisor Service API
+
+3. Interfaces
+
+___________________________________________________________________________
+                        Interfaces Exported
+___________________________________________________________________________
+Interface Name		Classification	Comment
+___________________________________________________________________________
+HYPERFAST TRAPS		Sun Private	argument/result format.
+___________________________________________________________________________
+FAST_TRAP		Sun Private	arg/result format trap 0x80
+___________________________________________________________________________
+CORE_TRAP		Sun Private	arg/result format trap 0xff
+___________________________________________________________________________
+HV Error IDs		Sun Private	Error code values.
+___________________________________________________________________________
+MMU Fault Status Area	Sun Private	Data Structure format & content
+___________________________________________________________________________
+Trap Trace Buffer	Sun Private	Data structure format & content
+___________________________________________________________________________
+Initial Guest State	Sun Private	Initial guest state
+___________________________________________________________________________
+API_VER			Sun Private	Trap 0xff function number 0x00
+						Note: reservation only
+___________________________________________________________________________
+API_PUTCHAR		Sun Private	Trap 0xff function number 0x01
+___________________________________________________________________________
+API_EXIT		Sun Private	Trap 0xff function number 0x02
+___________________________________________________________________________
+FAST_TRAP		Sun Private	trap 0x80 - fast-trap
+___________________________________________________________________________
+MMU_MAP_ADDR		Sun Private	trap 0x83 - mmu_map_addr
+___________________________________________________________________________
+MMU_UNMAP_ADDR		Sun Private	trap 0x84 - mmu_unmap_addr
+___________________________________________________________________________
+TTRACE_ADDENTRY		Sun Private	trap 0x85 - ttrace_addentry
+___________________________________________________________________________
+MACH_EXIT		Sun Private	Trap 0x80 function number 0x00
+___________________________________________________________________________
+MACH_DESC		Sun Private	Trap 0x80 function number 0x01
+___________________________________________________________________________
+MACH_SIR		Sun Private	Trap 0x80 function number 0x02
+___________________________________________________________________________
+CPU_START		Sun Private	Trap 0x80 function number 0x10
+___________________________________________________________________________
+CPU_STOP		Sun Private	Trap 0x80 function number 0x11
+___________________________________________________________________________
+CPU_YIELD		Sun Private	Trap 0x80 function number 0x12
+___________________________________________________________________________
+CPU_QCONF		Sun Private	Trap 0x80 function number 0x14
+___________________________________________________________________________
+CPU_QINFO		Sun Private	Trap 0x80 function number 0x15
+___________________________________________________________________________
+CPU_MYID		Sun Private	Trap 0x80 function number 0x16
+___________________________________________________________________________
+CPU_STATE		Sun Private	Trap 0x80 function number 0x17
+___________________________________________________________________________
+CPU_SET_RTBA		Sun Private	Trap 0x80 function number 0x18
+___________________________________________________________________________
+CPU_GET_RTBA		Sun Private	Trap 0x80 function number 0x19
+___________________________________________________________________________
+MMU_TSB_CTX0		Sun Private	Trap 0x80 function number 0x20
+___________________________________________________________________________
+MMU_TSB_CTXNON0		Sun Private	Trap 0x80 function number 0x21
+___________________________________________________________________________
+MMU_DEMAP_PAGE		Sun Private	Trap 0x80 function number 0x22
+___________________________________________________________________________
+MMU_DEMAP_CTX		Sun Private	Trap 0x80 function number 0x23
+___________________________________________________________________________
+MMU_DEMAP_ALL		Sun Private	Trap 0x80 function number 0x24
+___________________________________________________________________________
+MMU_MAP_PERM_ADDR	Sun Private	Trap 0x80 function number 0x25
+___________________________________________________________________________
+MMU_FAULT_AREA_CONF	Sun Private	Trap 0x80 function number 0x26
+___________________________________________________________________________
+MMU_ENABLE		Sun Private	Trap 0x80 function number 0x27
+___________________________________________________________________________
+MMU_UNMAP_PERM_ADDR	Sun Private	Trap 0x80 function number 0x28
+___________________________________________________________________________
+MMU_TSB_CTX0_INFO	Sun Private	Trap 0x80 function number 0x29
+___________________________________________________________________________
+MMU_TSB_CTXNON0_INFO	Sun Private	Trap 0x80 function number 0x2a
+___________________________________________________________________________
+MMU_FAULT_AREA_INFO	Sun Private	Trap 0x80 function number 0x2b
+___________________________________________________________________________
+MEM_SCRUB		Sun Private	Trap 0x80 function number 0x31
+___________________________________________________________________________
+MEM_SYNC		Sun Private	Trap 0x80 function number 0x32
+___________________________________________________________________________
+CPU_MONDO_SEND		Sun Private	Trap 0x80 function number 0x42
+___________________________________________________________________________
+TOD_GET			Sun Private	Trap 0x80 function number 0x50
+___________________________________________________________________________
+TOD_SET			Sun Private	Trap 0x80 function number 0x51
+___________________________________________________________________________
+CONS_GETCHAR		Sun Private	Trap 0x80 function number 0x60
+___________________________________________________________________________
+CONS_PUTCHAR		Sun Private	Trap 0x80 function number 0x61
+___________________________________________________________________________
+TTRACE_BUF_CONF		Sun Private	Trap 0x80 function number 0x90
+___________________________________________________________________________
+TTRACE_BUF_INFO		Sun Private	Trap 0x80 function number 0x91
+___________________________________________________________________________
+TTRACE_ENABLE		Sun Private	Trap 0x80 function number 0x92
+___________________________________________________________________________
+TTRACE_FREEZE		Sun Private	Trap 0x80 function number 0x93
+___________________________________________________________________________
+DUMP_BUF_UPDATE		Sun Private	Trap 0x80 function number 0x94
+___________________________________________________________________________
+DUMP_BUF_INFO		Sun Private	Trap 0x80 function number 0x95
+___________________________________________________________________________
+INTR_DEVINO2SYSINO	Sun Private	Trap 0x80 function number 0xa0
+___________________________________________________________________________
+INTR_GETENABLED		Sun Private	Trap 0x80 function number 0xa1
+___________________________________________________________________________
+INTR_SETENABLED		Sun Private	Trap 0x80 function number 0xa2
+___________________________________________________________________________
+INTR_GETSTATE		Sun Private	Trap 0x80 function number 0xa3
+___________________________________________________________________________
+INTR_SETSTATE		Sun Private	Trap 0x80 function number 0xa4
+___________________________________________________________________________
+INTR_GETTARGET		Sun Private	Trap 0x80 function number 0xa5
+___________________________________________________________________________
+INTR_SETTARGET		Sun Private	Trap 0x80 function number 0xa6
+___________________________________________________________________________
+
+
+4.  Opinion
+
+This  case  only  approves  the trap numbers and function numbers that are
+listed in the case materials. FWARC will approve other function and trap
+numbers as part of different cases as listed above in section 2.
+
+An issue was raised about how the guest client will extract versioning
+information from the hypervisor to determine compatibility. It was
+concluded that this will be defined by a later FWARC case.
+
+The FWARC members requested that a registry be created as part of this
+proposal to tabulate all of the hypervisor traps and function numbers for
+this case and any additional cases that extend this interface.
+
+The majority of other issues were editorial in nature to clarify
+definitions in the API specificiation.
+
+5.  Minority Opinion(s)
+
+None.
+
+6.  Advisory Information
+
+None.
+
+7.  Appendices
+
+7.1.  Appendix A: Technical Changes Required
+
+None.
+
+7.2.  Appendix B: Technical Changes Advised
+	
+None.
+
+7.3.  Appendix C: Reference Material
+
+     Unless otherwise noted, materials are relative to the case directory:
+     FWARC/2005/116/
+
+     1.  Sun4v Hypervisor Core API Specification
+         File: commitment2.materials/api.pdf
+
+     2.  mail log
+         File: mail
+
+
+
+
+From sacadmin Wed May  4 15:06:13 2005
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j44M6Ds0001237;
+	Wed, 4 May 2005 15:06:13 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j44M6Cjg015635;
+	Wed, 4 May 2005 15:06:12 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j44M6BHa040813;
+	Wed, 4 May 2005 15:06:11 -0700 (PDT)
+Message-ID: <42794753.6020407@sun.com>
+Date: Wed, 04 May 2005 15:06:11 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.2 (Windows/20050317)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Stephen Ehring <Stephen.Ehring@sun.com>
+CC: fwarc@sac.eng.sun.com, psarc@sac.eng.sun.com
+Subject: Re: FWARC 2005/116 sun4v core API opinion for review by 05/11/2005
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 614
+
+
+Very good.
+
+Please add a link to the registry,
+perhaps in the FILES section and/or
+in the part of the opinion that establishes
+the registry.
+
+In the opinion, the following text needs to be a bit
+more normative about establishing the registry for
+the hyper traps. The main reason for the opinion on
+this case is to establish the registry.
+
+> The FWARC members requested that a registry be created as part of this
+> proposal to tabulate all of the hypervisor traps and function numbers for
+> this case and any additional cases that extend this interface.
+
+No need to reset the clock for this minor change.
+
+-David
+
+
+From sacadmin Wed May  4 15:06:13 2005
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j44M6Ds0001237;
+	Wed, 4 May 2005 15:06:13 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j44M6Cjg015635;
+	Wed, 4 May 2005 15:06:12 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j44M6BHa040813;
+	Wed, 4 May 2005 15:06:11 -0700 (PDT)
+Message-ID: <42794753.6020407@sun.com>
+Date: Wed, 04 May 2005 15:06:11 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.2 (Windows/20050317)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Stephen Ehring <Stephen.Ehring@sun.com>
+CC: fwarc@sac.eng.sun.com, psarc@sac.eng.sun.com
+Subject: Re: FWARC 2005/116 sun4v core API opinion for review by 05/11/2005
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 614
+
+
+Very good.
+
+Please add a link to the registry,
+perhaps in the FILES section and/or
+in the part of the opinion that establishes
+the registry.
+
+In the opinion, the following text needs to be a bit
+more normative about establishing the registry for
+the hyper traps. The main reason for the opinion on
+this case is to establish the registry.
+
+> The FWARC members requested that a registry be created as part of this
+> proposal to tabulate all of the hypervisor traps and function numbers for
+> this case and any additional cases that extend this interface.
+
+No need to reset the clock for this minor change.
+
+-David
+
+
+From sacadmin Mon May  9 09:14:00 2005
+Received: from phys-bur-2 (phys-bur-2.East.Sun.COM [129.148.9.73])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j49GE0s0013327;
+	Mon, 9 May 2005 09:14:00 -0700 (PDT)
+Received: from conversion-daemon.bur-mail1.east.sun.com by
+ bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IG800D01CXATC@bur-mail1.east.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM); Mon,
+ 09 May 2005 12:13:55 -0400 (EDT)
+Received: from Sun.COM (bacall.East.Sun.COM [129.148.184.139])
+ by bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IG800EMFD377O@bur-mail1.east.sun.com>; Mon,
+ 09 May 2005 12:13:55 -0400 (EDT)
+Date: Mon, 09 May 2005 12:11:12 -0400
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: Re: FWARC 2005/116 sun4v core API opinion for review by 05/11/2005
+In-reply-to: <42794753.6020407@sun.com>
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: fwarc@sac.eng.sun.com, psarc@sac.eng.sun.com
+Reply-to: Stephen.Ehring@Sun.COM
+Message-id: <427F8BA0.8030808@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+References: <42794753.6020407@sun.com>
+Status: RO
+Content-Length: 750
+
+The opinion in the case folder has been updated per David's requests.
+
+Steve
+
+David Kahn wrote:
+> Very good.
+> 
+> Please add a link to the registry,
+> perhaps in the FILES section and/or
+> in the part of the opinion that establishes
+> the registry.
+> 
+> In the opinion, the following text needs to be a bit
+> more normative about establishing the registry for
+> the hyper traps. The main reason for the opinion on
+> this case is to establish the registry.
+> 
+> 
+>>The FWARC members requested that a registry be created as part of this
+>>proposal to tabulate all of the hypervisor traps and function numbers for
+>>this case and any additional cases that extend this interface.
+> 
+> 
+> No need to reset the clock for this minor change.
+> 
+> -David
+> 
+
+
+From sacadmin Mon May  9 09:14:00 2005
+Received: from phys-bur-2 (phys-bur-2.East.Sun.COM [129.148.9.73])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j49GE0s0013327;
+	Mon, 9 May 2005 09:14:00 -0700 (PDT)
+Received: from conversion-daemon.bur-mail1.east.sun.com by
+ bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IG800D01CXATC@bur-mail1.east.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM); Mon,
+ 09 May 2005 12:13:55 -0400 (EDT)
+Received: from Sun.COM (bacall.East.Sun.COM [129.148.184.139])
+ by bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IG800EMFD377O@bur-mail1.east.sun.com>; Mon,
+ 09 May 2005 12:13:55 -0400 (EDT)
+Date: Mon, 09 May 2005 12:11:12 -0400
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: Re: FWARC 2005/116 sun4v core API opinion for review by 05/11/2005
+In-reply-to: <42794753.6020407@sun.com>
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: fwarc@sac.eng.sun.com, psarc@sac.eng.sun.com
+Reply-to: Stephen.Ehring@Sun.COM
+Message-id: <427F8BA0.8030808@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+References: <42794753.6020407@sun.com>
+Status: RO
+Content-Length: 750
+
+The opinion in the case folder has been updated per David's requests.
+
+Steve
+
+David Kahn wrote:
+> Very good.
+> 
+> Please add a link to the registry,
+> perhaps in the FILES section and/or
+> in the part of the opinion that establishes
+> the registry.
+> 
+> In the opinion, the following text needs to be a bit
+> more normative about establishing the registry for
+> the hyper traps. The main reason for the opinion on
+> this case is to establish the registry.
+> 
+> 
+>>The FWARC members requested that a registry be created as part of this
+>>proposal to tabulate all of the hypervisor traps and function numbers for
+>>this case and any additional cases that extend this interface.
+> 
+> 
+> No need to reset the clock for this minor change.
+> 
+> -David
+> 
+
+
+From sac-owner Wed May 11 09:02:28 2005
+Received: from phys-bur-2 (phys-bur-2.East.Sun.COM [129.148.9.73])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j4BG2Rs0006217
+	for <sac-review@sac.eng.sun.com>; Wed, 11 May 2005 09:02:28 -0700 (PDT)
+Received: from conversion-daemon.bur-mail1.east.sun.com by
+ bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IGC003011UWKP@bur-mail1.east.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM) for sac-review@sac.eng; Wed,
+ 11 May 2005 12:02:23 -0400 (EDT)
+Received: from Sun.COM (bacall.East.Sun.COM [129.148.184.139])
+ by bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IGC0030B1VYRG@bur-mail1.east.sun.com> for sac-review@sac.eng;
+ Wed, 11 May 2005 12:02:22 -0400 (EDT)
+Date: Wed, 11 May 2005 11:59:39 -0400
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: FWARC 2005/116 sun4v core API opinion for sac review by 05/18/2005
+To: sac-review@sac.eng.sun.com
+Reply-to: Stephen.Ehring@Sun.COM
+Message-id: <42822BEB.7070309@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 168
+
+The Opinion for FWARC 2005/116 sun4v core API is ready for SAC review. It can be located at the URL:
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2005/116/opinion.ascii
+
+
+From sac-owner Wed May 11 13:05:27 2005
+Received: from phys-ha14sca-1.sfbay.sun.com (phys-ha14sca-1.SFBay.Sun.COM [129.145.155.210])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j4BK5Qs0024231
+	for <sac-review@sac.eng.sun.com>; Wed, 11 May 2005 13:05:26 -0700 (PDT)
+Received: from cinema2 ([192.18.122.98]) by ha14sca-mail1.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2 Patch 1 (built Jan 31 2005))
+ with SMTP id <0IGC00GL5D4TJPB0@ha14sca-mail1.sfbay.sun.com> for
+ sac-review@sac.eng.sun.com; Wed, 11 May 2005 13:05:18 -0700 (PDT)
+Date: Wed, 11 May 2005 13:05:20 -0700 (PDT)
+From: Edward Hunter <ed.hunter@Sun.COM>
+Subject: Re: FWARC 2005/116 sun4v core API opinion for sac review by 05/18/2005
+To: sac-review@sac.eng.sun.com, Stephen.Ehring@Sun.COM
+Reply-to: Edward Hunter <ed.hunter@Sun.COM>
+Message-id: <0IGC00GL6D4UJPB0@ha14sca-mail1.sfbay.sun.com>
+MIME-version: 1.0
+X-Mailer: dtmail 1.3.0 @(#)CDE Version 1.5.7 SunOS 5.9 sun4u sparc
+Content-type: TEXT/plain; charset=us-ascii
+Content-MD5: j9Eqh6+AedyBLSuxhRYrIw==
+Status: RO
+Content-Length: 457
+
+
+Was there discussion about whether or not the delivery in OBP and the delivery 
+in Solaris need to be ordered or synchronized?  For instance, I assume that a 
+version of Solaris with this in it will run fine on a system with an older OBP 
+but I wanted to confirm that.
+-edh
+
+> 
+> The Opinion for FWARC 2005/116 sun4v core API is ready for SAC review. It can 
+be located at the URL:
+> 
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2005/116/opinion.ascii
+> 
+
+
+From sac-owner Wed May 11 14:42:44 2005
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j4BLgis0000341
+	for <sac-review@sac.eng.sun.com>; Wed, 11 May 2005 14:42:44 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j4BLgaAH027444;
+	Wed, 11 May 2005 14:42:36 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j4BLgZMh004956;
+	Wed, 11 May 2005 14:42:35 -0700 (PDT)
+Message-ID: <42827C4A.20900@sun.com>
+Date: Wed, 11 May 2005 14:42:34 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.2 (Windows/20050317)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Edward Hunter <ed.hunter@sun.com>
+CC: sac-review@sac.eng.sun.com, Stephen.Ehring@sun.com,
+   Ashley Saulsbury <ashley.saulsbury@sun.com>,
+   Greg Onufer <Greg.Onufer@sun.com>
+Subject: Re: FWARC 2005/116 sun4v core API opinion for sac review by 05/18/2005
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 847
+
+
+
+Edward Hunter wrote:
+> Was there discussion about whether or not the delivery in OBP and the delivery 
+> in Solaris need to be ordered or synchronized?  For instance, I assume that a 
+> version of Solaris with this in it will run fine on a system with an older OBP 
+> but I wanted to confirm that.
+> -edh
+
+Assuming you mean hypervisor instead of OBP (which are both delivered
+as part of a platform specific firmware wad with the hardware, but
+can be updated separately from the OS), yes it's been discussed.
+
+There's a separate case for the HV versioning API (and the OBP
+client interface that the guest can use to invoke it), and
+all the versioning issues will be dealt with as part of that case.
+We have to be able to move forward in a compatible manner, and
+the project teams know they can't create a situation where you
+can't boot.
+
+-David
+
+
+From sac-owner Wed May 11 15:00:33 2005
+Received: from phys-ha14sca-1.sfbay.sun.com (phys-ha14sca-1.SFBay.Sun.COM [129.145.155.210])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j4BM0Ws0003698
+	for <sac-review@sac.eng.sun.com>; Wed, 11 May 2005 15:00:32 -0700 (PDT)
+Received: from cinema2 ([192.18.122.98]) by ha14sca-mail1.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2 Patch 1 (built Jan 31 2005))
+ with SMTP id <0IGC00GJHIGPJKE0@ha14sca-mail1.sfbay.sun.com> for
+ sac-review@sac.eng.sun.com; Wed, 11 May 2005 15:00:26 -0700 (PDT)
+Date: Wed, 11 May 2005 15:00:25 -0700 (PDT)
+From: Edward Hunter <ed.hunter@Sun.COM>
+Subject: Re: FWARC 2005/116 sun4v core API opinion for sac review by 05/18/2005
+To: ed.hunter@Sun.COM, David.Kahn@Sun.COM
+Cc: sac-review@sac.eng.sun.com, Stephen.Ehring@Sun.COM,
+   Ashley.Saulsbury@Sun.COM, Greg.Onufer@Sun.COM
+Reply-to: Edward Hunter <ed.hunter@Sun.COM>
+Message-id: <0IGC00GJIIGPJKE0@ha14sca-mail1.sfbay.sun.com>
+MIME-version: 1.0
+X-Mailer: dtmail 1.3.0 @(#)CDE Version 1.5.7 SunOS 5.9 sun4u sparc
+Content-type: TEXT/plain; charset=us-ascii
+Content-MD5: kM/Lcn7c+dcHNinhbDcrxg==
+Status: RO
+Content-Length: 1056
+
+Okay, you might want to mention that in the opinion (that the project team can't 
+create a situation where you can't boot).  However, I understand now.
+-edh
+
+> 
+> 
+> 
+> Edward Hunter wrote:
+> > Was there discussion about whether or not the delivery in OBP and the 
+delivery 
+> > in Solaris need to be ordered or synchronized?  For instance, I assume that 
+a 
+> > version of Solaris with this in it will run fine on a system with an older 
+OBP 
+> > but I wanted to confirm that.
+> > -edh
+> 
+> Assuming you mean hypervisor instead of OBP (which are both delivered
+> as part of a platform specific firmware wad with the hardware, but
+> can be updated separately from the OS), yes it's been discussed.
+> 
+> There's a separate case for the HV versioning API (and the OBP
+> client interface that the guest can use to invoke it), and
+> all the versioning issues will be dealt with as part of that case.
+> We have to be able to move forward in a compatible manner, and
+> the project teams know they can't create a situation where you
+> can't boot.
+> 
+> -David
+> 
+
+
+From sac-owner Wed May 11 15:17:51 2005
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j4BMHps0005325
+	for <sac-review@sac.eng.sun.com>; Wed, 11 May 2005 15:17:51 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j4BMHhAH013289;
+	Wed, 11 May 2005 15:17:43 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j4BMHgMh007365;
+	Wed, 11 May 2005 15:17:42 -0700 (PDT)
+Message-ID: <42828486.9000007@sun.com>
+Date: Wed, 11 May 2005 15:17:42 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.2 (Windows/20050317)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Edward Hunter <ed.hunter@sun.com>
+CC: sac-review@sac.eng.sun.com, Stephen.Ehring@sun.com,
+   Ashley.Saulsbury@sun.com, Greg.Onufer@sun.com
+Subject: Re: FWARC 2005/116 sun4v core API opinion for sac review by 05/18/2005
+References: <0IGC00GJIIGPJKE0@ha14sca-mail1.sfbay.sun.com>
+In-Reply-To: <0IGC00GJIIGPJKE0@ha14sca-mail1.sfbay.sun.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 424
+
+
+All this stuff is part of an umbrella case,
+so I think it will be ok if we deal with all
+the versioning issues in the case that
+includes the versioning APIs.
+
+The umbrella gives us the dependencies, etc.
+
+Does that work for you?
+
+-David
+
+
+Edward Hunter wrote:
+> Okay, you might want to mention that in the opinion (that the project team
+> can't create a situation where you can't boot).  However, I understand now. 
+> -edh
+
+From sac-owner Wed May 11 15:26:50 2005
+Received: from phys-ha14sca-1.sfbay.sun.com (phys-ha14sca-1.SFBay.Sun.COM [129.145.155.210])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j4BMQms0006272
+	for <sac-review@sac.eng.sun.com>; Wed, 11 May 2005 15:26:50 -0700 (PDT)
+Received: from cinema2 ([192.18.122.98]) by ha14sca-mail1.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2 Patch 1 (built Jan 31 2005))
+ with SMTP id <0IGC00G74JOHJKF0@ha14sca-mail1.sfbay.sun.com> for
+ sac-review@sac.eng.sun.com; Wed, 11 May 2005 15:26:41 -0700 (PDT)
+Date: Wed, 11 May 2005 15:26:41 -0700 (PDT)
+From: Edward Hunter <ed.hunter@Sun.COM>
+Subject: Re: FWARC 2005/116 sun4v core API opinion for sac review by 05/18/2005
+To: ed.hunter@Sun.COM, David.Kahn@Sun.COM
+Cc: sac-review@sac.eng.sun.com, Stephen.Ehring@Sun.COM,
+   Ashley.Saulsbury@Sun.COM, Greg.Onufer@Sun.COM
+Reply-to: Edward Hunter <ed.hunter@Sun.COM>
+Message-id: <0IGC00G75JOHJKF0@ha14sca-mail1.sfbay.sun.com>
+MIME-version: 1.0
+X-Mailer: dtmail 1.3.0 @(#)CDE Version 1.5.7 SunOS 5.9 sun4u sparc
+Content-type: TEXT/plain; charset=us-ascii
+Content-MD5: 6qYfC8EmsxH8Bl4J6sFBwA==
+Status: RO
+Content-Length: 482
+
+
+That's fine.
+-edh
+
+> 
+> 
+> All this stuff is part of an umbrella case,
+> so I think it will be ok if we deal with all
+> the versioning issues in the case that
+> includes the versioning APIs.
+> 
+> The umbrella gives us the dependencies, etc.
+> 
+> Does that work for you?
+> 
+> -David
+> 
+> 
+> Edward Hunter wrote:
+> > Okay, you might want to mention that in the opinion (that the project team
+> > can't create a situation where you can't boot).  However, I understand now. 
+> > -edh
+
+
+From sacadmin Fri May 20 07:18:01 2005
+Received: from phys-bur-2 (phys-bur-2.East.Sun.COM [129.148.9.73])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j4KEI1s0019248;
+	Fri, 20 May 2005 07:18:01 -0700 (PDT)
+Received: from conversion-daemon.bur-mail1.east.sun.com by
+ bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IGS00A01KXNC8@bur-mail1.east.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM); Fri,
+ 20 May 2005 10:17:50 -0400 (EDT)
+Received: from Sun.COM (bacall.East.Sun.COM [129.148.184.139])
+ by bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IGS00LF8L1P5W@bur-mail1.east.sun.com>; Fri,
+ 20 May 2005 10:17:50 -0400 (EDT)
+Date: Fri, 20 May 2005 10:15:02 -0400
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: FWARC 2005/116 sun4v core API is closed approved
+To: sac-opinion@sac.eng.sun.com, sun4v-iteam@Sun.COM, fwarc@sac.eng.sun.com
+Reply-to: Stephen.Ehring@Sun.COM
+Message-id: <428DF0E6.5070708@Sun.COM>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_oU9FFbTAzbc55t2xaiROmQ)"
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 11892
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_oU9FFbTAzbc55t2xaiROmQ)
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+FWARC case 2005/116 is closed approved, and the IAM file has been updated. Attached is the final
+opinion.
+
+
+
+--Boundary_(ID_oU9FFbTAzbc55t2xaiROmQ)
+Content-type: text/plain; name=opinion.ascii
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=opinion.ascii
+
+		
+ sun
+   microsystems              Systems Architecture Committee
+_________________________________________________________________
+
+Subject:	sun4v Core API
+
+Submitted by:	john.johnson@sun.com
+
+File:   	FWARC/2005/116/opinion.ascii
+
+Date:		March 29th, 2005
+
+Committee:      Tony Sumpter (opinion written by Stephen Ehring),
+                David Kahn,
+                Hitendra Zhangada,
+                David Redman.
+
+1.  Summary 
+
+The project defines the core interfaces used for communicating with the 
+Hypervisor on any machine that implements the sun4v architecture. The 
+Hypervisor uses various SPARC traps to pass data between a client and the 
+Hypervisor, and this FWARC case reserves certain trap numbers and defines 
+the arguments that the traps consume and produce.
+
+A fundamental set of traps is defined by this case as specified in [1]. 
+Other traps and functions will be defined in the future to extend 
+Hypervisor's functionality to satisfy OBP and Solaris requirements. This 
+case establishes a registry of trap numbers and function numbers that will 
+be updated whenever a new trap or function is added.
+
+2.  Decision & Precedence Information
+
+        The project  is  approved  as  specified  in  reference  [1]
+
+        The project may be delivered in a minor release of Solaris and a
+        minor release of OBP. The project defines the first release of 
+        the Hypervisor
+
+        The project is related to the following other projects. They 
+        may not be delivered until this project has been implemented 
+        since they are extension of this project.
+        FWARC 2005/112 sun4v io-api
+        FWARC 2005/117 sun4v niagara and great lakes APIs
+        FWARC 2005/164 sun4v Niagara CPU API
+        FWARC 2005/173 Hypervisor Service API 
+
+3. Interfaces
+
+___________________________________________________________________________
+                        Interfaces Exported                           
+___________________________________________________________________________
+Interface Name		Classification	Comment                      
+___________________________________________________________________________
+HYPERFAST TRAPS		Sun Private	argument/result format.
+___________________________________________________________________________
+FAST_TRAP		Sun Private	arg/result format trap 0x80
+___________________________________________________________________________
+CORE_TRAP		Sun Private	arg/result format trap 0xff
+___________________________________________________________________________
+HV Error IDs		Sun Private	Error code values.
+___________________________________________________________________________
+MMU Fault Status Area	Sun Private	Data Structure format & content
+___________________________________________________________________________
+Trap Trace Buffer	Sun Private	Data structure format & content
+___________________________________________________________________________
+Initial Guest State	Sun Private	Initial guest state
+___________________________________________________________________________
+API_VER			Sun Private	Trap 0xff function number 0x00
+						Note: reservation only
+___________________________________________________________________________
+API_PUTCHAR		Sun Private	Trap 0xff function number 0x01
+___________________________________________________________________________
+API_EXIT		Sun Private	Trap 0xff function number 0x02
+___________________________________________________________________________
+FAST_TRAP		Sun Private	trap 0x80 - fast-trap
+___________________________________________________________________________
+MMU_MAP_ADDR		Sun Private	trap 0x83 - mmu_map_addr
+___________________________________________________________________________
+MMU_UNMAP_ADDR		Sun Private	trap 0x84 - mmu_unmap_addr
+___________________________________________________________________________
+TTRACE_ADDENTRY		Sun Private	trap 0x85 - ttrace_addentry
+___________________________________________________________________________
+MACH_EXIT		Sun Private	Trap 0x80 function number 0x00
+___________________________________________________________________________
+MACH_DESC		Sun Private	Trap 0x80 function number 0x01
+___________________________________________________________________________
+MACH_SIR		Sun Private	Trap 0x80 function number 0x02
+___________________________________________________________________________
+CPU_START		Sun Private	Trap 0x80 function number 0x10
+___________________________________________________________________________
+CPU_STOP		Sun Private	Trap 0x80 function number 0x11
+___________________________________________________________________________
+CPU_YIELD		Sun Private	Trap 0x80 function number 0x12
+___________________________________________________________________________
+CPU_QCONF		Sun Private	Trap 0x80 function number 0x14
+___________________________________________________________________________
+CPU_QINFO		Sun Private	Trap 0x80 function number 0x15
+___________________________________________________________________________
+CPU_MYID		Sun Private	Trap 0x80 function number 0x16
+___________________________________________________________________________
+CPU_STATE		Sun Private	Trap 0x80 function number 0x17
+___________________________________________________________________________
+CPU_SET_RTBA		Sun Private	Trap 0x80 function number 0x18
+___________________________________________________________________________
+CPU_GET_RTBA		Sun Private	Trap 0x80 function number 0x19
+___________________________________________________________________________
+MMU_TSB_CTX0		Sun Private	Trap 0x80 function number 0x20
+___________________________________________________________________________
+MMU_TSB_CTXNON0		Sun Private	Trap 0x80 function number 0x21
+___________________________________________________________________________
+MMU_DEMAP_PAGE		Sun Private	Trap 0x80 function number 0x22
+___________________________________________________________________________
+MMU_DEMAP_CTX		Sun Private	Trap 0x80 function number 0x23
+___________________________________________________________________________
+MMU_DEMAP_ALL		Sun Private	Trap 0x80 function number 0x24
+___________________________________________________________________________
+MMU_MAP_PERM_ADDR	Sun Private	Trap 0x80 function number 0x25
+___________________________________________________________________________
+MMU_FAULT_AREA_CONF	Sun Private	Trap 0x80 function number 0x26
+___________________________________________________________________________
+MMU_ENABLE		Sun Private	Trap 0x80 function number 0x27
+___________________________________________________________________________
+MMU_UNMAP_PERM_ADDR	Sun Private	Trap 0x80 function number 0x28
+___________________________________________________________________________
+MMU_TSB_CTX0_INFO	Sun Private	Trap 0x80 function number 0x29
+___________________________________________________________________________
+MMU_TSB_CTXNON0_INFO	Sun Private	Trap 0x80 function number 0x2a
+___________________________________________________________________________
+MMU_FAULT_AREA_INFO	Sun Private	Trap 0x80 function number 0x2b
+___________________________________________________________________________
+MEM_SCRUB		Sun Private	Trap 0x80 function number 0x31
+___________________________________________________________________________
+MEM_SYNC		Sun Private	Trap 0x80 function number 0x32
+___________________________________________________________________________
+CPU_MONDO_SEND		Sun Private	Trap 0x80 function number 0x42
+___________________________________________________________________________
+TOD_GET			Sun Private	Trap 0x80 function number 0x50
+___________________________________________________________________________
+TOD_SET			Sun Private	Trap 0x80 function number 0x51
+___________________________________________________________________________
+CONS_GETCHAR		Sun Private	Trap 0x80 function number 0x60
+___________________________________________________________________________
+CONS_PUTCHAR		Sun Private	Trap 0x80 function number 0x61
+___________________________________________________________________________
+TTRACE_BUF_CONF		Sun Private	Trap 0x80 function number 0x90
+___________________________________________________________________________
+TTRACE_BUF_INFO		Sun Private	Trap 0x80 function number 0x91
+___________________________________________________________________________
+TTRACE_ENABLE		Sun Private	Trap 0x80 function number 0x92
+___________________________________________________________________________
+TTRACE_FREEZE		Sun Private	Trap 0x80 function number 0x93
+___________________________________________________________________________
+DUMP_BUF_UPDATE		Sun Private	Trap 0x80 function number 0x94
+___________________________________________________________________________
+DUMP_BUF_INFO		Sun Private	Trap 0x80 function number 0x95
+___________________________________________________________________________
+INTR_DEVINO2SYSINO	Sun Private	Trap 0x80 function number 0xa0
+___________________________________________________________________________
+INTR_GETENABLED		Sun Private	Trap 0x80 function number 0xa1
+___________________________________________________________________________
+INTR_SETENABLED		Sun Private	Trap 0x80 function number 0xa2
+___________________________________________________________________________
+INTR_GETSTATE		Sun Private	Trap 0x80 function number 0xa3
+___________________________________________________________________________
+INTR_SETSTATE		Sun Private	Trap 0x80 function number 0xa4
+___________________________________________________________________________
+INTR_GETTARGET		Sun Private	Trap 0x80 function number 0xa5
+___________________________________________________________________________
+INTR_SETTARGET		Sun Private	Trap 0x80 function number 0xa6
+___________________________________________________________________________
+
+
+4.  Opinion
+
+This  case  only  approves  the trap numbers and function numbers that are 
+listed in the case materials. FWARC will approve other function and trap 
+numbers as part of different cases as listed above in section 2.
+
+An issue was raised about how the guest client will extract versioning 
+information from the hypervisor to determine compatibility. It was 
+concluded that this will be defined by a later FWARC case.
+
+The FWARC members requested that a registry be created as part of this 
+proposal to tabulate all of the hypervisor traps and function numbers for 
+this case and any additional cases that extend this interface. This Registry
+will be named the "Hypervisor API Regsitry" and can be found at the link 
+pointed to by [3]. Any FWARC cases that extend the Hypervisor API will be 
+required to update this registry 
+
+The majority of other issues were editorial in nature to clarify 
+definitions in the API specificiation.
+
+5.  Minority Opinion(s)
+
+None.
+
+6.  Advisory Information
+
+None.
+
+7.  Appendices
+
+7.1.  Appendix A: Technical Changes Required
+
+None.
+
+7.2.  Appendix B: Technical Changes Advised
+	
+None.
+
+7.3.  Appendix C: Reference Material
+
+     Unless otherwise noted, materials are relative to the case directory:
+     FWARC/2005/116/
+
+     1.  Sun4v Hypervisor Core API Specification
+         File: commitment2.materials/api.pdf
+
+     2.  mail log 
+         File: mail
+
+     3.  Hypervisor API Registry
+         File: http://sac.eng.sun.com/arc/FWARC/Registries/trap-registry.txt
+
+
+--Boundary_(ID_oU9FFbTAzbc55t2xaiROmQ)--
+
+From sac-owner Fri May 20 07:18:01 2005
+Received: from phys-bur-2 (phys-bur-2.East.Sun.COM [129.148.9.73])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j4KEI1s0019248;
+	Fri, 20 May 2005 07:18:01 -0700 (PDT)
+Received: from conversion-daemon.bur-mail1.east.sun.com by
+ bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IGS00A01KXNC8@bur-mail1.east.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM); Fri,
+ 20 May 2005 10:17:50 -0400 (EDT)
+Received: from Sun.COM (bacall.East.Sun.COM [129.148.184.139])
+ by bur-mail1.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IGS00LF8L1P5W@bur-mail1.east.sun.com>; Fri,
+ 20 May 2005 10:17:50 -0400 (EDT)
+Date: Fri, 20 May 2005 10:15:02 -0400
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: FWARC 2005/116 sun4v core API is closed approved
+To: sac-opinion@sac.eng.sun.com, sun4v-iteam@Sun.COM, fwarc@sac.eng.sun.com
+Reply-to: Stephen.Ehring@Sun.COM
+Message-id: <428DF0E6.5070708@Sun.COM>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_oU9FFbTAzbc55t2xaiROmQ)"
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 11892
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_oU9FFbTAzbc55t2xaiROmQ)
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+FWARC case 2005/116 is closed approved, and the IAM file has been updated. Attached is the final
+opinion.
+
+
+
+--Boundary_(ID_oU9FFbTAzbc55t2xaiROmQ)
+Content-type: text/plain; name=opinion.ascii
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=opinion.ascii
+
+		
+ sun
+   microsystems              Systems Architecture Committee
+_________________________________________________________________
+
+Subject:	sun4v Core API
+
+Submitted by:	john.johnson@sun.com
+
+File:   	FWARC/2005/116/opinion.ascii
+
+Date:		March 29th, 2005
+
+Committee:      Tony Sumpter (opinion written by Stephen Ehring),
+                David Kahn,
+                Hitendra Zhangada,
+                David Redman.
+
+1.  Summary 
+
+The project defines the core interfaces used for communicating with the 
+Hypervisor on any machine that implements the sun4v architecture. The 
+Hypervisor uses various SPARC traps to pass data between a client and the 
+Hypervisor, and this FWARC case reserves certain trap numbers and defines 
+the arguments that the traps consume and produce.
+
+A fundamental set of traps is defined by this case as specified in [1]. 
+Other traps and functions will be defined in the future to extend 
+Hypervisor's functionality to satisfy OBP and Solaris requirements. This 
+case establishes a registry of trap numbers and function numbers that will 
+be updated whenever a new trap or function is added.
+
+2.  Decision & Precedence Information
+
+        The project  is  approved  as  specified  in  reference  [1]
+
+        The project may be delivered in a minor release of Solaris and a
+        minor release of OBP. The project defines the first release of 
+        the Hypervisor
+
+        The project is related to the following other projects. They 
+        may not be delivered until this project has been implemented 
+        since they are extension of this project.
+        FWARC 2005/112 sun4v io-api
+        FWARC 2005/117 sun4v niagara and great lakes APIs
+        FWARC 2005/164 sun4v Niagara CPU API
+        FWARC 2005/173 Hypervisor Service API 
+
+3. Interfaces
+
+___________________________________________________________________________
+                        Interfaces Exported                           
+___________________________________________________________________________
+Interface Name		Classification	Comment                      
+___________________________________________________________________________
+HYPERFAST TRAPS		Sun Private	argument/result format.
+___________________________________________________________________________
+FAST_TRAP		Sun Private	arg/result format trap 0x80
+___________________________________________________________________________
+CORE_TRAP		Sun Private	arg/result format trap 0xff
+___________________________________________________________________________
+HV Error IDs		Sun Private	Error code values.
+___________________________________________________________________________
+MMU Fault Status Area	Sun Private	Data Structure format & content
+___________________________________________________________________________
+Trap Trace Buffer	Sun Private	Data structure format & content
+___________________________________________________________________________
+Initial Guest State	Sun Private	Initial guest state
+___________________________________________________________________________
+API_VER			Sun Private	Trap 0xff function number 0x00
+						Note: reservation only
+___________________________________________________________________________
+API_PUTCHAR		Sun Private	Trap 0xff function number 0x01
+___________________________________________________________________________
+API_EXIT		Sun Private	Trap 0xff function number 0x02
+___________________________________________________________________________
+FAST_TRAP		Sun Private	trap 0x80 - fast-trap
+___________________________________________________________________________
+MMU_MAP_ADDR		Sun Private	trap 0x83 - mmu_map_addr
+___________________________________________________________________________
+MMU_UNMAP_ADDR		Sun Private	trap 0x84 - mmu_unmap_addr
+___________________________________________________________________________
+TTRACE_ADDENTRY		Sun Private	trap 0x85 - ttrace_addentry
+___________________________________________________________________________
+MACH_EXIT		Sun Private	Trap 0x80 function number 0x00
+___________________________________________________________________________
+MACH_DESC		Sun Private	Trap 0x80 function number 0x01
+___________________________________________________________________________
+MACH_SIR		Sun Private	Trap 0x80 function number 0x02
+___________________________________________________________________________
+CPU_START		Sun Private	Trap 0x80 function number 0x10
+___________________________________________________________________________
+CPU_STOP		Sun Private	Trap 0x80 function number 0x11
+___________________________________________________________________________
+CPU_YIELD		Sun Private	Trap 0x80 function number 0x12
+___________________________________________________________________________
+CPU_QCONF		Sun Private	Trap 0x80 function number 0x14
+___________________________________________________________________________
+CPU_QINFO		Sun Private	Trap 0x80 function number 0x15
+___________________________________________________________________________
+CPU_MYID		Sun Private	Trap 0x80 function number 0x16
+___________________________________________________________________________
+CPU_STATE		Sun Private	Trap 0x80 function number 0x17
+___________________________________________________________________________
+CPU_SET_RTBA		Sun Private	Trap 0x80 function number 0x18
+___________________________________________________________________________
+CPU_GET_RTBA		Sun Private	Trap 0x80 function number 0x19
+___________________________________________________________________________
+MMU_TSB_CTX0		Sun Private	Trap 0x80 function number 0x20
+___________________________________________________________________________
+MMU_TSB_CTXNON0		Sun Private	Trap 0x80 function number 0x21
+___________________________________________________________________________
+MMU_DEMAP_PAGE		Sun Private	Trap 0x80 function number 0x22
+___________________________________________________________________________
+MMU_DEMAP_CTX		Sun Private	Trap 0x80 function number 0x23
+___________________________________________________________________________
+MMU_DEMAP_ALL		Sun Private	Trap 0x80 function number 0x24
+___________________________________________________________________________
+MMU_MAP_PERM_ADDR	Sun Private	Trap 0x80 function number 0x25
+___________________________________________________________________________
+MMU_FAULT_AREA_CONF	Sun Private	Trap 0x80 function number 0x26
+___________________________________________________________________________
+MMU_ENABLE		Sun Private	Trap 0x80 function number 0x27
+___________________________________________________________________________
+MMU_UNMAP_PERM_ADDR	Sun Private	Trap 0x80 function number 0x28
+___________________________________________________________________________
+MMU_TSB_CTX0_INFO	Sun Private	Trap 0x80 function number 0x29
+___________________________________________________________________________
+MMU_TSB_CTXNON0_INFO	Sun Private	Trap 0x80 function number 0x2a
+___________________________________________________________________________
+MMU_FAULT_AREA_INFO	Sun Private	Trap 0x80 function number 0x2b
+___________________________________________________________________________
+MEM_SCRUB		Sun Private	Trap 0x80 function number 0x31
+___________________________________________________________________________
+MEM_SYNC		Sun Private	Trap 0x80 function number 0x32
+___________________________________________________________________________
+CPU_MONDO_SEND		Sun Private	Trap 0x80 function number 0x42
+___________________________________________________________________________
+TOD_GET			Sun Private	Trap 0x80 function number 0x50
+___________________________________________________________________________
+TOD_SET			Sun Private	Trap 0x80 function number 0x51
+___________________________________________________________________________
+CONS_GETCHAR		Sun Private	Trap 0x80 function number 0x60
+___________________________________________________________________________
+CONS_PUTCHAR		Sun Private	Trap 0x80 function number 0x61
+___________________________________________________________________________
+TTRACE_BUF_CONF		Sun Private	Trap 0x80 function number 0x90
+___________________________________________________________________________
+TTRACE_BUF_INFO		Sun Private	Trap 0x80 function number 0x91
+___________________________________________________________________________
+TTRACE_ENABLE		Sun Private	Trap 0x80 function number 0x92
+___________________________________________________________________________
+TTRACE_FREEZE		Sun Private	Trap 0x80 function number 0x93
+___________________________________________________________________________
+DUMP_BUF_UPDATE		Sun Private	Trap 0x80 function number 0x94
+___________________________________________________________________________
+DUMP_BUF_INFO		Sun Private	Trap 0x80 function number 0x95
+___________________________________________________________________________
+INTR_DEVINO2SYSINO	Sun Private	Trap 0x80 function number 0xa0
+___________________________________________________________________________
+INTR_GETENABLED		Sun Private	Trap 0x80 function number 0xa1
+___________________________________________________________________________
+INTR_SETENABLED		Sun Private	Trap 0x80 function number 0xa2
+___________________________________________________________________________
+INTR_GETSTATE		Sun Private	Trap 0x80 function number 0xa3
+___________________________________________________________________________
+INTR_SETSTATE		Sun Private	Trap 0x80 function number 0xa4
+___________________________________________________________________________
+INTR_GETTARGET		Sun Private	Trap 0x80 function number 0xa5
+___________________________________________________________________________
+INTR_SETTARGET		Sun Private	Trap 0x80 function number 0xa6
+___________________________________________________________________________
+
+
+4.  Opinion
+
+This  case  only  approves  the trap numbers and function numbers that are 
+listed in the case materials. FWARC will approve other function and trap 
+numbers as part of different cases as listed above in section 2.
+
+An issue was raised about how the guest client will extract versioning 
+information from the hypervisor to determine compatibility. It was 
+concluded that this will be defined by a later FWARC case.
+
+The FWARC members requested that a registry be created as part of this 
+proposal to tabulate all of the hypervisor traps and function numbers for 
+this case and any additional cases that extend this interface. This Registry
+will be named the "Hypervisor API Regsitry" and can be found at the link 
+pointed to by [3]. Any FWARC cases that extend the Hypervisor API will be 
+required to update this registry 
+
+The majority of other issues were editorial in nature to clarify 
+definitions in the API specificiation.
+
+5.  Minority Opinion(s)
+
+None.
+
+6.  Advisory Information
+
+None.
+
+7.  Appendices
+
+7.1.  Appendix A: Technical Changes Required
+
+None.
+
+7.2.  Appendix B: Technical Changes Advised
+	
+None.
+
+7.3.  Appendix C: Reference Material
+
+     Unless otherwise noted, materials are relative to the case directory:
+     FWARC/2005/116/
+
+     1.  Sun4v Hypervisor Core API Specification
+         File: commitment2.materials/api.pdf
+
+     2.  mail log 
+         File: mail
+
+     3.  Hypervisor API Registry
+         File: http://sac.eng.sun.com/arc/FWARC/Registries/trap-registry.txt
+
+
+--Boundary_(ID_oU9FFbTAzbc55t2xaiROmQ)--
+

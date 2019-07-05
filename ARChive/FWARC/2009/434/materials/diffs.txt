@@ -1,0 +1,27 @@
+
+------- kt-ios-perfctrs.txt -------
+*** /tmp/sccs.tSaGVZ	Tue Aug 11 14:51:30 2009
+--- kt-ios-perfctrs.txt	Tue Aug 11 14:50:40 2009
+***************
+*** 1,3 ****
+--- 1,4 ----
++ #pragma ident	"%Z%%M%	%I%	%E% SMI"
+  
+  KT IOS Performance Counters - Hypervisor API
+  
+***************
+*** 59,64 ****
+--- 60,72 ----
+  	   10	        NPU Performance Counter Zero		18.14.6.27
+  	   11	        NPU Performance Counter One		18.14.6.28
+  
++ 	   12	        PEU0 Performance Counter Select		18.15.2.36
++ 	   13	        PEU0 Performance Counter One		18.15.2.37
++ 	   14	        PEU0 Performance Counter Two		18.15.2.38
++ 
++ 	   15	        PEU1 Performance Counter Select		18.15.2.36
++ 	   16	        PEU1 Performance Counter One		18.15.2.37
++ 	   17	        PEU1 Performance Counter Two		18.15.2.38
+  
+  	2.1 kt_ios_get_perf_reg
+  

@@ -1,0 +1,24 @@
+1,2c1,2
+< Version 1.7
+< Date : 02/03/2009
+---
+> Version 1.8
+> Date : 03/11/2009
+26c26,27
+<       Corrected a few minor typos.
+---
+>       Corrected a few minor typos.  (FWARC 2009/061)
+> 1.8   Added "max_guest_dependencies" to firmware node (FWARC/2009/169)
+560a562
+> 1.4.4
+561a564,573
+> Name			Tag		Required
+> ----			---		--------
+> max_guest_dependencies	PROP_VAL	no
+> 
+> Description
+> -----------
+> This property describes the maximum number of guest dependencies
+> (per guest) that the firmware supports.  If not present, should be
+> treated as 0.
+> 

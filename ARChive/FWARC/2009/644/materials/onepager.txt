@@ -1,0 +1,91 @@
+Template Version: @(#)onepager.txt 1.35 07/11/07 SMI
+Copyright 2009 Sun Microsystems
+
+1. Introduction
+   1.1. Project/Component Working Name:
+
+      	Updates to PRI for Static Direct IO (PCI-E Virtualization)
+
+   1.2. Name of Document Author/Supplier:
+
+   	Tarl Neustaedter
+
+   1.3. Date of This Document:
+
+   	25-Nov-2009
+	
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+
+	1.4.2. The ARC(s) you expect to review your project:
+
+	       FWARC
+
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+
+	       Mike Sanfrantello
+
+	1.4.4. The name of your business unit:
+
+	       SPARC systems
+
+   1.5. Email Aliases:
+    	1.5.1. Responsible Manager: chad.solomon@sun.com
+    	1.5.2. Responsible Engineer: Tarl.Neustaedter@sun.com
+    	1.5.3. Marketing Manager: Charlie.Ellison@sun.com
+	1.5.4. Interest List: iov_sdio@sun.com
+
+2. Project Summary
+   2.1. Project Description:
+
+   	Several properties added to nodes in the PRI to support SDIO.
+
+4. Technical Description:
+    4.1. Details:
+
+    	 The property "assignable-path" is added to component nodes to provide
+	 the exact physical path of the assignable component. This path may
+	 differ from the "path" property in the same node, due to differences
+	 between information needed for FMA vs information needed for the LDOMS
+	 manager.
+
+	 The property "rcid" is added to root-complex nodes to provide a unique
+	 identifier for each root complex.
+
+	 The property directio_capability is added to the firmware node to
+	 indicate that this platform and firmware are capable of supporting
+	 PCI-E virtualization.
+
+5. Reference Documents:
+
+   	  FWARC 2009/535 SDIO Loaned Device Node specification
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+
+   	25-nov-2009
+
+   6.2. Cost of Effort:
+
+   	N/A	
+
+   6.3. Cost of Capital Resources:
+
+   	N/A
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation or Component Name:
+
+	       Sysfw
+
+	6.4.7. Target RTI Date/Release:
+
+	       SysFW 7.2 15-Jan-2010
+
+   6.5. ARC review type:
+		FastTrack
+
+   6.6. ARC Exposure:
+
+		open
+

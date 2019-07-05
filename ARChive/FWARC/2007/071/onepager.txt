@@ -1,0 +1,70 @@
+1. Introduction
+
+    1.1. Project/Component Working Name:
+	 Niagara2 Crypto Name Property Update
+
+    1.2. Name of Document Author/Supplier:
+	 Author: Gary Morton 
+
+    1.3  Date of This Document:
+	 1 February, 2007
+
+2. Project Summary
+   2.1. Project Description:
+
+	FWARC case 2006/567 introduced new bindings for Niagara
+	crypto providers.  There is a conflict between the name
+	chosen for N2CP and the Solaris crypto driver.  This case
+	is intended to amend that mistake and rename the n2cp
+	device name property. The original FWARC materials are
+	still valid with the exception of the changes specified
+	in section 3.
+
+3. Technical Description
+
+
+========================================================================
+Exported Interfaces
+
+Specific propvals for n2cp virtual device node across the possible processors:
+
+
+   Niagara-2:
+
+	name		uncommitted	value: "n2cp"    (was "crypto")
+
+   Victoria Falls:
+
+	name		uncommitted	value: "n2cp"    (was "crypto")
+
+
+NCS MD propvals for n2cp virtual device metadata node across
+the possible processors:
+
+   Niagara-2:
+
+	name		uncommitted	value: "n2cp"    (was "crypto")
+
+   Victoria Falls:
+
+	name		uncommitted	value: "n2cp"    (was "crypto")
+
+
+4.  References
+
+	PSARC/2005/125 Niagara Crypto Provider
+	FWARC/2006/174 NCS HV API update
+	FWARC/2006/425 NCS HV API update #2
+	FWARC/2006/481 Niagara-2 Random Number Generator HV API
+	Niagara PRM, v1.8 (Oct 28, 2005), Chp 20 Modular Arithmetic
+	Niagara-2 PRM, v1.2 (Mar 3, 2006), Chp 15 Stream Processing Unit
+	Bugid 6475000 Asymmetric (RSA) Operation fails the known answer test
+
+5. Resources and Schedule
+
+    6.4. Steering Committee requested information
+
+   	6.4.1. Consolidation C-team Name:
+		sysfw
+
+    6.5. ARC review type: FastTrack

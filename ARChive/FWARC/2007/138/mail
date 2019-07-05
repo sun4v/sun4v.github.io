@@ -1,0 +1,3466 @@
+From sacadmin Thu Mar  8 00:22:43 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l288MgLT018391
+	for <fwarc@sac.eng.Sun.COM>; Thu, 8 Mar 2007 00:22:43 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l288Mabl015532;
+	Thu, 8 Mar 2007 16:22:41 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JEK0040LSLQQB00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 08 Mar 2007 00:22:38 -0800 (PST)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JEK00CGASLPGS60@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 08 Mar 2007 00:22:37 -0800 (PST)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l288Mbxe008200; Thu,
+ 08 Mar 2007 08:22:37 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JEK00701OU2BP00@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Thu,
+ 08 Mar 2007 01:22:36 -0700 (MST)
+Received: from [129.150.32.69] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JEK008EESLNJYX4@mail-amer.sun.com>; Thu,
+ 08 Mar 2007 01:22:36 -0700 (MST)
+Date: Thu, 08 Mar 2007 00:22:36 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Fast-track - 2007/138 - Updates to PRI structures
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: environ-data-ldoms@sun.com
+Message-id: <45EFC7CC.2030504@sun.com>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_nL0gK7Q6ADaXDbgtxjiDAg)"
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0b2 (Windows/20070116)
+Status: RO
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_nL0gK7Q6ADaXDbgtxjiDAg)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+I am sponsoring this case for Kevin Rathbun.  This case updates PRI
+structures defined by FWARC/2006/700.  The changes include information
+about memory segments, changes to component node including labels, etc.
+
+The proposed changes are in section 4 of the attached one-pager.
+
+I have asked Kevin to provide a consolidated PRI document (merge of
+original PRI document and changes proposed by this case).  This
+document will be available in day or two.  Once available I will
+copy it in the case directory.
+
+Timer for this case is set for March 14, 2007.
+
+The changes are needed for Huron release and for corresponding Solaris
+putback.  Thus, your prompt review is requested.  The changes which depends
+upon this case are destined for Solaris Nevada putback next week.
+
+Is it possible for each member to review and either provide comments
+or acknowledge an OK with the specification?  If all members are OK
+before timer expiration then I would like to see this case get approved
+ahead of 1 week timer.  If possible, please provide your opinion either
+to me or to FWARC alias.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+--Boundary_(ID_nL0gK7Q6ADaXDbgtxjiDAg)
+Content-type: text/plain; name=PRI_Updates_one-pager.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=PRI_Updates_one-pager.txt
+
+1. Introduction
+   1.1. Project/Component Working Name:
+        Updates to PRI structures
+
+   1.2. Name of Document Author/Supplier:
+        Kevin Rathbun
+
+   1.3. Date of This Document:
+        03/06/07
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+        1.4.1. The PAC or CPT you expect to review your project:
+                HS PAC
+
+        1.4.2. The ARC(s) you expect to review your project:
+                FWARC
+
+        1.4.3. The Director/VP who is "Sponsoring" this project:
+                Mike Sanfratello
+
+        1.4.4. The name of your business unit:
+                Systems Group (SG)
+                        (Sparc Platform Software)
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: gary.hethcoat@Sun.Com
+        1.5.2. Responsible Engineer: kevin.rathbun@sun.com
+        1.5.3. Marketing Manager:
+        1.5.4. Interest List: environ-data-ldoms@sun.com
+
+2. Project Summary
+
+   2.1. Project Description:
+
+        This case describes environmental fru data in PRI.
+
+   2.2. Risks and Assumptions:
+
+        If this feature is not available in time for the full software stack
+        to be tested then it risks missing s10u4 and hence Huron RR. This 
+        would be a significant customer dis-satisfier and is already an
+        escalation on Ontario.
+
+3. Business Summary
+   3.1. Problem Area:
+
+        This project proposes an addition to PRI structures to include memory
+        segment information and changes to component node.
+
+   3.2. Market/Requester:
+        Ontario/Huron/Maramba platforms, means to satisfy key requirement for
+        PICL.
+
+   3.3. Business Justification:
+
+   3.4. Competitive Analysis:
+
+   3.5. Opportunity Window/Exposure:
+        Solaris s10u4
+
+   3.6. How will you know when you are done?:
+        When the changes are integrated into both Solaris Nevada
+        and S10u4, and into the Huron firmware gate for vbsc.
+
+4. Technical Description:
+
+    4.1 Overview
+
+    PRI structures are updated to include memory-segments, related and amendments 
+    to the component node definitions.  
+
+
+    4.1.1  Memory Segments and related nodes
+
+    ===========================================================================
+    Memory-Segments Node
+    ===========================================================================
+    Name            Category        Required subordinates   Optional subordinates
+    ----            --------        ---------------------   ---------------------
+    memory-segments resource        memory-segment
+                    required
+
+    Description
+    -----------
+    Child of the root node with fwd arcs to the memory-segment nodes.
+
+    ===========================================================================
+    Memory-Segment Node
+    ===========================================================================
+    Name            Category        Required subordinates   Optional subordinates
+    ----            --------        ---------------------   ---------------------
+    memory-segment  resource        memory-bank
+                    required
+
+    Description
+    -----------
+    Describes a contiguous memory address range. Its properties define that
+    address range and they link to child nodes that specify criteria for locating
+    a physical address in the memory segment to a set of one or more dimms that 
+    constitute a memory-bank.
+
+    A memory-segment node has the following properties.
+
+    ===========================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    base            PROP_VAL        yes
+
+    Description
+    -----------
+    The base physical address of the range represented by this memory segment.
+
+
+    ===========================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    size            PROP_VAL        yes
+
+    Description
+    -----------
+    The size of the address range represented by this memory segment.
+
+    ===========================================================================
+    Memory-Bank Node
+    ===========================================================================
+    Name            Category        Required subordinates   Optional subordinates
+    ----            --------        ---------------------   ---------------------
+    memory-bank     resource        component
+                    required
+
+    Description
+    -----------
+    Contains properties that describe the constraints for determining if a physical
+    address is located on the set of one or more dimms that comprise this memory 
+    bank.
+
+    The memory-bank node has fwd arcs to component nodes with dimm type properties.
+    The dimm type component nodes contain nac properties used to identify the dimm.
+    If an address belongs to this memory bank, it is located on one of the dimm
+    type component nodes that are linked to by this node.
+
+    ===========================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    size            PROP_VAL        yes
+
+    Description
+    -----------
+    The size of this memory bank.
+
+    ===============================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    mask            PROP_VAL        yes
+
+    Description
+    -----------
+    The value of the mask register is logically and'd with a physical address and
+    the result is compared with the value in the match register to determine if the
+    physical address is in this memory-bank.
+
+    ===========================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    match           PROP_VAL        yes
+
+    Description
+    -----------
+    After the value of the mask property is and'd with a physical address, if the
+    resultant value is equal to the value of the match property, the address is on 
+    one of the dimms in this memory bank.
+    
+    4.1.2  Updated to component node.
+
+    The component node is specified in FWARC case 2006/700. It lists acceptable
+    values that the type property of a component node may take to represent 
+    physical components in the system.
+
+    This case extends the acceptable values for the type property to include io 
+    components required for picl to represent them in /platform. 
+
+    A new path property is added and the restrictions on the nac property are
+    removed so that picl may represent fru-parent relationships between /platform 
+    components and their fru in the /physical-platform.
+
+    A new label property is added for dimm type component nodes, to support an
+    FMA requirement to retrieve the J number label silk-screened next to a dimm
+    slot.
+
+    The restriction on the nac property has also been removed so that a system 
+    board component node may contain one to satisfy an FMA requirement.
+
+    The component node description is copied here for context from case 2006/700.
+    It has been revised to describe the new io node type for picl.
+
+    ===========================================================================
+    Component Node
+    ===========================================================================
+    Name            Category        Required subordinates   Optional subordinates
+    ----            --------        ---------------------   ---------------------
+    component       resource                                component
+                    required
+
+    Description
+    -----------
+    Represents physical entities in the system in order to provide component
+    information and system topology to the domain.
+
+    ===============================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    type            PROP_STR        yes
+
+    Description
+    -----------
+    This property contains the type of the component. Only types that have
+    been submitted with an ARC case should be present.
+
+    An acceptable value for the type property will includes,
+
+    io      An io device such as a switch, bridge, slot or leaf device.
+
+
+    Type-specific property requirements
+    -----------------------------------
+    The following requirements hold for component nodes of these types:
+
+    Any type of node may have a nac property.
+
+    An io type node may have a path property, as described below.
+
+    ===========================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    nac             PROP_STR        no
+
+    Description
+    -----------
+    This property contains the NAC for the component, as described in the
+    system nomenclature document for the system. It may appear in an type of
+    component node.
+
+    ===========================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    fru             PROP_VAL        no
+
+    Description
+    -----------
+    This property is present and has a value of 1 if the component is a FRU.
+
+    ===========================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    path            PROP_STR        no
+
+    Description
+    -----------
+    This property contains the canonical path of an io device, composed of its
+    full device path with device names removed.
+
+    It is possible to find the FRU parent of an io device by doing a search
+    beginning with its parent and continuing through its ancestry until reaching
+    a component node with a fru property with value of 1.
+
+    ===========================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    label           PROP_STR        no
+
+    Description
+    -----------
+    This property is currently only defined to appear in dimm type component nodes.
+    It will contain the J number that is silk-screened on the board next to the
+    dimm slot.
+
+
+   4.2 Imported Interfaces :
+                
+        Interface                  Classification      Comments
+        =================          ================    ========================
+
+        PRI structures              Sun Private         Defined by FWARC/2006/700
+
+        Machine Description (MD)    Sun Private         Defined by FWARC/2005/115
+        data structures
+
+        
+
+   4.3 Exported Interfaces:
+
+
+        Interface               Classification   Comments
+        ================        ===============  ===========================
+
+        Memory Segment          Sun Private      As defined in section 4.1.1
+        node definitions                             
+
+        Component node          Sun Private      As defined in section 4.1.2.
+ 
+
+5. Reference Documents:
+
+   PRI Data structures :
+   http://sac.sfbay.sun.com/arc/FWARC/2006/700/materials/pri-spec.txt
+
+
+6. Resources and Schedule:
+   6.1. Projected Availability: Q3FY07
+
+   6.2. Cost of Effort: 3 person months
+
+   6.3. Cost of Capital Resources: N/A
+
+   6.4. Product Approval Committee requested information:
+        6.4.1. Consolidation or Component Name: vBSC, Solaris
+        6.4.3. Type of CPT Review and Approval expected: FastTrack
+        6.4.4. Project Boundary Conditions: N/A
+        6.4.5. Is this a necessary project for OEM agreements: No.
+        6.4.6. Notes: None
+        6.4.7. Target RTI Date/Release: S10u4_b3
+        6.4.8. Target Code Design Review Date: 02/05/2007
+        6.4.9. Update approval addition: N/A            
+
+   6.5. ARC review type: FastTrack
+                
+7. Prototype Availability:
+   7.1. Prototype Availability:
+        Q2FY07
+
+   7.2. Prototype Cost:
+      3 person months   
+
+
+--Boundary_(ID_nL0gK7Q6ADaXDbgtxjiDAg)--
+
+From sacadmin Thu Mar  8 00:36:15 2007
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l288aEgX018451
+	for <fwarc@sac.eng.sun.com>; Thu, 8 Mar 2007 00:36:15 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l288aELB028703
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Thu, 8 Mar 2007 00:36:14 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JEK0060BT8EIH00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 08 Mar 2007 01:36:14 -0700 (MST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JEK000N6T8DQY40@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 08 Mar 2007 01:36:13 -0700 (MST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id l288aDml000012; Thu, 08 Mar 2007 00:36:13 -0800 (PST)
+Received: from [192.168.0.9] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l288aCre056991; Thu,
+ 08 Mar 2007 00:36:12 -0800 (PST)
+Date: Thu, 08 Mar 2007 00:36:12 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: Fast-track - 2007/138 - Updates to PRI structures
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>
+Message-id: <45EFCAFC.8010307@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 1.5.0.10 (Windows/20070221)
+Status: RO
+
+[non-technical comments redacted ]
+
+
+From sacadmin Thu Mar  8 00:40:54 2007
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l288esIN018529
+	for <fwarc@sac.eng.sun.com>; Thu, 8 Mar 2007 00:40:54 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l288epV8029633;
+	Thu, 8 Mar 2007 00:40:54 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JEK00F0RTG5SN00@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 08 Mar 2007 00:40:53 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JEK00ARJTG1SU50@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 08 Mar 2007 00:40:49 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (dt101-150.SFBay.Sun.COM [10.6.101.150])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id l288enMG000956; Thu, 08 Mar 2007 00:40:49 -0800 (PST)
+Received: from [192.168.0.9] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l288emXe057202; Thu,
+ 08 Mar 2007 00:40:48 -0800 (PST)
+Date: Thu, 08 Mar 2007 00:40:48 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: Fast-track - 2007/138 - Updates to PRI structures
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, environ-data-ldoms@sun.com
+Message-id: <45EFCC10.9000209@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 1.5.0.10 (Windows/20070221)
+Status: RO
+
+
+I'm concerned that the memory segment stuff isn't generic
+enough to work everywhere, yet it seems to be proposed
+as generic MD stuff.
+
+For example, will this work with Rock/Stingray? What's
+the plan when we find it it's not sufficient for some
+future platform?
+
+-David
+
+
+From sacadmin Thu Mar  8 12:54:32 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l28KsV0H006092
+	for <fwarc@sac.eng.Sun.COM>; Thu, 8 Mar 2007 12:54:31 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l28KsR6F008389;
+	Fri, 9 Mar 2007 04:54:30 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JEL0000XRESQP00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 08 Mar 2007 12:54:28 -0800 (PST)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JEL00910RESA980@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 08 Mar 2007 12:54:28 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id l28KsSwK000503; Thu, 08 Mar 2007 12:54:28 -0800 (PST)
+Received: from [192.168.0.9] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l28KsRJO093920; Thu,
+ 08 Mar 2007 12:54:27 -0800 (PST)
+Date: Thu, 08 Mar 2007 12:54:42 -0800
+From: David Kahn <David.Kahn@Sun.COM>
+Subject: Re: Fast-track - 2007/138 - Updates to PRI structures
+In-reply-to: <45EFCC10.9000209@sun.com>
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, environ-data-ldoms@Sun.COM
+Message-id: <45F07812.20504@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <45EFCC10.9000209@sun.com>
+User-Agent: Thunderbird 1.5.0.10 (Windows/20070221)
+Status: RO
+
+
+Never mind. I'm ok with this case and ok with pushing
+up the timeout date if you can get enough members to
+agree to that.
+
+-David
+
+David Kahn wrote:
+> 
+> I'm concerned that the memory segment stuff isn't generic
+> enough to work everywhere, yet it seems to be proposed
+> as generic MD stuff.
+> 
+> For example, will this work with Rock/Stingray? What's
+> the plan when we find it it's not sufficient for some
+> future platform?
+> 
+> -David
+> 
+> 
+
+From sacadmin Fri Mar  9 05:23:18 2007
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l29DNH06022867
+	for <fwarc@sac.eng.sun.com>; Fri, 9 Mar 2007 05:23:18 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l29DNHXj035201;
+	Fri, 9 Mar 2007 06:23:17 -0700 (MST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JEN00B0316S3Q00@brm-avmta-1.central.sun.com>; Fri,
+ 09 Mar 2007 06:23:16 -0700 (MST)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JEN000MA16RNOA0@brm-avmta-1.central.sun.com>; Fri,
+ 09 Mar 2007 06:23:15 -0700 (MST)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l29DNFB0024852; Fri,
+ 09 Mar 2007 13:23:15 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JEN00L01140G300@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM); Fri,
+ 09 Mar 2007 06:23:15 -0700 (MST)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JEN00A4H16QQV20@mail-amer.sun.com>; Fri,
+ 09 Mar 2007 06:23:15 -0700 (MST)
+Date: Fri, 09 Mar 2007 08:20:37 -0500
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: Re: Fast-track - 2007/138 - Updates to PRI structures
+In-reply-to: <45EFC7CC.2030504@sun.com>
+Sender: Stephen.Ehring@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, environ-data-ldoms@sun.com
+Message-id: <45F15F25.6030207@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <45EFC7CC.2030504@sun.com>
+User-Agent: Mail/News 1.5.0.5 (X11/20060813)
+Status: RO
+
+I have no problem with the technical changes being proposed, nor with 
+moving the timeout date up.
+> 5. Reference Documents:
+>
+>    PRI Data structures :
+>    http://sac.sfbay.sun.com/arc/FWARC/2006/700/materials/pri-spec.txt
+>   
+
+Can we copy this full document into the 2007/138 directory, add your 
+updates, and bump the version so we have one cohesive PRI spec?
+
+Steve
+
+From sacadmin Fri Mar  9 09:16:12 2007
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l29HGCif026367
+	for <fwarc@sac.eng.sun.com>; Fri, 9 Mar 2007 09:16:12 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l29HGBv0007579;
+	Fri, 9 Mar 2007 09:16:12 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JEN00607BYZOG00@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 09 Mar 2007 09:16:11 -0800 (PST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JEN006E9BYYIY10@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 09 Mar 2007 09:16:10 -0800 (PST)
+Received: from fe-amer-09.sun.com ([192.18.108.183])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l29HGAHD016265; Fri,
+ 09 Mar 2007 17:16:10 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JEN00A01A96MV00@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Fri,
+ 09 Mar 2007 10:16:10 -0700 (MST)
+Received: from [129.150.35.53] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JEN00496BXP1N30@mail-amer.sun.com>; Fri,
+ 09 Mar 2007 10:15:26 -0700 (MST)
+Date: Fri, 09 Mar 2007 09:15:27 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Fast-track - 2007/138 - Updates to PRI structures
+In-reply-to: <45F15F25.6030207@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: environ-data-ldoms@sun.com
+Message-id: <45F1962F.8090703@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <45EFC7CC.2030504@sun.com> <45F15F25.6030207@sun.com>
+User-Agent: Thunderbird 2.0b2 (Windows/20070116)
+Status: RO
+
+Stephen Ehring wrote:
+> I have no problem with the technical changes being proposed, nor with 
+> moving the timeout date up.
+>> 5. Reference Documents:
+>>
+>>    PRI Data structures :
+>>    http://sac.sfbay.sun.com/arc/FWARC/2006/700/materials/pri-spec.txt
+>>   
+> 
+> Can we copy this full document into the 2007/138 directory, add your 
+> updates, and bump the version so we have one cohesive PRI spec?
+
+Will do.  Kevin owes me the latest PRI document with all updates in it.
+
+I will work with Kevin to make that happen.
+
+I will also copy an example config file in the case directory.
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Mon Mar 12 12:38:15 2007
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l2CJcF6U013510
+	for <fwarc@sac.eng.sun.com>; Mon, 12 Mar 2007 12:38:15 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l2CJcDXt007103;
+	Mon, 12 Mar 2007 13:38:15 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JET00M0R2JQF200@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 12 Mar 2007 12:38:14 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JET00CSJ2JOFK40@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 12 Mar 2007 12:38:12 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.108.184])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l2CJcBko012255; Mon,
+ 12 Mar 2007 19:38:11 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JET00D012DGEW00@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM); Mon,
+ 12 Mar 2007 13:38:11 -0600 (MDT)
+Received: from [129.148.180.199] (cltea-proxy-1.sun.com [192.18.128.12])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JET008PW2JMS740@mail-amer.sun.com>; Mon,
+ 12 Mar 2007 13:38:11 -0600 (MDT)
+Date: Mon, 12 Mar 2007 15:37:50 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: Fast-track - 2007/138 - Updates to PRI structures
+In-reply-to: <45EFC7CC.2030504@sun.com>
+Sender: Eric.Sharakan@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, environ-data-ldoms@sun.com
+Message-id: <BF98E09E-557E-478E-952E-759471ECBAFB@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.3)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ boundary=Apple-Mail-19-58826; micalg=sha1
+X-PMX-Version: 5.2.0.264296
+References: <45EFC7CC.2030504@sun.com>
+Status: RO
+
+
+--Apple-Mail-19-58826
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=US-ASCII;
+	delsp=yes;
+	format=flowed
+
+Hitu & Kevin, I haven't seen any consolidated Doc. added to the case  
+material yet.
+
+Also, a graphical view of the consolidated PRI as described by these  
+two cases would be extremely helpful in visualizing what's being  
+proposed.  Stephen Ehring did a similar thing for 2007/070.
+
+-Eric
+
+On Mar 8, 2007, at 3:22 AM, Hitendra Zhangada wrote:
+
+> I am sponsoring this case for Kevin Rathbun.  This case updates PRI
+> structures defined by FWARC/2006/700.  The changes include information
+> about memory segments, changes to component node including labels,  
+> etc.
+>
+> The proposed changes are in section 4 of the attached one-pager.
+>
+> I have asked Kevin to provide a consolidated PRI document (merge of
+> original PRI document and changes proposed by this case).  This
+> document will be available in day or two.  Once available I will
+> copy it in the case directory.
+>
+> Timer for this case is set for March 14, 2007.
+>
+> The changes are needed for Huron release and for corresponding Solaris
+> putback.  Thus, your prompt review is requested.  The changes which  
+> depends
+> upon this case are destined for Solaris Nevada putback next week.
+>
+> Is it possible for each member to review and either provide comments
+> or acknowledge an OK with the specification?  If all members are OK
+> before timer expiration then I would like to see this case get  
+> approved
+> ahead of 1 week timer.  If possible, please provide your opinion  
+> either
+> to me or to FWARC alias.
+>
+>
+> Thanks.
+>
+> -- 
+> Hitendra Zhangada
+> =============================================
+> SPS Common SW Features Engineering
+> Systems Group, Sun Microsystems, Inc.
+> Work Ph# (858) 625 3757, Ext. x53757
+> SUN Internal homepage http://esp.west/~hitu
+>
+> 1. Introduction
+>    1.1. Project/Component Working Name:
+>         Updates to PRI structures
+>
+>    1.2. Name of Document Author/Supplier:
+>         Kevin Rathbun
+>
+>    1.3. Date of This Document:
+>         03/06/07
+>
+>    1.4. Name of Major Document Customer(s)/Consumer(s):
+>         1.4.1. The PAC or CPT you expect to review your project:
+>                 HS PAC
+>
+>         1.4.2. The ARC(s) you expect to review your project:
+>                 FWARC
+>
+>         1.4.3. The Director/VP who is "Sponsoring" this project:
+>                 Mike Sanfratello
+>
+>         1.4.4. The name of your business unit:
+>                 Systems Group (SG)
+>                         (Sparc Platform Software)
+>
+>    1.5. Email Aliases:
+>         1.5.1. Responsible Manager: gary.hethcoat@Sun.Com
+>         1.5.2. Responsible Engineer: kevin.rathbun@sun.com
+>         1.5.3. Marketing Manager:
+>         1.5.4. Interest List: environ-data-ldoms@sun.com
+>
+> 2. Project Summary
+>
+>    2.1. Project Description:
+>
+>         This case describes environmental fru data in PRI.
+>
+>    2.2. Risks and Assumptions:
+>
+>         If this feature is not available in time for the full  
+> software stack
+>         to be tested then it risks missing s10u4 and hence Huron  
+> RR. This
+>         would be a significant customer dis-satisfier and is  
+> already an
+>         escalation on Ontario.
+>
+> 3. Business Summary
+>    3.1. Problem Area:
+>
+>         This project proposes an addition to PRI structures to  
+> include memory
+>         segment information and changes to component node.
+>
+>    3.2. Market/Requester:
+>         Ontario/Huron/Maramba platforms, means to satisfy key  
+> requirement for
+>         PICL.
+>
+>    3.3. Business Justification:
+>
+>    3.4. Competitive Analysis:
+>
+>    3.5. Opportunity Window/Exposure:
+>         Solaris s10u4
+>
+>    3.6. How will you know when you are done?:
+>         When the changes are integrated into both Solaris Nevada
+>         and S10u4, and into the Huron firmware gate for vbsc.
+>
+> 4. Technical Description:
+>
+>     4.1 Overview
+>
+>     PRI structures are updated to include memory-segments, related  
+> and amendments
+>     to the component node definitions.
+>
+>
+>     4.1.1  Memory Segments and related nodes
+>
+>      
+> ====================================================================== 
+> =====
+>     Memory-Segments Node
+>      
+> ====================================================================== 
+> =====
+>     Name            Category        Required subordinates    
+> Optional subordinates
+>     ----            --------        ---------------------    
+> ---------------------
+>     memory-segments resource        memory-segment
+>                     required
+>
+>     Description
+>     -----------
+>     Child of the root node with fwd arcs to the memory-segment nodes.
+>
+>      
+> ====================================================================== 
+> =====
+>     Memory-Segment Node
+>      
+> ====================================================================== 
+> =====
+>     Name            Category        Required subordinates    
+> Optional subordinates
+>     ----            --------        ---------------------    
+> ---------------------
+>     memory-segment  resource        memory-bank
+>                     required
+>
+>     Description
+>     -----------
+>     Describes a contiguous memory address range. Its properties  
+> define that
+>     address range and they link to child nodes that specify  
+> criteria for locating
+>     a physical address in the memory segment to a set of one or  
+> more dimms that
+>     constitute a memory-bank.
+>
+>     A memory-segment node has the following properties.
+>
+>      
+> ====================================================================== 
+> =====
+>     Name            Tag             Required
+>     ----            ---             --------
+>     base            PROP_VAL        yes
+>
+>     Description
+>     -----------
+>     The base physical address of the range represented by this  
+> memory segment.
+>
+>
+>      
+> ====================================================================== 
+> =====
+>     Name            Tag             Required
+>     ----            ---             --------
+>     size            PROP_VAL        yes
+>
+>     Description
+>     -----------
+>     The size of the address range represented by this memory segment.
+>
+>      
+> ====================================================================== 
+> =====
+>     Memory-Bank Node
+>      
+> ====================================================================== 
+> =====
+>     Name            Category        Required subordinates    
+> Optional subordinates
+>     ----            --------        ---------------------    
+> ---------------------
+>     memory-bank     resource        component
+>                     required
+>
+>     Description
+>     -----------
+>     Contains properties that describe the constraints for  
+> determining if a physical
+>     address is located on the set of one or more dimms that  
+> comprise this memory
+>     bank.
+>
+>     The memory-bank node has fwd arcs to component nodes with dimm  
+> type properties.
+>     The dimm type component nodes contain nac properties used to  
+> identify the dimm.
+>     If an address belongs to this memory bank, it is located on one  
+> of the dimm
+>     type component nodes that are linked to by this node.
+>
+>      
+> ====================================================================== 
+> =====
+>     Name            Tag             Required
+>     ----            ---             --------
+>     size            PROP_VAL        yes
+>
+>     Description
+>     -----------
+>     The size of this memory bank.
+>
+>      
+> ====================================================================== 
+> =========
+>     Name            Tag             Required
+>     ----            ---             --------
+>     mask            PROP_VAL        yes
+>
+>     Description
+>     -----------
+>     The value of the mask register is logically and'd with a  
+> physical address and
+>     the result is compared with the value in the match register to  
+> determine if the
+>     physical address is in this memory-bank.
+>
+>      
+> ====================================================================== 
+> =====
+>     Name            Tag             Required
+>     ----            ---             --------
+>     match           PROP_VAL        yes
+>
+>     Description
+>     -----------
+>     After the value of the mask property is and'd with a physical  
+> address, if the
+>     resultant value is equal to the value of the match property,  
+> the address is on
+>     one of the dimms in this memory bank.
+>
+>     4.1.2  Updated to component node.
+>
+>     The component node is specified in FWARC case 2006/700. It  
+> lists acceptable
+>     values that the type property of a component node may take to  
+> represent
+>     physical components in the system.
+>
+>     This case extends the acceptable values for the type property  
+> to include io
+>     components required for picl to represent them in /platform.
+>
+>     A new path property is added and the restrictions on the nac  
+> property are
+>     removed so that picl may represent fru-parent relationships  
+> between /platform
+>     components and their fru in the /physical-platform.
+>
+>     A new label property is added for dimm type component nodes, to  
+> support an
+>     FMA requirement to retrieve the J number label silk-screened  
+> next to a dimm
+>     slot.
+>
+>     The restriction on the nac property has also been removed so  
+> that a system
+>     board component node may contain one to satisfy an FMA  
+> requirement.
+>
+>     The component node description is copied here for context from  
+> case 2006/700.
+>     It has been revised to describe the new io node type for picl.
+>
+>      
+> ====================================================================== 
+> =====
+>     Component Node
+>      
+> ====================================================================== 
+> =====
+>     Name            Category        Required subordinates    
+> Optional subordinates
+>     ----            --------        ---------------------    
+> ---------------------
+>     component       resource                                component
+>                     required
+>
+>     Description
+>     -----------
+>     Represents physical entities in the system in order to provide  
+> component
+>     information and system topology to the domain.
+>
+>      
+> ====================================================================== 
+> =========
+>     Name            Tag             Required
+>     ----            ---             --------
+>     type            PROP_STR        yes
+>
+>     Description
+>     -----------
+>     This property contains the type of the component. Only types  
+> that have
+>     been submitted with an ARC case should be present.
+>
+>     An acceptable value for the type property will includes,
+>
+>     io      An io device such as a switch, bridge, slot or leaf  
+> device.
+>
+>
+>     Type-specific property requirements
+>     -----------------------------------
+>     The following requirements hold for component nodes of these  
+> types:
+>
+>     Any type of node may have a nac property.
+>
+>     An io type node may have a path property, as described below.
+>
+>      
+> ====================================================================== 
+> =====
+>     Name            Tag             Required
+>     ----            ---             --------
+>     nac             PROP_STR        no
+>
+>     Description
+>     -----------
+>     This property contains the NAC for the component, as described  
+> in the
+>     system nomenclature document for the system. It may appear in  
+> an type of
+>     component node.
+>
+>      
+> ====================================================================== 
+> =====
+>     Name            Tag             Required
+>     ----            ---             --------
+>     fru             PROP_VAL        no
+>
+>     Description
+>     -----------
+>     This property is present and has a value of 1 if the component  
+> is a FRU.
+>
+>      
+> ====================================================================== 
+> =====
+>     Name            Tag             Required
+>     ----            ---             --------
+>     path            PROP_STR        no
+>
+>     Description
+>     -----------
+>     This property contains the canonical path of an io device,  
+> composed of its
+>     full device path with device names removed.
+>
+>     It is possible to find the FRU parent of an io device by doing  
+> a search
+>     beginning with its parent and continuing through its ancestry  
+> until reaching
+>     a component node with a fru property with value of 1.
+>
+>      
+> ====================================================================== 
+> =====
+>     Name            Tag             Required
+>     ----            ---             --------
+>     label           PROP_STR        no
+>
+>     Description
+>     -----------
+>     This property is currently only defined to appear in dimm type  
+> component nodes.
+>     It will contain the J number that is silk-screened on the board  
+> next to the
+>     dimm slot.
+>
+>
+>    4.2 Imported Interfaces :
+>
+>         Interface                  Classification      Comments
+>         =================          ================     
+> ========================
+>
+>         PRI structures              Sun Private         Defined by  
+> FWARC/2006/700
+>
+>         Machine Description (MD)    Sun Private         Defined by  
+> FWARC/2005/115
+>         data structures
+>
+>
+>
+>    4.3 Exported Interfaces:
+>
+>
+>         Interface               Classification   Comments
+>         ================        ===============   
+> ===========================
+>
+>         Memory Segment          Sun Private      As defined in  
+> section 4.1.1
+>         node definitions
+>
+>         Component node          Sun Private      As defined in  
+> section 4.1.2.
+>
+>
+> 5. Reference Documents:
+>
+>    PRI Data structures :
+>    http://sac.sfbay.sun.com/arc/FWARC/2006/700/materials/pri-spec.txt
+>
+>
+> 6. Resources and Schedule:
+>    6.1. Projected Availability: Q3FY07
+>
+>    6.2. Cost of Effort: 3 person months
+>
+>    6.3. Cost of Capital Resources: N/A
+>
+>    6.4. Product Approval Committee requested information:
+>         6.4.1. Consolidation or Component Name: vBSC, Solaris
+>         6.4.3. Type of CPT Review and Approval expected: FastTrack
+>         6.4.4. Project Boundary Conditions: N/A
+>         6.4.5. Is this a necessary project for OEM agreements: No.
+>         6.4.6. Notes: None
+>         6.4.7. Target RTI Date/Release: S10u4_b3
+>         6.4.8. Target Code Design Review Date: 02/05/2007
+>         6.4.9. Update approval addition: N/A
+>
+>    6.5. ARC review type: FastTrack
+>
+> 7. Prototype Availability:
+>    7.1. Prototype Availability:
+>         Q2FY07
+>
+>    7.2. Prototype Cost:
+>       3 person months
+>
+
+
+--Apple-Mail-19-58826
+Content-Transfer-Encoding: base64
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Disposition: attachment;
+	filename=smime.p7s
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEFTfUBSm04O9csLdiMZKo0YwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA2MTEwMTA0MDc0N1oXDTA3MTEwMTA0MDc0
+N1owRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1JWiATbJ
+kDoiiNur5YXkIb8Jm7RhIPgiF9/m9Pb8P9FWAVVu5sl3OcmCxOnqdPLK0Me9zL8QVJCKZzi/CWyE
+iRXHcorqn5hJZcLoXpRjiLOqqz1W0hyf/Vi/VNH9p8mAunBpeUln2WRV+2ekZUVV5gqS9FhggcEE
+EaTeNZI4YrTbOqhMA0VksYMexa7Ygn2KoQiBYtnn52g2FojTfxuwjWIbzGpwLMaLly6MePSqlM3l
+d3ZrRQiUG396IZI9J6uZ9iTdyVxV5mGa2qMvQF8UnT9z0r121JtZHkSPjQ54PvegzQ76mtBSTqPU
+Zlo/yfs+gHb9caKjTuZn5glOrACF6QIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQCN8sqiw30hzI1/b5GZKW+t
+OjvyglKLV0PpoJBzNatTr82ixDXeh6C1CspHEBO7gFPx1vW90obDfG8kjHgZKaZvysrjbeny6eFr
+Qd/eNNCTHkBCFKadle9w8ERdr7vyHFpZ/3lmo/2ogAK34t3qV5NKjngY978NUNkS4dDnItCqWzCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQVN9QFKbTg71ywt2IxkqjRjAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wNzAz
+MTIxOTM3NTFaMCMGCSqGSIb3DQEJBDEWBBQ2usqPPa19tB1DjAX30lv/pppcbTCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEFTfUBSm
+04O9csLdiMZKo0YwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEFTfUBSm04O9csLdiMZKo0YwDQYJKoZIhvcNAQEBBQAEggEAhyfX
+BCEeefUqcTbkbx6wwfdW8Je85wxF+9Ju2ahHR0gD9qmGRSrOoZhirbInZa3k7SgwP8+/TuXaa/vu
+kK9a1pWCRJMZUuWLARSZOpBbL4XLZlOD/6u3tbsRTNQ5xhEgN8Exb9k+vmu5C72MhyNqcXUqIZbO
+T1B/5Jt1ZRJrWfdzyNbIAF7l6pWblSN6OMTLFIe0BP2P7k0ZLEeSnEXYZQKgwg3iZDPPZePOZtvL
+6B6mnEV2Aa4qywhhj+0Y5T2DSSUacCSmN8PJNhqaiBRiAiARc0NiKTEFAYSn4Tw5IB455QW0C2WL
+/lJMIGqVy+QjU/g0lN9PkJUTOrgkqCFRwwAAAAAAAA==
+
+--Apple-Mail-19-58826--
+
+From sacadmin Mon Mar 12 12:47:31 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l2CJlUxB013553
+	for <fwarc@sac.eng.sun.com>; Mon, 12 Mar 2007 12:47:31 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l2CJlSbB024011;
+	Mon, 12 Mar 2007 19:47:29 GMT
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JET0000H2Z4P400@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 12 Mar 2007 12:47:28 -0700 (PDT)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.6]) by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JET00CXN2Z2F830@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 12 Mar 2007 12:47:26 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l2CJlQlW012577; Mon,
+ 12 Mar 2007 11:47:26 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JET00C012XRBB00@d1-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Mon,
+ 12 Mar 2007 12:47:26 -0700 (PDT)
+Received: from [129.153.85.31] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JET002M12Z1WP7M@d1-sfbay-09.sun.com>; Mon,
+ 12 Mar 2007 12:47:25 -0700 (PDT)
+Date: Mon, 12 Mar 2007 12:47:25 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Fast-track - 2007/138 - Updates to PRI structures
+In-reply-to: <BF98E09E-557E-478E-952E-759471ECBAFB@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: environ-data-ldoms@sun.com
+Message-id: <45F5AE4D.1000002@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <45EFC7CC.2030504@sun.com>
+ <BF98E09E-557E-478E-952E-759471ECBAFB@Sun.COM>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20060120
+Status: RO
+
+Eric Sharakan wrote On 03/12/07 12:37,:
+> Hitu & Kevin, I haven't seen any consolidated Doc. added to the case  
+> material yet.
+
+That is coming soon, by COB today.  If Kevin can not provide one
+then I will create one.
+
+> 
+> Also, a graphical view of the consolidated PRI as described by these  
+> two cases would be extremely helpful in visualizing what's being  
+> proposed.  Stephen Ehring did a similar thing for 2007/070.
+
+Yes, that would be nice but not required.  Once can be created but
+with limited cycles at hand I would not expect one unless Kevin
+wants to do that.
+
+Any other comments?
+
+
+Thanks.
+
+> 
+> -Eric
+> 
+> On Mar 8, 2007, at 3:22 AM, Hitendra Zhangada wrote:
+> 
+>> I am sponsoring this case for Kevin Rathbun.  This case updates PRI
+>> structures defined by FWARC/2006/700.  The changes include information
+>> about memory segments, changes to component node including labels,  etc.
+>>
+>> The proposed changes are in section 4 of the attached one-pager.
+>>
+>> I have asked Kevin to provide a consolidated PRI document (merge of
+>> original PRI document and changes proposed by this case).  This
+>> document will be available in day or two.  Once available I will
+>> copy it in the case directory.
+>>
+>> Timer for this case is set for March 14, 2007.
+>>
+>> The changes are needed for Huron release and for corresponding Solaris
+>> putback.  Thus, your prompt review is requested.  The changes which  
+>> depends
+>> upon this case are destined for Solaris Nevada putback next week.
+>>
+>> Is it possible for each member to review and either provide comments
+>> or acknowledge an OK with the specification?  If all members are OK
+>> before timer expiration then I would like to see this case get  approved
+>> ahead of 1 week timer.  If possible, please provide your opinion  either
+>> to me or to FWARC alias.
+>>
+>>
+>> Thanks.
+>>
+>> -- 
+>> Hitendra Zhangada
+>> =============================================
+>> SPS Common SW Features Engineering
+>> Systems Group, Sun Microsystems, Inc.
+>> Work Ph# (858) 625 3757, Ext. x53757
+>> SUN Internal homepage http://esp.west/~hitu
+>>
+>> 1. Introduction
+>>    1.1. Project/Component Working Name:
+>>         Updates to PRI structures
+>>
+>>    1.2. Name of Document Author/Supplier:
+>>         Kevin Rathbun
+>>
+>>    1.3. Date of This Document:
+>>         03/06/07
+>>
+>>    1.4. Name of Major Document Customer(s)/Consumer(s):
+>>         1.4.1. The PAC or CPT you expect to review your project:
+>>                 HS PAC
+>>
+>>         1.4.2. The ARC(s) you expect to review your project:
+>>                 FWARC
+>>
+>>         1.4.3. The Director/VP who is "Sponsoring" this project:
+>>                 Mike Sanfratello
+>>
+>>         1.4.4. The name of your business unit:
+>>                 Systems Group (SG)
+>>                         (Sparc Platform Software)
+>>
+>>    1.5. Email Aliases:
+>>         1.5.1. Responsible Manager: gary.hethcoat@Sun.Com
+>>         1.5.2. Responsible Engineer: kevin.rathbun@sun.com
+>>         1.5.3. Marketing Manager:
+>>         1.5.4. Interest List: environ-data-ldoms@sun.com
+>>
+>> 2. Project Summary
+>>
+>>    2.1. Project Description:
+>>
+>>         This case describes environmental fru data in PRI.
+>>
+>>    2.2. Risks and Assumptions:
+>>
+>>         If this feature is not available in time for the full  
+>> software stack
+>>         to be tested then it risks missing s10u4 and hence Huron  RR. 
+>> This
+>>         would be a significant customer dis-satisfier and is  already an
+>>         escalation on Ontario.
+>>
+>> 3. Business Summary
+>>    3.1. Problem Area:
+>>
+>>         This project proposes an addition to PRI structures to  
+>> include memory
+>>         segment information and changes to component node.
+>>
+>>    3.2. Market/Requester:
+>>         Ontario/Huron/Maramba platforms, means to satisfy key  
+>> requirement for
+>>         PICL.
+>>
+>>    3.3. Business Justification:
+>>
+>>    3.4. Competitive Analysis:
+>>
+>>    3.5. Opportunity Window/Exposure:
+>>         Solaris s10u4
+>>
+>>    3.6. How will you know when you are done?:
+>>         When the changes are integrated into both Solaris Nevada
+>>         and S10u4, and into the Huron firmware gate for vbsc.
+>>
+>> 4. Technical Description:
+>>
+>>     4.1 Overview
+>>
+>>     PRI structures are updated to include memory-segments, related  
+>> and amendments
+>>     to the component node definitions.
+>>
+>>
+>>     4.1.1  Memory Segments and related nodes
+>>
+>>      
+>> ====================================================================== 
+>> =====
+>>     Memory-Segments Node
+>>      
+>> ====================================================================== 
+>> =====
+>>     Name            Category        Required subordinates    Optional 
+>> subordinates
+>     ----            --------        ---------------------    
+>> ---------------------
+>>     memory-segments resource        memory-segment
+>>                     required
+>>
+>>     Description
+>>     -----------
+>>     Child of the root node with fwd arcs to the memory-segment nodes.
+>>
+>>      
+>> ====================================================================== 
+>> =====
+>>     Memory-Segment Node
+>>      
+>> ====================================================================== 
+>> =====
+>>     Name            Category        Required subordinates    Optional 
+>> subordinates
+>>     ----            --------        ---------------------    
+>> ---------------------
+>>     memory-segment  resource        memory-bank
+>>                     required
+>>
+>>     Description
+>>     -----------
+>>     Describes a contiguous memory address range. Its properties  
+>> define that
+>>     address range and they link to child nodes that specify  criteria 
+>> for locating
+>>     a physical address in the memory segment to a set of one or  more 
+>> dimms that
+>>     constitute a memory-bank.
+>>
+>>     A memory-segment node has the following properties.
+>>
+>>      
+>> ====================================================================== 
+>> =====
+>>     Name            Tag             Required
+>>     ----            ---             --------
+>>     base            PROP_VAL        yes
+>>
+>>     Description
+>>     -----------
+>>     The base physical address of the range represented by this  memory 
+>> segment.
+>>
+>>
+>>      
+>> ====================================================================== 
+>> =====
+>>     Name            Tag             Required
+>>     ----            ---             --------
+>>     size            PROP_VAL        yes
+>>
+>>     Description
+>>     -----------
+>>     The size of the address range represented by this memory segment.
+>>
+>>      
+>> ====================================================================== 
+>> =====
+>>     Memory-Bank Node
+>>      
+>> ====================================================================== 
+>> =====
+>>     Name            Category        Required subordinates    Optional 
+>> subordinates
+>>     ----            --------        ---------------------    
+>> ---------------------
+>>     memory-bank     resource        component
+>>                     required
+>>
+>>     Description
+>>     -----------
+>>     Contains properties that describe the constraints for  determining 
+>> if a physical
+>>     address is located on the set of one or more dimms that  comprise 
+>> this memory
+>>     bank.
+>>
+>>     The memory-bank node has fwd arcs to component nodes with dimm  
+>> type properties.
+>>     The dimm type component nodes contain nac properties used to  
+>> identify the dimm.
+>>     If an address belongs to this memory bank, it is located on one  
+>> of the dimm
+>>     type component nodes that are linked to by this node.
+>>
+>>      
+>> ====================================================================== 
+>> =====
+>>     Name            Tag             Required
+>>     ----            ---             --------
+>>     size            PROP_VAL        yes
+>>
+>>     Description
+>>     -----------
+>>     The size of this memory bank.
+>>
+>>      
+>> ====================================================================== 
+>> =========
+>>     Name            Tag             Required
+>>     ----            ---             --------
+>>     mask            PROP_VAL        yes
+>>
+>>     Description
+>>     -----------
+>>     The value of the mask register is logically and'd with a  physical 
+>> address and
+>>     the result is compared with the value in the match register to  
+>> determine if the
+>>     physical address is in this memory-bank.
+>>
+>>      
+>> ====================================================================== 
+>> =====
+>>     Name            Tag             Required
+>>     ----            ---             --------
+>>     match           PROP_VAL        yes
+>>
+>>     Description
+>>     -----------
+>>     After the value of the mask property is and'd with a physical  
+>> address, if the
+>>     resultant value is equal to the value of the match property,  the 
+>> address is on
+>>     one of the dimms in this memory bank.
+>>
+>>     4.1.2  Updated to component node.
+>>
+>>     The component node is specified in FWARC case 2006/700. It  lists 
+>> acceptable
+>>     values that the type property of a component node may take to  
+>> represent
+>>     physical components in the system.
+>>
+>>     This case extends the acceptable values for the type property  to 
+>> include io
+>>     components required for picl to represent them in /platform.
+>>
+>>     A new path property is added and the restrictions on the nac  
+>> property are
+>>     removed so that picl may represent fru-parent relationships  
+>> between /platform
+>>     components and their fru in the /physical-platform.
+>>
+>>     A new label property is added for dimm type component nodes, to  
+>> support an
+>>     FMA requirement to retrieve the J number label silk-screened  next 
+>> to a dimm
+>>     slot.
+>>
+>>     The restriction on the nac property has also been removed so  that 
+>> a system
+>>     board component node may contain one to satisfy an FMA  requirement.
+>>
+>>     The component node description is copied here for context from  
+>> case 2006/700.
+>>     It has been revised to describe the new io node type for picl.
+>>
+>>      
+>> ====================================================================== 
+>> =====
+>>     Component Node
+>>      
+>> ====================================================================== 
+>> =====
+>>     Name            Category        Required subordinates    Optional 
+>> subordinates
+>>     ----            --------        ---------------------    
+>> ---------------------
+>>     component       resource                                component
+>>                     required
+>>
+>>     Description
+>>     -----------
+>>     Represents physical entities in the system in order to provide  
+>> component
+>>     information and system topology to the domain.
+>>
+>>      
+>> ====================================================================== 
+>> =========
+>>     Name            Tag             Required
+>>     ----            ---             --------
+>>     type            PROP_STR        yes
+>>
+>>     Description
+>>     -----------
+>>     This property contains the type of the component. Only types  that 
+>> have
+>>     been submitted with an ARC case should be present.
+>>
+>>     An acceptable value for the type property will includes,
+>>
+>>     io      An io device such as a switch, bridge, slot or leaf  device.
+>>
+>>
+>>     Type-specific property requirements
+>>     -----------------------------------
+>>     The following requirements hold for component nodes of these  types:
+>>
+>>     Any type of node may have a nac property.
+>>
+>>     An io type node may have a path property, as described below.
+>>
+>>      
+>> ====================================================================== 
+>> =====
+>>     Name            Tag             Required
+>>     ----            ---             --------
+>>     nac             PROP_STR        no
+>>
+>>     Description
+>>     -----------
+>>     This property contains the NAC for the component, as described  in 
+>> the
+>>     system nomenclature document for the system. It may appear in  an 
+>> type of
+>>     component node.
+>>
+>>      
+>> ====================================================================== 
+>> =====
+>>     Name            Tag             Required
+>>     ----            ---             --------
+>>     fru             PROP_VAL        no
+>>
+>>     Description
+>>     -----------
+>>     This property is present and has a value of 1 if the component  is 
+>> a FRU.
+>>
+>>      
+>> ====================================================================== 
+>> =====
+>>     Name            Tag             Required
+>>     ----            ---             --------
+>>     path            PROP_STR        no
+>>
+>>     Description
+>>     -----------
+>>     This property contains the canonical path of an io device,  
+>> composed of its
+>>     full device path with device names removed.
+>>
+>>     It is possible to find the FRU parent of an io device by doing  a 
+>> search
+>>     beginning with its parent and continuing through its ancestry  
+>> until reaching
+>>     a component node with a fru property with value of 1.
+>>
+>>      
+>> ====================================================================== 
+>> =====
+>>     Name            Tag             Required
+>>     ----            ---             --------
+>>     label           PROP_STR        no
+>>
+>>     Description
+>>     -----------
+>>     This property is currently only defined to appear in dimm type  
+>> component nodes.
+>>     It will contain the J number that is silk-screened on the board  
+>> next to the
+>>     dimm slot.
+>>
+>>
+>>    4.2 Imported Interfaces :
+>>
+>>         Interface                  Classification      Comments
+>>         =================          ================     
+>> ========================
+>>
+>>         PRI structures              Sun Private         Defined by  
+>> FWARC/2006/700
+>>
+>>         Machine Description (MD)    Sun Private         Defined by  
+>> FWARC/2005/115
+>>         data structures
+>>
+>>
+>>
+>>    4.3 Exported Interfaces:
+>>
+>>
+>>         Interface               Classification   Comments
+>>         ================        ===============   
+>> ===========================
+>>
+>>         Memory Segment          Sun Private      As defined in  
+>> section 4.1.1
+>>         node definitions
+>>
+>>         Component node          Sun Private      As defined in  
+>> section 4.1.2.
+>>
+>>
+>> 5. Reference Documents:
+>>
+>>    PRI Data structures :
+>>    http://sac.sfbay.sun.com/arc/FWARC/2006/700/materials/pri-spec.txt
+>>
+>>
+>> 6. Resources and Schedule:
+>>    6.1. Projected Availability: Q3FY07
+>>
+>>    6.2. Cost of Effort: 3 person months
+>>
+>>    6.3. Cost of Capital Resources: N/A
+>>
+>>    6.4. Product Approval Committee requested information:
+>>         6.4.1. Consolidation or Component Name: vBSC, Solaris
+>>         6.4.3. Type of CPT Review and Approval expected: FastTrack
+>>         6.4.4. Project Boundary Conditions: N/A
+>>         6.4.5. Is this a necessary project for OEM agreements: No.
+>>         6.4.6. Notes: None
+>>         6.4.7. Target RTI Date/Release: S10u4_b3
+>>         6.4.8. Target Code Design Review Date: 02/05/2007
+>>         6.4.9. Update approval addition: N/A
+>>
+>>    6.5. ARC review type: FastTrack
+>>
+>> 7. Prototype Availability:
+>>    7.1. Prototype Availability:
+>>         Q2FY07
+>>
+>>    7.2. Prototype Cost:
+>>       3 person months
+>>
+> 
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Mon Mar 12 17:38:57 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l2D0cu8n021397
+	for <fwarc@sac.eng.Sun.COM>; Mon, 12 Mar 2007 17:38:57 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l2D0crge007323;
+	Tue, 13 Mar 2007 08:38:55 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JET00805GGTSR00@brm-avmta-1.central.sun.com>; Mon,
+ 12 Mar 2007 18:38:53 -0600 (MDT)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.5])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JET002L5GGS89A0@brm-avmta-1.central.sun.com>; Mon,
+ 12 Mar 2007 18:38:53 -0600 (MDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l2D0cqXO027029; Mon,
+ 12 Mar 2007 16:38:52 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JET00E01GEQJF00@d1-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Mon,
+ 12 Mar 2007 17:38:52 -0700 (PDT)
+Received: from [129.153.85.31] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JET002OYGGSWPYN@d1-sfbay-09.sun.com>; Mon,
+ 12 Mar 2007 17:38:52 -0700 (PDT)
+Date: Mon, 12 Mar 2007 17:38:52 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Fast-track - 2007/138 - Updates to PRI structures
+In-reply-to: <45F5AE4D.1000002@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: environ-data-ldoms@sun.com
+Message-id: <45F5F29C.6050301@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <45EFC7CC.2030504@sun.com>
+ <BF98E09E-557E-478E-952E-759471ECBAFB@Sun.COM> <45F5AE4D.1000002@Sun.COM>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20060120
+Status: RO
+
+Hitendra Zhangada wrote On 03/12/07 12:47,:
+> Eric Sharakan wrote On 03/12/07 12:37,:
+> 
+>> Hitu & Kevin, I haven't seen any consolidated Doc. added to the case  
+>> material yet.
+> 
+> 
+> That is coming soon, by COB today.  If Kevin can not provide one
+> then I will create one.
+
+Consolidated spec is available and copied to case materials directory.
+The updated document is version as 1.1 (original was 1.0).  Both
+original, consolidated and updates proposed by this case are in,
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2007/138/materials/
+
+
+The consolidated version now includes section numbers for easy read.
+
+
+This case times out on March 14th.  I forgot to mentioned earlier but
+this case is seeking approval for minor/micro/patch OS binding and
+minor/micro binding for the firmware.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Mon Mar 12 21:50:23 2007
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l2D4oNO4027245
+	for <fwarc@sac.eng.sun.com>; Mon, 12 Mar 2007 21:50:23 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l2D4oN9r004346;
+	Mon, 12 Mar 2007 21:50:23 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JET00401S3ZLX00@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 12 Mar 2007 21:50:23 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JET00JRUS3YX4C0@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 12 Mar 2007 21:50:22 -0700 (PDT)
+Received: from paranoia.sfbay (paranoia.SFBay.Sun.COM [129.146.96.132])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id l2D4oMEK004911; Mon, 12 Mar 2007 21:50:22 -0700 (PDT)
+Received: from [129.146.96.132] (paranoia [129.146.96.132])
+	by paranoia.sfbay (8.12.10+Sun/8.12.10) with ESMTP id l2D4nWYj013794; Mon,
+ 12 Mar 2007 20:49:32 -0800 (PST)
+Date: Mon, 12 Mar 2007 20:49:32 -0800
+From: Ashley Saulsbury <ashley.saulsbury@sun.com>
+Subject: Re: Fast-track - 2007/138 - Updates to PRI structures
+In-reply-to: <45F5AE4D.1000002@Sun.COM>
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, environ-data-ldoms@sun.com
+Message-id: <45F62D5C.8050500@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <45EFC7CC.2030504@sun.com>
+ <BF98E09E-557E-478E-952E-759471ECBAFB@Sun.COM> <45F5AE4D.1000002@Sun.COM>
+User-Agent: Mozilla Thunderbird 1.0.7 (X11/20050930)
+Status: RO
+
+Hitendra Zhangada wrote:
+> Eric Sharakan wrote On 03/12/07 12:37,:
+> 
+>> Hitu & Kevin, I haven't seen any consolidated Doc. added to the case  
+>> material yet.
+> 
+> 
+> That is coming soon, by COB today.  If Kevin can not provide one
+> then I will create one.
+> 
+>>
+>> Also, a graphical view of the consolidated PRI as described by these  
+>> two cases would be extremely helpful in visualizing what's being  
+>> proposed.  Stephen Ehring did a similar thing for 2007/070.
+> 
+> 
+> Yes, that would be nice but not required.  Once can be created but
+> with limited cycles at hand I would not expect one unless Kevin
+> wants to do that.
+
+If you have a prototype (text) MD file, the graphical version can be 
+easily generated with:
+
+/ws/ldoms/tools/bin/mdview
+
+Pictures dont have to be generated by hand ;-)
+
+cheers,
+
+ash.
+
+
+
+
+> 
+> Any other comments?
+> 
+> 
+> Thanks.
+> 
+>>
+>> -Eric
+>>
+>> On Mar 8, 2007, at 3:22 AM, Hitendra Zhangada wrote:
+>>
+>>> I am sponsoring this case for Kevin Rathbun.  This case updates PRI
+>>> structures defined by FWARC/2006/700.  The changes include information
+>>> about memory segments, changes to component node including labels,  etc.
+>>>
+>>> The proposed changes are in section 4 of the attached one-pager.
+>>>
+>>> I have asked Kevin to provide a consolidated PRI document (merge of
+>>> original PRI document and changes proposed by this case).  This
+>>> document will be available in day or two.  Once available I will
+>>> copy it in the case directory.
+>>>
+>>> Timer for this case is set for March 14, 2007.
+>>>
+>>> The changes are needed for Huron release and for corresponding Solaris
+>>> putback.  Thus, your prompt review is requested.  The changes which  
+>>> depends
+>>> upon this case are destined for Solaris Nevada putback next week.
+>>>
+>>> Is it possible for each member to review and either provide comments
+>>> or acknowledge an OK with the specification?  If all members are OK
+>>> before timer expiration then I would like to see this case get  approved
+>>> ahead of 1 week timer.  If possible, please provide your opinion  either
+>>> to me or to FWARC alias.
+>>>
+>>>
+>>> Thanks.
+>>>
+>>> -- 
+>>> Hitendra Zhangada
+>>> =============================================
+>>> SPS Common SW Features Engineering
+>>> Systems Group, Sun Microsystems, Inc.
+>>> Work Ph# (858) 625 3757, Ext. x53757
+>>> SUN Internal homepage http://esp.west/~hitu
+>>>
+>>> 1. Introduction
+>>>    1.1. Project/Component Working Name:
+>>>         Updates to PRI structures
+>>>
+>>>    1.2. Name of Document Author/Supplier:
+>>>         Kevin Rathbun
+>>>
+>>>    1.3. Date of This Document:
+>>>         03/06/07
+>>>
+>>>    1.4. Name of Major Document Customer(s)/Consumer(s):
+>>>         1.4.1. The PAC or CPT you expect to review your project:
+>>>                 HS PAC
+>>>
+>>>         1.4.2. The ARC(s) you expect to review your project:
+>>>                 FWARC
+>>>
+>>>         1.4.3. The Director/VP who is "Sponsoring" this project:
+>>>                 Mike Sanfratello
+>>>
+>>>         1.4.4. The name of your business unit:
+>>>                 Systems Group (SG)
+>>>                         (Sparc Platform Software)
+>>>
+>>>    1.5. Email Aliases:
+>>>         1.5.1. Responsible Manager: gary.hethcoat@Sun.Com
+>>>         1.5.2. Responsible Engineer: kevin.rathbun@sun.com
+>>>         1.5.3. Marketing Manager:
+>>>         1.5.4. Interest List: environ-data-ldoms@sun.com
+>>>
+>>> 2. Project Summary
+>>>
+>>>    2.1. Project Description:
+>>>
+>>>         This case describes environmental fru data in PRI.
+>>>
+>>>    2.2. Risks and Assumptions:
+>>>
+>>>         If this feature is not available in time for the full  
+>>> software stack
+>>>         to be tested then it risks missing s10u4 and hence Huron  RR. 
+>>> This
+>>>         would be a significant customer dis-satisfier and is  already an
+>>>         escalation on Ontario.
+>>>
+>>> 3. Business Summary
+>>>    3.1. Problem Area:
+>>>
+>>>         This project proposes an addition to PRI structures to  
+>>> include memory
+>>>         segment information and changes to component node.
+>>>
+>>>    3.2. Market/Requester:
+>>>         Ontario/Huron/Maramba platforms, means to satisfy key  
+>>> requirement for
+>>>         PICL.
+>>>
+>>>    3.3. Business Justification:
+>>>
+>>>    3.4. Competitive Analysis:
+>>>
+>>>    3.5. Opportunity Window/Exposure:
+>>>         Solaris s10u4
+>>>
+>>>    3.6. How will you know when you are done?:
+>>>         When the changes are integrated into both Solaris Nevada
+>>>         and S10u4, and into the Huron firmware gate for vbsc.
+>>>
+>>> 4. Technical Description:
+>>>
+>>>     4.1 Overview
+>>>
+>>>     PRI structures are updated to include memory-segments, related  
+>>> and amendments
+>>>     to the component node definitions.
+>>>
+>>>
+>>>     4.1.1  Memory Segments and related nodes
+>>>
+>>>      
+>>> ====================================================================== 
+>>> =====
+>>>     Memory-Segments Node
+>>>      
+>>> ====================================================================== 
+>>> =====
+>>>     Name            Category        Required subordinates    Optional 
+>>> subordinates
+>>>     ----            --------        ---------------------    
+>>> ---------------------
+>>>     memory-segments resource        memory-segment
+>>>                     required
+>>>
+>>>     Description
+>>>     -----------
+>>>     Child of the root node with fwd arcs to the memory-segment nodes.
+>>>
+>>>      
+>>> ====================================================================== 
+>>> =====
+>>>     Memory-Segment Node
+>>>      
+>>> ====================================================================== 
+>>> =====
+>>>     Name            Category        Required subordinates    Optional 
+>>> subordinates
+>>>     ----            --------        ---------------------    
+>>> ---------------------
+>>>     memory-segment  resource        memory-bank
+>>>                     required
+>>>
+>>>     Description
+>>>     -----------
+>>>     Describes a contiguous memory address range. Its properties  
+>>> define that
+>>>     address range and they link to child nodes that specify  criteria 
+>>> for locating
+>>>     a physical address in the memory segment to a set of one or  more 
+>>> dimms that
+>>>     constitute a memory-bank.
+>>>
+>>>     A memory-segment node has the following properties.
+>>>
+>>>      
+>>> ====================================================================== 
+>>> =====
+>>>     Name            Tag             Required
+>>>     ----            ---             --------
+>>>     base            PROP_VAL        yes
+>>>
+>>>     Description
+>>>     -----------
+>>>     The base physical address of the range represented by this  
+>>> memory segment.
+>>>
+>>>
+>>>      
+>>> ====================================================================== 
+>>> =====
+>>>     Name            Tag             Required
+>>>     ----            ---             --------
+>>>     size            PROP_VAL        yes
+>>>
+>>>     Description
+>>>     -----------
+>>>     The size of the address range represented by this memory segment.
+>>>
+>>>      
+>>> ====================================================================== 
+>>> =====
+>>>     Memory-Bank Node
+>>>      
+>>> ====================================================================== 
+>>> =====
+>>>     Name            Category        Required subordinates    Optional 
+>>> subordinates
+>>>     ----            --------        ---------------------    
+>>> ---------------------
+>>>     memory-bank     resource        component
+>>>                     required
+>>>
+>>>     Description
+>>>     -----------
+>>>     Contains properties that describe the constraints for  
+>>> determining if a physical
+>>>     address is located on the set of one or more dimms that  comprise 
+>>> this memory
+>>>     bank.
+>>>
+>>>     The memory-bank node has fwd arcs to component nodes with dimm  
+>>> type properties.
+>>>     The dimm type component nodes contain nac properties used to  
+>>> identify the dimm.
+>>>     If an address belongs to this memory bank, it is located on one  
+>>> of the dimm
+>>>     type component nodes that are linked to by this node.
+>>>
+>>>      
+>>> ====================================================================== 
+>>> =====
+>>>     Name            Tag             Required
+>>>     ----            ---             --------
+>>>     size            PROP_VAL        yes
+>>>
+>>>     Description
+>>>     -----------
+>>>     The size of this memory bank.
+>>>
+>>>      
+>>> ====================================================================== 
+>>> =========
+>>>     Name            Tag             Required
+>>>     ----            ---             --------
+>>>     mask            PROP_VAL        yes
+>>>
+>>>     Description
+>>>     -----------
+>>>     The value of the mask register is logically and'd with a  
+>>> physical address and
+>>>     the result is compared with the value in the match register to  
+>>> determine if the
+>>>     physical address is in this memory-bank.
+>>>
+>>>      
+>>> ====================================================================== 
+>>> =====
+>>>     Name            Tag             Required
+>>>     ----            ---             --------
+>>>     match           PROP_VAL        yes
+>>>
+>>>     Description
+>>>     -----------
+>>>     After the value of the mask property is and'd with a physical  
+>>> address, if the
+>>>     resultant value is equal to the value of the match property,  the 
+>>> address is on
+>>>     one of the dimms in this memory bank.
+>>>
+>>>     4.1.2  Updated to component node.
+>>>
+>>>     The component node is specified in FWARC case 2006/700. It  lists 
+>>> acceptable
+>>>     values that the type property of a component node may take to  
+>>> represent
+>>>     physical components in the system.
+>>>
+>>>     This case extends the acceptable values for the type property  to 
+>>> include io
+>>>     components required for picl to represent them in /platform.
+>>>
+>>>     A new path property is added and the restrictions on the nac  
+>>> property are
+>>>     removed so that picl may represent fru-parent relationships  
+>>> between /platform
+>>>     components and their fru in the /physical-platform.
+>>>
+>>>     A new label property is added for dimm type component nodes, to  
+>>> support an
+>>>     FMA requirement to retrieve the J number label silk-screened  
+>>> next to a dimm
+>>>     slot.
+>>>
+>>>     The restriction on the nac property has also been removed so  
+>>> that a system
+>>>     board component node may contain one to satisfy an FMA  requirement.
+>>>
+>>>     The component node description is copied here for context from  
+>>> case 2006/700.
+>>>     It has been revised to describe the new io node type for picl.
+>>>
+>>>      
+>>> ====================================================================== 
+>>> =====
+>>>     Component Node
+>>>      
+>>> ====================================================================== 
+>>> =====
+>>>     Name            Category        Required subordinates    Optional 
+>>> subordinates
+>>>     ----            --------        ---------------------    
+>>> ---------------------
+>>>     component       resource                                component
+>>>                     required
+>>>
+>>>     Description
+>>>     -----------
+>>>     Represents physical entities in the system in order to provide  
+>>> component
+>>>     information and system topology to the domain.
+>>>
+>>>      
+>>> ====================================================================== 
+>>> =========
+>>>     Name            Tag             Required
+>>>     ----            ---             --------
+>>>     type            PROP_STR        yes
+>>>
+>>>     Description
+>>>     -----------
+>>>     This property contains the type of the component. Only types  
+>>> that have
+>>>     been submitted with an ARC case should be present.
+>>>
+>>>     An acceptable value for the type property will includes,
+>>>
+>>>     io      An io device such as a switch, bridge, slot or leaf  device.
+>>>
+>>>
+>>>     Type-specific property requirements
+>>>     -----------------------------------
+>>>     The following requirements hold for component nodes of these  types:
+>>>
+>>>     Any type of node may have a nac property.
+>>>
+>>>     An io type node may have a path property, as described below.
+>>>
+>>>      
+>>> ====================================================================== 
+>>> =====
+>>>     Name            Tag             Required
+>>>     ----            ---             --------
+>>>     nac             PROP_STR        no
+>>>
+>>>     Description
+>>>     -----------
+>>>     This property contains the NAC for the component, as described  
+>>> in the
+>>>     system nomenclature document for the system. It may appear in  an 
+>>> type of
+>>>     component node.
+>>>
+>>>      
+>>> ====================================================================== 
+>>> =====
+>>>     Name            Tag             Required
+>>>     ----            ---             --------
+>>>     fru             PROP_VAL        no
+>>>
+>>>     Description
+>>>     -----------
+>>>     This property is present and has a value of 1 if the component  
+>>> is a FRU.
+>>>
+>>>      
+>>> ====================================================================== 
+>>> =====
+>>>     Name            Tag             Required
+>>>     ----            ---             --------
+>>>     path            PROP_STR        no
+>>>
+>>>     Description
+>>>     -----------
+>>>     This property contains the canonical path of an io device,  
+>>> composed of its
+>>>     full device path with device names removed.
+>>>
+>>>     It is possible to find the FRU parent of an io device by doing  a 
+>>> search
+>>>     beginning with its parent and continuing through its ancestry  
+>>> until reaching
+>>>     a component node with a fru property with value of 1.
+>>>
+>>>      
+>>> ====================================================================== 
+>>> =====
+>>>     Name            Tag             Required
+>>>     ----            ---             --------
+>>>     label           PROP_STR        no
+>>>
+>>>     Description
+>>>     -----------
+>>>     This property is currently only defined to appear in dimm type  
+>>> component nodes.
+>>>     It will contain the J number that is silk-screened on the board  
+>>> next to the
+>>>     dimm slot.
+>>>
+>>>
+>>>    4.2 Imported Interfaces :
+>>>
+>>>         Interface                  Classification      Comments
+>>>         =================          ================     
+>>> ========================
+>>>
+>>>         PRI structures              Sun Private         Defined by  
+>>> FWARC/2006/700
+>>>
+>>>         Machine Description (MD)    Sun Private         Defined by  
+>>> FWARC/2005/115
+>>>         data structures
+>>>
+>>>
+>>>
+>>>    4.3 Exported Interfaces:
+>>>
+>>>
+>>>         Interface               Classification   Comments
+>>>         ================        ===============   
+>>> ===========================
+>>>
+>>>         Memory Segment          Sun Private      As defined in  
+>>> section 4.1.1
+>>>         node definitions
+>>>
+>>>         Component node          Sun Private      As defined in  
+>>> section 4.1.2.
+>>>
+>>>
+>>> 5. Reference Documents:
+>>>
+>>>    PRI Data structures :
+>>>    http://sac.sfbay.sun.com/arc/FWARC/2006/700/materials/pri-spec.txt
+>>>
+>>>
+>>> 6. Resources and Schedule:
+>>>    6.1. Projected Availability: Q3FY07
+>>>
+>>>    6.2. Cost of Effort: 3 person months
+>>>
+>>>    6.3. Cost of Capital Resources: N/A
+>>>
+>>>    6.4. Product Approval Committee requested information:
+>>>         6.4.1. Consolidation or Component Name: vBSC, Solaris
+>>>         6.4.3. Type of CPT Review and Approval expected: FastTrack
+>>>         6.4.4. Project Boundary Conditions: N/A
+>>>         6.4.5. Is this a necessary project for OEM agreements: No.
+>>>         6.4.6. Notes: None
+>>>         6.4.7. Target RTI Date/Release: S10u4_b3
+>>>         6.4.8. Target Code Design Review Date: 02/05/2007
+>>>         6.4.9. Update approval addition: N/A
+>>>
+>>>    6.5. ARC review type: FastTrack
+>>>
+>>> 7. Prototype Availability:
+>>>    7.1. Prototype Availability:
+>>>         Q2FY07
+>>>
+>>>    7.2. Prototype Cost:
+>>>       3 person months
+>>>
+>>
+> 
+
+
+From sacadmin Mon Mar 12 22:21:26 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l2D5LO7k028947
+	for <fwarc@sac.eng.Sun.COM>; Mon, 12 Mar 2007 22:21:25 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l2D5L8kh014735;
+	Tue, 13 Mar 2007 13:21:23 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JET00103TJK0Z00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 12 Mar 2007 22:21:20 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JET00CQKTJKZ2C0@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 12 Mar 2007 22:21:20 -0700 (PDT)
+Received: from kerouac.sfbay.sun.com (kerouac.SFBay.Sun.COM [129.146.96.111])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id l2D5LJKm011688; Mon, 12 Mar 2007 22:21:19 -0700 (PDT)
+Received: from kerouac.sfbay.sun.com (localhost [127.0.0.1])
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id l2D5LLUN004157;
+ Mon, 12 Mar 2007 21:21:21 -0800 (PST)
+Received: (from rath@localhost)
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10/Submit) id l2D5LL1B004156; Mon,
+ 12 Mar 2007 21:21:21 -0800 (PST)
+Date: Mon, 12 Mar 2007 21:21:20 -0800
+From: Kevin Rathbun <Kevin.Rathbun@sun.com>
+Subject: Re: Fast-track - 2007/138 - Updates to PRI structures
+In-reply-to: <45F62D5C.8050500@sun.com>
+To: Ashley Saulsbury <ashley.saulsbury@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware Arch <fwarc@sun.com>, environ-data-ldoms@sun.com
+Reply-to: Kevin Rathbun <Kevin.Rathbun@sun.com>
+Message-id: <20070313052120.GN27986@kerouac>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_IpMW+jPXdRVphFpS93KHug)"
+Content-disposition: inline
+X-PMX-Version: 5.2.0.264296
+References: <45EFC7CC.2030504@sun.com>
+ <BF98E09E-557E-478E-952E-759471ECBAFB@Sun.COM> <45F5AE4D.1000002@Sun.COM>
+ <45F62D5C.8050500@sun.com>
+User-Agent: Mutt/1.4.2.1i
+Status: RO
+
+
+--Boundary_(ID_IpMW+jPXdRVphFpS93KHug)
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+Content-disposition: inline
+
+On Mon, Mar 12, 2007 at 08:49:32PM -0800, Ashley Saulsbury wrote:
+> Hitendra Zhangada wrote:
+> >Eric Sharakan wrote On 03/12/07 12:37,:
+> >
+> >>Hitu & Kevin, I haven't seen any consolidated Doc. added to the case  
+> >>material yet.
+> >
+> >
+> >That is coming soon, by COB today.  If Kevin can not provide one
+> >then I will create one.
+> >
+> >>
+> >>Also, a graphical view of the consolidated PRI as described by these  
+> >>two cases would be extremely helpful in visualizing what's being  
+> >>proposed.  Stephen Ehring did a similar thing for 2007/070.
+> >
+> >
+> >Yes, that would be nice but not required.  Once can be created but
+> >with limited cycles at hand I would not expect one unless Kevin
+> >wants to do that.
+> 
+> If you have a prototype (text) MD file, the graphical version can be 
+> easily generated with:
+> 
+> /ws/ldoms/tools/bin/mdview
+> 
+> Pictures dont have to be generated by hand ;-)
+
+PRI picture attached.
+
+kvn
+
+> 
+> cheers,
+> 
+> ash.
+> 
+
+--Boundary_(ID_IpMW+jPXdRVphFpS93KHug)
+Content-type: application/pdf; NAME=pri-fwarc-2007_138.pdf
+Content-transfer-encoding: base64
+Content-disposition: attachment; filename=pri-fwarc-2007_138.pdf
+
+JVBERi0xLjIKJeLjz9MNCjMgMCBvYmoKPDwgCi9MaW5lYXJpemVkIDEgCi9PIDUgCi9IIFsg
+ODk3IDE3NyBdIAovTCA0NDkxNiAKL0UgNDQ1OTMgCi9OIDEgCi9UIDQ0NzM5IAo+PiAKZW5k
+b2JqCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICB4cmVmCjMgMjUgCjAwMDAwMDAwMTYgMDAwMDAgbiAKMDAwMDAwMDg0NCAw
+MDAwMCBuIAowMDAwMDAxMDc0IDAwMDAwIG4gCjAwMDAwMDEyNzggMDAwMDAgbiAKMDAwMDAw
+MTQwOSAwMDAwMCBuIAowMDAwMDAxNTE0IDAwMDAwIG4gCjAwMDAwMDE3MDUgMDAwMDAgbiAK
+MDAwMDAwMTcyNiAwMDAwMCBuIAowMDAwMDA3MTk1IDAwMDAwIG4gCjAwMDAwMDcyMTcgMDAw
+MDAgbiAKMDAwMDAxMDM3OSAwMDAwMCBuIAowMDAwMDEwNDAxIDAwMDAwIG4gCjAwMDAwMTUx
+MTUgMDAwMDAgbiAKMDAwMDAxNTEzNyAwMDAwMCBuIAowMDAwMDIxMDY1IDAwMDAwIG4gCjAw
+MDAwMjEwODcgMDAwMDAgbiAKMDAwMDAyNzMyNCAwMDAwMCBuIAowMDAwMDI3MzQ2IDAwMDAw
+IG4gCjAwMDAwMzM0NDIgMDAwMDAgbiAKMDAwMDAzMzQ2NCAwMDAwMCBuIAowMDAwMDM5MzI4
+IDAwMDAwIG4gCjAwMDAwMzkzNTAgMDAwMDAgbiAKMDAwMDA0NDQ0OCAwMDAwMCBuIAowMDAw
+MDAwODk3IDAwMDAwIG4gCjAwMDAwMDEwNTQgMDAwMDAgbiAKdHJhaWxlcgo8PAovU2l6ZSAy
+OAovSW5mbyAyIDAgUiAKL1Jvb3QgNCAwIFIgCi9QcmV2IDQ0NzMwIAovSURbPGJjYTc0Mzhm
+MWIwNjBjNDdhZGVkOGEzODA3MjkyYmUwPjxiY2E3NDM4ZjFiMDYwYzQ3YWRlZDhhMzgwNzI5
+MmJlMD5dCj4+CnN0YXJ0eHJlZgowCiUlRU9GCiAgICAgCjQgMCBvYmoKPDwgCi9UeXBlIC9D
+YXRhbG9nIAovUGFnZXMgMSAwIFIgCj4+IAplbmRvYmoKMjYgMCBvYmoKPDwgL1MgMzYgL0Zp
+bHRlciAvRmxhdGVEZWNvZGUgL0xlbmd0aCAyNyAwIFIgPj4gCnN0cmVhbQ0KSIliYGAQZ2Bg
+bmQAgpX7GbABDigtAMSiUAwieVl3SDes4FrAEKrAoOPKwDPVgbnQgOGhAoP5bgbeLQeYbQPk
+QAoBAgwAiQQLnwplbmRzdHJlYW0KZW5kb2JqCjI3IDAgb2JqCjczIAplbmRvYmoKNSAwIG9i
+ago8PCAKL1R5cGUgL1BhZ2UgCi9QYXJlbnQgMSAwIFIgCi9SZXNvdXJjZXMgNiAwIFIgCi9D
+b250ZW50cyBbIDEwIDAgUiAxMiAwIFIgMTQgMCBSIDE2IDAgUiAxOCAwIFIgMjAgMCBSIDIy
+IDAgUiAyNCAwIFIgXSAKL01lZGlhQm94IFsgMCAwIDYxMiA3OTIgXSAKL0Nyb3BCb3ggWyAw
+IDAgNjEyIDc5MiBdIAovUm90YXRlIDAgCj4+IAplbmRvYmoKNiAwIG9iago8PCAKL1Byb2NT
+ZXQgWyAvUERGIC9UZXh0IF0gCi9Gb250IDw8IC9GMSA3IDAgUiA+PiAKL0V4dEdTdGF0ZSA8
+PCAvR1MxIDI1IDAgUiA+PiAKL0NvbG9yU3BhY2UgPDwgL0NzNSA4IDAgUiA+PiAKPj4gCmVu
+ZG9iago3IDAgb2JqCjw8IAovVHlwZSAvRm9udCAKL1N1YnR5cGUgL1R5cGUxIAovRW5jb2Rp
+bmcgL1dpbkFuc2lFbmNvZGluZyAKL0Jhc2VGb250IC9UaW1lcy1Sb21hbiAKPj4gCmVuZG9i
+ago4IDAgb2JqClsgCi9DYWxSR0IgPDwgL1doaXRlUG9pbnQgWyAwLjk1MDQ4IDEgMS4wODg5
+OCBdIC9HYW1tYSBbIDIuMjIyMTkgMi4yMjIxOSAyLjIyMjE5IF0gCi9NYXRyaXggWyAwLjQx
+MjM5IDAuMjEyNTggMC4wMTkyOCAwLjM1NzU4IDAuNzE1MTkgMC4xMTkxOCAwLjE4MDQ5IDAu
+MDcyMTggMC45NTA0OCAKXSA+PiAKCl0KZW5kb2JqCjkgMCBvYmoKNTM5MiAKZW5kb2JqCjEw
+IDAgb2JqCjw8IC9GaWx0ZXIgL0ZsYXRlRGVjb2RlIC9MZW5ndGggOSAwIFIgPj4gCnN0cmVh
+bQ0KSImcV8tuI7sR3fdXNJCNs1AP349FNrnJDRAg2YyDLIJAkKW2rXv1cCR7Hvn6nKoi2d1z
+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
+5eWn9YfTX7brm4v/bdfvL25up79N+os9+8vJf1ZG6eDitDbKeJunk3+syv43n0/XZxe3N2Wn
+07xzrVVKMSy2/rbefPi0vry+Or9ev+n7M28/+Ssvn28/f31ZK4t/NRnVZB+3N58uT8/eb+/u
+5t/2dGf31fXVNwP+ebLyGfVO3no8YZouV56UtmbyzikX/BSMouimEKwKhv8qHwl/ssouTJtV
+iMoZbItaOZenkFRCvSEaFWyaAilDiIoWYRHb/7ViV7TFFSJ+D7ZPodgRke/ZYbHCDpfY8e6A
+mF9XETE+l8KJY7od+VVOMSrSvjxIwPNFr4xYmxXqdyl2BxfgbA/uZsm9WTUbZ5djmlqwTzjC
+1HJXC7nrT7flWlgLXtTNJ/b3E1wD77KdNP83/290Kls+YZQUgnbTyeVKTye/r97iqtW7QB5v
+driHWmnNO7Hp4rxcglB24hSjXtzYddkappPNHGRL0Ica9e7Ov5LE4Ootf25OEnuS+Zc37683
+/12/+7j97dP2avNHSXi+PT0/225LIqeidos8b69+v7gabzmONyd7txn/ffvHhy123Xy68p/r
+CZiIl3d33+b68sPp7QXaAbtrQh28mTc6I929ub663X65lRY/lw6/z4KbX08/bs/XNWgO0DM8
+nNP5XsDl6Zf1m9ubs3mnralzIH9v66NziXZxSd8B2DEIlR5MqIwbuERUgMNZnBa60SrLaPI4
+Z506otBeujCnIcpzL1NBFEchSwq5IypoFSktEAVXIjPwJvDr8QNvOAj3emTUHkECKZRuB0Z5
+rywJo3zEAXRGVUsYVR0dQnNwNzm1IMplZbQgygUVqCOqWoKotlzrasFj1bsJhYJSNuEwQsUj
+EYpeLqFqlz2UUGlPQg0AfEpCPaFyygcqJ9ZErmDJUJjAl4hbH7BOTrCElrKUByw5tG+HkkuK
+MnUooeHI5gWUHOszO/CFHTkMfHFch19AaY8ggZIl3OKBSngun4RKDs+VO5WqJVSqjs6dObiZ
+c27Bko3KZsGSdTjajqVqCZbaciu0Bi/q3s0lKFxtuD2+y6X0dS6l+1yiF6ac6LG5lI+rnOjh
+XKIXwqX8o7iEUQJgh8JB7+PlJiDGsE4InUvoKXRO5ZJnbgWl8S1oZOImw1zYyGQTrsgCTPBY
+6BxhDBwOe4QxdlZkI5j2CBIwmYSxbwCTxSEZAROexFo3wIMtAVN1dPLMwc2ccwuYcEo8yLZg
+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
+gCPNcPzl37cPn45HNUAh9XoKjfYWNOwh/JqqW9W7390c9l8f7tEJl0fNg1e3fvH9/uH65nA4
+bm+e98cHDthaANXj9eNfv90+PV9/e5Is/IATB5DKmqfulKTo9aBHFcem0iWOFxGQVLpsVl3S
+POjEisgQ39IwkDoNoM95L6B5PupjYPczQXebjIrrG+87hZiUfpo9UpIpG0pTah8ZJVHbTSqo
+N375GV6M2pYGm6Sp8fCQ3KyuLBbgoXiPqUVtN/ZmGbC8JHiV9UlYE0pE5XRqxqEEqh+Yw3z1
+eavUft8/Pn+7OXz4cvt9v719UoBKL6vOJmGFw36ocjrF9XqKGP26OcrP1+q0XghCRaW+OMds
+d18/3MGRHZSucQwyVbyVuX88/uv2w2H/JIT7nXKYCdjMy9YdOWDYosqs4dSjemb4/Jh5lQnB
+4tjfB48FVM9JQ5VHcieXB924sOIRR3c6esC1aWD3EzFPm/8JMAD3HILwCmVuZHN0cmVhbQpl
+bmRvYmoKMjUgMCBvYmoKPDwgCi9UeXBlIC9FeHRHU3RhdGUgCi9TQSBmYWxzZSAKL1NNIDAu
+MDE5OTggCi9UUiAvSWRlbnRpdHkgCj4+IAplbmRvYmoKMSAwIG9iago8PCAKL1R5cGUgL1Bh
+Z2VzIAovS2lkcyBbIDUgMCBSIF0gCi9Db3VudCAxIAo+PiAKZW5kb2JqCjIgMCBvYmoKPDwg
+Ci9DcmVhdGlvbkRhdGUgKEQ6MjAwNzAzMTIyMTE3NDApCi9Qcm9kdWNlciAoQWNyb2JhdCBE
+aXN0aWxsZXIgNC4wNSBmb3IgU3BhcmMgU29sYXJpcykKL01vZERhdGUgKEQ6MjAwNzAzMTIy
+MTE3NDQpCj4+IAplbmRvYmoKeHJlZgowIDMgCjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDA0
+NDUyOSAwMDAwMCBuIAowMDAwMDQ0NTkzIDAwMDAwIG4gCnRyYWlsZXIKPDwKL1NpemUgMwov
+SURbPGJjYTc0MzhmMWIwNjBjNDdhZGVkOGEzODA3MjkyYmUwPjxiY2E3NDM4ZjFiMDYwYzQ3
+YWRlZDhhMzgwNzI5MmJlMD5dCj4+CnN0YXJ0eHJlZgoxNzMKJSVFT0YK
+
+--Boundary_(ID_IpMW+jPXdRVphFpS93KHug)--
+
+From sacadmin Wed Mar 14 17:36:40 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l2F0adMc022778
+	for <fwarc@sac.eng.Sun.COM>; Wed, 14 Mar 2007 17:36:40 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l2F0aPrq002264;
+	Thu, 15 Mar 2007 08:36:38 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JEX005055OZT500@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 14 Mar 2007 17:36:35 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JEX002D75OYJ340@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 14 Mar 2007 17:36:34 -0700 (PDT)
+Received: from fe-amer-04.sun.com ([192.18.108.178])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l2F0aYHf000268; Thu,
+ 15 Mar 2007 00:36:34 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JEX00D015NJK000@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Wed,
+ 14 Mar 2007 18:36:34 -0600 (MDT)
+Received: from [129.150.33.202] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JEX008UH5OXZC81@mail-amer.sun.com>; Wed,
+ 14 Mar 2007 18:36:34 -0600 (MDT)
+Date: Wed, 14 Mar 2007 17:36:35 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Fast-track - 2007/138 - Updates to PRI structures
+In-reply-to: <45F5F29C.6050301@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: environ-data-ldoms@sun.com
+Message-id: <45F89513.20407@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <45EFC7CC.2030504@sun.com>
+ <BF98E09E-557E-478E-952E-759471ECBAFB@Sun.COM> <45F5AE4D.1000002@Sun.COM>
+ <45F5F29C.6050301@Sun.COM>
+User-Agent: Thunderbird 2.0b2 (Windows/20070116)
+Status: RO
+
+Hitendra Zhangada wrote:
+> Hitendra Zhangada wrote On 03/12/07 12:47,:
+>> Eric Sharakan wrote On 03/12/07 12:37,:
+>>
+>>> Hitu & Kevin, I haven't seen any consolidated Doc. added to the case  
+>>> material yet.
+>>
+>>
+>> That is coming soon, by COB today.  If Kevin can not provide one
+>> then I will create one.
+> 
+> Consolidated spec is available and copied to case materials directory.
+> The updated document is version as 1.1 (original was 1.0).  Both
+> original, consolidated and updates proposed by this case are in,
+> 
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2007/138/materials/
+> 
+> 
+> The consolidated version now includes section numbers for easy read.
+> 
+> 
+> This case times out on March 14th.  I forgot to mentioned earlier but
+> this case is seeking approval for minor/micro/patch OS binding and
+> minor/micro binding for the firmware.
+
+FYI.  Copied the PRI picture Kevin provided into materials directory.
+
+The timer has timed-out and so this case is now approved.  This case
+is approved for minor/micro/patch OS binding and minor/micro binding
+for the firmware.
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+

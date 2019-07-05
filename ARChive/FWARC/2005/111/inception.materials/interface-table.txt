@@ -1,0 +1,24 @@
+#pragma ident	"%Z%%M%	%I%	%E% SMI"
+
+			Interface table
+			===============
+
+Interfaces Exported
+		
+Interface Name			Classification   	Comment
+                                      	 
+------------------------------------------------------------------------
+
+"sun4v"				Sun Private	Sun4v Bus Binding
+						"sun4v" device_type
+
+"SUNW,sun4v-cpu"		Sun Private	"compatible" propval
+						for sun4v cpu nodes.
+
+"virtual-devices"		Sun Private	Sun4v virtual-devices
+						bus binding.
+
+"SUNW,sun4v-virtual-devices"	Sun Private	"compatible" propval
+						for virtual-devices bus node.
+
+

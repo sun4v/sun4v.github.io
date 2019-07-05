@@ -1,0 +1,51 @@
+
+The issue list for 2005/111. All the issues are closed. 
+
+issue #1 from DK:
+SUNW,set-trap-table .. the cif has another argument for the miss area.  
+
+Answer from DK:
+This will be fast-tracked in later. The sun4v version has an
+additional argument for the miss area.
+
+
+
+Issue #2 from DK:
+An unamed cif for dealing with HV API versioning negotiation via OBP
+with the hypervisor.
+
+Answer from DK:
+This will be fast-tracked in later.
+It doesn't exist yet. Details need to be worked out on this.
+
+
+
+Issue #1 from HZ:
+section 2.2.1.3, Unit Address Representation
+provides examples which includes "/cmp@100".  Since
+cmp nodes does not exists under sun4v architecture
+we may want to not mention CMP anywhere in the document.
+I suggest changing "/cmp@100" to "cpu@100".
+
+Answer from DK:
+changed it from "cmp" to "cpu" and deleted reference [6].
+
+
+
+Issue #2 from HZ:
+Section 9.1.2 mentions that cpuid is 28-bit quantity.
+This is significantly large value then what we have
+dealt with in past.  E.g., the cpuid for UltraSPARC-III,
+III+, IV, etc. is just 10 bits.
+
+What I would like to know (more of a curiosity) is how
+sun4v Solaris uses the cpuid.  Are the CPU related structures
+based on the 28 bit CPUIDs?  Is NCPU 28 bit quantity?
+May be concept of NCPU does not exist in sun4v Solaris.
+
+I would like brief discussion on this at the meeting.
+
+Answer from DK:
+This is closed as a non-iussue.
+
+

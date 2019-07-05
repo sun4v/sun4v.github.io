@@ -1,0 +1,163 @@
+From sacadmin Mon Feb 15 12:20:19 2010
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o1FKKJP9021189
+	for <fwarc@sac.sfbay.sun.com>; Mon, 15 Feb 2010 12:20:19 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id o1FKKIP0028909;
+	Mon, 15 Feb 2010 12:20:18 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KXW00103GHUJJ00@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 15 Feb 2010 12:20:18 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KXW0006GGHUO300@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 15 Feb 2010 12:20:18 -0800 (PST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id o1FKKD9b020701;
+ Mon, 15 Feb 2010 12:20:13 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KXW00G00G9T2Y00@fe-sfbay-09.sun.com>; Mon,
+ 15 Feb 2010 12:20:13 -0800 (PST)
+Received: from [129.150.178.62] ([unknown] [129.150.178.62])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KXW00HZXGHNH800@fe-sfbay-09.sun.com>; Mon,
+ 15 Feb 2010 12:20:12 -0800 (PST)
+Date: Mon, 15 Feb 2010 12:20:10 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: 2010/058 : Fast-track - Logical Domains Agent Chassis Serial Number
+ Message
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <4B79AC7A.9080604@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.7)
+ Gecko/20100111 Lightning/1.0b1 Thunderbird/3.0.1
+Status: RO
+Content-Length: 841
+
+I am sponsoring this fast-track case for Mike Christensen.  This case 
+adds a new
+"Chassis Serial Number" message as part  of the LDoms Agents 'agent-system'
+domain service.  See details in the one-pager and in section 7 (mainly 
+in 7.2)
+of the updated specification below.
+
+One-pager :
+http://sac.eng.sun.com/arc/FWARC/2010/058/Materials/chassis-serialno-1pager.txt
+
+Updated Specification :
+http://sac.eng.sun.com/arc/FWARC/2010/058/Materials/ldoms_agent_specification_rev_1.2.pdf
+
+
+This case will be approved for a minor/micro/patch OS binding
+and a minor/micro binding for the firmware.
+
+Case timer is set to expire on February 22, 2010.
+
+
+-- 
+Hitendra Zhangada
+==============================================
+Platform SW Technologies, Oracle America, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Mon Feb 22 17:37:18 2010
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o1N1bH1I011950
+	for <fwarc@sac.sfbay.sun.com>; Mon, 22 Feb 2010 17:37:18 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.4) with ESMTP id o1N1bBLu005125;
+	Mon, 22 Feb 2010 18:37:17 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KY90090ZTU4K700@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 22 Feb 2010 17:37:16 -0800 (PST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KY90095GTU475B0@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 22 Feb 2010 17:37:16 -0800 (PST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id o1N1bGge018782;
+ Mon, 22 Feb 2010 17:37:16 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KY900H00TT0G800@fe-sfbay-09.sun.com>; Mon,
+ 22 Feb 2010 17:37:16 -0800 (PST)
+Received: from [129.150.220.23] ([unknown] [129.150.220.23])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KY900DBWTU3Y110@fe-sfbay-09.sun.com>; Mon,
+ 22 Feb 2010 17:37:16 -0800 (PST)
+Date: Mon, 22 Feb 2010 17:37:14 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2010/058 : Fast-track - Logical Domains Agent Chassis Serial
+ Number Message
+In-reply-to: <4B79AC7A.9080604@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: LDoms Internal <ldoms-internal@sun.com>
+Message-id: <4B83314A.6010608@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B79AC7A.9080604@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.7)
+ Gecko/20100111 Lightning/1.0b1 Thunderbird/3.0.1
+Status: RO
+Content-Length: 1016
+
+On 2/15/2010 12:20 PM, Hitendra Zhangada wrote:
+> I am sponsoring this fast-track case for Mike Christensen.  This case 
+> adds a new
+> "Chassis Serial Number" message as part  of the LDoms Agents 
+> 'agent-system'
+> domain service.  See details in the one-pager and in section 7 (mainly 
+> in 7.2)
+> of the updated specification below.
+>
+> One-pager :
+> http://sac.eng.sun.com/arc/FWARC/2010/058/Materials/chassis-serialno-1pager.txt 
+>
+>
+> Updated Specification :
+> http://sac.eng.sun.com/arc/FWARC/2010/058/Materials/ldoms_agent_specification_rev_1.2.pdf 
+>
+>
+>
+
+This case has timed out and is approved for following FW/OS bindings.
+
+
+Thanks.
+
+
+> This case will be approved for a minor/micro/patch OS binding
+> and a minor/micro binding for the firmware.
+>
+> Case timer is set to expire on February 22, 2010.
+>
+>
+
+
+-- 
+Hitendra Zhangada
+==============================================
+Platform SW Technologies, Oracle America, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+

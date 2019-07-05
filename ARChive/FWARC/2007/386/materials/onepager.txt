@@ -1,0 +1,261 @@
+Copyright 2007 Sun Microsystems
+
+1. Introduction
+   1.1. Project/Component Working Name:
+
+        Machine Description IO Device Node Definition Updates
+
+   1.2. Name of Document Author/Supplier:
+   
+        Stephen Ehring
+
+   1.3. Date of This Document:
+   
+        06/26/2007
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+    1.4.1. The PAC or CPT you expect to review your project:
+        HS PAC
+    1.4.2. The ARC(s) you expect to review your project:
+        FWARC
+    1.4.3. The Director/VP who is "Sponsoring" this project:
+        N/A
+    1.4.4. The name of your business unit:
+        Systems Group
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: chad.solomon@sun.com
+        1.5.2. Responsible Engineer: stephen.ehring@sun.com
+        1.5.3. Marketing Manager: N/A
+    1.5.4. Interest List:
+
+2. Project Summary
+   2.1. Project Description:
+   
+        This project updates the machine description iodevice nodes
+        originally defined in case 2007/070. While implementing the
+        properties described in that case, certain problems were
+        encountered which the updates presented in this case attempt
+        to solve.
+
+   2.2. Risks and Assumptions:
+   
+        The proposed changes will constitute a flag day between
+        reset/config and OpenBoot. This is not a difficult problem
+        since the two components are released as part of the same
+        consolidation.
+
+3. Business Summary
+   3.1. Problem Area:
+   
+        The reasoning behind the creation of these iodevice MD nodes
+        is beyond the scope of this case (interested parties can
+        refer to the material in the original FWARC case [1]). The
+        problem being addressed is that while implementing the
+        interfaces defined in that case, certain problems were
+        encountered which require tweaking some of the approved
+        interfaces. The problems which are being solved are presented
+        in this section.
+
+     3.1.1 slot-names
+
+        The 'slot-names' property as defined in the original case
+        consisted of a single PROP_STR data type, however, the
+        'slot-names' property as defined in [2] consists of an encoded
+        integer followed by encoded string(s). The encoded integer
+        is a bitmask of available devices as described in [6]. This case
+        proposes to fix this problem by modifying the PCI slot MD
+        device properties so that instead of having a 'slot-names'
+        property the PCI slot MD node can have multiple forward links
+        to 'slot-name' MD nodes. Then each 'slot-name' MD node can have
+        two properties; one of type PROP_STR which describes one of the
+        strings that OpenBoot is to encode and the other of type PROP_VAL
+        which describes the associated available device number. OpenBoot can
+        glean the integer that is to be encoded by assembling a bitmask
+        based on the device numbers.
+
+     3.1.2 devaliases
+
+        In the original case, any iodevice could have a single
+        property named 'devalias' of type PROP_STR. However, it's
+        possible for a single iodevice node to have multiple device
+        aliases pointing to it (for example, 'net' and 'net0' often
+        point to the same actual device path). To allow this to work,
+        this case is proposing that any iodevice node can have forward
+        links to devalias nodes which contain a 'devalias' property of
+        type PROP_STR and a 'path' property also of type PROP_STR. Then
+        OpenBoot can parse all forward links and create a devalias entry
+        for each node that it finds.
+
+     3.1.3 level1-hotplug-slot-count and level2-hotplug-slot-count
+
+        FWARC case 2006/198 (PCI Hotplug Resource Preallocation) [4]
+        defines two properties 'level1-hotplug-slot-count' and
+        'level2-hotplug-slot-count' which are hardware-topology dependent.
+        As such, OpenBoot will have to extract this information from the
+        MDs. This case proposes adding two new optional properties of
+        type PROP_VAL to pass this information along to the guest OpenBoot.
+
+     3.1.4 hotplug-supported
+
+        The method by which OpenBoot allocates and retains PCI resources
+        during nexus probe varies based on whether or not a platform
+        supports PCI hotplug in any of its slots. Currently, this is
+        determined by a compile time switch, although it is desired to
+        modify the behavior at run time so that the same OpenBoot binary
+        can be used across all platforms. In order to make this check
+        dynamic, we are adding a property 'hotplug-supported' to the MD,
+        and OpenBoot can modify it's behavior based on the property's
+        presence.
+
+   3.2. Market/Requester:
+   
+        OpenBoot and VBSC firmware teams
+
+   3.3. Business Justification:
+   
+        These changes allow future OpenBoot images to operate unmodified on
+        multiple platforms, thereby drastically decreasing OpenBoot development
+        time.
+
+   3.4. Competitive Analysis:
+   
+        N/A
+
+   3.5. Opportunity Window/Exposure:
+
+        Project team is attempting to make changes available in time for Huron
+        RR
+
+   3.6. How will you know when you are done?:
+      
+        When code has been integrated into released system firmware image.
+
+4. Technical Description:
+    4.1. Details:
+
+        The updated technical description of the iodevice nodes can be
+        found in the case materials directory [5]. The list of changes
+        from the previous version are listed here.
+
+    4.1.1 Slot name change
+
+        The case removes the 'slot-name' property from the available
+        properties for PCI slot device properties. A section defining
+        the new slot name node is being added.
+
+    4.1.2 devalias change
+
+        The case removes the 'devalias' property from the available
+        properties for PCI slot device properties. A section defining
+        the new devalias node is being added.
+
+    4.1.3 level1-hotplug-slot-count and level2-hotplug-slot-count change
+
+        The case defines the new optional properties
+        'level1-hotplug-slot-count' and 'level2-hotplug-slot-count'
+        for Sun4v to PCI Express root nexus device  MD nodes.
+
+    4.1.4 hotplug-supported
+
+        The case defines the new optional property 'hotplug-supported'
+        for PCI slot device MD nodes.
+
+    4.2. Bug/RFE Number(s):
+
+        N/A
+   
+    4.3. In Scope:
+   
+        Changes to the MD iodevice node definitions
+
+    4.4. Out of Scope:
+
+        Properties and MD nodes that are not being modified.
+   
+    4.5. Interfaces:
+
+    4.5.1 Imported Interfaces
+
+        Name                    Classification  Description
+        -----------------       --------------- -------------------
+        sun4v Machine           Sun Private     MD nodes definitions as
+        Description nodes                       defined by FWARC/2005/115
+
+        Standard IEEE 1275      Committed       FWARC/1998/392 (see [6])
+        properties                       
+
+        "iodevice" MD node      Committed       MD node name and properties as
+                                                described in FWARC 2007/070
+
+    4.5.2 Exported Interfaces
+
+        Name                    Classification  Description
+        ----------------------  --------------  -------------------
+        "slot-name" MD node     Committed       MD node name and properties
+                                                as described in section
+                                                4.1.3 of [5]
+
+
+        "devalias" MD node      Committed       MD node name and properties
+                                                as described in section
+                                                4.1.4 of [5]
+
+        "level1-hotplug-slot-count" MD property
+                                Committed       MD node property described
+                                                in section 4.1.1.1 of [5]
+
+        "level2-hotplug-slot-count" MD property
+                                Committed       MD node property described
+                                                in section 4.1.1.1 of [5]
+
+        "hotplug-supported"     Committed       MD node property described
+         MD property                            in section 4.1.1.4 of [5]
+
+
+5. Reference Documents:
+
+        [1] FWARC 2007/070 Machine Description IO Device Node Definitions
+            http://sac.eng/Archives/CaseLog/arc/FWARC/2007/070
+
+        [2] FWARC 2000/030 Safari Bus Binding to IEEE 1275-1994
+            http://sac.sfbay/FWARC/2000/033/final.materials/safbind.txt
+
+        [3] FWARC 2007/222 in-line devalias creation
+            http://sac.eng/Archives/CaseLog/arc/FWARC/2007/222/materials/one-pager.txt
+
+        [4] FWARC 2006/198 PCI Hotplug Resource Preallocation
+            http://sac.sfbay/FWARC/2006/198/material/hotplug.one_pager
+
+        [5] Updated iodevice MD node details
+            updated-iodevice-details.txt
+
+        [6] PCI Bus Supplement to IEEE 1275
+            http://noho.eng/1275/bindings/pci/pci2_1.pdf
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+   
+        Project teams wants completion by FY07Q3
+
+   6.2. Cost of Effort:
+   
+        N/A
+
+   6.3. Cost of Capital Resources:
+   
+        None
+
+   6.4. ARC review type:
+
+        Fast track
+
+7. Prototype Availability:
+   7.1. Prototype Availability:
+   
+        Working prototype is available.
+
+   7.2. Prototype Cost:
+
+        N/A
+

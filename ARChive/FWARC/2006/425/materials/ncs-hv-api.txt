@@ -1,0 +1,585 @@
+
+	Version: "@(#)ncs-hv-api.txt 1.13     06/07/11 SMI"
+
+Niagara Crypto Service - Hypervisor API
+
+    Introduction
+
+	This document describes a new Niagara Crypto Service (NCS)
+	Hypervisor API intended to replace the API published in
+	PSARC/2005/125.  In order to maintain support for already
+	released products based on PSARC/2005/125, the original
+	Hypervisor function number (0x110) will be left intact.
+	This case will describe new entrypoints/function numbers
+	to support the new API and thus only usable by driver
+	and kernel code knowledgeable about the new interface.
+
+	The NCS HV API is being modified to better resemble
+	similar queuing interfaces provided by other subsystems.
+	Rather than having the API fan off of a single HV
+	entrypoint, multiple HV entrypoints are now defined for
+	specific queue operations.
+
+	This interface is used by a Solaris Cryptographic Framework
+	Provider and allows kernel based code to access the crypto
+	acceleration capabilities of an individual Niagara processor
+	core.
+
+    API Versioning
+
+	This interface will abide by FWARC/2006/052 with respect
+	to versioning.  The interface presented here represents
+	version 2.0.  The previous NCS HV API (PSARC/2005/125) will
+	represent version 1.x.
+
+	See section on Export Interfaces below for specific API
+	group-number.
+
+    References
+
+	FWARC/2004/510 Project Q Umbrella (sun4v/hypervisor)
+	FWARC/2005/116 sun4v core API
+	PSARC/2005/125 Niagara Crypto Provider
+	FWARC/2005/173 Hypervisor Service API
+	FWARC/2006/052 sun4v version API update
+	FWARC/2006/072 sun4v virtual devices machine description data
+	FWARC/2006/174 NCS HV API update
+	Niagara PRM, v1.8 (Oct 28, 2005), Chp 20 Modular Arithmetic
+	Niagara-2 PRM, v1.2 (Mar 3, 2006), Chp 15 Stream Processing Unit
+
+    Function Number
+
+	The following function numbers define the primary NCS entrypoints
+	per the Sun4v Hypervisor API:
+
+		NCS_QCONF		0x111
+		NCS_QINFO		0x112
+		NCS_GETHEAD		0x113
+		NCS_GETTAIL		0x114
+		NCS_SETTAIL		0x115
+		NCS_QHANDLE_TO_DEVINO	0x116
+		NCS_SETHEAD_MARKER	0x117
+
+    NCS API Definitions
+
+	0.	General
+
+	0.1	Queue Type:
+			NCS_QTYPE_MAU		0x01
+			NCS_QTYPE_CWQ		0x02	(Niagara-2 ONLY)
+
+		The *queue type* parameter specifies whether the
+		queue being operated on represents either the
+		MAU or CWQ, and has one of the values as specified
+		above: NCS_QTYPE_MAU, NCS_QTYPE_CWQ.
+
+		The *queue handle* parameter specifies a 64-bit
+		unsigned integer value that uniquely identifies
+		the queue being operated on.
+
+	0.2	Queue Definitions:
+
+		The queues are managed as circular arrays with head and
+		tail pointers indicating where active jobs are present.
+		Operation of the queues is analogous to the interrupt queues
+		as specified in the sun4v Architecture Spec (FWARC/2004/510).
+
+		Note: Byte ordering of fields below is Big-endian.
+
+	0.2.1	MAU queue
+
+		The MAU queue is described by an array of 64-byte entries
+		where each entry is described by the following structure:
+
+		Offset	Size	Field Name	Description
+		------	----	----------	-----------
+		0	8	nhd_state	See below
+		8	8	nhd_type	See below
+		16	32	nhd_regs	See below
+		48	8	nhd_errstatus	See below
+		56	8	_padding	Padding out to 64-bytes
+
+		typedef struct {
+			uint64_t	nhd_state;
+			uint64_t	nhd_type;
+			ma_regs_t	nhd_regs;
+			uint64_t	nhd_errstatus;
+			uint64_t	_padding;
+		} ncs_hvdesc_t;
+
+		Field		Description
+		-----		-----------
+		nhd_state	Valid values:
+				ND_STATE_FREE (0)
+					Entry is unused.
+				ND_STATE_PENDING (1)
+					Allocated and pending submission
+					to MAU.
+				ND_STATE_BUSY (2)
+					Entry has been submitted to MAU
+					for execution.
+				ND_STATE_DONE (3)
+					Entry has been successfully
+					executed.
+				ND_STATE_ERROR (4)
+					Entry completed execution, but
+					encountered an error.
+
+		nhd_type	Bit flags to delineate independent MAU
+				jobs which may be comprised of one or
+				more queue entries.  Interrupts are only
+				sent to the OS when the Last entry in a
+				job has been completed.
+
+				Valid values:
+				ND_TYPE_UNASSIGNED (0x00)
+					Indicates that entry is unused.
+				ND_TYPE_START (0x01)
+					Entry indicating the start of a job.
+				ND_TYPE_CONT (0x02)
+					Continuation of an existing job.
+				ND_TYPE_END (0x80)
+					Entry indicating the end of a job.
+					
+		nhd_regs	Values to be installed in the MAU hardware
+				registers.  This structure has the following
+				form:
+
+				Offset	Size	Field name	Description
+				------	----	----------	-----------
+				0	8	mr_ctl		MA Control Register
+				8	8	mr_mpa		MA Physical Address
+								Register
+				16	8	mr_ma		MA Memory Address
+								Register
+				24	8	mr_np		MA NP Register
+
+				typedef struct {
+					uint64_t	mr_ctl;
+					uint64_t	mr_mpa;
+					uint64_t	mr_ma;
+					uint64_t	mr_np;
+				} ma_regs_t;
+
+				See the respective PRM for the exact
+				definition of these registers.
+
+		nhd_errstatus	Bit flags indicating type of MAU error which
+				may have occurred with respect to descriptor.
+
+				Valid values:
+				ND_ERR_OK (0x00)
+					Indicates no error.
+				ND_ERR_INVOP (0x01)
+					Invalid MAU operation.
+				ND_ERR_HWE (0x02)
+					Hardware Error detected by MAU.
+			
+	0.2.2	CWQ queue	(Niagara-2 ONLY)
+
+		The CWQ queue is described by an array of 128-byte entries
+		where each entry is described by the following structure:
+
+		Offset	Size	Field name	Description
+		------	----	----------	-----------
+		0	8	cw_ctlbits	Control bits indicating the nature
+						of the respective control word.
+		8	8	cw_src_addr	Real address of source data.
+		16	8	cw_auth_key_addr
+						Real address of location containing
+						authentication key.
+		24	8	cw_auth_iv_addr	Real address of location containing
+						initial value for authentication.
+		32	8	cw_final_auth_state_addr
+						Real address of the location that
+						will be used to hold the final
+						authentication state.
+		40	8	cw_enc_key_addr	Real address of location containing
+						encryption key.
+		48	8	cw_enc_iv_addr	Real address of location containing
+						encryption initialization vector.
+		56	8	cw_dst_addr	Real address of destination buffer.
+		64	8	cw_csr		Control and Status bits which are
+						set on completion of control word.
+		72	56	_padding	Padding out to 128-bytes
+
+		typedef struct {
+			uint64_t	cw_ctlbits;
+			uint64_t	cw_src_addr;
+			uint64_t	cw_auth_key_addr;
+			uint64_t	cw_auth_iv_addr;
+			uint64_t	cw_final_auth_state_addr;
+			uint64_t	cw_enc_key_addr;
+			uint64_t	cw_enc_iv_addr;
+			uint64_t	cw_dst_addr;
+			uint64_t	cw_csr;
+			uint64_t	_padding[7];
+		} cwq_cw_t;
+
+		See the respective PRM for the exact definition of
+		these fields.
+
+	1.	ncs_qconf
+
+		trap#		FAST_TRAP
+		function#	NCS_QCONF
+		arg0		queue type
+		arg1		base address/queue handle
+		arg2		queue size (#entries)
+
+		ret0		status
+		ret1		queue handle (for configure only)
+
+		API for configuring or unconfiguring either a MAU queue or
+		a CWQ queue (arg0).  On success when configuring a queue
+		the caller is returned a *queue handle* (ret1) which is
+		used for subsequent queue operations.
+
+		When configuring a queue, the *base address* (arg1) is the
+		real address of the base of the queue and must be aligned
+		on a queue size boundary, so for example, a 32 entry MAU
+		queue must be aligned on a 2048 byte real address boundary
+		while a 32 entry CWQ queue must be aligined on a 4096 byte
+		real address boundary.  When unconfiguring a queue, the
+		*queue handle* (arg1) represents the queue to be unconfigured.
+
+		The *queue size* (arg2) specifies the number of entries
+		in the queue and must be a power of 2.  A value of zero (0)
+		indicate to unconfigure the given queue represented by the
+		*queue handle* (arg1).
+
+		Note that the queue being configured is only of the MAU/CWQ
+		for the Core containing the CPU upon which the caller is
+		executing.  The calling thread should bind itself to the
+		current CPU to ensure its context does not get switched to
+		a different CPU and possibly a different Core during the
+		operation.
+
+	1.1	Errors
+
+		ret0		Description
+		----		-----------
+		EOK		Success
+		EINVAL		Specified queue type is not recognized, or
+				Specified queue size is not a power of 2, or
+				Queue handle is invalid
+		ENOACCESS	CPU does not have access to a MAU/CWQ.
+		EBADALIGN	Base address of queue is improperly aligned.
+		ENORADDR	Base address of queue is not
+				a valid real address.
+
+	2.	ncs_qinfo
+
+		trap#		FAST_TRAP
+		function#	NCS_QINFO
+		arg0		queue handle
+
+		ret0		status
+		ret1		queue type
+		ret2		base address
+		ret3		queue size (#entries)
+
+		Retrieves the queue type, the real address of the base
+		of the queue, and the queue size for the queue identified
+		by *queue handle* (arg0).
+
+	2.1	Errors
+
+		ret0		Description
+		----		-----------
+		EOK		Success
+		EINVAL		Queue handle is invalid.
+
+	3.	ncs_gethead
+
+		trap#		FAST_TRAP
+		function#	NCS_GETHEAD
+		arg0		queue handle
+
+		ret0		status
+		ret1		head offset
+
+		Retrieves the Head offset for the queue identified by
+		*queue handle* (arg0).  The Head represents the current
+		beginning point for queue jobs to be processed.  There is
+		no guarantee that subsequent to calling this entrypoint
+		that the Head will not move forward.
+
+	3.1	Errors
+
+		ret0		Description
+		-----		-----------
+		EOK		Success
+		EINVAL		Queue handle is invalid.
+
+	4.	ncs_sethead_marker
+
+		trap#		FAST_TRAP
+		function#	NCS_SETHEAD_MARKER
+		arg0		queue handle
+		arg1		head offset
+
+		ret0		status
+
+		Informs the NCS hypervisor support that the caller's
+		notion of the Head offset for a given *queue handle* (arg0)
+		has moved to the specified value, *head offset* (arg1).
+		This value is used to effectively determine how far along
+		the caller has processed the queue of descriptors relative
+		to where the CWQ hardware is currently operating.  This
+		value is NOT stored into the actual CWQ hardware Head
+		register since that register is managed by hardware once
+		a queue has been configured and enabled.
+
+		The offset must be aligned on a 64-byte(MAU)/128-byte(CWQ)
+		boundary.  Any attempt to specify a Head value that resides
+		after the hardware's notion of the current Head and before
+		the hardware's notion of the current Tail will result in
+		an EINVAL error.
+
+	4.1	Errors
+
+		ret0		Description
+		-----		-----------
+		EOK		Success
+		EINVAL		Queue handle is invalid, or
+				Specified queue head value is invalid.
+
+	4.	ncs_gettail
+
+		trap#		FAST_TRAP
+		function#	NCS_GETTAIL
+		arg0		queue handle
+
+		ret0		status
+		ret1		tail offset
+
+		Retrieves the Tail offset for the queue identified
+		by *queue handle* (arg0).  The Tail represents the current
+		point for enqueuing new jobs.  Changes in the Tail can only
+		happen via the NCS_SETTAIL entrypoint.
+
+	4.1	Errors
+
+		ret0		Description
+		----		-----------
+		EOK		Success
+		EINVAL		Queue handle is invalid.
+
+	5.	ncs_settail
+
+		trap#		FAST_TRAP
+		function#	NCS_SETTAIL
+		arg0		queue handle
+		arg1		tail offset
+
+		ret0		status
+
+		Informs the NCS hypervisor support that the Tail offset
+		for a given *queue handle* (arg0) has been updated
+		to the specified value, *tail offset* (arg1).  The NCS
+		code will update its local copy of the Tail pointer and
+		start up processing of operations starting at the current
+		Head pointer, if not already in progress.
+
+		The offset must be aligned on a 64-byte(MAU)/128-byte(CWQ)
+		boundary and calculated so as to increase the number of pending
+		entries on the queue.  Any attempt to decrease the number
+		of pending queue entries is considered an invalid Tail offset
+		and will result in an EINVAL error.
+
+		To ensure that the caller does not get switched to a
+		different CPU and thus possibly a different Core and crypto
+		queue between enqueuing a job and calling the NCS_SETTAIL
+		entrypoint, the caller should bind itself to the target CPU.
+
+		The caller can wait for an asynchronous interrupt
+		indicating completion of a job in the queue at which
+		point the caller must check the current head/tail pointers
+		to verify whether their job has completed.
+
+	5.1	Errors
+
+		ret0		Description
+		----		-----------
+		EOK		Success
+		EINVAL		Queue handle is invalid, or
+				Specified queue tail value is invalid.
+		ENORADDR	Buffer address referenced in queue
+				entry is not a valid real address.
+
+	6.	ncs_qhandle_to_devino
+
+		trap#		FAST_TRAP
+		function#	NCS_QHANDLE_TO_DEVINO
+		arg0		queue handle
+
+		ret0		status
+		ret1		devino
+
+		Retrieves the interrupt number (devino) for the crypto
+		unit represented by the given *queue handle* (arg0).
+
+	6.1	Errors
+
+		ret0		Description
+		----		-----------
+		EOK		Success
+		EINVAL		Queue handle is invalid.
+
+	7.	Machine Description: NCP/CRYPTO virtual-device node
+
+		Ref:	FWARC/2005/173	(ino)
+			FWARC/2006/072	(name, device-type, cfg-handle, compatible)
+
+		The crypto hardware support on the Niagara chip is
+		represented as a single virtual device and is represented
+		in the Machine Description (MD) graph for a Guest as
+		a virtual-device node with the following properties:
+
+		Name		Tag		Req	Description
+		----		---		---	-----------
+		name		PROP_STR	Y	A string name for this node.
+							This value is currently
+							defined as "ncp" or "crypto".
+		device-type	PROP_STR	Y	A string type for this node.
+							This value is currently
+							defined as "crypto".
+		intr		PROP_DATA	Y	List of interrupt numbers.
+							One number per Core per
+							type of crypto unit.
+		ino		PROP_VAL	Y	List of virtual INOs
+							generated.
+		cfg-handle	PROP_VAL	Y	A 64-bit unsigned integer
+							identifying this device
+							uniquely.
+		compatible	PROP_DATA	Y	An array of string names
+							for this node.  This value
+							is currently defined as
+							"SUNW,sun4v-ncp" or
+							"SUNW,n2-cwq".
+
+		See Exported Interface below for the specific instances
+		of this node that will exist for Niagara-1 and Niagara2.
+
+	8.	Virtual Crypto Device Node
+
+		Device nodes under /virtual-devices node will be created to
+		represent the respective crypto functionality for Niagara-1
+		and Niagara-2.
+
+	8.1	Properties
+
+		"name"				S
+			Type:		Prop-encoded-string
+			Contents:	Standard property name, defines the
+					device's name.
+			Value:		"ncp" or "crypto"
+
+		"device_type"			S
+			Type:		Prop-encoded-string
+			Contents:	Standard property name to specify the
+					implemented interface.
+			Value:		"crypto"
+
+		"interrupts"			S
+			Type:		Prop-encoded-array
+			Contents:	Standard property name.  Defines device
+					mondo interrupt values exported by this
+					device.
+			Value:		One or more 32-bit integer values derived
+					from Machine Description.
+
+		"compatible"			S
+			Type:		Prop-encoded-array of prop-encoded-strings
+			Contents:	Standard property name, defined devices
+					with which this device is compatible.
+			Value:		"SUNW,sun4v-ncp" or "SUNW,n2-cwq".
+
+		"reg"				S
+			Type:		Prop-encoded-array
+			Contents:	Standard property name.  Defines the
+					geographical address of this device for
+					this bus.  A single entry derived from
+					Machine Description (MD).
+			Value:		<32-bit number>
+
+	8.2	Open Firmware-defined Methods for Device Nodes
+
+		None.
+
+========================================================================
+Exported Interfaces
+
+HV Fast Trap:
+
+	0x111		Sun Private	NCS_QCONF		API v2.0
+	0x112		Sun Private	NCS_QINFO		API v2.0
+	0x113		Sun Private	NCS_GETHEAD		API v2.0
+	0x114		Sun Private	NCS_GETTAIL		API v2.0
+	0x115		Sun Private	NCS_SETTAIL		API v2.0
+	0x116		Sun Private	NCS_QHANDLE_TO_DEVINO	API v2.0
+	0x117		Sun Private	NCS_SETHEAD_MARKER	API v2.0
+
+	Note:	The existing NCS fast trap (0x110) is API v1.x only.
+
+NCS API Group Number:
+
+	0x0103		Sun Private	Niagara Crypto
+
+NCS Queue Type value:
+
+	0x01		Sun Private	MAU
+	0x02		Sun Private	CWQ
+
+NCS Device Specific propvals for ncp and crypto virtual device nodes:
+
+	Note:	Niagara-1 platforms have only the "ncp" virtual device
+		node.  Niagara-2 platforms have both the "ncp" and
+		"crypto" virtual device nodes.
+
+   Niagara-1 & Niagara-2:
+
+	name		evolving	value: "ncp"
+	device_type	evolving	value: "crypto"
+	interrupts	evolving	value: chip dependent list of device
+						relative interrupts, 1 per core.
+	compatible	evolving	value: "SUNW,sun4v-ncp"
+	reg		evolving	value: unique virtual device register
+						address.
+
+   Niagara-2 (only):
+
+	name		evolving	value: "crypto"
+	device_type	evolving	value: "crypto"
+	interrupts	evolving	value: chip dependent list of device
+						relative interrupts, 1 per core.
+	compatible	evolving	value: "SUNW,n2-cwq"
+	reg		evolving	value: unique virtual device register
+						address.
+
+NCS MD propvals for crypto virtual device metadata node:
+
+	Note:	Niagara-1 platforms have only the "ncp" MD virtual device
+		node.  Niagara-2 platforms have both the "ncp" and
+		"crypto" MD virtual device nodes.
+
+   Niagara-1 & Niagara-2:
+
+	name		evolving	value: "ncp"
+	device-type	evolving	value: "crypto"
+	intr		evolving	value: list of device relative
+						interrupt numbers.
+	ino		evolving	value: list of parent devinos.
+	cfg-handle	evolving	value: devhandle for device
+	compatible	evolving	value: "SUNW,sun4v-ncp"
+
+   Niagara-2 (only):
+
+	name		evolving	value: "crypto"
+	device-type	evolving	value: "crypto"
+	intr		evolving	value: list of device relative
+						interrupt numbers.
+	ino		evolving	value: list of parent devinos.
+	cfg-handle	evolving	value: devhandle for device
+	compatible	evolving	value: "SUNW,n2-cwq"

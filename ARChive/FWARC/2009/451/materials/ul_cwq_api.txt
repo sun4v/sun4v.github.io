@@ -1,0 +1,132 @@
+
+Niagara Crypto Service - Hypervisor API version 2.1
+
+    Introduction
+
+	This document describes an update to the Niagara Crypto Service (NCS)
+	Hypervisor API published in
+	PSARC/2006/425.
+
+	This interface will allow a guest to take advantage of the new
+	userland Command Word Queues on platforms that support them.
+
+    API Versioning
+
+	This interface will abide by FWARC/2006/052 with respect
+	to versioning.  The interface presented here represents
+	version 2.1.  
+
+	See section on Export Interfaces below for specific API
+	group-number.
+
+    References
+
+	[1] FWARC/2004/510 Project Q Umbrella (sun4v/hypervisor)
+	[2] FWARC/2005/116 sun4v core API
+	[3] PSARC/2005/125 Niagara Crypto Provider
+	[4] FWARC/2005/173 Hypervisor Service API
+	[5] FWARC/2006/052 sun4v version API update
+	[6] FWARC/2006/072 sun4v virtual devices machine description data
+	[7] FWARC/2006/174 NCS HV API update
+	[8] FWARC/2006/425 NCS HV API update 2
+	
+	[9] Niagara PRM, v1.8 (Oct 28, 2005), Chp 20 Modular Arithmetic
+	[10] Niagara-2 PRM, v1.2 (Mar 3, 2006), Chp 15 Stream Processing Unit
+	[11] UltraSPARC {KT}? Supplement to the UltraSPARC Architecture 
+	 Specification (Draft 0.3, 4 Dec 2008) Sec 21.8 Control Word Queue
+
+
+    Function Number
+
+	The 2.1 version of the NCS group will preserve all existing 2.0
+	interfaces, as well as adding one new.
+
+	The following function numbers define the existing NCS 2.0 entrypoints
+	per the Sun4v Hypervisor API:
+
+		NCS_QCONF		0x111
+		NCS_QINFO		0x112
+		NCS_GETHEAD		0x113
+		NCS_GETTAIL		0x114
+		NCS_SETTAIL		0x115
+		NCS_QHANDLE_TO_DEVINO	0x116
+		NCS_SETHEAD_MARKER	0x117
+
+        The following function number will be added
+		NCS_ULQCONF	        0x118
+
+    NCS API Definitions
+
+	0.	General 
+                See 
+http://sac.eng/Archives/CaseLog/arc/FWARC/2006/425/materials/ncs-hv-api.txt
+		for general definitions and details
+
+	1.	ncs_ulqconf
+
+		trap#		FAST_TRAP
+		function#	NCS_ULQCONF
+		arg0		base address
+				or queue handle (for uneconfigure)
+		arg1		page size (encoded)
+		arg2		queue size (#entries)
+
+		ret0		status
+		ret1		queue handle (for configure only)
+
+		API for configuring or unconfiguring CWQ to set it up
+		for the new User-land mode of operation (SECTION 21.8.2
+		of [11].  On success when configuring a queue the caller 
+		is returned a *queue handle* (ret1) which can be used to
+		unconfigure the given CWQ.
+
+		When configuring a queue, the *base address* (arg0) is the
+		real address of the page that is dedicated for the queue 
+		and all data that is used by this CWQ during user-land 
+		operation. The queue itself should be set up within the 
+		first 4K of the page. The page sizes supported are 4M
+		and 256M as the smaller sizes enabled by the specification
+		(8K and 64K) would be too small for smooth operation.
+
+		When unconfiguring a queue, the *queue handle* (arg0) 
+		represents the queue to be unconfigured.
+
+		The *page size* (arg1) specifies the size of the page
+		to be configured, encoded according to Table 21-18 of [11]
+		(that is 3 for 4M and 5 for 256M, other values are invalids).
+
+		The *queue size* (arg2) specifies the number of entries
+		in the queue and must be a power of 2.  A value of zero (0)
+		indicate to unconfigure the given queue represented by the
+		*queue handle* (arg0).
+
+		Note that the queue being configured is only of the CWQ
+		for the Core containing the CPU upon which the caller is
+		executing.  The calling thread should bind itself to the
+		current CPU to ensure its context does not get switched to
+		a different CPU and possibly a different Core during the
+		operation.
+
+	1.1	Errors
+
+		ret0		Description
+		----		-----------
+		EOK		Success
+		EINVAL		Specified queue size is not a power of 2
+				Page size invalid, or
+				Queue handle is invalid
+		ENOACCESS	CPU does not have access to a CWQ.
+		EBADALIGN	Base address is improperly aligned.
+		ENORADDR	Base address is not a valid real address.
+
+
+========================================================================
+Exported Interfaces
+
+HV Fast Trap:
+
+	0x118		Sun Private	NCS_ULQCONF		API v2.1
+
+NCS API Group Number:
+
+	0x0103		Sun Private	Niagara Crypto

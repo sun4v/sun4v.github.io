@@ -1,0 +1,191 @@
+From sac-owner Tue Jan 27 14:11:59 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n0RMBwX5012694
+	for <one-pager@sac.eng.sun.com>; Tue, 27 Jan 2009 14:11:58 -0800 (PST)
+Received: from sunmail5.uk.sun.com (localhost [127.0.0.1])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n0RMBuNw003411
+	for <one-pager-not-2b-used-directly@sunmail5.uk.sun.com>; Tue, 27 Jan 2009 22:11:56 GMT
+Received: (from noaccess@localhost)
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/Submit) id n0RMBuGg003410
+	for one-pager-not-2b-used-directly; Tue, 27 Jan 2009 22:11:56 GMT
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n0RMBlr2003288
+	for <@sunmail2sca.sfbay.sun.com:one-pager@sun.com>; Tue, 27 Jan 2009 22:11:56 GMT
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KE500E01HNUZ300@nwk-avmta-1.sfbay.Sun.COM> for one-pager@sun.com
+ (ORCPT one-pager@sun.com); Tue, 27 Jan 2009 14:11:54 -0800 (PST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KE500BJFHNUX9E0@nwk-avmta-1.sfbay.Sun.COM> for
+ one-pager@sun.com (ORCPT one-pager@sun.com); Tue,
+ 27 Jan 2009 14:11:54 -0800 (PST)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n0RMBshH014445	for
+ <one-pager@sun.com>; Tue, 27 Jan 2009 22:11:54 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0KE500F01GQBG900@mail-amer.sun.com>
+ (original mail from Charles.Kunzman@Sun.COM)
+ for one-pager@sun.com (ORCPT one-pager@sun.com); Tue,
+ 27 Jan 2009 15:11:54 -0700 (MST)
+Received: from dhcp-usca11-235-98.SFBay.Sun.COM ([129.145.235.98])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0KE500DF3HNOREG0@mail-amer.sun.com> for one-pager@sun.com
+ (ORCPT one-pager@sun.com); Tue, 27 Jan 2009 15:11:48 -0700 (MST)
+Date: Tue, 27 Jan 2009 14:11:53 -0800
+From: Charles Kunzman <Charles.Kunzman@sun.com>
+Subject: [2009/050]Hypervisor API Improvements for VPCI DMA Sync
+Sender: Charles.Kunzman@sun.com
+To: one-pager@sun.com
+Message-id: <497F86A9.7020403@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.19 (Macintosh/20081209)
+Status: RO
+Content-Length: 3793
+
+Template Version: @(#)onepager.txt 1.35 07/11/07 SMI
+Copyright 2007 Sun Microsystems
+
+1. Introduction
+  1.1. Project/Component Working Name:
+   Hypervisor API Improvements for VPCI DMA Sync
+
+  1.2. Name of Document Author/Supplier:
+   Charles.Kunzman@sun.com
+
+  1.3. Date of This Document:
+   01/26/09
+
+   1.3.1. Date this project was conceived:
+       02/28/08
+
+  1.4. Name of Major Document Customer(s)/Consumer(s):
+   1.4.1. The PAC or CPT you expect to review your project:
+       N/A
+   1.4.2. The ARC(s) you expect to review your project:
+       FWARC
+   1.4.3. The Director/VP who is "Sponsoring" this project:
+       Ravi.Subbarao@sun.com
+   1.4.4. The name of your business unit:
+       Systems
+
+  1.5. Email Aliases:
+       1.5.1. Responsible Manager: Umesh.Sharma@sun.com
+       1.5.2. Responsible Engineer: Charles.Kunzman@sun.com
+       1.5.3. Marketing Manager:
+   1.5.4. Interest List: us-staff@sun.com
+
+2. Project Summary
+  2.1. Project Description:
+   This project adds a new flag to the existing VPCI DMA sync interface 
+to support optimized cache flushing.
+
+  2.2. Risks and Assumptions:
+
+3. Business Summary
+   This new API function is required in order to provide the
+   best possible system performance on upcoming UltraSPARC
+   based system products.
+
+  3.1. Problem Area:
+
+  3.2. Market/Requester:
+
+  3.3. Business Justification:
+
+  3.4. Competitive Analysis:
+
+  3.5. Opportunity Window/Exposure:
+
+  3.6. How will you know when you are done?:
+   The project is done when the API is implemented as specified.
+
+4. Technical Description:
+   4.1. Details:
+   The sun4v VPCI hypercall interfaces include a function that is 
+required to be called after the completion of any DMA write to memory 
+before the data there can be used. The purpose of this interface is to 
+allow sun4v processors with non-coherent caches the opportunity to flush 
+any required caches prior to strands on the processor accessing the data.
+
+   Most data loaded through DMA I/O is not intended for execution by the 
+guest Operating System. Flushing the instruction cache for most DMA is 
+therefore an unnecessary hit on the cache efficiency.
+
+   While the hypervisor cannot by itself determine if any given DMA is  
+intended for execution, the guest Operating System can pass this 
+information in during hypercall allowing the hypervisor to only flush 
+the caches necessary for data cache synchronization.
+
+   4.2. Bug/RFE Number(s):
+
+   4.3. In Scope:
+
+   4.4. Out of Scope:
+
+   4.5. Interfaces:
+   Interface                   Classification  Comments
+   ====================================================================
+   PCI_DMA_SYNC        Commmitted    API call
+
+   4.6. Doc Impact:
+   N/A
+
+   4.7. Admin/Config Impact:
+   N/A
+
+   4.8. HA Impact:
+   N/A
+
+   4.9. I18N/L10N Impact:
+   N/A
+
+   4.10. Packaging & Delivery:
+   N/A
+
+   4.11. Security Impact:
+   N/A
+
+   4.12. Dependencies:
+   N/A
+
+5. Reference Documents:
+
+6. Resources and Schedule:
+  6.1. Projected Availability:
+
+  6.2. Cost of Effort:
+
+  6.3. Cost of Capital Resources:
+
+  6.4. Product Approval Committee requested information:
+      6.4.1. Consolidation or Component Name:
+   6.4.3. Type of CPT Review and Approval expected:
+       6.4.4. Project Boundary Conditions:
+   6.4.5. Is this a necessary project for OEM agreements:
+   6.4.6. Notes:
+   6.4.7. Target RTI Date/Release:
+   6.4.8. Target Code Design Review Date:
+   6.4.9. Update approval addition:
+
+  6.5. ARC review type:
+       Standard
+  6.6. ARC Exposure:
+       open
+      6.6.1. Rationale:
+
+7. Prototype Availability:
+  7.1. Prototype Availability:
+   The changes have been prototyped and tested in the Supernova bringup 
+lab releases for Solaris and HV.
+
+  7.2. Prototype Cost:
+   N/A
+

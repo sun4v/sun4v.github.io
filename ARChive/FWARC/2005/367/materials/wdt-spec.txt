@@ -1,0 +1,101 @@
+1 Introduction
+
+This document specifies a hypervisor API function to provide a
+basic watchdog timer service to guests that choose to use it.
+
+The specification provides for a single function that guests may
+call to set a timeout, and a machine description property describing
+the timer.  The function can also be used to disable the timeout
+when the guest no longers needs or wants the service.
+
+2 References
+
+[1] Sun4v Hypervisor API (FWARC/2005/116)
+	http://sac.eng/FWARC/2005/116/commitment2.materials/api.pdf
+
+[2] Sun4v Machine Description (FWARC/2005/115)
+	http://sac.eng/FWARC/2005/115/final.materials/
+
+[3] UltraSPARC Virtual Machine Specification
+	http://kenai.com/downloads/hypervisor/Hypervisor-api-2.0.pdf
+
+
+3 Watchdog timer machine description
+	Different platforms may have different constraints on the
+	supported watchdog timeout values.  The largest supported
+	watchdog timer value is provided to the guest as a property
+	in the machine description.  The property is stored in the
+	"platform" node, and has these characteristics:
+
+	Name: watchdog-max-timeout
+	Tag: PROP_VAL
+	Required: No
+	Description:  The largest number of seconds that is valid as
+	    a parameter to the watchdog timer service API function.
+
+	The property is present if the watchdog timer is service is
+	available, but is otherwise not required.
+
+4 Watchdog timer service
+	The watchdog timer service provides provides the guest with
+	a single timer that can be set to expire with 1 second
+	granularity.  Once the guest has set the timer, it must call
+	the timer service again either to disable or postpone the
+	expiration.  Failure to reset the timer before it expires
+	will generally result in the hypervisor terminating the
+	guest.
+
+	The watchdog timer service function number
+	(MACH_SET_WATCHDOG) is 0x13.
+
+4.1 mach_set_watchdog
+	trap#		FAST_TRAP
+	function#	MACH_SET_WATCHDOG
+	arg0		timeout_seconds
+
+	ret0		status
+	ret1		time_remaining
+
+	Sets the guest's watchdog timer to expire after the interval
+	provided in the "timeout_seconds" parameter, and cancels any
+	previous watchdog timer setting in effect for the guest.
+
+	If the "timeout_seconds" argument is not zero, the watchdog
+	timer is set to expire after the number of seconds indicated
+	by the argument.  If the argument is zero, the watchdog
+	timer is disabled.
+
+	The timer should expire as soon as possible after the
+	requested timeout has elapsed; in no event may the watchdog
+	timer expire before the requested timeout period.
+
+	If the hypervisor cannot support the exact timeout value
+	requested, but can support a larger timeout value, the
+	hypervisor should round the actual timeout to the smallest
+	supported timeout value larger than the requested timeout.
+	In this case, a subsequent call to this function may return
+	a time remaining larger than the previously requested
+	timeout value.
+
+	If the requested timeout value exceeds the value of the
+	"watchdog-max-timeout" property, the hypervisor leaves the
+	watchdog timer state unchanged, and returns a status of
+	EINVAL.  The "time_remaining" return value is valid
+	regardless of whether the return status is EOK or EINVAL.
+
+	The hypervisor shall support timeout values up to at least
+	10 seconds.
+
+	A non-zero return value indicates the number of seconds that
+	were remaining until the timer was to expire.  The
+	hypervisor should round up fractional seconds to the next
+	higher second.  If less than one second remains, the return
+	value is 1.  If the watchdog timer was disabled at the time
+	of the call, the return value is 0.
+
+	If the timer expires, then the hypervisor takes a platform
+	specific action.  The platform specific action should lead to
+	guest termination within a bounded time period.  The
+	platform action may include recovery actions such as
+	reporting the expiration to a Service Processor, and/or
+	automatically restarting the guest.

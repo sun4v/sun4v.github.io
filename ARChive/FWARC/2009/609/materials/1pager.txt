@@ -1,0 +1,253 @@
+1. Introduction
+
+1.1 Project/Component Working Name
+
+	Direct I/O Agent
+
+1.2 Name of Document Author/Supplier
+
+	Jim Marks
+
+1.3 Date of This Document
+
+	05-NOV-2009
+
+1.4 Name of Major Document Customer(s)/Consumer(s)
+
+	1.4.1 The PAC or CPT you expect to review your project
+
+	1.4.2 The ARC(s) you expect to review your project
+
+		FWARC
+
+	1.4.3 The Director/VP who is sponsoring this project
+
+		jerriann.meyer@sun.com
+
+	1.4.4 The Name of Your Business Unit
+
+		Solaris Core OS
+
+1.5 Email Aliases
+
+	1.5.1 Responsible Manager:	jay.jayachandran@sun.com
+
+	1.5.2 Responsible Engineer:	james.marks@sun.com
+
+	1.5.3 Marketing Manager:	duncan.hardie@sun.com
+
+	1.5.4 Interest List:		ldoms-internal@sun.com
+
+2. Project Summary
+
+2.1 Project Description
+
+	This project adds a new agent to the Logical Domains Agents framework,
+	as defined in FWARC 2009/426.
+
+	The "direct I/O" agent provides information about all PCI-E devices of
+	a particular guest to the control domain.
+
+2.2 Risks and Assumptions
+
+	None.
+
+3. Business Summary
+
+3.1 Problem Area
+
+    	The static direct I/O project requires the Logical Domains Manager to
+	know about all available PCI-E devies in a particular guest domain.
+	Contrary to other system information gathered by the LDoms Manager, the
+	detailed PCI-E device information is not available in the PRI.
+	Instead, we need an entity within the guest itself to probe its
+	environment and provide this information.  The Logical Domains Agents
+	framework is designed for just this purpose.
+
+3.2 Market/Requestor
+
+	See FWARC 2005/633.
+
+3.3 Business Justification
+
+	See FWARC 2005/633.
+
+3.4 Competitive Analysis
+
+	The static direct I/O project is already funded & approved as a
+	strategic feature need for Logical Domains.  Virtualization solutions
+	provided by competitors provide similar functionality.
+
+3.5 Opportunity Window/Exposure
+
+	See FWARC 2005/663.
+
+3.6 How will you know when you are done?
+
+	The work will be completed when the final code changes to implement the
+	LDoms "Direct I/O" agent is integrated into the Solaris Nevada gate and
+	Solaris 10 Update gates.
+
+4. Technical Description
+
+4.1 Overview
+
+	The Direct I/O Agent will be implemented as a virtual domain service as
+	defined in FWARC 2008/563 (Virtual Domain Service MD nodes and
+	misc. properties). As a virtual domain service, the agent will be
+	identified by the domain service id shown below. This agent will be
+	able to send and receive messages to and from the control domain using
+	the virtual domain services framework.
+
+	The project will deliver the Direct I/O agents identified as follows:
+
+	Service Name 		Description
+	------------		-----------
+	agent-dio		Direct I/O Agent
+
+	This agent defines its own message type, based on the common
+	message structure.  The agent is described in the updated "Logical
+	Domain Agents Specification" document, provided as part of this case.
+
+4.2 Bug/RFE Number(s)
+
+	6848789 Static Direct I/O support
+	6848792 LDom manager support for Static Direct I/O
+
+4.3 Scope
+
+	Not Applicable.
+
+4.4 Out of Scope
+
+	Not Applicable.
+
+4.5 Interfaces
+
+	4.5.1 Interfaces
+
+		The new interface is embodied in the format of the
+		messages passed between the control domain and the
+		different agents.
+
+		For a detailed description of the interface see the
+		Logical Domain Agents Specification document.
+
+	4.5.2 Imported Interfaces
+
+            Interface           Classification  Comments
+            =================================================================
+
+            Domain Services      Sun Private    Domain Services protocol
+                                                and messages formats
+                                                FWARC/2006/055
+
+            Domain Services API  Sun Private    Logical Domain's Domain
+                                                Services API
+                                                PSARC/2008/568
+
+      4.5.3 Exported Interfaces
+
+            Interface           Classification  Comments
+            ================================================================
+
+            Domain Services ID  Sun Private    service id ("agent-dio")
+
+  4.6 Doc Impact
+
+      N/A
+
+  4.7 Admin/Config Impact
+
+      None.
+
+  4.8 HA Impact
+
+      None.
+
+  4.9 I18N/L10N
+
+       Not affected.
+
+  4.10 Packaging & Delivery
+
+       This project defines a generic interface and is not tied to a
+	particular architecture.
+
+	The Solaris implementation will be delivered as part of Solaris
+	LDoms and LDoms manager packages.
+
+  4.11 Security Impact
+
+       None.
+
+  4.12 Dependencies
+
+       None.
+
+5. Reference Documents
+
+  	FWARC 2005/633 LDoms: Project Q Logical Domaining Umbrella
+  	FWARC 2006/055 Domain Services
+	FWARC 2008/563 Virtual Domain Service MD nodes and misc. properties
+	FWARC 2009/426 Logical Domains Agents
+	PSARC 2008/568 Logical Domain's Domain Services
+
+6. Resources and Schedule
+
+  6.1 Projected Availability
+
+      Q4FY10 (S10U9)
+
+  6.2 Cost of Effort
+
+      2 person month
+
+  6.3 Cost of Capital Resources
+
+  6.4 Product Approval Committee requested information
+
+      6.4.1 Consolidation Or Component Name
+
+            OS-Networking (ON)
+            LDoms Manager (project private)
+
+      6.4.3 Type of CPT Approval Expected
+
+            FastTrack
+
+      6.4.4 Project Boundary Conditions
+
+      6.4.5 Is this a necessary project for OEM agreements:
+
+            No.
+
+     6.4.6 Notes
+
+     6.4.7 Target RTI Date/Release
+
+           December 2009
+
+     6.4.8 Target Code Design Review Date:
+
+     6.4.9 Update approval addition:
+
+           Not applicable
+
+  6.5 ARC review type
+
+       FastTrack
+
+  6.6 ARC Exposure
+
+       open
+
+7. Prototype Availability:
+
+   7.1 Prototype Availability
+
+       A prototype is already available.
+
+   7.2 Prototype Cost:
+
+       A prototype is already available.

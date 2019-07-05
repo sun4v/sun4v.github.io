@@ -1,0 +1,186 @@
+From sacadmin Fri Dec 12 10:31:53 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id mBCIVqYL015261
+	for <fwarc@sac.sfbay.sun.com>; Fri, 12 Dec 2008 10:31:53 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id mBCIVkjj005909
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 12 Dec 2008 18:31:51 GMT
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KBS002030T06300@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 12 Dec 2008 10:31:48 -0800 (PST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KBS00MVV0T0NAD0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 12 Dec 2008 10:31:48 -0800 (PST)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id mBCIVmrs013363	for
+ <fwarc@sun.com>; Fri, 12 Dec 2008 18:31:48 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0KBR00701ZY59K00@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 12 Dec 2008 11:31:48 -0700 (MST)
+Received: from [192.168.100.100]
+ (c-24-62-231-112.hsd1.ma.comcast.net [24.62.231.112])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0KBS004AH0SSEIA0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 12 Dec 2008 11:31:42 -0700 (MST)
+Date: Fri, 12 Dec 2008 13:31:40 -0500
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: FWARC/2008/768: PRI versioning
+Sender: Eric.Sharakan@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Message-id: <DE4F2C2F-D3D3-4BBB-B62B-D7D783B5CEAB@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.929.2)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 1025
+
+I'm sponsoring this self-review case for myself.  It adds a new  
+required property to the root node of the PRI named "pri-version".   
+The case materials contain both the old (1.4) & updated (1.5) versions  
+of the PRI Specification, along with a 1-pager and an interface  
+table.  The only addition to the specification is the inclusion of the  
+following as the (new) section 1.1:
+
+		1.1  Root Node
+
+		Name		Category	Required subordinates
+		----		--------	---------------------
+		root		core		components
+
+		Description
+		-----------
+		This node is the top-most node of the PRI.
+
+		1.1.1 PRI version property
+
+		Name		Tag		Required
+		----		---		--------
+		pri-version	PROP_STR	yes
+
+		Description
+		-----------
+		Version string for the PRI.  Currently defined version is "1.0".
+
+In addition, the PRI Specification located at:
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/Specifications/PRI_Specification.txt
+
+has been updated to version 1.5.
+
+This case is approved for minor/micro firmware binding.
+
+Thanks.
+
+-Eric
+
+
+
+From sacadmin Wed Dec 17 12:48:09 2008
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id mBHKm9ig029783
+	for <fwarc@sac.sfbay.sun.com>; Wed, 17 Dec 2008 12:48:09 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id mBHKm7RA011931
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 17 Dec 2008 12:48:09 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KC10000FGG73I00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 17 Dec 2008 13:48:07 -0700 (MST)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KC100DVEGG54U70@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 17 Dec 2008 13:48:05 -0700 (MST)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id mBHKm5kK006251	for
+ <fwarc@sun.com>; Wed, 17 Dec 2008 20:48:05 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0KC100901F4VT800@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 17 Dec 2008 13:48:05 -0700 (MST)
+Received: from [192.168.100.100]
+ (c-24-62-231-112.hsd1.ma.comcast.net [24.62.231.112])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0KC100CE1GG3F830@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 17 Dec 2008 13:48:04 -0700 (MST)
+Date: Wed, 17 Dec 2008 15:47:56 -0500
+From: Eric Sharakan <Eric.Sharakan@Sun.COM>
+Subject: Re: FWARC/2008/768: PRI versioning
+In-reply-to: <DE4F2C2F-D3D3-4BBB-B62B-D7D783B5CEAB@Sun.COM>
+Sender: Eric.Sharakan@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Message-id: <26E4B8F2-BE01-40E1-8CAD-D7D65411C469@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.930.3)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <DE4F2C2F-D3D3-4BBB-B62B-D7D783B5CEAB@Sun.COM>
+Status: RO
+Content-Length: 1462
+
+All, at the request of several folks, I've added some explanatory text  
+to the description of the pri-version property, clarifying the  
+expected format of the string.  See the case materials directory or  
+the PRI specification URL for the updated description.
+
+Disposition of the case is unchanged.
+
+Thanks.
+
+-Eric
+
+On Dec 12, 2008, at 1:31 PM, Eric Sharakan wrote:
+
+> I'm sponsoring this self-review case for myself.  It adds a new  
+> required property to the root node of the PRI named "pri-version".   
+> The case materials contain both the old (1.4) & updated (1.5)  
+> versions of the PRI Specification, along with a 1-pager and an  
+> interface table.  The only addition to the specification is the  
+> inclusion of the following as the (new) section 1.1:
+>
+> 		1.1  Root Node
+>
+> 		Name		Category	Required subordinates
+> 		----		--------	---------------------
+> 		root		core		components
+>
+> 		Description
+> 		-----------
+> 		This node is the top-most node of the PRI.
+>
+> 		1.1.1 PRI version property
+>
+> 		Name		Tag		Required
+> 		----		---		--------
+> 		pri-version	PROP_STR	yes
+>
+> 		Description
+> 		-----------
+> 		Version string for the PRI.  Currently defined version is "1.0".
+>
+> In addition, the PRI Specification located at:
+>
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/Specifications/PRI_Specification.txt
+>
+> has been updated to version 1.5.
+>
+> This case is approved for minor/micro firmware binding.
+>
+> Thanks.
+>
+> -Eric
+>
+>
+
+

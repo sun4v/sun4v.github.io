@@ -1,0 +1,3035 @@
+From sacadmin Mon Sep 28 12:19:55 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8SJJsmG027169
+	for <fwarc@sac.sfbay.sun.com>; Mon, 28 Sep 2009 12:19:55 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n8SJJlZJ013158
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 28 Sep 2009 20:19:53 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQP00G054D3E500@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 28 Sep 2009 12:19:51 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQP00DWA4D3MKB0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 28 Sep 2009 12:19:51 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n8SJJoQh021498	for
+ <fwarc@sun.com>; Mon, 28 Sep 2009 19:19:50 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KQP00A004A1ZK00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 28 Sep 2009 13:19:50 -0600 (MDT)
+Received: from dhcp-ubur03-180-14.east.sun.com ([unknown] [129.148.180.14])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KQP00H5U4C4IR70@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 28 Sep 2009 13:19:17 -0600 (MDT)
+Date: Mon, 28 Sep 2009 15:19:11 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: FWARC/2009/521: Bandwidth Resource Control
+Sender: Eric.Sharakan@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: Raghuram Kothakota <Raghuram.Kothakota@sun.com>,
+        Wentao Yang <Wentao.Yang@sun.com>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>
+Message-id: <09755C2B-8C4E-48AE-977E-058B53E59BF7@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.1076)
+Content-type: multipart/signed; micalg=sha1;
+ protocol="application/pkcs7-signature"; boundary=Apple-Mail-6-980444774
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 4121
+
+
+--Apple-Mail-6-980444774
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=us-ascii;
+	format=flowed;
+	delsp=yes
+
+I'm sponsoring this fast track case for Wentao Yang.  It defines a new  
+guest MD property for vsw & vnet: 'maxbw'.  This will be used to  
+establish bandwidth limits on specified plumbed vsw & vnet devices.   
+The 1-pager & an updated VIO MD Specification excerpt are available in  
+the case materials:
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2009/521/materials/
+
+Requested binding is for a minor/micro firmware release and minor/ 
+micro/patch OS release.
+
+This case times out on 10/5/09.
+
+Thanks.
+
+-Eric
+
+
+--Apple-Mail-6-980444774
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA5MDgxMzAzMjY0MloXDTEwMDgxMzAzMjY0
+MlowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4ShwcG0r
+XTowrE2zjfBkP5uPCfMPbkDTk6AV/L/SDFaj3XqIuvioNhnSAJc18VqdhTMteQzf275qEXJEpjii
+UhtBQQEeVNUuDJl7Yn935nXzkhMa5iDKQebgMRYsj47l4M2kVRDwKpPcrBT5eL1Pt0aSD0cF1APy
+3KCd9vakWX/3/oO14tiEs84trInW8iWym8JW9O2iKnRFQHSvOulBVyzKbjJ7+qr3oO/t4BB5hjeK
+NaLSfztfFVJaW8P0gdMD0oR9ZCKjl8IK5CUNLFk3sXh+RFrkCsP2W38hZJ0EhKPuunw4z4A7FK8h
+NIL9OeKmzKhH3JIitIfW/wPUFoupQQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQBua9PL8rPiAgVHwF+IdBIk
+nIGR42xuszIDi3E9WvDdWdkw5aG0FJwei0RvHHraYaPofBlvZcyIuABPcJrqpm5jfl9ksrUmrYV9
+veWQwF3t9hp+IcaD/a9+4Cdh8b0YlzXGX7DyaDa5omOLrLBp9M3K8lSkQDSjMcDu1RSlS+ZjFDCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQRP84uN1QvZysfOz2m7JJpTAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wOTA5
+MjgxOTE5MTJaMCMGCSqGSIb3DQEJBDEWBBQM0boOZ72+WT+f/0jRIWNI7pBd6TCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjd
+UL2crHzs9puySaUwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEBBQAEggEAYZg1
+bnXfAJ5brSxsgN7WTOmaw1ScJ4gnwQy18GOUklbgEwo/0CqFifOxnPEKTCB0RLmVS/yJSrNQhfZZ
+6Yy9gUtp0t3rodHfDF50ePXRByegwZx6UGvtc8bY+8Y88kgXOTxWDGfzVpbjiSj3uMBUxsprni5Q
+ln5dnnKDarqNpbfQy8KwzQBbGhDbYDV1MS9gsNNLJKfhy/dnCYGAXIYU2NZQaOxoMGlykWAce52F
+8juZCJxlVt4fDVTAAvDQvstg3PBraIzli2pOI8FQAWQTLdn8YZK8TjMXTi4FjSbQJ0Wj7mMSYVT8
+8mTOsLIh8GiOF04mzM7ngSlCul7G/Oo+6gAAAAAAAA==
+
+--Apple-Mail-6-980444774--
+
+From sacadmin Mon Sep 28 12:33:58 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8SJXvVf027935
+	for <fwarc@sac.sfbay.sun.com>; Mon, 28 Sep 2009 12:33:58 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n8SJXn6N000962;
+	Tue, 29 Sep 2009 03:33:53 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQP00K0750G4100@brm-avmta-1.central.sun.com>; Mon,
+ 28 Sep 2009 13:33:52 -0600 (MDT)
+Received: from jurassic-x4600.sfbay.sun.com ([129.146.17.59])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQP00M6850E9KE0@brm-avmta-1.central.sun.com>; Mon,
+ 28 Sep 2009 13:33:50 -0600 (MDT)
+Received: from [129.146.11.144]
+ (sr1-jurassic-01.SFBay.Sun.COM [129.146.11.144])	by
+ jurassic-x4600.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n8SJXnMZ634595
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO); Mon,
+ 28 Sep 2009 12:33:49 -0700 (PDT)
+Date: Mon, 28 Sep 2009 12:33:49 -0700
+From: Kais Belgaied <Kais.Belgaied@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+To: Eric Sharakan <sharakan@sac.sfbay.sun.com>
+Cc: psarc@sun.com, fwarc@sun.com, Wentao.Yang@sun.com,
+        Sriharsha.Basavapatna@sun.com, Raghuram.Kothakota@sun.com,
+        Michael Speer <Michael.Speer@sun.com>,
+        Nicolas Droux <Nicolas.Droux@sun.com>,
+        Sunay Tripathi <Sunay.Tripathi@sun.com>
+Message-id: <4AC10F9D.2010302@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+User-Agent: Thunderbird 2.0.0.21 (X11/20090311)
+Status: RO
+Content-Length: 1560
+
+(Cc'ing a few folks from the Crossbow architecture team, and PSARC ofr a possible cross-ARCs deliverables)
+
+What kind of interaction is there between the 'maxbw' MD property on the LDOM
+side, and the Solaris link property, also called 'maxbw' and settable through dladm set-linkprop -p maxbw=<val> ?
+What are the cases where a sys admin should opt fpr using the former vs the latter?
+any meaning to have both props set at the same time?
+
+
+
+  2.1. Project Description:
+
+	This case adds a new property, named 'maxbw', to the Machine
+	Description (MD) nodes 'virtual-device' and 'virtual-device-port'.
+	These properties are relevant for vsw (i.e. 'virtual-network-switch')
+	and vnet (i.e. 'virtual-network-port') devices only.  The 'maxbw'
+	property specifies a maximum bandwidth limit for the corresponding
+	virtual switch (for use when plumbed as a network interface) or virtual
+	network device.
+
+
+
+    Kais.
+
+On 09/28/09 12:04, Eric Sharakan wrote:
+> Template Version: @(#)sac_nextcase 1.68 02/23/09 SMI
+> This information is Copyright 2009 Sun Microsystems
+> 1. Introduction
+>     1.1. Project/Component Working Name:
+> 	 Bandwidth Resource Control
+>     1.2. Name of Document Author/Supplier:
+> 	 Author:  Wentao Yang
+>     1.3  Date of This Document:
+> 	28 September, 2009
+> 4. Technical Description
+>     See the case directory for more detail
+>
+> 6. Resources and Schedule
+>     6.4. Steering Committee requested information
+>    	6.4.1. Consolidation C-team Name:
+> 		sysfw, on
+>     6.5. ARC review type: FastTrack
+>     6.6. ARC Exposure: open
+>
+>   
+
+
+From sacadmin Mon Sep 28 12:34:01 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8SJXxcK027939
+	for <psarc@sac.eng.sun.com>; Mon, 28 Sep 2009 12:33:59 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n8SJXn6N000962;
+	Tue, 29 Sep 2009 03:33:53 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQP00K0750G4100@brm-avmta-1.central.sun.com>; Mon,
+ 28 Sep 2009 13:33:52 -0600 (MDT)
+Received: from jurassic-x4600.sfbay.sun.com ([129.146.17.59])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQP00M6850E9KE0@brm-avmta-1.central.sun.com>; Mon,
+ 28 Sep 2009 13:33:50 -0600 (MDT)
+Received: from [129.146.11.144]
+ (sr1-jurassic-01.SFBay.Sun.COM [129.146.11.144])	by
+ jurassic-x4600.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n8SJXnMZ634595
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO); Mon,
+ 28 Sep 2009 12:33:49 -0700 (PDT)
+Date: Mon, 28 Sep 2009 12:33:49 -0700
+From: Kais Belgaied <Kais.Belgaied@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+To: Eric Sharakan <sharakan@sac.sfbay.sun.com>
+Cc: psarc@sun.com, fwarc@sun.com, Wentao.Yang@sun.com,
+        Sriharsha.Basavapatna@sun.com, Raghuram.Kothakota@sun.com,
+        Michael Speer <Michael.Speer@sun.com>,
+        Nicolas Droux <Nicolas.Droux@sun.com>,
+        Sunay Tripathi <Sunay.Tripathi@sun.com>
+Message-id: <4AC10F9D.2010302@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+User-Agent: Thunderbird 2.0.0.21 (X11/20090311)
+Status: RO
+Content-Length: 1560
+
+(Cc'ing a few folks from the Crossbow architecture team, and PSARC ofr a possible cross-ARCs deliverables)
+
+What kind of interaction is there between the 'maxbw' MD property on the LDOM
+side, and the Solaris link property, also called 'maxbw' and settable through dladm set-linkprop -p maxbw=<val> ?
+What are the cases where a sys admin should opt fpr using the former vs the latter?
+any meaning to have both props set at the same time?
+
+
+
+  2.1. Project Description:
+
+	This case adds a new property, named 'maxbw', to the Machine
+	Description (MD) nodes 'virtual-device' and 'virtual-device-port'.
+	These properties are relevant for vsw (i.e. 'virtual-network-switch')
+	and vnet (i.e. 'virtual-network-port') devices only.  The 'maxbw'
+	property specifies a maximum bandwidth limit for the corresponding
+	virtual switch (for use when plumbed as a network interface) or virtual
+	network device.
+
+
+
+    Kais.
+
+On 09/28/09 12:04, Eric Sharakan wrote:
+> Template Version: @(#)sac_nextcase 1.68 02/23/09 SMI
+> This information is Copyright 2009 Sun Microsystems
+> 1. Introduction
+>     1.1. Project/Component Working Name:
+> 	 Bandwidth Resource Control
+>     1.2. Name of Document Author/Supplier:
+> 	 Author:  Wentao Yang
+>     1.3  Date of This Document:
+> 	28 September, 2009
+> 4. Technical Description
+>     See the case directory for more detail
+>
+> 6. Resources and Schedule
+>     6.4. Steering Committee requested information
+>    	6.4.1. Consolidation C-team Name:
+> 		sysfw, on
+>     6.5. ARC review type: FastTrack
+>     6.6. ARC Exposure: open
+>
+>   
+
+
+From sacadmin Mon Sep 28 15:11:32 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8SMBVvg002794
+	for <fwarc@sac.sfbay.sun.com>; Mon, 28 Sep 2009 15:11:31 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id n8SMBUqB004019;
+	Mon, 28 Sep 2009 15:11:31 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQP00101CB4T300@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 28 Sep 2009 15:11:28 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQP00LLLCB3ND70@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 28 Sep 2009 15:11:27 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n8SMBRpa025270;
+ Mon, 28 Sep 2009 15:11:27 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KQP00200C4TZU00@fe-sfbay-09.sun.com>; Mon,
+ 28 Sep 2009 15:11:27 -0700 (PDT)
+Received: from [129.145.154.98] ([unknown] [129.145.154.98])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KQP00CT2CB26IE0@fe-sfbay-09.sun.com>; Mon,
+ 28 Sep 2009 15:11:27 -0700 (PDT)
+Date: Mon, 28 Sep 2009 15:11:26 -0700
+From: Wentao Yang <Wentao.Yang@SUN.COM>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC10F9D.2010302@Sun.COM>
+Sender: Wentao.Yang@SUN.COM
+To: Kais Belgaied <Kais.Belgaied@SUN.COM>
+Cc: Eric Sharakan <sharakan@sac.sfbay.sun.com>, psarc@SUN.COM, fwarc@SUN.COM,
+        Sriharsha.Basavapatna@SUN.COM, Raghuram.Kothakota@SUN.COM,
+        Michael Speer <Michael.Speer@SUN.COM>,
+        Nicolas Droux <Nicolas.Droux@SUN.COM>,
+        Sunay Tripathi <Sunay.Tripathi@SUN.COM>
+Reply-to: Wentao.Yang@SUN.COM
+Message-id: <4AC1348E.8010106@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM>
+User-Agent: Thunderbird 2.0.0.21 (X11/20090311)
+Status: RO
+Content-Length: 2323
+
+Kais,
+
+Please see inline,
+
+On 09/28/09 12:33 PM, Kais Belgaied wrote:
+> (Cc'ing a few folks from the Crossbow architecture team, and PSARC ofr 
+> a possible cross-ARCs deliverables)
+>
+> What kind of interaction is there between the 'maxbw' MD property on 
+> the LDOM
+> side, and the Solaris link property, also called 'maxbw' and settable 
+> through dladm set-linkprop -p maxbw=<val> ?
+There is no interaction between them.
+> What are the cases where a sys admin should opt fpr using the former 
+> vs the latter?
+When a sys admin wants to enforce a bandwidth limit on a vsw or vnet in 
+LDoms environment,
+(s)he will configure it via LDoms CLI. That is, the 'maxbw' MD property 
+will be only used through
+LDoms CLI for vsw/vnet.
+> any meaning to have both props set at the same time?
+There are no meaning to have both props set at the same time, there is 
+no effect
+to use 'dladm set-linkprop -p maxbw=<val>' to set maxbw on vsw/vnet. The sys
+admin needs to use LDoms CLIs to enforce bandwidth limit on vsw/vnet, i.e.,
+
+    ldm set-vsw maxbw=20M vsw0
+
+This will set 20M bandwidth limit on vsw0.
+
+Thanks,
+Wentao
+>
+>
+>
+>  2.1. Project Description:
+>
+>     This case adds a new property, named 'maxbw', to the Machine
+>     Description (MD) nodes 'virtual-device' and 'virtual-device-port'.
+>     These properties are relevant for vsw (i.e. 'virtual-network-switch')
+>     and vnet (i.e. 'virtual-network-port') devices only.  The 'maxbw'
+>     property specifies a maximum bandwidth limit for the corresponding
+>     virtual switch (for use when plumbed as a network interface) or 
+> virtual
+>     network device.
+>
+>
+>
+>    Kais.
+>
+> On 09/28/09 12:04, Eric Sharakan wrote:
+>> Template Version: @(#)sac_nextcase 1.68 02/23/09 SMI
+>> This information is Copyright 2009 Sun Microsystems
+>> 1. Introduction
+>>     1.1. Project/Component Working Name:
+>>      Bandwidth Resource Control
+>>     1.2. Name of Document Author/Supplier:
+>>      Author:  Wentao Yang
+>>     1.3  Date of This Document:
+>>     28 September, 2009
+>> 4. Technical Description
+>>     See the case directory for more detail
+>>
+>> 6. Resources and Schedule
+>>     6.4. Steering Committee requested information
+>>        6.4.1. Consolidation C-team Name:
+>>         sysfw, on
+>>     6.5. ARC review type: FastTrack
+>>     6.6. ARC Exposure: open
+>>
+>>   
+>
+
+
+From sacadmin Mon Sep 28 15:11:32 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8SMBWQP002796
+	for <psarc@sac.eng.sun.com>; Mon, 28 Sep 2009 15:11:32 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id n8SMBUqB004019;
+	Mon, 28 Sep 2009 15:11:31 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQP00101CB4T300@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 28 Sep 2009 15:11:28 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQP00LLLCB3ND70@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 28 Sep 2009 15:11:27 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n8SMBRpa025270;
+ Mon, 28 Sep 2009 15:11:27 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KQP00200C4TZU00@fe-sfbay-09.sun.com>; Mon,
+ 28 Sep 2009 15:11:27 -0700 (PDT)
+Received: from [129.145.154.98] ([unknown] [129.145.154.98])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KQP00CT2CB26IE0@fe-sfbay-09.sun.com>; Mon,
+ 28 Sep 2009 15:11:27 -0700 (PDT)
+Date: Mon, 28 Sep 2009 15:11:26 -0700
+From: Wentao Yang <Wentao.Yang@SUN.COM>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC10F9D.2010302@Sun.COM>
+Sender: Wentao.Yang@SUN.COM
+To: Kais Belgaied <Kais.Belgaied@SUN.COM>
+Cc: Eric Sharakan <sharakan@sac.sfbay.sun.com>, psarc@SUN.COM, fwarc@SUN.COM,
+        Sriharsha.Basavapatna@SUN.COM, Raghuram.Kothakota@SUN.COM,
+        Michael Speer <Michael.Speer@SUN.COM>,
+        Nicolas Droux <Nicolas.Droux@SUN.COM>,
+        Sunay Tripathi <Sunay.Tripathi@SUN.COM>
+Reply-to: Wentao.Yang@SUN.COM
+Message-id: <4AC1348E.8010106@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM>
+User-Agent: Thunderbird 2.0.0.21 (X11/20090311)
+Status: RO
+Content-Length: 2323
+
+Kais,
+
+Please see inline,
+
+On 09/28/09 12:33 PM, Kais Belgaied wrote:
+> (Cc'ing a few folks from the Crossbow architecture team, and PSARC ofr 
+> a possible cross-ARCs deliverables)
+>
+> What kind of interaction is there between the 'maxbw' MD property on 
+> the LDOM
+> side, and the Solaris link property, also called 'maxbw' and settable 
+> through dladm set-linkprop -p maxbw=<val> ?
+There is no interaction between them.
+> What are the cases where a sys admin should opt fpr using the former 
+> vs the latter?
+When a sys admin wants to enforce a bandwidth limit on a vsw or vnet in 
+LDoms environment,
+(s)he will configure it via LDoms CLI. That is, the 'maxbw' MD property 
+will be only used through
+LDoms CLI for vsw/vnet.
+> any meaning to have both props set at the same time?
+There are no meaning to have both props set at the same time, there is 
+no effect
+to use 'dladm set-linkprop -p maxbw=<val>' to set maxbw on vsw/vnet. The sys
+admin needs to use LDoms CLIs to enforce bandwidth limit on vsw/vnet, i.e.,
+
+    ldm set-vsw maxbw=20M vsw0
+
+This will set 20M bandwidth limit on vsw0.
+
+Thanks,
+Wentao
+>
+>
+>
+>  2.1. Project Description:
+>
+>     This case adds a new property, named 'maxbw', to the Machine
+>     Description (MD) nodes 'virtual-device' and 'virtual-device-port'.
+>     These properties are relevant for vsw (i.e. 'virtual-network-switch')
+>     and vnet (i.e. 'virtual-network-port') devices only.  The 'maxbw'
+>     property specifies a maximum bandwidth limit for the corresponding
+>     virtual switch (for use when plumbed as a network interface) or 
+> virtual
+>     network device.
+>
+>
+>
+>    Kais.
+>
+> On 09/28/09 12:04, Eric Sharakan wrote:
+>> Template Version: @(#)sac_nextcase 1.68 02/23/09 SMI
+>> This information is Copyright 2009 Sun Microsystems
+>> 1. Introduction
+>>     1.1. Project/Component Working Name:
+>>      Bandwidth Resource Control
+>>     1.2. Name of Document Author/Supplier:
+>>      Author:  Wentao Yang
+>>     1.3  Date of This Document:
+>>     28 September, 2009
+>> 4. Technical Description
+>>     See the case directory for more detail
+>>
+>> 6. Resources and Schedule
+>>     6.4. Steering Committee requested information
+>>        6.4.1. Consolidation C-team Name:
+>>         sysfw, on
+>>     6.5. ARC review type: FastTrack
+>>     6.6. ARC Exposure: open
+>>
+>>   
+>
+
+
+From sacadmin Mon Sep 28 23:31:02 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8T6V24B010820
+	for <fwarc@sac.sfbay.sun.com>; Mon, 28 Sep 2009 23:31:02 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail3mpk.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id n8T6V0f5014503;
+	Mon, 28 Sep 2009 23:31:01 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQP00I0RZFP5P00@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 28 Sep 2009 23:31:01 -0700 (PDT)
+Received: from jurassic-x4600.sfbay.sun.com ([129.146.17.63])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQP0001XZFOR4C0@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 28 Sep 2009 23:31:00 -0700 (PDT)
+Received: from [129.146.11.144]
+ (sr1-jurassic-01.SFBay.Sun.COM [129.146.11.144])	by
+ jurassic-x4600.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n8T6V05f740776
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO); Mon,
+ 28 Sep 2009 23:31:00 -0700 (PDT)
+Date: Mon, 28 Sep 2009 23:31:00 -0700
+From: Kais Belgaied <Kais.Belgaied@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC1348E.8010106@Sun.COM>
+To: Wentao.Yang@sun.com
+Cc: Eric Sharakan <sharakan@sac.sfbay.sun.com>, psarc@sun.com, fwarc@sun.com,
+        Sriharsha.Basavapatna@sun.com, Raghuram.Kothakota@sun.com,
+        Michael Speer <Michael.Speer@sun.com>,
+        Nicolas Droux <Nicolas.Droux@sun.com>,
+        Sunay Tripathi <Sunay.Tripathi@sun.com>
+Message-id: <4AC1A9A4.2010705@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+User-Agent: Thunderbird 2.0.0.21 (X11/20090311)
+Status: RO
+Content-Length: 2082
+
+On 09/28/09 15:11, Wentao Yang wrote:
+> Kais,
+>
+> Please see inline,
+>
+> On 09/28/09 12:33 PM, Kais Belgaied wrote:
+>> (Cc'ing a few folks from the Crossbow architecture team, and PSARC 
+>> ofr a possible cross-ARCs deliverables)
+>>
+>> What kind of interaction is there between the 'maxbw' MD property on 
+>> the LDOM
+>> side, and the Solaris link property, also called 'maxbw' and settable 
+>> through dladm set-linkprop -p maxbw=<val> ?
+> There is no interaction between them.
+>> What are the cases where a sys admin should opt fpr using the former 
+>> vs the latter?
+> When a sys admin wants to enforce a bandwidth limit on a vsw or vnet 
+> in LDoms environment,
+> (s)he will configure it via LDoms CLI. That is, the 'maxbw' MD 
+> property will be only used through
+> LDoms CLI for vsw/vnet.
+>> any meaning to have both props set at the same time?
+> There are no meaning to have both props set at the same time, there is 
+> no effect
+> to use 'dladm set-linkprop -p maxbw=<val>' to set maxbw on vsw/vnet. 
+> The sys
+> admin needs to use LDoms CLIs to enforce bandwidth limit on vsw/vnet, 
+> i.e.,
+>
+>    ldm set-vsw maxbw=20M vsw0
+>
+> This will set 20M bandwidth limit on vsw0.
+
+So, let's look at the whole architecture here:
+vsw0 is a MAC client. It holds a mac client handle that it uses later to 
+set a MAC address, then send 'n receive data
+through the MAC layer.
+The MAC layer, since Crossbow, is now the point of enforcement of
+resource controls, including bandwidth limits, priorities, CPUs, etc.
+Today, we can express those resource controls on all datalink clients 
+(those listed by dladm show-link).
+However, the vsw MAC client is an internal only client, and doesn't show 
+up in dladm show-link
+so  we can't call dladm set-linkprop -p maxbw=<val> vsw0 for example.
+
+Will you be extending the MAC client API to allow it to expose a 
+function that takes any client name
+as argument for the property setting functions (thus having the maxbw 
+for vsw0) ?
+I am not clear on how and where the support for the maxbw vsw settable 
+is built.
+
+    Kais
+
+>
+> Thanks,
+> Wentao
+>
+
+
+From sacadmin Mon Sep 28 23:31:02 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8T6V2Zj010822
+	for <psarc@sac.eng.sun.com>; Mon, 28 Sep 2009 23:31:02 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail3mpk.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id n8T6V0f5014503;
+	Mon, 28 Sep 2009 23:31:01 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQP00I0RZFP5P00@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 28 Sep 2009 23:31:01 -0700 (PDT)
+Received: from jurassic-x4600.sfbay.sun.com ([129.146.17.63])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQP0001XZFOR4C0@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 28 Sep 2009 23:31:00 -0700 (PDT)
+Received: from [129.146.11.144]
+ (sr1-jurassic-01.SFBay.Sun.COM [129.146.11.144])	by
+ jurassic-x4600.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n8T6V05f740776
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO); Mon,
+ 28 Sep 2009 23:31:00 -0700 (PDT)
+Date: Mon, 28 Sep 2009 23:31:00 -0700
+From: Kais Belgaied <Kais.Belgaied@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC1348E.8010106@Sun.COM>
+To: Wentao.Yang@sun.com
+Cc: Eric Sharakan <sharakan@sac.sfbay.sun.com>, psarc@sun.com, fwarc@sun.com,
+        Sriharsha.Basavapatna@sun.com, Raghuram.Kothakota@sun.com,
+        Michael Speer <Michael.Speer@sun.com>,
+        Nicolas Droux <Nicolas.Droux@sun.com>,
+        Sunay Tripathi <Sunay.Tripathi@sun.com>
+Message-id: <4AC1A9A4.2010705@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+User-Agent: Thunderbird 2.0.0.21 (X11/20090311)
+Status: RO
+Content-Length: 2082
+
+On 09/28/09 15:11, Wentao Yang wrote:
+> Kais,
+>
+> Please see inline,
+>
+> On 09/28/09 12:33 PM, Kais Belgaied wrote:
+>> (Cc'ing a few folks from the Crossbow architecture team, and PSARC 
+>> ofr a possible cross-ARCs deliverables)
+>>
+>> What kind of interaction is there between the 'maxbw' MD property on 
+>> the LDOM
+>> side, and the Solaris link property, also called 'maxbw' and settable 
+>> through dladm set-linkprop -p maxbw=<val> ?
+> There is no interaction between them.
+>> What are the cases where a sys admin should opt fpr using the former 
+>> vs the latter?
+> When a sys admin wants to enforce a bandwidth limit on a vsw or vnet 
+> in LDoms environment,
+> (s)he will configure it via LDoms CLI. That is, the 'maxbw' MD 
+> property will be only used through
+> LDoms CLI for vsw/vnet.
+>> any meaning to have both props set at the same time?
+> There are no meaning to have both props set at the same time, there is 
+> no effect
+> to use 'dladm set-linkprop -p maxbw=<val>' to set maxbw on vsw/vnet. 
+> The sys
+> admin needs to use LDoms CLIs to enforce bandwidth limit on vsw/vnet, 
+> i.e.,
+>
+>    ldm set-vsw maxbw=20M vsw0
+>
+> This will set 20M bandwidth limit on vsw0.
+
+So, let's look at the whole architecture here:
+vsw0 is a MAC client. It holds a mac client handle that it uses later to 
+set a MAC address, then send 'n receive data
+through the MAC layer.
+The MAC layer, since Crossbow, is now the point of enforcement of
+resource controls, including bandwidth limits, priorities, CPUs, etc.
+Today, we can express those resource controls on all datalink clients 
+(those listed by dladm show-link).
+However, the vsw MAC client is an internal only client, and doesn't show 
+up in dladm show-link
+so  we can't call dladm set-linkprop -p maxbw=<val> vsw0 for example.
+
+Will you be extending the MAC client API to allow it to expose a 
+function that takes any client name
+as argument for the property setting functions (thus having the maxbw 
+for vsw0) ?
+I am not clear on how and where the support for the maxbw vsw settable 
+is built.
+
+    Kais
+
+>
+> Thanks,
+> Wentao
+>
+
+
+From sacadmin Mon Sep 28 23:40:35 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8T6eYtc010890
+	for <fwarc@sac.sfbay.sun.com>; Mon, 28 Sep 2009 23:40:34 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n8T6eNpM013329;
+	Tue, 29 Sep 2009 07:40:33 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQP00G09ZVJ1700@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 28 Sep 2009 23:40:31 -0700 (PDT)
+Received: from dm-sfbay-02.sfbay.sun.com ([129.146.11.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQP00FB6ZVJ5A00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 28 Sep 2009 23:40:31 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-02.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id n8T6eTdG014570; Mon, 28 Sep 2009 23:40:29 -0700 (PDT)
+Received: from [192.168.0.39] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n8T6eR9V018360; Mon,
+ 28 Sep 2009 23:40:28 -0700 (PDT)
+Date: Mon, 28 Sep 2009 23:40:10 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+To: Kais Belgaied <Kais.Belgaied@sun.com>
+Cc: Wentao.Yang@sun.com, Eric Sharakan <sharakan@sac.sfbay.sun.com>,
+        psarc@sun.com, fwarc@sun.com, Sriharsha.Basavapatna@sun.com,
+        Raghuram.Kothakota@sun.com, Michael Speer <Michael.Speer@sun.com>,
+        Nicolas Droux <Nicolas.Droux@sun.com>,
+        Sunay Tripathi <Sunay.Tripathi@sun.com>
+Message-id: <4AC1ABCA.1040003@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+Status: RO
+Content-Length: 204
+
+
+
+Kais Belgaied wrote:
+
+> The MAC layer, since Crossbow, is now the point of enforcement of
+> resource controls, including bandwidth limits, priorities, CPUs, etc.
+
+Does crossbow work on s10 now?
+
+-David
+
+From sacadmin Mon Sep 28 23:40:36 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8T6eZBf010894
+	for <psarc@sac.eng.sun.com>; Mon, 28 Sep 2009 23:40:36 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n8T6eNpM013329;
+	Tue, 29 Sep 2009 07:40:33 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQP00G09ZVJ1700@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 28 Sep 2009 23:40:31 -0700 (PDT)
+Received: from dm-sfbay-02.sfbay.sun.com ([129.146.11.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQP00FB6ZVJ5A00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 28 Sep 2009 23:40:31 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-02.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id n8T6eTdG014570; Mon, 28 Sep 2009 23:40:29 -0700 (PDT)
+Received: from [192.168.0.39] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n8T6eR9V018360; Mon,
+ 28 Sep 2009 23:40:28 -0700 (PDT)
+Date: Mon, 28 Sep 2009 23:40:10 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+To: Kais Belgaied <Kais.Belgaied@sun.com>
+Cc: Wentao.Yang@sun.com, Eric Sharakan <sharakan@sac.sfbay.sun.com>,
+        psarc@sun.com, fwarc@sun.com, Sriharsha.Basavapatna@sun.com,
+        Raghuram.Kothakota@sun.com, Michael Speer <Michael.Speer@sun.com>,
+        Nicolas Droux <Nicolas.Droux@sun.com>,
+        Sunay Tripathi <Sunay.Tripathi@sun.com>
+Message-id: <4AC1ABCA.1040003@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+Status: RO
+Content-Length: 204
+
+
+
+Kais Belgaied wrote:
+
+> The MAC layer, since Crossbow, is now the point of enforcement of
+> resource controls, including bandwidth limits, priorities, CPUs, etc.
+
+Does crossbow work on s10 now?
+
+-David
+
+From sacadmin Tue Sep 29 00:01:12 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8T71Cd8021538
+	for <fwarc@sac.sfbay.sun.com>; Tue, 29 Sep 2009 00:01:12 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail3mpk.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id n8T71BmJ024109;
+	Tue, 29 Sep 2009 00:01:12 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQQ00M010TZG600@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 29 Sep 2009 00:01:11 -0700 (PDT)
+Received: from jurassic-x4600.sfbay.sun.com ([129.146.17.59])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQQ0000S0TZR8D0@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 29 Sep 2009 00:01:11 -0700 (PDT)
+Received: from [129.146.11.144]
+ (sr1-jurassic-01.SFBay.Sun.COM [129.146.11.144])	by
+ jurassic-x4600.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n8T71ABY744607
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO); Tue,
+ 29 Sep 2009 00:01:10 -0700 (PDT)
+Date: Tue, 29 Sep 2009 00:01:10 -0700
+From: Kais Belgaied <Kais.Belgaied@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC1ABCA.1040003@sun.com>
+To: David Kahn <David.Kahn@sun.com>
+Cc: Wentao.Yang@sun.com, Eric Sharakan <sharakan@sac.sfbay.sun.com>,
+        psarc@sun.com, fwarc@sun.com, Sriharsha.Basavapatna@sun.com,
+        Raghuram.Kothakota@sun.com, Michael Speer <Michael.Speer@sun.com>,
+        Nicolas Droux <Nicolas.Droux@sun.com>,
+        Sunay Tripathi <Sunay.Tripathi@sun.com>
+Message-id: <4AC1B0B6.7040306@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4AC1ABCA.1040003@sun.com>
+User-Agent: Thunderbird 2.0.0.21 (X11/20090311)
+Status: RO
+Content-Length: 336
+
+On 09/28/09 23:40, David Kahn wrote:
+>
+>
+> Kais Belgaied wrote:
+>
+>> The MAC layer, since Crossbow, is now the point of enforcement of
+>> resource controls, including bandwidth limits, priorities, CPUs, etc.
+>
+> Does crossbow work on s10 now?
+
+no. but my question about the architecture in Nevada still holds.
+
+    Kais.
+
+>
+> -David
+>
+
+
+From sacadmin Tue Sep 29 00:01:12 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8T71C15021590
+	for <psarc@sac.eng.sun.com>; Tue, 29 Sep 2009 00:01:12 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail3mpk.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id n8T71BmJ024109;
+	Tue, 29 Sep 2009 00:01:12 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQQ00M010TZG600@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 29 Sep 2009 00:01:11 -0700 (PDT)
+Received: from jurassic-x4600.sfbay.sun.com ([129.146.17.59])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQQ0000S0TZR8D0@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 29 Sep 2009 00:01:11 -0700 (PDT)
+Received: from [129.146.11.144]
+ (sr1-jurassic-01.SFBay.Sun.COM [129.146.11.144])	by
+ jurassic-x4600.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n8T71ABY744607
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO); Tue,
+ 29 Sep 2009 00:01:10 -0700 (PDT)
+Date: Tue, 29 Sep 2009 00:01:10 -0700
+From: Kais Belgaied <Kais.Belgaied@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC1ABCA.1040003@sun.com>
+To: David Kahn <David.Kahn@sun.com>
+Cc: Wentao.Yang@sun.com, Eric Sharakan <sharakan@sac.sfbay.sun.com>,
+        psarc@sun.com, fwarc@sun.com, Sriharsha.Basavapatna@sun.com,
+        Raghuram.Kothakota@sun.com, Michael Speer <Michael.Speer@sun.com>,
+        Nicolas Droux <Nicolas.Droux@sun.com>,
+        Sunay Tripathi <Sunay.Tripathi@sun.com>
+Message-id: <4AC1B0B6.7040306@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4AC1ABCA.1040003@sun.com>
+User-Agent: Thunderbird 2.0.0.21 (X11/20090311)
+Status: RO
+Content-Length: 336
+
+On 09/28/09 23:40, David Kahn wrote:
+>
+>
+> Kais Belgaied wrote:
+>
+>> The MAC layer, since Crossbow, is now the point of enforcement of
+>> resource controls, including bandwidth limits, priorities, CPUs, etc.
+>
+> Does crossbow work on s10 now?
+
+no. but my question about the architecture in Nevada still holds.
+
+    Kais.
+
+>
+> -David
+>
+
+
+From sacadmin Tue Sep 29 09:29:16 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8TGTFrH003414
+	for <fwarc@sac.sfbay.sun.com>; Tue, 29 Sep 2009 09:29:15 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n8TGTDGr023104;
+	Tue, 29 Sep 2009 17:29:14 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQQ00E05R4PGO00@brm-avmta-1.central.sun.com>; Tue,
+ 29 Sep 2009 10:29:13 -0600 (MDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQQ004W2R4O87B0@brm-avmta-1.central.sun.com>; Tue,
+ 29 Sep 2009 10:29:12 -0600 (MDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n8TGTC0J011258;
+ Tue, 29 Sep 2009 09:29:12 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KQQ00C00QV00S00@fe-sfbay-10.sun.com>; Tue,
+ 29 Sep 2009 09:29:12 -0700 (PDT)
+Received: from raghuram-kothakotas-macbook-pro.local ([unknown] [24.6.80.128])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KQQ009NIR4H3G90@fe-sfbay-10.sun.com>; Tue,
+ 29 Sep 2009 09:29:05 -0700 (PDT)
+Date: Tue, 29 Sep 2009 09:29:05 -0700
+From: Raghuram Kothakota <Raghuram.Kothakota@Sun.COM>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC1A9A4.2010705@Sun.COM>
+Sender: Raghuram.Kothakota@Sun.COM
+To: Kais Belgaied <Kais.Belgaied@Sun.COM>
+Cc: Wentao.Yang@Sun.COM, Eric Sharakan <sharakan@sac.sfbay.sun.com>,
+        psarc@Sun.COM, fwarc@Sun.COM, Sriharsha.Basavapatna@Sun.COM,
+        Michael Speer <Michael.Speer@Sun.COM>,
+        Nicolas Droux <Nicolas.Droux@Sun.COM>,
+        Sunay Tripathi <Sunay.Tripathi@Sun.COM>
+Message-id: <4AC235D1.8050106@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+ <4AC1A9A4.2010705@Sun.COM>
+User-Agent: Thunderbird 2.0.0.23 (Macintosh/20090812)
+Status: RO
+Content-Length: 4273
+
+Kais Belgaied wrote:
+> On 09/28/09 15:11, Wentao Yang wrote:
+>> Kais,
+>>
+>> Please see inline,
+>>
+>> On 09/28/09 12:33 PM, Kais Belgaied wrote:
+>>> (Cc'ing a few folks from the Crossbow architecture team, and PSARC 
+>>> ofr a possible cross-ARCs deliverables)
+>>>
+>>> What kind of interaction is there between the 'maxbw' MD property on 
+>>> the LDOM
+>>> side, and the Solaris link property, also called 'maxbw' and 
+>>> settable through dladm set-linkprop -p maxbw=<val> ?
+>> There is no interaction between them.
+>>> What are the cases where a sys admin should opt fpr using the former 
+>>> vs the latter?
+>> When a sys admin wants to enforce a bandwidth limit on a vsw or vnet 
+>> in LDoms environment,
+>> (s)he will configure it via LDoms CLI. That is, the 'maxbw' MD 
+>> property will be only used through
+>> LDoms CLI for vsw/vnet.
+>>> any meaning to have both props set at the same time?
+>> There are no meaning to have both props set at the same time, there 
+>> is no effect
+>> to use 'dladm set-linkprop -p maxbw=<val>' to set maxbw on vsw/vnet. 
+>> The sys
+>> admin needs to use LDoms CLIs to enforce bandwidth limit on vsw/vnet, 
+>> i.e.,
+>>
+>>    ldm set-vsw maxbw=20M vsw0
+>>
+>> This will set 20M bandwidth limit on vsw0.
+>
+> So, let's look at the whole architecture here:
+Please see below about more details of vsw below, all of
+it related to Nevada only.
+> vsw0 is a MAC client.
+Vsw has serves two things:
+
+1) as a virtual switch for all vnet devices. In Nevada, we use Crossbow
+switching functionality, that is, vsw opens a mac-client for each 
+corresponding
+vnet. This is the main functionality for vsw.
+
+2) Vsw also provides a network device functionality, it is to provide 
+the ability
+     to communicate with Guest domains. To provide this, vswitch also opens
+     a mac-client that meant to receive the traffic for its own device.
+> It holds a mac client handle that it uses later to set a MAC address, 
+> then send 'n receive data
+> through the MAC layer.
+Yes,.
+> The MAC layer, since Crossbow, is now the point of enforcement of
+> resource controls, including bandwidth limits, priorities, CPUs, etc.
+Yes.
+> Today, we can express those resource controls on all datalink clients 
+> (those listed by dladm show-link).
+> However, the vsw MAC client is an internal only client, and doesn't 
+> show up in dladm show-link
+Yes.
+> so  we can't call dladm set-linkprop -p maxbw=<val> vsw0 for example.
+I don't believe, this is the case.  For dladm, vsw looks like a Gldv3 
+NIC driver,
+so it can apply all things that it can on a typical NIC drivers(there 
+are a few
+limitations such as mac-address change and vnics won't work on top of vsw).
+
+>
+> Will you be extending the MAC client API to allow it to expose a 
+> function that takes any client name
+> as argument for the property setting functions (thus having the maxbw 
+> for vsw0) ?
+The reason for us to define an MD property is to allow an management 
+entiry(LDoms
+manager) running on a different domain(control domain) to be able to 
+set/configure
+various properties for all virtual devices.  We are not planning to 
+extend any additional
+ability to modify this from the OS management point of view, but it may 
+be good
+to provide the ability to show the internal mac-clients. We probably 
+need to discuss
+the visibility part in LDoms/Crossbow discussions, see what more we can 
+do there.
+
+> I am not clear on how and where the support for the maxbw vsw settable 
+> is built.
+>
+Note, LDoms domains are managed by LDoms manager which typically running
+in a different domain(Control domain) and has various CLIs to manage 
+virtual devices.
+For example, if one has to set a limit for a particular vnet device, he 
+would run the
+following command:
+
+ldm set-vnet maxbw=20M vnet0
+
+This would cause an MD update that is notified to 'vsw' driver on a 
+Service Domain,
+which will enforce that limit in whatever the implementation thats 
+specific to the
+OS thats running on the Service domain. We have discussed so far about 
+the implementation
+details on Nevada.  Please note, this FWARC is focused on the method to 
+inform the
+LDoms virtual switch about a specific configuration parameter for a 
+virtual network device.
+
+Hope this clarifies your question,
+-Raghuram
+
+>    Kais
+>
+>>
+>> Thanks,
+>> Wentao
+>>
+>
+
+
+From sacadmin Tue Sep 29 09:29:17 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8TGTG52003418
+	for <psarc@sac.eng.sun.com>; Tue, 29 Sep 2009 09:29:17 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n8TGTDGr023104;
+	Tue, 29 Sep 2009 17:29:14 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQQ00E05R4PGO00@brm-avmta-1.central.sun.com>; Tue,
+ 29 Sep 2009 10:29:13 -0600 (MDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQQ004W2R4O87B0@brm-avmta-1.central.sun.com>; Tue,
+ 29 Sep 2009 10:29:12 -0600 (MDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n8TGTC0J011258;
+ Tue, 29 Sep 2009 09:29:12 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KQQ00C00QV00S00@fe-sfbay-10.sun.com>; Tue,
+ 29 Sep 2009 09:29:12 -0700 (PDT)
+Received: from raghuram-kothakotas-macbook-pro.local ([unknown] [24.6.80.128])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KQQ009NIR4H3G90@fe-sfbay-10.sun.com>; Tue,
+ 29 Sep 2009 09:29:05 -0700 (PDT)
+Date: Tue, 29 Sep 2009 09:29:05 -0700
+From: Raghuram Kothakota <Raghuram.Kothakota@Sun.COM>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC1A9A4.2010705@Sun.COM>
+Sender: Raghuram.Kothakota@Sun.COM
+To: Kais Belgaied <Kais.Belgaied@Sun.COM>
+Cc: Wentao.Yang@Sun.COM, Eric Sharakan <sharakan@sac.sfbay.sun.com>,
+        psarc@Sun.COM, fwarc@Sun.COM, Sriharsha.Basavapatna@Sun.COM,
+        Michael Speer <Michael.Speer@Sun.COM>,
+        Nicolas Droux <Nicolas.Droux@Sun.COM>,
+        Sunay Tripathi <Sunay.Tripathi@Sun.COM>
+Message-id: <4AC235D1.8050106@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+ <4AC1A9A4.2010705@Sun.COM>
+User-Agent: Thunderbird 2.0.0.23 (Macintosh/20090812)
+Status: RO
+Content-Length: 4273
+
+Kais Belgaied wrote:
+> On 09/28/09 15:11, Wentao Yang wrote:
+>> Kais,
+>>
+>> Please see inline,
+>>
+>> On 09/28/09 12:33 PM, Kais Belgaied wrote:
+>>> (Cc'ing a few folks from the Crossbow architecture team, and PSARC 
+>>> ofr a possible cross-ARCs deliverables)
+>>>
+>>> What kind of interaction is there between the 'maxbw' MD property on 
+>>> the LDOM
+>>> side, and the Solaris link property, also called 'maxbw' and 
+>>> settable through dladm set-linkprop -p maxbw=<val> ?
+>> There is no interaction between them.
+>>> What are the cases where a sys admin should opt fpr using the former 
+>>> vs the latter?
+>> When a sys admin wants to enforce a bandwidth limit on a vsw or vnet 
+>> in LDoms environment,
+>> (s)he will configure it via LDoms CLI. That is, the 'maxbw' MD 
+>> property will be only used through
+>> LDoms CLI for vsw/vnet.
+>>> any meaning to have both props set at the same time?
+>> There are no meaning to have both props set at the same time, there 
+>> is no effect
+>> to use 'dladm set-linkprop -p maxbw=<val>' to set maxbw on vsw/vnet. 
+>> The sys
+>> admin needs to use LDoms CLIs to enforce bandwidth limit on vsw/vnet, 
+>> i.e.,
+>>
+>>    ldm set-vsw maxbw=20M vsw0
+>>
+>> This will set 20M bandwidth limit on vsw0.
+>
+> So, let's look at the whole architecture here:
+Please see below about more details of vsw below, all of
+it related to Nevada only.
+> vsw0 is a MAC client.
+Vsw has serves two things:
+
+1) as a virtual switch for all vnet devices. In Nevada, we use Crossbow
+switching functionality, that is, vsw opens a mac-client for each 
+corresponding
+vnet. This is the main functionality for vsw.
+
+2) Vsw also provides a network device functionality, it is to provide 
+the ability
+     to communicate with Guest domains. To provide this, vswitch also opens
+     a mac-client that meant to receive the traffic for its own device.
+> It holds a mac client handle that it uses later to set a MAC address, 
+> then send 'n receive data
+> through the MAC layer.
+Yes,.
+> The MAC layer, since Crossbow, is now the point of enforcement of
+> resource controls, including bandwidth limits, priorities, CPUs, etc.
+Yes.
+> Today, we can express those resource controls on all datalink clients 
+> (those listed by dladm show-link).
+> However, the vsw MAC client is an internal only client, and doesn't 
+> show up in dladm show-link
+Yes.
+> so  we can't call dladm set-linkprop -p maxbw=<val> vsw0 for example.
+I don't believe, this is the case.  For dladm, vsw looks like a Gldv3 
+NIC driver,
+so it can apply all things that it can on a typical NIC drivers(there 
+are a few
+limitations such as mac-address change and vnics won't work on top of vsw).
+
+>
+> Will you be extending the MAC client API to allow it to expose a 
+> function that takes any client name
+> as argument for the property setting functions (thus having the maxbw 
+> for vsw0) ?
+The reason for us to define an MD property is to allow an management 
+entiry(LDoms
+manager) running on a different domain(control domain) to be able to 
+set/configure
+various properties for all virtual devices.  We are not planning to 
+extend any additional
+ability to modify this from the OS management point of view, but it may 
+be good
+to provide the ability to show the internal mac-clients. We probably 
+need to discuss
+the visibility part in LDoms/Crossbow discussions, see what more we can 
+do there.
+
+> I am not clear on how and where the support for the maxbw vsw settable 
+> is built.
+>
+Note, LDoms domains are managed by LDoms manager which typically running
+in a different domain(Control domain) and has various CLIs to manage 
+virtual devices.
+For example, if one has to set a limit for a particular vnet device, he 
+would run the
+following command:
+
+ldm set-vnet maxbw=20M vnet0
+
+This would cause an MD update that is notified to 'vsw' driver on a 
+Service Domain,
+which will enforce that limit in whatever the implementation thats 
+specific to the
+OS thats running on the Service domain. We have discussed so far about 
+the implementation
+details on Nevada.  Please note, this FWARC is focused on the method to 
+inform the
+LDoms virtual switch about a specific configuration parameter for a 
+virtual network device.
+
+Hope this clarifies your question,
+-Raghuram
+
+>    Kais
+>
+>>
+>> Thanks,
+>> Wentao
+>>
+>
+
+
+From sacadmin Tue Sep 29 11:45:08 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8TIj73B009131
+	for <fwarc@sac.sfbay.sun.com>; Tue, 29 Sep 2009 11:45:08 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n8TIj36X017199;
+	Tue, 29 Sep 2009 19:45:04 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQQ00B0HXF3QM00@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 29 Sep 2009 11:45:03 -0700 (PDT)
+Received: from jurassic-x4600.sfbay.sun.com ([129.146.17.63])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQQ008SJXF2YH60@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 29 Sep 2009 11:45:02 -0700 (PDT)
+Received: from [129.146.11.144]
+ (sr1-jurassic-01.SFBay.Sun.COM [129.146.11.144])	by
+ jurassic-x4600.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n8TIj1Ho856600
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO); Tue,
+ 29 Sep 2009 11:45:02 -0700 (PDT)
+Date: Tue, 29 Sep 2009 11:45:01 -0700
+From: Kais Belgaied <Kais.Belgaied@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC235D1.8050106@Sun.COM>
+To: Raghuram Kothakota <Raghuram.Kothakota@sun.com>
+Cc: Wentao.Yang@sun.com, Eric Sharakan <sharakan@sac.sfbay.sun.com>,
+        psarc@sun.com, fwarc@sun.com, Sriharsha.Basavapatna@sun.com,
+        Michael Speer <Michael.Speer@sun.com>,
+        Nicolas Droux <Nicolas.Droux@sun.com>,
+        Sunay Tripathi <Sunay.Tripathi@sun.com>
+Message-id: <4AC255AD.2000105@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+ <4AC1A9A4.2010705@Sun.COM> <4AC235D1.8050106@Sun.COM>
+User-Agent: Thunderbird 2.0.0.21 (X11/20090311)
+Status: RO
+Content-Length: 1906
+
+On 09/29/09 09:29, Raghuram Kothakota wrote:
+>>
+>> Will you be extending the MAC client API to allow it to expose a 
+>> function that takes any client name
+>> as argument for the property setting functions (thus having the maxbw 
+>> for vsw0) ?
+> The reason for us to define an MD property is to allow an management 
+> entiry(LDoms
+> manager) running on a different domain(control domain) to be able to 
+> set/configure
+> various properties for all virtual devices.  We are not planning to 
+> extend any additional
+> ability to modify this from the OS management point of view, but it 
+> may be good
+> to provide the ability to show the internal mac-clients. We probably 
+> need to discuss
+> the visibility part in LDoms/Crossbow discussions, see what more we 
+> can do there.
+>
+>> I am not clear on how and where the support for the maxbw vsw 
+>> settable is built.
+>>
+> Note, LDoms domains are managed by LDoms manager which typically running
+> in a different domain(Control domain) and has various CLIs to manage 
+> virtual devices.
+> For example, if one has to set a limit for a particular vnet device, 
+> he would run the
+> following command:
+>
+> ldm set-vnet maxbw=20M vnet0
+>
+> This would cause an MD update that is notified to 'vsw' driver on a 
+> Service Domain,
+> which will enforce that limit in whatever the implementation thats 
+> specific to the
+> OS thats running on the Service domain. We have discussed so far about 
+> the implementation
+> details on Nevada.  Please note, this FWARC is focused on the method 
+> to inform the
+> LDoms virtual switch about a specific configuration parameter for a 
+> virtual network device.
+Thanks. This clarifies what you're delivering to the sysfw consolidation.
+
+However, your case also lists ON as a second target consolidation.
+What changes is the case delivering there?
+
+    Kais.
+
+
+>
+> Hope this clarifies your question,
+> -Raghuram
+>
+>>    Kais
+>>
+
+
+From sacadmin Tue Sep 29 11:45:10 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8TIj9R5009135
+	for <psarc@sac.eng.sun.com>; Tue, 29 Sep 2009 11:45:09 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n8TIj36X017199;
+	Tue, 29 Sep 2009 19:45:04 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQQ00B0HXF3QM00@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 29 Sep 2009 11:45:03 -0700 (PDT)
+Received: from jurassic-x4600.sfbay.sun.com ([129.146.17.63])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQQ008SJXF2YH60@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 29 Sep 2009 11:45:02 -0700 (PDT)
+Received: from [129.146.11.144]
+ (sr1-jurassic-01.SFBay.Sun.COM [129.146.11.144])	by
+ jurassic-x4600.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n8TIj1Ho856600
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO); Tue,
+ 29 Sep 2009 11:45:02 -0700 (PDT)
+Date: Tue, 29 Sep 2009 11:45:01 -0700
+From: Kais Belgaied <Kais.Belgaied@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC235D1.8050106@Sun.COM>
+To: Raghuram Kothakota <Raghuram.Kothakota@sun.com>
+Cc: Wentao.Yang@sun.com, Eric Sharakan <sharakan@sac.sfbay.sun.com>,
+        psarc@sun.com, fwarc@sun.com, Sriharsha.Basavapatna@sun.com,
+        Michael Speer <Michael.Speer@sun.com>,
+        Nicolas Droux <Nicolas.Droux@sun.com>,
+        Sunay Tripathi <Sunay.Tripathi@sun.com>
+Message-id: <4AC255AD.2000105@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+ <4AC1A9A4.2010705@Sun.COM> <4AC235D1.8050106@Sun.COM>
+User-Agent: Thunderbird 2.0.0.21 (X11/20090311)
+Status: RO
+Content-Length: 1906
+
+On 09/29/09 09:29, Raghuram Kothakota wrote:
+>>
+>> Will you be extending the MAC client API to allow it to expose a 
+>> function that takes any client name
+>> as argument for the property setting functions (thus having the maxbw 
+>> for vsw0) ?
+> The reason for us to define an MD property is to allow an management 
+> entiry(LDoms
+> manager) running on a different domain(control domain) to be able to 
+> set/configure
+> various properties for all virtual devices.  We are not planning to 
+> extend any additional
+> ability to modify this from the OS management point of view, but it 
+> may be good
+> to provide the ability to show the internal mac-clients. We probably 
+> need to discuss
+> the visibility part in LDoms/Crossbow discussions, see what more we 
+> can do there.
+>
+>> I am not clear on how and where the support for the maxbw vsw 
+>> settable is built.
+>>
+> Note, LDoms domains are managed by LDoms manager which typically running
+> in a different domain(Control domain) and has various CLIs to manage 
+> virtual devices.
+> For example, if one has to set a limit for a particular vnet device, 
+> he would run the
+> following command:
+>
+> ldm set-vnet maxbw=20M vnet0
+>
+> This would cause an MD update that is notified to 'vsw' driver on a 
+> Service Domain,
+> which will enforce that limit in whatever the implementation thats 
+> specific to the
+> OS thats running on the Service domain. We have discussed so far about 
+> the implementation
+> details on Nevada.  Please note, this FWARC is focused on the method 
+> to inform the
+> LDoms virtual switch about a specific configuration parameter for a 
+> virtual network device.
+Thanks. This clarifies what you're delivering to the sysfw consolidation.
+
+However, your case also lists ON as a second target consolidation.
+What changes is the case delivering there?
+
+    Kais.
+
+
+>
+> Hope this clarifies your question,
+> -Raghuram
+>
+>>    Kais
+>>
+
+
+From sacadmin Tue Sep 29 11:57:08 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8TIv7AU009976
+	for <fwarc@sac.sfbay.sun.com>; Tue, 29 Sep 2009 11:57:07 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id n8TIv6gk010621;
+	Tue, 29 Sep 2009 11:57:06 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQQ00C1LXZ29Z00@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 29 Sep 2009 11:57:02 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQQ008CFXYYYI60@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 29 Sep 2009 11:56:58 -0700 (PDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n8TIuw2U002075;
+ Tue, 29 Sep 2009 11:56:58 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KQQ00I00XRRUD00@fe-sfbay-10.sun.com>; Tue,
+ 29 Sep 2009 11:56:58 -0700 (PDT)
+Received: from [129.145.154.37] ([unknown] [129.145.154.37])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KQQ00ABCXYXJD80@fe-sfbay-10.sun.com>; Tue,
+ 29 Sep 2009 11:56:58 -0700 (PDT)
+Date: Tue, 29 Sep 2009 11:56:57 -0700
+From: Sriharsha.Basavapatna@sun.com
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC255AD.2000105@Sun.COM>
+Sender: Sriharsha.Basavapatna@sun.com
+To: Kais Belgaied <Kais.Belgaied@sun.com>
+Cc: Raghuram Kothakota <Raghuram.Kothakota@sun.com>, Wentao.Yang@sun.com,
+        Eric Sharakan <sharakan@sac.sfbay.sun.com>, psarc@sun.com,
+        fwarc@sun.com, Michael Speer <Michael.Speer@sun.com>,
+        Nicolas Droux <Nicolas.Droux@sun.com>,
+        Sunay Tripathi <Sunay.Tripathi@sun.com>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>
+Message-id: <4AC25879.6040603@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+ <4AC1A9A4.2010705@Sun.COM> <4AC235D1.8050106@Sun.COM>
+ <4AC255AD.2000105@Sun.COM>
+User-Agent: Thunderbird 2.0.0.21 (X11/20090311)
+Status: RO
+Content-Length: 2188
+
+On 09/29/09 11:45, Kais Belgaied wrote:
+> On 09/29/09 09:29, Raghuram Kothakota wrote:
+>>>
+>>> Will you be extending the MAC client API to allow it to expose a 
+>>> function that takes any client name
+>>> as argument for the property setting functions (thus having the 
+>>> maxbw for vsw0) ?
+>> The reason for us to define an MD property is to allow an management 
+>> entiry(LDoms
+>> manager) running on a different domain(control domain) to be able to 
+>> set/configure
+>> various properties for all virtual devices.  We are not planning to 
+>> extend any additional
+>> ability to modify this from the OS management point of view, but it 
+>> may be good
+>> to provide the ability to show the internal mac-clients. We probably 
+>> need to discuss
+>> the visibility part in LDoms/Crossbow discussions, see what more we 
+>> can do there.
+>>
+>>> I am not clear on how and where the support for the maxbw vsw 
+>>> settable is built.
+>>>
+>> Note, LDoms domains are managed by LDoms manager which typically running
+>> in a different domain(Control domain) and has various CLIs to manage 
+>> virtual devices.
+>> For example, if one has to set a limit for a particular vnet device, 
+>> he would run the
+>> following command:
+>>
+>> ldm set-vnet maxbw=20M vnet0
+>>
+>> This would cause an MD update that is notified to 'vsw' driver on a 
+>> Service Domain,
+>> which will enforce that limit in whatever the implementation thats 
+>> specific to the
+>> OS thats running on the Service domain. We have discussed so far 
+>> about the implementation
+>> details on Nevada.  Please note, this FWARC is focused on the method 
+>> to inform the
+>> LDoms virtual switch about a specific configuration parameter for a 
+>> virtual network device.
+> Thanks. This clarifies what you're delivering to the sysfw consolidation.
+>
+> However, your case also lists ON as a second target consolidation.
+> What changes is the case delivering there?
+Reading the value of 'maxbw' property from the MD node (for the mac 
+client) and programming it in the mac using the mac client API, is done 
+by the vsw driver in Solaris.
+
+-Harsha
+>
+>    Kais.
+>
+>
+>>
+>> Hope this clarifies your question,
+>> -Raghuram
+>>
+>>>    Kais
+>>>
+>
+
+
+From sacadmin Tue Sep 29 11:57:09 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8TIv8OT009988
+	for <psarc@sac.eng.sun.com>; Tue, 29 Sep 2009 11:57:08 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id n8TIv6gk010621;
+	Tue, 29 Sep 2009 11:57:06 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQQ00C1LXZ29Z00@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 29 Sep 2009 11:57:02 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQQ008CFXYYYI60@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 29 Sep 2009 11:56:58 -0700 (PDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n8TIuw2U002075;
+ Tue, 29 Sep 2009 11:56:58 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KQQ00I00XRRUD00@fe-sfbay-10.sun.com>; Tue,
+ 29 Sep 2009 11:56:58 -0700 (PDT)
+Received: from [129.145.154.37] ([unknown] [129.145.154.37])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KQQ00ABCXYXJD80@fe-sfbay-10.sun.com>; Tue,
+ 29 Sep 2009 11:56:58 -0700 (PDT)
+Date: Tue, 29 Sep 2009 11:56:57 -0700
+From: Sriharsha.Basavapatna@sun.com
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC255AD.2000105@Sun.COM>
+Sender: Sriharsha.Basavapatna@sun.com
+To: Kais Belgaied <Kais.Belgaied@sun.com>
+Cc: Raghuram Kothakota <Raghuram.Kothakota@sun.com>, Wentao.Yang@sun.com,
+        Eric Sharakan <sharakan@sac.sfbay.sun.com>, psarc@sun.com,
+        fwarc@sun.com, Michael Speer <Michael.Speer@sun.com>,
+        Nicolas Droux <Nicolas.Droux@sun.com>,
+        Sunay Tripathi <Sunay.Tripathi@sun.com>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>
+Message-id: <4AC25879.6040603@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+ <4AC1A9A4.2010705@Sun.COM> <4AC235D1.8050106@Sun.COM>
+ <4AC255AD.2000105@Sun.COM>
+User-Agent: Thunderbird 2.0.0.21 (X11/20090311)
+Status: RO
+Content-Length: 2188
+
+On 09/29/09 11:45, Kais Belgaied wrote:
+> On 09/29/09 09:29, Raghuram Kothakota wrote:
+>>>
+>>> Will you be extending the MAC client API to allow it to expose a 
+>>> function that takes any client name
+>>> as argument for the property setting functions (thus having the 
+>>> maxbw for vsw0) ?
+>> The reason for us to define an MD property is to allow an management 
+>> entiry(LDoms
+>> manager) running on a different domain(control domain) to be able to 
+>> set/configure
+>> various properties for all virtual devices.  We are not planning to 
+>> extend any additional
+>> ability to modify this from the OS management point of view, but it 
+>> may be good
+>> to provide the ability to show the internal mac-clients. We probably 
+>> need to discuss
+>> the visibility part in LDoms/Crossbow discussions, see what more we 
+>> can do there.
+>>
+>>> I am not clear on how and where the support for the maxbw vsw 
+>>> settable is built.
+>>>
+>> Note, LDoms domains are managed by LDoms manager which typically running
+>> in a different domain(Control domain) and has various CLIs to manage 
+>> virtual devices.
+>> For example, if one has to set a limit for a particular vnet device, 
+>> he would run the
+>> following command:
+>>
+>> ldm set-vnet maxbw=20M vnet0
+>>
+>> This would cause an MD update that is notified to 'vsw' driver on a 
+>> Service Domain,
+>> which will enforce that limit in whatever the implementation thats 
+>> specific to the
+>> OS thats running on the Service domain. We have discussed so far 
+>> about the implementation
+>> details on Nevada.  Please note, this FWARC is focused on the method 
+>> to inform the
+>> LDoms virtual switch about a specific configuration parameter for a 
+>> virtual network device.
+> Thanks. This clarifies what you're delivering to the sysfw consolidation.
+>
+> However, your case also lists ON as a second target consolidation.
+> What changes is the case delivering there?
+Reading the value of 'maxbw' property from the MD node (for the mac 
+client) and programming it in the mac using the mac client API, is done 
+by the vsw driver in Solaris.
+
+-Harsha
+>
+>    Kais.
+>
+>
+>>
+>> Hope this clarifies your question,
+>> -Raghuram
+>>
+>>>    Kais
+>>>
+>
+
+
+From sacadmin Tue Sep 29 12:00:13 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8TJ0D4W010171
+	for <fwarc@sac.sfbay.sun.com>; Tue, 29 Sep 2009 12:00:13 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id n8TJ05hX010518;
+	Tue, 29 Sep 2009 12:00:12 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQQ00M1FY4BFT00@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 29 Sep 2009 12:00:11 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQQ0092CY4AGHE0@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 29 Sep 2009 12:00:10 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n8TJ0Ajw002427;
+ Tue, 29 Sep 2009 12:00:10 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KQQ00D00Y0TSV00@fe-sfbay-09.sun.com>; Tue,
+ 29 Sep 2009 12:00:10 -0700 (PDT)
+Received: from raghuram-kothakotas-macbook-pro.local ([unknown] [24.6.80.128])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KQQ004PIY49RMA0@fe-sfbay-09.sun.com>; Tue,
+ 29 Sep 2009 12:00:10 -0700 (PDT)
+Date: Tue, 29 Sep 2009 12:00:09 -0700
+From: Raghuram Kothakota <Raghuram.Kothakota@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC255AD.2000105@Sun.COM>
+Sender: Raghuram.Kothakota@sun.com
+To: Kais Belgaied <Kais.Belgaied@sun.com>
+Cc: Wentao.Yang@sun.com, Eric Sharakan <sharakan@sac.sfbay.sun.com>,
+        psarc@sun.com, fwarc@sun.com, Sriharsha.Basavapatna@sun.com,
+        Michael Speer <Michael.Speer@sun.com>,
+        Nicolas Droux <Nicolas.Droux@sun.com>,
+        Sunay Tripathi <Sunay.Tripathi@sun.com>
+Message-id: <4AC25939.4050903@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+ <4AC1A9A4.2010705@Sun.COM> <4AC235D1.8050106@Sun.COM>
+ <4AC255AD.2000105@Sun.COM>
+User-Agent: Thunderbird 2.0.0.23 (Macintosh/20090812)
+Status: RO
+Content-Length: 2412
+
+Kais Belgaied wrote:
+> On 09/29/09 09:29, Raghuram Kothakota wrote:
+>>>
+>>> Will you be extending the MAC client API to allow it to expose a 
+>>> function that takes any client name
+>>> as argument for the property setting functions (thus having the 
+>>> maxbw for vsw0) ?
+>> The reason for us to define an MD property is to allow an management 
+>> entiry(LDoms
+>> manager) running on a different domain(control domain) to be able to 
+>> set/configure
+>> various properties for all virtual devices.  We are not planning to 
+>> extend any additional
+>> ability to modify this from the OS management point of view, but it 
+>> may be good
+>> to provide the ability to show the internal mac-clients. We probably 
+>> need to discuss
+>> the visibility part in LDoms/Crossbow discussions, see what more we 
+>> can do there.
+>>
+>>> I am not clear on how and where the support for the maxbw vsw 
+>>> settable is built.
+>>>
+>> Note, LDoms domains are managed by LDoms manager which typically running
+>> in a different domain(Control domain) and has various CLIs to manage 
+>> virtual devices.
+>> For example, if one has to set a limit for a particular vnet device, 
+>> he would run the
+>> following command:
+>>
+>> ldm set-vnet maxbw=20M vnet0
+>>
+>> This would cause an MD update that is notified to 'vsw' driver on a 
+>> Service Domain,
+>> which will enforce that limit in whatever the implementation thats 
+>> specific to the
+>> OS thats running on the Service domain. We have discussed so far 
+>> about the implementation
+>> details on Nevada.  Please note, this FWARC is focused on the method 
+>> to inform the
+>> LDoms virtual switch about a specific configuration parameter for a 
+>> virtual network device.
+> Thanks. This clarifies what you're delivering to the sysfw consolidation.
+>
+> However, your case also lists ON as a second target consolidation.
+> What changes is the case delivering there?
+I hope, I didn't mean to say that there are no changes being delivered to ON
+consolidation. We will be delivering a change to vsw driver
+to consume this property and set the right resource control via the 
+currently
+published MAC client API.  Y'day, Wentao published a webrev to Nicolas
+to review from Crossbow perspective, if you  would like to be involved
+in Nevada related changes to vsw, please let us know.
+
+-Raghuram.
+>
+>    Kais.
+>
+>
+>>
+>> Hope this clarifies your question,
+>> -Raghuram
+>>
+>>>    Kais
+>>>
+>
+
+
+From sacadmin Tue Sep 29 12:00:13 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8TJ0D3L010173
+	for <psarc@sac.eng.sun.com>; Tue, 29 Sep 2009 12:00:13 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id n8TJ05hX010518;
+	Tue, 29 Sep 2009 12:00:12 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQQ00M1FY4BFT00@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 29 Sep 2009 12:00:11 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQQ0092CY4AGHE0@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 29 Sep 2009 12:00:10 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n8TJ0Ajw002427;
+ Tue, 29 Sep 2009 12:00:10 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KQQ00D00Y0TSV00@fe-sfbay-09.sun.com>; Tue,
+ 29 Sep 2009 12:00:10 -0700 (PDT)
+Received: from raghuram-kothakotas-macbook-pro.local ([unknown] [24.6.80.128])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KQQ004PIY49RMA0@fe-sfbay-09.sun.com>; Tue,
+ 29 Sep 2009 12:00:10 -0700 (PDT)
+Date: Tue, 29 Sep 2009 12:00:09 -0700
+From: Raghuram Kothakota <Raghuram.Kothakota@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC255AD.2000105@Sun.COM>
+Sender: Raghuram.Kothakota@sun.com
+To: Kais Belgaied <Kais.Belgaied@sun.com>
+Cc: Wentao.Yang@sun.com, Eric Sharakan <sharakan@sac.sfbay.sun.com>,
+        psarc@sun.com, fwarc@sun.com, Sriharsha.Basavapatna@sun.com,
+        Michael Speer <Michael.Speer@sun.com>,
+        Nicolas Droux <Nicolas.Droux@sun.com>,
+        Sunay Tripathi <Sunay.Tripathi@sun.com>
+Message-id: <4AC25939.4050903@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+ <4AC1A9A4.2010705@Sun.COM> <4AC235D1.8050106@Sun.COM>
+ <4AC255AD.2000105@Sun.COM>
+User-Agent: Thunderbird 2.0.0.23 (Macintosh/20090812)
+Status: RO
+Content-Length: 2412
+
+Kais Belgaied wrote:
+> On 09/29/09 09:29, Raghuram Kothakota wrote:
+>>>
+>>> Will you be extending the MAC client API to allow it to expose a 
+>>> function that takes any client name
+>>> as argument for the property setting functions (thus having the 
+>>> maxbw for vsw0) ?
+>> The reason for us to define an MD property is to allow an management 
+>> entiry(LDoms
+>> manager) running on a different domain(control domain) to be able to 
+>> set/configure
+>> various properties for all virtual devices.  We are not planning to 
+>> extend any additional
+>> ability to modify this from the OS management point of view, but it 
+>> may be good
+>> to provide the ability to show the internal mac-clients. We probably 
+>> need to discuss
+>> the visibility part in LDoms/Crossbow discussions, see what more we 
+>> can do there.
+>>
+>>> I am not clear on how and where the support for the maxbw vsw 
+>>> settable is built.
+>>>
+>> Note, LDoms domains are managed by LDoms manager which typically running
+>> in a different domain(Control domain) and has various CLIs to manage 
+>> virtual devices.
+>> For example, if one has to set a limit for a particular vnet device, 
+>> he would run the
+>> following command:
+>>
+>> ldm set-vnet maxbw=20M vnet0
+>>
+>> This would cause an MD update that is notified to 'vsw' driver on a 
+>> Service Domain,
+>> which will enforce that limit in whatever the implementation thats 
+>> specific to the
+>> OS thats running on the Service domain. We have discussed so far 
+>> about the implementation
+>> details on Nevada.  Please note, this FWARC is focused on the method 
+>> to inform the
+>> LDoms virtual switch about a specific configuration parameter for a 
+>> virtual network device.
+> Thanks. This clarifies what you're delivering to the sysfw consolidation.
+>
+> However, your case also lists ON as a second target consolidation.
+> What changes is the case delivering there?
+I hope, I didn't mean to say that there are no changes being delivered to ON
+consolidation. We will be delivering a change to vsw driver
+to consume this property and set the right resource control via the 
+currently
+published MAC client API.  Y'day, Wentao published a webrev to Nicolas
+to review from Crossbow perspective, if you  would like to be involved
+in Nevada related changes to vsw, please let us know.
+
+-Raghuram.
+>
+>    Kais.
+>
+>
+>>
+>> Hope this clarifies your question,
+>> -Raghuram
+>>
+>>>    Kais
+>>>
+>
+
+
+From sacadmin Tue Sep 29 12:36:36 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8TJaZ7X011444
+	for <fwarc@sac.sfbay.sun.com>; Tue, 29 Sep 2009 12:36:36 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n8TJaZ00016319;
+	Tue, 29 Sep 2009 13:36:35 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQQ00A3RZSYIE00@brm-avmta-1.central.sun.com>; Tue,
+ 29 Sep 2009 13:36:34 -0600 (MDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQQ00IKKZSW77C0@brm-avmta-1.central.sun.com>; Tue,
+ 29 Sep 2009 13:36:32 -0600 (MDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n8TJaVMi022672; Tue,
+ 29 Sep 2009 19:36:32 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KQQ00L00WOG1H00@mail-amer.sun.com>; Tue, 29 Sep 2009 13:36:31 -0600 (MDT)
+Received: from [129.146.227.50] ([unknown] [129.146.227.50])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KQQ00IOWZSJNGD0@mail-amer.sun.com>; Tue,
+ 29 Sep 2009 13:36:20 -0600 (MDT)
+Date: Tue, 29 Sep 2009 12:36:16 -0700
+From: Nicolas Droux <Nicolas.Droux@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC25939.4050903@Sun.COM>
+Sender: Nicolas.Droux@sun.com
+To: Raghuram Kothakota <Raghuram.Kothakota@sun.com>
+Cc: Kais Belgaied <Kais.Belgaied@sun.com>, Wentao.Yang@sun.com,
+        Eric Sharakan <sharakan@sac.sfbay.sun.com>, psarc@sun.com,
+        fwarc@sun.com, Sriharsha.Basavapatna@sun.com,
+        Michael Speer <Michael.Speer@sun.com>,
+        Sunay Tripathi <Sunay.Tripathi@sun.com>
+Message-id: <4AC261B0.8050004@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+ <4AC1A9A4.2010705@Sun.COM> <4AC235D1.8050106@Sun.COM>
+ <4AC255AD.2000105@Sun.COM> <4AC25939.4050903@Sun.COM>
+User-Agent: Thunderbird 2.0.0.22 (X11/20090818)
+Status: RO
+Content-Length: 2860
+
+
+
+Raghuram Kothakota wrote:
+> Kais Belgaied wrote:
+>> On 09/29/09 09:29, Raghuram Kothakota wrote:
+>>>>
+>>>> Will you be extending the MAC client API to allow it to expose a 
+>>>> function that takes any client name
+>>>> as argument for the property setting functions (thus having the 
+>>>> maxbw for vsw0) ?
+>>> The reason for us to define an MD property is to allow an management 
+>>> entiry(LDoms
+>>> manager) running on a different domain(control domain) to be able to 
+>>> set/configure
+>>> various properties for all virtual devices.  We are not planning to 
+>>> extend any additional
+>>> ability to modify this from the OS management point of view, but it 
+>>> may be good
+>>> to provide the ability to show the internal mac-clients. We probably 
+>>> need to discuss
+>>> the visibility part in LDoms/Crossbow discussions, see what more we 
+>>> can do there.
+>>>
+>>>> I am not clear on how and where the support for the maxbw vsw 
+>>>> settable is built.
+>>>>
+>>> Note, LDoms domains are managed by LDoms manager which typically running
+>>> in a different domain(Control domain) and has various CLIs to manage 
+>>> virtual devices.
+>>> For example, if one has to set a limit for a particular vnet device, 
+>>> he would run the
+>>> following command:
+>>>
+>>> ldm set-vnet maxbw=20M vnet0
+>>>
+>>> This would cause an MD update that is notified to 'vsw' driver on a 
+>>> Service Domain,
+>>> which will enforce that limit in whatever the implementation thats 
+>>> specific to the
+>>> OS thats running on the Service domain. We have discussed so far 
+>>> about the implementation
+>>> details on Nevada.  Please note, this FWARC is focused on the method 
+>>> to inform the
+>>> LDoms virtual switch about a specific configuration parameter for a 
+>>> virtual network device.
+>> Thanks. This clarifies what you're delivering to the sysfw consolidation.
+>>
+>> However, your case also lists ON as a second target consolidation.
+>> What changes is the case delivering there?
+> I hope, I didn't mean to say that there are no changes being delivered 
+> to ON
+> consolidation. We will be delivering a change to vsw driver
+> to consume this property and set the right resource control via the 
+> currently
+> published MAC client API.  Y'day, Wentao published a webrev to Nicolas
+> to review from Crossbow perspective, if you  would like to be involved
+> in Nevada related changes to vsw, please let us know.
+
+Wentao sent me the webrev yesterday and the use of the MAC client API to 
+set the bandwidth limit is appropriate.
+
+For completeness the case material could include the private interfaces 
+that are imported here (mac_client_set_resources(), MRP_MAXBW_MINVAL, 
+MRP_MAXBW, MRP_MAXBW_RESETVAL, and the sys/mac_flow.h header file.)
+
+Nicolas.
+
+> 
+> -Raghuram.
+>>
+>>    Kais.
+>>
+>>
+>>>
+>>> Hope this clarifies your question,
+>>> -Raghuram
+>>>
+>>>>    Kais
+>>>>
+>>
+> 
+
+From sacadmin Tue Sep 29 12:36:36 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8TJaavv011447
+	for <psarc@sac.eng.sun.com>; Tue, 29 Sep 2009 12:36:36 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n8TJaZ00016319;
+	Tue, 29 Sep 2009 13:36:35 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQQ00A3RZSYIE00@brm-avmta-1.central.sun.com>; Tue,
+ 29 Sep 2009 13:36:34 -0600 (MDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQQ00IKKZSW77C0@brm-avmta-1.central.sun.com>; Tue,
+ 29 Sep 2009 13:36:32 -0600 (MDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n8TJaVMi022672; Tue,
+ 29 Sep 2009 19:36:32 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KQQ00L00WOG1H00@mail-amer.sun.com>; Tue, 29 Sep 2009 13:36:31 -0600 (MDT)
+Received: from [129.146.227.50] ([unknown] [129.146.227.50])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KQQ00IOWZSJNGD0@mail-amer.sun.com>; Tue,
+ 29 Sep 2009 13:36:20 -0600 (MDT)
+Date: Tue, 29 Sep 2009 12:36:16 -0700
+From: Nicolas Droux <Nicolas.Droux@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC25939.4050903@Sun.COM>
+Sender: Nicolas.Droux@sun.com
+To: Raghuram Kothakota <Raghuram.Kothakota@sun.com>
+Cc: Kais Belgaied <Kais.Belgaied@sun.com>, Wentao.Yang@sun.com,
+        Eric Sharakan <sharakan@sac.sfbay.sun.com>, psarc@sun.com,
+        fwarc@sun.com, Sriharsha.Basavapatna@sun.com,
+        Michael Speer <Michael.Speer@sun.com>,
+        Sunay Tripathi <Sunay.Tripathi@sun.com>
+Message-id: <4AC261B0.8050004@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+ <4AC1A9A4.2010705@Sun.COM> <4AC235D1.8050106@Sun.COM>
+ <4AC255AD.2000105@Sun.COM> <4AC25939.4050903@Sun.COM>
+User-Agent: Thunderbird 2.0.0.22 (X11/20090818)
+Status: RO
+Content-Length: 2860
+
+
+
+Raghuram Kothakota wrote:
+> Kais Belgaied wrote:
+>> On 09/29/09 09:29, Raghuram Kothakota wrote:
+>>>>
+>>>> Will you be extending the MAC client API to allow it to expose a 
+>>>> function that takes any client name
+>>>> as argument for the property setting functions (thus having the 
+>>>> maxbw for vsw0) ?
+>>> The reason for us to define an MD property is to allow an management 
+>>> entiry(LDoms
+>>> manager) running on a different domain(control domain) to be able to 
+>>> set/configure
+>>> various properties for all virtual devices.  We are not planning to 
+>>> extend any additional
+>>> ability to modify this from the OS management point of view, but it 
+>>> may be good
+>>> to provide the ability to show the internal mac-clients. We probably 
+>>> need to discuss
+>>> the visibility part in LDoms/Crossbow discussions, see what more we 
+>>> can do there.
+>>>
+>>>> I am not clear on how and where the support for the maxbw vsw 
+>>>> settable is built.
+>>>>
+>>> Note, LDoms domains are managed by LDoms manager which typically running
+>>> in a different domain(Control domain) and has various CLIs to manage 
+>>> virtual devices.
+>>> For example, if one has to set a limit for a particular vnet device, 
+>>> he would run the
+>>> following command:
+>>>
+>>> ldm set-vnet maxbw=20M vnet0
+>>>
+>>> This would cause an MD update that is notified to 'vsw' driver on a 
+>>> Service Domain,
+>>> which will enforce that limit in whatever the implementation thats 
+>>> specific to the
+>>> OS thats running on the Service domain. We have discussed so far 
+>>> about the implementation
+>>> details on Nevada.  Please note, this FWARC is focused on the method 
+>>> to inform the
+>>> LDoms virtual switch about a specific configuration parameter for a 
+>>> virtual network device.
+>> Thanks. This clarifies what you're delivering to the sysfw consolidation.
+>>
+>> However, your case also lists ON as a second target consolidation.
+>> What changes is the case delivering there?
+> I hope, I didn't mean to say that there are no changes being delivered 
+> to ON
+> consolidation. We will be delivering a change to vsw driver
+> to consume this property and set the right resource control via the 
+> currently
+> published MAC client API.  Y'day, Wentao published a webrev to Nicolas
+> to review from Crossbow perspective, if you  would like to be involved
+> in Nevada related changes to vsw, please let us know.
+
+Wentao sent me the webrev yesterday and the use of the MAC client API to 
+set the bandwidth limit is appropriate.
+
+For completeness the case material could include the private interfaces 
+that are imported here (mac_client_set_resources(), MRP_MAXBW_MINVAL, 
+MRP_MAXBW, MRP_MAXBW_RESETVAL, and the sys/mac_flow.h header file.)
+
+Nicolas.
+
+> 
+> -Raghuram.
+>>
+>>    Kais.
+>>
+>>
+>>>
+>>> Hope this clarifies your question,
+>>> -Raghuram
+>>>
+>>>>    Kais
+>>>>
+>>
+> 
+
+From sacadmin Tue Sep 29 12:56:22 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8TJuLA9012047
+	for <fwarc@sac.sfbay.sun.com>; Tue, 29 Sep 2009 12:56:22 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n8TJuHuS027116;
+	Wed, 30 Sep 2009 03:56:21 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQR00F1B0PTQ700@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 29 Sep 2009 12:56:17 -0700 (PDT)
+Received: from jurassic-x4600.sfbay.sun.com ([129.146.17.59])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQR008I80PTYHD0@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 29 Sep 2009 12:56:17 -0700 (PDT)
+Received: from [129.146.11.144]
+ (sr1-jurassic-01.SFBay.Sun.COM [129.146.11.144])	by
+ jurassic-x4600.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n8TJuG6x869783
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO); Tue,
+ 29 Sep 2009 12:56:16 -0700 (PDT)
+Date: Tue, 29 Sep 2009 12:56:16 -0700
+From: Kais Belgaied <Kais.Belgaied@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC25939.4050903@Sun.COM>
+Cc: psarc-members@sun.com, fwarc@sun.com
+Message-id: <4AC26660.7070404@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+ <4AC1A9A4.2010705@Sun.COM> <4AC235D1.8050106@Sun.COM>
+ <4AC255AD.2000105@Sun.COM> <4AC25939.4050903@Sun.COM>
+User-Agent: Thunderbird 2.0.0.21 (X11/20090311)
+Status: RO
+Content-Length: 1464
+
+(Removing non ARC members from the Cc'ed. what's below is about ARC 
+operations and procedure)
+
+>>
+>> However, your case also lists ON as a second target consolidation.
+>> What changes is the case delivering there?
+> I hope, I didn't mean to say that there are no changes being delivered 
+> to ON
+> consolidation. We will be delivering a change to vsw driver
+> to consume this property and set the right resource control via the 
+> currently
+> published MAC client API.  Y'day, Wentao published a webrev to Nicolas
+
+I understand it is rather rare to have cross ARCs discussions, but I 
+believe PSARC should've been Cc'ed for cases importing interfaces it
+reviewed very recently.
+
+For the purpose of the ARC review, the MAC Client API exported by 
+PSARC/2006/357 should be listed
+as an imported interface for this FWARC case. It took a few email 
+exchanges to figure out what the case is actually
+delivering in ON, then what interfaces it is importing there. As 
+originally filed, reading it literally, it felt like the case is 
+delivering a
+redundant functionality.
+
+The case should also state the release binding for the ON changes. Given 
+the dependency on PSARC/2006/357's,
+the changes may not be delivered as a patch. That needs to be explicitly 
+mentioned.
+
+I believe an updated spec is needed here.
+
+    Kais.
+
+> to review from Crossbow perspective, if you  would like to be involved
+> in Nevada related changes to vsw, please let us know.
+>
+> -Raghuram.
+>
+
+
+From sacadmin Tue Sep 29 12:56:24 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8TJuNNB012051
+	for <psarc-members@sac.eng.sun.com>; Tue, 29 Sep 2009 12:56:24 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n8TJuHuS027116;
+	Wed, 30 Sep 2009 03:56:21 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQR00F1B0PTQ700@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 29 Sep 2009 12:56:17 -0700 (PDT)
+Received: from jurassic-x4600.sfbay.sun.com ([129.146.17.59])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQR008I80PTYHD0@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 29 Sep 2009 12:56:17 -0700 (PDT)
+Received: from [129.146.11.144]
+ (sr1-jurassic-01.SFBay.Sun.COM [129.146.11.144])	by
+ jurassic-x4600.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n8TJuG6x869783
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO); Tue,
+ 29 Sep 2009 12:56:16 -0700 (PDT)
+Date: Tue, 29 Sep 2009 12:56:16 -0700
+From: Kais Belgaied <Kais.Belgaied@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC25939.4050903@Sun.COM>
+Cc: psarc-members@sun.com, fwarc@sun.com
+Message-id: <4AC26660.7070404@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+ <4AC1A9A4.2010705@Sun.COM> <4AC235D1.8050106@Sun.COM>
+ <4AC255AD.2000105@Sun.COM> <4AC25939.4050903@Sun.COM>
+User-Agent: Thunderbird 2.0.0.21 (X11/20090311)
+Status: RO
+Content-Length: 1464
+
+(Removing non ARC members from the Cc'ed. what's below is about ARC 
+operations and procedure)
+
+>>
+>> However, your case also lists ON as a second target consolidation.
+>> What changes is the case delivering there?
+> I hope, I didn't mean to say that there are no changes being delivered 
+> to ON
+> consolidation. We will be delivering a change to vsw driver
+> to consume this property and set the right resource control via the 
+> currently
+> published MAC client API.  Y'day, Wentao published a webrev to Nicolas
+
+I understand it is rather rare to have cross ARCs discussions, but I 
+believe PSARC should've been Cc'ed for cases importing interfaces it
+reviewed very recently.
+
+For the purpose of the ARC review, the MAC Client API exported by 
+PSARC/2006/357 should be listed
+as an imported interface for this FWARC case. It took a few email 
+exchanges to figure out what the case is actually
+delivering in ON, then what interfaces it is importing there. As 
+originally filed, reading it literally, it felt like the case is 
+delivering a
+redundant functionality.
+
+The case should also state the release binding for the ON changes. Given 
+the dependency on PSARC/2006/357's,
+the changes may not be delivered as a patch. That needs to be explicitly 
+mentioned.
+
+I believe an updated spec is needed here.
+
+    Kais.
+
+> to review from Crossbow perspective, if you  would like to be involved
+> in Nevada related changes to vsw, please let us know.
+>
+> -Raghuram.
+>
+
+
+From sacadmin Tue Sep 29 13:02:24 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8TK2NLe012247
+	for <fwarc@sac.sfbay.sun.com>; Tue, 29 Sep 2009 13:02:24 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n8TK2LcN000249;
+	Wed, 30 Sep 2009 04:02:22 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQR00D0X0ZX4L00@brm-avmta-1.central.sun.com>; Tue,
+ 29 Sep 2009 14:02:21 -0600 (MDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQR00I0Z0ZV7AC0@brm-avmta-1.central.sun.com>; Tue,
+ 29 Sep 2009 14:02:19 -0600 (MDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n8TK2IlG015650; Tue,
+ 29 Sep 2009 20:02:18 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KQQ00L00WOG1H00@mail-amer.sun.com>; Tue, 29 Sep 2009 14:02:18 -0600 (MDT)
+Received: from [129.148.174.103] ([unknown] [129.148.174.103])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KQR009HT0ZHCM90@mail-amer.sun.com>; Tue,
+ 29 Sep 2009 14:02:05 -0600 (MDT)
+Date: Tue, 29 Sep 2009 15:59:50 -0400
+From: Sebastien Roy <Sebastien.Roy@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC26660.7070404@Sun.COM>
+Sender: Sebastien.Roy@sun.com
+To: Kais Belgaied <Kais.Belgaied@sun.com>
+Cc: psarc-members@sun.com, fwarc@sun.com
+Message-id: <1254254390.13410.8.camel@strat>
+Organization: Sun Microsystems
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+ <4AC1A9A4.2010705@Sun.COM> <4AC235D1.8050106@Sun.COM>
+ <4AC255AD.2000105@Sun.COM> <4AC25939.4050903@Sun.COM>
+ <4AC26660.7070404@Sun.COM>
+Status: RO
+Content-Length: 638
+
+On Tue, 2009-09-29 at 12:56 -0700, Kais Belgaied wrote:
+> The case should also state the release binding for the ON changes. Given 
+> the dependency on PSARC/2006/357's,
+> the changes may not be delivered as a patch. That needs to be explicitly 
+> mentioned.
+
+A normal case dependency should take care of that.  There doesn't seem
+to be any incompatible change introduced by this case, and thus no
+reason for the case to seek a release binding other than Patch.  The
+case simply wouldn't be able to be delivered in a Patch unless its case
+dependencies were also delivered.
+
+> 
+> I believe an updated spec is needed here.
+
+Indeed.
+
+-Seb
+
+
+
+From sacadmin Tue Sep 29 13:02:26 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8TK2Pkg012251
+	for <psarc-members@sac.eng.sun.com>; Tue, 29 Sep 2009 13:02:25 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n8TK2LcN000249;
+	Wed, 30 Sep 2009 04:02:22 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQR00D0X0ZX4L00@brm-avmta-1.central.sun.com>; Tue,
+ 29 Sep 2009 14:02:21 -0600 (MDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQR00I0Z0ZV7AC0@brm-avmta-1.central.sun.com>; Tue,
+ 29 Sep 2009 14:02:19 -0600 (MDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n8TK2IlG015650; Tue,
+ 29 Sep 2009 20:02:18 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KQQ00L00WOG1H00@mail-amer.sun.com>; Tue, 29 Sep 2009 14:02:18 -0600 (MDT)
+Received: from [129.148.174.103] ([unknown] [129.148.174.103])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KQR009HT0ZHCM90@mail-amer.sun.com>; Tue,
+ 29 Sep 2009 14:02:05 -0600 (MDT)
+Date: Tue, 29 Sep 2009 15:59:50 -0400
+From: Sebastien Roy <Sebastien.Roy@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <4AC26660.7070404@Sun.COM>
+Sender: Sebastien.Roy@sun.com
+To: Kais Belgaied <Kais.Belgaied@sun.com>
+Cc: psarc-members@sun.com, fwarc@sun.com
+Message-id: <1254254390.13410.8.camel@strat>
+Organization: Sun Microsystems
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+ <4AC1A9A4.2010705@Sun.COM> <4AC235D1.8050106@Sun.COM>
+ <4AC255AD.2000105@Sun.COM> <4AC25939.4050903@Sun.COM>
+ <4AC26660.7070404@Sun.COM>
+Status: RO
+Content-Length: 638
+
+On Tue, 2009-09-29 at 12:56 -0700, Kais Belgaied wrote:
+> The case should also state the release binding for the ON changes. Given 
+> the dependency on PSARC/2006/357's,
+> the changes may not be delivered as a patch. That needs to be explicitly 
+> mentioned.
+
+A normal case dependency should take care of that.  There doesn't seem
+to be any incompatible change introduced by this case, and thus no
+reason for the case to seek a release binding other than Patch.  The
+case simply wouldn't be able to be delivered in a Patch unless its case
+dependencies were also delivered.
+
+> 
+> I believe an updated spec is needed here.
+
+Indeed.
+
+-Seb
+
+
+
+From sacadmin Wed Sep 30 12:13:37 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8UJDZpG028824
+	for <fwarc@sac.sfbay.sun.com>; Wed, 30 Sep 2009 12:13:36 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n8UJDWk4020892;
+	Thu, 1 Oct 2009 03:13:34 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQS0060RTEL8200@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 30 Sep 2009 12:13:33 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQS00LM1TEKCG40@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 30 Sep 2009 12:13:33 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n8UJDW2M003802; Wed,
+ 30 Sep 2009 19:13:32 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KQS00F00TAFXZ00@mail-amer.sun.com>; Wed, 30 Sep 2009 13:13:32 -0600 (MDT)
+Received: from [192.168.100.134]
+ (c-24-63-224-10.hsd1.ma.comcast.net [24.63.224.10])
+ by mail-amer.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KQS00871TEITV10@mail-amer.sun.com>; Wed,
+ 30 Sep 2009 13:13:32 -0600 (MDT)
+Date: Wed, 30 Sep 2009 15:13:30 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <1254254390.13410.8.camel@strat>
+Sender: Eric.Sharakan@sun.com
+To: Sebastien Roy <Sebastien.Roy@sun.com>
+Cc: Kais Belgaied <Kais.Belgaied@sun.com>, psarc-members@sun.com,
+        fwarc@sun.com
+Message-id: <6AC28F5A-3D6F-4810-9FA6-A7D4CD703E46@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.1076)
+Content-type: multipart/signed; micalg=sha1;
+ protocol="application/pkcs7-signature"; boundary=Apple-Mail-1--994579966
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+ <4AC1A9A4.2010705@Sun.COM> <4AC235D1.8050106@Sun.COM>
+ <4AC255AD.2000105@Sun.COM> <4AC25939.4050903@Sun.COM>
+ <4AC26660.7070404@Sun.COM> <1254254390.13410.8.camel@strat>
+Status: RO
+Content-Length: 4501
+
+
+--Apple-Mail-1--994579966
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=us-ascii;
+	format=flowed;
+	delsp=yes
+
+On Sep 29, 2009, at 3:59 PM, Sebastien Roy wrote:
+
+> On Tue, 2009-09-29 at 12:56 -0700, Kais Belgaied wrote:
+>> The case should also state the release binding for the ON changes.  
+>> Given
+>> the dependency on PSARC/2006/357's,
+>> the changes may not be delivered as a patch. That needs to be  
+>> explicitly
+>> mentioned.
+>
+> A normal case dependency should take care of that.  There doesn't seem
+> to be any incompatible change introduced by this case, and thus no
+> reason for the case to seek a release binding other than Patch.  The
+> case simply wouldn't be able to be delivered in a Patch unless its  
+> case
+> dependencies were also delivered.
+>
+>>
+>> I believe an updated spec is needed here.
+>
+> Indeed.
+>
+> -Seb
+
+All, I've updated the 1-pager in the case materials directory to  
+address all comments received.
+
+The timer remains set to expire on October 5.
+
+Thanks.
+
+-Eric
+
+
+--Apple-Mail-1--994579966
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA5MDgxMzAzMjY0MloXDTEwMDgxMzAzMjY0
+MlowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4ShwcG0r
+XTowrE2zjfBkP5uPCfMPbkDTk6AV/L/SDFaj3XqIuvioNhnSAJc18VqdhTMteQzf275qEXJEpjii
+UhtBQQEeVNUuDJl7Yn935nXzkhMa5iDKQebgMRYsj47l4M2kVRDwKpPcrBT5eL1Pt0aSD0cF1APy
+3KCd9vakWX/3/oO14tiEs84trInW8iWym8JW9O2iKnRFQHSvOulBVyzKbjJ7+qr3oO/t4BB5hjeK
+NaLSfztfFVJaW8P0gdMD0oR9ZCKjl8IK5CUNLFk3sXh+RFrkCsP2W38hZJ0EhKPuunw4z4A7FK8h
+NIL9OeKmzKhH3JIitIfW/wPUFoupQQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQBua9PL8rPiAgVHwF+IdBIk
+nIGR42xuszIDi3E9WvDdWdkw5aG0FJwei0RvHHraYaPofBlvZcyIuABPcJrqpm5jfl9ksrUmrYV9
+veWQwF3t9hp+IcaD/a9+4Cdh8b0YlzXGX7DyaDa5omOLrLBp9M3K8lSkQDSjMcDu1RSlS+ZjFDCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQRP84uN1QvZysfOz2m7JJpTAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wOTA5
+MzAxOTEzMzBaMCMGCSqGSIb3DQEJBDEWBBRsyAi6TLx/MWNzQ5VVftIWUmBHIjCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjd
+UL2crHzs9puySaUwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEBBQAEggEAu57q
+Bgmvy719aPwY8WsUK5mILLbVawQ3GeBqnIAzUVvcyo0++wOqqA52aJ2vvS552xvHdoDDbHjxh04H
+5aGxV/GxKdfO2K5qCjYGDnt+a+Kv0stkCwFCvxqrWR+s4tvt5iLjlNJXFhrmVX+62yOAFK0RpAX4
+bsGEU/TUj6WXfDUqSgTdVGRJqrgJpLMO3dMAc12R64l8eEtoTkDyT7Dlph7D/r6GUoJmy2+P/tNH
+7ujvFGl1Ks1hK6EtTOnILgqV91jEgF9CIAekzYFAgUUx7SwONaV6c+mdWmDfuz+VLitlyhro0cBv
+7BNe1SKUjeKrk9rhbsmK7LXRq7BA9M6uKgAAAAAAAA==
+
+--Apple-Mail-1--994579966--
+
+From sacadmin Wed Sep 30 12:13:40 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n8UJDcW3028826
+	for <psarc-members@sac.eng.sun.com>; Wed, 30 Sep 2009 12:13:38 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n8UJDWk4020892;
+	Thu, 1 Oct 2009 03:13:34 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KQS0060RTEL8200@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 30 Sep 2009 12:13:33 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KQS00LM1TEKCG40@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 30 Sep 2009 12:13:33 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n8UJDW2M003802; Wed,
+ 30 Sep 2009 19:13:32 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KQS00F00TAFXZ00@mail-amer.sun.com>; Wed, 30 Sep 2009 13:13:32 -0600 (MDT)
+Received: from [192.168.100.134]
+ (c-24-63-224-10.hsd1.ma.comcast.net [24.63.224.10])
+ by mail-amer.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KQS00871TEITV10@mail-amer.sun.com>; Wed,
+ 30 Sep 2009 13:13:32 -0600 (MDT)
+Date: Wed, 30 Sep 2009 15:13:30 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: Bandwidth Resource Control [FWARC/2009/521 FastTrack timeout
+ 10/05/2009]
+In-reply-to: <1254254390.13410.8.camel@strat>
+Sender: Eric.Sharakan@sun.com
+To: Sebastien Roy <Sebastien.Roy@sun.com>
+Cc: Kais Belgaied <Kais.Belgaied@sun.com>, psarc-members@sun.com,
+        fwarc@sun.com
+Message-id: <6AC28F5A-3D6F-4810-9FA6-A7D4CD703E46@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.1076)
+Content-type: multipart/signed; micalg=sha1;
+ protocol="application/pkcs7-signature"; boundary=Apple-Mail-1--994579966
+X-PMX-Version: 5.4.1.325704
+References: <200909281904.n8SJ4qct026931@sac.sfbay.sun.com>
+ <4AC10F9D.2010302@Sun.COM> <4AC1348E.8010106@Sun.COM>
+ <4AC1A9A4.2010705@Sun.COM> <4AC235D1.8050106@Sun.COM>
+ <4AC255AD.2000105@Sun.COM> <4AC25939.4050903@Sun.COM>
+ <4AC26660.7070404@Sun.COM> <1254254390.13410.8.camel@strat>
+Status: RO
+Content-Length: 4501
+
+
+--Apple-Mail-1--994579966
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=us-ascii;
+	format=flowed;
+	delsp=yes
+
+On Sep 29, 2009, at 3:59 PM, Sebastien Roy wrote:
+
+> On Tue, 2009-09-29 at 12:56 -0700, Kais Belgaied wrote:
+>> The case should also state the release binding for the ON changes.  
+>> Given
+>> the dependency on PSARC/2006/357's,
+>> the changes may not be delivered as a patch. That needs to be  
+>> explicitly
+>> mentioned.
+>
+> A normal case dependency should take care of that.  There doesn't seem
+> to be any incompatible change introduced by this case, and thus no
+> reason for the case to seek a release binding other than Patch.  The
+> case simply wouldn't be able to be delivered in a Patch unless its  
+> case
+> dependencies were also delivered.
+>
+>>
+>> I believe an updated spec is needed here.
+>
+> Indeed.
+>
+> -Seb
+
+All, I've updated the 1-pager in the case materials directory to  
+address all comments received.
+
+The timer remains set to expire on October 5.
+
+Thanks.
+
+-Eric
+
+
+--Apple-Mail-1--994579966
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA5MDgxMzAzMjY0MloXDTEwMDgxMzAzMjY0
+MlowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4ShwcG0r
+XTowrE2zjfBkP5uPCfMPbkDTk6AV/L/SDFaj3XqIuvioNhnSAJc18VqdhTMteQzf275qEXJEpjii
+UhtBQQEeVNUuDJl7Yn935nXzkhMa5iDKQebgMRYsj47l4M2kVRDwKpPcrBT5eL1Pt0aSD0cF1APy
+3KCd9vakWX/3/oO14tiEs84trInW8iWym8JW9O2iKnRFQHSvOulBVyzKbjJ7+qr3oO/t4BB5hjeK
+NaLSfztfFVJaW8P0gdMD0oR9ZCKjl8IK5CUNLFk3sXh+RFrkCsP2W38hZJ0EhKPuunw4z4A7FK8h
+NIL9OeKmzKhH3JIitIfW/wPUFoupQQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQBua9PL8rPiAgVHwF+IdBIk
+nIGR42xuszIDi3E9WvDdWdkw5aG0FJwei0RvHHraYaPofBlvZcyIuABPcJrqpm5jfl9ksrUmrYV9
+veWQwF3t9hp+IcaD/a9+4Cdh8b0YlzXGX7DyaDa5omOLrLBp9M3K8lSkQDSjMcDu1RSlS+ZjFDCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQRP84uN1QvZysfOz2m7JJpTAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wOTA5
+MzAxOTEzMzBaMCMGCSqGSIb3DQEJBDEWBBRsyAi6TLx/MWNzQ5VVftIWUmBHIjCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjd
+UL2crHzs9puySaUwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEBBQAEggEAu57q
+Bgmvy719aPwY8WsUK5mILLbVawQ3GeBqnIAzUVvcyo0++wOqqA52aJ2vvS552xvHdoDDbHjxh04H
+5aGxV/GxKdfO2K5qCjYGDnt+a+Kv0stkCwFCvxqrWR+s4tvt5iLjlNJXFhrmVX+62yOAFK0RpAX4
+bsGEU/TUj6WXfDUqSgTdVGRJqrgJpLMO3dMAc12R64l8eEtoTkDyT7Dlph7D/r6GUoJmy2+P/tNH
+7ujvFGl1Ks1hK6EtTOnILgqV91jEgF9CIAekzYFAgUUx7SwONaV6c+mdWmDfuz+VLitlyhro0cBv
+7BNe1SKUjeKrk9rhbsmK7LXRq7BA9M6uKgAAAAAAAA==
+
+--Apple-Mail-1--994579966--
+
+From sacadmin Tue Oct  6 14:08:22 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n96L8L6g024506
+	for <fwarc@sac.sfbay.sun.com>; Tue, 6 Oct 2009 14:08:22 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n96L8IkA026501
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 7 Oct 2009 05:08:20 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KR4008032PV6B00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 06 Oct 2009 15:08:19 -0600 (MDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KR400L462PVIR80@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 06 Oct 2009 15:08:19 -0600 (MDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n96L8IXc012434	for
+ <fwarc@sun.com>; Tue, 06 Oct 2009 21:08:18 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KR400L002ITCA00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 06 Oct 2009 15:08:18 -0600 (MDT)
+Received: from dhcp-ubur03-180-221.east.sun.com ([unknown] [129.148.180.221])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KR400LWK2PJVVB0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 06 Oct 2009 15:08:08 -0600 (MDT)
+Date: Tue, 06 Oct 2009 17:08:06 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: FWARC/2009/521: Bandwidth Resource Control
+In-reply-to: <09755C2B-8C4E-48AE-977E-058B53E59BF7@Sun.COM>
+Sender: Eric.Sharakan@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: Raghuram Kothakota <Raghuram.Kothakota@sun.com>,
+        Wentao Yang <Wentao.Yang@sun.com>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>
+Message-id: <7EA89B5E-170B-45D0-A502-B4046C588AAB@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.1076)
+Content-type: multipart/signed; micalg=sha1;
+ protocol="application/pkcs7-signature"; boundary=Apple-Mail-2--469303834
+X-PMX-Version: 5.4.1.325704
+References: <09755C2B-8C4E-48AE-977E-058B53E59BF7@Sun.COM>
+Status: RO
+Content-Length: 4299
+
+
+--Apple-Mail-2--469303834
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=us-ascii;
+	format=flowed;
+	delsp=yes
+
+On Sep 28, 2009, at 3:19 PM, Eric Sharakan wrote:
+
+> I'm sponsoring this fast track case for Wentao Yang.  It defines a  
+> new guest MD property for vsw & vnet: 'maxbw'.  This will be used to  
+> establish bandwidth limits on specified plumbed vsw & vnet devices.   
+> The 1-pager & an updated VIO MD Specification excerpt are available  
+> in the case materials:
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/521/materials/
+>
+> Requested binding is for a minor/micro firmware release and minor/ 
+> micro/patch OS release.
+>
+> This case times out on 10/5/09.
+>
+> Thanks.
+>
+> -Eric
+>
+This case has timed out and is now approved.  The IAM file has been  
+updated.
+
+Thanks.
+
+-Eric
+
+
+--Apple-Mail-2--469303834
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA5MDgxMzAzMjY0MloXDTEwMDgxMzAzMjY0
+MlowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4ShwcG0r
+XTowrE2zjfBkP5uPCfMPbkDTk6AV/L/SDFaj3XqIuvioNhnSAJc18VqdhTMteQzf275qEXJEpjii
+UhtBQQEeVNUuDJl7Yn935nXzkhMa5iDKQebgMRYsj47l4M2kVRDwKpPcrBT5eL1Pt0aSD0cF1APy
+3KCd9vakWX/3/oO14tiEs84trInW8iWym8JW9O2iKnRFQHSvOulBVyzKbjJ7+qr3oO/t4BB5hjeK
+NaLSfztfFVJaW8P0gdMD0oR9ZCKjl8IK5CUNLFk3sXh+RFrkCsP2W38hZJ0EhKPuunw4z4A7FK8h
+NIL9OeKmzKhH3JIitIfW/wPUFoupQQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQBua9PL8rPiAgVHwF+IdBIk
+nIGR42xuszIDi3E9WvDdWdkw5aG0FJwei0RvHHraYaPofBlvZcyIuABPcJrqpm5jfl9ksrUmrYV9
+veWQwF3t9hp+IcaD/a9+4Cdh8b0YlzXGX7DyaDa5omOLrLBp9M3K8lSkQDSjMcDu1RSlS+ZjFDCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQRP84uN1QvZysfOz2m7JJpTAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wOTEw
+MDYyMTA4MDdaMCMGCSqGSIb3DQEJBDEWBBRpjkzBvOwki4rEQcKo1kvmbazKZzCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjd
+UL2crHzs9puySaUwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEBBQAEggEAAsEi
+Ssbly1HUXccPBadeWdcG0RWft8dTKTopDtSncZcu2mIBDdbopfYFDp3Vu8EF4pyU5eRIEl4bDYvS
+hf60KOaSGOHiQQY+7R1RdgNkUCuJ3oIx8WRPP89GujKJBfNvmknH0yS0Rsk0R6aQDZW/b+u87X19
+h8rtb/qkdHEO0bcNA7jXJW+YY9MhSWtExnwS2JW2LYQoKf4AUEkRU9IjVg44SIT0/rVh5knp5rmt
+Z1keR8xTta8POr8p284LP++q/ubzxXTgXhkdzj6loTA+bkJGSQ9nR1UxFTHud+xpzmVXTzDtzwPC
+9/M0Grwj1m+q4VXJAt3uEUQCX+aD7zlpjQAAAAAAAA==
+
+--Apple-Mail-2--469303834--
+

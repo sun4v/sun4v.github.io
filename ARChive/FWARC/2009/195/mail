@@ -1,0 +1,145 @@
+From sacadmin Tue Mar 24 15:11:10 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n2OMBAjP006140
+	for <fwarc@sac.sfbay.sun.com>; Tue, 24 Mar 2009 15:11:10 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n2OMB96w019082
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 24 Mar 2009 15:11:09 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KH100I2L6YK1200@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 24 Mar 2009 15:11:08 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KH100IHN6YIWZE0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 24 Mar 2009 15:11:06 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n2OMB6Hf029949	for
+ <fwarc@sun.com>; Tue, 24 Mar 2009 15:11:06 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KH100F006L9D800@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 24 Mar 2009 15:11:06 -0700 (PDT)
+Received: from [129.145.154.58] ([unknown] [129.145.154.58])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ with ESMTPSA id <0KH100IFQ6YG6U90@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 24 Mar 2009 15:11:06 -0700 (PDT)
+Date: Tue, 24 Mar 2009 15:11:04 -0700
+From: Ryan Maeda <Ryan.Maeda@sun.com>
+Subject: FWARC/2009/195: VIO vNet/vSwitch support for physical link state
+ information
+Sender: Ryan.Maeda@sun.com
+To: fwarc@sun.com
+Cc: Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>,
+        "Raghuram.Kothakota" <Raghuram.Kothakota@sun.com>
+Reply-to: Ryan.Maeda@sun.com
+Message-id: <49C95A78.2000901@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.22pre (X11/20090304)
+Status: RO
+Content-Length: 1760
+
+I am sponsoring this fast-track case for Sriharsha Basavapatna.
+This case extends the specifications for both the VIO protocol
+and VIO MD nodes for LDoms virtual network and switch devices
+in order to support physical link status updates.
+
+This case will be approved for a minor/micro/patch OS binding
+and a minor/micro binding for the firmware.
+
+Case timer is set to expire on April 1, 2009
+
+The VIO protocol specification was approved under FWARC/2006/195
+and modified under FWARC/2006/583, FWARC/2006/602, FWARC/2007/672,
+FWARC/2008/017, FWARC/2008/228, and FWARC/2008/553.
+
+The VIO MD specification was approved under FWARC/2006/072 and
+modified under FWARC/2006/122, FWARC/2007/363, FWARC/2008/016,
+FWARC/2008/228, FWARC/2008/553, FWARC/2008/563, and FWARC 2008/696.
+
+All of the changes are highlighted in the updated documents which
+can be found at:
+
+  http://sac.eng/arc/FWARC/2009/195/materials/vio-protocol-update-8-diffs.pdf
+
+  http://sac.eng/arc/FWARC/2009/195/materials/vio-md-nodes-v10-diffs.pdf
+
+A brief description of the changes are:
+
+  o An extension of the VIO protocol for virtual network
+    and switch devices to negotiate for physical link status
+    updates as part of the attribute exchange as defined
+    in section 1.1.7.1 of the VIO protocol specification.
+
+  o An extension of the VIO protocol for virtual network
+    and switch devices to include a new message that reports
+    physical link status updates. This message is defined
+    in section 1.1.7.6 of the VIO protocol specification.
+
+  o An addition of a new MD property to the 'virtual-device'
+    node as defined in section 1.1.3 of the VIO MD spec and
+    used by virtual network and switch devices to determine
+    whether to enable physical link status updates.
+
+-Ryan
+
+From sacadmin Thu Apr  2 10:31:27 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n32HVQKW001737
+	for <fwarc@sac.sfbay.sun.com>; Thu, 2 Apr 2009 10:31:27 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n32HVJpT024397
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 3 Apr 2009 01:31:26 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KHH00C0XI0ARV00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 10:31:22 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KHH004X3I09LJD0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 10:31:21 -0700 (PDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n32HVL6p020398	for
+ <fwarc@sun.com>; Thu, 02 Apr 2009 10:31:21 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KHH00000HGIAZ00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 10:31:21 -0700 (PDT)
+Received: from [129.145.154.58] ([unknown] [129.145.154.58])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ with ESMTPSA id <0KHH004P7I06N6A0@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 10:31:20 -0700 (PDT)
+Date: Thu, 02 Apr 2009 10:31:18 -0700
+From: Ryan Maeda <Ryan.Maeda@sun.com>
+Subject: Re: FWARC/2009/195: VIO vNet/vSwitch support for physical link state
+ information
+In-reply-to: <49C95A78.2000901@Sun.COM>
+Sender: Ryan.Maeda@sun.com
+To: fwarc@sun.com
+Cc: Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>,
+        "Raghuram.Kothakota" <Raghuram.Kothakota@sun.com>
+Reply-to: Ryan.Maeda@sun.com
+Message-id: <49D4F666.3050205@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <49C95A78.2000901@Sun.COM>
+User-Agent: Thunderbird 2.0.0.22pre (X11/20090304)
+Status: RO
+Content-Length: 107
+
+This fast-track case has timed out. The case is now approved
+and closed. IAM file has been updated.
+
+-Ryan
+

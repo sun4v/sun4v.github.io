@@ -1,0 +1,370 @@
+#pragma ident   "%Z%%M% %I% %E% SMI"
+Copyright, 2009 Sun Microsystems Inc. All rights reserved.
+
+Title: iodevice MD Node Specification
+
+Revision History
+----------------------------------------------------------------------
+| Version | Edited By  | Changes
+----------------------------------------------------------------------
+| 1.1     | SEhring    | Initial document creation. Contains MD node
+|         |            | definitions from FWARC cases 2007/070,
+|         |            | 2007/386, and 2008/270
+| 1.2     | PLee       | Updated for FWARC case 2008/761
+| 1.3	  | PLee       | Added the last three properties in 1.1.1.
+----------------------------------------------------------------------
+
+1. iodevice Node Definitions
+
+    1.1 I/O device node
+
+        Name:                   iodevice
+        Category:               optional
+        Required subordinates:  -
+        Optional subordinates:  iodevice, interrupt-map-entry, slot-name,
+                                devalias
+
+        Description:
+
+        This node describes properties necessary to create an I/O device node
+        in the OpenBoot device tree.
+
+        Properties:
+
+    Name              Tag        Req'd? Description
+    ----------------------------------------------------------------------
+    device-type       PROP_STR   Yes  A string type for this node. The 
+                                      remaining properties in the MD node 
+                                      for this device will vary depending 
+                                      on the value of this string. For 
+                                      each specific device-type allowed, 
+                                      the remaining properties are shown 
+                                      below. Current allowed device-type
+                                      values are:
+                                       - pciex
+                                         This value indicates a sun4v root 
+                                         nexus pci express device (Fire ports 
+                                         A and B, N2 PIU, etc.)
+                                       - pcie-root-port
+                                         This value indicates the node is
+                                         a pci express root-port
+                                       - pcie-switch-upstream
+                                         This value indicates the node is
+                                         an upstream port of a pci express
+                                         switch
+                                       - pcie-switch-downstream
+                                         This value indicates the node is
+                                         a downstream  port of a pci express
+                                         switch
+                                       - pcie-pcix-bridge
+                                         This value indicates the node is
+                                         a of pci express to pci-x bridge.
+                                       - pcix-pcix-bridge
+                                         This value indicates the node is
+                                         a of pci-x to pci-x bridge.
+                                       - pci-network
+                                         This value indicates the node is
+                                         a pci-express or pci-x network
+                                         device
+                                       - pci-scsi
+                                         This value indicates the node is
+                                         a pci-express or PCI-x  SCSI adapter
+                                       - pci-generic
+                                         This value indicates the node is
+                                         a pci-express or pci-x device
+    ----------------------------------------------------------------------
+
+
+    1.1.1 Sun4v to PCI Express root nexus device
+
+        The following properties are allowed for device-types that have the 
+        values:
+         - pciex
+
+    ----------------------------------------------------------------------
+    name              PROP_STR   Yes  A string with the value 'pci'. this  
+                                      value is converted to the OpenBoot  
+                                      device tree 'name' property.
+    ----------------------------------------------------------------------
+    compatible        PROP_STR   Yes  A string with the value  
+                                      'SUNW,sun4v-pci'. this value is  
+                                      converted to the OpenBoot device  
+                                      tree 'compatible' property.
+    ----------------------------------------------------------------------
+    cfg-handle        PROP_VAL   Yes  A 64 bit value that is unique to  
+                                      this device on the sun4v bus.
+    ----------------------------------------------------------------------
+    virtual-dma       PROP_DATA  Yes  A pair of 64 bit values which  
+                                      specific the virtual DMA region for  
+                                      this device. This property is  
+                                      converted to the OpenBoot device  
+                                      node 'virtual-dma' property.
+    ----------------------------------------------------------------------
+    msi-address-ranges PROP_DATA Yes  An MSI property as specified in [7]
+    ----------------------------------------------------------------------
+    #msi               PROP_VAL  Yes  An MSI property as specified in [7]
+    ----------------------------------------------------------------------
+    msi-data-mask      PROP_VAL  Yes  An MSI property as specified in [7]
+    ----------------------------------------------------------------------
+    msi-ranges         PROP_DATA Yes  An MSI property as specified in [7]
+    ----------------------------------------------------------------------
+    msi-eq-size        PROP_VAL  Yes  An MSI property as specified in [7]
+    ----------------------------------------------------------------------
+    msix-data-width    PROP_VAL  Yes  An MSI property as specified in [7]
+    ----------------------------------------------------------------------
+    #msi-eqs           PROP_VAL  Yes  An MSI property as specified in [7]
+    ----------------------------------------------------------------------
+    msi-eq-to-devino   PROP_DATA Yes  An MSI property as specified in [7]
+    ----------------------------------------------------------------------
+    bus-ranges         PROP_DATA Yes  A range of PCI bus numbers that this 
+                                      root nexus device can allocate to  
+                                      child PCI devices.
+    ----------------------------------------------------------------------
+    level1-hotplug-slot-count
+                       PROP_VAL  No   A integer which will be converted
+                                      into an OpenBoot encoded integer
+                                      property of the same name
+    ----------------------------------------------------------------------
+    level2-hotplug-slot-count
+                       PROP_VAL  No   A integer which will be converted
+                                      into an OpenBoot encoded integer
+                                      property of the same name
+    ----------------------------------------------------------------------
+    ranges            PROP_DATA  Yes  An array of 7 groups of 64 bit values
+                                      which specify an entry in the sun4v bus
+                                      child device's ranges property. The
+                                      first three values represent the
+                                      child-phys address, the second two
+                                      values represent the parent-phys
+                                      address, and the last two values
+                                      represent the size.
+    ----------------------------------------------------------------------
+    dma-sync-options  PROP_VAL   No   An integer to specify the system
+				      syncing requirement for Solaris.
+    ----------------------------------------------------------------------
+    max-pci-depth     PROP_VAL   No   An integer to specify the allowed maximum
+				      level of pci device tree created by
+				      OpenBoot Prom for the system.
+    ----------------------------------------------------------------------
+    hotplug-memsize   PROP_VAL   No   An integer to specify the allowed maximum
+				      size of PCI MEM32 space used by OpenBoot
+				      to do PCI Hotplug Resource Preallocation
+				      for Solaris in FWARC/2006/198.
+    ----------------------------------------------------------------------
+
+    1.1.2 Generic PCI device properties
+
+        The following properties are allowed for device-types that have the 
+        values:
+         - pcie-switch-upstream
+         - pcie-switch-downstream
+         - pcie-pcix-bridge
+         - pcix-pcix-bridge
+         - pci-network
+         - pci-scsi
+         - pci-generic
+
+    ----------------------------------------------------------------------
+    device-number     PROP_VAL   Yes  The PCI device number for this PCI
+                                      device
+    ----------------------------------------------------------------------
+    function-number   PROP_VAL   Yes  The PCI function number for this PCI
+                                      device
+    ----------------------------------------------------------------------
+
+
+    1.1.3 PCI bridge type device properties
+
+        The following properties are allowed for device-types that have the 
+        values:
+         - pcie-switch-upstream
+         - pcie-switch-downstream
+         - pcie-pcix-bridge
+         - pcix-pcix-bridge
+
+    ----------------------------------------------------------------------
+    #interrupt-cells  PROP_VAL   No   This value will be converted
+                                      into the '#interrupt-cells'
+                                      property.
+                                      The value is the number of 32
+                                      bit integers required for the
+                                      representation of a single
+                                      interrupt specifier for this node. A 
+                                      more complete description of this  
+                                      property can be found in [6]
+    ----------------------------------------------------------------------
+    interrupt-map-mask 
+                     PROP_DATA   No   This array of integers will specify
+                                      the interrupt-map-mask property that
+                                      OpenBoot needs to create in this PCI
+                                      device node. A more complete 
+                                      description of this property can be 
+                                      found in [6]
+    ----------------------------------------------------------------------
+
+
+    1.1.4 PCI slot device properties
+
+        The following properties are allowed for device-types that have the 
+        values:
+         - pcie-switch-downstream
+         - pcie-pcix-bridge
+         - pcix-pcix-bridge
+
+    ----------------------------------------------------------------------
+    slot-present      PROP_VAL   No   The presence of this property means 
+                                      that a PCI slot is present at this
+                                      device/function number.
+    ----------------------------------------------------------------------
+    hotplug-supported  PROP_VAL  No   The presence of this property means 
+                                      that the slot supports PCI
+                                      hotplug.
+    ----------------------------------------------------------------------
+
+
+    1.1.5 PCI network device properties
+
+        The following properties are allowed for device-types that have the 
+        values:
+         - pci-network
+
+    ----------------------------------------------------------------------
+    phy-type          PROP_STR   No   This property will contain a string
+                      that specifies the type of external
+                      physical layer transceiver is
+                      connected to the network device.
+                      The following are the allowed values
+                                      Value:    "xgc"  for 10Gb copper
+                                                "xgf"  for 10Gb fiber
+                                                "mif"  for  1G/100M/10M copper
+                                                "pcs"  for  1Gb fiber
+                                                "xgsd" for  10G SerDes
+                                                "gsd"  for  1G SerDes
+    ----------------------------------------------------------------------
+    mac-addresses     PROP_DATA  No   An array of MAC addresses allocated
+                                      to this network device.
+    ----------------------------------------------------------------------
+
+
+    1.1.6 PCI scsi adapter device properties
+
+        The following properties are allowed for device-types that have the 
+        values:
+         - pci-scsi
+
+    ----------------------------------------------------------------------
+    sas-wwid          PROP_VAL   No   An array of 8 byte SAS WWIDs for 
+                                      this SCSI adapter.
+    ----------------------------------------------------------------------
+
+    1.2 Interrupt mapping node
+
+        Name:                   interrupt-map-entry
+        Category:               optional
+        Required subordinates:  -
+        Optional subordinates:  -
+
+        Description:
+
+        This node describes a hardware interrupt mapping from a child
+        device interrupt domain to a parent device interrupt domain. I/O
+        device nodes may have forward links to these interrupt mapping nodes.
+        Each node will correspond to a line in the device tree 'interrupt-map'
+        property. For more information about the 'interrupt-map' related 
+        properties, please refer to [6].
+
+        As stated in the description of 'parent-device-path' below, if OpenBoot 
+        cannot find the parent interrupt device in the device tree, OpenBoot 
+        must eliminate the device tree node corresponding to the iodevice node 
+        which has the forward arc to the associated interrupt-map-entry node. 
+        The reason for this is that interrupt mappings cannot span accross 
+        multiple domains, so a child interrupt domain must be within the same 
+        logical domain as the parent interrupt domain. To avoid forcing 
+        restrictions on the device probing order, we will have to overlay 
+        interrupt map properties after all devices have been probed.
+
+        Properties:
+
+    Name                Tag    Req'd? Description
+    ---------------------------------------------------------------------------
+        parent-interrupt
+                   PROP_DATA   Yes    An array of integers that
+                                      describes the interrupt
+                                      number in the parent
+                                      interrupt domain.
+    ---------------------------------------------------------------------------
+        child-interrupt
+                   PROP_DATA   Yes    An array of integers that
+                                      describes the interrupt
+                                      number in the child
+                                      interrupt domain.
+    ---------------------------------------------------------------------------
+        child-unit-address
+                   PROP_DATA   Yes    The unit address of the device
+                                      that generates the interrupt
+                                      in the child interrupt domain. There 
+                                      number of integers in this array will be 
+                                      equal to the '#address-cells' for the 
+                                      child device.
+    ---------------------------------------------------------------------------
+        parent-device-path
+                   PROP_STR    Yes    The textual device path of the
+                                      device tree node that serves as
+                                      the parent domain of the interrupt
+                                      mapping. If the parent device that
+                                      is specified by the 'parent-device-path'
+                                      property is not present in the device
+                                      tree, OpenBoot will eliminate the child
+                                      device node from the device tree.
+    ---------------------------------------------------------------------------
+
+    1.3 Slot name node
+
+        Name:                   slot-name
+        Category:               optional
+        Required subordinates:  -
+        Optional subordinates:  -
+
+        Description:
+
+        One of possibly multiple slot names for this node. The properties in
+        this node will become an entry in the OpenBoot 'slot-names' device
+        tree property. Note that this is an optional node, since not all
+        platforms have implemented the 'slot-names' properties for thier PCI
+        slots.
+
+        Properties:
+
+    Name                Tag    Req'd? Description
+    ---------------------------------------------------------------------------
+    slot-names       PROP_STR  Yes    A 'slot-name' entry for the PCI slot MD
+                                      iodevice node which points to this slot
+                                      name MD node
+    ---------------------------------------------------------------------------
+    slot-number      PROP_VAL  Yes    The slot number that is associated with
+                                      the slot-names property of this node.
+    ---------------------------------------------------------------------------
+
+    1.4 Devalias node
+
+        Name:                   devalias
+        Category:               optional
+        Required subordinates:  -
+        Optional subordinates:  -
+
+        Description:
+
+        One of possibly multiple devaliases associated with this node.
+        The properties in this node will become a devalias in OpenBoot.
+
+        Properties:
+
+    Name                Tag    Req'd? Description
+    ---------------------------------------------------------------------------
+    devalias         PROP_STR  Yes    A device alias for the device path
+                                      described by the 'path' property of this
+                                      node
+    ---------------------------------------------------------------------------
+    path             PROP_STR  Yes    The device path which will be aliased to
+                                      the 'devalias' property of this node.
+    ---------------------------------------------------------------------------

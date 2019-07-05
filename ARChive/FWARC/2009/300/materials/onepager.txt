@@ -1,0 +1,152 @@
+Copyright 2009 Sun Microsystems
+
+1. Introduction
+   1.1. Project/Component Working Name:
+        CPU MD node property for real address bits
+
+   1.2. Name of Document Author/Supplier:
+        Bijan Mottahedeh
+
+   1.3. Date of This Document:
+        2009-05-12
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+        1.4.1. The PAC or CPT you expect to review your project:
+               N/A
+
+        1.4.2. The ARC(s) you expect to review your project:
+               FWARC
+
+        1.4.3. The Director/VP who is "Sponsoring" this project:
+               jerriann.meyer@sun.com
+
+        1.4.4. The name of your business unit:
+               Systems
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: john.falkenthal@sun.com
+        1.5.2. Responsible Engineer: bijan.mottahedeh@sun.com
+        1.5.3. Marketing Manager:
+        1.5.4. Interest List: ldoms-memory-dr-iteam@sun.com
+
+2. Project Summary
+   2.1. Project Description:
+        Implement a new optional Machine Description CPU node property
+        to advertise RA bits supported by MMU.
+
+   2.2. Risks and Assumptions:
+
+3. Business Summary
+   3.1. Problem Area:
+        RA limit for a domain should be calculated dynamically based on
+        a MD property.
+
+   3.2. Market/Requester:
+        LDoms engineering.
+
+   3.3. Business Justification:
+        Sun4v Memory DR support.
+
+   3.4. Competitive Analysis:
+
+   3.5. Opportunity Window/Exposure:
+
+   3.6. How will you know when you are done?:
+        The project will be done when the property is implemented
+        according to specification and used by Solaris for sun4v
+        memory DR support.
+
+4. Technical Description:
+
+   4.1 Overview
+
+       Currently, Solaris sun4v calculates RA limit -- the highest RA
+       value for a domain -- based on the highest mblock RA value in
+       the MD.  The Kernel Physical Map (KPM) VA space is then sized
+       and allocated based on the RA limit value.
+
+       This is fine for a static configuration but does not work for
+       memory DR since RA limit should be set to the highest theoretical
+       value rather the highest boot value.  Memory DR also sizes and
+       allocates a DR VA map based on the RA limit value which it then
+       uses to map in/out page_t's for incoming/outgoing memory.
+
+       Sun4u platforms size KPM from constant max values set in platform-
+       specific code.  Sun4v platforms will use the "mmu-#ra-bits" MD
+       property to pass in the #ra bits and calculcate RA limit accordingly.
+
+   4.1.1 CPU node
+
+       The following optional property will be added to the CPU node.
+
+       Property:
+
+       Name          Tag       Req'd?  Description
+       -----------------------------------------------------------------
+       mmu-#ra-bits  PROP_VAL  No      A 64-bit unsigned integer giving
+                                       the number of real address bits
+                                       supported by this virtual CPU. If
+                                       not present, no default value is
+                                       assumed and the max RA value can
+                                       be inferred from the 'mblock'
+                                       nodes.
+
+   4.2 Imported Interfaces:
+
+       Interface            Classification   Comments
+       ================================================================
+       sun4v Machine        Sun Private      MD nodes definitions as
+       Description nodes                     defined by FWARC 2005/115
+
+
+   4.3 Exported Interfaces:
+
+       Interface            Classification   Comments
+       ====================================================================
+       "mmu-#ra-bits"       Sun Private      A CPU node MD property to
+                                             describe the number of real
+                                             address bits supported by
+                                             the CPU.
+
+5. References:
+
+   The "CPU node" was introduced in FWARC 2005/115:
+       http://sac.eng/FWARC/2005/115/final.materials/md-bindings.pdf
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+        Available now.
+
+   6.2. Cost of Effort:
+        N/A
+
+   6.3. Cost of Capital Resources:
+        Negligible (existing bringup systems are adequate)
+
+   6.4. Product Approval Committee requested information:
+        6.4.1. Consolidation or Component Name:
+               SPARC System Firmware (Hypervisor)
+        6.4.3. Type of CPT Review and Approval expected:
+               N/A
+        6.4.4. Project Boundary Conditions:
+               N/A
+        6.4.5. Is this a necessary project for OEM agreements:
+               No
+        6.4.6. Notes:
+        6.4.7. Target RTI Date/Release:
+               Upon FWARC approval.
+        6.4.8. Target Code Design Review Date:
+               Code review for Solaris usage of this property will
+               be conducted prior to Nevada integration.
+        6.4.9. Update approval addition:
+               N/A
+
+   6.5. ARC review type:
+        FastTrack
+
+7. Prototype Availability:
+   7.1. Prototype Availability:
+        Currently available.
+
+   7.2. Prototype Cost:
+        Negligible.

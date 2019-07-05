@@ -1,0 +1,4327 @@
+From sacadmin Mon Nov 30 18:26:12 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB12QCj7027649
+	for <fwarc@sac.sfbay.sun.com>; Mon, 30 Nov 2009 18:26:12 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.4) with ESMTP id nB12QBaK053671
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 30 Nov 2009 19:26:12 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KTY00A07C3NJ100@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 30 Nov 2009 18:26:11 -0800 (PST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KTY00K6DC3NZ7D0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 30 Nov 2009 18:26:11 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nB12QBvO006253	for
+ <fwarc@sun.com>; Mon, 30 Nov 2009 18:26:11 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KTY00I00C2UM700@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 30 Nov 2009 18:26:11 -0800 (PST)
+Received: from [129.153.85.16] ([unknown] [129.153.85.16])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KTY0044UC3M55C0@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 30 Nov 2009 18:26:11 -0800 (PST)
+Date: Mon, 30 Nov 2009 18:26:10 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: fast-track: 2009/655 - Change the semantics of the Sun4v error report
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Jim Quigley <Jim.Quigley@sun.com>, Dan Mahoney <Dan.Mahoney@sun.com>,
+        Scott Davenport <Scott.Davenport@sun.com>,
+        Darrel Donaldson <Darrel.Donaldson@sun.com>
+Message-id: <4B147EC2.1040708@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.23 (X11/20090910)
+Status: RO
+Content-Length: 897
+
+I am sponsoring this case for Jim Quigley.  This case changes the 
+semantics of
+the Sun4v error report ATTR.SP_STATE value.  It adds a new value for the
+case where SP is physically present but is faulted and currently 
+unavailable.
+
+Diffs of the specification are available at,
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2009/655/Materials/hv_sun4v_errorphilosophy-V2.2.txt.diffs
+
+And updated sun4v error philosophy specification at,
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2009/655/Materials/hv_sun4v_errorphilosophy-V2.2.txt
+
+
+The timer is set to next Monday, Dec 7. 2009.
+
+Requested binding is any firmware release
+and minor/micro/patch for OS components.
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Thu Dec  3 13:21:21 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB3LLLbr014975
+	for <fwarc@sac.sfbay.sun.com>; Thu, 3 Dec 2009 13:21:21 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2sca.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nB3LLJNR000519;
+	Thu, 3 Dec 2009 13:21:21 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU300701HZLZT00@brm-avmta-1.central.sun.com>; Thu,
+ 03 Dec 2009 14:21:21 -0700 (MST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU300ADFHZKWWF0@brm-avmta-1.central.sun.com>; Thu,
+ 03 Dec 2009 14:21:20 -0700 (MST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+ by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nB3LLKVM029489;
+ Thu, 03 Dec 2009 13:21:20 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KU300A00HPUVS00@fe-sfbay-10.sun.com>; Thu,
+ 03 Dec 2009 13:21:20 -0800 (PST)
+Received: from [10.40.20.7] ([unknown] [99.169.166.183])
+ by fe-sfbay-10.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KU3009QZHZJEHG0@fe-sfbay-10.sun.com>;
+ Thu, 03 Dec 2009 13:21:20 -0800 (PST)
+Date: Thu, 03 Dec 2009 13:17:40 -0800
+From: Scott Davenport <Scott.Davenport@sun.com>
+Subject: Re: fast-track: 2009/655 - Change the semantics of the Sun4v error
+ report
+In-reply-to: <4B147EC2.1040708@Sun.COM>
+Sender: Scott.Davenport@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Jim Quigley <Jim.Quigley@sun.com>,
+        Dan Mahoney <Dan.Mahoney@sun.com>,
+        Darrel Donaldson <Darrel.Donaldson@sun.com>, anthony.yznagag@sun.com
+Reply-to: Scott.Davenport@sun.com
+Message-id: <1259875060.980.65.camel@prax>
+Organization: Sun Microsystems
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B147EC2.1040708@Sun.COM>
+Status: RO
+Content-Length: 1574
+
+On Mon, 2009-11-30 at 18:26 -0800, Hitendra Zhangada wrote:
+> I am sponsoring this case for Jim Quigley.  This case changes the 
+> semantics of
+> the Sun4v error report ATTR.SP_STATE value.  It adds a new value for the
+> case where SP is physically present but is faulted and currently 
+> unavailable.
+> 
+> Diffs of the specification are available at,
+> 
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2009/655/Materials/hv_sun4v_errorphilosophy-V2.2.txt.diffs
+> 
+> And updated sun4v error philosophy specification at,
+> 
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2009/655/Materials/hv_sun4v_errorphilosophy-V2.2.txt
+> 
+> 
+> The timer is set to next Monday, Dec 7. 2009.
+> 
+> Requested binding is any firmware release
+> and minor/micro/patch for OS components.
+
+A minor change request. There's Solaris FMA code that's about to
+integrate into ONNV (likely tomorow) that interprets 0b0 as a faulted
+SP. Can we change Table 5.2.4-III to be:
+
+	----------------------------------------------------
+ 	Value	Description
+ 	----------------------------------------------------
+	0b00	SP is physically present but is faulted
+		and currently unavailable
+	0b01	SP is available
+        0b10    SP is not physically present in the system
+ 	----------------------------------------------------
+	 Table 5.2.4-III. Service Processor State
+
+(swaps 0b00 and 0b10 semantics)
+
+This way, existing Solaris FMA code remains correct when interpreting
+0b00 as a faulted SP. A future Solaris putback will handle the
+SP-is-absent (0b10) case.
+
+Thanks for your consideration,
+-scott
+
+
+
+From sacadmin Thu Dec  3 13:25:08 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB3LP8RY015059
+	for <fwarc@sac.sfbay.sun.com>; Thu, 3 Dec 2009 13:25:08 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nB3LP70b001912
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 3 Dec 2009 13:25:07 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU300G0DI5VGJ00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 13:25:07 -0800 (PST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU300A8YI5US080@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 13:25:06 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nB3LP614017710	for
+ <fwarc@sun.com>; Thu, 03 Dec 2009 13:25:06 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KU300I00I1OPN00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 13:25:06 -0800 (PST)
+Received: from [10.40.20.7] ([unknown] [99.169.166.183])
+ by fe-sfbay-10.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KU300IZPI5TNA00@fe-sfbay-10.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 13:25:06 -0800 (PST)
+Date: Thu, 03 Dec 2009 13:21:26 -0800
+From: Scott Davenport <Scott.Davenport@sun.com>
+Subject: Re: fast-track: 2009/655 - Change the semantics of the Sun4v error
+ report
+In-reply-to: <4B147EC2.1040708@Sun.COM>
+Sender: Scott.Davenport@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Jim Quigley <Jim.Quigley@sun.com>,
+        Dan Mahoney <Dan.Mahoney@sun.com>,
+        Darrel Donaldson <Darrel.Donaldson@sun.com>, Anthony.Yznaga@sun.com
+Reply-to: Scott.Davenport@sun.com
+Message-id: <1259875286.980.67.camel@prax>
+Organization: Sun Microsystems
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B147EC2.1040708@Sun.COM>
+Status: RO
+Content-Length: 1688
+
+On Mon, 2009-11-30 at 18:26 -0800, Hitendra Zhangada wrote:
+> I am sponsoring this case for Jim Quigley.  This case changes the 
+> semantics of
+> the Sun4v error report ATTR.SP_STATE value.  It adds a new value for the
+> case where SP is physically present but is faulted and currently 
+> unavailable.
+> 
+> Diffs of the specification are available at,
+> 
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2009/655/Materials/hv_sun4v_errorphilosophy-V2.2.txt.diffs
+> 
+> And updated sun4v error philosophy specification at,
+> 
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2009/655/Materials/hv_sun4v_errorphilosophy-V2.2.txt
+> 
+> 
+> The timer is set to next Monday, Dec 7. 2009.
+> 
+> Requested binding is any firmware release
+> and minor/micro/patch for OS components.
+> 
+
+[groan...fixing Anthony's email address]
+
+A minor change request. There's Solaris FMA code that's about to
+integrate into ONNV (likely tomorow) that interprets 0b0 as a faulted
+SP. Can we change Table 5.2.4-III to be:
+
+        ----------------------------------------------------
+        Value   Description
+        ----------------------------------------------------
+        0b00    SP is physically present but is faulted
+                and currently unavailable
+        0b01    SP is available
+        0b10    SP is not physically present in the system
+        ----------------------------------------------------
+         Table 5.2.4-III. Service Processor State
+
+(swaps 0b00 and 0b10 semantics)
+
+This way, existing Solaris FMA code remains correct when interpreting
+0b00 as a faulted SP. A future Solaris putback will handle the
+SP-is-absent (0b10) case.
+
+Thanks for your consideration,
+-scott
+
+
+
+
+From sacadmin Thu Dec  3 14:17:11 2009
+Received: from sunmail6brm.central.sun.com (sunmail6brm.Central.Sun.COM [129.147.4.169])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB3MHBMg016436
+	for <fwarc@sac.sfbay.sun.com>; Thu, 3 Dec 2009 14:17:11 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail6brm.central.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nB3MHAgJ007378
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 3 Dec 2009 16:17:10 -0600 (CST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU300401KKM5N00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 14:17:10 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU300NSQKKM1V10@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 14:17:10 -0800 (PST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nB3MHAFq005661	for
+ <fwarc@sun.com>; Thu, 03 Dec 2009 14:17:10 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KU300J00KF7N600@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 14:17:10 -0800 (PST)
+Received: from [129.150.33.103] ([unknown] [129.150.33.103])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KU30098HKKK6S40@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 14:17:09 -0800 (PST)
+Date: Thu, 03 Dec 2009 14:17:09 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: fast-track: 2009/655 - Change the semantics of the Sun4v error
+ report
+In-reply-to: <1259875286.980.67.camel@prax>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Scott.Davenport@Sun.COM
+Cc: Firmware Arch <fwarc@Sun.COM>, Jim Quigley <Jim.Quigley@Sun.COM>,
+        Dan Mahoney <Dan.Mahoney@Sun.COM>,
+        Darrel Donaldson <Darrel.Donaldson@Sun.COM>, Anthony.Yznaga@Sun.COM
+Message-id: <4B1838E5.1040803@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_sVLJvcIMbTpPJ3oFZ5pD2A)"
+X-PMX-Version: 5.4.1.325704
+References: <4B147EC2.1040708@Sun.COM> <1259875286.980.67.camel@prax>
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+Status: RO
+Content-Length: 7044
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_sVLJvcIMbTpPJ3oFZ5pD2A)
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+
+Scott Davenport wrote:
+> On Mon, 2009-11-30 at 18:26 -0800, Hitendra Zhangada wrote:
+>   
+>> I am sponsoring this case for Jim Quigley.  This case changes the 
+>> semantics of
+>> the Sun4v error report ATTR.SP_STATE value.  It adds a new value for the
+>> case where SP is physically present but is faulted and currently 
+>> unavailable.
+>>
+>> Diffs of the specification are available at,
+>>
+>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2009/655/Materials/hv_sun4v_errorphilosophy-V2.2.txt.diffs
+>>
+>> And updated sun4v error philosophy specification at,
+>>
+>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2009/655/Materials/hv_sun4v_errorphilosophy-V2.2.txt
+>>
+>>
+>> The timer is set to next Monday, Dec 7. 2009.
+>>
+>> Requested binding is any firmware release
+>> and minor/micro/patch for OS components.
+>>
+>>     
+>
+> [groan...fixing Anthony's email address]
+>
+> A minor change request. There's Solaris FMA code that's about to
+> integrate into ONNV (likely tomorow) that interprets 0b0 as a faulted
+> SP. Can we change Table 5.2.4-III to be:
+>
+>   
+
+It seems to me that Solaris FMA code treats SP not available as faulty SP
+which seems incorrect.  Is base Solaris code using this bit in any 
+particular way?
+
+In OpenBoot, this bits are not used in RE gate but is used in RF gate.
+The changes are easy and can be made in OpenBoot but my concern is Solaris.
+
+HV changes are also in the gate (which can be changed again if we go 
+with what
+you are proposing).
+
+I will leave it up to Jim to decide what he want to do about this but my 
+preference
+is to not change what is proposed in the ARC case.  Value of 0b00 has 
+been SP
+unavailable and that is not changing with this case.  What you are 
+suggesting is a bigger
+change. We should not make that change without knowing potential side 
+effects.
+
+Is is possible to make one quick change in FMA code (technically we can 
+not make
+that change until ARC case is approved on Monday)?
+
+
+
+>         ----------------------------------------------------
+>         Value   Description
+>         ----------------------------------------------------
+>         0b00    SP is physically present but is faulted
+>                 and currently unavailable
+>         0b01    SP is available
+>         0b10    SP is not physically present in the system
+>         ----------------------------------------------------
+>          Table 5.2.4-III. Service Processor State
+>
+> (swaps 0b00 and 0b10 semantics)
+>
+> This way, existing Solaris FMA code remains correct when interpreting
+> 0b00 as a faulted SP. A future Solaris putback will handle the
+> SP-is-absent (0b10) case.
+>
+> Thanks for your consideration,
+> -scott
+>
+>
+>
+>   
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_sVLJvcIMbTpPJ3oFZ5pD2A)
+Content-type: text/html; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+Scott Davenport wrote:
+<blockquote cite="mid:1259875286.980.67.camel@prax" type="cite">
+  <pre wrap="">On Mon, 2009-11-30 at 18:26 -0800, Hitendra Zhangada wrote:
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">I am sponsoring this case for Jim Quigley.  This case changes the 
+semantics of
+the Sun4v error report ATTR.SP_STATE value.  It adds a new value for the
+case where SP is physically present but is faulted and currently 
+unavailable.
+
+Diffs of the specification are available at,
+
+<a class="moz-txt-link-freetext" href="http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2009/655/Materials/hv_sun4v_errorphilosophy-V2.2.txt.diffs">http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2009/655/Materials/hv_sun4v_errorphilosophy-V2.2.txt.diffs</a>
+
+And updated sun4v error philosophy specification at,
+
+<a class="moz-txt-link-freetext" href="http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2009/655/Materials/hv_sun4v_errorphilosophy-V2.2.txt">http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2009/655/Materials/hv_sun4v_errorphilosophy-V2.2.txt</a>
+
+
+The timer is set to next Monday, Dec 7. 2009.
+
+Requested binding is any firmware release
+and minor/micro/patch for OS components.
+
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+[groan...fixing Anthony's email address]
+
+A minor change request. There's Solaris FMA code that's about to
+integrate into ONNV (likely tomorow) that interprets 0b0 as a faulted
+SP. Can we change Table 5.2.4-III to be:
+
+  </pre>
+</blockquote>
+<br>
+It seems to me that Solaris FMA code treats SP not available as faulty
+SP<br>
+which seems incorrect.&nbsp; Is base Solaris code using this bit in any
+particular way?<br>
+<br>
+In OpenBoot, this bits are not used in RE gate but is used in RF gate.<br>
+The changes are easy and can be made in OpenBoot but my concern is
+Solaris.<br>
+<br>
+HV changes are also in the gate (which can be changed again if we go
+with what<br>
+you are proposing).<br>
+<br>
+I will leave it up to Jim to decide what he want to do about this but
+my preference<br>
+is to not change what is proposed in the ARC case.&nbsp; Value of 0b00 has
+been SP<br>
+unavailable and that is not changing with this case.&nbsp; What you are
+suggesting is a bigger<br>
+change. We should not make that change without knowing potential side
+effects.<br>
+<br>
+Is is possible to make one quick change in FMA code (technically we can
+not make<br>
+that change until ARC case is approved on Monday)?<br>
+<br>
+<br>
+<br>
+<blockquote cite="mid:1259875286.980.67.camel@prax" type="cite">
+  <pre wrap="">        ----------------------------------------------------
+        Value   Description
+        ----------------------------------------------------
+        0b00    SP is physically present but is faulted
+                and currently unavailable
+        0b01    SP is available
+        0b10    SP is not physically present in the system
+        ----------------------------------------------------
+         Table 5.2.4-III. Service Processor State
+
+(swaps 0b00 and 0b10 semantics)
+
+This way, existing Solaris FMA code remains correct when interpreting
+0b00 as a faulted SP. A future Solaris putback will handle the
+SP-is-absent (0b10) case.
+
+Thanks for your consideration,
+-scott
+
+
+
+  </pre>
+</blockquote>
+<br>
+<br>
+<pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_sVLJvcIMbTpPJ3oFZ5pD2A)--
+
+From sacadmin Thu Dec  3 14:34:18 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB3MYIsr016959
+	for <fwarc@sac.sfbay.sun.com>; Thu, 3 Dec 2009 14:34:18 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.4) with ESMTP id nB3MYHcT063746
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 3 Dec 2009 15:34:18 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU300713LD5O500@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 14:34:17 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU300NRMLD31V20@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 14:34:15 -0800 (PST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nB3MYFon007265	for
+ <fwarc@sun.com>; Thu, 03 Dec 2009 14:34:15 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KU300I00LC6AU00@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 14:34:15 -0800 (PST)
+Received: from [10.40.20.7] ([unknown] [99.169.166.183])
+ by fe-sfbay-09.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KU3009LNLD26SA0@fe-sfbay-09.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 14:34:15 -0800 (PST)
+Date: Thu, 03 Dec 2009 14:30:35 -0800
+From: Scott Davenport <Scott.Davenport@sun.com>
+Subject: Re: fast-track: 2009/655 - Change the semantics of the Sun4v error
+ report
+In-reply-to: <4B1838E5.1040803@sun.com>
+Sender: Scott.Davenport@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Jim Quigley <Jim.Quigley@sun.com>,
+        Dan Mahoney <Dan.Mahoney@sun.com>,
+        Darrel Donaldson <Darrel.Donaldson@sun.com>, Anthony.Yznaga@sun.com
+Reply-to: Scott.Davenport@sun.com
+Message-id: <1259879435.980.151.camel@prax>
+Organization: Sun Microsystems
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B147EC2.1040708@Sun.COM> <1259875286.980.67.camel@prax>
+ <4B1838E5.1040803@sun.com>
+Status: RO
+Content-Length: 4231
+
+On Thu, 2009-12-03 at 14:17 -0800, Hitendra Zhangada wrote:
+> Scott Davenport wrote: 
+> > On Mon, 2009-11-30 at 18:26 -0800, Hitendra Zhangada wrote:
+> >   
+> > > I am sponsoring this case for Jim Quigley.  This case changes the 
+> > > semantics of
+> > > the Sun4v error report ATTR.SP_STATE value.  It adds a new value for the
+> > > case where SP is physically present but is faulted and currently 
+> > > unavailable.
+> > > 
+> > > Diffs of the specification are available at,
+> > > 
+> > > http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2009/655/Materials/hv_sun4v_errorphilosophy-V2.2.txt.diffs
+> > > 
+> > > And updated sun4v error philosophy specification at,
+> > > 
+> > > http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2009/655/Materials/hv_sun4v_errorphilosophy-V2.2.txt
+> > > 
+> > > 
+> > > The timer is set to next Monday, Dec 7. 2009.
+> > > 
+> > > Requested binding is any firmware release
+> > > and minor/micro/patch for OS components.
+> > > 
+> > >     
+> > 
+> > [groan...fixing Anthony's email address]
+> > 
+> > A minor change request. There's Solaris FMA code that's about to
+> > integrate into ONNV (likely tomorow) that interprets 0b0 as a faulted
+> > SP. Can we change Table 5.2.4-III to be:
+> > 
+> >   
+> 
+> It seems to me that Solaris FMA code treats SP not available as faulty
+> SP
+> which seems incorrect.  Is base Solaris code using this bit in any
+> particular way?
+
+The area of Solaris using this bit is in the sun4v trap handler. The
+changes have been done specifically so Solaris FMA can message a
+failed SP. At present, this code only exists in the RF gate. But that
+gate is long locked - putback is imminent.
+
+I am not aware of any other Solaris code using this bit.
+
+> In OpenBoot, this bits are not used in RE gate but is used in RF gate.
+> The changes are easy and can be made in OpenBoot but my concern is
+> Solaris.
+> 
+> HV changes are also in the gate (which can be changed again if we go
+> with what
+> you are proposing).
+> 
+> I will leave it up to Jim to decide what he want to do about this but
+> my preference
+> is to not change what is proposed in the ARC case.  Value of 0b00 has
+> been SP
+> unavailable and that is not changing with this case.  
+
+To me, it does look like it's changing. Unavailable doesn't 
+necessarily equate to physically absent. The existing wording is
+vague - could mean the SP is dead, could mean it's absent. Both
+constitute unavailable.
+
+The definition is being refined by this case. I'm suggesting
+refining 0b00 to mean the SP is unavailable because it's failed.
+Or to use the case's wording "SP is physically present but is faulted
+and currently unavailable". (Note that 'unavailable' word again :)
+
+> What you are suggesting is a bigger
+> change. We should not make that change without knowing potential side
+> effects.
+> 
+> Is is possible to make one quick change in FMA code (technically we
+> can not make
+> that change until ARC case is approved on Monday)?
+
+Of course, this is possible. But it will happen after the initial RF
+integration. This isn't big enough to derail the rest of the RF
+putback. A bug fix will get some more scrutiny as the Solaris gates
+are tightening (readying for the next OpenSolaris release).
+
+Thanks,
+-scott
+
+> 
+> 
+> > ----------------------------------------------------
+> >         Value   Description
+> >         ----------------------------------------------------
+> >         0b00    SP is physically present but is faulted
+> >                 and currently unavailable
+> >         0b01    SP is available
+> >         0b10    SP is not physically present in the system
+> >         ----------------------------------------------------
+> >          Table 5.2.4-III. Service Processor State
+> > 
+> > (swaps 0b00 and 0b10 semantics)
+> > 
+> > This way, existing Solaris FMA code remains correct when interpreting
+> > 0b00 as a faulted SP. A future Solaris putback will handle the
+> > SP-is-absent (0b10) case.
+> > 
+> > Thanks for your consideration,
+> > -scott
+> > 
+> > 
+> > 
+> >   
+> 
+> 
+> -- 
+> Hitendra Zhangada
+> =============================================
+> SPS Common SW Features Engineering
+> Systems Group, Sun Microsystems, Inc.
+> Work Ph# (858) 625 3757, Ext. x53757
+> SUN Internal homepage http://esp.west/~hitu
+
+
+
+From sacadmin Thu Dec  3 15:30:12 2009
+Received: from sunmail6brm.central.sun.com (sunmail6brm.Central.Sun.COM [129.147.4.169])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB3NUC7W018080
+	for <fwarc@sac.sfbay.sun.com>; Thu, 3 Dec 2009 15:30:12 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail6brm.central.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nB3NU92H018481
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 3 Dec 2009 17:30:12 -0600 (CST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU300J0NNYBI200@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 15:30:11 -0800 (PST)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU300NQENYA1V60@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 15:30:11 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4)
+ with ESMTP id nB3NU8q3006221; Thu, 03 Dec 2009 15:30:08 -0800 (PST)
+Received: from [192.168.0.39] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id nB3NU7Ep012715; Thu,
+ 03 Dec 2009 15:30:07 -0800 (PST)
+Date: Thu, 03 Dec 2009 15:30:11 -0800
+From: David Kahn <David.Kahn@Sun.COM>
+Subject: Re: fast-track: 2009/655 - Change the semantics of the Sun4v error
+ report
+To: Scott Davenport <Scott.Davenport@Sun.COM>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+        Firmware Arch <fwarc@Sun.COM>, Jim Quigley <Jim.Quigley@Sun.COM>,
+        Dan Mahoney <Dan.Mahoney@Sun.COM>,
+        Darrel Donaldson <Darrel.Donaldson@Sun.COM>, Anthony.Yznaga@Sun.COM
+Message-id: <4B184A03.20003@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+Status: RO
+Content-Length: 1028
+
+
+So we can't change/fix this because a putback that
+is based on the approval of this case is imminent?
+
+Am I the only that sees a problem with that? :)
+
+Nonetheless ...
+
+
+We should do the right thing. Changing b0 so it's
+different from the original definition (sp unavailable)
+is not a good idea if code has already been delivered
+outside of Sun that relies on that (possibly vague)
+definition and will break if we change it to mean
+unavailable and failed.
+
+The old definition just said "unavailable" it did
+not say "unavailable and failed". I don't know why
+we would have interpreted it as unavailable and failed,
+but if all consumers of that interface did interpret it
+that way, or it's benign in the way they did interpret it,
+I guess it's ok to make that change, provided there's an
+explanation of that in the materials.
+
+After your first email, I assumed that it was benign to make
+the change.
+
+If that assumption is not correct, we'll need to reevaluate.
+
+Is there anybody else that we need to hear from, Scott?
+
+-David
+
+
+
+From sacadmin Thu Dec  3 15:45:21 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB3NjL5N018227
+	for <fwarc@sac.sfbay.sun.com>; Thu, 3 Dec 2009 15:45:21 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail2sca.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nB3NjLmd004770
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 3 Dec 2009 15:45:21 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU300107ONL6100@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 15:45:21 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU300GIFONLZU80@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 15:45:21 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nB3NjL2C013765	for
+ <fwarc@sun.com>; Thu, 03 Dec 2009 15:45:21 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KU300800OE86T00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 15:45:21 -0800 (PST)
+Received: from [10.40.20.7] ([unknown] [99.169.166.183])
+ by fe-sfbay-10.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KU3009FTON9S0G0@fe-sfbay-10.sun.com>;
+ Thu, 03 Dec 2009 15:45:18 -0800 (PST)
+Date: Thu, 03 Dec 2009 15:41:29 -0800
+From: Scott Davenport <Scott.Davenport@Sun.COM>
+Subject: Re: fast-track: 2009/655 - Change the semantics of the Sun4v error
+ report
+In-reply-to: <4B184A03.20003@sun.com>
+Sender: Scott.Davenport@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+        Firmware Arch <fwarc@Sun.COM>, Jim Quigley <Jim.Quigley@Sun.COM>,
+        Dan Mahoney <Dan.Mahoney@Sun.COM>,
+        Darrel Donaldson <Darrel.Donaldson@Sun.COM>, Anthony.Yznaga@Sun.COM
+Reply-to: Scott.Davenport@Sun.COM
+Message-id: <1259883689.3389.9.camel@prax>
+Organization: Sun Microsystems
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B184A03.20003@sun.com>
+Status: RO
+Content-Length: 1659
+
+On Thu, 2009-12-03 at 15:30 -0800, David Kahn wrote:
+> So we can't change/fix this because a putback that
+> is based on the approval of this case is imminent?
+
+Not contingent on the approval of this case. The
+Solaris code in question is based on FWARC/2009/070.
+
+> Am I the only that sees a problem with that? :)
+> 
+> Nonetheless ...
+> 
+> 
+> We should do the right thing. Changing b0 so it's
+> different from the original definition (sp unavailable)
+> is not a good idea if code has already been delivered
+> outside of Sun that relies on that (possibly vague)
+> definition and will break if we change it to mean
+> unavailable and failed.
+>
+> The old definition just said "unavailable" it did
+> not say "unavailable and failed". I don't know why
+> we would have interpreted it as unavailable and failed,
+> but if all consumers of that interface did interpret it
+> that way, or it's benign in the way they did interpret it,
+> I guess it's ok to make that change, provided there's an
+> explanation of that in the materials.
+
+The interpretation derived from the initial reasons for 
+adding information on SP state - the desire to have FMA 
+message a faulted SP. 
+
+> After your first email, I assumed that it was benign to make
+> the change.
+> 
+> If that assumption is not correct, we'll need to reevaluate.
+> 
+> Is there anybody else that we need to hear from, Scott?
+
+Anthony - can you weigh in on how quickly a Solaris bug
+fix can integrate so the trap handler keys off of 0b10
+instead of 0b0? Something that can be turned for the
+next ONNV build? I see the coding as trivial, more concerned
+about process. But if this isn't a big deal, I'll shut up.
+
+-scott
+
+
+
+From sacadmin Thu Dec  3 15:58:59 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB3NwxoJ018807
+	for <fwarc@sac.sfbay.sun.com>; Thu, 3 Dec 2009 15:58:59 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2sca.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nB3NwwOe009817
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 3 Dec 2009 15:58:59 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU300103PAAFA00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 16:58:58 -0700 (MST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU30001VPA91720@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 16:58:58 -0700 (MST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nB3Nwvgg014861	for
+ <fwarc@sun.com>; Thu, 03 Dec 2009 15:58:57 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KU300L00P2SSB00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 15:58:57 -0800 (PST)
+Received: from [192.168.1.3] ([unknown] [68.6.248.164])
+ by fe-sfbay-10.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KU300ECRPA87J30@fe-sfbay-10.sun.com>;
+ Thu, 03 Dec 2009 15:58:57 -0800 (PST)
+Date: Thu, 03 Dec 2009 15:58:56 -0800
+From: Anthony Yznaga <Anthony.Yznaga@sun.com>
+Subject: Re: fast-track: 2009/655 - Change the semantics of the Sun4v error
+ report
+In-reply-to: <1259883689.3389.9.camel@prax>
+Sender: Anthony.Yznaga@sun.com
+To: Scott.Davenport@sun.com
+Cc: David Kahn <David.Kahn@sun.com>,
+        Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware Arch <fwarc@sun.com>, Jim Quigley <Jim.Quigley@sun.com>,
+        Dan Mahoney <Dan.Mahoney@sun.com>,
+        Jim Anderson <James.Anderson@sun.com>,
+        Darrel Donaldson <Darrel.Donaldson@sun.com>
+Message-id: <80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.1077)
+Content-type: text/plain; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B184A03.20003@sun.com> <1259883689.3389.9.camel@prax>
+Status: RO
+Content-Length: 1908
+
+
+On Dec 3, 2009, at 3:41 PM, Scott Davenport wrote:
+
+> On Thu, 2009-12-03 at 15:30 -0800, David Kahn wrote:
+>> So we can't change/fix this because a putback that
+>> is based on the approval of this case is imminent?
+> 
+> Not contingent on the approval of this case. The
+> Solaris code in question is based on FWARC/2009/070.
+> 
+>> Am I the only that sees a problem with that? :)
+>> 
+>> Nonetheless ...
+>> 
+>> 
+>> We should do the right thing. Changing b0 so it's
+>> different from the original definition (sp unavailable)
+>> is not a good idea if code has already been delivered
+>> outside of Sun that relies on that (possibly vague)
+>> definition and will break if we change it to mean
+>> unavailable and failed.
+>> 
+>> The old definition just said "unavailable" it did
+>> not say "unavailable and failed". I don't know why
+>> we would have interpreted it as unavailable and failed,
+>> but if all consumers of that interface did interpret it
+>> that way, or it's benign in the way they did interpret it,
+>> I guess it's ok to make that change, provided there's an
+>> explanation of that in the materials.
+> 
+> The interpretation derived from the initial reasons for 
+> adding information on SP state - the desire to have FMA 
+> message a faulted SP. 
+> 
+>> After your first email, I assumed that it was benign to make
+>> the change.
+>> 
+>> If that assumption is not correct, we'll need to reevaluate.
+>> 
+>> Is there anybody else that we need to hear from, Scott?
+> 
+> Anthony - can you weigh in on how quickly a Solaris bug
+> fix can integrate so the trap handler keys off of 0b10
+> instead of 0b0? Something that can be turned for the
+> next ONNV build? I see the coding as trivial, more concerned
+> about process. But if this isn't a big deal, I'll shut up.
+
+This is something that could be turned around quickly though not before RF integration if it integrates on Monday.
+
+Anthony
+
+
+> 
+> -scott
+> 
+> 
+
+
+From sacadmin Thu Dec  3 16:15:45 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB40Fi8W019233
+	for <fwarc@sac.sfbay.sun.com>; Thu, 3 Dec 2009 16:15:45 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.4) with ESMTP id nB40Fh1F063598
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 3 Dec 2009 17:15:44 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU30030FQ287O00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 16:15:44 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU300H0GQ2701C0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 16:15:43 -0800 (PST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nB40FhPW016314	for
+ <fwarc@sun.com>; Thu, 03 Dec 2009 16:15:43 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KU300300PWXCD00@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 16:15:43 -0800 (PST)
+Received: from [10.40.20.7] ([unknown] [99.169.166.183])
+ by fe-sfbay-09.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KU300JTIQ21UUA0@fe-sfbay-09.sun.com>;
+ Thu, 03 Dec 2009 16:15:38 -0800 (PST)
+Date: Thu, 03 Dec 2009 16:11:56 -0800
+From: Scott Davenport <Scott.Davenport@sun.com>
+Subject: Re: fast-track: 2009/655 - Change the semantics of the Sun4v error
+ report
+In-reply-to: <80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM>
+Sender: Scott.Davenport@sun.com
+To: Anthony Yznaga <Anthony.Yznaga@sun.com>
+Cc: David Kahn <David.Kahn@sun.com>,
+        Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware Arch <fwarc@sun.com>, Jim Quigley <Jim.Quigley@sun.com>,
+        Dan Mahoney <Dan.Mahoney@sun.com>,
+        Jim Anderson <James.Anderson@sun.com>,
+        Darrel Donaldson <Darrel.Donaldson@sun.com>
+Reply-to: Scott.Davenport@sun.com
+Message-id: <1259885516.3389.14.camel@prax>
+Organization: Sun Microsystems
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B184A03.20003@sun.com> <1259883689.3389.9.camel@prax>
+ <80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM>
+Status: RO
+Content-Length: 2409
+
+On Thu, 2009-12-03 at 15:58 -0800, Anthony Yznaga wrote:
+> On Dec 3, 2009, at 3:41 PM, Scott Davenport wrote:
+> 
+> > On Thu, 2009-12-03 at 15:30 -0800, David Kahn wrote:
+> >> So we can't change/fix this because a putback that
+> >> is based on the approval of this case is imminent?
+> > 
+> > Not contingent on the approval of this case. The
+> > Solaris code in question is based on FWARC/2009/070.
+> > 
+> >> Am I the only that sees a problem with that? :)
+> >> 
+> >> Nonetheless ...
+> >> 
+> >> 
+> >> We should do the right thing. Changing b0 so it's
+> >> different from the original definition (sp unavailable)
+> >> is not a good idea if code has already been delivered
+> >> outside of Sun that relies on that (possibly vague)
+> >> definition and will break if we change it to mean
+> >> unavailable and failed.
+> >> 
+> >> The old definition just said "unavailable" it did
+> >> not say "unavailable and failed". I don't know why
+> >> we would have interpreted it as unavailable and failed,
+> >> but if all consumers of that interface did interpret it
+> >> that way, or it's benign in the way they did interpret it,
+> >> I guess it's ok to make that change, provided there's an
+> >> explanation of that in the materials.
+> > 
+> > The interpretation derived from the initial reasons for 
+> > adding information on SP state - the desire to have FMA 
+> > message a faulted SP. 
+> > 
+> >> After your first email, I assumed that it was benign to make
+> >> the change.
+> >> 
+> >> If that assumption is not correct, we'll need to reevaluate.
+> >> 
+> >> Is there anybody else that we need to hear from, Scott?
+> > 
+> > Anthony - can you weigh in on how quickly a Solaris bug
+> > fix can integrate so the trap handler keys off of 0b10
+> > instead of 0b0? Something that can be turned for the
+> > next ONNV build? I see the coding as trivial, more concerned
+> > about process. But if this isn't a big deal, I'll shut up.
+> 
+> This is something that could be turned around quickly though not before RF integration if it integrates on Monday.
+
+Ok. So there's a window where Solaris will interpret things wrong,
+but it's a small window. Since the HV that provides the epkt won't be in
+customer hands until RF ships, we have time to fix it. Need to do
+it quickly in ONNV so the changes will be part of the U9 backport.
+Was hoping to avoid an extra Solaris fix, but so it goes.
+
+All right....I'll formally shut up now.
+-scott
+
+
+From sacadmin Thu Dec  3 16:16:50 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB40Go0i019311
+	for <fwarc@sac.sfbay.sun.com>; Thu, 3 Dec 2009 16:16:50 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.4) with ESMTP id nB40GoXM064324
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 3 Dec 2009 17:16:50 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU300305Q41A700@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 16:16:49 -0800 (PST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU300GHFQ41ZZA0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 16:16:49 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nB40GnxU002677	for
+ <fwarc@sun.com>; Thu, 03 Dec 2009 16:16:49 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KU300H00Q0JM800@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 16:16:49 -0800 (PST)
+Received: from [129.153.85.9] ([unknown] [129.153.85.9])
+ by fe-sfbay-10.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KU300FSVQ3IV940@fe-sfbay-10.sun.com>;
+ Thu, 03 Dec 2009 16:16:32 -0800 (PST)
+Date: Thu, 03 Dec 2009 16:16:30 -0800
+From: James.Anderson@Sun.COM
+Subject: Re: fast-track: 2009/655 - Change the semantics of the Sun4v error
+ report
+In-reply-to: <80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM>
+Sender: James.Anderson@Sun.COM
+To: Anthony Yznaga <Anthony.Yznaga@Sun.COM>
+Cc: Scott.Davenport@Sun.COM, David Kahn <David.Kahn@Sun.COM>,
+        Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+        Firmware Arch <fwarc@Sun.COM>, Jim Quigley <Jim.Quigley@Sun.COM>,
+        Dan Mahoney <Dan.Mahoney@Sun.COM>,
+        Darrel Donaldson <Darrel.Donaldson@Sun.COM>
+Message-id: <4B1854DE.30904@Sun.COM>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_Zji9QuFFY9T2Xa3UyN/JvA)"
+X-PMX-Version: 5.4.1.325704
+References: <4B184A03.20003@sun.com> <1259883689.3389.9.camel@prax>
+ <80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM>
+User-Agent: Thunderbird 2.0.0.23 (X11/20090910)
+Status: RO
+Content-Length: 5437
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_Zji9QuFFY9T2Xa3UyN/JvA)
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+
+On 12/03/09 15:58, Anthony Yznaga wrote:
+> On Dec 3, 2009, at 3:41 PM, Scott Davenport wrote:
+>
+>   
+>> On Thu, 2009-12-03 at 15:30 -0800, David Kahn wrote:
+>>     
+>>> So we can't change/fix this because a putback that
+>>> is based on the approval of this case is imminent?
+>>>       
+>> Not contingent on the approval of this case. The
+>> Solaris code in question is based on FWARC/2009/070.
+>>
+>>     
+>>> Am I the only that sees a problem with that? :)
+>>>
+>>> Nonetheless ...
+>>>
+>>>
+>>> We should do the right thing. Changing b0 so it's
+>>> different from the original definition (sp unavailable)
+>>> is not a good idea if code has already been delivered
+>>> outside of Sun that relies on that (possibly vague)
+>>> definition and will break if we change it to mean
+>>> unavailable and failed.
+>>>
+>>> The old definition just said "unavailable" it did
+>>> not say "unavailable and failed". I don't know why
+>>> we would have interpreted it as unavailable and failed,
+>>> but if all consumers of that interface did interpret it
+>>> that way, or it's benign in the way they did interpret it,
+>>> I guess it's ok to make that change, provided there's an
+>>> explanation of that in the materials.
+>>>       
+>> The interpretation derived from the initial reasons for 
+>> adding information on SP state - the desire to have FMA 
+>> message a faulted SP. 
+>>
+>>     
+>>> After your first email, I assumed that it was benign to make
+>>> the change.
+>>>
+>>> If that assumption is not correct, we'll need to reevaluate.
+>>>
+>>> Is there anybody else that we need to hear from, Scott?
+>>>       
+>> Anthony - can you weigh in on how quickly a Solaris bug
+>> fix can integrate so the trap handler keys off of 0b10
+>> instead of 0b0? Something that can be turned for the
+>> next ONNV build? I see the coding as trivial, more concerned
+>> about process. But if this isn't a big deal, I'll shut up.
+>>     
+>
+> This is something that could be turned around quickly though not before RF integration if it integrates on Monday.
+>
+>   
+
+Rainbow Falls is planning to integrate to Nevada build 131 next Tues/Wed.
+
+-jim
+
+
+
+
+> Anthony
+>
+>
+>   
+>> -scott
+>>
+>>
+>>     
+>
+>   
+
+
+--Boundary_(ID_Zji9QuFFY9T2Xa3UyN/JvA)
+Content-type: text/html; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+  <title></title>
+</head>
+<body bgcolor="#ffffff" text="#000000">
+On 12/03/09 15:58, Anthony Yznaga wrote:
+<blockquote cite="mid:80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM"
+ type="cite">
+  <pre wrap="">On Dec 3, 2009, at 3:41 PM, Scott Davenport wrote:
+
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">On Thu, 2009-12-03 at 15:30 -0800, David Kahn wrote:
+    </pre>
+    <blockquote type="cite">
+      <pre wrap="">So we can't change/fix this because a putback that
+is based on the approval of this case is imminent?
+      </pre>
+    </blockquote>
+    <pre wrap="">Not contingent on the approval of this case. The
+Solaris code in question is based on FWARC/2009/070.
+
+    </pre>
+    <blockquote type="cite">
+      <pre wrap="">Am I the only that sees a problem with that? :)
+
+Nonetheless ...
+
+
+We should do the right thing. Changing b0 so it's
+different from the original definition (sp unavailable)
+is not a good idea if code has already been delivered
+outside of Sun that relies on that (possibly vague)
+definition and will break if we change it to mean
+unavailable and failed.
+
+The old definition just said "unavailable" it did
+not say "unavailable and failed". I don't know why
+we would have interpreted it as unavailable and failed,
+but if all consumers of that interface did interpret it
+that way, or it's benign in the way they did interpret it,
+I guess it's ok to make that change, provided there's an
+explanation of that in the materials.
+      </pre>
+    </blockquote>
+    <pre wrap="">The interpretation derived from the initial reasons for 
+adding information on SP state - the desire to have FMA 
+message a faulted SP. 
+
+    </pre>
+    <blockquote type="cite">
+      <pre wrap="">After your first email, I assumed that it was benign to make
+the change.
+
+If that assumption is not correct, we'll need to reevaluate.
+
+Is there anybody else that we need to hear from, Scott?
+      </pre>
+    </blockquote>
+    <pre wrap="">Anthony - can you weigh in on how quickly a Solaris bug
+fix can integrate so the trap handler keys off of 0b10
+instead of 0b0? Something that can be turned for the
+next ONNV build? I see the coding as trivial, more concerned
+about process. But if this isn't a big deal, I'll shut up.
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+This is something that could be turned around quickly though not before RF integration if it integrates on Monday.
+
+  </pre>
+</blockquote>
+<br>
+Rainbow Falls is planning to integrate to Nevada build 131 next
+Tues/Wed.<br>
+<br>
+-jim<br>
+<br>
+<br>
+<br>
+<br>
+<blockquote cite="mid:80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM"
+ type="cite">
+  <pre wrap="">Anthony
+
+
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">-scott
+
+
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+  </pre>
+</blockquote>
+<br>
+</body>
+</html>
+
+--Boundary_(ID_Zji9QuFFY9T2Xa3UyN/JvA)--
+
+From sacadmin Thu Dec  3 16:33:17 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB40XHpx019495
+	for <fwarc@sac.sfbay.sun.com>; Thu, 3 Dec 2009 16:33:17 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail2sca.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nB40XHDe023179
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 3 Dec 2009 16:33:17 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU30040LQVHF700@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 16:33:17 -0800 (PST)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU300GCOQVGZRB0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 16:33:16 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4)
+ with ESMTP id nB40XEu1010558; Thu, 03 Dec 2009 16:33:14 -0800 (PST)
+Received: from [192.168.0.39] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id nB40XD3t018483; Thu,
+ 03 Dec 2009 16:33:13 -0800 (PST)
+Date: Thu, 03 Dec 2009 16:33:17 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: fast-track: 2009/655 - Change the semantics of the Sun4v error
+ report
+In-reply-to: <1259885516.3389.14.camel@prax>
+To: Scott.Davenport@sun.com
+Cc: Anthony Yznaga <Anthony.Yznaga@sun.com>,
+        Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware Arch <fwarc@sun.com>, Jim Quigley <Jim.Quigley@sun.com>,
+        Dan Mahoney <Dan.Mahoney@sun.com>,
+        Jim Anderson <James.Anderson@sun.com>,
+        Darrel Donaldson <Darrel.Donaldson@sun.com>
+Message-id: <4B1858CD.90509@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B184A03.20003@sun.com> <1259883689.3389.9.camel@prax>
+ <80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM> <1259885516.3389.14.camel@prax>
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+Status: RO
+Content-Length: 562
+
+
+I guess I'm still confused by this case.
+
+We can't just make an incompatible change to an
+existing interface that changes the meaning of
+b0.
+
+If you do that, how does existing guest code
+continue to work? With the old HV, it will get
+b0, but with the new one it will get b10, without
+negotiating an interface version somewhere?
+
+Is there existing code out there in the field that
+relies on b0 to mean "sp unavailable"?
+
+A change like this typically requires some sort
+of versioning, but the OS apparently isn't the
+only entity that cares about the interface.
+
+
+
+From sacadmin Thu Dec  3 16:38:30 2009
+Received: from sunmail6brm.central.sun.com (sunmail6brm.Central.Sun.COM [129.147.4.169])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB40cTnJ019553
+	for <fwarc@sac.sfbay.sun.com>; Thu, 3 Dec 2009 16:38:30 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail6brm.central.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nB40cT0u022272
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 3 Dec 2009 18:38:29 -0600 (CST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU300401R45RL00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 16:38:29 -0800 (PST)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU300GG6R44ZYA0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 16:38:29 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4)
+ with ESMTP id nB40cRED012853; Thu, 03 Dec 2009 16:38:27 -0800 (PST)
+Received: from [192.168.0.39] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id nB40cPDi022798; Thu,
+ 03 Dec 2009 16:38:26 -0800 (PST)
+Date: Thu, 03 Dec 2009 16:38:29 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: fast-track: 2009/655 - Change the semantics of the Sun4v error
+ report
+In-reply-to: <4B1858CD.90509@sun.com>
+To: Scott.Davenport@sun.com
+Cc: Anthony Yznaga <Anthony.Yznaga@sun.com>,
+        Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware Arch <fwarc@sun.com>, Jim Quigley <Jim.Quigley@sun.com>,
+        Dan Mahoney <Dan.Mahoney@sun.com>,
+        Jim Anderson <James.Anderson@sun.com>,
+        Darrel Donaldson <Darrel.Donaldson@sun.com>
+Message-id: <4B185A05.4050409@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B184A03.20003@sun.com> <1259883689.3389.9.camel@prax>
+ <80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM> <1259885516.3389.14.camel@prax>
+ <4B1858CD.90509@sun.com>
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+Status: RO
+Content-Length: 794
+
+
+Tycho explained to me that none of the sp state stuff is
+in the field yet, so we can define here how we really want
+it, provided all the consumers agree on it.
+
+-David
+
+
+David Kahn wrote:
+> 
+> I guess I'm still confused by this case.
+> 
+> We can't just make an incompatible change to an
+> existing interface that changes the meaning of
+> b0.
+> 
+> If you do that, how does existing guest code
+> continue to work? With the old HV, it will get
+> b0, but with the new one it will get b10, without
+> negotiating an interface version somewhere?
+> 
+> Is there existing code out there in the field that
+> relies on b0 to mean "sp unavailable"?
+> 
+> A change like this typically requires some sort
+> of versioning, but the OS apparently isn't the
+> only entity that cares about the interface.
+> 
+> 
+> 
+
+From sacadmin Thu Dec  3 17:05:41 2009
+Received: from sunmail6brm.central.sun.com (sunmail6brm.Central.Sun.COM [129.147.4.169])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB415f3m020487
+	for <fwarc@sac.sfbay.sun.com>; Thu, 3 Dec 2009 17:05:41 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail6brm.central.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nB415dof005470
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 3 Dec 2009 19:05:41 -0600 (CST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU30060JSDGNN00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 17:05:40 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU300HF3SDF01F0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 17:05:39 -0800 (PST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nB415dTL019915	for
+ <fwarc@sun.com>; Thu, 03 Dec 2009 17:05:39 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KU300M00S7H7I00@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 03 Dec 2009 17:05:39 -0800 (PST)
+Received: from [10.40.20.7] ([unknown] [99.169.166.183])
+ by fe-sfbay-09.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KU300M0GSDA4980@fe-sfbay-09.sun.com>;
+ Thu, 03 Dec 2009 17:05:35 -0800 (PST)
+Date: Thu, 03 Dec 2009 17:01:54 -0800
+From: Scott Davenport <Scott.Davenport@sun.com>
+Subject: Re: fast-track: 2009/655 - Change the semantics of the Sun4v error
+ report
+In-reply-to: <4B185A05.4050409@sun.com>
+Sender: Scott.Davenport@sun.com
+To: David Kahn <David.Kahn@sun.com>
+Cc: Anthony Yznaga <Anthony.Yznaga@sun.com>,
+        Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware Arch <fwarc@sun.com>, Jim Quigley <Jim.Quigley@sun.com>,
+        Dan Mahoney <dan.mahoney@sun.com>,
+        Jim Anderson <James.Anderson@sun.com>,
+        Darrel Donaldson <Darrel.Donaldson@sun.com>
+Reply-to: Scott.Davenport@sun.com
+Message-id: <1259888514.3389.15.camel@prax>
+Organization: Sun Microsystems
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B184A03.20003@sun.com> <1259883689.3389.9.camel@prax>
+ <80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM> <1259885516.3389.14.camel@prax>
+ <4B1858CD.90509@sun.com> <4B185A05.4050409@sun.com>
+Status: RO
+Content-Length: 1424
+
+On Thu, 2009-12-03 at 16:38 -0800, David Kahn wrote:
+> Tycho explained to me that none of the sp state stuff is
+> in the field yet, so we can define here how we really want
+> it, provided all the consumers agree on it.
+> 
+> -David
+
+Ok...I'm un-shutting-up....can we all agree on this?
+
+        ----------------------------------------------------
+        Value   Description
+        ----------------------------------------------------
+        0b00    SP is physically present but is faulted
+                and currently unavailable
+        0b01    SP is available
+        0b10    SP is not physically present in the system
+        ----------------------------------------------------
+         Table 5.2.4-III. Service Processor State
+
+:)
+
+-scott
+
+> 
+> 
+> David Kahn wrote:
+> > 
+> > I guess I'm still confused by this case.
+> > 
+> > We can't just make an incompatible change to an
+> > existing interface that changes the meaning of
+> > b0.
+> > 
+> > If you do that, how does existing guest code
+> > continue to work? With the old HV, it will get
+> > b0, but with the new one it will get b10, without
+> > negotiating an interface version somewhere?
+> > 
+> > Is there existing code out there in the field that
+> > relies on b0 to mean "sp unavailable"?
+> > 
+> > A change like this typically requires some sort
+> > of versioning, but the OS apparently isn't the
+> > only entity that cares about the interface.
+> > 
+> > 
+> > 
+
+
+
+From sacadmin Fri Dec  4 02:14:35 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB4AEZ3f012023
+	for <fwarc@sac.sfbay.sun.com>; Fri, 4 Dec 2009 02:14:35 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail2sca.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nB4AEYmF013362
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 4 Dec 2009 02:14:35 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU400L0NHSBTR00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Dec 2009 02:14:35 -0800 (PST)
+Received: from gmp-eb-inf-2.sun.com ([192.18.6.24])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU400IFHHS97O90@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Dec 2009 02:14:34 -0800 (PST)
+Received: from fe-emea-09.sun.com
+ (gmp-eb-lb-1-fe1.eu.sun.com [192.18.6.7] (may be forged))
+	by gmp-eb-inf-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nB4AEW2N029944	for
+ <fwarc@sun.com>; Fri, 04 Dec 2009 10:14:33 +0000 (GMT)
+Received: from conversion-daemon.fe-emea-09.sun.com by fe-emea-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KU400100FAOI400@fe-emea-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Dec 2009 10:14:09 +0000 (GMT)
+Received: from [129.156.220.17] ([unknown] [129.156.220.17])
+ by fe-emea-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KU40036BHR4UTB0@fe-emea-09.sun.com>; Fri,
+ 04 Dec 2009 10:13:53 +0000 (GMT)
+Date: Fri, 04 Dec 2009 10:13:52 +0000
+From: Jim Quigley <Jim.Quigley@sun.com>
+Subject: Re: fast-track: 2009/655 - Change the semantics of the Sun4v error
+ report
+In-reply-to: <1259888514.3389.15.camel@prax>
+Sender: Jim.Quigley@sun.com
+To: Scott.Davenport@sun.com
+Cc: David Kahn <David.Kahn@sun.com>, Anthony Yznaga <Anthony.Yznaga@sun.com>,
+        Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware Arch <fwarc@sun.com>, Dan Mahoney <Dan.Mahoney@sun.com>,
+        Jim Anderson <James.Anderson@sun.com>,
+        Darrel Donaldson <Darrel.Donaldson@sun.com>, Jim.Quigley@sun.com
+Message-id: <4B18E0E0.5090706@Sun.COM>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_X0ttWDfqL2ZcarrXWdyt/Q)"
+X-PMX-Version: 5.4.1.325704
+References: <4B184A03.20003@sun.com> <1259883689.3389.9.camel@prax>
+ <80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM> <1259885516.3389.14.camel@prax>
+ <4B1858CD.90509@sun.com> <4B185A05.4050409@sun.com>
+ <1259888514.3389.15.camel@prax>
+User-Agent: Thunderbird 2.0.0.23 (X11/20090910)
+Status: RO
+Content-Length: 55484
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_X0ttWDfqL2ZcarrXWdyt/Q)
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+
+On 12/04/09 01:01, Scott Davenport wrote:
+> On Thu, 2009-12-03 at 16:38 -0800, David Kahn wrote:
+>> Tycho explained to me that none of the sp state stuff is
+>> in the field yet, so we can define here how we really want
+>> it, provided all the consumers agree on it.
+>>
+>> -David
+> 
+> Ok...I'm un-shutting-up....can we all agree on this?
+> 
+>         ----------------------------------------------------
+>         Value   Description
+>         ----------------------------------------------------
+>         0b00    SP is physically present but is faulted
+>                 and currently unavailable
+>         0b01    SP is available
+>         0b10    SP is not physically present in the system
+>         ----------------------------------------------------
+>          Table 5.2.4-III. Service Processor State
+> 
+
+
+
+	Fine by me, new doc's attached,
+
+	regards
+
+	Jim Q.
+
+> 
+> 
+
+
+--Boundary_(ID_X0ttWDfqL2ZcarrXWdyt/Q)
+Content-type: text/plain; name=hv_sun4v_errorphilosophy-V2.2.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=hv_sun4v_errorphilosophy-V2.2.txt
+
+"@(#)hv_sun4v_errorphilosophy-V2.2.txt 1.4     09/12/04 "
+
+
+Sun4v Hypervisor Error Handling Interfaces 
+-------------------------------------------
+
+NOTE:
+    This document describes the error handling interfaces for CPU, memory,
+    internal register and programmed I/O errors. The error handling
+    interfaces for host bus adapter errors and directly accessible I/O device
+    errors are still being developed and are not described in this version
+    of the document.
+
+    This interface is being extended to include a mechanism for notifying the
+    sun4v guest of Service Processor (SP) state changes, ie, when the Service
+    Processor in a system becomes available/unavailable.
+
+1.0 Introduction
+
+Hardware errors which do not reset the system generate a trap to the
+hypervisor. The hyperprivileged trap handler virtualizes the errors
+from the CPU, memory, and virtual I/O devices like the host bus
+adapter, and sends an error notification to the affected guests. For errors
+that do not reset the guest, an error report indicating the impact of
+the error is sent to the guest. Section 5 of this document
+describes the structure of the error report sent to the guest.
+
+Service Processor state changes (SP becoming available again after being
+offline or becoming unavailable) on systems which have the necessary
+hardware support will generate an interrupt to the hypervisor. An
+error report indicating this SP state change will be sent to the
+guest.
+
+Errors from devices that are directly accessed by the sun4v guest are not
+virtualized by the hypervisor. They are handled by the device drivers of
+the sun4v guest.
+
+The sun4v architecture[1] defines two classes of errors based on their
+impact on the interrupted instruction stream: resumable errors and
+non-resumable errors. Resumable errors are those that do not affect the
+current instruction stream. Non-resumable errors are those that affect
+the current instruction stream and require software intervention before
+the interrupted instruction stream can be resumed.
+
+The sun4v architecture defines queues for the hypervisor to send error
+reports to its guests. The sun4v error reports for CPU, memory, and PIO
+errors are queued on to the resumable error queue or non-resumable
+error queue depending on the type of the error. The sun4v error reports
+for errors in virtual or direct I/O devices are queued on to the
+dev_mondo queue.
+
+SP state change error reports are queued on to the resumable error queue.
+
+The simplest implementation of a sun4v guest could, for example,
+simply perform a 'retry' on resumable error notifications and 'panic'
+on non-resumable error notifications. But the intent is to have enough
+information in the hypervisor generated error reports to the sun4v guests
+such that an advanced guest would be able to take corrective actions
+and make forward progress when possible.
+
+The remainder of this document is divided as follows. Section 2 defines
+new terms introduced in this document.  Section 3 describes the sun4v
+hypervisor error handling philosophy. Section 4 provides a brief
+overview of the hypervisor generated error notifications for errors.
+Section 5 describes the sun4v error handling interfaces. Section 6
+describes the hypervisor error handling principles of operation.
+
+2.0 Terms and Definitions
+
+2.1 Diagnosis Service Provider. The platform is expected to include
+an FMA Fault Manager that provides a Diagnosis Service for the hardware
+components. The diagnosis service must provide a transport for FMA
+Error Reports, and can be implemented on any of the following:
+	(1) The only sun4v guest partition on the platform
+	(2) A sun4v service partition
+	(3) The Service Processor
+The diagnosis service implements the appropriate hardware diagnosis
+algorithms and triggers corrective actions, messaging, and other tasks
+resulting from the diagnosis of a fault in the platform hardware.
+
+2.2 FMA Error Report Generator Service Provider. If a hypervisor implementation
+does not itself produce FMA Error Reports, then an FMA Error Report Generator
+must be implemented to convert the hypervisor implementation-specific error
+data structures to FMA Error Reports and transport them to the diagnosis
+service.
+
+2.3 Service Provider Interface. A platform-specific Service Provider 
+Interface must be implemented on the platform to transmit hypervisor
+generated error reports to the FMA Error Report Generator (if one is 
+required) or to the Diagnosis Service Provider (if the hypervisor
+itself produces FMA Error Reports).
+
+For information on Sun SPARC error terminology, please refer to [2].
+
+For more information on FMA, see http://fma.eng.
+
+3.0 Philosophy
+
+The sun4v hypervisor error handling philosophy is based on the
+following principles:
+	(1) Abstract the underlying hardware characteristics from
+	    errors reported to a sun4v guest so as to enable
+	    sun4v guest error handlers to be implemented without
+	    built-in knowledge of the underlying hardware implementation.
+	(2) Provide a separate mechanism to report errors for analysis
+	    and diagnosis of hardware faults that should be subscribed
+	    to by the FMA Error Report generator and diagnosis service provider.
+
+4.0 Brief Overview of Error Notifications
+
+Hardware errors which do not reset the system trap to the hypervisor.
+For each error handled by the hypervisor:
+	(1) If the error does not reset the sun4v guest, then a sun4v error
+	    report that virtualizes the underlying hardware error and
+	    describes the impact of the error is sent to the sun4v
+	    guest.
+       (2) A service error report containing the raw error logs
+	    captured by the hardware and additional diagnostic data is
+	    sent to the diagnostic service provider.
+
+For an SP state change, a sun4v error describing the change is sent to the
+sun4v guest. There is no associated service error report.
+
+As shown in Figure 1 below, the sun4v error report is sent to the
+affected sun4v guest via the queues defined by the sun4v
+architecture. The service error report is sent via the Service Provider
+Interface to the FMA Error Report Generator which sends an FMA Error Report
+to the Diagnosis Service Provider.
+
+
+
+
+                                                            Diagnosis Service
+				                            Provider
+                                       _________              _________
+                                      (         )  forward   (         )
+                                     ( FMA Agent )=========>( FMA Agent )
+                                      (_________)            (_________)
+                                          ^ FMA Error            ^ FMA Error
+                                          | Report               | Report    
+     +--------------+ +-------------+ +-------------+      +------------+
+     |CPU/Mem/PIO   | |Virtual i/o  | |Direct i/o   |      | FMA Error  |
+     |error handler | |error handler| |error handler|      | Report     |
+     +--------------+ +-------------+ +-------------+      | Generator  |
+              ^                 ^          ^               +------------+
+      +-------|-------+         |----+-----|                     ^
+      |               |              |                           |
+ +-------------+ +-----------+ +-----------+              +--------------+
+ |non-resumable| |resumable  | |device 	   |              |Service       |
+ |error queue  | |error queue| |mondo queue|              |Provider I/F  |
+ +-------------+ +-----------+ +-----------+	          +--------------+
+       ^	      ^             ^	                         ^
+       |	      |	            |	                         |
+       +--------------+	            |	                         |
+ 	      |cpu,                 |virtual i/o                 |service
+ 	      |memory,              |error report,               |error
+	      |PIO error            |direct i/o                  |report
+	      |report               |error interrupt             |
+              +---------------------+             		 |
+                        |                       		 |
+		        |                       		 |
+		  +-------------+                       	 |
+		  | Hypervisor  |--------------------------------+
+		  +-------------+
+                        ^
+		        | hardware errors
+
+   Fig 1. Hypervisor Error Reports to sun4v Guest and FMA Service Provider
+
+                                                            
+				                           
+                                       _________
+                                      (         )
+                                     ( FMA Agent )
+                                      (_________)
+                                          ^ FMA Error
+                                          | Report  
+				     +--------------+
+				     |SP state      |
+				     |error handler |
+				     +--------------+
+				              ^     
+				      +-------|
+				      |       
+				 +-------------+
+				 | resumable   |
+				 |error queue  |
+				 +-------------+
+				       ^
+				       |
+				       +------+
+				 	      |
+				 	      |
+					      |
+					      |
+				              +---------+ 
+				                        |     
+						        |      
+						  +-------------+
+						  | Hypervisor  |
+						  +-------------+
+				                        ^
+						        | SP state change interrupt
+
+   Fig 1.1. Hypervisor SP Change Reports to sun4v Guest and FMA Service Provider
+
+Some notes on Figure 1 above:
+	(1) Virtual I/O refers to devices that cannot be directly accessed
+	    by the guest. They are either complete abstractions of
+	    the underlying physical devices, like virtual console
+	    device, or are indirectly accessed using hypervisor calls,
+	    like to access the host bus adapter.
+	(2) The CPU, memory, and virtual I/O errors are diagnosed
+	    by the Diagnosis Service Provider based on the service error
+	    report data sent.
+	(3) Direct I/O device errors are handled by the sun4v guest device
+	    drivers. Hardened drivers generate FMA Error Reports. Those FMA
+	    Error Reports are sent to the FMA Agent (as shown in Figure 1) on
+	    the sun4v guest and are forwarded to the FMA Agent on the
+	    Diagnosis Service Provider. Forwarding the FMA Error Reports may
+	    not be necessary if the Diagnosis Service Provider and the sun4v
+	    guest are on the same partition.
+	(4) The sun4v error report is a virtualized error report used by 
+	    the sun4v guest, and is not the same as the FMA Error Report
+	    that captures platform-specific information for the Diagnosis
+	    Service.
+
+Figure 1 shows the error reports generated by the hypervisor when handling
+hardware errors and how they are propagated to the Diagnosis Service
+Provider and the sun4v guest.
+
+The sun4v error report is sent to the sun4v guest. The CPU, memory,
+and PIO error reports are sent via the sun4v resumable_error and 
+nonresumable_error queues. Both virtual and direct I/O device error
+reports are sent via the sun4v dev_mondo queue. These queues are allocated
+per CPU. Each queue has a head and a tail pointers. When the queue is
+empty, the head and tail pointers are equal. The hypervisor queues
+the error report at the tail and updates the tail pointer to the next
+entry.
+
+The SP state change  error reports are sent via the sun4v resumable_error
+queues.
+
+For resumable_error and dev_mondo queues, the hardware generates a
+disrupting trap whenever the head and tail pointers are not equal. The
+disrupting trap is taken on the CPU if the interrupts are enabled 
+(PSTATE.IE = 1) or remains pending if the interrupts are disabled.
+The sun4v guest interrupt handler processes the sun4v error reports starting 
+from the head pointer to the tail pointer (excluding) and updates the 
+head pointer to equal the tail pointer leaving the queue in
+a non-interrupting state.
+
+For nonresumable_error queues the hardware does not generate a trap
+automatically when the head and tail pointers are not equal. The hypervisor 
+emulates a nonresumable_error trap on the CPU by transferring control to the
+nonresumable_error trap handler of the sun4v guest. The sun4v guest
+trap handler processes the sun4v error reports starting from the head
+pointer to the tail pointer (excluding) and updates the head pointer to
+equal the tail pointer.
+
+For direct I/O device errors, the sun4v guest hardened device drivers
+generate the FMA Error Report to be sent for diagnosis. For CPU, memory, and
+virtual I/O device errors, the sun4v guest does not generate FMA
+Error Reports, instead an FMA Error Report is generated based on the service
+error report sent via the service provider interface.
+
+The service error report is sent to the FMA Error Report Generator and
+Diagnosis Service Provider via a platform-specific interface called
+the Service Provider Interface. The FMA Error Report Generator receives
+the error logs and diagnostic data from the hypervisor and generates
+an FMA Error Report. It sends the FMA Error Report to the Diagnosis Service
+Provider for analysis and diagnosis.  The error recovery actions based
+on the platform's SERD policies and failure rates are then communicated
+back to the guests (not shown in Figure 1). Please refer to the
+proposed FMA Error Report Generator and Diagnosis Service Provider
+architecture[3] for more information.
+
+The sun4v guest error reports and the error reports sent through the
+Service Provider Interface each contain an Error Handle (see 5.2.1)
+that can be used to correlate the reports.
+
+This document describes the sun4v error reports for CPU, memory, and
+the virtual host bus adapter errors. For a description of the service
+error reports, please refer to the platform's FMA and Service Entity
+documentation.
+
+4.1 PIO store errors.
+
+Note that this error report format is *not* used for PIO store errors. These
+errors are reported to the guest using a different, I/O specific format.
+See [6] for details.
+
+5.0 Sun4v Error Handling Interfaces
+
+This section describes the sun4v error handling interfaces as a
+supplement to the Error Model section in the sun4v architecture
+specification[1].
+
+5.1 Classification of Errors
+An error as defined in [2] is when a signal or datum is wrong.
+Hypervisor classifies the hardware errors into three classes:
+	(1) Resumable errors, where the error does not affect the
+	    current instruction stream.
+	(2) Non-resumable errors, where the error affects the current
+	    instruction stream and requires software intervention before
+	    the program can be resumed.
+	(3) Unconstrained or terminating errors, where the error results in
+	    a loss of system coherency and/or data integrity that continuing
+	    execution can lead to further damage. 
+
+For unconstrained or terminating errors, a sun4v error report is not queued
+to the affected sun4v guests; the affected guests are reset. 
+
+For resumable and non-resumable errors, a sun4v error report is queued
+to the affected sun4v guest. The sun4v architecture[1] defines the
+resumable, non-resumable, and dev_mondo queues, and their workings.
+
+All I/O error interrupts are resumable errors as they are derived from
+asynchronous interrupts generated by I/O devices and do not affect
+the current instruction stream. However, their error reports are queued
+on the dev_mondo queue to be handled by the nexus and device drivers of
+the sun4v guest. The structure of the i/o error reports [TBD] is different
+from the sun4v error reports for CPU, memory and PIO errors defined
+in section 5.2 of this document.
+
+Regardless of the class of the error, the hypervisor creates a service
+error report and attempts to deliver it to the FMA Error Report Generator.
+Upon receipt of a service error report, the FMA Error Report Generator
+creates an FMA Error Report and attempts to deliver it to the Diagnosis
+Service Provider for error recovery and fault diagnosis. In the case where
+the Diagnosis Service Provider is implemented on the sun4v guest which
+is fatally affected by a non-resumable error, the FMA Error Report may 
+not be successfully delivered to the diagnosis service.
+
+5.1.1 Resumable Errors
+For an error that is a resumable error, the originating error may
+either be corrected by the hardware or hypervisor, or left unchanged.
+
+If the originating error was corrected, then the guest is not sent
+an error report. However, a service error report is sent to the
+Diagnosis Service Provider via the service provider interface
+for fault analysis.
+
+All SP state changes are classified as resumable errors.
+
+Some examples of hardware errors that are not reported to the guest because
+the error was corrected are: correctable ECC error in cache data, TLB
+data parity error, cache data parity error in a clean cache, and 
+uncorrectable ECC error in a clean cache line.
+
+If the originating error was left unchanged, then an error report is
+sent to the affected guest. The impact of the error on the sun4v
+guest, for example, whether there was memory corruption or whether a
+CPU became unavailable, is indicated in the error report.
+
+Some examples of hardware errors that are reported as resumable errors
+where the originating error was left unchanged are: uncorrectable data ECC
+error on cache writeback, transaction timeout on a PIO read, data parity
+error on a PIO read data return, bus error on a PIO read, and
+recursive unrecoverable errors on a CPU. In the case of an
+uncorrectable data ECC error on cache writeback, the memory region that
+was corrupted is indicated in the error report. In the case of
+recursive errors on a CPU, the ID of the CPU that was
+marked in error along with the execution mode of the CPU at the time of
+the error are indicated in the error report. In the case of
+a failed PIO transaction, the PIO transaction address is indicated in
+the error report.
+
+5.1.2 Non-Resumable Errors
+For an error that is a non-resumable error, the originating error is
+not corrected. The sun4v error report indicates the location of the 
+originating error. These errors require the intervention of the sun4v
+guest error handler to take corrective actions, when possible,
+before resuming or terminating the interrupted program. For example,
+the guest may use the hypervisor call to scrub the memory region in
+error indicated in the error report.
+
+A non-resumable error may be reported to the sun4v guest as
+either a precise trap or a deferred trap. The error report descriptor
+indicates the trap type. When multiple error reports
+are queued, the deferred error reports will be queued ahead of the
+precise error report according to the age of the instructions that
+induced the errors.
+
+Some examples of hardware errors that are reported as non-resumable
+errors are uncorrectable data ECC error in cache on loads,
+instruction fetches, or atomics from a dirty line, uncorrectable ECC
+error in DRAM on loads, instruction fetches, or atomics, and an
+uncorrectable ECC error in a CPU's register file. For
+uncorrectable ECC errors in the memory hierarchy, the non-resumable error
+report indicates the memory region in error. For uncorrectable ECC
+errors in register files which can be cleared, the register file as well 
+as the the ID of the CPU whose register file had the error are
+indicated in the error report.
+
+5.1.3 Unconstrained or Terminating Errors
+Unconstrained or terminating errors are not reported to the sun4v guest
+OS. They result in resetting the sun4v guest. In some cases, the
+hardware generates a reset trap, and in others the hypervisor resets
+the sun4v guest.
+
+Some examples of hardware errors that are treated as unconstrained or
+terminating errors to the guest are Niagara's L2 cache tag parity error
+and L2 cache directory parity error, ROCK's store buffer address or
+control parity error, and Niagara's TLB tag parity error. The L2 cache
+tag and directory parity errors are detected by hardware which causes a
+warm reset of the entire chip. For store buffer address or control
+parity error, the hardware generates a deferred trap to the
+hypervisor which resets the affected partitions. For the TLB tag parity
+error the hardware generates a precise trap to the hypervisor which
+resets the partitions using that TLB.
+
+Recursive errors on a CPU may result in the resetting of the
+partition if that results in all of the CPUs in that partition 
+to be in error.
+
+5.2 Sun4v Error Report For CPU, Memory, and Programmed I/O (PIO) Access
+The sun4v error report for CPU, memory, and PIO access errors is a fixed
+length error report that describes the underlying hardware error in
+terms of resumable or non-resumable error to the sun4v guest. The
+intent is to have enough information in the error reports to enable an
+advanced guest to take corrective actions, when possible, and make
+forward progress. The sun4v error report is not meant for hardware
+fault analysis or diagnosis.
+
+On startup, the sun4v guest and the hypervisor exchange the versions
+that they support and pick the latest version that is compatible.
+Please refer to [1] for more information. 
+
+The table 5.2-I below describes the format of the sun4v error report record.
+	--------------------------------------------------------------------
+	Offset	Size	Field	Description
+		(bytes)
+	--------------------------------------------------------------------
+	0x0	8	EHDL#	Unique error handle
+        0x8	8	STICK	Value of the %STICK register
+	0x10	3	Rsvd	Reserved, always set to zero.
+	0x13	1	DESC	Error descriptor (see section 5.2.3)
+	0x14	4	ATTR	Error attributes (see section 5.2.4)
+        0x18	8	ADDR	Real address of the affected memory region
+				or PIO transaction address
+				Virtual address for the ASI register
+        0x20	4	SZ	Size, in bytes, of the affected memory region
+				or the size (in bytes) of the ASI region in error
+        0x24	2	CPUID	ID of the affected CPU
+	0x26	2	SECS	Grace period for shutdown in seconds
+	0x28	1	ASI	Value of the %ASI register
+	0x29	1	Rsvd	Reserved, always set to zero.
+	0x30	2	REG	Value of the ASR register#
+	--------------------------------------------------------------------
+	    Table 5.2-I. Sun4v Error Report Format
+
+5.2.1 Error Handle (EHDL#). This field specifies the handle of the error.
+Error handles are unique opaque values that will not be reused until
+the hypervisor in the hardware domain is restarted. If multiple error reports
+are generated for the same error, they will all have the same EHDL value.
+
+5.2.2 Stick register (STICK). This field specifies the contents of the
+%STICK register that was captured by the hypervisor trap handler.
+
+5.2.3 Error Descriptor (DESC). This field specifies the type of the
+error report. The table 5.2.3-I below lists the currently defined values.
+ 	------------------------------------------------------------
+ 	Value	Mnemonic	Description
+ 	------------------------------------------------------------
+	0	UNDEF		Undefined
+ 	1	R_UE		Uncorrected resumable error report
+ 	2	NR_PR  		Precise non-resumable error report
+ 	3	NR_DF 		Deferred non-resumable error report
+	4	SHT_R		Shutdown request (resumable)
+	5	DCORE		Dump Core (non-resumable)
+	6	SP		SP state change (resumable)
+ 	------------------------------------------------------------
+		Table 5.2.3-I. Error Report Descriptors
+
+All other values are reserved.
+
+The values R_UE, SHT_R and SP are valid only for error reports that are queued
+on the resumable_error queue. The values NR_PREC, NR_DEF and DCORE are valid
+only for the error reports that are queued on the nonresumable_error queue.
+
+5.2.3.i Uncorrected resumable error report. An uncorrected resumable
+error report is always queued on the resumable_error queue of a CPU
+that belongs to the affected partition. It specifies that the
+underlying error was not corrected. The resource in
+error is specified by the ATTR (5.2.4) field of the error report.
+
+An uncorrected resumable error report is used to indicate a CPU in
+error. For example, in a partition with multiple CPUs when a permanent 
+error in a register file of a CPU is detected, the CPU is marked in error and
+an uncorrected resumable error report indicating the CPU in
+error is queued on a different CPU of the same partition.
+
+When the only running CPU in a partition is in error, the partition 
+is reset.
+
+5.2.3.ii Precise non-resumable error report. A precise non-resumable error
+report is always queued on the nonresumable_error queue of the CPU
+that executed the instruction that induced the error. It specifies
+that the nonresumable_error trap taken is a precise trap where TPC[TL] points
+to the instruction that induced the error. The error report contains
+enough information about the error for the guest to take appropriate 
+actions before resuming or terminating the interrupted instruction
+stream. The location of the error is specified by the ATTR (5.2.4) field 
+of the error report. A hypervisor call is provided for the guest to 
+scrub the error location.
+
+When multiple non-resumable error reports are queued on the
+nonresumable_error queue of a CPU the deferred error reports will be
+queued ahead of the precise non-resumable error reports.
+
+5.2.3.iii Deferred non-resumable error report. A deferred
+non-resumable error report is always queued on the nonresumable_error
+queue of the CPU that executed the instruction that induced the
+error. It specifies that the nonresumable_error trap taken is a
+deferred trap which means that the error is unrecoverable and the
+instruction stream should be terminated. The location of the error is
+specified by the ATTR (5.2.4) field of the error report. The MODE
+(5.2.4.viiii) field in the ATTR specifies the execution mode in which the
+error occurred.
+
+When multiple non-resumable error reports are queued on the
+nonresumable_error queue of a CPU the deferred error reports will be
+queued ahead of the precise non-resumable error reports.
+
+5.2.3.iv Shutdown request. This is used to request the guest to initiate 
+a graceful shutdown sequence. This report will be queued on the resumable
+error queue.
+
+5.2.3.v DCORE, (Dump Core). This is used to instruct the guest to initiate a
+dump core sequence. This report will be queued on the non-resumable error queue.
+
+5.2.3.vi SP, (Service Processor state change). This is used to notify the guest
+that the SP state has changed. The SP is now in the state denoted by the ATTR.SP_STATE value. The guest may decide to notify the user of the SP state change using some form of FMA messaging and/or perform any other actions it deems appropriate. This report will be queued on the resumable error
+queue.
+
+5.2.4 Error Attributes (ATTR). The meaning of this field depends on the
+error descriptor (see 5.2.3) of the error report. It also includes
+the resumable queue full indicator (see 5.2.11).
+
+In uncorrected resumable error reports, this field specifies the resource
+affected by the error. When a CPU has an uncorrected error, whether
+the CPU was executing in user or privileged mode, if known, is also
+included in the error report. 
+
+In precise non-resumable error reports, this field specifies the
+location in error.
+
+In deferred non-resumable error reports, this field specifies the
+location in error as well as the execution mode in which the error
+occurred, if that can be determined.
+
+The settings of this field also determines which of the additional information
+included in the error report have valid contents.
+
+The table 5.2.4-I below describes the format of this field.
+    ---------------------------------------------------------------------
+    Field	Bit 		Location/ 		Valid Fields
+		Position	Impact			In Error Report
+    ---------------------------------------------------------------------
+    RQFULL	31		Resumable Queue Full
+    RSVD	30:26		Undefined. Reserved
+				for future use.
+    MODE	25:24		Execution Mode
+				(see 5.2.5.viiii)
+    RSVD0	23:11		Undefined. Reserved
+				for future use.
+    SP_STATE	10:9		New SP state
+    PREG	8		Sun4v Privileged	CPUID, REG
+				Register
+    ASI		7		Sun4v ASI register	ASI, ADDR, SZ
+    ASR		6		Sun4v ASR		REG
+    SHUT	5		Shutdown request
+    FRF		4		Floating-point		CPUID, REG
+				Register File
+    IRF		3		Integer Register File	CPUID, REG
+    PIO		2		Programmed I/O Access	ADDR	
+    MEM 	1		Memory	Hierarchy	ADDR, SZ
+    CPU		0		CPU       		CPUID
+    ---------------------------------------------------------------------
+	Table 5.2.4-I. Format of the Error Attributes (ATTR) Field
+
+The unused bits may have undefined values and are reserved for future use.
+The PIO and MEM bits cannot be set in the same error report.
+
+The tables 5.2.4-II below shows the applicable attibute
+fields for the different types of error reports. 'Y' indicates applicable.
+'-' indicates not applicable.
++----------------------------------------------------------------------------------------------------+
+|Error|           Error Attributes          |    |SP   |     |                                       |
+|DESC |CPU |MEM |PIO |IRF |FRF |SHUT|ASR|ASI|PREG|STATE|MODE |RQFULL |  Notes                        |
++-----|----|----|----|----|----|----|---|---|----|-----|-----|---------------------------------------+
+|R_UE | Y  | Y  | -  | -  | -  | -  | - | - | -  |  -  | Y   |  Y    | PIO, IRF, FRF, ASR, ASI, PREG |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | and REG not applicable in     |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | uncorrected resumable error   |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | reports.     		     |
+|NR_PR| -  | Y  | Y  | Y  | Y  | -  | Y | Y | Y  |  -  | -   |  -    | CPU not applicable in         |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | precise non-resumable error   |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | reports. PIO and MEM cannot   |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | be set in the same report.    |
+|NR_DF| -  | Y  | Y  | -  | -  | -  | - | - | -  |  -  | Y   |  -    | CPU, IRF, FRF, ASR, ASI and   |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | PREG not applicable           |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | in deferred non-resumable     |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | error reports.                |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | PIO and MEM cannot be set in  |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | the same report.              |
+|SHT_R| -  | -  | -  | -  | -  | Y  | - | - | -  |  -  | -   |  -    |        		             |
+|DCORE| -  | -  | -  | -  | -  | -  | - | - | -  |  -  | -   |  -    | No attributes for DCORE       |
+|SP   | -  | -  | -  | -  | -  | -  | - | - | -  |  Y  | -   |  -    | 				     |
++----------------------------------------------------------------------------------------------------+
+	Table 5.2.4-II. Applicable Error Attributes Map
+
+	
+
+5.2.4.i CPU Field. In an uncorrected resumable error report, the CPU
+bit when set specifies that a CPU belonging to the same partition is in
+error. The ID of the CPU in error is specified by the CPUID (see
+5.2.5) field in the error report.
+
+The CPU bit is not used in non-resumable error reports.
+
+5.2.4.ii MEM Field. In uncorrected resumable error reports and in
+non-resumable error reports, the MEM bit when set specifies that there
+exists an uncorrected data error in the memory hierarchy. The
+uncorrected error could be either due to a bad ECC syndrome or NotData.
+The starting real address and the size, in bytes, of the affected
+memory region are specified by the ADDR (5.2.6) and SZ (5.2.7) fields in
+the error report, respectively.  Subsequent reads from the affected
+memory region would also generate an error unless there was an
+intervening hypervisor call to scrub the memory error. A hypervisor
+call is provided for the guest to scrub the memory region in error.
+
+The MEM field cannot be set in the same error report as the PIO field
+(5.2.4.iii), ASI field (5.2.4.vi) or ASR field (5.2.4.vii).
+
+5.2.4.iii PIO Field. In non-resumable error reports, the PIO bit when
+set specifies that an unrecoverable error was encountered on a PIO
+access. The PIO address accessed is specified by the ADDR (5.2.6) field
+in the error report. The I/O device corresponding to the PIO transaction
+that failed can be determined based on the PIO address specified by
+the ADDR field in the error report.
+
+The PIO bit is not used in resumable error reports.
+
+The PIO field cannot be set in the same error report as the MEM field
+(5.2.4.ii), ASI field (5.2.4.vi) or ASR field (5.2.4.vii).
+
+5.2.4.iv IRF Field. In precise non-resumable error reports, the IRF bit
+when set specifies that a non-permanent uncorrectable error in the
+integer register file occurred when executing that instruction (pointed
+to TPC[TL]). The data in one or more register operands of that
+instruction has been corrupted by the error, but the source of error
+has been cleared.
+
+The IRF field is not used in uncorrected resumable error reports.
+
+NOTE: For permanent errors in the integer register file of a CPU, 
+the CPU is marked in error. An uncorrected resumable error report
+is sent to a different CPU in the same partition indicating the
+ID of the CPU in error.
+
+5.2.4.v FRF Field. This is same as the IRF (5.2.4.iv) field except that
+when set it specifies that the error was in the floating-point register
+file instead of the integer register file. Please see IRF (5.2.4.iv)
+description for more information.
+
+NOTE: For permanent errors in the floating point register file of a CPU, 
+the CPU is marked in error. An uncorrected resumable error report
+is sent to a different CPU in the same partition indicating the
+ID of the CPU in error.
+
+5.2.4.vi ASR Field. An error occurred in one of the internal ASRs
+of the CPU. The ASR in error is identified by the REG field in
+the error report, see 5.2.9.
+
+5.2.4.vii ASI Field. An error occurred in one or more registers accessed via
+alternate Address Space Identifiers. The register or registers in error are
+identified by the combination of their ASI, their start address, and length
+using the ASI (see  5.2.8), the ADDR (see 5.2.6), and SZ (see 5.2.7) fields,
+repectively.
+
+5.2.4.viii PREG Field. An error occurred in one of the internal privileged
+registers of the CPU. The register in error is identified by the REG field in
+the error report, see 5.2.9.
+
+NOTE: For permanent errors in the privileged register file of a CPU, 
+the CPU is marked in error. An uncorrected resumable error report
+is sent to a different CPU in the same partition indicating the
+ID of the CPU in error.
+
+5.2.4.viiii Service Processor State (SP_STATE). This field specifies the
+current state of the SP.
+
+The table 5.2.4-III below lists the currently defined values.
+ 	----------------------------------------------------
+ 	Value	Description
+ 	----------------------------------------------------
+	0b00	SP is physically present but is faulted
+		and currently unavailable
+	0b01	SP is available
+	0b10	SP is not physically present in the system
+ 	----------------------------------------------------
+	 Table 5.2.4-III. Service Processor State
+
+5.2.4.x Execution Mode (MODE). This field specifies the execution
+mode of the operation that induced the error.
+
+The table 5.2.4-IV below lists the currently defined values.
+ 	---------------------------------
+ 	Value	Description
+ 	---------------------------------
+	0b00	Unknown
+	0b01	User mode
+	0b10	Privilege mode
+	0b11	Reserved
+ 	---------------------------------
+	 Table 5.2.4-IV. Execution Mode
+
+The 'Unknown' execution mode will be used in error reports when the
+hypervisor cannot determine the CPU's state at the time of the error.
+
+5.2.5 ID of the CPU (CPUID). This field specifies the ID of the CPU 
+affected by the reported error. It is valid when the ATTR field in
+the error report has either the CPU, IRF, or FRF bit set.
+
+5.2.6 Address (ADDR). If the MEM bit in the ATTR field in the error report
+is set, then this field contains the starting address of the memory
+region affected by the error.
+
+If the PIO bit in the ATTR field in the error report is set, then this
+field contains the PIO transaction address.
+
+If the ASI bit in the ATTR field in the error report is set, then this field
+contains the first virtual address of the ASI register(s) which caused the error.
+This is used in conjunction with the ASI field (see section 5.2.8), and the
+SZ field (see section 5.2.7) to identify the ASI register(s) in error.
+
+A value of (-1) implies that the ADDR is unknown or unused.
+
+5.2.7 Size of the Memory Region (SZ). This field specifies
+the size in bytes of the memory region affected by the reported error
+when the MEM bit in the error attributes (ATTR) field is set.
+
+When the ASI bit in the error attributes (ATTR) field is set this field
+is used to indicate the size (in bytes) of the ASI region in error.
+This must be a multiple of the sun4v ASI register size.
+For a single ASI/VA register the SZ field must be set to the size of a single
+register, (typically 8 bytes). 
+
+The range of ASI/VAs in error will be 
+
+	[ADDR]ASI ... [ADDR + (SZ -(size of single register))]ASI.
+
+Note that this implies that we can only support a contiguous range of
+VAs for a particular ASI region. Error handling software may however be aware
+of gaps in the range and act accordingly.
+
+NB: : SZ == 0 is reserved and must not be used.
+
+5.2.8 ASI. When the ASI bit of the ATTR field in the error report is set, this
+field contains the value of the sun4v %asi register when the error occurred.
+Together with the value of the ADDR and SZ fields, it identifies the register(s)
+which caused the error. If the error occurred on more than one register for that ASI,
+the SZ field can be used to specify the range of ASI virtual addresses, (see 5.2.7 above).
+which caused the error. For example, if an error occurred in the Niagara2 MMU
+Primary Context Register 0, this field would be set to 0x21, the ADDR
+field would be set to 0x8, and the SZ field set to 8 (bytes, the size of a
+register on N2).
+
+For the same CPU, if the error occurred on both primary and secondary context
+registers, this field would be set to 0x21, the ADDR field would be set to 0x8, and
+the SZ field set to 16 (bytes, the size of two registers on N2).
+
+5.2.9 REG. When the ASR bit of the ATTR field in the error report is set,
+this field specifies the sun4v ASR number, (for example if the error occurred
+in the system tick register, this field would be set to 24, => %asr24).
+
+When the IRF bit of the ATTR field in the error report is set, this
+field contains the number of the Sparc V9 general purpose register,
+(see [4], section 5.1.3.), which caused the error. For example, if the
+error occurred in register %o0, this field will contain the value
+8, for general purpose register r[8].
+
+When the FRF bit of the ATTR field in the error report is set, this
+field contains the number of the Sparc V9 floating point register,
+(see [4], section 5.1.4), which caused the error. For example, if the
+error occurred in register %f9, this field will contain the value
+9, for floating point register f[9].
+
+When the PREG bit bit of the ATTR field in the error report is set, this
+field contains the number of the Sparc V9 privileged register,
+(see [5], sections 5.8, 7.83), which caused the error.
+
+Note that this field is a 2-byte (16-bit) word but only bits[14:0] are
+allocated for use as the register number. Bit[15] is the VALID bit.
+This bit must be set to indicate that the REG value in bits[14:0] are valid.
+if this bit is set, guest software may assume that the REG value has
+a valid value encoded. If this bit is not set, guest software must assume
+that the value in the REG field is not valid for this error report and
+should not use that value in it's error handling.
+
+The table 5.2.4-IV below describes the format of this field.
+    ---------------------------------------------------------------------
+    Field	Bit 		Description
+		Position	
+    ---------------------------------------------------------------------
+    VALID	15		1: The contents of this field are valid
+				0: This field does not contain a valid
+				   register number
+    REG		14:0		Register number
+    ---------------------------------------------------------------------
+	Table 5.2.4-IV. Format of the Register Number (REG) Field
+
+5.2.10 SECS. The number of seconds the guest should allow before shutdown. 
+
+5.2.11 Resumable queue is full (RQFULL). This field applies only to
+resumable error reports. When set, it specifies that zero or more
+resumable errors might have been dropped since the queueing of that
+error report and the next one.
+
+6.0 Hypervisor Error Handling Principles of Operation
+
+This section describes the principles of operation of the hypervisor
+error handlers.
+
+6.1 Handling of Errors
+6.1.1 Corrected Errors
+For hardware corrected errors where the error is not automatically
+cleared, the hypervisor attempts to clear the source of the error by
+writing back the corrected data (an attempt to clear a stuck-at bit
+will fail). For example, if a correctable ECC error was reported on a
+L2 cache line or DRAM memory, the hypervisor will attempt to write the
+corrected data back to the error location.
+
+6.1.2 Uncorrectable Errors
+6.1.2.i Register errors
+For uncorrectable errors in the processor's integer or floating-point
+register files, the hypervisor attempts to clear the source of
+the error by writing a test pattern to the register and reading it
+back.  If the error in the register cannot be cleared due to a
+stuck-bit, then the CPU is stopped and a resumable error (uncorrected
+resumable error report) indicating the CPU in error is sent to another
+CPU of the same partition. If the uncorrectable error in the register
+is cleared, a precise non-resumable error report is reported to the
+guest on the CPU that took the trap with the register that was reported
+in error containing an undefined value.
+
+6.1.2.ii Cache errors
+For uncorrectable errors in the processor caches, the hypervisor
+clears the error from the cache by flushing the cache line with the bad
+data to memory as long as there is no expansion of data poisoning or
+corruption (which is determined based on the granularity of the error
+protection in the processor caches and memory.) If the flushing of the
+cache line with the bad datum would result in the expansion of data
+poisoning or corruption, the hypervisor leaves the bad data in the
+cache when reporting the error to the guest. (The guest can use the
+the hypervisor call to scrub the bad data which clears the cache line
+in error by filling it with zeroes and flushes it to memory.) If the 
+cache line with the bad data is clean, then the hypervisor evicts the
+line with the bad data out of the cache.
+
+Here is an example. Suppose that the L2 cache has ECC protection for every 4
+bytes and DRAM memory has ECC protection for every 16 bytes. In this
+case, an uncorrectable error in the L2 cache would mean that there are
+4 bytes of bad data. If the line containing the error was modified,
+then flushing the line out of the cache to the memory would expand the
+error to 16 bytes of bad data because the ECC protection granularity of
+memory is 16 bytes. That would result in the expanding the data
+corruption from 4 bytes to 16 bytes. To avoid such expansion, the
+hypervisor will not attempt to clear the uncorrectable error that was
+detected in the L2 cache line.
+
+6.1.2.iii Cache writeback errors
+For uncorrectable errors during cache writebacks, if the processor
+turns the signalling error to a non-signalling error thereby resulting
+in data corruption, the hypervisor will regard the writeback error as an
+unconstrained error and reset the affected guests. If the uncorrectable
+error on a cache writeback remains a signalling error after the writeback,
+then a uncorrected resumable error report is sent to the affected
+guests.
+
+NOTE: It is highly recommended that processors do not convert
+	a signalling error to a non-signalling error on cache writebacks.
+
+6.1.2.iv Memory errors
+For uncorrectable memory errors, the hypervisor does not attempt to
+clear the source of the error. The hypervisor notifies the sun4v guest
+of the memory region in error. The sun4v guest is responsible for
+its recovery policy. It can scrub the memory region in error using the
+hypervisor call to scrub memory, which clears the memory region in
+error by filling it with zeroes. The hypervisor call to scrub memory
+should return an error code to the guest if the scrub was not successful.
+Hypervisor should also notify the Diagnosis Service Provider about
+the scrub operations performed on behalf of the guest.
+
+6.1.2.v ASR errors.
+For uncorrectable ASR errors, the hypervisor does not attempt to
+clear the source of the error. The hypervisor notifies the sun4v guest
+of the ASR in error. The sun4v guest is responsible for identifying
+the ASR and determining the recovery policy. It may be able to correct
+the error or reload the ASR with correct data.
+
+	if (ATTR.ASR && REG == 24) /* system tick register */
+		read system time from TOD
+		write new system time to %asr24
+		retry
+
+6.1.2.vi ASI errors.
+For uncorrectable ASI errors, the hypervisor does not attempt to
+clear the source of the error. The hypervisor notifies the sun4v guest
+of the ASI in error using the ASI, ADDR and SZ fields of the error report.
+The sun4v guest is responsible for identifying the ASI register(s)
+and determining the recovery policy. It may be able to correct
+the error or reload the register with correct data.
+
+For example, for a Rock CRP error we have 
+
+	ASI=0x21   VA=0x8      ASI_Primary_Context_ID_0
+	ASI=0x21   VA=0x10     ASI_Secondary_Context_ID_0
+
+	if (ATTR.ASI  && ASI == 0x21) {
+	    if (ADDR == 0x8) {
+		reset primary context register()
+		if (SZ == 16)
+			reset secondary context register()
+	    }
+	    if (ADDR == 0x10)) {
+		reset secondary context register()
+	    }
+	}
+
+
+Note: The ASR/ASI error types are essentially targetted at errors
+in registers which contain data which is maintained by the guest OS.
+The guest should have a valid copy of the data to reload the register
+and clear the error. Alternatively it may be possible to continue operating
+without correcting the error by disabling or avoiding some guest
+features/functionality.
+
+6.1.2.vii CPU "error" state
+When hypervisor puts a CPU in error state, it must ensure the following:
+	(1) Hypervisor calls targetting CPUs in error state should
+	    return an error code to the guest indicating that one or more
+	    of the targetted CPUs are in error state.
+	(2) The guest cannot restart the CPU that is in error state.
+
+6.2 Reporting of Errors
+The guidelines for reporting errors are:
+	(1) All errors are reported to the FMA Error Report Generator
+	    and sent to the Diagnosis Service Provider.
+	(2) Always report an error that generates a precise or deferred trap
+	    to the CPU that took the trap unless the CPU is marked in error.
+	(3) For disrupting errors, notify only the affected guests
+	    as can be determined based on the error information logged.
+	(4) Errors in shared memory are reported to all of the affected
+	    guests. If the error was a precise or deferred error, then
+	    a non-resumable error report is sent to the guest that
+	    induced the operation, and a resumable error report is sent
+	    to the other guests that share the memory region in error.
+	    If the error was a disrupting trap (for example, as generated by a
+	    hardware scrub operation), then a resumable error is sent
+	    to all of the affected guests.
+	(5) Hypervisor should set the RQFULL bit in the error attributes
+	    field of the resumable error report that makes the queue full.
+	    (A queue is said to be full when the tail pointer if incremented 
+	    equals the head pointer.) Hypervisor drops the resumable error
+	    reports if the resumable error queue if full. The setting of the
+            RQFULL bit in the resumable error report indicates to the
+	    guest that zero or more resumable errors might have been 
+	    dropped since the queueing of that error report.
+	(6) If the nonresumable_error queue of a CPU is non-empty or
+	    if it does not have enough room to queue the error report(s),
+	    then the hypervisor marks that CPU in error and sends a
+	    resumable error report to a different CPU of the same partition.
+	    If all the CPUs in a partition are in error, then the
+	    partition is reset.
+	(7) Errors in virtualized I/O devices should be reported to only
+	    the affected guests.
+
+6.3 Handling Correctable Error Storms
+The hypervisor must attempt to prevent a storm of correctable errors
+from pinning the system in the hypervisor for long periods of time.
+This is done by disabling correctable error trap generation on the CPU
+that just took a correctable error trap for a finite period. At the
+expiration of the period, if no correctable errors are logged on that
+CPU then the correctable error trap generation is reenabled. The
+period for which the correctable error trap generation is disabled on a
+CPU is determined based on platform policy and can be tuned from
+the platform's Diagnosis Service Provider.
+
+6.4 Collecting diagnostic data for errors
+For errors, the hypervisor must perform CPU-specific work to gather
+information required to populate the service error reports for diagnosis.
+Please refer to the CPU's Error Handling document for more information.
+
+6.5 Switch Guest to New Hardware
+	TBD
+
+7.0 Rules for future expansion
+
+All bits of DESC/ATTR word are significant, including reserved bits.
+New errors not covered in the current specification will be indicated
+by using reserved bits in one or both of these two fields.
+
+If a guest CPU encounters an non_resumable_error trap, and the error
+payload contains an unrecognized encoding in the DESC/ATTR word, the
+guest is recommended to terminate.
+
+Reserved fields in in the structure from offsets 0x32-0x3f may be any
+value.  Hypervisors implementing the current spec will fill these fields
+with zeroes; however, guests implementing the current spec should not
+rely on this, but should ignore the fields altogether.
+
+8.0 References
+
+1. The sun4v Architecture Specification. http://projectq.sfbay/
+2. Sun SPARC Processor RAS and Error Handling Requirements
+	http://chipweb.sfbay/archperf/SPARC-Arch-SWG/RASEH-doc.txt
+3. Diagnosis Service Provider Architecture Proposal
+	http://dtsw.sfbay/~sriniv/docs/niagara/diag_service_provider.txt
+4. The Sparc V9 Architecture Manual
+	https://systemsweb.sfbay.sun.com/archperf/SPARC-Arch-SWG/SPARC-V9-current.pdf
+5. UltraSPARC Architecture 2006
+	https://systemsweb.sfbay.sun.com/archperf/SPARC-Arch-SWG/restricted/UA2006-current-draft-HP-Sun.pdf
+6. PCI-Express Root Complex Error Handling Interfaces for Sun4v
+	http://projectq.sfbay.sun.com/docs/sun4v-err.txt
+
+
+Appendix A. Sample Sun4v Guest OS Error Handler
+
+Disclaimer: This is not intended to be an example of advanced OS error
+	handler routines. It is an example of extremely simple guest
+	error handlers.
+
+A.1 Resumable error handler
+
+ 	if (DESC == 1)	{	/* Uncorrected resumable error */
+		if (ATTR.CPU) {
+			if (ATTR.MODE == User)
+				kill user process
+			else
+				panic
+		}
+		if (ATTR.MEM) {
+			get ADDR, SZ
+			call hypervisor to scrub memory
+			retry;
+		}
+	}
+	if (DESC == 4)	{	/* Shutdown request */
+		if (ATTR.SHUT) {
+			get SECS
+			delay SECS seconds
+			shutdown
+		}
+	}
+	if (DESC == 6)	{	/* SP State change */
+		if (ATTR.SP_STATE == SP_AVAILABLE) {
+			/*
+			 * SP is available now after a period of being
+			 * offline ....
+			 */
+		} else {
+			/*
+			 * SP is unavailable now, disable any services which
+			 * require SP interaction ...
+			 */
+		}
+	}
+
+A.2 Non-resumable error handler
+
+	if (DESC == 5)	{	/* dump core */
+		panic
+	}
+	if (DESC == 3)	{	/* deferred trap */
+		if (ATTR.MODE == User)
+			kill user process
+		else
+			panic
+	}
+
+	ASSERT(DESC == 2);	/* Precise non-resumable error */
+
+	if (ATTR.MEM) {
+		get ADDR, SZ
+		make hypervisor call to scrub memory
+		if (data not recoverable)
+			panic
+		else
+			retry
+	}
+	if (ATTR.PIO) {
+		get IOADDR
+		panic
+	}
+	if (ATTR.IRF or ATTR.FRF) {
+		if (user mode)	
+			kill user process
+		else
+			panic
+	}
+	if (ATTR.ASR) {
+		get ASR register from REG
+		if ASR valid for this CPU {
+		 	if ASR is reloadable/recoverable
+				reload/recover
+				retry
+		}
+		if (user mode)	
+			kill user process
+		else
+			panic
+	}
+	if (ATTR.ASI) {
+		get ASI, ADDR, SZ
+		if ASI register(s) valid for this CPU {
+			if ASI register(s) is reloadable/recoverable
+				reload/recover
+				retry
+		}
+		if (user mode)	
+			kill user process
+		else
+			panic
+	}
+	if (ATTR.PREG) {
+		get REG (privileged register)
+		if privileged register is reloadable/recoverable {
+			reload/recover
+			retry
+		}
+		if (user mode)	
+			kill user process
+		else
+			panic
+	}
+
+--Boundary_(ID_X0ttWDfqL2ZcarrXWdyt/Q)
+Content-type: text/plain; name=hv_sun4v_errorphilosophy-V2.2.txt.diffs
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=hv_sun4v_errorphilosophy-V2.2.txt.diffs
+
+--- hv_sun4v_errorphilosophy-V2.1.txt	Tue Nov 24 15:09:49 2009
++++ hv_sun4v_errorphilosophy-V2.2.txt	Fri Dec  4 10:12:45 2009
+@@ -1,4 +1,4 @@
+-"%Z%%M% %I%     %E% "
++"@(#)hv_sun4v_errorphilosophy-V2.2.txt 1.4     09/12/04 "
+ 
+ 
+ Sun4v Hypervisor Error Handling Interfaces 
+@@ -563,9 +563,9 @@
+ 				for future use.
+     MODE	25:24		Execution Mode
+ 				(see 5.2.5.viiii)
+-    RSVD0	23:10		Undefined. Reserved
++    RSVD0	23:11		Undefined. Reserved
+ 				for future use.
+-    SP_STATE	9:9		New SP state
++    SP_STATE	10:9		New SP state
+     PREG	8		Sun4v Privileged	CPUID, REG
+ 				Register
+     ASI		7		Sun4v ASI register	ASI, ADDR, SZ
+@@ -692,12 +692,14 @@
+ current state of the SP.
+ 
+ The table 5.2.4-III below lists the currently defined values.
+- 	---------------------------------
++ 	----------------------------------------------------
+  	Value	Description
+- 	---------------------------------
+-	0b0	SP is unavailable
+-	0b1	SP is available
+- 	---------------------------------
++ 	----------------------------------------------------
++	0b00	SP is physically present but is faulted
++		and currently unavailable
++	0b01	SP is available
++	0b10	SP is not physically present in the system
++ 	----------------------------------------------------
+ 	 Table 5.2.4-III. Service Processor State
+ 
+ 5.2.4.x Execution Mode (MODE). This field specifies the execution
+
+--Boundary_(ID_X0ttWDfqL2ZcarrXWdyt/Q)--
+
+From sacadmin Fri Dec  4 09:53:06 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB4Hr60b020366
+	for <fwarc@sac.sfbay.sun.com>; Fri, 4 Dec 2009 09:53:06 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nB4Hr5EL001354
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 4 Dec 2009 09:53:06 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU50000530HL100@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Dec 2009 10:53:05 -0700 (MST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU500EPU30GM680@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Dec 2009 10:53:04 -0700 (MST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nB4Hr4kw011445	for
+ <fwarc@sun.com>; Fri, 04 Dec 2009 09:53:04 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KU500J002QUOY00@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Dec 2009 09:53:04 -0800 (PST)
+Received: from [129.150.32.71] ([unknown] [129.150.32.71])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KU5000CV30DS180@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Dec 2009 09:53:03 -0800 (PST)
+Date: Fri, 04 Dec 2009 09:53:01 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: fast-track: 2009/655 - Change the semantics of the Sun4v error
+ report
+In-reply-to: <4B18E0E0.5090706@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Jim Quigley <Jim.Quigley@sun.com>, Scott.Davenport@sun.com,
+        Anthony Yznaga <Anthony.Yznaga@sun.com>,
+        Dan Mahoney <Dan.Mahoney@sun.com>,
+        Jim Anderson <James.Anderson@sun.com>,
+        Darrel Donaldson <Darrel.Donaldson@sun.com>
+Message-id: <4B194C7D.7000902@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B184A03.20003@sun.com> <1259883689.3389.9.camel@prax>
+ <80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM> <1259885516.3389.14.camel@prax>
+ <4B1858CD.90509@sun.com> <4B185A05.4050409@sun.com>
+ <1259888514.3389.15.camel@prax> <4B18E0E0.5090706@Sun.COM>
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+Status: RO
+Content-Length: 2985
+
+Jim Quigley wrote:
+> On 12/04/09 01:01, Scott Davenport wrote:
+>> On Thu, 2009-12-03 at 16:38 -0800, David Kahn wrote:
+>>> Tycho explained to me that none of the sp state stuff is
+>>> in the field yet, so we can define here how we really want
+>>> it, provided all the consumers agree on it.
+>>>
+>>> -David
+>>
+>> Ok...I'm un-shutting-up....can we all agree on this?
+>>
+>>         ----------------------------------------------------
+>>         Value   Description
+>>         ----------------------------------------------------
+>>         0b00    SP is physically present but is faulted
+>>                 and currently unavailable
+>>         0b01    SP is available
+>>         0b10    SP is not physically present in the system
+>>         ----------------------------------------------------
+>>          Table 5.2.4-III. Service Processor State
+>>
+>
+I am ok with these changes.  But I am still wondering why Solaris treated
+in its implementation "unavailable to host" as "faulted SP".  SP could 
+be resetting
+or down for some reason when this happens and is not necessarily faulty. 
+I understand that original intention of "unavailable" was probably to 
+treat it
+as faulted SP but definition in the 2009/070 case was "unavailable" and 
+Solaris
+should have used that definition instead of guessing that it is 
+"unavailable" because
+it is "faulted".
+
+Also, up until this Monday we only had one bit defined, bit 9.  And for both
+0b00 and 0b10, bit 9 is the same and so both are the cases for "unavailable"
+SP.  So, Solaris code would have worked as is.  Only difference would be the
+designation of "faulted".  Which we could have fixed when we add code
+changes to take care of bit 10.  I hope there is a plan to make Solaris
+changes to take care of bit 10.  I know Sunit has changes in place for
+OpenBoot already.
+
+I will copy new specification and diffs file in few minutes.  I would 
+like to
+keep the timer on this case as is to time out on Monday and the changes
+are simple and easy to understand.  If any of the FWARC members or
+intern wants more time then please chime in.
+
+BTW, earlier this week I was reminded that I should acknowledge that this
+case rectifies definitions approved under FWARC case 2009/070.   Also,
+the commitment level for this interface in 2009/070 was "Sun Private".  The
+commitment level will remain as "Sun Private" for this interface as well.
+
+Finally, I was also advised to change the title of this case to followings,
+
+"sun4v error report ATTR.SP_STATE update"
+
+
+I agree with this change and so will modify title in the IAM file and
+the IAM file name itself. I hope this does not mess up anything else
+in ARC case processing scripts.
+
+
+
+
+Thanks.
+
+>
+>
+>     Fine by me, new doc's attached,
+>
+>     regards
+>
+>     Jim Q.
+>
+>>
+>>
+>
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Fri Dec  4 10:41:11 2009
+Received: from sunmail6brm.central.sun.com (sunmail6brm.Central.Sun.COM [129.147.4.169])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB4IfBHm021371
+	for <fwarc@sac.sfbay.sun.com>; Fri, 4 Dec 2009 10:41:11 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail6brm.central.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nB4IfAbQ016341
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 4 Dec 2009 12:41:11 -0600 (CST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU50051F58MIB00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Dec 2009 11:41:10 -0700 (MST)
+Received: from gmp-eb-inf-2.sun.com ([192.18.6.24])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU500ESF58LM5B0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Dec 2009 11:41:10 -0700 (MST)
+Received: from fe-emea-09.sun.com
+ (gmp-eb-lb-1-fe1.eu.sun.com [192.18.6.7] (may be forged))
+	by gmp-eb-inf-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nB4If9Gh001476	for
+ <fwarc@sun.com>; Fri, 04 Dec 2009 18:41:09 +0000 (GMT)
+Received: from conversion-daemon.fe-emea-09.sun.com by fe-emea-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KU500H0056EYI00@fe-emea-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Dec 2009 18:40:52 +0000 (GMT)
+Received: from jim-quigleys-macbook-pro.local ([unknown] [129.150.116.145])
+ by fe-emea-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KU500LAH583YJ80@fe-emea-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Dec 2009 18:40:52 +0000 (GMT)
+Date: Fri, 04 Dec 2009 18:40:50 +0000
+From: Jim Quigley <Jim.Quigley@sun.com>
+Subject: Re: fast-track: 2009/655 - Change the semantics of the Sun4v error
+ report
+In-reply-to: <4B194C7D.7000902@sun.com>
+Sender: Jim.Quigley@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Scott.Davenport@sun.com,
+        Anthony Yznaga <Anthony.Yznaga@sun.com>,
+        Dan Mahoney <Dan.Mahoney@sun.com>,
+        Jim Anderson <james.anderson@sun.com>,
+        Darrel Donaldson <Darrel.Donaldson@sun.com>
+Message-id: <4B1957B2.8030901@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B184A03.20003@sun.com> <1259883689.3389.9.camel@prax>
+ <80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM> <1259885516.3389.14.camel@prax>
+ <4B1858CD.90509@sun.com> <4B185A05.4050409@sun.com>
+ <1259888514.3389.15.camel@prax> <4B18E0E0.5090706@Sun.COM>
+ <4B194C7D.7000902@sun.com>
+User-Agent: Thunderbird 2.0.0.23 (Macintosh/20090812)
+Status: RO
+Content-Length: 870
+
+
+
+    Hi,
+
+> I am ok with these changes.  But I am still wondering why Solaris treated
+> in its implementation "unavailable to host" as "faulted SP".  SP could 
+> be resetting
+> or down for some reason when this happens and is not necessarily 
+> faulty. I understand that original intention of "unavailable" was 
+> probably to treat it
+> as faulted SP but definition in the 2009/070 case was "unavailable" 
+> and Solaris
+> should have used that definition instead of guessing that it is 
+> "unavailable" because
+> it is "faulted".
+>
+
+    The original definition of 'unavailable' was 'unavailable for use 
+by/communication
+    with the host'. There was no intention that any conclusions as to 
+the state of the
+    SP could be inferred from this, simply that the host guest could not 
+expect the
+    SP to respond to any requests/communications.
+
+    regards
+
+    Jim Q.
+
+From sacadmin Fri Dec  4 11:39:58 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB4Jdwd6022462
+	for <fwarc@sac.sfbay.sun.com>; Fri, 4 Dec 2009 11:39:58 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nB4JdvB0019297
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 4 Dec 2009 11:39:58 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU500A0E7YL6D00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Dec 2009 11:39:57 -0800 (PST)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU5004FD7YL6E90@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Dec 2009 11:39:57 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4)
+ with ESMTP id nB4Jdtg1003011; Fri, 04 Dec 2009 11:39:55 -0800 (PST)
+Received: from dropship.sfbay.sun.com (dropship.SFBay.Sun.COM [129.146.96.70])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id nB4Jdspn018103; Fri,
+ 04 Dec 2009 11:39:54 -0800 (PST)
+Date: Fri, 04 Dec 2009 11:39:54 -0800
+From: Greg Onufer <greg.onufer@sun.com>
+Subject: Re: fast-track: 2009/655 - Change the semantics of the Sun4v error
+ report
+In-reply-to: <4B194C7D.7000902@sun.com>
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Jim Quigley <Jim.Quigley@sun.com>,
+        Scott.Davenport@sun.com, Anthony Yznaga <Anthony.Yznaga@sun.com>,
+        Dan Mahoney <Dan.Mahoney@sun.com>,
+        Jim Anderson <James.Anderson@sun.com>,
+        Darrel Donaldson <Darrel.Donaldson@sun.com>
+Message-id: <DD3DE461-C571-4807-9EC6-FA64E80C684D@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.1077)
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B184A03.20003@sun.com> <1259883689.3389.9.camel@prax>
+ <80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM> <1259885516.3389.14.camel@prax>
+ <4B1858CD.90509@sun.com> <4B185A05.4050409@sun.com>
+ <1259888514.3389.15.camel@prax> <4B18E0E0.5090706@Sun.COM>
+ <4B194C7D.7000902@sun.com>
+Status: RO
+Content-Length: 1582
+
+On Dec 4, 2009, at 9:53 AM, Hitendra Zhangada wrote:
+> Jim Quigley wrote:
+>> On 12/04/09 01:01, Scott Davenport wrote:
+>>> On Thu, 2009-12-03 at 16:38 -0800, David Kahn wrote:
+>>>> Tycho explained to me that none of the sp state stuff is
+>>>> in the field yet, so we can define here how we really want
+>>>> it, provided all the consumers agree on it.
+>>>> 
+>>> 
+>>> Ok...I'm un-shutting-up....can we all agree on this?
+>>> 
+>>>        ----------------------------------------------------
+>>>        Value   Description
+>>>        ----------------------------------------------------
+>>>        0b00    SP is physically present but is faulted
+>>>                and currently unavailable
+>>>        0b01    SP is available
+>>>        0b10    SP is not physically present in the system
+>>>        ----------------------------------------------------
+>>>         Table 5.2.4-III. Service Processor State
+>>> 
+>> 
+> I am ok with these changes.  But I am still wondering why Solaris treated
+> in its implementation "unavailable to host" as "faulted SP".  SP could be resetting
+> or down for some reason when this happens and is not necessarily faulty.
+
+There's a state missing: present/unavailable.  There are various combinations of present/not-present, faulted/functional, and available/unavailable.  What's the state for "it's present but is rebooting"?  Does that matter?  Will it matter?
+
+	present/unavailable (unknown whether faulted/functional)
+	present/faulted (implied unavailable, not going to return until the fault is addressed)
+	present/available
+	not-present
+
+Cheers!greg
+
+
+From sacadmin Fri Dec  4 13:05:29 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB4L5SfN025208
+	for <fwarc@sac.sfbay.sun.com>; Fri, 4 Dec 2009 13:05:29 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.4) with ESMTP id nB4L5Sf1000137
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 4 Dec 2009 14:05:28 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU500D03BX44Q00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Dec 2009 13:05:28 -0800 (PST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU5000H7BX48K50@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Dec 2009 13:05:28 -0800 (PST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nB4L5SAU001293	for
+ <fwarc@sun.com>; Fri, 04 Dec 2009 13:05:28 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KU500700B2WVD00@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Dec 2009 13:05:28 -0800 (PST)
+Received: from [129.150.32.71] ([unknown] [129.150.32.71])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KU500K2KBX1FL90@fe-sfbay-09.sun.com>; Fri,
+ 04 Dec 2009 13:05:27 -0800 (PST)
+Date: Fri, 04 Dec 2009 13:05:25 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: fast-track: 2009/655 - sun4v error report ATTR.SP_STATE update
+In-reply-to: <DD3DE461-C571-4807-9EC6-FA64E80C684D@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Greg Onufer <Greg.Onufer@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Jim Quigley <Jim.Quigley@sun.com>,
+        Scott.Davenport@sun.com, Anthony Yznaga <Anthony.Yznaga@sun.com>,
+        Dan Mahoney <Dan.Mahoney@sun.com>,
+        Jim Anderson <James.Anderson@sun.com>,
+        Darrel Donaldson <Darrel.Donaldson@sun.com>
+Message-id: <4B197995.2000504@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_9MTNbjnRRc4Ao0J7Ph8/wQ)"
+X-PMX-Version: 5.4.1.325704
+References: <4B184A03.20003@sun.com> <1259883689.3389.9.camel@prax>
+ <80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM> <1259885516.3389.14.camel@prax>
+ <4B1858CD.90509@sun.com> <4B185A05.4050409@sun.com>
+ <1259888514.3389.15.camel@prax> <4B18E0E0.5090706@Sun.COM>
+ <4B194C7D.7000902@sun.com> <DD3DE461-C571-4807-9EC6-FA64E80C684D@sun.com>
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+Status: RO
+Content-Length: 7090
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_9MTNbjnRRc4Ao0J7Ph8/wQ)
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+
+Greg Onufer wrote:
+> On Dec 4, 2009, at 9:53 AM, Hitendra Zhangada wrote:
+>   
+>> Jim Quigley wrote:
+>>     
+>>> On 12/04/09 01:01, Scott Davenport wrote:
+>>>       
+>>>> On Thu, 2009-12-03 at 16:38 -0800, David Kahn wrote:
+>>>>         
+>>>>> Tycho explained to me that none of the sp state stuff is
+>>>>> in the field yet, so we can define here how we really want
+>>>>> it, provided all the consumers agree on it.
+>>>>>
+>>>>>           
+>>>> Ok...I'm un-shutting-up....can we all agree on this?
+>>>>
+>>>>        ----------------------------------------------------
+>>>>        Value   Description
+>>>>        ----------------------------------------------------
+>>>>        0b00    SP is physically present but is faulted
+>>>>                and currently unavailable
+>>>>        0b01    SP is available
+>>>>        0b10    SP is not physically present in the system
+>>>>        ----------------------------------------------------
+>>>>         Table 5.2.4-III. Service Processor State
+>>>>
+>>>>         
+>> I am ok with these changes.  But I am still wondering why Solaris treated
+>> in its implementation "unavailable to host" as "faulted SP".  SP could be resetting
+>> or down for some reason when this happens and is not necessarily faulty.
+>>     
+>
+> There's a state missing: present/unavailable.  There are various combinations of present/not-present, faulted/functional, and available/unavailable.  What's the state for "it's present but is rebooting"?  Does that matter?  Will it matter?
+>   
+
+I am not sure that state is available, is it?
+
+> 	present/unavailable (unknown whether faulted/functional)
+> 	present/faulted (implied unavailable, not going to return until the fault is addressed)
+> 	present/available
+> 	not-present
+>   
+
+We could use the remaining combination for present/unavailable for 
+completeness.
+Something like,
+
+       ----------------------------------------------------
+       Value   Description
+       ----------------------------------------------------
+       0b00    SP is physically present but is faulted
+               and currently unavailable
+       0b01    SP is physically present and is available
+       0b10    SP is not physically present in the system
+       0b11    SP physically present but not available
+       ----------------------------------------------------
+        Table 5.2.4-III. Service Processor State
+
+
+I will let project team decide on what they want to do about this.  They 
+need
+to respond if they want the additional state.
+
+BTW, I have changed the IAM file to with a suggested title for this case 
+(also
+changed subject line of this mail to reflect that).
+
+
+Thanks.
+> Cheers!greg
+>
+>   
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_9MTNbjnRRc4Ao0J7Ph8/wQ)
+Content-type: text/html; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+Greg Onufer wrote:
+<blockquote cite="mid:DD3DE461-C571-4807-9EC6-FA64E80C684D@sun.com"
+ type="cite">
+  <pre wrap="">On Dec 4, 2009, at 9:53 AM, Hitendra Zhangada wrote:
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">Jim Quigley wrote:
+    </pre>
+    <blockquote type="cite">
+      <pre wrap="">On 12/04/09 01:01, Scott Davenport wrote:
+      </pre>
+      <blockquote type="cite">
+        <pre wrap="">On Thu, 2009-12-03 at 16:38 -0800, David Kahn wrote:
+        </pre>
+        <blockquote type="cite">
+          <pre wrap="">Tycho explained to me that none of the sp state stuff is
+in the field yet, so we can define here how we really want
+it, provided all the consumers agree on it.
+
+          </pre>
+        </blockquote>
+        <pre wrap="">Ok...I'm un-shutting-up....can we all agree on this?
+
+       ----------------------------------------------------
+       Value   Description
+       ----------------------------------------------------
+       0b00    SP is physically present but is faulted
+               and currently unavailable
+       0b01    SP is available
+       0b10    SP is not physically present in the system
+       ----------------------------------------------------
+        Table 5.2.4-III. Service Processor State
+
+        </pre>
+      </blockquote>
+    </blockquote>
+    <pre wrap="">I am ok with these changes.  But I am still wondering why Solaris treated
+in its implementation "unavailable to host" as "faulted SP".  SP could be resetting
+or down for some reason when this happens and is not necessarily faulty.
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+There's a state missing: present/unavailable.  There are various combinations of present/not-present, faulted/functional, and available/unavailable.  What's the state for "it's present but is rebooting"?  Does that matter?  Will it matter?
+  </pre>
+</blockquote>
+<br>
+I am not sure that state is available, is it?<br>
+<br>
+<blockquote cite="mid:DD3DE461-C571-4807-9EC6-FA64E80C684D@sun.com"
+ type="cite">
+  <pre wrap="">
+	present/unavailable (unknown whether faulted/functional)
+	present/faulted (implied unavailable, not going to return until the fault is addressed)
+	present/available
+	not-present
+  </pre>
+</blockquote>
+<br>
+We could use the remaining combination for present/unavailable for
+completeness.<br>
+Something like,<br>
+<br>
+<pre wrap="">       ----------------------------------------------------
+       Value   Description
+       ----------------------------------------------------
+       0b00    SP is physically present but is faulted
+               and currently unavailable
+       0b01    SP is physically present and is available
+       0b10    SP is not physically present in the system
+       0b11    SP physically present but not available
+       ----------------------------------------------------
+        Table 5.2.4-III. Service Processor State
+
+</pre>
+I will let project team decide on what they want to do about this.&nbsp;
+They need<br>
+to respond if they want the additional state.<br>
+<br>
+BTW, I have changed the IAM file to with a suggested title for this
+case (also<br>
+changed subject line of this mail to reflect that).<br>
+<br>
+<br>
+Thanks.<br>
+<blockquote cite="mid:DD3DE461-C571-4807-9EC6-FA64E80C684D@sun.com"
+ type="cite">
+  <pre wrap="">
+Cheers!greg
+
+  </pre>
+</blockquote>
+<br>
+<br>
+<pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_9MTNbjnRRc4Ao0J7Ph8/wQ)--
+
+From sacadmin Fri Dec  4 14:09:25 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB4M9Olu026683
+	for <fwarc@sac.sfbay.sun.com>; Fri, 4 Dec 2009 14:09:25 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.4) with ESMTP id nB4M9Ls6040052;
+	Fri, 4 Dec 2009 15:09:21 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KU50030PEVLOQ00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 04 Dec 2009 14:09:21 -0800 (PST)
+Received: from frylock.sfbay.sun.com ([10.6.92.225])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KU5000E6EVK8KB0@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 04 Dec 2009 14:09:20 -0800 (PST)
+Received: from frylock.sfbay.sun.com (localhost [127.0.0.1])
+	by frylock.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id nB4M9K1j005249;
+ Fri, 04 Dec 2009 14:09:20 -0800 (PST)
+Received: (from rath@localhost)
+	by frylock.sfbay.sun.com (8.13.7+Sun/8.13.7/Submit) id nB4M9K8i005248; Fri,
+ 04 Dec 2009 14:09:20 -0800 (PST)
+Date: Fri, 04 Dec 2009 14:09:20 -0800
+From: Kevin Rathbun <Kevin.Rathbun@sun.com>
+Subject: Re: fast-track: 2009/655 - sun4v error report ATTR.SP_STATE update
+In-reply-to: <4B197995.2000504@sun.com>
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Greg Onufer <Greg.Onufer@sun.com>, Firmware Arch <fwarc@sun.com>,
+        Jim Quigley <Jim.Quigley@sun.com>, Scott.Davenport@sun.com,
+        Anthony Yznaga <Anthony.Yznaga@sun.com>,
+        Dan Mahoney <Dan.Mahoney@sun.com>,
+        Jim Anderson <James.Anderson@sun.com>,
+        Darrel Donaldson <Darrel.Donaldson@sun.com>
+Reply-to: Kevin Rathbun <Kevin.Rathbun@sun.com>
+Message-id: <20091204220920.GJ2908@frylock>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+Content-disposition: inline
+X-PMX-Version: 5.4.1.325704
+References: <1259883689.3389.9.camel@prax>
+ <80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM> <1259885516.3389.14.camel@prax>
+ <4B1858CD.90509@sun.com> <4B185A05.4050409@sun.com>
+ <1259888514.3389.15.camel@prax> <4B18E0E0.5090706@Sun.COM>
+ <4B194C7D.7000902@sun.com> <DD3DE461-C571-4807-9EC6-FA64E80C684D@sun.com>
+ <4B197995.2000504@sun.com>
+X-Authentication-warning: frylock.sfbay.sun.com: rath set sender to
+ Kevin.Rathbun@Sun.COM using -f
+User-Agent: Mutt/1.5.16 (2007-06-09)
+Status: RO
+Content-Length: 4000
+
+On Fri, Dec 04, 2009 at 01:05:25PM -0800, Hitendra Zhangada wrote:
+> Greg Onufer wrote:
+>> On Dec 4, 2009, at 9:53 AM, Hitendra Zhangada wrote:
+>>> Jim Quigley wrote:
+>>>> On 12/04/09 01:01, Scott Davenport wrote:
+>>>>>
+>>>>>        ----------------------------------------------------
+>>>>>        Value   Description
+>>>>>        ----------------------------------------------------
+>>>>>        0b00    SP is physically present but is faulted
+>>>>>                and currently unavailable
+>>>>>        0b01    SP is available
+>>>>>        0b10    SP is not physically present in the system
+>>>>>        ----------------------------------------------------
+>>>>>         Table 5.2.4-III. Service Processor State
+>>>>>         
+>>> I am ok with these changes.  But I am still wondering why Solaris treated
+>>> in its implementation "unavailable to host" as "faulted SP".  SP could be 
+>>> resetting
+>>> or down for some reason when this happens and is not necessarily faulty.
+>>>     
+>>
+>> There's a state missing: present/unavailable.  There are various 
+>> combinations of present/not-present, faulted/functional, and 
+>> available/unavailable.  What's the state for "it's present but is 
+>> rebooting"?  Does that matter?  Will it matter?
+>>   
+>
+> I am not sure that state is available, is it?
+>
+>> 	present/unavailable (unknown whether faulted/functional)
+>> 	present/faulted (implied unavailable, not going to return until the fault 
+>> is addressed)
+>> 	present/available
+>> 	not-present
+>>   
+>
+> We could use the remaining combination for present/unavailable for 
+> completeness. Something like,
+>
+>       ----------------------------------------------------
+>       Value   Description
+>       ----------------------------------------------------
+>       0b00    SP is physically present but is faulted
+>               and currently unavailable
+>       0b01    SP is physically present and is available
+>       0b10    SP is not physically present in the system
+>       0b11    SP physically present but not available
+
+I don't think we should go down this road in a hurry. The new suggested state
+of "SP physically present but not available" has implications for existing
+code that currently faces this scenario which has been present on systems
+since n1. Some of that code tries to handle this scenario without knowing it
+is in play through retries and timeouts and error messaging. Some of that code
+doesn't handle it well or at all. And the code is present in hypervisor, obp,
+solaris kernel and user code. Moreover, the code in many cases doesn't know if
+it is talking to the SP or another entity on the other ldc endpoint, so it has
+to take into consideration that the control domain may be rebooting, a loopback
+client on the guest may not be responding, etc. I don't recommend defining the
+new state and bits before reviewing the entire stack and all the relevant
+scenarios and deciding if it makes sense to add the support, who should be
+required to support it, and the proper design. These comments only pertain if
+the new suggested state is meant to be useful to the host ldc clients that would
+be interested in this information. If the new state is added for some other
+reason that I can't think of, and the host ldc clients ignore it and continue to
+do what they do today, then that's a different question.
+
+kvn
+
+>       ----------------------------------------------------
+>        Table 5.2.4-III. Service Processor State
+>
+>
+> I will let project team decide on what they want to do about this.  They 
+> need to respond if they want the additional state.
+>
+> BTW, I have changed the IAM file to with a suggested title for this case 
+> (also changed subject line of this mail to reflect that).
+>
+>
+> Thanks.
+>> Cheers!greg
+>>
+>>   
+>
+>
+> -- 
+> Hitendra Zhangada
+> =============================================
+> SPS Common SW Features Engineering
+> Systems Group, Sun Microsystems, Inc.
+> Work Ph# (858) 625 3757, Ext. x53757
+> SUN Internal homepage http://esp.west/~hitu
+>
+
+From sacadmin Mon Dec  7 11:16:41 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB7JGeSj029082
+	for <fwarc@sac.sfbay.sun.com>; Mon, 7 Dec 2009 11:16:41 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.4) with ESMTP id nB7JGdJp000246
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 7 Dec 2009 12:16:40 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KUA00D0RQVRNQ00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 07 Dec 2009 11:16:39 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KUA00C33QVRTU10@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 07 Dec 2009 11:16:39 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nB7JGYUC015877	for
+ <fwarc@sun.com>; Mon, 07 Dec 2009 11:16:39 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KUA00M00QNJVJ00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 07 Dec 2009 11:16:37 -0800 (PST)
+Received: from [129.150.33.218] ([unknown] [129.150.33.218])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KUA0066SQVCJXD0@fe-sfbay-10.sun.com>; Mon,
+ 07 Dec 2009 11:16:26 -0800 (PST)
+Date: Mon, 07 Dec 2009 11:16:25 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: fast-track: 2009/655 - sun4v error report ATTR.SP_STATE update
+In-reply-to: <4B197995.2000504@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Greg Onufer <Greg.Onufer@sun.com>, Jim Quigley <Jim.Quigley@sun.com>,
+        Scott.Davenport@sun.com, Anthony Yznaga <Anthony.Yznaga@sun.com>,
+        Dan Mahoney <Dan.Mahoney@sun.com>,
+        Jim Anderson <James.Anderson@sun.com>,
+        Darrel Donaldson <Darrel.Donaldson@sun.com>
+Message-id: <4B1D5489.9020705@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_vrWu7c8lalYcwANAfIvhIQ)"
+X-PMX-Version: 5.4.1.325704
+References: <4B184A03.20003@sun.com> <1259883689.3389.9.camel@prax>
+ <80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM> <1259885516.3389.14.camel@prax>
+ <4B1858CD.90509@sun.com> <4B185A05.4050409@sun.com>
+ <1259888514.3389.15.camel@prax> <4B18E0E0.5090706@Sun.COM>
+ <4B194C7D.7000902@sun.com> <DD3DE461-C571-4807-9EC6-FA64E80C684D@sun.com>
+ <4B197995.2000504@sun.com>
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+Status: RO
+Content-Length: 9258
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_vrWu7c8lalYcwANAfIvhIQ)
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+
+Hitendra Zhangada wrote:
+> Greg Onufer wrote:
+>> On Dec 4, 2009, at 9:53 AM, Hitendra Zhangada wrote:
+>>   
+>>> Jim Quigley wrote:
+>>>     
+>>>> On 12/04/09 01:01, Scott Davenport wrote:
+>>>>       
+>>>>> On Thu, 2009-12-03 at 16:38 -0800, David Kahn wrote:
+>>>>>         
+>>>>>> Tycho explained to me that none of the sp state stuff is
+>>>>>> in the field yet, so we can define here how we really want
+>>>>>> it, provided all the consumers agree on it.
+>>>>>>
+>>>>>>           
+>>>>> Ok...I'm un-shutting-up....can we all agree on this?
+>>>>>
+>>>>>        ----------------------------------------------------
+>>>>>        Value   Description
+>>>>>        ----------------------------------------------------
+>>>>>        0b00    SP is physically present but is faulted
+>>>>>                and currently unavailable
+>>>>>        0b01    SP is available
+>>>>>        0b10    SP is not physically present in the system
+>>>>>        ----------------------------------------------------
+>>>>>         Table 5.2.4-III. Service Processor State
+>>>>>
+>>>>>         
+>>> I am ok with these changes.  But I am still wondering why Solaris treated
+>>> in its implementation "unavailable to host" as "faulted SP".  SP could be resetting
+>>> or down for some reason when this happens and is not necessarily faulty.
+>>>     
+
+I did not see any response from the project team and so I am
+assuming that they do not want to add new state to the table.
+The case will time out today with the latest specification
+that is in the materials directory.  If anyone of you have issues
+with it and needs more time then please speak up now or give
+me LGTM!
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2009/655/Materials/
+
+
+
+>>
+>> There's a state missing: present/unavailable.  There are various combinations of present/not-present, faulted/functional, and available/unavailable.  What's the state for "it's present but is rebooting"?  Does that matter?  Will it matter?
+>>   
+>
+> I am not sure that state is available, is it?
+>
+>> 	present/unavailable (unknown whether faulted/functional)
+>> 	present/faulted (implied unavailable, not going to return until the fault is addressed)
+>> 	present/available
+>> 	not-present
+>>   
+>
+> We could use the remaining combination for present/unavailable for 
+> completeness.
+> Something like,
+>
+>        ----------------------------------------------------
+>        Value   Description
+>        ----------------------------------------------------
+>        0b00    SP is physically present but is faulted
+>                and currently unavailable
+>        0b01    SP is physically present and is available
+>        0b10    SP is not physically present in the system
+>        0b11    SP physically present but not available
+>        ----------------------------------------------------
+>         Table 5.2.4-III. Service Processor State
+>
+>   
+> I will let project team decide on what they want to do about this.  
+> They need
+> to respond if they want the additional state.
+>
+> BTW, I have changed the IAM file to with a suggested title for this 
+> case (also
+> changed subject line of this mail to reflect that).
+>
+>
+> Thanks.
+>> Cheers!greg
+>>
+>>   
+>
+>
+> -- 
+> Hitendra Zhangada
+> =============================================
+> SPS Common SW Features Engineering
+> Systems Group, Sun Microsystems, Inc.
+> Work Ph# (858) 625 3757, Ext. x53757
+> SUN Internal homepage http://esp.west/~hitu
+>   
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_vrWu7c8lalYcwANAfIvhIQ)
+Content-type: text/html; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+Hitendra Zhangada wrote:
+<blockquote cite="mid:4B197995.2000504@sun.com" type="cite">
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+Greg Onufer wrote:
+  <blockquote cite="mid:DD3DE461-C571-4807-9EC6-FA64E80C684D@sun.com"
+ type="cite">
+    <pre wrap="">On Dec 4, 2009, at 9:53 AM, Hitendra Zhangada wrote:
+  </pre>
+    <blockquote type="cite">
+      <pre wrap="">Jim Quigley wrote:
+    </pre>
+      <blockquote type="cite">
+        <pre wrap="">On 12/04/09 01:01, Scott Davenport wrote:
+      </pre>
+        <blockquote type="cite">
+          <pre wrap="">On Thu, 2009-12-03 at 16:38 -0800, David Kahn wrote:
+        </pre>
+          <blockquote type="cite">
+            <pre wrap="">Tycho explained to me that none of the sp state stuff is
+in the field yet, so we can define here how we really want
+it, provided all the consumers agree on it.
+
+          </pre>
+          </blockquote>
+          <pre wrap="">Ok...I'm un-shutting-up....can we all agree on this?
+
+       ----------------------------------------------------
+       Value   Description
+       ----------------------------------------------------
+       0b00    SP is physically present but is faulted
+               and currently unavailable
+       0b01    SP is available
+       0b10    SP is not physically present in the system
+       ----------------------------------------------------
+        Table 5.2.4-III. Service Processor State
+
+        </pre>
+        </blockquote>
+      </blockquote>
+      <pre wrap="">I am ok with these changes.  But I am still wondering why Solaris treated
+in its implementation "unavailable to host" as "faulted SP".  SP could be resetting
+or down for some reason when this happens and is not necessarily faulty.
+    </pre>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<br>
+I did not see any response from the project team and so I am<br>
+assuming that they do not want to add new state to the table. <br>
+The case will time out today with the latest specification<br>
+that is in the materials directory.&nbsp; If anyone of you have issues<br>
+with it and needs more time then please speak up now or give<br>
+me LGTM!<br>
+<br>
+<a class="moz-txt-link-freetext" href="http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2009/655/Materials/">http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2009/655/Materials/</a><br>
+<br>
+<br>
+<br>
+<blockquote cite="mid:4B197995.2000504@sun.com" type="cite">
+  <blockquote cite="mid:DD3DE461-C571-4807-9EC6-FA64E80C684D@sun.com"
+ type="cite">
+    <blockquote type="cite"> </blockquote>
+    <pre wrap=""><!---->
+There's a state missing: present/unavailable.  There are various combinations of present/not-present, faulted/functional, and available/unavailable.  What's the state for "it's present but is rebooting"?  Does that matter?  Will it matter?
+  </pre>
+  </blockquote>
+  <br>
+I am not sure that state is available, is it?<br>
+  <br>
+  <blockquote cite="mid:DD3DE461-C571-4807-9EC6-FA64E80C684D@sun.com"
+ type="cite">
+    <pre wrap="">	present/unavailable (unknown whether faulted/functional)
+	present/faulted (implied unavailable, not going to return until the fault is addressed)
+	present/available
+	not-present
+  </pre>
+  </blockquote>
+  <br>
+We could use the remaining combination for present/unavailable for
+completeness.<br>
+Something like,<br>
+  <br>
+  <pre wrap="">       ----------------------------------------------------
+       Value   Description
+       ----------------------------------------------------
+       0b00    SP is physically present but is faulted
+               and currently unavailable
+       0b01    SP is physically present and is available
+       0b10    SP is not physically present in the system
+       0b11    SP physically present but not available
+       ----------------------------------------------------
+        Table 5.2.4-III. Service Processor State
+
+  </pre>
+I will let project team decide on what they want to do about this.&nbsp;
+They need<br>
+to respond if they want the additional state.<br>
+  <br>
+BTW, I have changed the IAM file to with a suggested title for this
+case (also<br>
+changed subject line of this mail to reflect that).<br>
+  <br>
+  <br>
+Thanks.<br>
+  <blockquote cite="mid:DD3DE461-C571-4807-9EC6-FA64E80C684D@sun.com"
+ type="cite">
+    <pre wrap="">Cheers!greg
+
+  </pre>
+  </blockquote>
+  <br>
+  <br>
+  <pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a moz-do-not-send="true"
+ class="moz-txt-link-freetext" href="http://esp.west/%7Ehitu">http://esp.west/~hitu</a>
+  </pre>
+</blockquote>
+<tt><br>
+</tt><br>
+<pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_vrWu7c8lalYcwANAfIvhIQ)--
+
+From sacadmin Mon Dec  7 14:49:13 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB7MnDOb005244
+	for <fwarc@sac.sfbay.sun.com>; Mon, 7 Dec 2009 14:49:13 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.4) with ESMTP id nB7MnCNi004142
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 7 Dec 2009 15:49:13 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KUB003070Q0EM00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 07 Dec 2009 14:49:12 -0800 (PST)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KUB000KX0Q0IU30@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 07 Dec 2009 14:49:12 -0800 (PST)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id nB7MnBSh021659	for
+ <fwarc@sun.com>; Mon, 07 Dec 2009 22:49:11 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KUB00F000L6H900@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 07 Dec 2009 15:49:11 -0700 (MST)
+Received: from [192.168.1.101] ([unknown] [129.148.180.170])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KUB00AAM0PY7V90@mail-amer.sun.com>; Mon,
+ 07 Dec 2009 15:49:11 -0700 (MST)
+Date: Mon, 07 Dec 2009 17:49:08 -0500
+From: Darrel Donaldson <Darrel.Donaldson@Sun.COM>
+Subject: Re: fast-track: 2009/655 - sun4v error report ATTR.SP_STATE update
+In-reply-to: <20091204220920.GJ2908@frylock>
+Sender: Darrel.Donaldson@Sun.COM
+To: Kevin Rathbun <Kevin.Rathbun@Sun.COM>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+        Greg Onufer <Greg.Onufer@Sun.COM>, Firmware Arch <fwarc@Sun.COM>,
+        Jim Quigley <Jim.Quigley@Sun.COM>, Scott.Davenport@Sun.COM,
+        Anthony Yznaga <Anthony.Yznaga@Sun.COM>,
+        Dan Mahoney <Dan.Mahoney@Sun.COM>,
+        Jim Anderson <James.Anderson@Sun.COM>
+Message-id: <4B1D8664.7000604@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <1259883689.3389.9.camel@prax>
+ <80D97D69-9032-4C7A-A4F7-768378FD88AE@Sun.COM> <1259885516.3389.14.camel@prax>
+ <4B1858CD.90509@sun.com> <4B185A05.4050409@sun.com>
+ <1259888514.3389.15.camel@prax> <4B18E0E0.5090706@Sun.COM>
+ <4B194C7D.7000902@sun.com> <DD3DE461-C571-4807-9EC6-FA64E80C684D@sun.com>
+ <4B197995.2000504@sun.com> <20091204220920.GJ2908@frylock>
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+Status: RO
+Content-Length: 5808
+
+The implementation should be kept as simple as possible.  Previously 
+there was no distinction between SP present/unavailable and SP not 
+present.  It was my understanding that the "unavailable" (0b00 
+previously 0b0) state was not entered unless the retry attempts had 
+failed implying the SP was either faulted or not present.  All I wanted 
+to have added was the ability to make the distinction between 
+present/faulted and not present without adding a lot of work to the 
+implementation.  Scott's definitions satisfy my request as well as seems 
+to have the least implications to any code that might have tried to do 
+something with the previous two defined states.  Any previous code 
+should have only been looking at the lease significant bit so 0b00 and 
+and the new 0b10 would be seen as 0b0 and be interpreted as unavailable 
+until the code is corrected.  0b01 would be seen as 0b1 meaning 
+"available".    So old code should behave correctly we just won't get 
+the finer distinction on present vs missing until the new code is 
+implemented.   Adding the additional unused decode 0b11 would be seen as 
+0b1 as well and would mess up any previous code if 0b11 was intended to 
+mean anything other than "available".   Therefore 0b11 should avoided 
+because it adds potentially a lot more work than is warranted for what 
+otherwise should be a simple fix.
+
+I strongly suggest, in the spirit of keeping the implementation simple, 
+don't add any additional states beyond the 3 defined by Scott and go 
+with Scott's proposal.
+
+Darrel
+
+Kevin Rathbun wrote:
+> On Fri, Dec 04, 2009 at 01:05:25PM -0800, Hitendra Zhangada wrote:
+>   
+>> Greg Onufer wrote:
+>>     
+>>> On Dec 4, 2009, at 9:53 AM, Hitendra Zhangada wrote:
+>>>       
+>>>> Jim Quigley wrote:
+>>>>         
+>>>>> On 12/04/09 01:01, Scott Davenport wrote:
+>>>>>           
+>>>>>>        ----------------------------------------------------
+>>>>>>        Value   Description
+>>>>>>        ----------------------------------------------------
+>>>>>>        0b00    SP is physically present but is faulted
+>>>>>>                and currently unavailable
+>>>>>>        0b01    SP is available
+>>>>>>        0b10    SP is not physically present in the system
+>>>>>>        ----------------------------------------------------
+>>>>>>         Table 5.2.4-III. Service Processor State
+>>>>>>         
+>>>>>>             
+>>>> I am ok with these changes.  But I am still wondering why Solaris treated
+>>>> in its implementation "unavailable to host" as "faulted SP".  SP could be 
+>>>> resetting
+>>>> or down for some reason when this happens and is not necessarily faulty.
+>>>>     
+>>>>         
+>>> There's a state missing: present/unavailable.  There are various 
+>>> combinations of present/not-present, faulted/functional, and 
+>>> available/unavailable.  What's the state for "it's present but is 
+>>> rebooting"?  Does that matter?  Will it matter?
+>>>   
+>>>       
+>> I am not sure that state is available, is it?
+>>
+>>     
+>>> 	present/unavailable (unknown whether faulted/functional)
+>>> 	present/faulted (implied unavailable, not going to return until the fault 
+>>> is addressed)
+>>> 	present/available
+>>> 	not-present
+>>>   
+>>>       
+>> We could use the remaining combination for present/unavailable for 
+>> completeness. Something like,
+>>
+>>       ----------------------------------------------------
+>>       Value   Description
+>>       ----------------------------------------------------
+>>       0b00    SP is physically present but is faulted
+>>               and currently unavailable
+>>       0b01    SP is physically present and is available
+>>       0b10    SP is not physically present in the system
+>>       0b11    SP physically present but not available
+>>     
+>
+> I don't think we should go down this road in a hurry. The new suggested state
+> of "SP physically present but not available" has implications for existing
+> code that currently faces this scenario which has been present on systems
+> since n1. Some of that code tries to handle this scenario without knowing it
+> is in play through retries and timeouts and error messaging. Some of that code
+> doesn't handle it well or at all. And the code is present in hypervisor, obp,
+> solaris kernel and user code. Moreover, the code in many cases doesn't know if
+> it is talking to the SP or another entity on the other ldc endpoint, so it has
+> to take into consideration that the control domain may be rebooting, a loopback
+> client on the guest may not be responding, etc. I don't recommend defining the
+> new state and bits before reviewing the entire stack and all the relevant
+> scenarios and deciding if it makes sense to add the support, who should be
+> required to support it, and the proper design. These comments only pertain if
+> the new suggested state is meant to be useful to the host ldc clients that would
+> be interested in this information. If the new state is added for some other
+> reason that I can't think of, and the host ldc clients ignore it and continue to
+> do what they do today, then that's a different question.
+>
+> kvn
+>
+>   
+>>       ----------------------------------------------------
+>>        Table 5.2.4-III. Service Processor State
+>>
+>>
+>> I will let project team decide on what they want to do about this.  They 
+>> need to respond if they want the additional state.
+>>
+>> BTW, I have changed the IAM file to with a suggested title for this case 
+>> (also changed subject line of this mail to reflect that).
+>>
+>>
+>> Thanks.
+>>     
+>>> Cheers!greg
+>>>
+>>>   
+>>>       
+>> -- 
+>> Hitendra Zhangada
+>> =============================================
+>> SPS Common SW Features Engineering
+>> Systems Group, Sun Microsystems, Inc.
+>> Work Ph# (858) 625 3757, Ext. x53757
+>> SUN Internal homepage http://esp.west/~hitu
+>>
+>>     
+
+From sacadmin Mon Dec  7 15:32:49 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB7NWndS006426
+	for <fwarc@sac.sfbay.sun.com>; Mon, 7 Dec 2009 15:32:49 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail2sca.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nB7NWnaQ008419
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 7 Dec 2009 15:32:49 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KUB0060B2QP3700@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 07 Dec 2009 15:32:49 -0800 (PST)
+Received: from dm-sfbay-02.sfbay.sun.com ([129.146.11.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KUB0006L2QOIW70@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 07 Dec 2009 15:32:48 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-02.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4)
+ with ESMTP id nB7NWjqw022737; Mon, 07 Dec 2009 15:32:45 -0800 (PST)
+Received: from [192.168.0.39] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id nB7NWi2a008591; Mon,
+ 07 Dec 2009 15:32:44 -0800 (PST)
+Date: Mon, 07 Dec 2009 15:32:44 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: fast-track: 2009/655 - sun4v error report ATTR.SP_STATE update
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Darrel Donaldson <Darrel.Donaldson@sun.com>,
+        Kevin Rathbun <Kevin.Rathbun@sun.com>,
+        Greg Onufer <Greg.Onufer@sun.com>, Firmware Arch <fwarc@sun.com>,
+        Jim Quigley <Jim.Quigley@sun.com>, Scott.Davenport@sun.com,
+        Anthony Yznaga <Anthony.Yznaga@sun.com>,
+        Dan Mahoney <Dan.Mahoney@sun.com>,
+        Jim Anderson <James.Anderson@sun.com>
+Message-id: <4B1D909C.5050405@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+Status: RO
+Content-Length: 179
+
+
+Hitendra,
+
+Apparently, this case isn't ready to time-out today.
+
+Maybe you better put it on hold until the project team
+can go offline and agree on what they want to do?
+
+-David
+
+From sacadmin Mon Dec  7 15:41:13 2009
+Received: from sunmail6brm.central.sun.com (sunmail6brm.Central.Sun.COM [129.147.4.169])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB7NfDVh006475
+	for <fwarc@sac.sfbay.sun.com>; Mon, 7 Dec 2009 15:41:13 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail6brm.central.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nB7NfCuT012751
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 7 Dec 2009 17:41:12 -0600 (CST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KUB00H0F34ORH00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 07 Dec 2009 15:41:12 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KUB00H7M34MM200@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 07 Dec 2009 15:41:10 -0800 (PST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nB7NfArK014351	for
+ <fwarc@sun.com>; Mon, 07 Dec 2009 15:41:10 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KUB00F002UBN800@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 07 Dec 2009 15:41:10 -0800 (PST)
+Received: from [129.150.32.124] ([unknown] [129.150.32.124])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KUB00H7Q34DPT10@fe-sfbay-09.sun.com>; Mon,
+ 07 Dec 2009 15:41:04 -0800 (PST)
+Date: Mon, 07 Dec 2009 15:41:02 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: fast-track: 2009/655 - sun4v error report ATTR.SP_STATE update
+In-reply-to: <4B1D909C.5050405@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: David Kahn <David.Kahn@sun.com>
+Cc: Darrel Donaldson <Darrel.Donaldson@sun.com>,
+        Kevin Rathbun <Kevin.Rathbun@sun.com>,
+        Greg Onufer <Greg.Onufer@sun.com>, Firmware Arch <fwarc@sun.com>,
+        Jim Quigley <Jim.Quigley@sun.com>, Scott.Davenport@sun.com,
+        Anthony Yznaga <Anthony.Yznaga@sun.com>,
+        Dan Mahoney <Dan.Mahoney@sun.com>,
+        Jim Anderson <James.Anderson@sun.com>
+Message-id: <4B1D928E.5090809@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B1D909C.5050405@sun.com>
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+Status: RO
+Content-Length: 763
+
+David Kahn wrote:
+>
+> Hitendra,
+>
+> Apparently, this case isn't ready to time-out today.
+>
+> Maybe you better put it on hold until the project team
+> can go offline and agree on what they want to do?
+>
+
+The project team only wants 3 states as listed in
+the latest specification (Scott's proposal).
+
+Darrel Donaldson also re-confirmed that.  So, I don't
+think project team needs to go offline to do anything.
+
+
+So, unless one of us need more time, this case is ready
+to timeout.  Does anyone need more time? Please speak up.
+
+
+
+
+Thanks. 
+ 
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Mon Dec  7 19:52:07 2009
+Received: from sunmail6brm.central.sun.com (sunmail6brm.Central.Sun.COM [129.147.4.169])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nB83q7f8011877
+	for <fwarc@sac.sfbay.sun.com>; Mon, 7 Dec 2009 19:52:07 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail6brm.central.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nB83q7uJ012306
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 7 Dec 2009 21:52:07 -0600 (CST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KUB00J0DEQVHD00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 07 Dec 2009 20:52:07 -0700 (MST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KUB00IFUEQUZS00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 07 Dec 2009 20:52:06 -0700 (MST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nB83q6pl004701	for
+ <fwarc@sun.com>; Mon, 07 Dec 2009 19:52:06 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KUB00I00EFCA000@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 07 Dec 2009 19:52:06 -0800 (PST)
+Received: from [129.150.177.98] ([unknown] [129.150.177.98])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KUB000XSEQSDD60@fe-sfbay-09.sun.com>; Mon,
+ 07 Dec 2009 19:52:06 -0800 (PST)
+Date: Mon, 07 Dec 2009 19:52:05 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: fast-track: 2009/655 - sun4v error report ATTR.SP_STATE update
+In-reply-to: <4B1D928E.5090809@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Darrel Donaldson <Darrel.Donaldson@sun.com>,
+        Kevin Rathbun <Kevin.Rathbun@sun.com>,
+        Greg Onufer <Greg.Onufer@sun.com>, Jim Quigley <Jim.Quigley@sun.com>,
+        Scott.Davenport@sun.com, Anthony Yznaga <Anthony.Yznaga@sun.com>,
+        Dan Mahoney <Dan.Mahoney@sun.com>,
+        Jim Anderson <James.Anderson@sun.com>
+Message-id: <4B1DCD65.7060609@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B1D909C.5050405@sun.com> <4B1D928E.5090809@sun.com>
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+Status: RO
+Content-Length: 1060
+
+Hitendra Zhangada wrote:
+> David Kahn wrote:
+>>
+>> Hitendra,
+>>
+>> Apparently, this case isn't ready to time-out today.
+>>
+>> Maybe you better put it on hold until the project team
+>> can go offline and agree on what they want to do?
+>>
+>
+> The project team only wants 3 states as listed in
+> the latest specification (Scott's proposal).
+>
+> Darrel Donaldson also re-confirmed that.  So, I don't
+> think project team needs to go offline to do anything.
+>
+>
+> So, unless one of us need more time, this case is ready
+> to timeout.  Does anyone need more time? Please speak up.
+
+No one has requested addition time for this case.  The case is
+approved today as stated in the latest changes submitted by Jim.
+This case is approved for, any any firmware release bindings and
+minor/micro/patch for OS components.
+
+
+Thanks.
+
+>
+>
+>
+> Thanks.
+>
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+

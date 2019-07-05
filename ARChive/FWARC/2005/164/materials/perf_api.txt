@@ -1,0 +1,170 @@
+#ident  "@(#)perf_api.txt 1.2     05/03/13 SMI"
+
+
+1.0 Introduction
+
+This document describes the hypervisor API used to support
+performance instrumentation on a Niagara based system.
+
+Section 2.0 summarizes the overall performance instrumentation
+support provided by the Niagara processor.
+
+Section 3.0 describes the overall hypervisor API used to access
+Niagara performance registgers.
+
+
+2.0 Niagara Performance Instrumentation
+
+Niagara processor provides the following performance instrumentation:
+
+	- SPARC performance instrumentation
+	- DRAM performance instrumentation
+	- JBUS performance instrumentation
+
+
+2.1 SPARC Performance Instrumentation
+
+Each hardware strand has a pair of registers to control/capture
+CPU specific instrumentation:
+
+	Description					Access
+	-------------------------------------		--------
+	SPARC Performance Control Register		ASR=0x10
+	SPARC Performance Instrumentation counter	ASR=0x11
+
+These registers are directly accessible by the privileged code and 
+no hypervisor API is needed to provide access to these registers.
+
+
+2.2 DRAM Performance Instrumentation
+
+Each DRAM channel in Niagara has a pair of performance counters, packed 
+into a single register, plus a register to control what is counted.
+The following table summarizes the location of these counters:
+
+	Description			Location
+	--------------------------	------------------
+	DRAM Perf Control Register	0x97.0000.x400
+	DRAM Perf Counter Register	0x97.0000.x408
+
+where x is 0 through 3 for 4 different DRAM channels.
+
+Since memory configuration CSRs are located in the same address range
+as the DRAM performance registers, a guest OS can't be allowed direct
+access to the DRAM performance registers as it can compromise the overall
+system integrity.
+
+Hypervisor will provide an API to allow read/write access to these
+registers.
+
+
+2.3 JBUS Performance Instrumentation
+
+JBI has a pair of performance counters, packed into a single register,
+and a register to control what is counted.
+
+	Description			Location
+	--------------------------	------------------
+	JBUS Perf Control Register	0x80.0002.0000
+	JBUS Perf Counter Register	0x80.0002.0008
+
+Similar to DRAM performance registers, hypervisor will provide an
+API to allow read/write access to these coutners.
+
+
+3.0 Hypervisor API for DRAM/JBUS Performance Registers
+
+Since memory configuration CSRs are located in the same address range
+as the DRAM performance registers, a guest OS can't be allowed direct
+access to the DRAM performance registers as it can compromise the overall
+system integrity.
+
+DRAM and JBUS performance registers on a Niagara platform will not
+be directly accessible by the privileged software. Instead, hypervisor
+provides an interface to read/write these performance registers.
+
+Access to these performance reigsters is controlled via machine
+description ("perfctraccess" property).  Presence of this property
+indicates that a guest should be allowed access to the performance 
+registers and this is enforced by the hypervisor.
+
+
+3.1 Definitions
+
+Each DRAM and JBUS performance register is assigned a unique 
+performance register (PerfReg) number as follows:
+
+
+	PerfReg		Description
+	-------	------------------------------------
+	   0	JBUS Performance control register
+	   1	JBUS Performance Counter register
+
+	   2	DRAM Performance control register 0
+	   3	DRAM Performance Counter register 0
+
+	   4	DRAM Performance control register 1
+	   5	DRAM Performance Counter register 1
+
+	   6	DRAM Performance control register 2
+	   7	DRAM Performance Counter register 2
+
+	   8	DRAM Performance control register 3
+	   9	DRAM Performance Counter register 3
+
+
+This number uniquely identifies the performance register for 
+reading/writing purposes.
+
+
+3.2 API calls
+
+The following function numbers are applicable to accessing Niagara's
+DRAM/JBUS performance registers:
+
+	NIAGARA_GET_PERFREG		0x100
+	NIAGARA_SET_PERFREG		0x101
+
+
+3.2.1 niagara_get_perfreg
+
+	    Entry:
+		trap#		FAST_TRAP
+		function#	NIAGARA_GET_PERFREG
+		arg0		PerfReg
+
+	    Exit:
+		ret0		status (success or error code)
+		ret1		Performance register value
+
+This call reads the value of the DRAM/JBUS performance register,
+as specified by the PerfReg argument.
+
+Upon successful completion, it returns EOK status and performance
+register value. Ohterwise, it returns one of the following errors:
+
+	EINVAL			Invalid performance register number
+	ENOACCESS		No access allowed to performance registers
+
+
+3.2.2 niaggara_set_perfreg
+	    Entry:
+		trap#		FAST_TRAP
+		function#	NIAGARA_SET_PERFREG
+		arg0		Performance register ID
+		arg1		Performance register value
+
+	    Exit:
+		ret0		status (success or error code)
+
+This calls sets the DRAM/JBUS performance register, as specified by
+the arg0, to the value specified in arg1.
+
+Upon successful completion, it updates the specified performance register
+value and returns EOK status. Ohterwise, it returns one of the following 
+errors:
+
+	EINVAL			Invalid performance register number
+	ENOACCESS		No access allowed to performance registers
+
+

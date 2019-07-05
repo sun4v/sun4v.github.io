@@ -1,0 +1,147 @@
+From sacadmin Thu Aug 21 09:38:14 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m7LGcD3T015181
+	for <fwarc@sac.sfbay.Sun.COM>; Thu, 21 Aug 2008 09:38:14 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m7LGcBuO025133
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 22 Aug 2008 00:38:12 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K5Y00E29M7N4700@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Thu, 21 Aug 2008 09:38:11 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K5Y00773M7L0V70@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Thu, 21 Aug 2008 09:38:10 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m7LGc9Cn005557	for
+ <fwarc@Sun.COM>; Thu, 21 Aug 2008 16:38:09 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K5Y00601LDZW900@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Thu, 21 Aug 2008 10:38:09 -0600 (MDT)
+Received: from dhcp-ubur03-180-34.East.Sun.COM ([129.148.180.34])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K5Y007FXM7JP9D0@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Thu, 21 Aug 2008 10:38:07 -0600 (MDT)
+Date: Thu, 21 Aug 2008 12:38:04 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: FWARC/2008/540 - Memory DR Domain Service - fast-track timeout Aug 28,
+ 2008
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>,
+        Bijan Mottahedeh <Bijan.Mottahedeh@sun.com>
+Message-id: <94767728-4E82-462C-B029-E2C92D0F84F8@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.926)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 732
+
+I am sponsoring this fast-track case for Bijan Mottahedeh.
+This case defines the Memory DR (Dynamic Reconfiguration)
+domain service. The core Domain Services specification was
+approved under FWARC/2006/055.
+
+This case will be approved for minor/micro/patch OS binding
+and minor/micro binding for the firmware.
+
+Case timer is set to expire on Aug 28, 2008.
+
+All of the changes are highlighted in the 1-pager and Memory DR
+domain service document in the materials directory at:
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2008/540/materials/mem-dr-ds-1pager.txt
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2008/540/materials/mem-dr-ds.txt
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2008/540/materials/memory-dr-ds-interface-table.txt
+
+
+
+From sacadmin Fri Aug 29 08:48:37 2008
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m7TFmbjE006127
+	for <fwarc@sac.sfbay.sun.com>; Fri, 29 Aug 2008 08:48:37 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m7TFmUSZ009669
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 29 Aug 2008 09:48:37 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K6D00B0PD8ZE700@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Fri, 29 Aug 2008 08:48:35 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K6D004PSD8YSYB0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Fri, 29 Aug 2008 08:48:34 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m7TFmYlO026939	for
+ <fwarc@Sun.COM>; Fri, 29 Aug 2008 15:48:34 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K6D00I01CHPDR00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Fri, 29 Aug 2008 09:48:33 -0600 (MDT)
+Received: from [192.168.1.103] ([72.93.26.167])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0K6D00DQ8D8ILLF0@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Fri, 29 Aug 2008 09:48:19 -0600 (MDT)
+Date: Fri, 29 Aug 2008 11:48:18 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: FWARC/2008/540 - Memory DR Domain Service - fast-track timeout Aug
+ 28, 2008
+In-reply-to: <94767728-4E82-462C-B029-E2C92D0F84F8@Sun.COM>
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Bijan Mottahedeh <Bijan.Mottahedeh@sun.com>,
+        John Pierce <John.C.Pierce@sun.com>
+Message-id: <20494514-39C5-49E9-90B2-E5D3242800C3@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.926)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <94767728-4E82-462C-B029-E2C92D0F84F8@Sun.COM>
+Status: RO
+Content-Length: 920
+
+This fast-track case has timed out and is now approved.
+
+IAM file has been updated.
+
+Thanks
+-Narayan
+
+On Aug 21, 2008, at 12:38 PM, Narayan Venkat wrote:
+
+> I am sponsoring this fast-track case for Bijan Mottahedeh.
+> This case defines the Memory DR (Dynamic Reconfiguration)
+> domain service. The core Domain Services specification was
+> approved under FWARC/2006/055.
+>
+> This case will be approved for minor/micro/patch OS binding
+> and minor/micro binding for the firmware.
+>
+> Case timer is set to expire on Aug 28, 2008.
+>
+> All of the changes are highlighted in the 1-pager and Memory DR
+> domain service document in the materials directory at:
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2008/540/materials/mem-dr-ds-1pager.txt
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2008/540/materials/mem-dr-ds.txt
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2008/540/materials/memory-dr-ds-interface-table.txt
+>
+>
+
+

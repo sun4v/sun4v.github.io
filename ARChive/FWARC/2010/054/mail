@@ -1,0 +1,499 @@
+From sacadmin Thu Feb 11 17:52:30 2010
+Received: from sunmail6brm.central.sun.com (sunmail6brm.Central.Sun.COM [129.147.4.169])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o1C1qUle007457
+	for <fwarc@sac.sfbay.sun.com>; Thu, 11 Feb 2010 17:52:30 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail6brm.central.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id o1C1qTkl011150
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 11 Feb 2010 19:52:30 -0600 (CST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KXP0013FH7HXR00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 11 Feb 2010 18:52:29 -0700 (MST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KXP0086JH7GM0C0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 11 Feb 2010 18:52:28 -0700 (MST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id o1C1qRRo007304	for
+ <fwarc@sun.com>; Thu, 11 Feb 2010 17:52:27 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KXP00700H5JD500@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 11 Feb 2010 17:52:27 -0800 (PST)
+Received: from [129.145.154.82] ([unknown] [129.145.154.82])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KXP00IXUH7FSBD0@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 11 Feb 2010 17:52:27 -0800 (PST)
+Date: Thu, 11 Feb 2010 17:52:26 -0800
+From: Ryan Maeda <Ryan.Maeda@sun.com>
+Subject: FWARC/2010/054 - VIO vNet/vSwitch support for Rx Dring Data mode
+Sender: Ryan.Maeda@sun.com
+To: fwarc@sun.com
+Cc: "Raghuram.Kothakota" <Raghuram.Kothakota@sun.com>,
+        Wentao Yang <Wentao.Yang@sun.com>,
+        Alexandre Chartre <Alexandre.Chartre@sun.com>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>
+Reply-to: Ryan.Maeda@sun.com
+Message-id: <4B74B45A.8010501@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4v; en-US; rv:1.9.1.7) Gecko/20100115
+ Lightning/1.0b1 Thunderbird/3.0.1
+Status: RO
+Content-Length: 1282
+
+I am sponsoring this fast-track case for Sriharsha Basavapatna.
+This case extends the specification of the VIO protocol for
+LDoms virtual network and switch devices in order to support a
+new descriptor ring mode.
+
+This case will be approved for a minor/micro/patch OS binding
+and a minor/micro binding for the firmware.
+
+Case timer is set to expire on February 19, 2010.
+
+The VIO protocol specification was approved under FWARC/2006/195
+and revised several times since then. The most recent update was
+FWARC/2009/195.
+
+All of the changes are highlighted in the updated document which
+can be found at:
+
+  http://sac.eng/arc/FWARC/2010/054/materials/vio-protocol-update-9-diffs.pdf
+
+A brief description of the changes are:
+
+  o An extension of the VIO protocol for virtual network and
+    switch devices to negotiate for descriptor ring mode as part
+    of the attribute exchange, as defined in section 1.1.7.1.
+
+  o An extension of the VIO protocol to support the new option
+    of VIO_RX_DRING_DATA as part of the descriptor ring registration
+    message, as defined in section 1.1.3.3.
+
+  o An extension of the VIO protocol for virtual network and switch
+    devices to specify the descriptor format in VIO_RX_DRING_DATA
+    mode, as defined in sections 1.1.4.2 and 1.1.7.3
+
+-Ryan
+
+From sacadmin Mon Feb 15 11:00:40 2010
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o1FJ0ejb019552
+	for <fwarc@sac.sfbay.sun.com>; Mon, 15 Feb 2010 11:00:40 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.4) with ESMTP id o1FJ0WLK058567
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 15 Feb 2010 12:00:40 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KXW0070HCT3BL00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 15 Feb 2010 11:00:39 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KXW00KA5CT2SEE0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 15 Feb 2010 11:00:39 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id o1FJ0cLu013804	for
+ <fwarc@sun.com>; Mon, 15 Feb 2010 11:00:38 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KXW00E00COJ6U00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 15 Feb 2010 11:00:38 -0800 (PST)
+Received: from [129.150.178.62] ([unknown] [129.150.178.62])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KXW002LRCSZJ940@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 15 Feb 2010 11:00:37 -0800 (PST)
+Date: Mon, 15 Feb 2010 11:00:35 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC/2010/054 - VIO vNet/vSwitch support for Rx Dring Data mode
+In-reply-to: <4B74B45A.8010501@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Ryan.Maeda@sun.com
+Cc: fwarc@sun.com, "Raghuram.Kothakota" <Raghuram.Kothakota@sun.com>,
+        Wentao Yang <Wentao.Yang@sun.com>,
+        Alexandre Chartre <Alexandre.Chartre@sun.com>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>
+Message-id: <4B7999D3.1020501@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B74B45A.8010501@Sun.COM>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.7)
+ Gecko/20100111 Lightning/1.0b1 Thunderbird/3.0.1
+Status: RO
+Content-Length: 1847
+
+On 2/11/2010 5:52 PM, Ryan Maeda wrote:
+> I am sponsoring this fast-track case for Sriharsha Basavapatna.
+> This case extends the specification of the VIO protocol for
+> LDoms virtual network and switch devices in order to support a
+> new descriptor ring mode.
+>
+> This case will be approved for a minor/micro/patch OS binding
+> and a minor/micro binding for the firmware.
+>
+> Case timer is set to expire on February 19, 2010.
+>
+> The VIO protocol specification was approved under FWARC/2006/195
+> and revised several times since then. The most recent update was
+> FWARC/2009/195.
+>
+> All of the changes are highlighted in the updated document which
+> can be found at:
+>
+>    http://sac.eng/arc/FWARC/2010/054/materials/vio-protocol-update-9-diffs.pdf
+>    
+
+Can we add a table at the top of this document to describe
+all the revision changes?  I can find references to v1.0, v1.3 and
+v1.6 (new by this case).  It is hard to keep tack of what new is
+added to the VIO protocol for each version.
+
+
+Thanks.
+
+> A brief description of the changes are:
+>
+>    o An extension of the VIO protocol for virtual network and
+>      switch devices to negotiate for descriptor ring mode as part
+>      of the attribute exchange, as defined in section 1.1.7.1.
+>
+>    o An extension of the VIO protocol to support the new option
+>      of VIO_RX_DRING_DATA as part of the descriptor ring registration
+>      message, as defined in section 1.1.3.3.
+>
+>    o An extension of the VIO protocol for virtual network and switch
+>      devices to specify the descriptor format in VIO_RX_DRING_DATA
+>      mode, as defined in sections 1.1.4.2 and 1.1.7.3
+>
+> -Ryan
+>    
+
+
+-- 
+Hitendra Zhangada
+==============================================
+Platform SW Technologies, Oracle America, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Mon Feb 15 12:10:18 2010
+Received: from sunmail6brm.central.sun.com (sunmail6brm.Central.Sun.COM [129.147.4.169])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o1FKAIo1021046
+	for <fwarc@sac.sfbay.sun.com>; Mon, 15 Feb 2010 12:10:18 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail6brm.central.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id o1FK9uA3024305
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 15 Feb 2010 14:10:18 -0600 (CST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KXW00E0PG16MK00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 15 Feb 2010 13:10:18 -0700 (MST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KXW00FK9G14Z7D0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 15 Feb 2010 13:10:16 -0700 (MST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id o1FKAF4C028146	for
+ <fwarc@sun.com>; Mon, 15 Feb 2010 12:10:15 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KXW00200FIM7H00@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 15 Feb 2010 12:10:15 -0800 (PST)
+Received: from [129.145.154.37] ([unknown] [129.145.154.37])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KXW00B7PG03FDC0@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 15 Feb 2010 12:09:40 -0800 (PST)
+Date: Mon, 15 Feb 2010 12:09:39 -0800
+From: Sriharsha.Basavapatna@sun.com
+Subject: Re: FWARC/2010/054 - VIO vNet/vSwitch support for Rx Dring Data mode
+In-reply-to: <4B7999D3.1020501@sun.com>
+Sender: Sriharsha.Basavapatna@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Ryan.Maeda@sun.com, fwarc@sun.com,
+        "Raghuram.Kothakota" <Raghuram.Kothakota@sun.com>,
+        Wentao Yang <Wentao.Yang@sun.com>,
+        Alexandre Chartre <Alexandre.Chartre@sun.com>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>
+Message-id: <4B79AA03.3080500@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B74B45A.8010501@Sun.COM> <4B7999D3.1020501@sun.com>
+User-Agent: Thunderbird 2.0.0.23 (X11/20090910)
+Status: RO
+Content-Length: 1780
+
+On 02/15/10 11:00, Hitendra Zhangada wrote:
+> On 2/11/2010 5:52 PM, Ryan Maeda wrote:
+>> I am sponsoring this fast-track case for Sriharsha Basavapatna.
+>> This case extends the specification of the VIO protocol for
+>> LDoms virtual network and switch devices in order to support a
+>> new descriptor ring mode.
+>>
+>> This case will be approved for a minor/micro/patch OS binding
+>> and a minor/micro binding for the firmware.
+>>
+>> Case timer is set to expire on February 19, 2010.
+>>
+>> The VIO protocol specification was approved under FWARC/2006/195
+>> and revised several times since then. The most recent update was
+>> FWARC/2009/195.
+>>
+>> All of the changes are highlighted in the updated document which
+>> can be found at:
+>>
+>>    
+>> http://sac.eng/arc/FWARC/2010/054/materials/vio-protocol-update-9-diffs.pdf 
+>>
+>>    
+>
+> Can we add a table at the top of this document to describe
+> all the revision changes?  I can find references to v1.0, v1.3 and
+> v1.6 (new by this case).  It is hard to keep tack of what new is
+> added to the VIO protocol for each version.
+>
+>
+> Thanks.
+Ok; I'll add it.
+-Harsha
+>
+>> A brief description of the changes are:
+>>
+>>    o An extension of the VIO protocol for virtual network and
+>>      switch devices to negotiate for descriptor ring mode as part
+>>      of the attribute exchange, as defined in section 1.1.7.1.
+>>
+>>    o An extension of the VIO protocol to support the new option
+>>      of VIO_RX_DRING_DATA as part of the descriptor ring registration
+>>      message, as defined in section 1.1.3.3.
+>>
+>>    o An extension of the VIO protocol for virtual network and switch
+>>      devices to specify the descriptor format in VIO_RX_DRING_DATA
+>>      mode, as defined in sections 1.1.4.2 and 1.1.7.3
+>>
+>> -Ryan
+>>    
+>
+>
+
+
+From sacadmin Mon Feb 15 17:04:35 2010
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o1G14Yr6028339
+	for <fwarc@sac.sfbay.sun.com>; Mon, 15 Feb 2010 17:04:35 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.4) with ESMTP id o1G14YSK046613
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 15 Feb 2010 18:04:34 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KXW00B0BTNM1400@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 15 Feb 2010 17:04:34 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KXW000UXTNMNZD0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 15 Feb 2010 17:04:34 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id o1G14YWN010872	for
+ <fwarc@sun.com>; Mon, 15 Feb 2010 17:04:34 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KXW00200TK28S00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 15 Feb 2010 17:04:34 -0800 (PST)
+Received: from [129.145.154.82] ([unknown] [129.145.154.82])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KXW0080ITNLTC60@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 15 Feb 2010 17:04:33 -0800 (PST)
+Date: Mon, 15 Feb 2010 17:04:32 -0800
+From: Ryan Maeda <Ryan.Maeda@sun.com>
+Subject: Re: FWARC/2010/054 - VIO vNet/vSwitch support for Rx Dring Data mode
+In-reply-to: <4B7999D3.1020501@sun.com>
+Sender: Ryan.Maeda@sun.com
+To: fwarc@sun.com
+Cc: "Raghuram.Kothakota" <Raghuram.Kothakota@sun.com>,
+        Wentao Yang <Wentao.Yang@sun.com>,
+        Alexandre Chartre <Alexandre.Chartre@sun.com>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>
+Reply-to: Ryan.Maeda@sun.com
+Message-id: <4B79EF20.7010305@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B74B45A.8010501@Sun.COM> <4B7999D3.1020501@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4v; en-US; rv:1.9.1.7) Gecko/20100115
+ Lightning/1.0b1 Thunderbird/3.0.1
+Status: RO
+Content-Length: 649
+
+On 02/15/10 11:00 AM, Hitendra Zhangada wrote:
+> Can we add a table at the top of this document to describe
+> all the revision changes?  I can find references to v1.0, v1.3 and
+> v1.6 (new by this case).  It is hard to keep tack of what new is
+> added to the VIO protocol for each version.
+
+Harsha added this to the spec. Since that was the only thing that
+changed, I copied the new versions of the files over the ones in
+the materials directory:
+
+  http://sac.eng/arc/FWARC/2010/054/materials/vio-protocol-update-9.pdf
+  http://sac.eng/arc/FWARC/2010/054/materials/vio-protocol-update-9-diffs.pdf
+
+Case timer remains unchanged: Friday 2/19.
+
+-Ryan
+
+From sacadmin Tue Feb 16 14:46:18 2010
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o1GMkIWI004275
+	for <fwarc@sac.sfbay.sun.com>; Tue, 16 Feb 2010 14:46:18 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2sca.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id o1GMkHwx006953
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 16 Feb 2010 14:46:18 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KXY00407HX5X000@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 16 Feb 2010 15:46:17 -0700 (MST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KXY00IDIHX52U70@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 16 Feb 2010 15:46:17 -0700 (MST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id o1GMkHSm015185	for
+ <fwarc@sun.com>; Tue, 16 Feb 2010 14:46:17 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KXY00F00HT6QL00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 16 Feb 2010 14:46:17 -0800 (PST)
+Received: from [129.150.176.223] ([unknown] [129.150.176.223])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KXY00J17HX31TI0@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 16 Feb 2010 14:46:17 -0800 (PST)
+Date: Tue, 16 Feb 2010 14:46:15 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC/2010/054 - VIO vNet/vSwitch support for Rx Dring Data mode
+In-reply-to: <4B79EF20.7010305@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Ryan.Maeda@sun.com
+Cc: fwarc@sun.com, "Raghuram.Kothakota" <Raghuram.Kothakota@sun.com>,
+        Wentao Yang <Wentao.Yang@sun.com>,
+        Alexandre Chartre <Alexandre.Chartre@sun.com>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>
+Message-id: <4B7B2037.6000400@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B74B45A.8010501@Sun.COM> <4B7999D3.1020501@sun.com>
+ <4B79EF20.7010305@Sun.COM>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.7)
+ Gecko/20100111 Lightning/1.0b1 Thunderbird/3.0.1
+Status: RO
+Content-Length: 961
+
+On 2/15/2010 5:04 PM, Ryan Maeda wrote:
+> On 02/15/10 11:00 AM, Hitendra Zhangada wrote:
+>    
+>> Can we add a table at the top of this document to describe
+>> all the revision changes?  I can find references to v1.0, v1.3 and
+>> v1.6 (new by this case).  It is hard to keep tack of what new is
+>> added to the VIO protocol for each version.
+>>      
+> Harsha added this to the spec. Since that was the only thing that
+> changed, I copied the new versions of the files over the ones in
+> the materials directory:
+>
+>    http://sac.eng/arc/FWARC/2010/054/materials/vio-protocol-update-9.pdf
+>    http://sac.eng/arc/FWARC/2010/054/materials/vio-protocol-update-9-diffs.pdf
+>
+> Case timer remains unchanged: Friday 2/19.
+>    
+
+Looks good!  Thanks.
+
+> -Ryan
+>    
+
+
+-- 
+Hitendra Zhangada
+==============================================
+Platform SW Technologies, Oracle America, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Mon Feb 22 16:10:27 2010
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o1N0ARgk010847
+	for <fwarc@sac.sfbay.sun.com>; Mon, 22 Feb 2010 16:10:27 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail2sca.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id o1N0ARk5013526
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 22 Feb 2010 16:10:27 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KY90060DPTFN900@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 22 Feb 2010 16:10:27 -0800 (PST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KY900DO1PTEU5C0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 22 Feb 2010 16:10:27 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id o1N0AQPl013680	for
+ <fwarc@sun.com>; Mon, 22 Feb 2010 16:10:26 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KY900G00POMA100@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 22 Feb 2010 16:10:26 -0800 (PST)
+Received: from ryan-maedas-macbook-pro.local ([unknown] [129.150.24.48])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KY900EZFPTDWF00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 22 Feb 2010 16:10:26 -0800 (PST)
+Date: Mon, 22 Feb 2010 16:10:25 -0800
+From: Ryan Maeda <Ryan.Maeda@Sun.COM>
+Subject: Re: FWARC/2010/054 - VIO vNet/vSwitch support for Rx Dring Data mode
+In-reply-to: <4B74B45A.8010501@Sun.COM>
+Sender: Ryan.Maeda@Sun.COM
+To: fwarc@Sun.COM
+Cc: "Raghuram.Kothakota" <Raghuram.Kothakota@Sun.COM>,
+        Wentao Yang <Wentao.Yang@Sun.COM>,
+        Alexandre Chartre <Alexandre.Chartre@Sun.COM>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@Sun.COM>
+Message-id: <4B831CF1.5080600@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B74B45A.8010501@Sun.COM>
+User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1.7)
+ Gecko/20100111 Lightning/1.0b1 Thunderbird/3.0.1
+Status: RO
+Content-Length: 106
+
+The fast-track case has timed out. The case is now approved
+and closed. IAM file has been updated.
+
+-Ryan
+

@@ -1,0 +1,15 @@
+Exported Interfaces
+
+Interface		Classification	Comments
+=========		=============	========
+
+assignable-path		Sun Private	Property in component PRI node,
+					provides physical path of assignable
+					unit (usually a PCI card).
+
+rcid			Sun Private	Property in root-complex PRI node,
+					provides an enumeration of RCs.
+
+directio_capability	Sun Private	Property in Firmware node, indicates
+					particular platform and firmware support
+					IO virtualization.

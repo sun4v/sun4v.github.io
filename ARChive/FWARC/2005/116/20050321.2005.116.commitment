@@ -1,0 +1,192 @@
+Commitment: 2005/116 sun4v core API
+Submitter:	john.johnson@sun.com
+Owner:		Tony Sumpter
+Intern:		Stephen Ehring
+Interest:	sun4v-iteam@sun.com,psarc@sun.com
+
+Going through issue list sent via emails --
+
+** Hitu
+
+1.  Section 6.1.3, need clarification, when domain is restarted
+    after SIR request which CPU will it start?  Will this be
+    randomly selected or the same CPU which requested the SIR
+    request will be restarted? 
+
+Response(R): If we do system reset, all the systems will be reset.
+This is not defined in the spec. 
+
+Hitu: the term of SIR causes confusion since we have an existing
+SIR term now.
+ 
+Ash proposed that spec will be modified to state that the CPU that starts 
+after a SIR is not specified.
+
+2.  Section 7.1, this section tries to clarify what is cpu list
+    but it does not explain what is cpu id.  My expectation from
+    an inception review was that the definition of cpu id would be
+    added to this section.  Can we add one of the following texts
+    in section 7 after the second sentence?
+
+    "The CPU identifiers (cpu id) are assigned by hypervisor via
+     cpu_myid API".
+
+    Or
+
+    "The CPU identifiers (cpu id) are part of machine description
+     exported to OBP".
+
+Hitu: We talked about this during inception review and it was asked
+to cover this in the section 7.4 (about cpu id). 
+
+Ash: cpu id is just a 16-bit number.
+
+Hitu: How's it derived?
+
+Ash will add a line in the spec stating that the cpu id is a pre-assigned 16 
+bit value.
+
+3.  Section 8.5.7, typo, in the Note section, replace the first
+    "used" with "is".
+
+R: Ok, will fix the spec. 
+
+4.  Section 9.1.1, need clarification, Why scrubbing less memory
+    then client asked for is not an error? 
+ 
+DMK: This is not an error. Like other hypervisor APIs, hypervisor is 
+permitted to do less than requested and the call is expected to be calling 
+it.
+
+Status: CLOSED after discussion during the meeting. 
+
+** Tony
+
+Note: [ ] implies proposed answer from Tony.
+
+1. 6.1.1 mach_exit
+
+    It seems that an additional argument to request either restart or
+    "power-off" should be part of this call. Service Entity
+    can over-ride.
+
+    [Add the extra argument.]
+
+DMK: The OS will call SUNW power off or reboot. SIR will call restart. 
+
+Status: CLOSED, Tony is happy with the resolution after discussion about 
+differences between mach_exit and mach_sir.
+
+2. 6.1.3 mach_sir
+
+    "Immediately captured" needs clarification.
+
+    [Captured as soon as it is possible to interrupt them.]
+
+STATUS: Ash will modify the spec so that the statement says 'as soon as 
+possible' instead of 'immediately'. 
+
+3. All explicit and implicit references to OBP and Solaris should
+  be removed, and no dependencies made on documents not referenced
+  in the document. Eg. in the following sections:
+
+    7 CPU Services
+    10 Device interrupt services
+    10.1 definitions
+
+      devhandle "hi-cell" and "reg" property are OBP-isms.
+      This doc. is not stated to depend on the Open Firmware bus
+      binding.
+
+      devino has OBP-isms
+    
+    [Just remove them.]
+
+Resolution: To add a reference on devhandle or remove devhandle.
+Move the 'devino' definition to a 'Note:' to make it informative
+
+4. 8.2 TSB specification
+
+    Change context to context index (which set of context registers)
+    to match SunSPARC hardware TSB walker design.
+
+    [Yes.]
+
+Resolution: Ash has made changes of the wordings to the spec.
+
+5. 8.5.1
+
+    Maximum of 16 TSBs seems arbitrary: Would prefer a minimum of
+    2 with a maximum coming from the MD.
+
+    [Yes.]
+
+Greg: There is an architecture limit why it's designed this way.
+
+Resolution: Spec will be modified to state that the maximum number of TSBs 
+will be extracted from the MD (not 16).
+
+6. 8.5.6
+
+    Is it invalid to provide a TTE with no valid bit set?
+
+    [?]
+
+Resolution: Providing TTE with no valid bit set is undefined semantic. 
+
+7. 8.5.10 mmu_fault_area
+
+    Is disallowing real address 0 OK?
+
+    [Yes.]
+
+Status: CLOSED. 
+
+8. 12.1.2 cons_putchar
+
+    "currently" needs to be re-worded.
+
+    [Yes.]
+
+Resolution: Ash will delete the word "currently." 
+
+9. 13 Core dump services
+
+    The mentioned service for the guest to update the buffer
+    is not present.
+
+    [?]
+
+Resolution: Add a sentence to 13.1.1 stating that the buffer will be filled 
+with opaque data by the hypervisor . In addition, dump buffer will be renamed 
+to dump_buf_fill.
+
+10. 14.1 ... control structure
+
+    Who owns the control structure? A malicious or faulty
+    guest must not be able to write it and cause a HV panic.
+
+    [Make it information only to guest.]
+
+Resolution: Add a sentence to the spec "Hypervisor owns the control 
+structure, guests may not modify it and attempt to modify it will result in 
+undefined behavior"
+
+11. Minor TCRs for to tighten up APIs
+
+Tony: This is a matter of matching the spec and the codes.
+
+Ash and Greg will go through this.
+
+Resolution: The file has been moved to the commitment materials directory. 
+The project team will update the spec with the changes suggested or will 
+resolve conflicts via e-mail.
+
+Nit: Typo in section 14.2  
+
+THE NEXT STEP
+============
+Project team will revise the specs and submit them to fwarc by Tuesday 
+morning. FWARC will review and vote via email. 
+
+===========================================================================

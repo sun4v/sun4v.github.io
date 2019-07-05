@@ -1,0 +1,1130 @@
+From sacadmin Thu Dec 13 08:48:08 2007
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id lBDGm8p5012381
+	for <fwarc@sac.sfbay.sun.com>; Thu, 13 Dec 2007 08:48:08 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id lBDGm7DE037942
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 13 Dec 2007 09:48:08 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JSZ00B2BYO36G00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 13 Dec 2007 08:48:03 -0800 (PST)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JSZ00FI0YNZNWD0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 13 Dec 2007 08:47:59 -0800 (PST)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id lBDGlx26006177	for
+ <fwarc@sun.com>; Thu, 13 Dec 2007 16:47:59 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JSZ00201YF2KX00@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 13 Dec 2007 09:47:59 -0700 (MST)
+Received: from dhcp-ubur03-180-228.East.Sun.COM ([129.148.180.228])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JSZ008JWYNW0I90@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 13 Dec 2007 09:47:57 -0700 (MST)
+Date: Thu, 13 Dec 2007 11:47:55 -0500
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: fasttrack FWARC/2007/689 - LDoms support for RNG - timeout 12/20/2007
+Sender: Eric.Sharakan@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Message-id: <AFEF2799-367C-494A-8107-471BDA0EEB3B@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.915)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ micalg=sha1; boundary=Apple-Mail-13-213943315
+X-PMX-Version: 5.2.0.264296
+Status: RO
+Content-Length: 9779
+
+
+--Apple-Mail-13-213943315
+Content-Type: multipart/mixed;
+	boundary=Apple-Mail-12-213943268
+
+
+--Apple-Mail-12-213943268
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed;
+	delsp=yes
+Content-Transfer-Encoding: 7bit
+
+I am sponsoring this fast track case for myself.
+
+This project introduces changes to the Machine Description (MD) tree  
+and the Physical Resource Inventory (PRI) for Niagara2 and Victoria  
+Falls based platforms in order to support the random number generator  
+(RNG) portion of these chips.
+
+The one-pager can be found at this link, and is attached to this mail.
+
+http://sac.eng/FWARC/2007/689/materials/md-rng-1pager.txt
+
+This case times out on 12/20/2007
+
+Release Binding:
+   firmware: minor/micro firmware release
+
+-Eric
+
+
+--Apple-Mail-12-213943268
+Content-Disposition: attachment;
+	filename=md-rng-1pager.txt
+Content-Type: text/plain;
+	x-unix-mode=0644;
+	name="md-rng-1pager.txt"
+Content-Transfer-Encoding: 7bit
+
+
+	Version: "@(#)md-rng-1pager.txt 1.15     06/02/15 SMI"
+
+1. Introduction
+   1.1. Project/Component Working Name:
+	LDOMs support for RNG
+
+   1.2. Name of Document Author/Supplier:
+	Eric.sharakan@Sun.COM
+
+   1.3. Date of This Document:
+	12/13/07
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		???
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Mike.Sanfratello@Sun.COM
+	1.4.4. The name of your business unit:
+		SPARC Platform Software (SPS)
+
+   1.5. Email Aliases:
+    	1.5.1. Responsible Manager:	John.Falkenthal@Sun.COM
+    	1.5.2. Responsible Engineer:	Eric.Sharakan@Sun.COM
+    	1.5.3. Marketing Manager:
+	1.5.4. Interest List:
+	        Jay.Jayachandran@Sun.COM
+		Ashley.Saulsbury@Sun.COM
+		Joshua.Pincus@Sun.COM
+		Eric.Blanchard@Sun.COM
+
+2. Project Summary
+   2.1. Project Description: This project introduces changes to the Machine
+	Description (MD) tree and the Physical Resource Inventory (PRI) for
+	Niagara2 and Victoria Falls based platforms in order to support the
+	random number generator (RNG) portion of these chips.
+
+   2.2. Risks and Assumptions:
+   	a)      Appropriate changes will be made to VBSC to allow
+		incorporation of the RNG nodes specified here into the PRI.
+	b) 	Appropriate changes will be made to the LDOM manager to allow
+		incorporation of RNG "devices" into Domain MDs, and into the
+		Hypervisor MD.  This is necessary to enable both the RNG driver
+		within LDOM primary & guest domains, and the Hypervisor itself,
+		to support the RNG HV API specified in FWARC/2007/558.
+
+3. Business Summary
+   3.1. Problem Area:
+	Support for RNG access from within Logical Domains.
+
+   3.2. Market/Requester:
+
+   3.3. Business Justification:
+	Support for the hardware RNG capability present in the Niagara2 &
+	Victoria Falls processors is an important selling point for the
+	platforms based on these chips.
+
+   3.4. Competitive Analysis:
+
+   3.5. Opportunity Window/Exposure:
+	Built-in access to the hardware RNGs must be maintained at the time
+	that the N2 & VF based platforms are released.
+
+   3.6. How will you know when you are done?:
+	When the RNG driver can successfully plug into the Solaris
+	Cryptographic Framework from within both primary & guest
+	Logical Domains.
+
+	When SunVTS can exercise the full RNG functionality of the underlying
+	N2 & VF processors from within the primary & guest LDOM.
+
+
+
+
+4. Technical Description:
+    4.1. Details:
+
+	In order to support hardware acceleration via the Random Number
+	Generatio (RNG) portion of the N2 & VF chips, the following changes to
+	the Machine Description (MD) are proposed.
+
+    4.1.1. cpu node changes:
+
+	Description:
+		Augmented to include new optional exec-unit
+		subordinate as described below:
+
+	Name:		exec-unit
+	Category:	optionally required by cpu
+	Required subordinates:	-
+	Optional subordinates:	-
+	Description:	This node is a type of exec-unit and uniquely
+			represents a specific rng definition.  Includes
+			references to the physical cpu's which have
+			access to the given rng.
+	Properties:
+	  Name		Tag		Required	Description
+	  ----		---		--------	-----------
+	  type		PROP_DATA	yes		The string "rng"
+
+
+    4.2. Bug/RFE Number(s):
+	None.
+    
+    4.3. In Scope:
+	None.
+
+    4.4. Out of Scope:
+	None.
+    
+    4.5. Interfaces:
+	4.5.1 Imported Interfaces:
+
+	Interface		Classification		Comments
+	========================================================
+	sun4v Machine		Sun Private		MD nodes definitions as
+	Description nodes				defined by FWARC/2005/115
+	Physical Resource	Sun Private		PRI node definitions as				
+	Inventory		    			defined in FWARC/2006/700
+
+	4.5.2 Exported Interfaces:
+
+	Interface		Classification		Comments
+	========================================================
+	exec-unit node and	Sun Private		MD nodes to represent RNG
+	Machine Description				units
+
+    4.6. Doc Impact:
+	None.
+    
+    4.7. Admin/Config Impact:
+	None.
+    
+    4.8. HA Impact:
+	None.
+    
+    4.9. I18N/L10N Impact:
+	None.
+    
+    4.10. Packaging & Delivery:
+	None.
+    
+    4.11. Security Impact:
+	None.
+    
+    4.12. Dependencies:
+	FWARC/2005/115
+	FWARC/2006/700
+	FWARC/2007/558
+
+5. Reference Documents:
+	FWARC/2005/115 sun4v machine description data.
+	FWARC/2006/700 pri-spec.txt
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+	Maramba FCS
+
+   6.2. Cost of Effort:
+	2 staff weeks
+
+   6.3. Cost of Capital Resources:
+	None.
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation or Component Name:
+		LDom Manager, VBSC (System Firmware)
+	6.4.3. Type of CPT Review and Approval expected:
+		FastTrack
+        6.4.4. Project Boundary Conditions:
+		N/A
+	6.4.5. Is this a necessary project for OEM agreements:
+		No
+	6.4.6. Notes:
+		FWARC/2005/115
+		FWARC/2006/700
+	6.4.7. Target RTI Date/Release:
+		Q4CY07
+	6.4.8. Target Code Design Review Date:
+		12/20/07
+	6.4.9. Update approval addition:
+		N/A
+
+   6.5. ARC review type:
+   		FastTrack
+
+7. Prototype Availability:
+   7.1. Prototype Availability:
+	N/A
+
+   7.2. Prototype Cost:
+	N/A
+
+--Apple-Mail-12-213943268
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed
+Content-Transfer-Encoding: 7bit
+
+
+
+--Apple-Mail-12-213943268--
+
+--Apple-Mail-13-213943315
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA3MTAxODAzMjAxOFoXDTA4MTAxNzAzMjAx
+OFowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyOpo1o9G
+kC4zvPQvyj/wBYNQR3zjkMYMxkWmL184ofuULXo7qmNtiCDanb/U9CmkH/ZXm3itLKVtRIUo/Fr7
+oi4CRxDUkF8LarMoiGbsuQ0hF0QIwJXdGv9GtNwagdzOtsqzZ0pV0II3WB7+NaIQ8qJ2KIwseULZ
+aXX0BzdlINGBYufa5xG38/piJfwb5n7JE/O2pocT1kO+IM9yLm3840a7FKwcYV6/tpXYABKlpgfK
+ZUp56DDLXf/5qW8jHPGhd6yrOVf53QtXypHNXPJDR+NFWo5Os2drH5V2rxzCildmoxOmhZkVaG03
+anU0qE4nWSRH1CKvtvigQDGJg0++sQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQCAxj+ZJX9XVIa4NeiRkfeL
+WaXXlKRONtx3QP3K7B9/T983wXc26sacqER608AoRMz9GyECwpIHtkvcRoCRPoWLyoWBf7zwh8ha
+0CPkTAmFxl1ENtpq/43Di0DUSHrcCeGvigN4esQpYJtQAmCUm5i5tXbu70d192lfniLVgHPvYzCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQQtJ8t0o3bhp1zVjZgObu9jAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wNzEy
+MTMxNjQ3NTVaMCMGCSqGSIb3DQEJBDEWBBRSPgnh28dk763ff+MLm7rVxlfLHTCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdK
+N24adc1Y2YDm7vYwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEBBQAEggEAU5Lk
+DY/rB9br2fFVviVeawU9kkIMPHYp8xsSpvhMjK4N1jeBUOG52WA0yPH/XXJSiZLEYUu6jxkU4M9p
+qiKDIM4Et/10WvpMmW3rh2iBX78GXvIaL1Suz2+br+6xOVjIDfsNGSwk3fwTSoBCpmyYATvTjxnn
+EfkSFzRlhOfSqQ1dE1V4+ktj13p+R0RtNu4hBi7csy08D0y5trgN4oxtws4C9p5B7ywkPADT1qtU
+RCHe4xh0iAwnd7J6JiknfZQ5IK7EL64CFcBGfuN8jBCG6pZOeyYOscZD67A4R+G/plzs/vVsbFvN
+xyJp+SrHg4DIiCICpQXPBWot7Pqf+pA4+gAAAAAAAA==
+
+--Apple-Mail-13-213943315--
+
+From sacadmin Thu Dec 13 13:28:53 2007
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id lBDLSrWQ019093
+	for <fwarc@sac.sfbay.sun.com>; Thu, 13 Dec 2007 13:28:53 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id lBDLSqNu028213
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 13 Dec 2007 13:28:53 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JT00023VBO5XU00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 13 Dec 2007 13:28:53 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JT0000CBBO0FQ20@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 13 Dec 2007 13:28:48 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id lBDLSmV0025766	for
+ <fwarc@sun.com>; Thu, 13 Dec 2007 13:28:48 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JT000601B5S4100@fe-sfbay-10.sun.com>
+ (original mail from Joshua.Pincus@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 13 Dec 2007 13:28:48 -0800 (PST)
+Received: from [129.150.16.3] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JT00040EBNWQW60@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 13 Dec 2007 13:28:45 -0800 (PST)
+Date: Thu, 13 Dec 2007 13:26:55 -0800
+From: Joshua Pincus <Joshua.Pincus@sun.com>
+Subject: Re: Fwd: fasttrack FWARC/2007/689 - LDoms support for RNG - timeout
+ 12/20/2007
+In-reply-to: <4155BBD5-ADED-4BF3-B4E2-EB0C8E7DE26A@Sun.COM>
+Sender: Joshua.Pincus@sun.com
+To: Eric Sharakan <Eric.Sharakan@sun.com>
+Cc: Eric Blanchard <Eric.Blanchard@sun.com>, fwarc@sun.com
+Reply-to: Joshua.Pincus@sun.com
+Message-id: <4761A39F.3020100@sun.com>
+Organization: Sun Microsystems, Inc.
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_rRShvHsSolE2IqCK7u5bKA)"
+X-PMX-Version: 5.2.0.264296
+References: <AFEF2799-367C-494A-8107-471BDA0EEB3B@Sun.COM>
+ <4155BBD5-ADED-4BF3-B4E2-EB0C8E7DE26A@Sun.COM>
+User-Agent: Thunderbird 1.5.0.13 (Windows/20070809)
+Status: RO
+Content-Length: 8003
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_rRShvHsSolE2IqCK7u5bKA)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+Hi,
+
+Cool... Two questions, though:  If the cpu node has a new RNG exec-unit, 
+how will you know WHICH RNG that is?  The CPU nodes in the guest MDs are 
+virtual.  In the HV MD, they're physical.  Granted, the HV MD doesn't 
+number or name the RNGs, so we associate them based on the chip# portion 
+of each strands' id.  If all of the vCPUs are 1-1 w.r.t. stands, than 
+this isn't a problem.  If there isn't a 1-1 correlation, I don't see how 
+you can accurately group RNGs together to reconstruct the original HV MD 
+configuration.  Also, what happens on a reboot when the PRI has been 
+changed after a reconfiguration of the primary domain's resources?
+
+JP
+
+Eric Sharakan wrote:
+> FYI, I filed the case:
+> 
+> Begin forwarded message:
+> 
+>> From: Eric Sharakan <Eric.Sharakan@Sun.COM>
+>> Date: December 13, 2007 11:47:55 AM EST
+>> To: Firmware Arch <fwarc@sun.com>
+>> Subject: fasttrack FWARC/2007/689 - LDoms support for RNG - timeout 
+>> 12/20/2007
+>>
+>> I am sponsoring this fast track case for myself.
+>>
+>> This project introduces changes to the Machine Description (MD) tree 
+>> and the Physical Resource Inventory (PRI) for Niagara2 and Victoria 
+>> Falls based platforms in order to support the random number generator 
+>> (RNG) portion of these chips.
+>>
+>> The one-pager can be found at this link, and is attached to this mail.
+>>
+>> http://sac.eng/FWARC/2007/689/materials/md-rng-1pager.txt
+>>
+>> This case times out on 12/20/2007
+>>
+>> Release Binding:
+>>  firmware: minor/micro firmware release
+>>
+>> -Eric
+>>
+> 
+> ------------------------------------------------------------------------
+> 
+> 
+> 	Version: "@(#)md-rng-1pager.txt 1.15     06/02/15 SMI"
+> 
+> 1. Introduction
+>    1.1. Project/Component Working Name:
+> 	LDOMs support for RNG
+> 
+>    1.2. Name of Document Author/Supplier:
+> 	Eric.sharakan@Sun.COM
+> 
+>    1.3. Date of This Document:
+> 	12/13/07
+> 
+>    1.4. Name of Major Document Customer(s)/Consumer(s):
+> 	1.4.1. The PAC or CPT you expect to review your project:
+> 		???
+> 	1.4.2. The ARC(s) you expect to review your project:
+> 		FWARC
+> 	1.4.3. The Director/VP who is "Sponsoring" this project:
+> 		Mike.Sanfratello@Sun.COM
+> 	1.4.4. The name of your business unit:
+> 		SPARC Platform Software (SPS)
+> 
+>    1.5. Email Aliases:
+>     	1.5.1. Responsible Manager:	John.Falkenthal@Sun.COM
+>     	1.5.2. Responsible Engineer:	Eric.Sharakan@Sun.COM
+>     	1.5.3. Marketing Manager:
+> 	1.5.4. Interest List:
+> 	        Jay.Jayachandran@Sun.COM
+> 		Ashley.Saulsbury@Sun.COM
+> 		Joshua.Pincus@Sun.COM
+> 		Eric.Blanchard@Sun.COM
+> 
+> 2. Project Summary
+>    2.1. Project Description: This project introduces changes to the Machine
+> 	Description (MD) tree and the Physical Resource Inventory (PRI) for
+> 	Niagara2 and Victoria Falls based platforms in order to support the
+> 	random number generator (RNG) portion of these chips.
+> 
+>    2.2. Risks and Assumptions:
+>    	a)      Appropriate changes will be made to VBSC to allow
+> 		incorporation of the RNG nodes specified here into the PRI.
+> 	b) 	Appropriate changes will be made to the LDOM manager to allow
+> 		incorporation of RNG "devices" into Domain MDs, and into the
+> 		Hypervisor MD.  This is necessary to enable both the RNG driver
+> 		within LDOM primary & guest domains, and the Hypervisor itself,
+> 		to support the RNG HV API specified in FWARC/2007/558.
+> 
+> 3. Business Summary
+>    3.1. Problem Area:
+> 	Support for RNG access from within Logical Domains.
+> 
+>    3.2. Market/Requester:
+> 
+>    3.3. Business Justification:
+> 	Support for the hardware RNG capability present in the Niagara2 &
+> 	Victoria Falls processors is an important selling point for the
+> 	platforms based on these chips.
+> 
+>    3.4. Competitive Analysis:
+> 
+>    3.5. Opportunity Window/Exposure:
+> 	Built-in access to the hardware RNGs must be maintained at the time
+> 	that the N2 & VF based platforms are released.
+> 
+>    3.6. How will you know when you are done?:
+> 	When the RNG driver can successfully plug into the Solaris
+> 	Cryptographic Framework from within both primary & guest
+> 	Logical Domains.
+> 
+> 	When SunVTS can exercise the full RNG functionality of the underlying
+> 	N2 & VF processors from within the primary & guest LDOM.
+> 
+> 
+> 
+> 
+> 4. Technical Description:
+>     4.1. Details:
+> 
+> 	In order to support hardware acceleration via the Random Number
+> 	Generatio (RNG) portion of the N2 & VF chips, the following changes to
+> 	the Machine Description (MD) are proposed.
+> 
+>     4.1.1. cpu node changes:
+> 
+> 	Description:
+> 		Augmented to include new optional exec-unit
+> 		subordinate as described below:
+> 
+> 	Name:		exec-unit
+> 	Category:	optionally required by cpu
+> 	Required subordinates:	-
+> 	Optional subordinates:	-
+> 	Description:	This node is a type of exec-unit and uniquely
+> 			represents a specific rng definition.  Includes
+> 			references to the physical cpu's which have
+> 			access to the given rng.
+> 	Properties:
+> 	  Name		Tag		Required	Description
+> 	  ----		---		--------	-----------
+> 	  type		PROP_DATA	yes		The string "rng"
+> 
+> 
+>     4.2. Bug/RFE Number(s):
+> 	None.
+>     
+>     4.3. In Scope:
+> 	None.
+> 
+>     4.4. Out of Scope:
+> 	None.
+>     
+>     4.5. Interfaces:
+> 	4.5.1 Imported Interfaces:
+> 
+> 	Interface		Classification		Comments
+> 	========================================================
+> 	sun4v Machine		Sun Private		MD nodes definitions as
+> 	Description nodes				defined by FWARC/2005/115
+> 	Physical Resource	Sun Private		PRI node definitions as				
+> 	Inventory		    			defined in FWARC/2006/700
+> 
+> 	4.5.2 Exported Interfaces:
+> 
+> 	Interface		Classification		Comments
+> 	========================================================
+> 	exec-unit node and	Sun Private		MD nodes to represent RNG
+> 	Machine Description				units
+> 
+>     4.6. Doc Impact:
+> 	None.
+>     
+>     4.7. Admin/Config Impact:
+> 	None.
+>     
+>     4.8. HA Impact:
+> 	None.
+>     
+>     4.9. I18N/L10N Impact:
+> 	None.
+>     
+>     4.10. Packaging & Delivery:
+> 	None.
+>     
+>     4.11. Security Impact:
+> 	None.
+>     
+>     4.12. Dependencies:
+> 	FWARC/2005/115
+> 	FWARC/2006/700
+> 	FWARC/2007/558
+> 
+> 5. Reference Documents:
+> 	FWARC/2005/115 sun4v machine description data.
+> 	FWARC/2006/700 pri-spec.txt
+> 
+> 6. Resources and Schedule:
+>    6.1. Projected Availability:
+> 	Maramba FCS
+> 
+>    6.2. Cost of Effort:
+> 	2 staff weeks
+> 
+>    6.3. Cost of Capital Resources:
+> 	None.
+> 
+>    6.4. Product Approval Committee requested information:
+>    	6.4.1. Consolidation or Component Name:
+> 		LDom Manager, VBSC (System Firmware)
+> 	6.4.3. Type of CPT Review and Approval expected:
+> 		FastTrack
+>         6.4.4. Project Boundary Conditions:
+> 		N/A
+> 	6.4.5. Is this a necessary project for OEM agreements:
+> 		No
+> 	6.4.6. Notes:
+> 		FWARC/2005/115
+> 		FWARC/2006/700
+> 	6.4.7. Target RTI Date/Release:
+> 		Q4CY07
+> 	6.4.8. Target Code Design Review Date:
+> 		12/20/07
+> 	6.4.9. Update approval addition:
+> 		N/A
+> 
+>    6.5. ARC review type:
+>    		FastTrack
+> 
+> 7. Prototype Availability:
+>    7.1. Prototype Availability:
+> 	N/A
+> 
+>    7.2. Prototype Cost:
+> 	N/A
+> 
+> 
+> ------------------------------------------------------------------------
+> 
+>>
+> 
+
+--Boundary_(ID_rRShvHsSolE2IqCK7u5bKA)
+Content-type: text/x-vcard; name=joshua.pincus.vcf; charset=utf-8
+Content-transfer-encoding: 7BIT
+Content-disposition: attachment; filename=joshua.pincus.vcf
+
+begin:vcard
+fn:Joshua Pincus
+n:Pincus;Joshua
+org:Sun Microsystems, Inc.;Common Technologies
+adr:;;12 Network Circle;Menlo Park;CA;94025;USA
+email;internet:joshua.pincus@sun.com
+title:Hypervisor Firmware QA
+tel;work:650-352-5985
+tel;fax:650-786-7816
+x-mozilla-html:FALSE
+version:2.1
+end:vcard
+
+
+--Boundary_(ID_rRShvHsSolE2IqCK7u5bKA)--
+
+From sacadmin Thu Dec 13 13:48:27 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id lBDLmQlr020055
+	for <fwarc@sac.sfbay.sun.com>; Thu, 13 Dec 2007 13:48:27 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id lBDLmNO7024408
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 13 Dec 2007 21:48:26 GMT
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JT000D09CKMKS00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 13 Dec 2007 13:48:22 -0800 (PST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JT0008T4CKLE280@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 13 Dec 2007 13:48:22 -0800 (PST)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id lBDLmLFV006050	for
+ <fwarc@sun.com>; Thu, 13 Dec 2007 21:48:21 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JT000A01AT3DU00@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 13 Dec 2007 14:48:21 -0700 (MST)
+Received: from [192.168.100.100]
+ (c-24-62-226-231.hsd1.ma.comcast.net [24.62.226.231])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0JT0001E3CK9HY10@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 13 Dec 2007 14:48:13 -0700 (MST)
+Date: Thu, 13 Dec 2007 16:48:06 -0500
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: fasttrack FWARC/2007/689 - LDoms support for RNG - timeout
+ 12/20/2007
+In-reply-to: <4761A39F.3020100@sun.com>
+Sender: Eric.Sharakan@sun.com
+To: Joshua.Pincus@sun.com
+Cc: Eric Blanchard <Eric.Blanchard@sun.com>, fwarc@sun.com
+Message-id: <828C33D1-AB0A-48B1-8ED1-43B7DC35C631@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.915)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ micalg=sha1; boundary=Apple-Mail-20-231955036
+X-PMX-Version: 5.2.0.264296
+References: <AFEF2799-367C-494A-8107-471BDA0EEB3B@Sun.COM>
+ <4155BBD5-ADED-4BF3-B4E2-EB0C8E7DE26A@Sun.COM> <4761A39F.3020100@sun.com>
+Status: RO
+Content-Length: 11446
+
+
+--Apple-Mail-20-231955036
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed;
+	delsp=yes
+Content-Transfer-Encoding: 7bit
+
+For constructing the HV MD nodes needed, Zeus always goes directly  
+from the PRI nodes; not the guest MDs, so there's never any confusion  
+between physical or virtual cpus.
+
+And in terms of the guest MD (assuming we decide to populate the guest  
+MD with these nodes), it doesn't matter which RNG, as we don't number  
+them; we simply associate each one with the vcpu running on the  
+strands to which that RNG belongs.
+
+-Eric
+
+On Dec 13, 2007, at 4:26 PM, Joshua Pincus wrote:
+
+> Hi,
+>
+> Cool... Two questions, though:  If the cpu node has a new RNG exec- 
+> unit, how will you know WHICH RNG that is?  The CPU nodes in the  
+> guest MDs are virtual.  In the HV MD, they're physical.  Granted,  
+> the HV MD doesn't number or name the RNGs, so we associate them  
+> based on the chip# portion of each strands' id.  If all of the vCPUs  
+> are 1-1 w.r.t. stands, than this isn't a problem.  If there isn't a  
+> 1-1 correlation, I don't see how you can accurately group RNGs  
+> together to reconstruct the original HV MD configuration.  Also,  
+> what happens on a reboot when the PRI has been changed after a  
+> reconfiguration of the primary domain's resources?
+>
+> JP
+>
+> Eric Sharakan wrote:
+>> FYI, I filed the case:
+>> Begin forwarded message:
+>>> From: Eric Sharakan <Eric.Sharakan@Sun.COM>
+>>> Date: December 13, 2007 11:47:55 AM EST
+>>> To: Firmware Arch <fwarc@sun.com>
+>>> Subject: fasttrack FWARC/2007/689 - LDoms support for RNG -  
+>>> timeout 12/20/2007
+>>>
+>>> I am sponsoring this fast track case for myself.
+>>>
+>>> This project introduces changes to the Machine Description (MD)  
+>>> tree and the Physical Resource Inventory (PRI) for Niagara2 and  
+>>> Victoria Falls based platforms in order to support the random  
+>>> number generator (RNG) portion of these chips.
+>>>
+>>> The one-pager can be found at this link, and is attached to this  
+>>> mail.
+>>>
+>>> http://sac.eng/FWARC/2007/689/materials/md-rng-1pager.txt
+>>>
+>>> This case times out on 12/20/2007
+>>>
+>>> Release Binding:
+>>> firmware: minor/micro firmware release
+>>>
+>>> -Eric
+>>>
+>> ------------------------------------------------------------------------
+>> 	Version: "@(#)md-rng-1pager.txt 1.15     06/02/15 SMI"
+>> 1. Introduction
+>>   1.1. Project/Component Working Name:
+>> 	LDOMs support for RNG
+>>   1.2. Name of Document Author/Supplier:
+>> 	Eric.sharakan@Sun.COM
+>>   1.3. Date of This Document:
+>> 	12/13/07
+>>   1.4. Name of Major Document Customer(s)/Consumer(s):
+>> 	1.4.1. The PAC or CPT you expect to review your project:
+>> 		???
+>> 	1.4.2. The ARC(s) you expect to review your project:
+>> 		FWARC
+>> 	1.4.3. The Director/VP who is "Sponsoring" this project:
+>> 		Mike.Sanfratello@Sun.COM
+>> 	1.4.4. The name of your business unit:
+>> 		SPARC Platform Software (SPS)
+>>   1.5. Email Aliases:
+>>    	1.5.1. Responsible Manager:	John.Falkenthal@Sun.COM
+>>    	1.5.2. Responsible Engineer:	Eric.Sharakan@Sun.COM
+>>    	1.5.3. Marketing Manager:
+>> 	1.5.4. Interest List:
+>> 	        Jay.Jayachandran@Sun.COM
+>> 		Ashley.Saulsbury@Sun.COM
+>> 		Joshua.Pincus@Sun.COM
+>> 		Eric.Blanchard@Sun.COM
+>> 2. Project Summary
+>>   2.1. Project Description: This project introduces changes to the  
+>> Machine
+>> 	Description (MD) tree and the Physical Resource Inventory (PRI) for
+>> 	Niagara2 and Victoria Falls based platforms in order to support the
+>> 	random number generator (RNG) portion of these chips.
+>>   2.2. Risks and Assumptions:
+>>   	a)      Appropriate changes will be made to VBSC to allow
+>> 		incorporation of the RNG nodes specified here into the PRI.
+>> 	b) 	Appropriate changes will be made to the LDOM manager to allow
+>> 		incorporation of RNG "devices" into Domain MDs, and into the
+>> 		Hypervisor MD.  This is necessary to enable both the RNG driver
+>> 		within LDOM primary & guest domains, and the Hypervisor itself,
+>> 		to support the RNG HV API specified in FWARC/2007/558.
+>> 3. Business Summary
+>>   3.1. Problem Area:
+>> 	Support for RNG access from within Logical Domains.
+>>   3.2. Market/Requester:
+>>   3.3. Business Justification:
+>> 	Support for the hardware RNG capability present in the Niagara2 &
+>> 	Victoria Falls processors is an important selling point for the
+>> 	platforms based on these chips.
+>>   3.4. Competitive Analysis:
+>>   3.5. Opportunity Window/Exposure:
+>> 	Built-in access to the hardware RNGs must be maintained at the time
+>> 	that the N2 & VF based platforms are released.
+>>   3.6. How will you know when you are done?:
+>> 	When the RNG driver can successfully plug into the Solaris
+>> 	Cryptographic Framework from within both primary & guest
+>> 	Logical Domains.
+>> 	When SunVTS can exercise the full RNG functionality of the  
+>> underlying
+>> 	N2 & VF processors from within the primary & guest LDOM.
+>> 4. Technical Description:
+>>    4.1. Details:
+>> 	In order to support hardware acceleration via the Random Number
+>> 	Generatio (RNG) portion of the N2 & VF chips, the following  
+>> changes to
+>> 	the Machine Description (MD) are proposed.
+>>    4.1.1. cpu node changes:
+>> 	Description:
+>> 		Augmented to include new optional exec-unit
+>> 		subordinate as described below:
+>> 	Name:		exec-unit
+>> 	Category:	optionally required by cpu
+>> 	Required subordinates:	-
+>> 	Optional subordinates:	-
+>> 	Description:	This node is a type of exec-unit and uniquely
+>> 			represents a specific rng definition.  Includes
+>> 			references to the physical cpu's which have
+>> 			access to the given rng.
+>> 	Properties:
+>> 	  Name		Tag		Required	Description
+>> 	  ----		---		--------	-----------
+>> 	  type		PROP_DATA	yes		The string "rng"
+>>    4.2. Bug/RFE Number(s):
+>> 	None.
+>>        4.3. In Scope:
+>> 	None.
+>>    4.4. Out of Scope:
+>> 	None.
+>>        4.5. Interfaces:
+>> 	4.5.1 Imported Interfaces:
+>> 	Interface		Classification		Comments
+>> 	========================================================
+>> 	sun4v Machine		Sun Private		MD nodes definitions as
+>> 	Description nodes				defined by FWARC/2005/115
+>> 	Physical Resource	Sun Private		PRI node definitions as				
+>> 	Inventory		    			defined in FWARC/2006/700
+>> 	4.5.2 Exported Interfaces:
+>> 	Interface		Classification		Comments
+>> 	========================================================
+>> 	exec-unit node and	Sun Private		MD nodes to represent RNG
+>> 	Machine Description				units
+>>    4.6. Doc Impact:
+>> 	None.
+>>        4.7. Admin/Config Impact:
+>> 	None.
+>>        4.8. HA Impact:
+>> 	None.
+>>        4.9. I18N/L10N Impact:
+>> 	None.
+>>        4.10. Packaging & Delivery:
+>> 	None.
+>>        4.11. Security Impact:
+>> 	None.
+>>        4.12. Dependencies:
+>> 	FWARC/2005/115
+>> 	FWARC/2006/700
+>> 	FWARC/2007/558
+>> 5. Reference Documents:
+>> 	FWARC/2005/115 sun4v machine description data.
+>> 	FWARC/2006/700 pri-spec.txt
+>> 6. Resources and Schedule:
+>>   6.1. Projected Availability:
+>> 	Maramba FCS
+>>   6.2. Cost of Effort:
+>> 	2 staff weeks
+>>   6.3. Cost of Capital Resources:
+>> 	None.
+>>   6.4. Product Approval Committee requested information:
+>>   	6.4.1. Consolidation or Component Name:
+>> 		LDom Manager, VBSC (System Firmware)
+>> 	6.4.3. Type of CPT Review and Approval expected:
+>> 		FastTrack
+>>        6.4.4. Project Boundary Conditions:
+>> 		N/A
+>> 	6.4.5. Is this a necessary project for OEM agreements:
+>> 		No
+>> 	6.4.6. Notes:
+>> 		FWARC/2005/115
+>> 		FWARC/2006/700
+>> 	6.4.7. Target RTI Date/Release:
+>> 		Q4CY07
+>> 	6.4.8. Target Code Design Review Date:
+>> 		12/20/07
+>> 	6.4.9. Update approval addition:
+>> 		N/A
+>>   6.5. ARC review type:
+>>   		FastTrack
+>> 7. Prototype Availability:
+>>   7.1. Prototype Availability:
+>> 	N/A
+>>   7.2. Prototype Cost:
+>> 	N/A
+>> ------------------------------------------------------------------------
+>>>
+> <joshua.pincus.vcf>
+
+
+--Apple-Mail-20-231955036
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA3MTAxODAzMjAxOFoXDTA4MTAxNzAzMjAx
+OFowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyOpo1o9G
+kC4zvPQvyj/wBYNQR3zjkMYMxkWmL184ofuULXo7qmNtiCDanb/U9CmkH/ZXm3itLKVtRIUo/Fr7
+oi4CRxDUkF8LarMoiGbsuQ0hF0QIwJXdGv9GtNwagdzOtsqzZ0pV0II3WB7+NaIQ8qJ2KIwseULZ
+aXX0BzdlINGBYufa5xG38/piJfwb5n7JE/O2pocT1kO+IM9yLm3840a7FKwcYV6/tpXYABKlpgfK
+ZUp56DDLXf/5qW8jHPGhd6yrOVf53QtXypHNXPJDR+NFWo5Os2drH5V2rxzCildmoxOmhZkVaG03
+anU0qE4nWSRH1CKvtvigQDGJg0++sQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQCAxj+ZJX9XVIa4NeiRkfeL
+WaXXlKRONtx3QP3K7B9/T983wXc26sacqER608AoRMz9GyECwpIHtkvcRoCRPoWLyoWBf7zwh8ha
+0CPkTAmFxl1ENtpq/43Di0DUSHrcCeGvigN4esQpYJtQAmCUm5i5tXbu70d192lfniLVgHPvYzCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQQtJ8t0o3bhp1zVjZgObu9jAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wNzEy
+MTMyMTQ4MDdaMCMGCSqGSIb3DQEJBDEWBBS0XmQchKaypDU+NV7k88JesmEgXzCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdK
+N24adc1Y2YDm7vYwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEBBQAEggEALtVX
+Eru06GHamuqPSja+O5kOTRKFnMdXK+IE2v1MgUPrlWV1yWK1nixsxQy59SAdF6MtJbW30jJy9JPC
+VoE3WWyRkpMJklkq+FkTn+eliy3NyQ6GbmnKb7AuvEuDeVo8DkiAGdt7IJTvjTIDOOH1awbOHWtU
+RioRruK5trzwVLmDgIWTUG8KvH42BzljRQYT5+kt/8nfIBzmtbd+27d7X/z1QiznlqgZP83rKuEG
+WYUUU71xL8tiP/aSgwFC3sCJxIbOIxDF2mPGf1K+pGGGwV6zZaDeCEF105cEUHtbQdPBniibUBhl
+V4oa8151XBN5CXJ31KcL8Y517dPCW/1/+AAAAAAAAA==
+
+--Apple-Mail-20-231955036--
+
+From sacadmin Fri Dec 21 09:55:13 2007
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id lBLHtCfX022276
+	for <fwarc@sac.sfbay.sun.com>; Fri, 21 Dec 2007 09:55:12 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id lBLHtB5i016890
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 21 Dec 2007 10:55:12 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JTE00A05V3Z4D00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 21 Dec 2007 09:55:11 -0800 (PST)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JTE001ZPV3ZXW80@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 21 Dec 2007 09:55:11 -0800 (PST)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id lBLHtAeH024903	for
+ <fwarc@sun.com>; Fri, 21 Dec 2007 17:55:11 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JTE00J01TSOQC00@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 21 Dec 2007 10:55:10 -0700 (MST)
+Received: from dhcp-ubur03-180-237.East.Sun.COM ([129.148.180.237])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JTE00JL9V2WFH80@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 21 Dec 2007 10:55:01 -0700 (MST)
+Date: Fri, 21 Dec 2007 12:55:01 -0500
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: fasttrack FWARC/2007/689 - LDoms support for RNG - timeout
+ 12/20/2007
+In-reply-to: <6D487546-1624-4EDB-905A-06730AF4D118@Sun.COM>
+Sender: Eric.Sharakan@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Message-id: <06F4DD1F-1E34-4DF8-9A4F-27A265366893@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.915)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ micalg=sha1; boundary=Apple-Mail-5-909169393
+X-PMX-Version: 5.2.0.264296
+References: <AFEF2799-367C-494A-8107-471BDA0EEB3B@Sun.COM>
+ <349F39F6-8A3D-4109-8F42-B30B4340B09B@Sun.COM>
+ <BB306D37-28CA-4900-9547-DFA80EB7FD53@Sun.COM>
+ <6D487546-1624-4EDB-905A-06730AF4D118@Sun.COM>
+Status: RO
+Content-Length: 4477
+
+
+--Apple-Mail-5-909169393
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed;
+	delsp=yes
+Content-Transfer-Encoding: 7bit
+
+This case has timed out and is now approved.  IAM file has been updated.
+
+-Eric
+
+> From: Eric Sharakan <Eric.Sharakan@Sun.COM>
+> Date: December 13, 2007 11:47:55 AM EST
+> To: Firmware Arch <fwarc@sun.com>
+> Subject: fasttrack FWARC/2007/689 - LDoms support for RNG - timeout  
+> 12/20/2007
+>
+> I am sponsoring this fast track case for myself.
+>
+> This project introduces changes to the Machine Description (MD) tree  
+> and the Physical Resource Inventory (PRI) for Niagara2 and Victoria  
+> Falls based platforms in order to support the random number  
+> generator (RNG) portion of these chips.
+>
+> The one-pager can be found at this link, and is attached to this mail.
+>
+> http://sac.eng/FWARC/2007/689/materials/md-rng-1pager.txt
+>
+> This case times out on 12/20/2007
+>
+> Release Binding:
+> firmware: minor/micro firmware release
+>
+> -Eric
+>
+<md-rng-1pager.txt>
+
+
+--Apple-Mail-5-909169393
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA3MTAxODAzMjAxOFoXDTA4MTAxNzAzMjAx
+OFowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyOpo1o9G
+kC4zvPQvyj/wBYNQR3zjkMYMxkWmL184ofuULXo7qmNtiCDanb/U9CmkH/ZXm3itLKVtRIUo/Fr7
+oi4CRxDUkF8LarMoiGbsuQ0hF0QIwJXdGv9GtNwagdzOtsqzZ0pV0II3WB7+NaIQ8qJ2KIwseULZ
+aXX0BzdlINGBYufa5xG38/piJfwb5n7JE/O2pocT1kO+IM9yLm3840a7FKwcYV6/tpXYABKlpgfK
+ZUp56DDLXf/5qW8jHPGhd6yrOVf53QtXypHNXPJDR+NFWo5Os2drH5V2rxzCildmoxOmhZkVaG03
+anU0qE4nWSRH1CKvtvigQDGJg0++sQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQCAxj+ZJX9XVIa4NeiRkfeL
+WaXXlKRONtx3QP3K7B9/T983wXc26sacqER608AoRMz9GyECwpIHtkvcRoCRPoWLyoWBf7zwh8ha
+0CPkTAmFxl1ENtpq/43Di0DUSHrcCeGvigN4esQpYJtQAmCUm5i5tXbu70d192lfniLVgHPvYzCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQQtJ8t0o3bhp1zVjZgObu9jAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wNzEy
+MjExNzU1MDFaMCMGCSqGSIb3DQEJBDEWBBS7n58beAzu53keQV5ywrsDmAIpwTCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdK
+N24adc1Y2YDm7vYwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEBBQAEggEAddSO
+YskUTgLsYDlm+K6HyeV2DADunLbHgeANGSMrxyp7B9QsY8tJBlF2q9RKT8IzOwJdPk7S3ZAAzhhU
+vsY75vx7cZQe23TfUuoGkFRhtV53SorNtfWL9F6jAqoPsXJOID+5I1esfqU00AwLbzwBH9fT7fEX
+VG/kZkUOmBfGaUgiECFEuLs73A8Jj0yBUxnTrf0zgqe8VhCNHczbgYd0/PCQSPND1XoV4SMDkDCQ
+08+musImRFzHhgh4FQ7ZXpNd0IwPNxGo9qKS6ibmM5P7hesyB6FKGPpzFg+wjTvtSVHB4aPbiO1e
+9EuqHkKEILzCUCV456uzLVawAm17AvK0OwAAAAAAAA==
+
+--Apple-Mail-5-909169393--
+

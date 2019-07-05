@@ -1,0 +1,1447 @@
+#pragma ident	"@(#)io-api.txt	1.39	09/10/06 SMI"
+
+1	Introduction.
+
+This document describes the hypervisor PCI IO APIs.
+
+This document is currently described as a chapter in or an appendix to the
+Sun4v API [1].
+
+Section 2.1 in [1] describes the calling convention used by this document.
+All APIs described here use the Hypervisor fast trap (0x80). The function
+number is passed in %o5, arguments 0 .. 4 are passed in %o0 .. %o4
+respectively.  Results 0 - 4 are returned in %o0 .. %o4 respectively.
+Result %o0 is always the status of the call. Status values are defined in
+section 3.3 in [1]. Non-failure status is EOK and is not listed in the APIs
+in the remainder of this document which is consistent with [1].
+
+
+2	References
+
+[1] Sun4v Hypervisor API (FWARC/2005/116)
+        http://sac.eng/FWARC/2005/116/commitment2.materials/api.pdf
+
+[2] Sun4v Bus Binding to Open Firmware
+
+[3] VPCI Bus Binding to Open Firmware
+
+[4] PCI Express Base Specification 1.0a
+
+[5] UltraSPARC Virtual Machine Specification
+        http://kenai.com/downloads/hypervisor/Hypervisor-api-2.0.pdf
+
+[6] Sun4v PCI Error Packet Definitions
+	http://pciexpress.sfbay/fma/docs/sun4v-err.txt
+
+
+3	Sun4v Generic IO Interrupt Services
+
+	All generic IO interrupt services are
+	now documented in the Core API.
+
+3.1	Sun4v IO Data Definitions
+
+	cpuid - A unique opaque value which represents a target cpu.
+
+	devhandle - Device handle. The device handle uniquely
+		identifies a sun4v device. It consists of the
+		the lower 28-bits of the hi-cell of the first
+		entry of the sun4v device's "reg" property as defined
+		by the Sun4v Bus Binding to Open Firmware.
+
+	devino - Device Interrupt Number. An unsigned integer representing
+		an interrupt within a specific device.
+
+	sysino - System Interrupt Number. A 64-bit unsigned integer
+		representing a unique interrupt within a "system".
+
+
+4	PCI IO Services
+
+4.1	PCI IO Function Number Definitions
+
+
+	PCI_IOMMU_MAP			0xb0
+	PCI_IOMMU_DEMAP			0xb1
+	PCI_IOMMU_GETMAP		0xb2
+	PCI_IOMMU_GETBYPASS		0xb3
+
+	PCI_CONFIG_GET			0xb4
+	PCI_CONFIG_PUT			0xb5
+	PCI_PEEK			0xb6
+	PCI_POKE			0xb7
+
+	PCI_DMA_SYNC			0xb8
+
+4.2	PCI IO Data Definitions
+
+	devhandle - Device handle. The device handle uniquely
+		identifies a sun4v device. It consists of the
+		the lower 28-bits of the hi-cell of the first
+		entry of the sun4v device's "reg" property as defined
+		by the Sun4v Bus Binding to Open Firmware.
+
+	tsbnum - TSB Number. Identifies which io-tsb is used.
+		For this version of the spec, tsbnum must be zero.
+
+	tsbindex - TSB Index. Identifies which entry in the tsb is
+		is used. The first entry is zero.
+
+	tsbid - A 64-bit aligned data structure which contains
+		a tsbnum and a tsbindex.
+		bits 63:32 contain the tsbnum.
+		bits 31:00 contain the tsbindex.
+
+	io_attributes - IO Attributes for iommu mappings.
+		Attributes for iommu mappings. One or more of the
+		following attribute bits stored in a 64-bit unsigned integer.
+
+	6                                   3                                 0
+	3                                   1                                 0
+	00000000 00000000 00000000 00000000 BBBBBBBB DDDDDFFF 00000000 00PP0LWR
+
+		R: DMA data may be transferred from main memory to device.
+		W: DMA data may be transferred from device to main memory.
+
+		The following attributes apply to API versions 1.1 and later:
+
+		L: Requested DMA transaction can be relaxed ordered within RC.
+		P: value of PCI Express and PCI-X phantom function
+			configuration. Its encoding is identical to
+			the "Phantom Function Supported" field of
+			the "Device Capabilities Register (offset 0x4)"
+			in the "PCI Express Capability Structure".
+			The structure is part of a device's config space.
+		BDF: bus, device and function number of the device
+			that is going to issue DMA transactions.
+			The BDF values are used to guarantee the mapping
+			only be accessed by the specified device.
+			If the BDF is set to all 0, RID based protection
+			will be turned off.
+
+		Relaxed Ordering (L) is advisory. Not all hardware implements a
+		relaxed ordering attribute. If L attribute is not implemented in
+		hardware, the implementation is permitted to ignore the L bit.
+
+		Bits 3, 15:6 and 63:32 are unused and must be set to zero for
+		this version of the specification.
+
+		Note: For compatibility with future versions of this
+		specification, the caller must set all unused bits to
+		zero.
+
+		Note: For compatibility with existing hardware and guest
+		behavior, the "R" bit is implied in all valid mappings.
+		Future versions of this specification may change this behavior
+		by requiring the "R" bit to be Set for any mapping intended to
+		be Readable by the device.
+
+		Note: Some hw implementations do not implement an "R" bit
+		in the hardware. In this case, the "R" attribute is implied
+		by any valid iommu mapping, and it is not possible to create
+		a write-only mapping. In this case, and for legacy guest
+		support, pci_iommu_getmap may return the "R" io_attribute Set
+		even if it wasn't Set when pci_iommu_map was called to create
+		that mapping.
+
+	r_addr - 64-bit Real Address.
+
+	pci_device - PCI device address. A PCI device address
+		identifies a specific device on a specific PCI
+		bus segment. A PCI device address is a 32-bit unsigned
+		integer with the following format:
+
+			00000000.bbbbbbbb.dddddfff.00000000
+
+		Where:
+
+			bbbbbbbb is the 8-bit pci bus number
+			ddddd is the 5-bit pci device number
+			fff is the 3-bit pci function number
+
+			00000000 is the 8-bit literal zero.
+
+	pci_config_offset - PCI Configuration Space offset.
+
+		For conventional PCI, an unsigned integer in the range
+		0 .. 255 representing the offset of the field in pci config
+		space.
+
+		For PCI implementations with extended configuration space,
+		an unsigned integer in the range 0 .. 4095, representing
+		the offset of the field in configuration space. Conventional
+		PCI config space is offset 0 .. 255. Extended config space
+		is offset 256 .. 4095
+
+		Note: For pci config space accesses, the offset must be 'size'
+		aligned.
+
+	error_flag - Error flag
+
+		A return value specifies if the action succeeded
+		or failed, where:
+
+		  0 - No error occurred while performing the service.
+		  non-zero - Error occurred while performing the service.
+
+	io_sync_direction - "direction" definition for pci_dma_sync
+
+		This definition applies to API versions 1.0 and 1.1 only.
+
+		A value specifying the direction for a memory/io sync
+		operation, The direction value is a flag, one or both
+		directions may be specified by the caller.
+
+		  0x01 - For device (device read from memory)
+		  0x02 - For cpu (device write to memory)
+
+	io_sync_attributes - dma attributes for pci_dma_sync
+
+		This definition applies to API versions 1.2 and later.
+
+		A bitmask specifying the attributes for a memory/io sync
+		operation, The sync directions are flags; one or both
+		directions may be specified by the caller. The caller must
+		also specify is the region contains executable data through
+		another flag in the bitmask.
+
+		  0x01 - For device (device read from memory)
+		  0x02 - For cpu (device write to memory)
+		  0x04 - No executable data in memory region
+
+		Note: For compatibility with future versions of this
+		specification, the caller must set all unused bits to
+		zero. The implementation shall ignore these bits.
+
+	io_page_list - A list of io_page_addresses. An io_page_address
+		is an r_addr.
+
+	io_page_list_p - A pointer to an io_page_list.
+
+	"size based byte swap" - Some functions do size based byte swapping
+		which allows sw to access pointers and counters in native
+		form when the processor operates in a different endianness
+		than the io bus.  Size-based byte swapping converts a
+		multi-byte field between big-endian format and little endian
+		format as follows:
+
+		size	original value		swapped value
+		====	==============		=============
+
+		 2	0x0102			0x0201
+		 4	0x01020304		0x04030201
+		 8	0x0102030405060708	0x0807060504030201
+
+
+4.3	PCI IO API Definitions
+
+4.3.1	pci_iommu_map
+
+	trap#		FAST_TRAP
+	function#	PCI_IOMMU_MAP
+	arg0		devhandle
+	arg1		tsbid
+	arg2		#ttes
+	arg3		io_attributes
+	arg4		io_page_list_p
+
+	ret1		#ttes_mapped
+
+	Create iommu mappings in the sun4v device defined by
+	the argument devhandle.
+
+	The mappings are created in the tsb defined by the tsbnum
+	component of the tsbid argument. The first mapping is created
+	in the tsb index defined by the tsbindex component of
+	the tsbid argument. The call creates up to #ttes mappings,
+	the first one at tsbnum, tsbindex, the second at tsbnum,
+	tsbindex +1, etc.
+
+	Implementations will attempt to create all mappings with the attributes
+	defined by the io_attributes argument. Actual attributes of the mapping
+	may differ based on hardware limitations and must be determined by
+	calls to pci_iommu_getmap.
+
+	The page mapping addresses are described in the io_page_list
+	defined by the argument io_page_list_p, which is a pointer to
+	the io_page_list. The first entry in the io_page_list is the
+	address for the first iotte, the 2nd entry for the 2nd
+	iotte, and so on.
+
+	Each io_page_address in the io_page_list must be appropriately
+	aligned.
+
+	#ttes must be greater than zero.
+
+	For this version of the spec, the tsbnum component of the
+	tsbid argument must be zero.
+
+	Returns the actual number of mappings created, which may be less than
+	or equal to the argument #ttes. If the function returns a value
+	which is less than the #ttes, the caller may continue to call
+	the function with an updated tsbid, #ttes, io_page_list_p arguments
+	until all pages are mapped.
+
+	Note: This function does not imply an iotte cache flush. The
+	guest must demap an entry before re-mapping it.
+
+4.3.1.1	Errors
+
+	EINVAL		Invalid devhandle/tsbnum/tsbindex/io_attributes
+	EBADALIGN	Improperly aligned r_addr
+	ENORADDR	Invalid r_addr
+
+
+4.3.2	pci_iommu_demap
+
+	trap#		FAST_TRAP
+	function#	PCI_IOMMU_DEMAP
+	arg0		devhandle
+	arg1		tsbid
+	arg2		#ttes
+
+	ret1		#ttes_demapped
+
+	Demap and flush iommu mappings in the device defined by the argument
+	devhandle.
+
+	Demaps up to #ttes entries in the tsb defined by the tsbnum
+	component of the tsbid argument, starting at the tsb index
+	defined by the tsbindex component of the tsbid argument.
+
+	For this version of the spec, the tsbnum component of the
+	tsbid argument must be zero.
+
+	#ttes must be greater than zero.
+
+	Returns the actual number of ttes demapped in the return value
+	#ttes_demapped, which may be less than or equal to the argument
+	#ttes. If #ttes_demapped is less than #ttes, the caller may
+	continue to call this function with updated tsbid and #ttes
+	arguments until all pages are demapped.
+
+	Note: Entries do not have to be mapped to be demapped. A
+	demap of an unmapped page will flush the entry from the
+	tte cache.
+
+4.3.2.1	Errors
+
+	EINVAL		invalid devhandle/tsbnum/tsbindex
+
+
+4.3.3	pci_iommu_getmap
+
+	trap#		FAST_TRAP
+	function#	PCI_IOMMU_GETMAP
+	arg0		devhandle
+	arg1		tsbid
+
+	ret1		io_attributes
+	ret2		r_addr
+
+	Read and return the mapping in the device given by the argument
+	devhandle and tsbid. If successful, the io_attributes shall be
+	returned in ret1, the page address of the mapping shall be
+	returned in ret2. The io_attributes returned must reflect the current
+	status of the mapping and may differ from the attributes requested
+	by any previous pci_iommu_map call.
+
+	For this version of the spec, the tsbnum component of tsbid
+	must be zero.
+
+4.3.3.1	Errors
+
+	EINVAL		invalid devhandle/tsbnum/tsbindex
+	ENOMAP		Mapping is not valid - no translation exists
+
+
+4.3.4	pci_iommu_getbypass
+
+	trap#		FAST_TRAP
+	function#	PCI_IOMMU_GETBYPASS
+	arg0		devhandle
+	arg1		r_addr
+	arg2		io_attributes
+
+	ret1		io_addr
+
+	Create a "special" mapping in the device given by the argument
+	devhandle for the arguments given by r_addr and io_attributes.
+	Return the io address in ret1 if successful.
+
+4.3.1.1	Errors
+
+	EINVAL		Invalid devhandle/attributes
+	ENORADDR	Invalid real Address
+	ENOTSUPPORTED	Function not supported in this implementation.
+
+	Note: The error code ENOTSUPPORTED indicates that the
+	function exists, but is not supported by the implementation.
+
+
+4.3.5	pci_config_get
+
+	trap#		FAST_TRAP
+	function#	PCI_CONFIG_GET
+	arg0		devhandle
+	arg1		pci_device
+	arg2		pci_config_offset
+	arg3		size
+
+	ret1		error_flag
+	ret2		data
+
+	Read PCI configuration space for the pci adaptor defined by
+	the argument devhandle.
+
+	Read size (1, 2 or 4) bytes of data for the PCI device defined
+	by the argument pci_device, from the offset from the beginning
+	of the configuration space defined by the argument pci_config_offset.
+	If there was no error during the read access, set ret1 (error_flag)
+	to zero and set ret2 to the data read. Insignificant bits in
+	ret2 are not guaranteed to have any specific value and therefore
+	must be ignored.
+
+	The data returned in ret2 is size based byte swapped.
+
+	If an error occurs during the read, ret1 (error_flag) shall be set
+	to one of the following values:
+
+	0x1 indicates that the config space register access did not succeed
+	due to an unspecified error. This error_flag value is deprecated
+	and is only used by older implementations of this API that did not
+	distinguish between CRS and non-CRS errors.
+
+	0x2 indicates that the config space register access did not succeed
+	due to an error other than Config Request Retry Status(CRS).
+
+	0x4 indicates that the config space register access did not succeed
+	due to CRS.
+
+	Note: Earlier implementations of this API returned the value 0x1
+	in ret1 for all errors. The API only specified that a non-zero value
+	in ret1 indicated an error. There was no way to distinguish between
+	CRS or any other error.
+
+	pci_config_offset must be 'size' aligned.
+
+
+4.3.5.1	Errors
+
+	EINVAL		invalid devhandle/pci_device/offset/size
+	EBADALIGN	pci_config_offset not size aligned
+	ENOACCESS	Access to this offset is not permitted
+	EWOULDBLOCK	io domain not ready for config space access
+			(See section 6.3.1)
+
+
+4.3.6	pci_config_put
+
+	trap#		FAST_TRAP
+	function#	PCI_CONFIG_PUT
+	arg0		devhandle
+	arg1		pci_device
+	arg2		pci_config_offset
+	arg3		size
+	arg4		data
+
+	ret1		error_flag
+
+	Write PCI config space for the pci adaptor defined by the
+	argument devhandle.
+
+	Write 'size' bytes of data in a single operation. The argument
+	'size' must be 1, 2 or 4. The configuration space address is described
+	by the arguments pci_device and pci_config_offset. pci_config_offset is
+	the offset from the beginning of the configuration space given by the
+	argument pci_device. The argument 'data' contains the data to be
+	written to configuration space.  Prior to writing the data is
+	size based byte swapped.
+
+	If an error occurs during the read, ret1 (error_flag) shall be set
+	to one of the following values:
+
+	0x1 indicates that the config space register access did not succeed
+	due to an unspecified error. This error_flag value is deprecated
+	and is only used by older implementations of this API that did not
+	distinguish between CRS and non-CRS errors.
+
+	0x2 indicates that the config space register access did not succeed
+	due to an error other than Config Request Retry Status(CRS).
+
+	0x4 indicates that the config space register access did not succeed
+	due to CRS.
+
+	Note: Earlier implementations of this API returned the value 0x1
+	in ret1 for all errors. The API only specified that a non-zero value
+	in ret1 indicated an error. There was no way to distinguish between
+	CRS or any other error.
+
+	pci_config_offset must be 'size' aligned.
+
+	This function is permitted to read from offset zero in
+	the configuration space described by the argument pci_device
+	if necessary to ensure that the write access to config space
+	completes.
+
+
+4.3.6.1	Errors
+
+	EINVAL		invalid devhandle/pci_device/offset/size
+	EBADALIGN	pci_config_offset not size aligned
+	ENOACCESS	Access to this offset is not permitted
+	EWOULDBLOCK	io domain not ready for config space access
+			(See section 6.3.1)
+
+4.3.7	pci_peek
+
+	trap#		FAST_TRAP
+	function#	PCI_PEEK
+	arg0		devhandle
+	arg1		r_addr
+	arg2		size
+
+	ret1		error_flag
+	ret2		data
+
+	Attempt to read the io-address given by the arguments devhandle,
+	r_addr and size.  size must be 1, 2, 4 or 8.  The read is performed
+	as a single access operation using the given size. If an error occurs
+	when reading from the given location, do not generate an error report,
+	but return a non-zero value in ret1 (error_flag).  If the read was
+	successful, return zero in ret1 (error_flag) and return the actual
+	data read in ret2 (data). The data returned in ret2 is size based
+	byte swapped.
+
+	Non-significant bits in ret2 (data) are not guaranteed to have any
+	specific value and therefore must be ignored. If ret1 (error_flag)
+	is returned as non-zero, the data value is not guaranteed to have
+	any specific value and should be ignored.
+
+	The caller must have permission to read from the given devhandle,
+	r_addr, which must be an io address. The argument r_addr must be a
+	size-aligned address.
+
+	The hypervisor implementation of this function must block access
+	to any io address that the guest does not have explicit permission
+	to access.
+
+
+4.3.7.1	Errors
+
+	EINVAL		invalid size or devhandle
+	EBADALIGN	improperly aligned r_addr
+	ENORADDR	bad r_addr
+	ENOACCESS	guest access prohibited
+
+
+4.3.8	pci_poke
+
+	trap#		FAST_TRAP
+	function#	PCI_POKE
+	arg0		devhandle
+	arg1		r_addr
+	arg2		size
+	arg3		data
+	arg4		pci_device
+
+	ret1		error_flag
+
+	Attempt to write data to the io-address described by the arguments
+	devhandle, r_addr. The argument size defines the size of the 'write'
+	in bytes and must be 1, 2 4 or 8.
+
+	The write is performed as a single operation using the given size.
+	Prior to writing, the data is size based byte swapped.
+
+	If an error occurs when writing the data to the given location,
+	do not generate an error report, but return a non-zero value in ret1
+	(error_flag). If the write operation was successful, return the
+	value zero in ret1 (error_flag).
+
+	pci_device describes the configuration address of the device being
+	written to. The implementation may safely read from offset 0 with
+	the configuration space of the device described by devhandle and
+	pci_device in order to guarantee that the write portion of the
+	operation completes.
+
+	Any error that occurs due to the read shall be reported using the
+	normal error reporting mechanisms .. the read error is not suppressed.
+
+	The caller must have permission to write to the given devhandle,
+	r_addr, which must be an io address. The argument r_addr must be
+	a size aligned address. The caller must have permission to read
+	from the given devhandle, pci_device configuration space offset 0.
+
+	The hypervisor implementation of this function must block access
+	to any io address that the guest does not have explicit permission
+	to access.
+
+4.3.8.1	Errors
+
+	EINVAL		invalid size, devhandle or pci_device
+	EBADALIGN	improperly aligned address
+	ENORADDR	bad address
+	ENOACESS	guest access prohibited
+	ENOTSUPPORTED	function is not supported by this implementation.
+
+
+4.3.9	pci_dma_sync
+
+	trap#		FAST_TRAP
+	function#	PCI_DMA_SYNC
+	arg0		devhandle
+	arg1		r_adddr
+	arg2		size
+	arg3		(API versions 1.0/1.1) io_sync_direction
+			(API versions 1.2 and later) io_sync_attributes
+
+	ret1		#synced
+
+	Synchronize a memory region described by the arguments r_addr, size
+	for the device defined by the argument devhandle using the direction(s)
+	defined by the argument io_sync_direction. The argument size is
+	the size of the memory region in bytes.
+
+	In API versions 1.2 and later, if the region does not contain data
+	which will be executed, the caller must include the flag indicating
+	this fact in the io_sync_attributes. Using this flag and later
+	executing instructions from the region has undefined results.
+
+	Return the actual number of bytes synchronized in the return
+	value #synced, which may be less than or equal to the argument
+	size. If the return value #synced is less than size, the caller
+	must continue to call this function with updated r_addr and size
+	arguments until the entire memory region is synchronized.
+
+4.3.9.1 Errors
+
+	EINVAL		invalid devhandle or
+			(API v1.0 and v1.1 only) invalid io_sync_direction
+	ENORADDR	bad r_addr
+
+
+5	MSI Services
+
+	Note that MSI services are effectively part of PCI,
+	however, they are logically grouped into a separate
+	set of services defined in this section.
+
+
+5.1	MSI Function Number Definitions
+
+	PCI_MSIQ_CONF		0xc0
+	PCI_MSIQ_INFO		0xc1
+	PCI_MSIQ_GETVALID	0xc2
+	PCI_MSIQ_SETVALID	0xc3
+	PCI_MSIQ_GETSTATE	0xc4
+	PCI_MSIQ_SETSTATE	0xc5
+	PCI_MSIQ_GETHEAD	0xc6
+	PCI_MSIQ_SETHEAD	0xc7
+	PCI_MSIQ_GETTAIL	0xc8
+
+	PCI_MSI_GETVALID	0xc9
+	PCI_MSI_SETVALID	0xca
+	PCI_MSI_GETMSIQ		0xcb
+	PCI_MSI_SETMSIQ		0xcc
+	PCI_MSI_GETSTATE	0xcd
+	PCI_MSI_SETSTATE	0xce
+
+	PCI_MSG_GETMSIQ		0xd0
+	PCI_MSG_SETMSIQ		0xd1
+	PCI_MSG_GETVALID	0xd2
+	PCI_MSG_SETVALID	0xd3
+
+5.2	MSI Definitions
+
+	MSI - Message Signaled Interrupt
+
+	  Message Signaled Interrupt as defined in the PCI Local Bus
+	  Specification and the PCI Express Base Specification.
+	  A device signals an interrupt via MSI using a posted
+	  write cycle to an address specified by system software
+	  using a data value specified by system software.
+	  The MSI capability data structure contains fields for
+	  the PCI address and data values the device uses when
+	  sending an MSI message on the bus. MSI-X is an extended
+	  form of MSI, but uses the same mechanism for signaling
+	  the interrupt as MSI. For the purposes of this document,
+	  the term "MSI" refers to MSI or MSI-X.
+
+	  Root complexes that support MSI define an address range
+	  and set of data values that can be used to signal MSIs.
+
+	  sun4v/pci requirements for MSI:
+
+		The root complex defines two address ranges. One in
+		the 32-bit pci memory space and one in the 64-bit
+		pci memory address space used as the target of a posted
+		write to signal an MSI.
+
+		The root complex treats any write to these address
+		ranges as signaling an MSI, however, only the data
+		value used in the posted write signals the MSI.
+
+
+	MSI EQ - MSI Event Queue
+
+	  The MSI Event Queue is a page-aligned main memory data
+	  structure used to store MSI data records.
+
+	  Each root port supports several MSI EQs, and each EQ has a
+	  system interrupt associated with it, and can be targeted
+	  (individually) to any cpu. The number of MSI EQs supported
+	  by a root complex is described by a property defined in [3].
+	  Each MSI EQ must be large enough to contain all possible MSI
+	  data records generated by any one PCI root port. The number
+	  of entries in each MSI EQ is described by a property defined
+	  in [3].
+
+	  Each MSI EQ is compliant with the definition of interrupt
+	  queues described in [5], however, instead of accessing the
+	  queue head/tail registers via ASI-based registers, an API
+	  is provided to access the head/tail registers.
+
+	  The sun4v/pci compliant root complex has the ability to
+	  generate a system interrupt when the MSI EQ is non-empty.
+
+
+	MSI/Message/INTx Data Record format
+
+	  Each data record consists of 64 bytes of data, aligned
+	  on a 64-byte boundary.
+
+	  The data record is defined as follows:
+
+
+	6666555555555544444444443333333333222222222211111111110000000000
+	3210987654321098765432109876543210987654321098765432109876543210
+
+0x00:	VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVxxxxxxxxxxxxxxxxxxxxxxxxTTTTTTTT
+
+0x08:	IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+
+0x10:	xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+0x18:	SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+
+0x20:	xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxRRRRRRRRRRRRRRRR
+
+0x28:	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+0x30:	DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+
+0x38:	xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+
+	  Where,
+
+	  xx..xx are unused bits and must be ignored by sw.
+
+	  VV..VV is the version number of this data record
+
+		For this release of the spec, the version number
+		field must be zero.
+
+	  TTTTTTTT is the data record type:
+
+		Upper 4 bits are reserved, and must be zero
+
+		0000 - Not an MSI data record - reserved for sw use.
+		0001 - MSG
+		0010 - MSI32
+		0011 - MSI64
+		0010 - Reserved
+		...
+		0111 - Reserved
+		1000 - INTx
+		1001 - Reserved
+		...
+		1110 - Reserved
+		1111 - Not an MSI data record - reserved for sw use.
+
+		All other encodings are reserved.
+
+	  II..II is the sysino for INTx (sw defined value),
+		otherwise zero.
+
+	  SS..SS is the message timestamp if available.
+		If supported by the implementation, a non-zero
+		value in this field is a copy of the %stick register
+		at the time the message is created.
+
+		If unsupported, this field will contain zero.
+
+	  RR..RR is the requester ID of the device that initiated the MSI/MSG
+	  and has the following format:
+
+		bbbbbbbb.dddddfff
+
+		Where bb..bb is the bus number,
+		dd..dd is the device number
+		and fff is the function number.
+
+		Note that for PCI devices or any message where
+		the requester is unknown, this may be zero,
+		or the device-id of an intermediate bridge.
+
+		For intx messages, this field should be ignored.
+
+	  AA..AA is the MSI address. For MSI32, the upper 32-bits must be zero.
+	  (for data record type MSG or INTx, this field is ignored)
+
+	  DD..DD is the MSI/MSG data or INTx number
+
+		For MSI-X, bits 31..0 contain the data from the MSI packet
+		which is the msi-number. bits 63..32 shall be zero.
+
+		For MSI, bits 15..0 contain the data from the MSI message
+		which is the msi-number. bits 63..16 shall be zero
+
+		For MSG data, the message code and message routing code
+		are encoded as follows:
+
+		63:32 - 0000.0000.0000.0000.0000.0000.GGGG.GGGG
+		32:00 - 0000.0000.0000.0CCC.0000.0000.MMMM.MMMM
+
+			Where,
+
+			GG..GG is the target-id of the message in the
+			following form:
+
+				bbbbbbbb.dddddfff
+
+				where bb..bb is the target bus number.
+				ddddd is the target deviceid
+				fff is the target function number.
+
+			CCC is the message routing code as defined by [4]
+
+			MM..MM is the message code as defined by [4]
+
+		For INTx data, bits 63:2 must be zero and
+		the low order 2 bits are defined as follows:
+
+			00 - INTA
+			01 - INTB
+			10 - INTC
+			11 - INTD
+
+
+	cpuid - A unique opaque value which represents a target cpu.
+
+	devhandle - Device handle. The device handle uniquely identifies a
+	  sun4v device. It consists of the the lower 28-bits of the hi-cell
+	  of the first entry of the sun4v device's "reg" property as defined
+	  by the Sun4v Bus Binding to Open Firmware.
+
+	msinum	- A value defining which MSI is being used.
+
+	msiqhead - The offset value of a given MSI-EQ head.
+
+	msiqtail - The offset value of a given MSI-EQ tail.
+
+	msitype - Type specifier for MSI32 or MSI64
+		0 - type is MSI32
+		1 - type is MSI64
+
+	msiqid	- A number from 0 .. 'number of MSI-EQs - 1', defining
+	  which MSI EQ within the device is being used.
+
+	msiqstate - An unsigned integer containing one of the
+	  following values:
+
+		PCI_MSIQSTATE_IDLE		0	# idle (non-error) state
+		PCI_MSIQSTATE_ERROR		1	# error state
+
+	msiqvalid - An unsigned integer containing one of the
+		following values:
+
+		PCI_MSIQ_INVALID		0	# disabled/invalid
+		PCI_MSIQ_VALID			1	# enabled/valid
+
+	msistate - An unsigned integer containing one of the following
+	  values:
+
+		PCI_MSISTATE_IDLE		0	# idle/not enabled
+		PCI_MSISTATE_DELIVERED		1	# MSI Delivered
+
+	msivalid - An unsigned integer containing one of the
+		following values:
+
+		PCI_MSI_INVALID			0	# disabled/invalid
+		PCI_MSI_VALID			1	# enabled/valid
+
+	msgtype	- A value defining which MSG type is being used. An unsigned
+		integer containing one of the following values:
+		(as per PCIe spec 1.0a)
+
+		PCIE_PME_MSG			0x18	PME message
+		PCIE_PME_ACK_MSG		0x1b	PME ACK message
+		PCIE_CORR_MSG			0x30	Correctable message
+		PCIE_NONFATAL_MSG		0x31	Non fatal message
+		PCIE_FATAL_MSG			0x33	Fatal message
+
+	msgvalid - An unsigned integer containing one of the
+		following values:
+
+		PCIE_MSG_INVALID		0	# disabled/invalid
+		PCIE_MSG_VALID			1	# enabled/valid
+
+
+5.3	MSI API Definitions
+
+5.3.1	pci_msiq_conf
+
+	trap#		FAST_TRAP
+	function#	PCI_MSIQ_CONF
+	arg0		devhandle
+	arg1		msiqid
+	arg2		r_addr
+	arg3		nentries
+
+	Configure the MSI queue given by the arguments devhandle, msiqid
+	for use and to be placed at real address r_addr, and of nentries
+	entries.  nentries must be a power of two number of entries.
+
+	r_addr must be aligned exactly to match the queue size. Each queue
+	entry is 64 bytes long, so for example, a 32 entry queue must be
+	aligned on a 2048 byte real address boundary.
+
+	The MSI-EQ Head and Tail are initialized so that the MSI-EQ is 'empty'.
+
+	Implementation Note: Certain implementations have fixed sized
+	queues. In that case nentries must contain the correct value.
+
+5.3.1.1	Errors
+
+	EINVAL		Invalid devhandle, msiqid or nentries
+	EBADALIGN	improperly aligned r_addr
+	ENORADDR	bad r_addr
+
+
+5.3.2	pci_msiq_info
+
+	trap#		FAST_TRAP
+	function#	PCI_MSIQ_CONF
+	arg0		devhandle
+	arg1		msiqid
+
+	ret1		r_addr
+	ret2		nentries
+
+	Return configuration information for the MSI queue given by the
+	arguments devhandle, msiqid.
+
+	The base address of the queue is returned in r_addr. The number
+	of entries in the queue is returned in nentries.
+
+	If the queue is unconfigured r_addr is undefined
+	and returns zero in nentries.
+
+5.3.2.1	Errors
+
+	EINVAL		Invalid devhandle or msiqid
+
+
+5.3.3	pci_msiq_getvalid
+
+	trap#		FAST_TRAP
+	function#	PCI_MSIQ_GETVALID
+	arg0		devhandle
+	arg1		msiqid
+
+	ret1		msiqvalid
+
+	Get the valid state of the MSI-EQ defined by the arguments devhandle
+	and msiqid.
+
+5.3.3.1	Errors
+
+	EINVAL		bad devhandle or msiqid
+
+
+5.3.4	pci_msiq_setvalid
+
+	trap#		FAST_TRAP
+	function#	PCI_MSIQ_SETVALID
+	arg0		devhandle
+	arg1		msiqid
+	arg2		msiqvalid
+
+	Set the valid state of the MSI-EQ defined by the arguments devhandle
+	and msiqid to the state described by the argument msiqvalid
+	msiqvalid must be PCI_MSIQ_VALID or PCI_MSIQ_INVALID.
+
+5.3.4.1	Errors
+
+	EINVAL		bad devhandle or msiqid or msiqvalid value or
+			MSI EQ is uninitialized.
+
+5.3.5	pci_msiq_getstate
+
+	trap#		FAST_TRAP
+	function#	PCI_MSIQ_GETSTATE
+	arg0		devhandle
+	arg1		msiqid
+
+	ret1		msiqstate
+
+	Get the state of the MSI-EQ defined by the arguments devhandle
+	and msiqid.
+
+5.3.5.1	Errors
+
+	EINVAL		bad devhandle or msiqid
+
+
+5.3.6	pci_msiq_setstate
+
+	trap#		FAST_TRAP
+	function#	PCI_MSIQ_SETSTATE
+	arg0		devhandle
+	arg1		msiqid
+	arg2		msiqstate
+
+	Set the state of the MSI-EQ defined by the arguments devhandle
+	and msiqid to the state described by the argument msiqstate.
+	msiqstate must be PCI_MSIQSTATE_IDLE or PCI_MSIQSTATE_ERROR.
+
+5.3.6.1	Errors
+
+	EINVAL		bad devhandle, msiqid or msiqstate or
+			MSI EQ is uninitialized.
+
+5.3.7	pci_msiq_gethead
+
+	trap#		FAST_TRAP
+	function#	PCI_MSIQ_GETHEAD
+	arg0		devhandle
+	arg1		msiqid
+
+	ret1		msiqhead
+
+	Return the current msiqhead for the MSI-EQ described by the
+	argument devhandle, msiqid.
+
+5.3.7.1	Errors
+
+	EINVAL		Invalid devhandle or msiqid or MSI EQ uninitialized
+
+
+5.3.8	pci_msiq_sethead
+
+	trap#		FAST_TRAP
+	function#	PCI_MSIQ_GETHEAD
+	arg0		devhandle
+	arg1		msiqid
+	arg2		msiqhead
+
+	Set the MSI EQ queue head in the MSI EQ described by the arguments
+	devhandle, msiqid to the value given by the msiqhead argument.
+
+5.3.8.1	Errors
+
+	EINVAL		Invalid devhandle, msiqid or msiqhead
+			or MSI EQ is uninitialized
+
+
+5.3.9	pci_msiq_gettail
+
+	trap#		FAST_TRAP
+	function#	PCI_MSIQ_GETHEAD
+	arg0		devhandle
+	arg1		msiqid
+
+	ret1		msiqtail
+
+	Return the current msiqtail for the MSI-EQ described by the
+	argument devhandle, msiqid.
+
+5.3.9.1	Errors
+
+	EINVAL		Invalid devhandle or msiqid or uninitialized MSI EQ
+
+
+5.3.10	pci_msi_getvalid
+
+	trap#		FAST_TRAP
+	function#	PCI_MSI_GETVALID
+	arg0		devhandle
+	arg1		msinum
+
+	ret1		msivalidstate
+
+	Return in msivalidstate, the current valid/enabled state
+	for the MSI defined by the arguments devhandle, msinum.
+
+5.3.10.1 Errors
+
+	EINVAL		Invalid devhandle or msinum
+
+5.3.11	pci_msi_setvalid
+
+	trap#		FAST_TRAP
+	function#	PCI_MSI_SETVALID
+	arg0		devhandle
+	arg1		msinum
+	arg2		msivalidstate
+
+	Set the valid/enabled state of the msi described by the
+	arguments devhandle, msinum to the valid/enabled state
+	defined by the argument msivalidstate
+
+5.3.11.1 Errors
+
+	EINVAL		Invalid devhandle, msinum or msivalidstate
+
+5.3.12	pci_msi_getmsiq
+
+	trap#		FAST_TRAP
+	function#	PCI_MSI_GETMSIQ
+	arg0		devhandle
+	arg1		msinum
+
+	ret1		msiqid
+
+	For the MSI defined by the arguments devhandle, msinum return
+	the MSI EQ that this MSI is bound to in the return value msiqid.
+
+5.3.12.1 Errors
+
+	EINVAL		Invalid devhandle or msinum or msi unbound.
+
+
+5.3.13	pci_msi_setmsiq
+
+	trap#		FAST_TRAP
+	function#	PCI_MSI_SETMSIQ
+	arg0		devhandle
+	arg1		msinum
+	arg2		msitype
+	arg3		msiqid
+
+	Set the target msiq of the MSI defined by the arguments
+	devhandle, msinum to the MSI EQ id defined by the argument
+	msiqid.
+
+5.3.13.1 Errors
+
+	EINVAL		Invalid devhandle, msinum or msiqid
+
+
+5.3.14	pci_msi_getstate
+
+	trap#		FAST_TRAP
+	function#	PCI_MSI_GETSTATE
+	arg0		devhandle
+	arg1		msinum
+
+	ret1		msistate
+
+	Return the state of the msi defined by the arguments devhandle,
+	msinum. If the MSI is not initialized, returns the state
+	PCI_MSISTATE_IDLE.
+
+5.3.14.1 Errors
+
+	EINVAL		Invalid devhandle or msinum
+
+
+5.3.15	pci_msi_setstate
+
+	trap#		FAST_TRAP
+	function#	PCI_MSI_SETSTATE
+	arg0		devhandle
+	arg1		msinum
+	arg2		msistate
+
+	Set the state of the msi defined by the arguments devhandle,
+	msinum to the state defined by the argument msistate.
+
+5.3.15.1 Errors
+
+	EINVAL		Invalid devhandle or msinum or msistate
+
+5.3.16	pci_msg_getmsiq
+
+	trap#		FAST_TRAP
+	function#	PCI_MSG_GETMSIQ
+	arg0		devhandle
+	arg1		msgtype
+
+	ret1		msiqid
+
+	For the msg defined by the arguments devhandle, msgtype return
+	the MSI EQ that this msg is bound to in the return value msiqid.
+
+5.3.16.1 Errors
+
+	EINVAL		Invalid devhandle or msg type.
+
+
+5.3.17	pci_msg_setmsiq
+
+	trap#		FAST_TRAP
+	function#	PCI_MSG_SETMSIQ
+	arg0		devhandle
+	arg1		msgtype
+	arg2		msiqid
+
+	Set the target msiq of the msg defined by the arguments
+	devhandle, msgtype to the MSI EQ id defined by the argument
+	msiqid.
+
+5.3.17.1 Errors
+
+	EINVAL		Invalid devhandle, msgtype or msiqid
+
+
+5.3.18	pci_msg_getvalid
+
+	trap#		FAST_TRAP
+	function#	PCI_MSG_GETVALID
+	arg0		devhandle
+	arg1		msgtype
+
+	ret1		msgvalidstate
+
+	Return in msgvalidstate, the current valid/enabled state
+	for the MSG defined by the arguments devhandle, msgtype.
+
+5.3.18.1 Errors
+
+	EINVAL		Invalid devhandle or msgtype
+
+5.3.19	pci_msg_setvalid
+
+	trap#		FAST_TRAP
+	function#	PCI_MSG_SETVALID
+	arg0		devhandle
+	arg1		msgtype
+	arg2		msgvalidstate
+
+	Set the valid/enabled state of the msg described by the
+	arguments devhandle, msg to the valid/enabled state
+	defined by the argument msgvalidstate
+
+5.3.19.1 Errors
+
+	EINVAL		Invalid devhandle, msgtype or msgvalidstate
+
+
+6.  SDIO Services.
+
+
+6.1 SDIO Services Function Number and Group Definitions
+
+
+6.1.1. PCI_IOV_SDIO_GROUP (Group number 0x108)
+
+	PCI_IOV_ROOT_CONFIGURED		0xf8
+	PCI_REAL_CONFIG_GET		0xf9
+	PCI_REAL_CONFIG_PUT		0xfa
+
+6.1.2. PCI_ERROR_MODEL (Group number 0x109)
+
+	 PCI_ERROR_SEND			0xff
+
+6.2.  SDIO Definitions
+
+	root domain
+
+	    A domain that owns configuration and mangement of a sun4v pci
+	    virtual root complex.
+
+	io domain
+
+	    A domain that has access to devices *below* a sun4v pci virtual
+	    root complex but is not the root domain.
+
+6.3.  SDIO API Definitions.
+
+6.3.1.	 pci_iov_root_configured
+
+	trap#		FAST_TRAP
+	function#	PCI_IOV_ROOT_CONFIGURED (0xf8)
+	arg0		devhandle
+
+	The root complex identified by devhandle is ready to be shared.  The
+	root domain guest calls this when it's ready for other io guests to
+	begin using shared devices under the root complex identified by the
+	argument devhandle, which must be the devhandle of a root complex
+	device node owned by this guest.
+
+	This call is an indication to the hypervisor that any other guest
+	sharing the devices under this root complex may now access the
+	configuration space of those devices.
+
+	In any io guest domain, pci_config_get and pci_config_put shall return
+	EWOULDBLOCK on any attempted access to config space under the root
+	complex defined by the argument devhandle until this API is called in
+	the root domain. If the root domain is reset, behavior reverts back to
+	the initial behavior until this API is called in the root domain.
+
+6.3.1.1	Errors
+
+	EINVAL		Invalid devhandle
+	ENOACCESS	No access - not root domain for this RC devhandle
+
+
+6.3.2	pci_real_config_get
+
+	trap#		FAST_TRAP
+	function#	PCI_REAL_CONFIG_GET (0xf9)
+	arg0		devhandle
+	arg1		pci_device
+	arg2		pci_config_offset
+	arg3		size
+
+	ret1		error_flag
+	ret2		data
+
+	Read real PCI configuration space for the pci adaptor defined by
+	the argument devhandle.
+
+	Read size (1, 2 or 4) bytes of data for the PCI device defined
+	by the argument pci_device, from the offset from the beginning
+	of the configuration space defined by the argument pci_config_offset.
+	If there was no error during the read access, set ret1 (error_flag)
+	to zero and set ret2 to the data read. Insignificant bits in
+	ret2 are not guaranteed to have any specific value and therefore
+	must be ignored.
+
+	The data returned in ret2 is size based byte swapped.
+
+	If an error occurs during the read, ret1 (error_flag) shall be set
+	to one of the following values:
+
+	0x2 indicates that the config space register access did not succeed
+	due to an error other than Config Request Retry Status(CRS).
+
+	0x4 indicates that the config space register access did not succeed
+	due to CRS.
+
+	pci_config_offset must be 'size' aligned.
+
+
+6.3.2.1	Errors
+
+	EINVAL		invalid devhandle/pci_device/offset/size
+	EBADALIGN	pci_config_offset not size aligned
+	ENOACCESS	Access to this offset is not permitted
+			or not root domain for this RC devhandle
+
+
+6.3.3	pci_real_config_put
+
+	trap#		FAST_TRAP
+	function#	PCI_REAL_CONFIG_PUT (0xfa)
+	arg0		devhandle
+	arg1		pci_device
+	arg2		pci_config_offset
+	arg3		size
+	arg4		data
+
+	ret1		error_flag
+
+	Write real PCI config space for the pci adaptor defined by the
+	argument devhandle.
+
+	Write 'size' bytes of data in a single operation. The argument
+	'size' must be 1, 2 or 4. The configuration space address is described
+	by the arguments pci_device and pci_config_offset. pci_config_offset is
+	the offset from the beginning of the configuration space given by the
+	argument pci_device. The argument 'data' contains the data to be
+	written to configuration space.  Prior to writing the data is
+	size based byte swapped.
+
+	If an error occurs during the read, ret1 (error_flag) shall be set
+	to one of the following values:
+
+	0x2 indicates that the config space register access did not succeed
+	due to an error other than Config Request Retry Status(CRS).
+
+	0x4 indicates that the config space register access did not succeed
+	due to CRS.
+
+	pci_config_offset must be 'size' aligned.
+
+	This function is permitted to read from offset zero in
+	the configuration space described by the argument pci_device
+	if necessary to ensure that the write access to config space
+	completes.
+
+
+6.3.3.1	Errors
+
+	EINVAL		invalid devhandle/pci_device/offset/size
+	EBADALIGN	pci_config_offset not size aligned
+	ENOACCESS	Access to this offset is not permitted
+			or not root domain for this RC devhandle
+
+
+6.3.4.	pci_error_send
+
+	trap#		FAST_TRAP
+	function#	PCI_ERROR_SEND
+	arg0		devhandle
+	arg1		devino
+	arg2		pci_device
+
+	Send an error epkt to any io guest sharing the device identified
+	by the argument pci_device in the fabric identified by the argument
+	devhandle.
+
+	devhandle must be the devhandle of a PCI root complex, owned by
+	this guest. devino must be the devino associated with pci error
+	packets for this root complex.
+
+	pci_device is the device reporting the error. If pci_device is
+	zero, all other guests sharing this pci fabric will receive an
+	error packet. If pci_device is non-zero, only those guests sharing
+	the device identified by the pci_device argument will receive the
+	error packet.
+
+	The error packet is delivered to the dev mondo queue of the io guest
+	sharing this device, if any. The first entry, SYSINO, will be the
+	correct value for the devhandle, devino in that guest that represents
+	the shared root complex, identified by the arguments devhandle,
+	devino for this guest.
+
+	Note: The epkt is never delivered to the domain that called this API.
+
+	error packet details:
+
+	The following document defines the contents of pci error packets:
+
+	- http://pciexpress.sfbay/fma/docs/sun4v-err.txt
+
+	The packet shall contain the following:
+
+	0x00	sysino - devhandle, devino of io guest's root complex
+	0x08	ehdl# - unique error handle - generated/managed by HV
+	0x10	stick - the value of the %STICK% register
+	0x18	DESC (see below), Error Specific - 0
+	0x20	0
+	0x28	0
+	0x30	0
+	0x38	0
+
+
+	The DESC field shall contain the following values:
+
+	31:28 - Block - value 1 - hostbus
+	27:24 - Op - Value 0
+	23:20 - Phase - Value 0
+	19:16 - Cond - Value 0
+	15:12 - Dir - value 0
+	11:0 - Flags, bit 11 (STOP) Set, everything else Clear.
+
+
+6.3.4.1. Errors
+
+	EINVAL	- Invalid devhandle, devino or pci_device
+	ENOACCESS - Not owner of devhandle (not root domain)
+

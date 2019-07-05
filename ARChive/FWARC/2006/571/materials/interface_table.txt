@@ -1,0 +1,29 @@
+   Imported Interfaces 
+   -------------------
+
+   Interface name                        Classification        Comments
+   -----------------------               --------------        --------
+
+   LDC protocol,                         Sun Private           FWARC/2006/140
+   Data structures,
+   and values
+   
+
+   Exported Interfaces
+   -------------------
+
+   Interface name                        Classification        Comments
+   -----------------------               --------------        --------
+   LDC Packet format
+      Unreliable datagram                Sun Private           Removal of
+                                                               Session ID
+                                                               
+      Reliable datagram                  Sun Private           Removal of
+                                                               Session ID      
+
+  Packet envelope mode values
+      LDC_MODE_RELIABLE 0x3              Sun Private           Reliable mode
+      
+      LDC_MODE_RELIABLE 0x2              Obsolete              Reliable mode
+                                                               Mode value 0x3
+                                                               replaced 0x2

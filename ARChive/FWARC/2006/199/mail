@@ -1,0 +1,568 @@
+From sacadmin Fri Apr 14 14:06:03 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k3EL63IQ022034
+	for <fwarc@sac.eng.sun.com>; Fri, 14 Apr 2006 14:06:03 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k3EL62P28003;
+	Fri, 14 Apr 2006 14:06:02 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IXQ0040HD9Z3N00@brm-avmta-1.central.sun.com>; Fri,
+ 14 Apr 2006 15:05:59 -0600 (MDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IXQ00C6MD9YAUD0@brm-avmta-1.central.sun.com>; Fri,
+ 14 Apr 2006 15:05:58 -0600 (MDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-2.sun.com (8.12.10/8.12.9) with ESMTP id k3EL5wmU019009; Fri,
+ 14 Apr 2006 15:05:58 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IXQ00301CFDTE00@mail-amer.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Fri,
+ 14 Apr 2006 15:05:58 -0600 (MDT)
+Received: from sun.com ([129.150.25.244])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep  9
+ 2005)) with ESMTPSA id <0IXQ00AT6D9WQ940@mail-amer.sun.com>; Fri,
+ 14 Apr 2006 15:05:58 -0600 (MDT)
+Date: Fri, 14 Apr 2006 14:06:03 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: 2006/199 sun4v watchdog API fn correction [self-review]
+Sender: Tony.Sumpter@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Greg Onufer <Greg.Onufer@Sun.COM>,
+   Richard Barnette <Richard.Barnette@Sun.COM>,
+   Jack Hayward <Jack.Hayward@Sun.COM>
+Message-id: <44400EBB.4070805@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 367
+
+Case http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/199/
+corrects the function number in
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/093/
+to be the one originally intended by the project.
+
+An interface table is provided in the case materials directory.
+
+No action is required - this case is self-review.
+
+The trap registry is updated.
+
+Tony.
+
+
+
+From sacadmin Fri Apr 14 14:38:17 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k3ELcHIQ022746
+	for <fwarc@sac.eng.Sun.COM>; Fri, 14 Apr 2006 14:38:17 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k3ELcFq18728;
+	Fri, 14 Apr 2006 15:38:15 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IXQ00K03ERPTW00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 14 Apr 2006 14:38:13 -0700 (PDT)
+Received: from nwkes-gis-mail-1.sun.com ([10.4.134.5])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IXQ00653EROMN90@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 14 Apr 2006 14:38:12 -0700 (PDT)
+Received: from d1-sfbay-06.sun.com ([192.18.39.116])
+	by nwkes-gis-mail-1.sun.com (8.12.9/8.12.9) with ESMTP id k3ELcClJ004759; Fri,
+ 14 Apr 2006 14:38:12 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-06.sun.com by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IXQ00201DI9K800@d1-sfbay-06.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Fri,
+ 14 Apr 2006 14:38:12 -0700 (PDT)
+Received: from [129.150.35.133] by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IXQ00290ERNWP00@d1-sfbay-06.sun.com>; Fri,
+ 14 Apr 2006 14:38:12 -0700 (PDT)
+Date: Fri, 14 Apr 2006 14:38:14 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/199 sun4v watchdog API fn correction [self-review]
+In-reply-to: <44400EBB.4070805@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, Greg Onufer <Greg.Onufer@Sun.COM>,
+   Richard Barnette <richard.barnette@Sun.COM>,
+   Jack Hayward <Jack.Hayward@Sun.COM>
+Message-id: <44401646.4080609@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <44400EBB.4070805@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 1202
+
+Tony Sumpter wrote:
+
+> Case http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/199/
+> corrects the function number in
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/093/
+> to be the one originally intended by the project.
+> 
+> An interface table is provided in the case materials directory.
+> 
+> No action is required - this case is self-review.
+> 
+> The trap registry is updated.
+
+Why do I see following two exported interfaces in the interface
+table with no description of them?  Is this SelfReview exporting
+them or is it something exported by some other case?  I am confused.
+If this case exports it then what are their definitions?
+
+Is this left over and needs to be deleted from the table?
+
+
+Please consider this case not approved until my question is
+answered.  Thanks.
+
+===
+
+
+watchdog-resolution		Sun Private	Machine Description platform
+						node property
+
+watchdog-max-timeout		Sun Private	Machine Description platform
+						node property
+
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Fri Apr 14 14:43:46 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k3ELhkIQ022841
+	for <fwarc@sac.eng.sun.com>; Fri, 14 Apr 2006 14:43:46 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k3ELhjP08997;
+	Fri, 14 Apr 2006 14:43:45 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IXQ00503F0USN00@brm-avmta-1.central.sun.com>; Fri,
+ 14 Apr 2006 15:43:42 -0600 (MDT)
+Received: from nwkes-gis-mail-1.sun.com ([10.4.134.5])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IXQ00C5LF0TA7E0@brm-avmta-1.central.sun.com>; Fri,
+ 14 Apr 2006 15:43:41 -0600 (MDT)
+Received: from d1-sfbay-04.sun.com ([192.18.39.114])
+	by nwkes-gis-mail-1.sun.com (8.12.9/8.12.9) with ESMTP id k3ELhflJ005159; Fri,
+ 14 Apr 2006 14:43:41 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-04.sun.com by d1-sfbay-04.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IXQ00F01DHDEQ00@d1-sfbay-04.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Fri,
+ 14 Apr 2006 14:43:41 -0700 (PDT)
+Received: from [129.150.35.133] by d1-sfbay-04.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IXQ00C4CF0RGU30@d1-sfbay-04.sun.com>; Fri,
+ 14 Apr 2006 14:43:41 -0700 (PDT)
+Date: Fri, 14 Apr 2006 14:43:42 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/199 sun4v watchdog API fn correction [self-review]
+In-reply-to: <44401646.4080609@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Tony Sumpter <Tony.Sumpter@Sun.COM>, Firmware Arch <fwarc@Sun.COM>,
+   Greg Onufer <Greg.Onufer@Sun.COM>,
+   Richard Barnette <richard.barnette@Sun.COM>,
+   Jack Hayward <Jack.Hayward@Sun.COM>
+Message-id: <4440178E.9000500@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <44400EBB.4070805@sun.com> <44401646.4080609@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 1569
+
+Hitendra Zhangada wrote:
+
+> Tony Sumpter wrote:
+> 
+>> Case http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/199/
+>> corrects the function number in
+>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/093/
+>> to be the one originally intended by the project.
+>>
+>> An interface table is provided in the case materials directory.
+>>
+>> No action is required - this case is self-review.
+>>
+>> The trap registry is updated.
+> 
+> 
+> Why do I see following two exported interfaces in the interface
+> table with no description of them?  Is this SelfReview exporting
+> them or is it something exported by some other case?  I am confused.
+> If this case exports it then what are their definitions?
+> 
+> Is this left over and needs to be deleted from the table?
+> 
+> 
+> Please consider this case not approved until my question is
+> answered.  Thanks.
+> 
+> ===
+> 
+> 
+> watchdog-resolution        Sun Private    Machine Description platform
+>                         node property
+> 
+> watchdog-max-timeout        Sun Private    Machine Description platform
+>                         node property
+> 
+
+BTW, I see the watchdog-max-timeout defined in 2006/093 but not see the 
+definition of watchdog-resolution.
+
+
+Since this case is only changing the function number I suggest removing
+both lines (just keep the MACH_SET_WATCHDOG).
+
+
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Fri Apr 14 14:53:58 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k3ELrwIQ023074
+	for <fwarc@sac.eng.sun.com>; Fri, 14 Apr 2006 14:53:58 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k3ELrvP11097;
+	Fri, 14 Apr 2006 14:53:58 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IXQ00601FHX8I00@brm-avmta-1.central.sun.com>; Fri,
+ 14 Apr 2006 15:53:57 -0600 (MDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IXQ00C0AFHXAKE0@brm-avmta-1.central.sun.com>; Fri,
+ 14 Apr 2006 15:53:57 -0600 (MDT)
+Received: from fe-amer-04.sun.com ([192.18.108.178])
+	by brmea-mail-3.sun.com (8.12.10/8.12.9) with ESMTP id k3ELruJO011227; Fri,
+ 14 Apr 2006 15:53:57 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IXQ00H01F6NIM00@mail-amer.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Fri,
+ 14 Apr 2006 15:53:56 -0600 (MDT)
+Received: from sun.com ([129.150.25.244])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep  9
+ 2005)) with ESMTPSA id <0IXQ00DAYFHU2H00@mail-amer.sun.com>; Fri,
+ 14 Apr 2006 15:53:55 -0600 (MDT)
+Date: Fri, 14 Apr 2006 14:54:01 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: 2006/199 sun4v watchdog API fn correction [self-review]
+In-reply-to: <44401646.4080609@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, Greg Onufer <Greg.Onufer@Sun.COM>,
+   Richard Barnette <richard.barnette@Sun.COM>,
+   Jack Hayward <Jack.Hayward@Sun.COM>
+Message-id: <444019F9.6010909@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <44400EBB.4070805@sun.com> <44401646.4080609@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 1307
+
+Hitendra Zhangada wrote:
+
+> Tony Sumpter wrote:
+> 
+>> Case http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/199/
+>> corrects the function number in
+>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/093/
+>> to be the one originally intended by the project.
+>>
+>> An interface table is provided in the case materials directory.
+>>
+>> No action is required - this case is self-review.
+>>
+>> The trap registry is updated.
+> 
+> 
+> Why do I see following two exported interfaces in the interface
+> table with no description of them?  Is this SelfReview exporting
+> them or is it something exported by some other case?  I am confused.
+> If this case exports it then what are their definitions?
+> 
+> Is this left over and needs to be deleted from the table?
+
+You are correct - I typed everything up from the set of cases
+for the watchdog API as I needed to add a table to 2006/093.
+
+I've cleaned it up - and the interface table I put in 2006/093.
+
+Tony.
+
+> 
+> Please consider this case not approved until my question is
+> answered.  Thanks.
+> 
+> ===
+> 
+> 
+> watchdog-resolution        Sun Private    Machine Description platform
+>                         node property
+> 
+> watchdog-max-timeout        Sun Private    Machine Description platform
+>                         node property
+> 
+> 
+> 
+
+
+
+From sacadmin Fri Apr 14 14:58:28 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k3ELwRIQ023605
+	for <fwarc@sac.eng.Sun.COM>; Fri, 14 Apr 2006 14:58:28 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k3ELwAX4014459;
+	Sat, 15 Apr 2006 05:58:24 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IXQ00601FPAFR00@brm-avmta-1.central.sun.com>; Fri,
+ 14 Apr 2006 15:58:22 -0600 (MDT)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IXQ00C4LFP9AKE0@brm-avmta-1.central.sun.com>; Fri,
+ 14 Apr 2006 15:58:21 -0600 (MDT)
+Received: from d1-sfbay-06.sun.com ([192.18.39.116])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k3ELwLTB027841; Fri,
+ 14 Apr 2006 14:58:21 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-06.sun.com by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IXQ00201DI9K800@d1-sfbay-06.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Fri,
+ 14 Apr 2006 14:58:21 -0700 (PDT)
+Received: from [129.150.35.133] by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IXQ002NPFP7WO00@d1-sfbay-06.sun.com>; Fri,
+ 14 Apr 2006 14:58:21 -0700 (PDT)
+Date: Fri, 14 Apr 2006 14:58:23 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/199 sun4v watchdog API fn correction [self-review]
+In-reply-to: <444019F9.6010909@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Greg Onufer <Greg.Onufer@Sun.COM>,
+   Richard Barnette <richard.barnette@Sun.COM>,
+   Jack Hayward <Jack.Hayward@Sun.COM>
+Message-id: <44401AFF.1070303@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <44400EBB.4070805@sun.com> <44401646.4080609@sun.com>
+ <444019F9.6010909@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 1678
+
+Tony Sumpter wrote:
+
+> Hitendra Zhangada wrote:
+> 
+>> Tony Sumpter wrote:
+>>
+>>> Case http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/199/
+>>> corrects the function number in
+>>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/093/
+>>> to be the one originally intended by the project.
+>>>
+>>> An interface table is provided in the case materials directory.
+>>>
+>>> No action is required - this case is self-review.
+>>>
+>>> The trap registry is updated.
+>>
+>>
+>>
+>> Why do I see following two exported interfaces in the interface
+>> table with no description of them?  Is this SelfReview exporting
+>> them or is it something exported by some other case?  I am confused.
+>> If this case exports it then what are their definitions?
+>>
+>> Is this left over and needs to be deleted from the table?
+> 
+> 
+> You are correct - I typed everything up from the set of cases
+> for the watchdog API as I needed to add a table to 2006/093.
+> 
+> I've cleaned it up - and the interface table I put in 2006/093.
+
+Thanks, I am happy now.  Case is cleared from my stand point.
+
+> 
+> Tony.
+> 
+>>
+>> Please consider this case not approved until my question is
+>> answered.  Thanks.
+>>
+>> ===
+>>
+>>
+>> watchdog-resolution        Sun Private    Machine Description platform
+>>                         node property
+>>
+>> watchdog-max-timeout        Sun Private    Machine Description platform
+>>                         node property
+>>
+>>
+>>
+> 
+> 
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Fri Apr 14 15:02:10 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k3EM2AIQ023737
+	for <fwarc@sac.eng.sun.com>; Fri, 14 Apr 2006 15:02:10 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k3EM27P13481
+	for <@sunmail2.sfbay.sun.com:fwarc@Sun.COM>; Fri, 14 Apr 2006 15:02:08 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IXQ00009FVC9400@nwk-avmta-1.sfbay.Sun.COM> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Fri, 14 Apr 2006 15:02:00 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IXQ006OXFVCMQA0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Fri, 14 Apr 2006 15:02:00 -0700 (PDT)
+Received: from sr1-unwk-08.sfbay.sun.com
+ (sr1-unwk-08.SFBay.Sun.COM [129.149.2.158])	by sfbaymail1sca.SFBay.Sun.COM
+ (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k3EM1xoc019469; Fri,
+ 14 Apr 2006 15:01:59 -0700 (PDT)
+Received: from sr1-unwk-08 (sr1-unwk-08 [129.149.2.158])
+	by sr1-unwk-08.sfbay.sun.com (8.13.4+Sun/8.13.3) with SMTP id k3EM1w70060396;
+ Fri, 14 Apr 2006 15:01:59 -0700 (PDT)
+Date: Fri, 14 Apr 2006 15:01:59 -0700 (PDT)
+From: Yu Kong <Yu.Kong@Sun.COM>
+Subject: Re: 2006/199 sun4v watchdog API fn correction [self-review]
+To: Tony.Sumpter@Sun.COM, Hitendra.Zhangada@Sun.COM
+Cc: fwarc@Sun.COM, Greg.Onufer@Sun.COM, Richard.Barnette@Sun.COM,
+   Jack.Hayward@Sun.COM
+Reply-to: Yu Kong <Yu.Kong@Sun.COM>
+Message-id: <200604142201.k3EM1w70060396@sr1-unwk-08.sfbay.sun.com>
+MIME-version: 1.0
+X-Mailer: dtmail 1.3.0 @(#)CDE Version 1.6 SunOS 5.10 sun4u sparc
+Content-type: TEXT/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+Content-MD5: HeIRP375aMuBDMFur1qhPA==
+X-PMX-Version: 5.1.2.240295
+Status: RO
+
+[ redacted - not pertinent to case ]
+
+
+From sacadmin Fri Apr 14 15:05:25 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k3EM5OIQ023941
+	for <fwarc@sac.eng.Sun.COM>; Fri, 14 Apr 2006 15:05:24 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k3EM5DSx019041;
+	Sat, 15 Apr 2006 06:05:21 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IXQ0060HG0VRC00@brm-avmta-1.central.sun.com>; Fri,
+ 14 Apr 2006 16:05:19 -0600 (MDT)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IXQ00CVZG0VA7E0@brm-avmta-1.central.sun.com>; Fri,
+ 14 Apr 2006 16:05:19 -0600 (MDT)
+Received: from d1-sfbay-06.sun.com ([192.18.39.116])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k3EM5ITB028412; Fri,
+ 14 Apr 2006 15:05:18 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-06.sun.com by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IXQ00201DI9K800@d1-sfbay-06.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Fri,
+ 14 Apr 2006 15:05:18 -0700 (PDT)
+Received: from [129.150.35.133] by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IXQ002SPG0TWO00@d1-sfbay-06.sun.com>; Fri,
+ 14 Apr 2006 15:05:18 -0700 (PDT)
+Date: Fri, 14 Apr 2006 15:05:20 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2006/199 sun4v watchdog API fn correction [self-review]
+In-reply-to: <200604142201.k3EM1w70060396@sr1-unwk-08.sfbay.sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: fwarc@sun.com
+Cc: Yu Kong <Yu.Kong@sun.com>, Greg.Onufer@sun.com, richard.barnette@sun.com,
+   Jack.Hayward@sun.com
+Message-id: <44401CA0.2070002@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <200604142201.k3EM1w70060396@sr1-unwk-08.sfbay.sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+
+[ redacted - not pertinent to case ]
+

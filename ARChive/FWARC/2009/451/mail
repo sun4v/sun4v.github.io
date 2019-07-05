@@ -1,0 +1,148 @@
+From sacadmin Wed Aug 19 11:28:34 2009
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n7JISXgC014957;
+	Wed, 19 Aug 2009 11:28:34 -0700 (PDT)
+Received: (from tychon@localhost)
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit) id n7JISXF9014953;
+	Wed, 19 Aug 2009 11:28:33 -0700 (PDT)
+Date: Wed, 19 Aug 2009 11:28:33 -0700 (PDT)
+From: Tycho Nightingale <tychon@sac.sfbay.sun.com>
+Message-Id: <200908191828.n7JISXF9014953@sac.sfbay.sun.com>
+To: FWARC-record@sac.sfbay.sun.com
+Cc: Tycho.Nightingale@Sun.COM
+Subject: NCS HV API Update 2.1 [FWARC/2009/451 FastTrack]
+Status: RO
+Content-Length: 566
+
+
+Template Version: @(#)sac_nextcase 1.68 02/23/09 SMI
+This information is Copyright 2009 Sun Microsystems
+1. Introduction
+    1.1. Project/Component Working Name:
+	 NCS HV API Update 2.1
+    1.2. Name of Document Author/Supplier:
+	 Author:  Tycho Nightingale
+    1.3  Date of This Document:
+	19 August, 2009
+4. Technical Description
+    See the case directory for more detail
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		unknown
+    6.5. ARC review type: FastTrack
+    6.6. ARC Exposure: open
+
+
+From sacadmin Thu Aug 20 07:18:29 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n7KEIS5c012771
+	for <fwarc@sac.sfbay.sun.com>; Thu, 20 Aug 2009 07:18:29 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n7KEIRlw058277
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 20 Aug 2009 08:18:28 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KOO00H03IERGP00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 20 Aug 2009 07:18:27 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KOO00HC2IER6Q00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 20 Aug 2009 07:18:27 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n7KEIRS9018191	for
+ <fwarc@sun.com>; Thu, 20 Aug 2009 14:18:27 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KOO00C00I6CYC00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 20 Aug 2009 08:18:27 -0600 (MDT)
+Received: from burl-legion-0 ([unknown] [10.8.28.177])
+ by mail-amer.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KOO004C9IEQA5B0@mail-amer.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 20 Aug 2009 08:18:26 -0600 (MDT)
+Date: Thu, 20 Aug 2009 10:18:26 -0400 (EDT)
+From: Tycho Nightingale <Tycho.Nightingale@sun.com>
+Subject: FWARC/2009/451 NCS HV API Update 2
+Sender: Tycho.Nightingale@sun.com
+X-X-Sender: tychon@burl-legion-0
+To: FWARC <fwarc@sun.com>
+Cc: Ferenc Rakoczi <Ferenc.Rakoczi@sun.com>
+Reply-to: Tycho Nightingale <Tycho.Nightingale@sun.com>
+Message-id: <Pine.SOC.4.64.0908191430090.28452@burl-legion-0>
+MIME-version: 1.0
+Content-type: TEXT/PLAIN; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 441
+
+
+I'm sponsoring this fast-track for Ferenc Rakoczi.
+
+The timer expires on August 27, 2009.
+
+This case updates 2006/425 to add a new interface to take advantage of the 
+new userland Command Word Queues on platforms that support them.
+
+The API details along with interface table is in a document in the 
+materials directory.
+
+The project seeks a minor/micro binding of the firmware and the trap 
+registry will be updated upon approval.
+
+Tycho
+
+From sacadmin Wed Sep  2 10:29:52 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n82HTpxB002634
+	for <fwarc@sac.sfbay.sun.com>; Wed, 2 Sep 2009 10:29:51 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n82HTXYM006622
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 3 Sep 2009 01:29:50 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KPC00K0VTXMHS00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 02 Sep 2009 10:29:46 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KPC00GVTTXMJHB0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 02 Sep 2009 10:29:46 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n82HTkYC017702	for
+ <fwarc@sun.com>; Wed, 02 Sep 2009 17:29:46 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KPC00B00TNZUZ00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 02 Sep 2009 11:29:45 -0600 (MDT)
+Received: from burl-legion-0 ([unknown] [10.8.28.177])
+ by mail-amer.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KPC00336TXDDXE0@mail-amer.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 02 Sep 2009 11:29:38 -0600 (MDT)
+Date: Wed, 02 Sep 2009 13:29:37 -0400 (EDT)
+From: Tycho Nightingale <Tycho.Nightingale@sun.com>
+Subject: Re: FWARC/2009/451 NCS HV API Update 2
+In-reply-to: <Pine.SOC.4.64.0908191430090.28452@burl-legion-0>
+Sender: Tycho.Nightingale@sun.com
+X-X-Sender: tychon@burl-legion-0
+To: FWARC <fwarc@sun.com>
+Cc: Ferenc Rakoczi <Ferenc.Rakoczi@sun.com>
+Reply-to: Tycho Nightingale <Tycho.Nightingale@sun.com>
+Message-id: <Pine.SOC.4.64.0909021328120.26321@burl-legion-0>
+MIME-version: 1.0
+Content-type: TEXT/PLAIN; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <Pine.SOC.4.64.0908191430090.28452@burl-legion-0>
+Status: RO
+Content-Length: 70
+
+
+The case timer has expired.  The case is approved and closed.
+
+Tycho
+

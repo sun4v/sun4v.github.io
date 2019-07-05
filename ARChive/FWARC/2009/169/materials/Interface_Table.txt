@@ -1,0 +1,13 @@
+Imported Interfaces :
+
+     Interface                   Classification     Comments
+     =========                   ==============     ========
+     PRI structures              Sun Private        Defined by FWARC/2008/761
+
+
+Exported Interfaces:
+
+      Interface                  Classification     Comments
+      ================           ==============     ========
+      "max_guest_dependencies"   Sun Private        Defined in section 1.4.4
+      property                                      of the specification.

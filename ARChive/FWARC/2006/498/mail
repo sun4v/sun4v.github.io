@@ -1,0 +1,367 @@
+From sacadmin Mon Aug 21 16:21:31 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7LNLU7P018988
+	for <FWARC@sac.sfbay.sun.com>; Mon, 21 Aug 2006 16:21:30 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k7LNLUrF026414;
+	Mon, 21 Aug 2006 16:21:30 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7LNLTHL065713;
+	Mon, 21 Aug 2006 16:21:29 -0700 (PDT)
+Message-ID: <44EA3FF9.2090600@sun.com>
+Date: Mon, 21 Aug 2006 16:21:29 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 1.5.0.5 (Windows/20060719)
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+CC: Greg Onufer <greg.onufer@sun.com>,
+        Tayfun Kocaoglu <tayfun.kocaoglu@sun.com>, n2pcie-bringup@sun.com
+Subject: FWARC/2006/498 - N2 PIU Performance Counters HV API - fastrack timeout
+  Aug 28, 2006
+References: <44EA2B04.3020003@sun.com>
+In-Reply-To: <44EA2B04.3020003@sun.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 436
+
+
+I'm sponsoring this faqst-track case for Greg Onufer.
+The fast-track timeout is Aug 28, 2006.
+
+This case creates 2 new HV APIs. The APIs,
+including the "performance register ID" argument
+values are Sun Private, and the case requests
+a release binding of minor/micro for any firmware
+changes and minor/micro/patch for any OS changes.
+
+The registry will be updated upon case approval.
+
+The spec is in the materials directory.
+
+-David
+
+
+
+
+From sacadmin Wed Aug 23 17:12:58 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7O0Cwsp000048
+	for <FWARC@sac.sfbay.sun.com>; Wed, 23 Aug 2006 17:12:58 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com (nwkes-gis-mail-1.SFBay.Sun.COM [10.4.134.5])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k7O0CwTB015420
+	for <FWARC@sac.sfbay.sun.com>; Wed, 23 Aug 2006 17:12:58 -0700 (PDT)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7O0CrfF022624
+	for <FWARC@sac.sfbay.sun.com>; Wed, 23 Aug 2006 17:12:53 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4H0010179EG400@d1-sfbay-10.sun.com>
+ (original mail from Jack.A.Schwartz@Sun.COM) for FWARC@sac.sfbay.sun.com; Wed,
+ 23 Aug 2006 17:12:53 -0700 (PDT)
+Received: from [129.146.96.119] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J4H001ND79GX8DC@d1-sfbay-10.sun.com>; Wed,
+ 23 Aug 2006 17:12:53 -0700 (PDT)
+Date: Wed, 23 Aug 2006 17:12:24 -0700
+From: Jack Schwartz <Jack.A.Schwartz@Sun.COM>
+Subject: Re: FWARC/2006/498 - N2 PIU Performance Counters HV API - fastrack
+ timeout  Aug 28, 2006
+In-reply-to: <44EA3FF9.2090600@sun.com>
+Sender: Jack.A.Schwartz@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: FWARC@sac.sfbay.sun.com, Greg Onufer <greg.onufer@Sun.COM>,
+        Tayfun Kocaoglu <tayfun.kocaoglu@Sun.COM>, n2pcie-bringup@Sun.COM
+Message-id: <44ECEEE8.10403@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <44EA2B04.3020003@sun.com> <44EA3FF9.2090600@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.7 (X11/20050930)
+Status: RO
+Content-Length: 1145
+
+
+HI everyone.
+
+The interfaces picked for N2 PIU performance counters are syntactically 
+identical to those for Fire.  The only difference is that the register 
+IDs correspond to different platform-specific registers.  This kind of 
+interface means that for every new platform there will be two new 
+fasttraps introduced.
+
+If feasible, I suggest a more generic interface with another argument to 
+specify the platform.   When this arg specifies platform X, register ID 
+0 would mean one thing, and if it specifies platform Y reg ID 0 would 
+map to something else.  This would save the need for new fasttraps for 
+each platform.
+
+Comments?
+
+    Thanks,
+    Jack
+
+David Kahn wrote:
+
+>
+> I'm sponsoring this faqst-track case for Greg Onufer.
+> The fast-track timeout is Aug 28, 2006.
+>
+> This case creates 2 new HV APIs. The APIs,
+> including the "performance register ID" argument
+> values are Sun Private, and the case requests
+> a release binding of minor/micro for any firmware
+> changes and minor/micro/patch for any OS changes.
+>
+> The registry will be updated upon case approval.
+>
+> The spec is in the materials directory.
+>
+> -David
+>
+>
+>
+
+
+From sacadmin Wed Aug 23 18:26:54 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7O1Qsid000917
+	for <FWARC@sac.sfbay.sun.com>; Wed, 23 Aug 2006 18:26:54 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k7O1Qr1n007837;
+	Wed, 23 Aug 2006 18:26:53 -0700 (PDT)
+Received: from [129.146.96.102] (x-files [129.146.96.102])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k7O1QrO6080439;
+	Wed, 23 Aug 2006 18:26:53 -0700 (PDT)
+Message-ID: <44ED005C.7050706@sun.com>
+Date: Wed, 23 Aug 2006 18:26:52 -0700
+From: Greg Onufer <greg.onufer@sun.com>
+User-Agent: Thunderbird 2.0a1 (X11/20060823)
+MIME-Version: 1.0
+To: Jack Schwartz <Jack.A.Schwartz@sun.com>,
+        Ashley Saulsbury <ashley.saulsbury@sun.com>
+CC: david kahn <david.kahn@sun.com>, FWARC@sac.sfbay.sun.com,
+        Tayfun Kocaoglu <tayfun.kocaoglu@sun.com>, n2pcie-bringup@sun.com
+Subject: Re: FWARC/2006/498 - N2 PIU Performance Counters HV API - fastrack
+ timeout  Aug 28, 2006
+References: <44EA2B04.3020003@sun.com> <44EA3FF9.2090600@sun.com> <44ECEEE8.10403@sun.com>
+In-Reply-To: <44ECEEE8.10403@sun.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 1054
+
+Jack Schwartz wrote:
+> The interfaces picked for N2 PIU performance counters are syntactically 
+> identical to those for Fire.  The only difference is that the register 
+> IDs correspond to different platform-specific registers.  This kind of 
+> interface means that for every new platform there will be two new 
+> fasttraps introduced.
+
+Which isn't a problem in and of itself, they aren't rationed.
+
+> If feasible, I suggest a more generic interface with another argument to 
+> specify the platform.   When this arg specifies platform X, register ID 
+> 0 would mean one thing, and if it specifies platform Y reg ID 0 would 
+> map to something else.  This would save the need for new fasttraps for 
+> each platform.
+
+I believe that we'd like the API versioning information to inform "zeus" 
+explicitly which processor/platform/chipsets the guest is tied to at any 
+given time via the API group#.  Ash can chime in if he thinks that is 
+important.
+
+Plus, IMHO, it's cleaner to keep the cpu/processor/platform APIs 
+separate from each other.
+
+Cheers!greg
+
+
+From sacadmin Wed Aug 23 18:44:03 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7O1i30e001008
+	for <FWARC@sac.sfbay.sun.com>; Wed, 23 Aug 2006 18:44:03 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k7O1i3Xg012302;
+	Wed, 23 Aug 2006 18:44:03 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k7O1i1sS080825;
+	Wed, 23 Aug 2006 18:44:02 -0700 (PDT)
+Message-ID: <44ED0461.5000909@sun.com>
+Date: Wed, 23 Aug 2006 18:44:01 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 1.5.0.5 (Windows/20060719)
+MIME-Version: 1.0
+To: Jack Schwartz <Jack.A.Schwartz@sun.com>
+CC: FWARC@sac.sfbay.sun.com, Greg Onufer <greg.onufer@sun.com>,
+        Tayfun Kocaoglu <tayfun.kocaoglu@sun.com>, n2pcie-bringup@sun.com
+Subject: Re: FWARC/2006/498 - N2 PIU Performance Counters HV API - fastrack
+ timeout  Aug 28, 2006
+References: <44EA2B04.3020003@sun.com> <44EA3FF9.2090600@sun.com> <44ECEEE8.10403@sun.com>
+In-Reply-To: <44ECEEE8.10403@sun.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 2077
+
+
+ From FWARC's perspective, there's nothing syntactically wrong
+with the interfaces described in this case and we're not going
+to be running out of API numbers any time soon.
+
+Adding a cpu-id and defining the register number args still
+requires a case either way and will raise some other issues.
+For example, having them separate and in their own API group
+means they are extensible or changeable using the versioning API,
+but I'm not sure how to apply the versioning API to a matrix of
+cpu-specific interfaces without another versioning method specific
+to that type of API. There are many ways to do that, but
+they each have their own positive and negative points.
+
+If the project team wants to change it, that's fine by
+me, or they can elect to do something different for VF
+or ROCK, or they can continue to do what they are doing now.
+
+-David
+
+
+Jack Schwartz wrote:
+> 
+> HI everyone.
+> 
+> The interfaces picked for N2 PIU performance counters are syntactically 
+> identical to those for Fire.  The only difference is that the register 
+> IDs correspond to different platform-specific registers.  This kind of 
+> interface means that for every new platform there will be two new 
+> fasttraps introduced.
+> 
+> If feasible, I suggest a more generic interface with another argument to 
+> specify the platform.   When this arg specifies platform X, register ID 
+> 0 would mean one thing, and if it specifies platform Y reg ID 0 would 
+> map to something else.  This would save the need for new fasttraps for 
+> each platform.
+> 
+> Comments?
+> 
+>    Thanks,
+>    Jack
+> 
+> David Kahn wrote:
+> 
+>>
+>> I'm sponsoring this faqst-track case for Greg Onufer.
+>> The fast-track timeout is Aug 28, 2006.
+>>
+>> This case creates 2 new HV APIs. The APIs,
+>> including the "performance register ID" argument
+>> values are Sun Private, and the case requests
+>> a release binding of minor/micro for any firmware
+>> changes and minor/micro/patch for any OS changes.
+>>
+>> The registry will be updated upon case approval.
+>>
+>> The spec is in the materials directory.
+>>
+>> -David
+>>
+>>
+>>
+> 
+
+From sacadmin Fri Sep  1 23:16:21 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k826GKuf029723
+	for <FWARC@sac.sfbay.sun.com>; Fri, 1 Sep 2006 23:16:20 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k826GKCr012150;
+	Fri, 1 Sep 2006 23:16:20 -0700 (PDT)
+Received: from [127.0.0.1] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k826GFhp005449;
+	Fri, 1 Sep 2006 23:16:17 -0700 (PDT)
+Message-ID: <44F921AF.7050900@sun.com>
+Date: Fri, 01 Sep 2006 23:16:15 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 1.5.0.5 (Windows/20060719)
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+CC: Sue Young <Sue.Young@sun.com>, Greg Onufer <greg.onufer@sun.com>,
+        Tayfun Kocaoglu <tayfun.kocaoglu@sun.com>, n2pcie-bringup@sun.com
+Subject: Re: FWARC/2006/498 - N2 PIU Performance Counters HV API - fastrack
+ timeout  Aug 28, 2006
+References: <44EA2B04.3020003@sun.com> <44EA3FF9.2090600@sun.com> <44ECEEE8.10403@sun.com> <44ED0461.5000909@sun.com> <44F8B56E.3080602@Sun.COM>
+In-Reply-To: <44F8B56E.3080602@Sun.COM>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 33
+
+
+This case is approved.
+
+-David
+
+
+From sacadmin Tue Sep  5 08:53:02 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k85Fr1Cx000219
+	for <FWARC@sac.sfbay.sun.com>; Tue, 5 Sep 2006 08:53:01 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com (nwkes-gis-mail-2.SFBay.Sun.COM [10.4.134.6])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k85Fr1IY018274
+	for <FWARC@sac.sfbay.sun.com>; Tue, 5 Sep 2006 08:53:01 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k85Fqu7S018107
+	for <FWARC@sac.sfbay.sun.com>; Tue, 5 Sep 2006 08:52:56 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J5400L01MH81A00@d1-sfbay-09.sun.com>
+ (original mail from Sue.Young@Sun.COM) for FWARC@sac.sfbay.sun.com; Tue,
+ 05 Sep 2006 08:52:56 -0700 (PDT)
+Received: from [129.146.11.230] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J5400F84MS3199Y@d1-sfbay-09.sun.com>; Tue,
+ 05 Sep 2006 08:52:51 -0700 (PDT)
+Date: Tue, 05 Sep 2006 08:52:51 -0700
+From: Sue Young <Sue.Young@Sun.COM>
+Subject: Re: FWARC/2006/498 - N2 PIU Performance Counters HV API - fastrack
+ timeout  Aug 28, 2006
+In-reply-to: <44F921AF.7050900@sun.com>
+Sender: Sue.Young@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: FWARC@sac.sfbay.sun.com, Greg Onufer <greg.onufer@Sun.COM>,
+        Tayfun Kocaoglu <tayfun.kocaoglu@Sun.COM>, n2pcie-bringup@Sun.COM
+Message-id: <44FD9D53.7020408@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <44EA2B04.3020003@sun.com> <44EA3FF9.2090600@sun.com>
+ <44ECEEE8.10403@sun.com> <44ED0461.5000909@sun.com> <44F8B56E.3080602@Sun.COM>
+ <44F921AF.7050900@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 277
+
+
+Thanks to everyone who contributed.
+
+Regards,
+
+Sue
+
+David Kahn wrote On 09/01/06 23:16,:
+
+>
+> This case is approved.
+>
+> -David
+>
+
+-- 
+
+Software Program Manager			+1.650.352.4152
+Scalable Systems Group - NRSE			sue.young@sun.com
+Sun Microsystems, Inc.				Menlo Park, CA USA
+
+
+

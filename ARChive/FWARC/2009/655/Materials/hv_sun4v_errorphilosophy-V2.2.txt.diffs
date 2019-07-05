@@ -1,0 +1,40 @@
+--- hv_sun4v_errorphilosophy-V2.1.txt	Tue Nov 24 15:09:49 2009
++++ hv_sun4v_errorphilosophy-V2.2.txt	Fri Dec  4 10:12:45 2009
+@@ -1,4 +1,4 @@
+-"%Z%%M% %I%     %E% "
++"@(#)hv_sun4v_errorphilosophy-V2.2.txt 1.4     09/12/04 "
+ 
+ 
+ Sun4v Hypervisor Error Handling Interfaces 
+@@ -563,9 +563,9 @@
+ 				for future use.
+     MODE	25:24		Execution Mode
+ 				(see 5.2.5.viiii)
+-    RSVD0	23:10		Undefined. Reserved
++    RSVD0	23:11		Undefined. Reserved
+ 				for future use.
+-    SP_STATE	9:9		New SP state
++    SP_STATE	10:9		New SP state
+     PREG	8		Sun4v Privileged	CPUID, REG
+ 				Register
+     ASI		7		Sun4v ASI register	ASI, ADDR, SZ
+@@ -692,12 +692,14 @@
+ current state of the SP.
+ 
+ The table 5.2.4-III below lists the currently defined values.
+- 	---------------------------------
++ 	----------------------------------------------------
+  	Value	Description
+- 	---------------------------------
+-	0b0	SP is unavailable
+-	0b1	SP is available
+- 	---------------------------------
++ 	----------------------------------------------------
++	0b00	SP is physically present but is faulted
++		and currently unavailable
++	0b01	SP is available
++	0b10	SP is not physically present in the system
++ 	----------------------------------------------------
+ 	 Table 5.2.4-III. Service Processor State
+ 
+ 5.2.4.x Execution Mode (MODE). This field specifies the execution

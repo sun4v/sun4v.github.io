@@ -1,0 +1,744 @@
+From <IMAP4.psuedo.sims> Wed Mar 23 12:52:48 2005
+Date: Wed, 23 Mar 2005 12:52:48 -0800 (PST)
+From: Postmaster
+Subject: Message from mail server       
+Content-Length: 95
+Mime-Version: 1.0
+Status: RO
+X-IMAP: 1111611168 5
+
+Delete.
+This is a system message.                                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--END+PSEUDO--
+
+From sacadmin Fri Mar 11 12:31:37 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2BKVbSp000796
+	for <fwarc@sac.eng.Sun.COM>; Fri, 11 Mar 2005 12:31:37 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2BKU9210766
+	for <fwarc@sun.com>; Fri, 11 Mar 2005 13:30:09 -0700 (MST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2BKU8jg027162
+	for <fwarc@sun.com>; Fri, 11 Mar 2005 12:30:08 -0800 (PST)
+Received: from sun.com (d-mpk14-91-217 [129.146.91.217])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2BKU8Kw032497
+	for <fwarc@sun.com>; Fri, 11 Mar 2005 12:30:08 -0800 (PST)
+Message-ID: <42320008.6040303@sun.com>
+Date: Fri, 11 Mar 2005 12:31:04 -0800
+From: Tony Sumpter <tony.sumpter@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4) Gecko/20030624
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: fwarc@sun.com
+Subject: FWARC/2005/115 sun4v machine description
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Length: 60
+Status: RO
+X-Status: $$$$
+X-UID: 0000000001
+
+I have changed the IAM so that I am now the Owner.
+
+Tony.
+
+
+
+From sacadmin Sat Mar 12 12:03:11 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2CK3BSp007066
+	for <fwarc-members@sac.eng.Sun.COM>; Sat, 12 Mar 2005 12:03:11 -0800 (PST)
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2CK1g200577
+	for <fwarc-members@sun.com>; Sat, 12 Mar 2005 13:01:42 -0700 (MST)
+Received: from dtmail.sfbay.sun.com (dt101-150.SFBay.Sun.COM [10.6.101.150])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2CK1gAH025376;
+	Sat, 12 Mar 2005 12:01:42 -0800 (PST)
+Received: from sun.com (vpn-129-150-25-249.SFBay.Sun.COM [129.150.25.249])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2CK1gha048084;
+	Sat, 12 Mar 2005 12:01:42 -0800 (PST)
+Message-ID: <42334ADF.1070204@sun.com>
+Date: Sat, 12 Mar 2005 12:02:39 -0800
+From: Tony Sumpter <tony.sumpter@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4) Gecko/20030624
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Fwarc members <fwarc-members@sun.com>
+CC: Ashley Saulsbury <ashley.saulsbury@sun.com>
+Subject: FWARC/2005/115 machine description case
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Length: 523
+Status: RO
+X-Status: $$$$
+X-UID: 0000000002
+
+Reading the support material for this I believe the normative and informative
+description of the structure of the block of bytes returned by the get machine
+description API should be in the API spec, and have asked Ash to move it there.
+
+The rest of the document - describing nodes and the properties within
+them - seems akin to a bus binding.
+
+The first machine description case will help to set the expectation
+for the layout of such cases.
+
+When we have a document ready, opinions on my viewpoint will
+be good.
+
+Tony.
+
+
+
+From sacadmin Sat Mar 12 17:24:41 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2D1OfSp020148
+	for <fwarc-record@sac.eng.sun.com>; Sat, 12 Mar 2005 17:24:41 -0800 (PST)
+Received: from jurassic.eng.sun.com (jurassic.SFBay.Sun.COM [129.146.89.50])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2D1NDg02546
+	for <fwarc-record@Sun.COM>; Sat, 12 Mar 2005 17:23:13 -0800 (PST)
+Received: from Sun.COM (sr1-umpk-17.SFBay.Sun.COM [129.146.11.199])
+	by jurassic.eng.sun.com (8.13.3+Sun/8.13.3) with ESMTP id j2D1NBkX216621
+	for <fwarc-record@sun.com>; Sat, 12 Mar 2005 17:23:13 -0800 (PST)
+Message-ID: <423395FF.8000205@Sun.COM>
+Date: Sat, 12 Mar 2005 17:23:11 -0800
+From: Landy Burnett <Landyana.Burnett@Sun.COM>
+Reply-To: Landyana.Burnett@Sun.COM
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: fwarc-record@Sun.COM
+Subject: [Fwd: FWARC/2005/115 machine description case]
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Content-Length: 976
+Status: RO
+X-Status: $$$$
+X-UID: 0000000003
+
+
+
+-------- Original Message --------
+Subject: FWARC/2005/115 machine description case
+Date: Sat, 12 Mar 2005 12:02:39 -0800
+From: Tony Sumpter <tony.sumpter@sun.com>
+To: Fwarc members <fwarc-members@sun.com>
+CC: Ashley Saulsbury <ashley.saulsbury@sun.com>
+
+Reading the support material for this I believe the normative and informative
+description of the structure of the block of bytes returned by the get machine
+description API should be in the API spec, and have asked Ash to move it there.
+
+The rest of the document - describing nodes and the properties within
+them - seems akin to a bus binding.
+
+The first machine description case will help to set the expectation
+for the layout of such cases.
+
+When we have a document ready, opinions on my viewpoint will
+be good.
+
+Tony.
+
+
+-- 
+Landyana Burnett				landyana.burnett@sun.com
+Program Manager, System Architecture		650.786.3664
+Sun Microsystems, Inc.
+=======================================================================
+
+
+From sacadmin Tue Mar 15 01:39:34 2005
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2F9dYSp026332
+	for <FWARC@sac.sfbay.sun.com>; Tue, 15 Mar 2005 01:39:34 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2F9c4AH001365;
+	Tue, 15 Mar 2005 01:38:04 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2F9c3ha069171;
+	Tue, 15 Mar 2005 01:38:03 -0800 (PST)
+Message-ID: <4236ACFB.4050802@sun.com>
+Date: Tue, 15 Mar 2005 01:38:03 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+CC: Ashley Saulsbury <ashley.saulsbury@sun.com>,
+   John Johnson <John.Johnson@sun.com>, Greg Onufer <Greg.Onufer@sun.com>
+Subject: 2005/115 - sun4v machine description - materials are available
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Length: 499
+Status: RO
+X-Status: $$$$
+X-UID: 0000000004
+
+
+Materials for this case are available in the
+inception.materials subdir in the case dir.
+
+This case defines the data format and content
+of data returned by the mach_desc API defined
+in 2005/116.
+
+md-info.pdf			- Background info (how to use info)
+md-transport-api-ch4.pdf	- Transport Spec
+md-bindings.pdf			- sun4v & Ontario specific MD
+18q.txt				- FWARC 18qs
+interface-table.txt		- Interface table
+
+Landy, please schedule inception review for
+this case on 3/21 in the second slot.
+
+Thanks,
+David
+
+
+From sacadmin Mon Mar 21 11:12:01 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2LJC1Sp027165
+	for <fwarc@sac.eng.sun.com>; Mon, 21 Mar 2005 11:12:01 -0800 (PST)
+Received: from westmail1mpk.West.Sun.COM (westmail1mpk.West.Sun.COM [129.153.100.33])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2LJ6fL24254;
+	Mon, 21 Mar 2005 11:06:42 -0800 (PST)
+Received: from phys-san-2 (phys-san-2.West.Sun.COM [129.153.85.71])
+	by westmail1mpk.West.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2LJ6e38023038;
+	Mon, 21 Mar 2005 11:06:40 -0800 (PST)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IDP00K01UE8Z9@san-mail1.west.sun.com>
+ (original mail from hitendra.zhangada@sun.com); Mon,
+ 21 Mar 2005 11:06:40 -0800 (PST)
+Received: from [129.153.85.35] (sr1-usan-05.West.Sun.COM [129.153.85.35])
+ by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IDP00K8XUF3PX@san-mail1.west.sun.com>; Mon,
+ 21 Mar 2005 11:06:40 -0800 (PST)
+Date: Mon, 21 Mar 2005 11:06:39 -0800
+From: Hitendra Zhangada <hitendra.zhangada@sun.com>
+Subject: Issues : 2005/115 sun4v machine description
+To: Firmware Arch <fwarc@sun.com>
+Cc: John Johnson <John.Johnson@sun.com>, sun4v-iteam@sun.com
+Reply-to: hitendra.zhangada@sun.com
+Message-id: <423F1B3F.5020303@sun.com>
+Organization: Sun Microsystems Inc.
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7.6) Gecko/20050310
+Content-Length: 1613
+Status: RO
+X-Status: $$$$
+X-UID: 0000000005
+
+Few issues for this case which I would like to discuss
+at the meeting.
+
+
+1.  In md-transport-api-ch4.pdf, section 4.7.3, refers to
+     DAG but DAG itself is not defined.  It is defined in
+     the md-info.pdf which is a background information for
+     the specification.  I suggest, describing DAG and ARC
+     concepts in the introduction section of the specification.
+     This will be section 4 of this specification.
+
+2.  In md-transport-api-ch4.pdf, section 4.7.3, page 17, typo,
+     the first bullet on this page, remove "is".
+
+
+3.  In md-bindings.pdf, section 4.5, typo, the last sentence
+     of the Description, remove "all".
+
+4.  In md-bindings.pdf, section 4.5.2, the properties table,
+     can we refer "id" as "cpuid" to be consistent with the
+     core API specification?
+
+5.  In md-bindings.pdf, section 4.5.4, need clarification for
+     my understanding, there are multiple Mblocks, one per
+     fragmented segment of memory, right?  In other words,
+     memory can be fragmented but each segment of memory is
+     represented as a contiguous range of real memory by Mblock
+     node, right?
+
+6.  In md-bindings.pdf, section 4.5.5, is the properties table
+     missing "clock-frequency"?  The sun4v bindings defines
+     this property for root node.
+
+7.  In md-bindings.pdf, section 5.6.1, in the properties table,
+     can you give some examples of "compatible-type"?
+
+
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+From sacadmin Wed Mar 23 15:40:09 2005
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2NNe9Sp024888
+	for <FWARC@sac.sfbay.sun.com>; Wed, 23 Mar 2005 15:40:09 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2NNcYjg014313;
+	Wed, 23 Mar 2005 15:38:34 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2NNcWha013508;
+	Wed, 23 Mar 2005 15:38:33 -0800 (PST)
+Message-ID: <4241FDF8.8030002@sun.com>
+Date: Wed, 23 Mar 2005 15:38:32 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+CC: Ashley Saulsbury <ashley.saulsbury@sun.com>,
+   John Johnson <John.Johnson@sun.com>
+Subject: 2005/115 - Issues resolved, final doc
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 1871
+
+
+Updated versions of the transport and binding are
+available in the final.materials directory.
+
+Here's a list of doc changes from Ash:
+
+To avoid confusion - the md-transport section is now 2.x instead of 4.x in the 
+submitted version.
+
+
+1.  In md-transport-api-ch4.pdf, section 4.7.3, refers to
+     DAG but DAG itself is not defined.  It is defined in
+     the md-info.pdf which is a background information for
+     the specification.  I suggest, describing DAG and ARC
+     concepts in the introduction section of the specification.
+     This will be section 4 of this specification.
+
+Resolved in FWARC meeting. DAG and ARC are well known terms and do not need to 
+be defined further.
+
+
+2.  In md-transport-api-ch4.pdf, section 4.7.3, page 17, typo,
+     the first bullet on this page, remove "is".
+
+Fixed
+
+3.  In md-bindings.pdf, section 4.5, typo, the last sentence
+     of the Description, remove "all".
+
+Fixed
+
+4.  In md-bindings.pdf, section 4.5.2, the properties table,
+     can we refer "id" as "cpuid" to be consistent with the
+     core API specification?
+
+Resolved in FWARC meeting; no change.
+
+5.  In md-bindings.pdf, section 4.5.4, need clarification for
+     my understanding, there are multiple Mblocks, one per
+     fragmented segment of memory, right?  In other words,
+     memory can be fragmented but each segment of memory is
+     represented as a contiguous range of real memory by Mblock
+     node, right?
+
+Clarified in FWARC meeting.
+
+6.  In md-bindings.pdf, section 4.5.5, is the properties table
+     missing "clock-frequency"?  The sun4v bindings defines
+     this property for root node.
+
+Resolved in FWARC meeting; fast track to remove clock-frequency from sun4v-bindings.
+
+7.  In md-bindings.pdf, section 5.6.1, in the properties table,
+     can you give some examples of "compatible-type"?
+
+Resolved by discussion in FWARC meeting
+
+-David
+
+
+From sacadmin Wed Mar 23 15:47:17 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2NNlHSp025155
+	for <fwarc-members@sac.eng.sun.com>; Wed, 23 Mar 2005 15:47:17 -0800 (PST)
+Received: from jurassic.eng.sun.com (jurassic.SFBay.Sun.COM [129.146.81.144])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2NNjfZ10380;
+	Wed, 23 Mar 2005 15:45:41 -0800 (PST)
+Received: from Sun.COM (sr1-umpk-15.SFBay.Sun.COM [129.146.11.193])
+	by jurassic.eng.sun.com (8.13.3+Sun/8.13.3) with ESMTP id j2NNjcHk778900;
+	Wed, 23 Mar 2005 15:45:41 -0800 (PST)
+Message-ID: <4241FFA2.1030807@Sun.COM>
+Date: Wed, 23 Mar 2005 15:45:38 -0800
+From: Landy Burnett <Landyana.Burnett@Sun.COM>
+Reply-To: Landyana.Burnett@Sun.COM
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: fwarc-members@Sun.COM, John Johnson <John.Johnson@Sun.COM>,
+   Ashley Saulsbury <ashley.saulsbury@Sun.COM>,
+   Girish Goyal <Girish.Goyal@Sun.COM>,
+   Shanti Vasudevan <Shanti.Vasudevan@Sun.COM>, sun4v-iteam@Sun.COM,
+   psarc-members@Sun.COM
+Subject: FWARC Meeting Minutes 03/21/2005 Commitment: 2005/116 Inception:
+ 2005/115
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 959
+
+Minutes from FWARC 04/05/2005 meeting have been posted.
+
+They are available at:
+
+(1) http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050321.arcbiz
+
+Audio:
+======
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050321.arcbiz.mp3
+
+(2) http://sac.sfbay.sun.com/ARC/FWARC/2005/116/20050321.2005.116.commitment
+
+Audio:
+------
+http://sac.sfbay.sun.com/ARC/FWARC/2005/116/20050321.2005.116.commitment.mp3
+
+(3) http://sac.sfbay.sun.com/ARC/FWARC/2005/115/20050321.2005.115.inception
+
+Audio:
+------
+http://sac.sfbay.sun.com/ARC/FWARC/2005/115/20050321.2005.115.inception.mp3
+
+Sum-up is available at:
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050321.html
+
+If you have any feedback or correction, feel free to let me know.
+
+thanks
+-Landy
+x83664
+
+
+-- 
+Landyana Burnett				landyana.burnett@sun.com
+Program Manager, System Architecture		650.786.3664
+Sun Microsystems, Inc.
+=======================================================================
+
+
+From sacadmin Wed Mar 23 15:47:18 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2NNlHSr025155
+	for <psarc-members@sac.eng.sun.com>; Wed, 23 Mar 2005 15:47:17 -0800 (PST)
+Received: from jurassic.eng.sun.com (jurassic.SFBay.Sun.COM [129.146.81.144])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2NNjfZ10380;
+	Wed, 23 Mar 2005 15:45:41 -0800 (PST)
+Received: from Sun.COM (sr1-umpk-15.SFBay.Sun.COM [129.146.11.193])
+	by jurassic.eng.sun.com (8.13.3+Sun/8.13.3) with ESMTP id j2NNjcHk778900;
+	Wed, 23 Mar 2005 15:45:41 -0800 (PST)
+Message-ID: <4241FFA2.1030807@Sun.COM>
+Date: Wed, 23 Mar 2005 15:45:38 -0800
+From: Landy Burnett <Landyana.Burnett@Sun.COM>
+Reply-To: Landyana.Burnett@Sun.COM
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: fwarc-members@Sun.COM, John Johnson <John.Johnson@Sun.COM>,
+   Ashley Saulsbury <ashley.saulsbury@Sun.COM>,
+   Girish Goyal <Girish.Goyal@Sun.COM>,
+   Shanti Vasudevan <Shanti.Vasudevan@Sun.COM>, sun4v-iteam@Sun.COM,
+   psarc-members@Sun.COM
+Subject: FWARC Meeting Minutes 03/21/2005 Commitment: 2005/116 Inception:
+ 2005/115
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 959
+
+Minutes from FWARC 04/05/2005 meeting have been posted.
+
+They are available at:
+
+(1) http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050321.arcbiz
+
+Audio:
+======
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050321.arcbiz.mp3
+
+(2) http://sac.sfbay.sun.com/ARC/FWARC/2005/116/20050321.2005.116.commitment
+
+Audio:
+------
+http://sac.sfbay.sun.com/ARC/FWARC/2005/116/20050321.2005.116.commitment.mp3
+
+(3) http://sac.sfbay.sun.com/ARC/FWARC/2005/115/20050321.2005.115.inception
+
+Audio:
+------
+http://sac.sfbay.sun.com/ARC/FWARC/2005/115/20050321.2005.115.inception.mp3
+
+Sum-up is available at:
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050321.html
+
+If you have any feedback or correction, feel free to let me know.
+
+thanks
+-Landy
+x83664
+
+
+-- 
+Landyana Burnett				landyana.burnett@sun.com
+Program Manager, System Architecture		650.786.3664
+Sun Microsystems, Inc.
+=======================================================================
+
+
+From sacadmin Thu Mar 24 13:46:08 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2OLk7Sp018654
+	for <fwarc@sac.eng.sun.com>; Thu, 24 Mar 2005 13:46:07 -0800 (PST)
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2OLiVZ00272;
+	Thu, 24 Mar 2005 13:44:31 -0800 (PST)
+Received: from phys-bos-2.sfbay.sun.com (phys-bos-2.SFBay.Sun.COM [129.146.14.24])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2OLiVAH023700;
+	Thu, 24 Mar 2005 13:44:31 -0800 (PST)
+Received: from [129.146.96.62] (tangrams.SFBay.Sun.COM [129.146.96.62])
+ by bos-mail1.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2 HotFix 0.05 (built Jan 10 2005))
+ with ESMTP id <0IDV00FWPLQ64L80@bos-mail1.sfbay.sun.com>; Thu,
+ 24 Mar 2005 13:44:31 -0800 (PST)
+Date: Thu, 24 Mar 2005 13:44:32 -0800
+From: Balaji Nelamangala <balaji.nelamangala@sun.com>
+Subject: closed approved fast-track FWARC/2005/115 sun4v machine description
+To: fwarc@sun.com
+Cc: sun4v-iteam@sun.com
+Message-id: <424334C0.7070205@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7bit
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7.6) Gecko/20050310
+Status: RO
+Content-Length: 501
+
+
+This case was converted to fast-track and approved in the FWARC meeting
+on 03/21/2005. The 2 typographical errors tracked as open issues have
+been fixed in the final materials. This case is now approved.
+
+The case is approved for integration into a minor release of the
+firmware and OS.
+
+The commitment level of all interfaces is "Sun Private".
+
+The final materials are available under
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/115/final.materials/
+
+IAM file has been updated.
+
+Balaji
+
+From sacadmin Thu Mar 24 20:20:38 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2P4KbSp017136
+	for <fwarc@sac.eng.sun.com>; Thu, 24 Mar 2005 20:20:37 -0800 (PST)
+Received: from noho.SFBay.Sun.COM (noho.SFBay.Sun.COM [10.6.92.101])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2P4J1Z10410;
+	Thu, 24 Mar 2005 20:19:01 -0800 (PST)
+Received: from noho.SFBay.Sun.COM (localhost [127.0.0.1])
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0) with ESMTP id j2P4J0LE011039;
+	Thu, 24 Mar 2005 20:19:00 -0800 (PST)
+Received: (from dmk@localhost)
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0/Submit) id j2P4J0uj011038;
+	Thu, 24 Mar 2005 20:19:00 -0800 (PST)
+Date: Thu, 24 Mar 2005 20:19:00 -0800 (PST)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Message-Id: <200503250419.j2P4J0uj011038@noho.SFBay.Sun.COM>
+To: balaji.nelamangala@sun.com, fwarc@sun.com
+Subject: Re: closed approved fast-track FWARC/2005/115 sun4v machine description
+Cc: sun4v-iteam@sun.com
+Status: RO
+Content-Length: 328
+
+>The case is approved for integration into a minor release of the
+>firmware and OS.
+>
+>The commitment level of all interfaces is "Sun Private".
+
+I've been using the wrong terminology for the
+OS release binding.
+
+The correction is that this is approved for a minor
+release of the firmware and a micro release of the OS.
+
+-David
+
+
+From sacadmin Fri Mar 25 14:55:22 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2PMtLSp014757
+	for <fwarc-record@sac.eng.Sun.COM>; Fri, 25 Mar 2005 14:55:21 -0800 (PST)
+Received: from noho.SFBay.Sun.COM (noho.SFBay.Sun.COM [10.6.92.101])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2PMrjs20264
+	for <fwarc-record@sun.com>; Fri, 25 Mar 2005 15:53:45 -0700 (MST)
+Received: from noho.SFBay.Sun.COM (localhost [127.0.0.1])
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0) with ESMTP id j2PMriB3011439
+	for <fwarc-record@sun.com>; Fri, 25 Mar 2005 14:53:44 -0800 (PST)
+Received: (from dmk@localhost)
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0/Submit) id j2PMriWw011438
+	for fwarc-record@sun.com; Fri, 25 Mar 2005 14:53:44 -0800 (PST)
+Date: Fri, 25 Mar 2005 14:53:44 -0800 (PST)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Message-Id: <200503252253.j2PMriWw011438@noho.SFBay.Sun.COM>
+To: fwarc-record@sun.com
+Subject: Re: closed approved fast-track FWARC/2005/115 sun4v machine description
+Status: RO
+Content-Length: 451
+
+Correction: This case is approved for a minor release
+of the firmware and a micro/patch release of the OS.
+
+>>The case is approved for integration into a minor release of the
+>>firmware and OS.
+>>
+>>The commitment level of all interfaces is "Sun Private".
+>
+>I've been using the wrong terminology for the
+>OS release binding.
+>
+>The correction is that this is approved for a minor
+>release of the firmware and a micro release of the OS.
+>
+>-David
+>
+>
+
+From sacadmin Tue Mar 21 18:05:14 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k2M25EIQ020901
+	for <fwarc-members@sac.eng.Sun.COM>; Tue, 21 Mar 2006 18:05:14 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k2M25EC01068
+	for <@sunmail2.sfbay.sun.com:fwarc-members@sun.com>; Tue, 21 Mar 2006 19:05:14 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IWI00B03B4PNV00@nwk-avmta-1.sfbay.Sun.COM> for fwarc-members@sun.com
+ (ORCPT fwarc-members@sun.com); Tue, 21 Mar 2006 18:05:13 -0800 (PST)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IWI009MCB4P6660@nwk-avmta-1.sfbay.Sun.COM> for
+ fwarc-members@sun.com (ORCPT fwarc-members@sun.com); Tue,
+ 21 Mar 2006 18:05:13 -0800 (PST)
+Received: from fe-amer-05.sun.com ([192.18.108.179])
+	by brmea-mail-3.sun.com (8.12.10/8.12.9) with ESMTP id k2M25DQj002661	for
+ <fwarc-members@sun.com>; Tue, 21 Mar 2006 19:05:13 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IWI00F01APW6200@mail-amer.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM) for fwarc-members@sun.com
+ (ORCPT fwarc-members@sun.com); Tue, 21 Mar 2006 19:05:13 -0700 (MST)
+Received: from sun.com ([129.150.20.255])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep  9
+ 2005)) with ESMTPSA id <0IWI00NC8B4O5120@mail-amer.sun.com> for
+ fwarc-members@sun.com (ORCPT fwarc-members@sun.com); Tue,
+ 21 Mar 2006 19:05:13 -0700 (MST)
+Date: Tue, 21 Mar 2006 18:05:10 -0800
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: 2005/115 callback spec question
+Sender: Tony.Sumpter@Sun.COM
+To: Fwarc members <fwarc-members@Sun.COM>
+Message-id: <4420B0D6.3000106@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 1627
+
+I guess I didn't read it closely enough the first time, but now we have to
+consider that it might be accepted...
+
+This seems wrong:
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/115/materials/spec.txt
+
+	2. At the time control is transferred to the callback function in
+	   POST (at POST_PA + 0xC0), the address of the control transfer
+	   instruction should be saved in %o7 register. POST would use this
+	   address (%o7+4) to return to OpenBoot after completing the callback
+	   function.
+
+The normal return from a jmpl (or call) is to (%o7 + 8) - is POST being
+different or is this a typo? (the 'ret' and 'retl' synthetic instructions
+expand to 'jmpl %i7 +8, %g0' and 'jmpl %o7 + 8'
+
+This is also odd:
+
+    4.1.5  POST Callback Functions
+
+...
+
+	Following registers are modified by the POST callback function :
+
+	%o0-%o7
+
+Since %o6 is setup as a stack for the call into POST (documented below in
+the spec.), is it true that OBP has to restore %o6 after POST
+returns?
+
+More:
+
+	4. Machine state at the time of callback is :
+
+	    %y			0
+
+Does OBP actually ensure this is the case? It seems doubtful
+since %y is treated like %g# over a function call.
+
+	    Alternate global registers, Interrupt global registers,
+	    MMU global registers, Floating point registers, local
+	    registers are undefined.
+
+Why are the local registers mentioned here? In a function call, the %o#
+'outs' are for the function being called and - by convention - the function
+does not touch the %l# locals or %i# 'ins'.
+
+-------------
+Given that we are re-opening the case, these items need to be resolved before
+it is closed again.
+
+Tony.
+
+
+

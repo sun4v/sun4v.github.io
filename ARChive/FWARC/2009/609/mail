@@ -1,0 +1,913 @@
+From sacadmin Mon Nov  9 12:10:44 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nA9KAhiY012951
+	for <fwarc@sac.sfbay.sun.com>; Mon, 9 Nov 2009 12:10:43 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id nA9KAfWF062682
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 9 Nov 2009 13:10:42 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KSU00509YPU1O00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 09 Nov 2009 12:10:42 -0800 (PST)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KSU00J0VYPS68D0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 09 Nov 2009 12:10:40 -0800 (PST)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id nA9KAesN014306	for
+ <fwarc@sun.com>; Mon, 09 Nov 2009 20:10:40 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KSU00400Y36Z300@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 09 Nov 2009 13:10:40 -0700 (MST)
+Received: from dhcp-ubur03-180-14.east.sun.com ([unknown] [129.148.180.14])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KSU007CUYPRVQA0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 09 Nov 2009 13:10:40 -0700 (MST)
+Date: Mon, 09 Nov 2009 15:10:36 -0500
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: FWARC/2009/609: Direct I/O Agent
+Sender: Eric.Sharakan@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: Jim Marks - Sun Microsystems <James.Marks@sun.com>,
+        Raghuram Kothakota <Raghuram.Kothakota@sun.com>
+Message-id: <77C0643E-E765-445C-86AB-14CFFAEFB653@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.1076)
+Content-type: multipart/signed; micalg=sha1;
+ protocol="application/pkcs7-signature"; boundary=Apple-Mail-3-317362766
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 4195
+
+
+--Apple-Mail-3-317362766
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=us-ascii;
+	format=flowed;
+	delsp=yes
+
+Hi all.  I'm sponsoring this fast-track case for Jim Marks.  This  
+project adds a new agent to the Logical Domains Agents framework as  
+defined in FWARC/2009/426.  The Direct I/O agent provides information  
+about all PCI-E devices of a particular guest to the control domain.
+
+The one pager & updated LDoms Agents Specification are in the case  
+materials directory:
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2009/609/materials/
+
+Requested binding is for a minor/micro firmware release and minor/ 
+micro/patch OS release.
+
+This case times out on Monday 11/16/09.
+
+Thanks.
+
+-Eric
+
+
+--Apple-Mail-3-317362766
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA5MDgxMzAzMjY0MloXDTEwMDgxMzAzMjY0
+MlowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4ShwcG0r
+XTowrE2zjfBkP5uPCfMPbkDTk6AV/L/SDFaj3XqIuvioNhnSAJc18VqdhTMteQzf275qEXJEpjii
+UhtBQQEeVNUuDJl7Yn935nXzkhMa5iDKQebgMRYsj47l4M2kVRDwKpPcrBT5eL1Pt0aSD0cF1APy
+3KCd9vakWX/3/oO14tiEs84trInW8iWym8JW9O2iKnRFQHSvOulBVyzKbjJ7+qr3oO/t4BB5hjeK
+NaLSfztfFVJaW8P0gdMD0oR9ZCKjl8IK5CUNLFk3sXh+RFrkCsP2W38hZJ0EhKPuunw4z4A7FK8h
+NIL9OeKmzKhH3JIitIfW/wPUFoupQQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQBua9PL8rPiAgVHwF+IdBIk
+nIGR42xuszIDi3E9WvDdWdkw5aG0FJwei0RvHHraYaPofBlvZcyIuABPcJrqpm5jfl9ksrUmrYV9
+veWQwF3t9hp+IcaD/a9+4Cdh8b0YlzXGX7DyaDa5omOLrLBp9M3K8lSkQDSjMcDu1RSlS+ZjFDCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQRP84uN1QvZysfOz2m7JJpTAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wOTEx
+MDkyMDEwMzdaMCMGCSqGSIb3DQEJBDEWBBThGeNAX9WZ6YCGYFqB8ceM0pHA7jCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjd
+UL2crHzs9puySaUwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEBBQAEggEAzCUJ
+B6ftfzBBOPowuRZqLv3A1b24yPBWmbaAwQD3VAoYk5tk1CbjPflR7RmZSCvtBaBDy47zill5rnpW
+Eg+24hmixznX9B8j9iJ/+RaxPUp3ZMiiKvgRq/IOrLDzJCYVVpOEFuGthvsUBkyPv5DUrICwuFH7
+3sZhWJSTEkdP3C8sv8M7aaFnzWTc76pTEzH3cyr8Sc8NsLFD74RD1AOXptNTpUmvmElrExFvMMgj
+Y+kSJnj0tVmoeiJDq0jlxYtp7M5zkWzSKCfKbg5rG+WkZ3vraabYo/fV9zRwjugDNFbW/L1rPZAV
+FzVeI8SuhQtsax8snH1tJxWZyBj3WSHHJAAAAAAAAA==
+
+--Apple-Mail-3-317362766--
+
+From sacadmin Tue Nov 10 11:09:56 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nAAJ9uIM019653
+	for <fwarc@sac.sfbay.sun.com>; Tue, 10 Nov 2009 11:09:56 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id nAAJ9tAT062841
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 10 Nov 2009 12:09:56 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KSW0051ZQKJ2Y00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Nov 2009 11:09:55 -0800 (PST)
+Received: from gmp-eb-inf-2.sun.com ([192.18.6.24])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KSW00JEGQKI0Z90@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Nov 2009 11:09:55 -0800 (PST)
+Received: from fe-emea-10.sun.com
+ (gmp-eb-lb-1-fe1.eu.sun.com [192.18.6.7] (may be forged))
+	by gmp-eb-inf-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nAAJ9sID019776	for
+ <fwarc@sun.com>; Tue, 10 Nov 2009 19:09:54 +0000 (GMT)
+Received: from conversion-daemon.fe-emea-10.sun.com by fe-emea-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KSW00300QG97W00@fe-emea-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Nov 2009 19:09:45 +0000 (GMT)
+Received: from [129.146.96.20] ([unknown] [129.146.96.20])
+ by fe-emea-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KSW00ECPQK6I710@fe-emea-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Nov 2009 19:09:45 +0000 (GMT)
+Date: Tue, 10 Nov 2009 11:06:34 -0800
+From: Alexandre Chartre <Alexandre.Chartre@sun.com>
+Subject: Re: FWARC/2009/609: Direct I/O Agent
+In-reply-to: <77C0643E-E765-445C-86AB-14CFFAEFB653@Sun.COM>
+Sender: Alexandre.Chartre@sun.com
+To: Eric Sharakan <Eric.Sharakan@sun.com>
+Cc: Firmware ARC <fwarc@sun.com>,
+        Jim Marks - Sun Microsystems <James.Marks@sun.com>,
+        Raghuram Kothakota <Raghuram.Kothakota@sun.com>
+Message-id: <4AF9B9BA.8030208@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <77C0643E-E765-445C-86AB-14CFFAEFB653@Sun.COM>
+User-Agent: Thunderbird 2.0.0.23 (X11/20090910)
+Status: RO
+Content-Length: 1381
+
+
+  This new agent provides only one new message which is to provide
+information about PCI devices. So it is worth adding a new agent,
+or would it make more sense to add a new message to the device agent
+which provides information about devices?
+
+  I think it could make sense to have a direct I/O agent if there are
+plans to have more messages, and these messages are really direct I/O
+specific. Otherwise as the current message is just about getting
+information about devices, it would make more sense to add it to
+the existing device agent.
+
+  If you keep the direct I/O agent, please change the message name to
+MSGDIO_PCIDEV_INFO (instead of LDMA_PCIDEV_INFO) to make it more consistent
+with other message names.
+
+alex.
+
+On 11/09/09 12:10, Eric Sharakan wrote:
+> Hi all.  I'm sponsoring this fast-track case for Jim Marks.  This 
+> project adds a new agent to the Logical Domains Agents framework as 
+> defined in FWARC/2009/426.  The Direct I/O agent provides information 
+> about all PCI-E devices of a particular guest to the control domain.
+> 
+> The one pager & updated LDoms Agents Specification are in the case 
+> materials directory:
+> 
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/609/materials/
+> 
+> Requested binding is for a minor/micro firmware release and 
+> minor/micro/patch OS release.
+> 
+> This case times out on Monday 11/16/09.
+> 
+> Thanks.
+> 
+> -Eric
+> 
+
+From sacadmin Tue Nov 10 12:07:50 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nAAK7nkc021382
+	for <fwarc@sac.sfbay.sun.com>; Tue, 10 Nov 2009 12:07:49 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id nAAK7kGw015057
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 10 Nov 2009 20:07:48 GMT
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KSW00801T8ZKF00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Nov 2009 12:07:47 -0800 (PST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KSW00G0NT8ZJ8E0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Nov 2009 12:07:47 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nAAK7la8009312	for
+ <fwarc@sun.com>; Tue, 10 Nov 2009 12:07:47 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KSW00J00T3S9700@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Nov 2009 12:07:47 -0800 (PST)
+Received: from dhcp-umpk14-91-134.sfbay.sun.com ([unknown] [129.146.91.134])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KSW00EBQT8YVH90@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Nov 2009 12:07:46 -0800 (PST)
+Date: Tue, 10 Nov 2009 12:07:45 -0800
+From: Raghuram Kothakota <Raghuram.Kothakota@sun.com>
+Subject: Re: FWARC/2009/609: Direct I/O Agent
+In-reply-to: <4AF9B9BA.8030208@sun.com>
+Sender: Raghuram.Kothakota@sun.com
+To: Alexandre Chartre <Alexandre.Chartre@sun.com>
+Cc: Eric Sharakan <Eric.Sharakan@sun.com>, Firmware ARC <fwarc@sun.com>,
+        Jim Marks - Sun Microsystems <James.Marks@sun.com>
+Message-id: <4AF9C811.4090608@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <77C0643E-E765-445C-86AB-14CFFAEFB653@Sun.COM>
+ <4AF9B9BA.8030208@sun.com>
+User-Agent: Thunderbird 2.0.0.23 (Macintosh/20090812)
+Status: RO
+Content-Length: 1682
+
+Alexandre Chartre wrote:
+>
+>  This new agent provides only one new message which is to provide
+> information about PCI devices. So it is worth adding a new agent,
+> or would it make more sense to add a new message to the device agent
+> which provides information about devices?
+>
+>  I think it could make sense to have a direct I/O agent if there are
+> plans to have more messages, and these messages are really direct I/O
+> specific. Otherwise as the current message is just about getting
+> information about devices, it would make more sense to add it to
+> the existing device agent.
+We are expecting to expand the direct I/O agent in the near future
+for SR-IOV project, thats why we are keeping it as a separate
+agent, hope that clarifies your question.
+>
+>  If you keep the direct I/O agent, please change the message name to
+> MSGDIO_PCIDEV_INFO (instead of LDMA_PCIDEV_INFO) to make it more 
+> consistent
+> with other message names.
+Thanks for catching this, we will change this.
+
+-Raghuram.
+>
+> alex.
+>
+> On 11/09/09 12:10, Eric Sharakan wrote:
+>> Hi all.  I'm sponsoring this fast-track case for Jim Marks.  This 
+>> project adds a new agent to the Logical Domains Agents framework as 
+>> defined in FWARC/2009/426.  The Direct I/O agent provides information 
+>> about all PCI-E devices of a particular guest to the control domain.
+>>
+>> The one pager & updated LDoms Agents Specification are in the case 
+>> materials directory:
+>>
+>> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/609/materials/
+>>
+>> Requested binding is for a minor/micro firmware release and 
+>> minor/micro/patch OS release.
+>>
+>> This case times out on Monday 11/16/09.
+>>
+>> Thanks.
+>>
+>> -Eric
+>>
+
+
+From sacadmin Tue Nov 10 14:23:23 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nAAMNLPQ024349
+	for <fwarc@sac.sfbay.sun.com>; Tue, 10 Nov 2009 14:23:21 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id nAAMNLOk045414
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 10 Nov 2009 15:23:21 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KSW00209ZIUSX00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Nov 2009 14:23:18 -0800 (PST)
+Received: from gmp-eb-inf-2.sun.com ([192.18.6.24])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KSW0082JZISVVA0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Nov 2009 14:23:17 -0800 (PST)
+Received: from fe-emea-09.sun.com
+ (gmp-eb-lb-1-fe1.eu.sun.com [192.18.6.7] (may be forged))
+	by gmp-eb-inf-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nAAMNGLq027546	for
+ <fwarc@sun.com>; Tue, 10 Nov 2009 22:23:16 +0000 (GMT)
+Received: from conversion-daemon.fe-emea-09.sun.com by fe-emea-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KSW00200ZCMPL00@fe-emea-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Nov 2009 22:23:15 +0000 (GMT)
+Received: from [129.146.96.20] ([unknown] [129.146.96.20])
+ by fe-emea-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KSW00JJGZIPKA30@fe-emea-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Nov 2009 22:23:15 +0000 (GMT)
+Date: Tue, 10 Nov 2009 14:20:04 -0800
+From: Alexandre Chartre <Alexandre.Chartre@Sun.COM>
+Subject: Re: FWARC/2009/609: Direct I/O Agent
+In-reply-to: <4AF9C811.4090608@Sun.COM>
+Sender: Alexandre.Chartre@Sun.COM
+To: Raghuram Kothakota <Raghuram.Kothakota@Sun.COM>
+Cc: Eric Sharakan <Eric.Sharakan@Sun.COM>, Firmware ARC <fwarc@Sun.COM>,
+        Jim Marks - Sun Microsystems <James.Marks@Sun.COM>
+Message-id: <4AF9E714.6000003@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <77C0643E-E765-445C-86AB-14CFFAEFB653@Sun.COM>
+ <4AF9B9BA.8030208@sun.com> <4AF9C811.4090608@Sun.COM>
+User-Agent: Thunderbird 2.0.0.23 (X11/20090910)
+Status: RO
+Content-Length: 1824
+
+
+On 11/10/09 12:07, Raghuram Kothakota wrote:
+> Alexandre Chartre wrote:
+>>
+>>  This new agent provides only one new message which is to provide
+>> information about PCI devices. So it is worth adding a new agent,
+>> or would it make more sense to add a new message to the device agent
+>> which provides information about devices?
+>>
+>>  I think it could make sense to have a direct I/O agent if there are
+>> plans to have more messages, and these messages are really direct I/O
+>> specific. Otherwise as the current message is just about getting
+>> information about devices, it would make more sense to add it to
+>> the existing device agent.
+> We are expecting to expand the direct I/O agent in the near future
+> for SR-IOV project, thats why we are keeping it as a separate
+> agent, hope that clarifies your question.
+
+  Ok, that's fine then.
+
+  Thanks,
+
+alex.
+
+>>  If you keep the direct I/O agent, please change the message name to
+>> MSGDIO_PCIDEV_INFO (instead of LDMA_PCIDEV_INFO) to make it more 
+>> consistent
+>> with other message names.
+> Thanks for catching this, we will change this.
+> 
+> -Raghuram.
+>>
+>> alex.
+>>
+>> On 11/09/09 12:10, Eric Sharakan wrote:
+>>> Hi all.  I'm sponsoring this fast-track case for Jim Marks.  This 
+>>> project adds a new agent to the Logical Domains Agents framework as 
+>>> defined in FWARC/2009/426.  The Direct I/O agent provides information 
+>>> about all PCI-E devices of a particular guest to the control domain.
+>>>
+>>> The one pager & updated LDoms Agents Specification are in the case 
+>>> materials directory:
+>>>
+>>> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/609/materials/
+>>>
+>>> Requested binding is for a minor/micro firmware release and 
+>>> minor/micro/patch OS release.
+>>>
+>>> This case times out on Monday 11/16/09.
+>>>
+>>> Thanks.
+>>>
+>>> -Eric
+>>>
+> 
+
+From sacadmin Wed Nov 11 13:04:10 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nABL49W8006056
+	for <fwarc@sac.sfbay.sun.com>; Wed, 11 Nov 2009 13:04:10 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id nABL44OT025099
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 11 Nov 2009 21:04:08 GMT
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KSY00M07QIWKZ00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 11 Nov 2009 13:04:08 -0800 (PST)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KSY00DCRQIU6Q70@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 11 Nov 2009 13:04:07 -0800 (PST)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id nABL46Gw027294	for
+ <fwarc@sun.com>; Wed, 11 Nov 2009 21:04:06 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KSY00E00Q3ZZ700@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 11 Nov 2009 14:04:06 -0700 (MST)
+Received: from dhcp-ubur03-180-221.east.sun.com ([unknown] [129.148.180.221])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KSY009N6QITK410@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 11 Nov 2009 14:04:06 -0700 (MST)
+Date: Wed, 11 Nov 2009 16:04:05 -0500
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: FWARC/2009/609: Direct I/O Agent
+In-reply-to: <4AF9E714.6000003@sun.com>
+Sender: Eric.Sharakan@sun.com
+To: Alexandre Chartre <Alexandre.Chartre@sun.com>
+Cc: Raghuram Kothakota <Raghuram.Kothakota@sun.com>,
+        Firmware ARC <fwarc@sun.com>,
+        Jim Marks - Sun Microsystems <James.Marks@sun.com>
+Message-id: <89C90799-4DDA-40F7-BF1A-BDC3EFE9798B@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.1077)
+Content-type: multipart/signed; micalg=sha1;
+ protocol="application/pkcs7-signature"; boundary=Apple-Mail-12-493370937
+X-PMX-Version: 5.4.1.325704
+References: <77C0643E-E765-445C-86AB-14CFFAEFB653@Sun.COM>
+ <4AF9B9BA.8030208@sun.com> <4AF9C811.4090608@Sun.COM>
+ <4AF9E714.6000003@sun.com>
+Status: RO
+Content-Length: 5032
+
+
+--Apple-Mail-12-493370937
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=us-ascii
+
+On Nov 10, 2009, at 5:20 PM, Alexandre Chartre wrote:
+
+>=20
+> On 11/10/09 12:07, Raghuram Kothakota wrote:
+>> Alexandre Chartre wrote:
+>>>=20
+>>> This new agent provides only one new message which is to provide
+>>> information about PCI devices. So it is worth adding a new agent,
+>>> or would it make more sense to add a new message to the device agent
+>>> which provides information about devices?
+>>>=20
+>>> I think it could make sense to have a direct I/O agent if there are
+>>> plans to have more messages, and these messages are really direct =
+I/O
+>>> specific. Otherwise as the current message is just about getting
+>>> information about devices, it would make more sense to add it to
+>>> the existing device agent.
+>> We are expecting to expand the direct I/O agent in the near future
+>> for SR-IOV project, thats why we are keeping it as a separate
+>> agent, hope that clarifies your question.
+>=20
+> Ok, that's fine then.
+>=20
+> Thanks,
+>=20
+> alex.
+>=20
+>>> If you keep the direct I/O agent, please change the message name to
+>>> MSGDIO_PCIDEV_INFO (instead of LDMA_PCIDEV_INFO) to make it more =
+consistent
+>>> with other message names.
+>> Thanks for catching this, we will change this.
+>> -Raghuram.
+
+The specification in the case materials directory has been updated to =
+reflect this change of the message name from LDMA_PCIDEV_INFO to =
+MSGDIO_PCIDEV_INFO.
+
+The timer remains set to expire on 11/16.
+
+Thanks.
+
+-Eric=
+
+--Apple-Mail-12-493370937
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA5MDgxMzAzMjY0MloXDTEwMDgxMzAzMjY0
+MlowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4ShwcG0r
+XTowrE2zjfBkP5uPCfMPbkDTk6AV/L/SDFaj3XqIuvioNhnSAJc18VqdhTMteQzf275qEXJEpjii
+UhtBQQEeVNUuDJl7Yn935nXzkhMa5iDKQebgMRYsj47l4M2kVRDwKpPcrBT5eL1Pt0aSD0cF1APy
+3KCd9vakWX/3/oO14tiEs84trInW8iWym8JW9O2iKnRFQHSvOulBVyzKbjJ7+qr3oO/t4BB5hjeK
+NaLSfztfFVJaW8P0gdMD0oR9ZCKjl8IK5CUNLFk3sXh+RFrkCsP2W38hZJ0EhKPuunw4z4A7FK8h
+NIL9OeKmzKhH3JIitIfW/wPUFoupQQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQBua9PL8rPiAgVHwF+IdBIk
+nIGR42xuszIDi3E9WvDdWdkw5aG0FJwei0RvHHraYaPofBlvZcyIuABPcJrqpm5jfl9ksrUmrYV9
+veWQwF3t9hp+IcaD/a9+4Cdh8b0YlzXGX7DyaDa5omOLrLBp9M3K8lSkQDSjMcDu1RSlS+ZjFDCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQRP84uN1QvZysfOz2m7JJpTAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wOTEx
+MTEyMTA0MDVaMCMGCSqGSIb3DQEJBDEWBBQQZXmtdwalKufUdkWu3lJShK1KhzCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjd
+UL2crHzs9puySaUwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEBBQAEggEAMLAh
+2mLdvwCYMLvwi/6cOLxBKgyVzAOQS4JLaFaC5vDeO8B5jUzkyld/FQ46Y+d7BOQzTp/wdV5gzRj4
+S6wl1aASf6s8qrs1rRmCoJ22LDS69QI6DI6L7UcZItPiEBfKm9oK1Hm5vW5B/ZxEjKC1U+eeQyqD
+GbvI8ILl5ATeL6jX3DwumNAtdXbq8lflvQI/LSpf4kkcTyPn1yq8N0tQ1aej/M0LoXGKzgMZkCYq
+c00qM4neWZo6Kzs+rn4jx5PFUHZ9A3gf46AfMXGl/9GZS2Tl63xU2m5IyNWQ4eNKjjq7WMIqcAvS
+mlmyW0luis76VeYFGHoYN8JDQfUP5Zf40wAAAAAAAA==
+
+--Apple-Mail-12-493370937--
+
+From sacadmin Fri Nov 13 15:57:12 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nADNvB47005966
+	for <fwarc@sac.sfbay.sun.com>; Fri, 13 Nov 2009 15:57:12 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id nADNv8qw001839
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 13 Nov 2009 23:57:10 GMT
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KT20030RNV8E400@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 13 Nov 2009 15:57:08 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KT2006BNNV79AB0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 13 Nov 2009 15:57:07 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nADNv7NO011523	for
+ <fwarc@sun.com>; Fri, 13 Nov 2009 15:57:07 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KT200600NP7SS00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 13 Nov 2009 15:57:07 -0800 (PST)
+Received: from [129.150.33.55] ([unknown] [129.150.33.55])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KT2007C7NV5VZ00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 13 Nov 2009 15:57:06 -0800 (PST)
+Date: Fri, 13 Nov 2009 15:57:07 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC/2009/609: Direct I/O Agent
+In-reply-to: <89C90799-4DDA-40F7-BF1A-BDC3EFE9798B@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Eric Sharakan <Eric.Sharakan@sun.com>
+Cc: Alexandre Chartre <Alexandre.Chartre@sun.com>,
+        Raghuram Kothakota <Raghuram.Kothakota@sun.com>,
+        Firmware ARC <fwarc@sun.com>,
+        Jim Marks - Sun Microsystems <James.Marks@sun.com>
+Message-id: <4AFDF253.9070302@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_WTV6SZplEt8L4g9HbshW7g)"
+X-PMX-Version: 5.4.1.325704
+References: <77C0643E-E765-445C-86AB-14CFFAEFB653@Sun.COM>
+ <4AF9B9BA.8030208@sun.com> <4AF9C811.4090608@Sun.COM>
+ <4AF9E714.6000003@sun.com> <89C90799-4DDA-40F7-BF1A-BDC3EFE9798B@Sun.COM>
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+Status: RO
+Content-Length: 4949
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_WTV6SZplEt8L4g9HbshW7g)
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+
+Eric Sharakan wrote:
+> On Nov 10, 2009, at 5:20 PM, Alexandre Chartre wrote:
+>
+>   
+>> On 11/10/09 12:07, Raghuram Kothakota wrote:
+>>     
+>>> Alexandre Chartre wrote:
+>>>       
+>>>> This new agent provides only one new message which is to provide
+>>>> information about PCI devices. So it is worth adding a new agent,
+>>>> or would it make more sense to add a new message to the device agent
+>>>> which provides information about devices?
+>>>>
+>>>> I think it could make sense to have a direct I/O agent if there are
+>>>> plans to have more messages, and these messages are really direct I/O
+>>>> specific. Otherwise as the current message is just about getting
+>>>> information about devices, it would make more sense to add it to
+>>>> the existing device agent.
+>>>>         
+>>> We are expecting to expand the direct I/O agent in the near future
+>>> for SR-IOV project, thats why we are keeping it as a separate
+>>> agent, hope that clarifies your question.
+>>>       
+>> Ok, that's fine then.
+>>
+>> Thanks,
+>>
+>> alex.
+>>
+>>     
+>>>> If you keep the direct I/O agent, please change the message name to
+>>>> MSGDIO_PCIDEV_INFO (instead of LDMA_PCIDEV_INFO) to make it more consistent
+>>>> with other message names.
+>>>>         
+>>> Thanks for catching this, we will change this.
+>>> -Raghuram.
+>>>       
+>
+> The specification in the case materials directory has been updated to reflect this change of the message name from LDMA_PCIDEV_INFO to MSGDIO_PCIDEV_INFO.
+>
+> The timer remains set to expire on 11/16.
+>   
+
+LGTM.  The specification format breaks up tables between pages, e.g, 
+page 5 and 6, page 7 and 8.
+
+
+> Thanks.
+>
+> -Eric
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_WTV6SZplEt8L4g9HbshW7g)
+Content-type: text/html; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+Eric Sharakan wrote:
+<blockquote cite="mid:89C90799-4DDA-40F7-BF1A-BDC3EFE9798B@Sun.COM"
+ type="cite">
+  <pre wrap="">On Nov 10, 2009, at 5:20 PM, Alexandre Chartre wrote:
+
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">On 11/10/09 12:07, Raghuram Kothakota wrote:
+    </pre>
+    <blockquote type="cite">
+      <pre wrap="">Alexandre Chartre wrote:
+      </pre>
+      <blockquote type="cite">
+        <pre wrap="">This new agent provides only one new message which is to provide
+information about PCI devices. So it is worth adding a new agent,
+or would it make more sense to add a new message to the device agent
+which provides information about devices?
+
+I think it could make sense to have a direct I/O agent if there are
+plans to have more messages, and these messages are really direct I/O
+specific. Otherwise as the current message is just about getting
+information about devices, it would make more sense to add it to
+the existing device agent.
+        </pre>
+      </blockquote>
+      <pre wrap="">We are expecting to expand the direct I/O agent in the near future
+for SR-IOV project, thats why we are keeping it as a separate
+agent, hope that clarifies your question.
+      </pre>
+    </blockquote>
+    <pre wrap="">Ok, that's fine then.
+
+Thanks,
+
+alex.
+
+    </pre>
+    <blockquote type="cite">
+      <blockquote type="cite">
+        <pre wrap="">If you keep the direct I/O agent, please change the message name to
+MSGDIO_PCIDEV_INFO (instead of LDMA_PCIDEV_INFO) to make it more consistent
+with other message names.
+        </pre>
+      </blockquote>
+      <pre wrap="">Thanks for catching this, we will change this.
+-Raghuram.
+      </pre>
+    </blockquote>
+  </blockquote>
+  <pre wrap=""><!---->
+The specification in the case materials directory has been updated to reflect this change of the message name from LDMA_PCIDEV_INFO to MSGDIO_PCIDEV_INFO.
+
+The timer remains set to expire on 11/16.
+  </pre>
+</blockquote>
+<br>
+LGTM.&nbsp; The specification format breaks up tables between pages, e.g,
+page 5 and 6, page 7 and 8.<br>
+<br>
+<br>
+<blockquote cite="mid:89C90799-4DDA-40F7-BF1A-BDC3EFE9798B@Sun.COM"
+ type="cite">
+  <pre wrap="">
+Thanks.
+
+-Eric</pre>
+</blockquote>
+<br>
+<br>
+<pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_WTV6SZplEt8L4g9HbshW7g)--
+
+From sacadmin Tue Nov 17 14:42:19 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nAHMgIin007532
+	for <fwarc@sac.sfbay.sun.com>; Tue, 17 Nov 2009 14:42:19 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id nAHMg74O014822
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 17 Nov 2009 22:42:18 GMT
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KT900F01Z2HTB00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 17 Nov 2009 14:42:17 -0800 (PST)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KT9006ZCZ2ETC80@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 17 Nov 2009 14:42:15 -0800 (PST)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id nAHMgEa8026583	for
+ <fwarc@sun.com>; Tue, 17 Nov 2009 22:42:14 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KT900200YI99300@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 17 Nov 2009 15:42:14 -0700 (MST)
+Received: from dhcp-ubur03-180-104.east.sun.com ([unknown] [129.148.180.104])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KT90021ZZ2C8WD0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 17 Nov 2009 15:42:13 -0700 (MST)
+Date: Tue, 17 Nov 2009 17:42:11 -0500
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: FWARC/2009/609: Direct I/O Agent
+In-reply-to: <77C0643E-E765-445C-86AB-14CFFAEFB653@Sun.COM>
+Sender: Eric.Sharakan@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: Jim Marks - Sun Microsystems <James.Marks@sun.com>,
+        Raghuram Kothakota <Raghuram.Kothakota@sun.com>
+Message-id: <55A8C0C8-BAA1-49D7-BD29-4D43A003F320@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.1077)
+Content-type: multipart/signed; micalg=sha1;
+ protocol="application/pkcs7-signature"; boundary=Apple-Mail-12-1017657511
+X-PMX-Version: 5.4.1.325704
+References: <77C0643E-E765-445C-86AB-14CFFAEFB653@Sun.COM>
+Status: RO
+Content-Length: 4395
+
+
+--Apple-Mail-12-1017657511
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=us-ascii
+
+On Nov 9, 2009, at 3:10 PM, Eric Sharakan wrote:
+
+> Hi all.  I'm sponsoring this fast-track case for Jim Marks.  This =
+project adds a new agent to the Logical Domains Agents framework as =
+defined in FWARC/2009/426.  The Direct I/O agent provides information =
+about all PCI-E devices of a particular guest to the control domain.
+>=20
+> The one pager & updated LDoms Agents Specification are in the case =
+materials directory:
+>=20
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/609/materials/
+>=20
+> Requested binding is for a minor/micro firmware release and =
+minor/micro/patch OS release.
+>=20
+> This case times out on Monday 11/16/09.
+>=20
+> Thanks.
+>=20
+> -Eric
+
+This case has timed out and is now approved.  IAM file and domain =
+services registry have been updated.
+
+Thanks.
+
+-Eric
+
+
+--Apple-Mail-12-1017657511
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA5MDgxMzAzMjY0MloXDTEwMDgxMzAzMjY0
+MlowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4ShwcG0r
+XTowrE2zjfBkP5uPCfMPbkDTk6AV/L/SDFaj3XqIuvioNhnSAJc18VqdhTMteQzf275qEXJEpjii
+UhtBQQEeVNUuDJl7Yn935nXzkhMa5iDKQebgMRYsj47l4M2kVRDwKpPcrBT5eL1Pt0aSD0cF1APy
+3KCd9vakWX/3/oO14tiEs84trInW8iWym8JW9O2iKnRFQHSvOulBVyzKbjJ7+qr3oO/t4BB5hjeK
+NaLSfztfFVJaW8P0gdMD0oR9ZCKjl8IK5CUNLFk3sXh+RFrkCsP2W38hZJ0EhKPuunw4z4A7FK8h
+NIL9OeKmzKhH3JIitIfW/wPUFoupQQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQBua9PL8rPiAgVHwF+IdBIk
+nIGR42xuszIDi3E9WvDdWdkw5aG0FJwei0RvHHraYaPofBlvZcyIuABPcJrqpm5jfl9ksrUmrYV9
+veWQwF3t9hp+IcaD/a9+4Cdh8b0YlzXGX7DyaDa5omOLrLBp9M3K8lSkQDSjMcDu1RSlS+ZjFDCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQRP84uN1QvZysfOz2m7JJpTAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wOTEx
+MTcyMjQyMTJaMCMGCSqGSIb3DQEJBDEWBBSJVI5vkXOrirWXabzM5VPFVe6ShzCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjd
+UL2crHzs9puySaUwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEBBQAEggEAI3Eh
+ID8Pekli1nwnKuV6iGt4j/QGoZD+7pfmKXWXs1pj/Cz4ANPs0U7Mq1qWAwkecppKgyarR1GH7VNM
+12SxL6xMfJnSlh8/Su197H4Y6hi/iZ7YiaaFyQZTgtfUxRQDFPz0TglZC74Cv66C0W1OLXG7aapY
+w3SI/f02LXgV54JsRyQLGhv24HKWNDZ/jUXuRpd7KJcrhbcD+MTJoDFkeVKFyjJCQ3FXVA88L8fP
+yvamMTob3Ri6I87Qy25bGD6IXWRiHIwA9h1sJ4YhfzQjmj7z4LV5gwFRDImYgYrT30L9jsxvURQp
+t70lkOalxlcgCf7fH/009RP2EaDln+BD2gAAAAAAAA==
+
+--Apple-Mail-12-1017657511--
+

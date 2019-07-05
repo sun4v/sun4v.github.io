@@ -1,0 +1,249 @@
+From sacadmin Tue Feb 14 16:25:16 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1F0PGIQ007755
+	for <fwarc@sac.eng.Sun.COM>; Tue, 14 Feb 2006 16:25:16 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k1F0PFT10057;
+	Tue, 14 Feb 2006 17:25:15 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IUP00501D62MI00@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 14 Feb 2006 16:25:14 -0800 (PST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IUP00L3CD62MJ80@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 14 Feb 2006 16:25:14 -0800 (PST)
+Received: from fe-amer-02.sun.com ([192.18.108.176])
+	by brmea-mail-1.sun.com (8.12.10/8.12.9) with ESMTP id k1F0PESD013751; Tue,
+ 14 Feb 2006 17:25:14 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IUP00D01CEKTG00@mail-amer.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Tue,
+ 14 Feb 2006 17:25:13 -0700 (MST)
+Received: from sun.com ([129.149.204.97])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep  9
+ 2005)) with ESMTPSA id <0IUP00342D60OZ10@mail-amer.sun.com>; Tue,
+ 14 Feb 2006 17:25:13 -0700 (MST)
+Date: Tue, 14 Feb 2006 16:25:15 -0800
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: 2006/093 sun4v watchdog API update [fast-track]
+Sender: Tony.Sumpter@Sun.COM
+To: fwarc@Sun.COM
+Cc: pq-arch@Sun.COM, Richard Barnette <Richard.Barnette@Sun.COM>
+Message-id: <43F274EB.7050205@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 797
+
+I'm sponsoring this case as a fast-track for Ashley Saulsbury.
+The fast-track timeout is Feb 21, 2006.
+
+The materials are in the case directory under 'materials':
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/093/
+The normative text in api-26-v6-wdog.pdf is in sections 8.13.6.2
+(watchdog-resolution and watchdog-max-timeout properties only) 
+and 10.1.6 (excluding the informative programming notes.)
+
+The case updates the HV API for the watchdog service approved in
+FWARC/2005/367 in the following ways:
+
+	Timeout values are now specified in milliseconds.
+
+	A new MD property is added to provided the resolution
+	of the watchdog service.
+
+	The restriction of a minimum watchdog-max-timeout is removed.
+
+All other aspects of the APIs defined in FWARC/2005/367 remain the
+same.
+
+Tony.
+
+
+
+From sacadmin Wed Feb 22 23:23:21 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1N7NLIQ022745
+	for <fwarc@sac.eng.sun.com>; Wed, 22 Feb 2006 23:23:21 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k1N7NIj14010;
+	Wed, 22 Feb 2006 23:23:18 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IV400B03PUUOF00@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 22 Feb 2006 23:23:18 -0800 (PST)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IV400BZ8PUUVY95@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 22 Feb 2006 23:23:18 -0800 (PST)
+Received: from fe-amer-05.sun.com ([192.18.108.179])
+	by brmea-mail-3.sun.com (8.12.10/8.12.9) with ESMTP id k1N7NHQj001885; Thu,
+ 23 Feb 2006 00:23:17 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IV400601OPH8800@mail-amer.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Thu,
+ 23 Feb 2006 00:23:17 -0700 (MST)
+Received: from sun.com ([129.150.21.4])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep  9
+ 2005)) with ESMTPSA id <0IV4003FGPUSMZ10@mail-amer.sun.com>; Thu,
+ 23 Feb 2006 00:23:17 -0700 (MST)
+Date: Wed, 22 Feb 2006 23:23:17 -0800
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: 2006/093 sun4v watchdog API update [fast-track]
+In-reply-to: <43F274EB.7050205@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: fwarc@Sun.COM
+Cc: pq-arch@Sun.COM, Richard Barnette <Richard.Barnette@Sun.COM>
+Message-id: <43FD62E5.1070602@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <43F274EB.7050205@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 944
+
+This case has timed out and hence it is now approved.
+
+Tony.
+
+Tony Sumpter wrote:
+
+> I'm sponsoring this case as a fast-track for Ashley Saulsbury.
+> The fast-track timeout is Feb 21, 2006.
+> 
+> The materials are in the case directory under 'materials':
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/093/
+> The normative text in api-26-v6-wdog.pdf is in sections 8.13.6.2
+> (watchdog-resolution and watchdog-max-timeout properties only) and 
+> 10.1.6 (excluding the informative programming notes.)
+> 
+> The case updates the HV API for the watchdog service approved in
+> FWARC/2005/367 in the following ways:
+> 
+>     Timeout values are now specified in milliseconds.
+> 
+>     A new MD property is added to provided the resolution
+>     of the watchdog service.
+> 
+>     The restriction of a minimum watchdog-max-timeout is removed.
+> 
+> All other aspects of the APIs defined in FWARC/2005/367 remain the
+> same.
+> 
+> Tony.
+> 
+> 
+
+
+
+From sacadmin Tue Jun 20 14:47:59 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k5KLlxt9012656
+	for <fwarc@sac.eng.sun.com>; Tue, 20 Jun 2006 14:47:59 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k5KLlwF20229;
+	Tue, 20 Jun 2006 14:47:58 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J1600J15HVX1Z00@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 20 Jun 2006 14:47:57 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.5]) by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J16005S7HVW4C60@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 20 Jun 2006 14:47:56 -0700 (PDT)
+Received: from d1-sfbay-01.sun.com (d1-sfbay-01 [192.18.39.111])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k5KLlusQ028077; Tue,
+ 20 Jun 2006 14:47:56 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-01.sun.com by d1-sfbay-01.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J1600101HKUUT00@d1-sfbay-01.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Tue,
+ 20 Jun 2006 14:47:56 -0700 (PDT)
+Received: from sun.com ([129.150.22.218])
+ by d1-sfbay-01.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0J1600F79HVVK310@d1-sfbay-01.sun.com>; Tue,
+ 20 Jun 2006 14:47:56 -0700 (PDT)
+Date: Tue, 20 Jun 2006 14:47:57 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: 2006/093 sun4v watchdog API update [fast-track]
+In-reply-to: <43FD62E5.1070602@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: fwarc@Sun.COM
+Cc: pq-arch@Sun.COM, Richard Barnette <Richard.Barnette@Sun.COM>,
+        Craig Payne <Craig.Payne@Sun.COM>
+Message-id: <44986D0D.9050807@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <43F274EB.7050205@sun.com> <43FD62E5.1070602@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 1209
+
+Please note that this case inherits the integration approval change
+from 2005/367:
+
+"This case is now approved for integration into
+a minor release of the firmware and a micro/patch release
+of the OS."
+
+Tony.
+
+Tony Sumpter wrote:
+
+> This case has timed out and hence it is now approved.
+> 
+> Tony.
+> 
+> Tony Sumpter wrote:
+> 
+>> I'm sponsoring this case as a fast-track for Ashley Saulsbury.
+>> The fast-track timeout is Feb 21, 2006.
+>>
+>> The materials are in the case directory under 'materials':
+>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/093/
+>> The normative text in api-26-v6-wdog.pdf is in sections 8.13.6.2
+>> (watchdog-resolution and watchdog-max-timeout properties only) and 
+>> 10.1.6 (excluding the informative programming notes.)
+>>
+>> The case updates the HV API for the watchdog service approved in
+>> FWARC/2005/367 in the following ways:
+>>
+>>     Timeout values are now specified in milliseconds.
+>>
+>>     A new MD property is added to provided the resolution
+>>     of the watchdog service.
+>>
+>>     The restriction of a minimum watchdog-max-timeout is removed.
+>>
+>> All other aspects of the APIs defined in FWARC/2005/367 remain the
+>> same.
+>>
+>> Tony.
+>>
+>>
+> 
+> 
+
+
+

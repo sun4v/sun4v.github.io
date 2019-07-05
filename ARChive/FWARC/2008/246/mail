@@ -1,0 +1,153 @@
+From sacadmin Tue Apr  8 13:21:04 2008
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m38KL4lG009458
+	for <fwarc@sac.sfbay.sun.com>; Tue, 8 Apr 2008 13:21:04 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m38KL32M023196
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 8 Apr 2008 13:21:04 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JZ000D0TWJ3I400@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Tue, 08 Apr 2008 13:21:03 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JZ000730WJ2PEF0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Tue, 08 Apr 2008 13:21:02 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m38KL2I4014318	for
+ <fwarc@Sun.COM>; Tue, 08 Apr 2008 20:21:02 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JZ000601W2VK300@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Tue, 08 Apr 2008 14:21:02 -0600 (MDT)
+Received: from [192.168.1.103] ([72.93.24.248])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0JZ000KIWWJ06TD0@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Tue, 08 Apr 2008 14:21:00 -0600 (MDT)
+Date: Tue, 08 Apr 2008 16:20:59 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: FWARC/2008/246 - Virtual IO Dynamic Device Service - fast-track
+ timeout April 15, 2008
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>
+Message-id: <74758C5C-6043-4F63-9334-A1229CA80AAB@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.919.2)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 924
+
+I am sponsoring this fast-track case for Raghuram Kothakota. This case
+extends the VIO protocol to support the Dynamic Device Service framework
+needed for Network Hybrid IO.
+
+The VIO protocol specification was approved under FWARC/2006/195 and  
+then
+modified under FWARC/2006/583, FWARC/2006/602, FWARC/2007/672, and
+FWARC/2008/017. The VIO MD specification was approved under FWARC/ 
+2006/072
+and then modified under FWARC/2006/122, FWARC/2007/363 and FWARC/ 
+2008/016.
+
+This case will be approved for minor/micro/patch OS binding and
+minor/micro binding for the firmware.
+
+All of the changes are highlighted in the 1-pager and the updated  
+document
+which can be found at:
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2008/246/materials/vio-dds-1pager.txt
+
+http://sac.sfbay.sun.com/arc/FWARC/2008/246/materials/vio-protocol-update-6.pdf
+
+http://sac.sfbay.sun.com/arc/FWARC/2008/246/materials/vio-protocol-update-6-diff.pdf
+
+From sacadmin Thu Apr 17 10:01:29 2008
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m3HH1SQw029275
+	for <fwarc@sac.sfbay.sun.com>; Thu, 17 Apr 2008 10:01:29 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m3HH1RAS061277;
+	Thu, 17 Apr 2008 11:01:28 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JZH0081HBAGCW00@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 17 Apr 2008 10:01:28 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JZH001O5BAEYQE0@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 17 Apr 2008 10:01:26 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m3HH1Qq3005327; Thu,
+ 17 Apr 2008 17:01:26 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JZH00801ACOPL00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Thu,
+ 17 Apr 2008 11:01:26 -0600 (MDT)
+Received: from dhcp-ubur03-180-129.East.Sun.COM ([129.148.180.129])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JZH008YMBA26ID0@mail-amer.sun.com>; Thu,
+ 17 Apr 2008 11:01:15 -0600 (MDT)
+Date: Thu, 17 Apr 2008 13:01:16 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: FWARC/2008/246 - Virtual IO Dynamic Device Service - fast-track
+ timeout April 15, 2008
+In-reply-to: <74758C5C-6043-4F63-9334-A1229CA80AAB@sun.com>
+Sender: Narayan.Venkat@sun.com
+To: Narayan Venkat <Narayan.Venkat@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, hybrid <Hybrid_NIU_IO_Development@sun.com>
+Message-id: <9A89755F-E716-444C-A5B5-BAEB02887FBC@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.919.2)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <74758C5C-6043-4F63-9334-A1229CA80AAB@sun.com>
+Status: RO
+Content-Length: 1123
+
+This fast-track case has timed out and is now approved.
+
+IAM file has been updated.
+
+Thanks
+-Narayan
+
+On Apr 8, 2008, at 4:20 PM, Narayan Venkat wrote:
+> I am sponsoring this fast-track case for Raghuram Kothakota. This case
+> extends the VIO protocol to support the Dynamic Device Service  
+> framework
+> needed for Network Hybrid IO.
+>
+> The VIO protocol specification was approved under FWARC/2006/195 and  
+> then
+> modified under FWARC/2006/583, FWARC/2006/602, FWARC/2007/672, and
+> FWARC/2008/017. The VIO MD specification was approved under FWARC/ 
+> 2006/072
+> and then modified under FWARC/2006/122, FWARC/2007/363 and FWARC/ 
+> 2008/016.
+>
+> This case will be approved for minor/micro/patch OS binding and
+> minor/micro binding for the firmware.
+>
+> All of the changes are highlighted in the 1-pager and the updated  
+> document
+> which can be found at:
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2008/246/materials/vio-dds-1pager.txt
+>
+> http://sac.sfbay.sun.com/arc/FWARC/2008/246/materials/vio-protocol-update-6.pdf
+>
+> http://sac.sfbay.sun.com/arc/FWARC/2008/246/materials/vio-protocol-update-6-diff.pdf
+
+

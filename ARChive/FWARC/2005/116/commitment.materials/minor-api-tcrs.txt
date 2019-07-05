@@ -1,0 +1,208 @@
+6.1.2 mach_desc
+
+	If buffer length is less than actual MD size, return
+	EINVAL
+
+7.2.1.1 cpu_start errors
+
+	Should return EBADALIGN for unaligned pc.
+	Should return EBADALIGN for unaligned rtba.
+	Should return EWOULDBLOCK if starting resource not available.
+
+7.2.2.1 cpu_stop errors
+
+	Should return EWOULDBLOCK if stopping resource not available.
+	Should return ENOTSUPPORTED if not supported on the platform.
+
+7.2.3 cpu_set_rtba
+
+	rtba alignment is to a (8 * 8 * 4) byte boundary.
+	Where is the real trap table described?
+
+7.2.4 cpu_get_rtba
+
+	Add "Errors" sub-section
+
+7.2.8 cpu_mondo_send
+
+	Second para: If no error is reported, the cpulist should still
+	be updated.
+
+	ENORADDR should also be returned for invalid cpulist address.
+	Add EINVAL for attempt to send to self.
+
+8.2 TSB spec.
+
+	Last para: Since 0xffff can be avoided by just use of max in MD,
+	what does last sentence add?
+
+8.4 MMU FSA
+
+	What happens if guest writes to MMUFSA?
+	What is status of 0x18-0x3f and 0x58-0x7f?
+	Can that be used as scratch during fault handling?
+
+8.5.1 mmu_tsb_ctxnon0
+
+	Return ENORADDR for invalid tsbdptr.
+	Return EBADALIGN for tsbdptr not aligned to 8 bytes.
+	Return EINVAL for inconsistent index page size and page
+	size bitmask.
+	Return EINVAL for reserved field not zero.
+	Return EBADALIGN for TSB base not aligned to TSB size in bytes.
+
+8.5.4 mmu_demap_ctx
+
+	"All mappings" needs expanding.
+
+8.5.5 mmu_demap_all
+
+	"All translations" needs expanding.
+
+	Inconsistent use of mappings and translations.
+
+8.5.6 mmu_map_addr
+
+	Note is strangely worded.
+
+	Is it invalid to provide a TTE without the valid bit set?
+
+	Is it invalid to specify incompatible cachablity and side-effect
+	with the given RA?
+	
+	EBADPGSI typo.
+
+8.5.7 mmu_map_perm_addr
+
+	Is any other context than zero allowed?
+
+	Similar comments to 8.5.6
+
+8.5.9 mmu_unmap_perm_addr
+
+	Return ENOMAP if the perm mapping was not found.
+
+8.5.10 mmu_fault_area
+
+	Need a get_fault_area API - returns the previously
+	specified area as described in mmu_fault_area.
+
+8.5.12 mmu_tsb_ctx0_info
+
+	Make ret1 set to ntsbs always.
+
+	Error description needs to be in standard format.
+
+	Errors to include EBADALIGN and ENORADDR for bufferptr.
+
+8.5.13 ctxnon0_info
+
+	Make ret1 set to ntsbs always.
+
+	Errors to include EBADALIGN and ENORADDR for bufferptr.
+
+9.1.1 mem_scrub
+
+	raddr+length and raddr+length-1: Use second.
+
+	This service is confused. The only time it is necessary
+	is from an error.
+
+	Need a Note about the hypervisor ensuring memory does
+	not need to be scrubbed on partition start?
+
+10.2.2 intr_getenabled
+
+	return codes should be symbolic as in 10.1
+
+10.2.5 intr_setstate
+
+	Return EINVAL for invalid intr_state also.
+
+11 TOD services
+
+	Is TOD spelt out anywhere?
+
+	"Unix" -> POSIX?
+
+11.1.1 tod_get
+
+	Return ENOTSUPPORTED or EINVAL if no TOD available?
+
+11.1.2 tod_set
+
+	see 11.1.1
+
+12.1.2 cons_putchar
+
+	It is possible to put a virtual BREAK?
+
+13. Core dump services
+
+	"back to Sun" -> ""
+
+	"hardware bugs" -> "configuration related bugs"
+
+13.1.1 dump_buf_conf
+
+	ret1 also has a value on failure - just always make it
+	the minimum size.
+
+	What does "performs a synchronization" mean?
+
+	EOK also for unconfigured.
+	Return EINVAL for if size is less than the minimum size.
+	Return ENOACCESS if the platform policy does not allow
+	this capability.
+
+13.1.2 dump_buf_info
+
+	Make size equals 0 indicate no buffer configured - matches
+	passing 0 to unconfigure it.
+
+14. Trap trace services
+
+	Define "limited" or remove the word.
+
+	Third para is same as first.
+
+	Any reason why a platform might not support this or not
+	record all trap types?
+
+14.1 ... control structure
+
+	Last para "fail offset" -> "tail offset"
+
+	Who owns the control structure?
+
+	Can guest write the buffer directly?
+
+14.3.1 ttrace_bufconf
+
+	Remove "in Section ""below" sentences.
+
+	"size" -> "nentries" (includes control structure.)
+	Minimum two: One control plus one record.
+
+	Last para - just return minimum size always. The value on
+	success is not useful.
+
+	bufconf API does an implicit ttrace disable.
+
+	What happens to freeze?
+
+	ENORADDR should not be returned for size to small.
+	Return EINVAL for invalid nentries.
+
+14.3.2 ttrace_bufinfo
+
+	Remove EINVAL - let nentries equaling zero indicate not defined
+	
+14.3.4 ttrace_freeze
+
+	Not clear if return value can be fed into subsequent call.
+	Remove ref to boolean type not defined anywhere.
+
+	References to future should be removed.
+
+	No freeze get.

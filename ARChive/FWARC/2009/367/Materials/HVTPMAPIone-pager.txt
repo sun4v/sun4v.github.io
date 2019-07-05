@@ -1,0 +1,268 @@
+1. Introduction
+   1.1. Project/Component Working Name:
+        HV APIs for accessing TPM registers
+
+   1.2. Name of Document Author/Supplier:
+
+        Greg Onufer and Hitendra Zhangada
+
+   1.3. Date of This Document:
+        06/15/2009
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+        1.4.1. The PAC or CPT you expect to review your project:
+                HS PAC
+
+        1.4.2. The ARC(s) you expect to review your project:
+                FWARC
+
+        1.4.3. The Director/VP who is "Sponsoring" this project:
+                Mike Sanfratello
+
+        1.4.4. The name of your business unit:
+                Systems Group (SG)
+                (Sparc Platform Software)
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: dave.banman@Sun.Com
+        1.5.2. Responsible Engineer: greg.onufer@Sun.COM
+
+2. Project Summary
+
+   2.1. Project Description:
+   
+   This project introduces Hypervisor APIs for access to TPM registers.
+   These APIs will be used by sun4v guest domains.
+
+   2.2. Risks and Assumptions:
+   
+   The underlying TPM hardware and the proposed interfaces assume a TPM 
+   device conferment to the Trusted Computing Group's PC Client TPM 
+   Specification [2].
+
+3. Business Summary
+
+   3.1. Problem Area:
+
+   SPARC platforms do not support TPM devices.  The TPM chip is built
+   in on all CMT platforms but SW does not support it.  There is no way
+   for a guest domain to access TPM registers.
+   
+   3.2. Market/Requester:
+
+   None.
+   
+   3.3. Business Justification:
+
+   To be competitive with vendors in the market space, SPARC platforms
+   should support TPM in at least control domain.
+
+   3.6. How will you know when you are done?:
+   
+   When the code changes required for the proposed changes are integrated
+   into respective workspaces.
+
+ 
+4. Technical Description:
+
+   The platform TPM is expected to be used by a guest assuming the role of
+   the control domain. These APIs are intended to be used by that guest. 
+   Virtual TPMs are expected to be used by all other guests and the method 
+   used to access such vTPMs is outside the scope of this proposal. 
+
+   4.1  Following sections describes the sun4v API used for a control domain 
+        guest to access a platform TPM device. 
+
+   4.1.1 Locality 
+   
+   Locality is defined in the PC Client specification [2].  Following
+   is a brief summary of TPM Localities.
+   
+   "Locality" is a concept that allows various trusted processes on the 
+   platform to communicate with the TPM such that the TPM is aware of which 
+   trusted process is sending commands. This is implemented using dedicated
+   ranges of LPC addresses and a new LPC "start" field. There are six 
+   Localities defined (numbers 0 - 4 and Legacy). Their use is defined as:
+
+   Locality 4: Trusted Hardware. This is the Dynamic RTM.1
+   Locality 3: Auxiliary components. Use of this is optional and, if used, 
+               it is implementation dependent.
+   Locality 2: This is the "runtime" environment for the Trusted Operating 
+               System.
+   Locality 1: An environment for use by the Trusted Operating System (T/OS).
+   Locality 0: The legacy environment for the Static RTM and its chain of 
+               trust.
+   Locality Legacy: This is Locality 0 using TPM 1.1 type I/O ports.     
+
+   4.1.2 TPM Registers
+   
+   The registers specified by [2] for Locality 0 are listed below.
+
+    Offset  Size    Register            Description
+    0x00           TPM_ACCESS           Used to gain ownership of port
+    0x08    4      TPM_INT_ENABLE       Controls interrupts
+    0x0c           TPM_INT_VECTOR       SIRQ vector to be used by the TPM
+    0x10    4 	   TPM_INT_STATUS       Interrupt status
+    0x14    4 	   TPM_INTF_CAPABILITY  Interrupt capabilities
+    0x18    4 	   TPM_STS              Status register
+    0x24    4 	   TPM_DATA_FIFO        Read or write FIFO
+    0xf00   4 	   TPM_DID_VID          Device ID/Vendor ID
+    0xf04          TPM_RID              Revision ID
+    0xf05-0xf7f                         TCG-defined configuration registers
+    0xf90-0xfff                         Vendor-defined configuration registers
+
+    All registers are architected to be given to "untrusted" software.
+    There are various protocols to disable certain functionality before
+    the "untrusted" software is handed control. The guest may have access
+    to all of the programmable registers just as in a typical personal 
+    computing environment. 
+    
+    
+   4.1.3  sun4v API calls
+
+   The API calls used to access a platform's TPM are in the TPM API group:
+
+   4.1.3.1 Platform TPM API Group 
+   
+   Group# 	Description
+   0x107 	Platform TPM access
+
+   The Platform TPM API group contains the following APIs
+
+   Function# 	Name 	Description
+   0x176 	TPM_GET 	Read a TPM register
+   0x177 	TPM_PUT 	Write a TPM register
+
+  
+  4.1.3.2 tpm_get
+
+  Entry :
+     trap#      FAST_TRAP
+     function# 	TPM_GET (0x176)
+     arg0       locality
+     arg1       register offset
+     arg2       access size
+  Exit :
+     ret0 	status (success or error code)
+     ret1 	register value
+
+   This call reads the value of a TPM register as specified by the "register 
+   offset" argument using the specified TPM locality (0-4). The size of
+   the register access is specified by the "access size" argument. 
+  
+   On success, the call returns a status of EOK and the value of the
+   requested TPM register. Otherwise, it returns one of the following
+   errors:
+
+   EINVAL
+    Invalid locality, register offset, or access size. 
+   ENOACCESS
+    Operation administratively prohibited. 
+
+   4.1.3.3 tpm_put
+
+   Entry :
+     trap#      FAST_TRAP
+     function#  TPM_PUT (0x177)
+     arg0       locality
+     arg1       register offset
+     arg2       access size
+     arg3       value
+   Exit :
+     ret0       status (success or error code)
+
+   This call writes a value to a TPM register as specified by the "register 
+   offset" argument using the specified TPM locality (0-4). The size of
+   the register access is specified by the "access size" argument.
+
+   On success, the call returns a status of EOK and the value of the
+   requested TPM register. Otherwise, it returns one of the following
+   errors:
+
+  EINVAL
+    Invalid locality, register offset, or access size. 
+  ENOACCESS
+    Operation administratively prohibited.    
+
+   4.2  Interface Table
+                                         
+   4.2.1 Imported Interfaces :
+                
+      Interface        Classification       Comments
+      ======================================================================
+
+      HV APIs             Committed          FWARC/2005/116
+
+
+   4.2.2 Exported Interfaces:
+
+      Interface        Classification       Comments
+      =======================================================================
+
+      TPM_GET             Committed          Function 0x176, group 0x107
+                                             as defined in section 4.1.3.2
+                                                
+      TPM_PUT             Committed          Function 0x177, group 0x107
+                                             as defined in section 4.1.3.3
+     
+                
+5. Reference Documents:
+
+[1] Trusted Computing Group, TPM Specifications v1.2, https://www.trustedcomputinggroup.org/specs/TPM/
+
+[2] TCG PC Client Specific TPM Interface Specifications (TIS) v1.2, https://www.trustedcomputinggroup.org/groups/pc_client/TCG_PCClientTPMSpecification_1-20_1-00_FINAL.pdf
+
+[3] Berger, et. al., vTPM: Virtualizing the Trusted Platform Module, http://domino.research.ibm.com/library/cyberdig.nsf/1e4115aea78b6e7c85256b360066f0d4/a0163fff5b1a61fe85257178004eee39
+
+[4] http://www.trustedcomputinggroup.org/ 
+
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+        
+
+   6.2. Cost of Effort:
+
+
+   6.3. Cost of Capital Resources:
+
+
+   6.4. Product Approval Committee requested information:
+        6.4.1. Consolidation Name:
+                System Firmware
+                
+        6.4.2. Contributing OpCo/BU/Division Name:
+                
+               Systems Group
+                
+        6.4.3. Type of PAC Review and Approval expected:
+                N/A
+
+        6.4.4. Project Boundary Conditions:
+                N/A
+
+        6.4.5. Is this a necessary project for OEM agreements:
+                No.
+
+        6.4.6. Notes/Dependencies:
+                N/A
+
+        6.4.7. Target RTI Date/Release:
+                N/A - Not a separate deliverable.
+
+        6.4.8. Target Code Design Review Date:
+                N/A
+
+        6.4.9. Update approval addition:
+                N/A
+
+   6.5. ARC review type:
+                Fast-Track
+
+7. Prototype Availability: 
+   7.1. Prototype Availability:
+        N/A
+
+   7.2. Prototype Cost:
+        Done using existing resources.
+

@@ -1,0 +1,24 @@
+SUNW,set-sun4v-version ( minor major group -- act-minor status )
+
+    Requests a specific set of the hypervisor API services, as per
+    the API_SET_VERSION call.  The input parameters are interpreted
+    identically to the corresponding parameters to the hypervisor
+    call.  The status and act-minor return values may be interpreted
+    identically to the return values from the API_SET_VERSION call,
+    except as noted below.
+
+    OBP is expected to interpret its input parameters, and may
+    return a status value of ENOTSUPPORTED or EINVAL if it cannot
+    support the requested API group and major number parameters,
+    even if the underlying sun4v implementation does support them.
+    If OBP supports the requested API group and major number, it may
+    negotiate a lower minor number than the minor number requested
+    by the caller.
+
+
+SUNW,get-sun4v-version ( group -- minor major status )
+
+    Returns the current version of the given API group, as
+    negotiated with the hypervisor via the SUNW,set-sun4v-version
+    CIF call.  Return values are interpreted as for the
+    API_GET_VERSION hypervisor call.

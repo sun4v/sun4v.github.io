@@ -1,0 +1,745 @@
+#pragma ident	"@(#)sun4v-binding.txt	1.15	05/03/14 SMI"
+Copyright 2004 Sun Microsystems Inc. All Rights Reserved.
+
+
+Title:		Sun4v Bus Binding to Open Firmware
+
+Date:		03/14/05
+
+Author:		David.Kahn@sun.com
+
+Abstract:	This document specifies the application of
+		Open Firmware to the Sun4v Virtual Bus.
+		This document also specifies the characteristics
+		of the sun4v bus.
+
+1. Overview and References
+
+	This document describes the characteristics and properties
+	of the Sun4v virtual bus. The sun4v bus is expected to be
+	used on a variety of systems, from small servers or desktop
+	machines through large servers.
+
+	The characteristics of the sun4v architecture from the
+	CPU point of view are defined in [8]. This document
+	describes the IO side of the architecture and the
+	Open-Firmware related interfaces required by a sun4v
+	"system" or "partition".
+
+	The Sun4v bus supports three address spaces:
+
+	- Cacheable address space
+	- Non-cacheable address space
+	- Configuration address space
+
+	The cacheable address space is typically used for memory.
+	sun4v requires that all memory (RAM) be addressed using
+	the cacheable address space.
+
+	The non-cacheable address space is typically used to access
+	io host bridges and devices.
+
+	Configuration address space provides a virtual geographical
+	address space, used for probing and identifying devices and
+	CPUs.
+
+	Specific CPUs and host bridges are not defined in this
+	document, but this document may include requirements
+	in the application of Open Firmware on those "devices".
+
+
+1.1. References
+
+	[1] IEEE Std 1275-1994 Standard for Boot (Initialization,
+	    Configuration) Firmware, Core Practices and Requirements.
+
+	[2] Core Errata, IEEE P1275.7
+
+	[3] Fusion OpenBoot Information Doc
+
+	[4] Safari Bus Bindings - FWARC/2000/033
+
+	[5] Safari Binding Updates - FWARC/2000/331
+
+	[6] Jbus Extensions to Safari Bindings - FWARC/2002/626
+
+	[7] Sun4v Architecture Specification - 
+	    http://projectq.sfbay/docs/sun4v.pdf
+
+1.2. Definition of Terms
+
+	Bus Node - A device node that represents a sun4v virtual bus
+
+	Child Node - A device node that represents a sun4v device.
+
+
+2. Bus Characteristics
+
+	This section defines the address formats of the sun4v bus and the
+	format of device mondo vector interrupts on the sun4v bus.
+
+2.1. Address Spaces
+
+	The sun4v bus defines three distinct address spaces.
+
+	- A cacheable address space used for memory access.
+
+	- A non-cacheable address space used for io device access.
+
+	- A configuration address space used for virtual geographical
+	  probing and presentation of devices and cpus.
+
+2.1.1. Configuration Space
+
+	Configuration space is a special virtual address space used for
+	geographical representation of devices.  All devices, including
+	CPUs must export a configuration space address, however, the
+	size of a device's configuration space must be zero.
+
+	The configuration address is used to supply a pseudo-geographical
+	address for all sun4v devices.
+
+	The first "reg" entry of a sun4v child node with addressable
+	resources must contain a configuration space address which is
+	used to create the unit-address of the device.
+
+	NOTE: pseudo device nodes, memory, virtual-memory and other nodes
+	representing non-addressable resources with no unit address that do
+	not have a "reg" property are not required to have a configuration
+	address. (Example: /memory /virtual-memory /packages /aliases
+	/options /openprom, etc).
+
+2.1.2. Cacheable Address Space
+
+	Cacheable address space is typically used for load/store cycles
+	to memory (RAM) with no side effects when reading or writing
+	this address space, thus, devices capable of playing the
+	cache coherency protocol may internally cache data that exists
+	in this address space.
+
+2.1.3. Non-Cacheable Address Space
+
+	Non-cacheable address space is typically used for load/store
+	cycles to IO devices that have side effects when reading or
+	writing these addresses. (For example, writing a device
+	register or reading a device FIFO.)
+
+2.2. Address Formats and Representations
+
+	Note: The use of the term "physical address" in this document does
+	not imply a system physical address. In general it actually
+	implies a "real" address in Sun4v Architecture terminology.
+
+2.2.1. Address Formats
+
+	Sun4v addresses have 2 address cells and 2 size cells.  Thus the
+	#address-cells property in the root node must be the default value of 2
+	and need not be present. The #size-cells property in the root node
+	must be the non-default value of 2, and must be present.
+
+2.2.1.1. Numerical Representation
+
+	The address format is two 32-bit cells, real.hi, real.lo.
+	The numerical representation is given in the following table:
+
+
+	 63-60--------------------------------32
+	 |  |				       |
+	 ssss.hhhh.hhhh.hhhh.hhhh.hhhh.hhhh.hhhh
+
+	31-------------------------------------0
+	 |				       |
+	 llll.llll.llll.llll.llll.llll.llll.llll
+
+	The size format is two 32-bit cells, size.hi, size.lo. The first
+	cell represents the most significant bits of a 64-bit number and
+	the second cell represents the low order 32-bits of the 64-bit number.
+	The 64-bit number is the size of the resource in bytes. A size value
+	of 0 means there are no addressable resources.
+
+	Where
+
+	ssss - defines the address type
+
+		0000  - Cacheable Memory Address Space
+		1000  - Non-Cacheable IO Address Space
+		1100  - Non-Cacheable Configuration Space
+
+		All remaining encodings of ssss are reserved.
+
+
+	hh...hh - Upper address bits.
+
+		The upper (most significant) offset or address bits.
+
+	ll...ll - Lower address bits.
+
+		The lower (least significant) offset or address bits.
+
+	For ssss 0000, hh...hh and ll..ll define a cacheable memory address.
+
+		hh..hh are the most significant memory address bits.
+		ll..ll are the least significant memory address bits.
+
+		Note that the sun4v address (sun4v tte format)
+		allows only a 56-bit address, thus the upper 4 hhhh
+		bits must be zero.
+
+	For ssss 1000, hh..hh and ll..ll define a non-cacheable io address.
+
+		hh..hh are the most significant io address bits.
+		ll..ll are the least significant io address bits.
+
+		Note that the sun4v address (sun4v tte format)
+		allows only a 56-bit address, thus the upper 4 hhhh
+		bits must be zero.
+
+	For ssss 1100, hh..hh and ll..ll defines a non-cacheable
+		sun4v-bus configuration space address.
+
+		hh..hh are the most significant address bits
+		and encode the device number of the io device.
+
+		ll..ll are the least significant address (offset) bits
+		within a devices configuration space.
+
+		All CPUs and IO devices (real or virtual) must have a config
+		space address as their first 'reg' property entry. The ll..ll
+		bits of the first entry must be zero.
+
+		The size field of a configuration address must be zero.
+
+
+2.2.1.2. Text Representation
+
+	Note that sun4v child nodes are required to export a configuration
+	space address as the first entry in their "reg" property. Thus, the
+	cacheable memory space and non-cacheable io space textual formats
+	are rarely used. Only the DDDDDDD form is used for unit-address and
+	device path representation.
+
+
+	For ssss = 0 (memory address space):
+
+	mUUUUUUU,LLLLLLLL
+
+	where	"m" is the literal character 'm',
+		"," is the literal character ','
+		UUUUUUU is the hex-ASCII representation of the hh..hh bits.
+		LLLLLLLL is the hex-ASCII representation of the ll..ll bits.
+		For UU..UU and LL..LL, leading zeros may be omitted.
+
+	The canonical form of a memory space address omits leading zeros
+	and uses the lower case characters "a" through "f" to represent
+	the corresponding hex-ASCII digits.
+
+	For ssss = 1000 (io address space):
+
+	iHHHHHHH,LLLLLLLL
+	iHHHHHHH
+
+	where	"i" is the literal character 'i',
+		"," is the literal character ','
+		HHHHHHH is the hex-ASCII representation of the hh..hh bits.
+		LLLLLLLL is the hex-ASCII representation of the ll..ll bits.
+		For HH..HH and LL..LL, leading zeros may be omitted.
+		Together the hh..hh and ll..ll bits form a 60 bit number
+		which represents the io space address. hh..hh are the
+		upper 28 bits and ll..ll are the lower 32-bits of the
+		io space address.
+
+		If the ll..ll bits are zero, the second form may be
+		used in which ",LLLLLLLL" is omitted.
+
+	The canonical form of an io space address uses the first form,
+	omits leading zeros, uses the lower case characters "a" through "f"
+	to represent the corresponding hex-ASCII digits and uses a single
+	'0' character to represent LLLLLLLL when the ll..ll bits are zero.
+
+	For ssss = 1100 (sun4v bus io configuration space):
+
+	DDDDDDD
+
+	where	DDDDDDD is the hex-ASCII representation of the device number
+		which is encoded as a 28-bit value in the hhhhhhh bits.
+		Leading zeros may be omitted.
+
+	The canonical form of a sun4v configuration space address
+	omits leading zeros, uses the lower case characters "a" through "f"
+	to represent the corresponding hex-ASCII digits and a single '0'
+	to represent DDDDDDD when the hh..hh bits are all zero.
+
+2.2.1.3. Unit Address Representation
+
+	The unit-address format is described by the canonical form
+	of the configuration address representation defined above.
+	(The DDDDDDD form, example: /pci@1000 or /cpu@100)
+
+
+2.3. Device Mondo Vector Interrupts
+
+	The Sun4v Architecture specification [8] defines the
+	method for communicating 'interrupts' across the
+	sun4v bus as dev_mondo. The device mondo queue contains
+	8 64-bit entries.
+
+	This section reserves the first 64-bit entry of the
+	dev_mondo interrupt record. The first 64-bit entry
+	of the dev_mondo will contain the local platform-specific
+	value, as translated and returned by a hypervisor API
+	defined elsewhere.
+
+	Device's are permitted to define their own format
+	for the remaining 7 64-bit entries.
+
+2.3.1. Device Mondo Vector Format
+
+	The first 64-bit entry of the dev_mondo queue record
+	contains a "platform specific" value. A hypervisor API
+	will define a method to translate the sun4v bus interrupt
+	format to the local platform-specific value.
+
+	Interrupts are exported via the device tree using "interrupts",
+	and the "interrupt-map" properties. The sun4v "interrupt" format
+	consists of a single cell (32-bit) integer containing the
+	relative interrupt number within that sun4v device. (Typically
+	a small integer, defined by the device, ranging from 0-63. Note
+	there is no architectural limitation of 64 interrupt numbers
+	per device, this is just an example for current devices.)
+
+3. Bus Node Properties and Methods
+
+	This section defines properties and methods for the sun4v
+	bus node.
+
+3.1. Bus Node Properties
+
+3.1.1. Open Firmware Defined Properties for Bus Nodes
+
+	"device_type"					S
+
+		Standard propname to specify the device type.
+
+		A package conforming to this specification that implements
+		the "sun4v" bus type shall implement this property with the
+		encoded string value "sun4v".
+
+	"#address-cells"				S
+
+		Standard propname to specify the address format.
+
+		The value of the #address-cells for the sun4v bus
+		node shall be the encoded integer value 2.
+
+		Note: Since the default value for the #address-cells
+		property is the encoded integer value 2, this property
+		is optional. (The absence of the property implies the
+		default value of 2.)
+
+	"#size-cells"					S
+
+		Standard propname to specify the packages size format.
+
+		The value of the #size-cells property shall be the encoded
+		integer value 2.
+
+	"#interrupt-cells"				S
+
+		Standard propname to specify the packages interrupt
+		format.
+
+		The value of the #interrupt-cells property shall be the
+		encoded integer value 1.
+
+		The interrupt format is a single cell-sized integer
+		per interrupt, which defines the sun4v devices interrupt
+		number (local ino).
+
+		Note: Since the default value for the #interrupt-cells
+		property is the encoded integer value 1, this property
+		is optional. (The absence of the property implies the
+		default value of 1.)
+
+3.1.2. Bus Specific Properties for Bus Nodes
+
+	"clock-frequency"
+		Type: Prop-encoded array, a single encoded integer.
+		Contents: Defines the sun4v bus frequency in hertz.
+
+	"stick-frequency"
+		Type: Prop-encoded array, a single encoded integer.
+		Contents: Represents the system tick frequency in hertz
+		as defined by the %stick register.
+
+3.2. Bus Node Methods
+
+3.2.1. Open Firmware Defined Methods for Bus Nodes
+
+	A Standard Package implementing the "sun4v" device type shall support
+	the following standard methods as defined in Open Firmware, with
+	address representations as specified in 2.1 of this document.
+
+	open		( -- okay? )			M
+		Prepare this device for subsequent use.
+
+	close		( -- )				M
+		Close this previously opened device.
+
+	decode-unit	( unit-str unit-len -- addr.lo addr.hi )	M
+		Convert text unit-string to device address.
+
+	encode-unit	( addr.lo addr.hi -- unit-str unit-len ) M
+		Convert device address to text unit-string.
+
+	map-in		( real.lo real.hi size -- virt )	M
+		Map the specified region; return a virtual address.
+
+	map-out		( virt size -- )			M
+		Destroy mapping from previous map-in.
+
+
+3.2.2. Bus Specific Methods for Bus Nodes
+
+	None.
+
+3.3. Bus Specific User Interfaces
+
+	None.
+
+4. Child Node Properties and Methods
+
+	This section defines properties and methods for sun4v child nodes.
+
+4.1. Child Node Properties
+
+4.1.1. Open Firmware Defined Properties for Child Nodes
+
+	"name"							S
+
+		Standard propname. Defines the name of the device.
+
+	"compatible"						S
+
+		Standard propname. Defines list of compatible devices.
+		This property is optional.
+
+	"reg"							S
+
+		Standard propname. Defines the addressable space of the device.
+
+		The property value consists of a set of {addr, size} pairs.
+		The first pair must contain the devices configuration space
+		address. The size field of the first pair must be zero.
+
+	"status"						S
+
+		Standard propname. Defines the operational status of
+		the device. This property is optional.
+
+	"interrupts"						S
+
+		Standard propname. Defines device mondo interrupt values
+		exported by this device. This property is optional.
+
+		Note: The interrupt format is a single cell-sized integer
+		defining the local interrupt number (relative ino) of
+		the device interrupt. Typically, for existing platforms,
+		that number is an integer in the range 0..63. The values
+		depend on the programming model of the device.
+
+4.1.2. Bus Specific Properties for Child Nodes
+
+	None.
+
+4.2. Child Node Methods
+
+	Child node methods depend on the programming model exported
+	by the child and are specified in device-specific bindings
+	for each child device.
+
+4.2.1. Open Firmware Defined Methods for Child Nodes
+
+	open ( -- okay? )					M
+		Prepare this device for subsequent use.
+
+	close ( -- )						M
+		Close this previously opened device.
+
+4.2.2. Bus Specific Methods for Child Nodes
+
+	None.
+
+5. Device Bindings
+
+5.1. Virtual CPU nodes.
+
+	Virtual CPUs are exported as sun4v "devices", one node per
+	CPU thread. No specific information about the specific
+	CPU or chip topology is included in the device tree.
+
+	Each CPU node shall contain the following properties.
+
+	"name"								S
+		Standard propname, specifies the node name.
+		Value: "cpu"
+
+	"reg"								S
+		Standard propname, specifies the addressable resources
+		of the device.
+
+		A single sun4v bus reg-entry, containing the sun4v
+		configuration address of the CPU node.
+
+		Note: Virtual CPU nodes are children of "sun4v".
+		The "reg" format for sun4v children is defined
+		in section 2.2.
+
+	"device_type"							S
+		Standard propname, defines the device programming model.
+
+		Value: A single encoded string with the value "cpu"
+
+	"compatible"							S
+		Standard propname, defines devices with which this device
+		is compatible.
+
+		Value: A single encoded-string with the value
+		   "SUNW,sun4v-cpu"
+
+5.2. Requirements for Virtual IO Bridges
+
+	This binding does not include the specification for specific
+	virtualized IO bridges.
+
+	The device binding for virtualized IO bridges will be specified
+	in separate documents and shall be compliant with this specification.
+
+5.3. "virtual-devices" Device Binding
+
+	This section specifies the device binding for the "virtual-devices"
+	child node of the sun4v bus node.
+
+	A package compliant with this specification shall implement
+	the interfaces described in this section of this document.
+
+	"virtual-devices" contains a collection of virtualized IO devices
+	aggregated by the system, such as console services that must be
+	virtualized on sun4v systems.
+
+	Children of the "virtual-devices" package do not contain any load/store
+	register space.  Their services are exported via methods.  Thus,
+	their address format consists of a single address call containing a
+	pseudo-device number and zero size cells.
+
+	The numeric form is simply a 32-bit pseudo device number,
+	dddd.dddd.dddd.dddd.dddd.dddd.dddd.dddd
+
+	The textual format is DDDDDDDD where DDDDDDDD is the hex-ASCII
+	representation of the dd..dd bits. Leading zeros may be omitted.
+
+	The canonical form of a "virtual-device" address omits leading zeros
+	and uses the lower case characters "a" through "f" to represent
+	the corresponding hex-ASCII digits and a single '0' to represent
+	DDDDDDDD when the dd..dd bits are all zero.
+
+	The interrupt property format for child nodes is a cell-sized integer
+	containing the interrupt number within that device. Child interrupts
+	are numbered 1 .. n in each child.
+
+	Note: In the remainder of this chapter, "bus node" refers to the
+	"virtual-devices" node, and "child node" refers to children of
+	the "virtual-devices" node.
+
+5.3.1. Bus Node Properties and Methods.
+
+5.3.1.1. Open Firmware Defined Properties for Bus Nodes.
+
+	"name"							S
+		Standard propname, defines the device name
+
+		The value is an encoded-string with the value
+		"virtual-devices".
+
+	"device_type"						S
+		Standard propname, defines the device programming model.
+
+		A package conforming to this specification that implements
+		the "virtual-devices" bus type shall implement this property
+		with the encoded string value "virtual-devices".
+
+	"compatible"						S
+		Standard propname, defines compatible devices.
+
+		For this version of this specification, the
+		content is a single encoded string with
+		the value "SUNW,sun4v-virtual-devices"
+
+	"reg"							S
+		Standard propname, defines the devices addresses.
+
+		Contains a single entry with the config
+		space address of the "virtual-devices" node.
+		The size of the config space entry must be zero.
+
+	"#address-cells"					S
+		Standard propname, defines the child address format.
+
+		A single encoded integer with the value 1.
+
+	"#size-cells"						S
+		Standard propname, defines the child size format.
+
+		A single encoded integer with the value 0.
+
+		Note: Indicates no addressable resources in child nodes.
+
+	"#interrupt-cells"					S
+		Standard propname, defines the child interrupt format
+
+		A single encoded integer with the value 1.
+
+		Note: Since the value is the default value, this
+		property is optional.
+
+	"interrupt-map-mask"					S
+		Standard propname, defines the interrupt map mask
+		used when translating interrupts from child interrupt format
+		to parent interrupt format. Consists of a pair of entries
+		of the form unit-address-mask, child-ispec.
+
+		Value depends on child devices interrupts.
+
+	"interrupt-map"
+		Standard propname, defines the interrupt map used when
+		translating interrupts from child format to parent format.
+
+		Value depends on child devices.
+
+5.3.1.2. Bus Defined Properties for Bus Nodes.
+
+	None.
+
+
+5.3.1.3. Open Firmware Defined Methods for Bus Nodes
+
+	open ( -- okay? )					M
+		Prepare this device for subsequent use.
+
+	close ( -- )						M
+		Close this previously opened device.
+
+	decode-unit	( unit-addr unit-len -- device.addr )	M
+		Convert text unit-string to virtual device address.
+
+	encode-unit	( device.addr -- unit-str unit-len ) M
+		Convert virtual device address to text unit-string.
+
+5.3.1.4. Bus defined Methods for Bus Nodes.
+
+	None.
+
+5.3.2.	Child Node Properties and Methods
+
+5.3.2.1. Open Firmware Defined Properties for Child Nodes.
+
+	"name"							S
+
+		Standard propname. Defines the name of the device.
+
+	"compatible"						S
+
+		Standard propname. Defines list of compatible devices.
+		This property is optional.
+
+	"reg"							S
+
+		Standard propname. Defines the geographical address
+		of the device for this bus. A single entry.
+
+	"interrupts"						S
+
+		Standard propname. Defines device interrupt values
+		exported by this device. This property is optional.
+
+5.3.2.2. Bus Defined Properties for Child Nodes.
+
+	None.
+
+5.3.2.3. Open Firmware Defined Methods for Child Nodes
+
+	open ( -- okay? )					M
+		Prepare this device for subsequent use.
+
+	close ( -- )						M
+		Close this previously opened device.
+
+5.3.2.4. Bus Specific Methods for Child Nodes
+
+	None.
+
+6. Device Interface Extensions
+
+	None.
+
+7. User Interface Extensions
+
+	None.
+
+8. Probe-list Format
+
+	None.
+
+9. Imported Interfaces
+
+9.1. Imported Client Interfaces
+
+9.1.1. SUNW,start-cpu-by-cpuid
+
+	SUNW,start-cpu-by-cpuid ( arg virt cpuid -- failed? )
+
+	Start the CPU given by the argument cpuid as follows:
+	Jump to the address given by the virt argument with
+	the 'arg' argument in %o0.
+
+	cpuid is the 28-bit geographical (config space)
+	address of the CPU derived from the hi address
+	cell of the first "reg" property entry in the
+	cpu node.
+
+	Imported from FWARC/2000/331
+
+9.1.2. SUNW,stop-cpu-by-cpuid
+
+	SUNW,stop-cpu-by-cpuid ( cpuid -- failed? )
+
+	Stop the CPU given by the argument cpuid.
+
+	Return non-zero status in the return value
+	failed? if the cpu could not be stopped
+
+	cpuid is the 28-bit geographical (config space)
+	address of the CPU derived from the hi address
+	cell of the first "reg" property entry in the
+	cpu node.
+
+	Imported from FWARC/2001/745
+
+9.1.3. SUNW,power-off
+
+	SUNW,power-off ( -- )
+
+	Guest exit.
+
+	See Also: "part_exit" API defined in
+	FWARC/2005/116 (Sun4v Core API).
+
+	Imported from FWARC/2000/420
+
+9.1.4. SUNW,retain
+
+	SUNW,retain ( name-cstr size align -- addr.lo addr.hi )
+
+	Allocate or return retained memory.
+
+	Imported from FWARC/2000/420
+

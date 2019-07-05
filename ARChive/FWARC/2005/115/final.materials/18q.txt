@@ -1,0 +1,193 @@
+				FWARC Questions
+				---------------
+
+1. What specifically is the proposal that we are reviewing?
+
+	This is the machine description component of the sun4v/projectQ case.
+	(FWARC/2004/510)
+
+	This case describes the machine description used by guests on a sun4v
+	processor based system to acertain details about the resources provided
+	within the guest's sun4v virtual machine environment.
+
+2. What is the motivation for it?
+
+	Allows a guest to obtain generic and specific information about
+	the virtual machine environment within which it is executing.
+
+3. What is its plan?
+
+     	Ships with the Ontario Platform
+
+4. Are there related projects in Sun?
+
+	This is part of the sun4v/ProjectQ umbrella case (2004/510)
+
+	sun4v umbrella 			FWARC/2004/510	20040618_ashley.saulsbury
+	sun4v core API			FWARC/2005/116	20050222_john.johnson.3
+	sun4v io-api			FWARC/2005/112	20050222_david.kahn.2
+	sun4v bus bindings		FWARC/2005/111	20050222_david.kahn
+	sun4v machine description	FWARC/2005/115	20050222_john.johnson.2
+	sun4v Ontario Interfaces	FWARC/2005/117	20050222_john.johnson.4
+	sun4v vBSC			FWARC/2005/081	20050208_jack.hayward
+	sun4v vendor-specific FCodes	FWARC/2005/114	20050222_john.johnson
+	sun4v "pci" device binding	TBD - fast-track
+
+5. What is the technical content of the project?
+
+	A binary transport (encoding) format and content binding information
+	for the virtual machine description.
+
+6. How is the project delivered into the system?
+
+	The machine description is exported by the hypervisor via an API service,
+	which is delivered as part of the platform firmware, and included
+	in the firmware consolidation.
+
+7. What are the project's hardware platform dependencies? Is it expected to
+work on all systems (Desktop thru servers)?
+
+	Expected to be used on any sun4v platform.
+
+8. What is its FW operational environment:
+
+	The sun4v core API document describes the API interface.
+
+	A hyperprivileged trap with arguments is used to request
+	that the hypervisor copy the binary format of the machine
+	description into a guest provided buffer.
+
+	The guest is then responsible for parsing the binary format
+	and content of the machine desription based on this
+	specification
+
+9. What is its user interface (tty, graphical, leds, sound, etc.)?
+
+	None.
+
+10. What are your project's other external interfaces (exported and
+imported)?
+
+	The retrieval API is defined in the Sun4v Core API (for CPUs and
+	memory).
+
+	The machine description content could be used by any OS
+	(linux, for example) and
+	has the potential for use with other non-sun4v platforms.
+
+	These interfaces are classified as "Sun Private".
+
+11. What are its other significant internal interfaces (inter-subsystem and
+inter-invocation)?
+
+	None.
+
+12. Is the interface extensible? How is the interface expected to evolve?
+
+   * How is versioning handled?
+
+	The transport format has a major number for incompatible
+	changes and minor number used to indicate backwards-compatible
+	changes such as the addition of new data types.  A consumer must
+	assume that a machine description with a transport major number
+	it was not written to handle is completely incompatible and not
+	parse it further.  It may parse a machine description with a
+	minor number outside its range but may encounter nodes or
+	properties it does not understand and must ignore them.
+	That will not pose a problem for a properly-written consumer.
+
+	The content contains a single version number to indicate major
+	revisions to the content which may not be backwards compatible.
+	A consumer should not use a machine description where the
+	contents have a major number it does not expect.
+
+
+   * What was the commitment level of the previous version? Can this version
+     co-exist with existing standards and with earlier and later versions or
+     with alternative implementations (perhaps by other vendors)?
+
+	N/A. This is the first version.
+
+	The versioning and interfaces are designed to allow evolution.
+	A given platform can decide to support the current version and/or
+	future versions of the transport format and/or the content,
+	depending on the requirements of the platform.
+
+	New content can be added (and optional content removed) in a
+	compatible way without requring changes to the version interface or
+	consumers/ or
+	consumers.
+
+   * What are the clients over which a change should be managed? How is
+     transition to a new version to be accomplished? What are the
+     consequences to ISV's and their customers?
+
+	The clients are any code executing within a sun4v virtual
+	machine environment. (For example, OpenBoot and Solaris).
+
+   * Does this scale from low-end Desktops to high-end Servers? What, if
+     any, trade-offs are involved?
+
+	Yes it scales. No known tradeoffs.
+
+13. How do the interfaces adapt to a changing world?
+
+   * What is its relationship with (or difficulties with) System Service
+     Processors?
+
+	Depending upon the capabilities of the service processor, some
+	or all of the information in the machine desciption may be derived from
+	or generated by the service processor / service entity and provided to
+	the hypervisor. The hypervisor is always responsible for providing the
+	machine descirption to the guest.
+
+   * What security issues do you address in your project?
+
+	None / N/A.
+
+14. What internationalization issues are involved?
+
+	N/A
+
+15. How will the project contribute (positively or negatively) to "system
+load" and "perceived performance":
+
+	The machine description by itself has no direct impact on system performance.
+	The machine description provides information that may be used by
+	operating system code to optimize behavior of the system.
+	See FWARC/2004/510
+
+16. How does the project deal with failure and recovery?
+
+   * How will it respond to failures? (Does it ever require reset? Use of
+     stop key? Can it lock up?)
+
+	N/A
+
+   * Does it attempt to isolate and contain the failure to allow for
+     automatic recovery?
+
+	N/A
+
+   * How does it communicate a fault event? Does it depend on a working
+     console device?
+
+	N/A
+
+17. Issues? Please identify the issues which you would like the ARC to
+address.
+
+	None.
+
+18. Appendices:
+
+	See case materials.
+
+19. Security
+
+	The generator of a machine description is responsible for
+	ensuring that only information relevent to the specific virtual machine
+	environment is present in the machine description.
+
+#pragma ident	"@(#)fwarc-18Q.txt	1.3	03/08/21 SMI"
+

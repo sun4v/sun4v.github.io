@@ -1,0 +1,504 @@
+From sacadmin Mon Mar 31 13:34:30 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m2VKYTZG009427
+	for <fwarc@sac.sfbay.Sun.COM>; Mon, 31 Mar 2008 13:34:29 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m2VKYKY2005763
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 1 Apr 2008 04:34:28 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JYM0071Z3TEPO00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Mon, 31 Mar 2008 13:34:26 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JYM0013B3TCBEA0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Mon, 31 Mar 2008 13:34:24 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m2VKYOPn017931	for
+ <fwarc@Sun.COM>; Mon, 31 Mar 2008 20:34:24 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JYM00K010UKS100@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Mon, 31 Mar 2008 14:34:24 -0600 (MDT)
+Received: from dhcp-ubur03-180-145.East.Sun.COM ([129.148.180.145])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JYM00JWF3SJVZ90@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Mon, 31 Mar 2008 14:33:56 -0600 (MDT)
+Date: Mon, 31 Mar 2008 16:33:53 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: FWARC/2008/228 - VIO vNet/vSwitch changes to support VLANs -
+ fast-track timeout April 7, 2008
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>
+Message-id: <36A24918-7F16-444F-BDAE-E2E091BB18A9@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.919.2)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 1326
+
+I am sponsoring this fast-track case for Sriharsha Basavapatna. This  
+case
+extends both the VIO protocol and VIO MD node specifications for LDoms
+virtual network and switch devices in order to support virtual LANs  
+(VLANs)
+as defined by the IEEE 802.1Q specification.
+
+The VIO protocol specification was approved under FWARC/2006/195 and  
+then
+modified under FWARC/2006/583, FWARC/2006/602, FWARC/2007/672, and
+FWARC/2008/017. The VIO MD specification was approved under FWARC/ 
+2006/072
+and then modified under FWARC/2006/122, FWARC/2007/363 and FWARC/ 
+2008/016.
+
+This case will be approved for minor/micro/patch OS binding and
+minor/micro binding for the firmware.
+
+All of the changes are highlighted in the updated document which
+can be found at:
+
+http://sac.sfbay.sun.com/arc/FWARC/2008/228/materials/vio-protocol-update-5.pdf
+http://sac.sfbay.sun.com/arc/FWARC/2008/228/materials/vio-md-nodes-v6.pdf
+
+Brief description of the changes are:
+
+- Extension of the VIO protocol for virtual network and switch devices  
+to
+   support VLANs as defined in sec 1.1.6.4 of the VIO protocol  
+specification
+- Addition of new MD properties to the 'virtual-device' node as defined
+   in section 1.1.3 of VIO MD spec.
+- Addition of new MD properties to the 'virtual-device-port' node as
+   defined in section 1.1.4 of VIO MD spec.
+
+
+From sacadmin Fri Apr  4 12:13:12 2008
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m34JDCVw006442
+	for <fwarc@sac.sfbay.sun.com>; Fri, 4 Apr 2008 12:13:12 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m34JDAIP012750
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 4 Apr 2008 13:13:12 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JYT00D0ZEPZ1Y00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Apr 2008 13:13:11 -0600 (MDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JYT00AYHEPXVV10@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Apr 2008 13:13:10 -0600 (MDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m34JD9QR001426	for
+ <fwarc@sun.com>; Fri, 04 Apr 2008 12:13:09 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JYT00H01EGUFA00@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 04 Apr 2008 12:13:09 -0700 (PDT)
+Received: from [129.150.37.96] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JYT002FUEPVIR80@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Apr 2008 12:13:08 -0700 (PDT)
+Date: Fri, 04 Apr 2008 12:15:05 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC/2008/228 - VIO vNet/vSwitch changes to support VLANs -
+ fast-track timeout April 7, 2008
+In-reply-to: <36A24918-7F16-444F-BDAE-E2E091BB18A9@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>
+Message-id: <47F67E39.9040106@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_W2JZemLF0Mc3A0gQgaj1Jw)"
+X-PMX-Version: 5.4.1.325704
+References: <36A24918-7F16-444F-BDAE-E2E091BB18A9@Sun.COM>
+User-Agent: Thunderbird 2.0.0.12 (Windows/20080213)
+Status: RO
+Content-Length: 4973
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_W2JZemLF0Mc3A0gQgaj1Jw)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+Narayan Venkat wrote:
+> I am sponsoring this fast-track case for Sriharsha Basavapatna. This case
+> extends both the VIO protocol and VIO MD node specifications for LDoms
+> virtual network and switch devices in order to support virtual LANs 
+> (VLANs)
+> as defined by the IEEE 802.1Q specification.
+>
+> The VIO protocol specification was approved under FWARC/2006/195 and then
+> modified under FWARC/2006/583, FWARC/2006/602, FWARC/2007/672, and
+> FWARC/2008/017. The VIO MD specification was approved under 
+> FWARC/2006/072
+> and then modified under FWARC/2006/122, FWARC/2007/363 and 
+> FWARC/2008/016.
+>
+> This case will be approved for minor/micro/patch OS binding and
+> minor/micro binding for the firmware.
+>
+> All of the changes are highlighted in the updated document which
+> can be found at:
+>
+> http://sac.sfbay.sun.com/arc/FWARC/2008/228/materials/vio-protocol-update-5.pdf 
+>
+> http://sac.sfbay.sun.com/arc/FWARC/2008/228/materials/vio-md-nodes-v6.pdf
+>
+> Brief description of the changes are:
+>
+> - Extension of the VIO protocol for virtual network and switch devices to
+>   support VLANs as defined in sec 1.1.6.4 of the VIO protocol 
+> specification
+> - Addition of new MD properties to the 'virtual-device' node as defined
+>   in section 1.1.3 of VIO MD spec.
+> - Addition of new MD properties to the 'virtual-device-port' node as
+>   defined in section 1.1.4 of VIO MD spec.
+>
+
+Hi Narayan,
+
+The changes looks fine to me but I don't see interface table
+in the case directory.  Can you please add that to the case
+materials?
+
+Also, do you expect any OpenBoot changes to support vLANs?
+I don't expect so but want to make sure.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_W2JZemLF0Mc3A0gQgaj1Jw)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+Narayan Venkat wrote:
+<blockquote cite="mid:36A24918-7F16-444F-BDAE-E2E091BB18A9@Sun.COM"
+ type="cite">I am sponsoring this fast-track case for Sriharsha
+Basavapatna. This case
+  <br>
+extends both the VIO protocol and VIO MD node specifications for LDoms
+  <br>
+virtual network and switch devices in order to support virtual LANs
+(VLANs)
+  <br>
+as defined by the IEEE 802.1Q specification.
+  <br>
+  <br>
+The VIO protocol specification was approved under FWARC/2006/195 and
+then
+  <br>
+modified under FWARC/2006/583, FWARC/2006/602, FWARC/2007/672, and
+  <br>
+FWARC/2008/017. The VIO MD specification was approved under
+FWARC/2006/072
+  <br>
+and then modified under FWARC/2006/122, FWARC/2007/363 and
+FWARC/2008/016.
+  <br>
+  <br>
+This case will be approved for minor/micro/patch OS binding and
+  <br>
+minor/micro binding for the firmware.
+  <br>
+  <br>
+All of the changes are highlighted in the updated document which
+  <br>
+can be found at:
+  <br>
+  <br>
+<a class="moz-txt-link-freetext" href="http://sac.sfbay.sun.com/arc/FWARC/2008/228/materials/vio-protocol-update-5.pdf">http://sac.sfbay.sun.com/arc/FWARC/2008/228/materials/vio-protocol-update-5.pdf</a>
+  <br>
+<a class="moz-txt-link-freetext" href="http://sac.sfbay.sun.com/arc/FWARC/2008/228/materials/vio-md-nodes-v6.pdf">http://sac.sfbay.sun.com/arc/FWARC/2008/228/materials/vio-md-nodes-v6.pdf</a>
+  <br>
+  <br>
+Brief description of the changes are:
+  <br>
+  <br>
+- Extension of the VIO protocol for virtual network and switch devices
+to
+  <br>
+&nbsp; support VLANs as defined in sec 1.1.6.4 of the VIO protocol
+specification
+  <br>
+- Addition of new MD properties to the 'virtual-device' node as defined
+  <br>
+&nbsp; in section 1.1.3 of VIO MD spec.
+  <br>
+- Addition of new MD properties to the 'virtual-device-port' node as
+  <br>
+&nbsp; defined in section 1.1.4 of VIO MD spec.
+  <br>
+  <br>
+</blockquote>
+<font size="+1"><br>
+Hi Narayan,<br>
+<br>
+The changes looks fine to me but I don't see interface table<br>
+in the case directory.&nbsp; Can you please add that to the case<br>
+materials?<br>
+<br>
+Also, do you expect any OpenBoot changes to support vLANs?<br>
+I don't expect so but want to make sure.<br>
+<br>
+<br>
+Thanks.<br>
+</font><br>
+<pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_W2JZemLF0Mc3A0gQgaj1Jw)--
+
+From sacadmin Fri Apr  4 12:30:11 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m34JUB4e006594
+	for <fwarc@sac.sfbay.sun.com>; Fri, 4 Apr 2008 12:30:11 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m34JU3nL024963
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 4 Apr 2008 20:30:10 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JYT00E25FI9F000@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Apr 2008 13:30:09 -0600 (MDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JYT00AVMFI9VT20@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Apr 2008 13:30:09 -0600 (MDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m34JU9cJ002586	for
+ <fwarc@sun.com>; Fri, 04 Apr 2008 19:30:09 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JYT00E01C8BXD00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 04 Apr 2008 13:30:08 -0600 (MDT)
+Received: from dhcp-ubur03-180-145.East.Sun.COM ([129.148.180.145])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JYT00HB0FI0H080@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 04 Apr 2008 13:30:01 -0600 (MDT)
+Date: Fri, 04 Apr 2008 15:30:00 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: FWARC/2008/228 - VIO vNet/vSwitch changes to support VLANs -
+ fast-track timeout April 7, 2008
+In-reply-to: <47F67E39.9040106@sun.com>
+Sender: Narayan.Venkat@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>, Firmware Arch <fwarc@sun.com>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>
+Message-id: <37D9268C-79AD-4CD5-9D4B-F948A89F7F8D@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.919.2)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <36A24918-7F16-444F-BDAE-E2E091BB18A9@Sun.COM>
+ <47F67E39.9040106@sun.com>
+Status: RO
+Content-Length: 2082
+
+
+On Apr 4, 2008, at 3:15 PM, Hitendra Zhangada wrote:
+
+> Narayan Venkat wrote:
+>>
+>> I am sponsoring this fast-track case for Sriharsha Basavapatna.  
+>> This case
+>> extends both the VIO protocol and VIO MD node specifications for  
+>> LDoms
+>> virtual network and switch devices in order to support virtual LANs  
+>> (VLANs)
+>> as defined by the IEEE 802.1Q specification.
+>>
+>> The VIO protocol specification was approved under FWARC/2006/195  
+>> and then
+>> modified under FWARC/2006/583, FWARC/2006/602, FWARC/2007/672, and
+>> FWARC/2008/017. The VIO MD specification was approved under FWARC/ 
+>> 2006/072
+>> and then modified under FWARC/2006/122, FWARC/2007/363 and FWARC/ 
+>> 2008/016.
+>>
+>> This case will be approved for minor/micro/patch OS binding and
+>> minor/micro binding for the firmware.
+>>
+>> All of the changes are highlighted in the updated document which
+>> can be found at:
+>>
+>> http://sac.sfbay.sun.com/arc/FWARC/2008/228/materials/vio-protocol-update-5.pdf
+>> http://sac.sfbay.sun.com/arc/FWARC/2008/228/materials/vio-md-nodes-v6.pdf
+>>
+>> Brief description of the changes are:
+>>
+>> - Extension of the VIO protocol for virtual network and switch  
+>> devices to
+>>   support VLANs as defined in sec 1.1.6.4 of the VIO protocol  
+>> specification
+>> - Addition of new MD properties to the 'virtual-device' node as  
+>> defined
+>>   in section 1.1.3 of VIO MD spec.
+>> - Addition of new MD properties to the 'virtual-device-port' node as
+>>   defined in section 1.1.4 of VIO MD spec.
+>>
+>
+> Hi Narayan,
+>
+> The changes looks fine to me but I don't see interface table
+> in the case directory.  Can you please add that to the case
+> materials?
+
+I will do that.
+
+> Also, do you expect any OpenBoot changes to support vLANs?
+> I don't expect so but want to make sure.
+
+I don't expect it to.
+
+-Narayan
+
+
+>
+>
+>
+> Thanks.
+>
+> -- 
+> Hitendra Zhangada
+> =============================================
+> SPS Common SW Features Engineering
+> Software Group, Sun Microsystems, Inc.
+> Work Ph# (858) 625 3757, Ext. x53757
+> SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Mon Apr  7 20:43:52 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m383hppn012482
+	for <fwarc@sac.sfbay.sun.com>; Mon, 7 Apr 2008 20:43:51 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m383hfjM023425
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 8 Apr 2008 04:43:50 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JYZ0090NMD1K500@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Mon, 07 Apr 2008 21:43:49 -0600 (MDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JYZ00B6FMD03ZD0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Mon, 07 Apr 2008 21:43:48 -0600 (MDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m383hm0L026120	for
+ <fwarc@Sun.COM>; Tue, 08 Apr 2008 03:43:48 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JYZ00H01MAF5D00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Mon, 07 Apr 2008 21:43:48 -0600 (MDT)
+Received: from [192.168.1.103] ([72.93.34.177])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0JYZ0000BMC5N4E0@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Mon, 07 Apr 2008 21:43:48 -0600 (MDT)
+Date: Mon, 07 Apr 2008 23:43:47 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: FWARC/2008/228 - VIO vNet/vSwitch changes to support VLANs -
+ fast-track timeout April 7, 2008
+In-reply-to: <36A24918-7F16-444F-BDAE-E2E091BB18A9@Sun.COM>
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>
+Message-id: <554AB3CD-70DE-4C93-8140-60D76BEE5592@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.919.2)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <36A24918-7F16-444F-BDAE-E2E091BB18A9@Sun.COM>
+Status: RO
+Content-Length: 1542
+
+This fast-track case has timed out and is now approved.
+
+IAM file has been updated.
+
+Thanks
+-Narayan
+
+On Mar 31, 2008, at 4:33 PM, Narayan Venkat wrote:
+
+> I am sponsoring this fast-track case for Sriharsha Basavapatna. This  
+> case
+> extends both the VIO protocol and VIO MD node specifications for LDoms
+> virtual network and switch devices in order to support virtual LANs  
+> (VLANs)
+> as defined by the IEEE 802.1Q specification.
+>
+> The VIO protocol specification was approved under FWARC/2006/195 and  
+> then
+> modified under FWARC/2006/583, FWARC/2006/602, FWARC/2007/672, and
+> FWARC/2008/017. The VIO MD specification was approved under FWARC/ 
+> 2006/072
+> and then modified under FWARC/2006/122, FWARC/2007/363 and FWARC/ 
+> 2008/016.
+>
+> This case will be approved for minor/micro/patch OS binding and
+> minor/micro binding for the firmware.
+>
+> All of the changes are highlighted in the updated document which
+> can be found at:
+>
+> http://sac.sfbay.sun.com/arc/FWARC/2008/228/materials/vio-protocol-update-5.pdf
+> http://sac.sfbay.sun.com/arc/FWARC/2008/228/materials/vio-md-nodes-v6.pdf
+>
+> Brief description of the changes are:
+>
+> - Extension of the VIO protocol for virtual network and switch  
+> devices to
+>  support VLANs as defined in sec 1.1.6.4 of the VIO protocol  
+> specification
+> - Addition of new MD properties to the 'virtual-device' node as  
+> defined
+>  in section 1.1.3 of VIO MD spec.
+> - Addition of new MD properties to the 'virtual-device-port' node as
+>  defined in section 1.1.4 of VIO MD spec.
+>
+
+

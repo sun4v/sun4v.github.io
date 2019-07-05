@@ -1,0 +1,156 @@
+
+1. Introduction
+   1.1. Project/Component Working Name:
+	PCI Address MD Node Properties
+
+   1.2. Name of Document Author/Supplier:
+	Stephen Ehring
+
+   1.3. Date of This Document:
+	04/21/2008
+
+   1.4. Email Aliases:
+    	1.4.1. Responsible Manager: Chad Solomon
+    	1.4.2. Responsible Engineer: Stephen Ehring
+	1.4.3. Interest List: David Kaffine
+
+2. Project Summary
+   2.1. Project Description:
+	A new property will be defined in a guest machine description that
+	will tell the guest what it should use forthe ranges property for
+        pci root nexus children
+
+   2.2. Risks and Assumptions:
+	These properties should pose no risk, and are required to use the same
+	vpci driver on different host to PCIE bridge architectures.
+
+3. Business Summary
+
+   3.1. Problem Area:
+	With the Fire ASIC and the PIU found in N2 and VF chips, the PCIE IO,
+	MEM32, and MEM64 addresses (the ones programmed into the BARs of PCIE 
+	devices) started at zero, with the base PCIE address corresponding to 
+	the base of the real address of that region (which is set by 
+	hypervisor in the mask and match registers of the chips). For example, 
+	one way to setup Fire's real addresses and PCIE addresses would be 
+	the following scheme:
+
+	Physical Addr    PCIe Addr    Note
+	---------------------------------------------
+	ea.00000000-    00000000-    2GB Mem32 space
+	ea.7fffffff     7fffffff
+
+	ec.00000000-    00000000-    4GB Unassigned space
+	ec.ffffffff     ffffffff     (space is unassigned to
+	                             prevent invalid aliaising
+				     and illegal PCI transactions
+				     by Fire ASIC)
+
+	ed.00000000-    1.00000000-  12GB Mem64 space
+	ef.ffffffff     3.ffffffff
+
+	With KT's host to PCIE bridge, the MEM64 PCIE address has been changed 
+	so that the PCIE address is the same as the real address, and is 
+	static (see the KT PRM [2] for details on the addressing scheme): 
+
+	Physical Addr    PCIe Addr    Note
+	---------------------------------------------
+	40.00000000-    00000000-    4GB Mem32 space
+	40.ffffffff     ffffffff
+
+	41.00000000-    41.00000000-    60GB Mem64 space
+	4f.ffffffff     4f.ffffffff
+
+	Ideally, the same guest PCIE root nexus driver will work in both cases, 
+	so we need to define a new property in the guest MD to allow the driver
+	to know what the PCIE base address is.
+
+4. Technical Description:
+    4.1. Details:
+        4.1.1 New property description:
+
+        Currently, a guest can get the real address ranges from the MD node 
+	property "address-ranges" which is described by [1] as a required property 
+	in any "pciex" type MD node:
+
+    Name              Tag        Req'd? Description
+    ----------------------------------------------------------------------
+    address-ranges    PROP_DATA  Yes  An array of 64 bit value pairs which
+                                      specifies the address ranges
+                                      available to this device. Each pair
+                                      contains a base and range value. The
+                                      first pair of the array specifies
+                                      the PCI IO space addresses, the
+                                      second pair specifies the PCI 32 bit
+                                      memory address ranges, and the final
+                                      pair specifies the 64 bit
+                                      prefetchable memory address ranges.
+    ----------------------------------------------------------------------
+
+        What is being proposed is to remove this property and add a new
+        property which will be similar in format to the actual ranges
+        property of the sun4v child device. The property will be an array
+        of 7 groups of 64 bit values, with each group of 7 values
+        representing a single entry in the ranges property. The first
+        three values will be the child-phys address cells (to use the
+        sun4v bus binding terminology, phys.hi, phys.mid, and phys.lo).
+        The second values will be the parent-phys cells (phys.hi and phys.lo)
+        and the last to values will be the size cells. Since the MD_PROP_DATA
+        arrays are arrays of 64 bit values but the Openboot device tree
+        properties are arrays of 32 bit cells, the upper 32 bits of each 64
+        bit MD property value will not be used.
+
+    Name              Tag        Req'd? Description
+    ----------------------------------------------------------------------
+    ranges            PROP_DATA  Yes  An array of 7 groups of 64 bit values
+                                      which specify an entry in the sun4v bus
+                                      child device's ranges property. The
+                                      first three values represent the
+                                      child-phys address, the second two
+                                      values represent the parent-phys
+                                      address, and the last two values
+                                      represent the size.
+    ----------------------------------------------------------------------
+
+        4.1.2 iodevice MD Node Specification:
+          
+        In addition to defining this new property, this case will define a new 
+	specification on the FWARC main page which contains all the information 
+	about the various iodevice nodes. Currently, the description of all of 
+	these nodes and properties is simply a section of a onepager that gets 
+	updated, with the most recent version found at [1].
+
+        This case will not modify any of those properties (with the exception 
+	of the ones being modified by this case) but will turn that document into an 
+	official specification which will make that information more accessible. 
+	The document that will become the specification can be found at [3].
+    
+    4.2.1 Imported Interfaces
+
+        Name                    Classification  Description
+        -----------------       --------------- -------------------
+        sun4v Machine           Sun Private     MD nodes definitions as
+        Description nodes                       defined by FWARC/2005/115
+
+        "iodevice" MD node      Committed       MD node name and properties as
+                                                described in FWARC 2007/070 and
+                                                updated by FWARC 2007/386
+
+    4.5.2 Exported Interfaces
+
+        Name                    Classification  Description
+        ----------------------  --------------  -------------------
+        "ranges"                Sun Private     MD node property defined
+        MD node property                        by this case
+
+
+5. Reference Documents:
+
+        [1] FWARC 2007/386 iodevice specification
+        http://sac.eng/Archives/CaseLog/arc/FWARC/2007/386/materials/updated-iodevice-details.txt
+        [2] KT PRM
+        https://systemsweb.sfbay.sun.com/kt/team/arch_specs/index.html
+
+        [3] iodevice MD Node Specification
+        iodevice.txt
+

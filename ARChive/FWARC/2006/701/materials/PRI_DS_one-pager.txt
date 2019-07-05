@@ -1,0 +1,268 @@
+1. Introduction
+   1.1. Project/Component Working Name:
+        PRI Domain Service
+
+   1.2. Name of Document Author/Supplier:
+        Kevin Rathbun
+
+   1.3. Date of This Document:
+        01/03/07
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+        1.4.1. The PAC or CPT you expect to review your project:
+                HS PAC
+
+        1.4.2. The ARC(s) you expect to review your project:
+                FWARC
+
+        1.4.3. The Director/VP who is "Sponsoring" this project:
+                Mike Sanfratello
+
+        1.4.4. The name of your business unit:
+                Systems Group (SG)
+                        (Sparc Platform Software)
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: gary.hethcoat@Sun.Com
+        1.5.2. Responsible Engineer: kevin.rathbun@sun.com
+        1.5.3. Marketing Manager: Nancy.Riley@Sun.COM
+        1.5.4. Interest List: N2-FRUID_info@sun.com
+
+2. Project Summary
+
+   2.1. Project Description:
+
+        This case describes the domain service interface through which a 
+        client obtains the Physical Resource Inventory (PRI).
+
+   2.2. Risks and Assumptions:
+
+        We need to time the changes such that both SP and Solaris changes are 
+        available and released at the same time.
+
+
+3. Business Summary
+   3.1. Problem Area:
+
+        Having complete identity information will reduce time to diagnose by
+        eliminating extra data gathering steps.  In many cases gathering this 
+        data will involve extra phone calls and/or emails to customer.  We 
+        need a way to provide specific FRUID information in FMA events to SP.
+
+        To address this problem we need a way to transport PRI information to
+        the Control Domain.   
+        
+        This project proposes an interface to deliver PRI information over
+        a domain service channel.
+
+   3.2. Market/Requester:
+        Huron/Maramba platforms, means to satisfy key requirement for
+        Serviceability (S12Y).
+
+   3.3. Business Justification:
+        Reduces problem remediation time (time spent by service team) 
+        Enables Automatic Radiance Case Creation and Routing (aka ACCR)
+        Estimated cost saving to Sun for Huron/Maramba only: @ $3.89 M 
+
+   3.4. Competitive Analysis:
+        As noted above, an enabler for ACCR, which improves Sun's service
+        call response time and accuracy.	
+
+   3.5. Opportunity Window/Exposure:
+        Solaris s10u4_b3
+
+   3.6. How will you know when you are done?:
+        When the changes are integrated into both Solaris Nevada
+        and S10u4_b3 as well as vBSC gates.
+
+4. Technical Description:
+
+    4.1 Overview
+
+         The PRI is intended to contain various kinds of information about a 
+         system.  Much of this information has previously been contained in
+         the Machine Description (MD).  The PRI domain service will facilitate
+         access to this information from the Control Domain.
+
+         The SC will generate the PRI and send PRI Update Messages to the
+         Control Domain to indicate that it has changed. The domain may then
+         send a request for the PRI, to which the SC responds by delivering
+         a message containing the PRI.
+
+    4.1.2 PRI domain service 1.0
+
+        The version of the domain service describe below is 1.0.
+    
+    4.1.2.1 Service ID
+
+        The following service ID should be added to the Domain Services
+        registry for the PRI service capabilities.
+
+        Service ID                Description
+        ----------                ----------------------------------
+        "pri"                     PRI domain service
+
+    4.1.2.2 Message Header Formats
+
+        All PRI Messages have the same header format consisting of a
+        Message Number and a Message Type.
+
+        The Message Number is a monotonically increasing number that uniquely 
+        identifies each message. Responses to messages are expected to use 
+        the same message number so that they can be paired with their original 
+        message. The Message Number may also be used to distinguish between
+        multiple instances of the same message type.
+
+        New messages may be issued without waiting for a response to a
+        preceding message.  The underlying transport protocol is responsible
+        to ensure reliable, in-order and unduplicated message packets.
+
+        Messages are to be processed in the order received.
+
+        The Message Type is used to distinguish the different message types.
+
+        Offset Size   Field name
+        ------ ----   ----------
+        0       8     Message Number
+        8       8     Message Type
+
+        Message Type  Value
+        ------------  -----
+        PRI Request   0
+        PRI Data      1
+        PRI Update    2
+
+    4.1.2.3 PRI Request Message
+
+        A PRI Request Message is sent by the client to request that
+        the current PRI be delivered.
+
+        The Message Number value will be used in the PRI Data Message
+        sent in response to this request.
+
+        The Message Type field should indicate a PRI Request Message.
+
+        There is no data payload for this message type.
+
+        Offset Size   Field name
+        ------ ----   ----------
+        0       8     Message Number
+        8       8     Message Type
+
+
+    4.1.2.4 PRI Data Message
+
+        A PRI Data Message is sent to the client in response to a request.
+        Its payload consists of the current version of the PRI.
+
+        The Message Number field contains the value in the request being
+        fulfilled. If the client has subsequently sent a new request the
+        service may choose to ignore a data response with an older number. 
+
+        The Message Type field should indicate a PRI Data Message.
+
+        The PRI field has variable length and corresponds to the complete PRI. 
+
+	The PRI Data follows the PRI Message Header and its size is determined 
+        by the PRI header itself which is specified in the sun4v machine 
+        description case imported by this case.
+
+        Offset Size   Field
+        ------ ----   ----------
+        0       8     Message Number
+        8       8     Message Type
+        16      Var   PRI Data
+
+    4.1.2.5 PRI Update Message
+    
+	The PRI update message is sent by the service asynchronously to the 
+        client indicating that an update to the PRI is available. The client is 
+        responsible for requesting the actual PRI data if and when it requires 
+        it after being notified of an update.
+
+	The service guarantees to send an update message if the PRI is modified 
+        at any time after a PRI data message has been sent.
+
+        A PRI Update Message contains a unique 64-bit number in the
+        Message Number field. Each PRI Update Message should be uniquely
+        identifiable so that the client can determine when to make another
+        PRI Request.
+        
+        The Message Type field should indicate a PRI Update Message.
+
+        There is no data payload for this message type.
+
+        Offset Size   Field name
+        ------ ----   ----------
+        0       8     Message Number
+        8       8     Message Type
+
+
+   4.2 Imported Interfaces :
+                
+        Interface                  Classification      Comments
+        =================          ================    ========================
+
+        Domain Services            Sun Private         Defined by FWARC/2006/055
+        Specification
+
+        PRI                        Sun Private         Defined by FWARC/2006/700
+
+   4.3 Exported Interfaces:
+
+
+        Interface                       Classification   Comments
+        ================                ===============  =====================
+
+        PRI domain service 
+        version 1.0
+    
+        Service ID: "pri"               Sun Private      Section 4.1.2.1
+
+        PRI domain service              Sun Private      Section 4.1.2.2
+        message header
+
+        PRI Request message             Sun Private      Section 4.1.2.3
+        Payload
+
+        PRI Data Message                Sun Private      Section 4.1.2.4
+        Payload
+
+        PRI Update Message              Sun Private      Section 4.1.2.5
+        Payload
+
+5. Reference Documents:
+  [1] libpri on sun4v (initial proposal by Ash Saulsbury)
+        http://sunwebcollab.east.sun.com/gm/document-1.9.2221866
+  [2] webrev of prototype libpri and ds_pri driver (tar file)
+        http://sunwebcollab.east.sun.com/gm/document-1.9.2221896
+  [3] sun4v machine description
+        http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/115/
+  [4] Domain Services
+        http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/055/
+
+6. Resources and Schedule:
+   6.1. Projected Availability:	Q3FY07
+
+   6.2. Cost of Effort: 3 person months
+
+   6.3. Cost of Capital Resources: N/A
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation or Component Name: vBSC, Solaris
+	6.4.3. Type of CPT Review and Approval expected: FastTrack
+        6.4.4. Project Boundary Conditions: N/A
+	6.4.5. Is this a necessary project for OEM agreements: No.
+	6.4.6. Notes: None
+	6.4.7. Target RTI Date/Release: S10u4_b3
+	6.4.8. Target Code Design Review Date: 01/05/2007
+	6.4.9. Update approval addition: N/A		
+
+   6.5. ARC review type: FastTrack
+		
+7. Prototype Availability:
+   7.1. Prototype Availability:
+	Q2FY07
+
+   7.2. Prototype Cost:
+      3 person months	

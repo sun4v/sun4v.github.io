@@ -1,0 +1,10 @@
+/pci@0                            <--- upstream port PCIE switch
+/pci@0/pci@1                      <--- downstream port PCIE switch
+/pci@0/pci@2                      <--- downstream port PCIE switch
+/pci@0/pci@3                      <--- downstream port PCIE switch (slot)
+/pci@0/pci@1/pci@0                <--- PCIE to PCIX bridge
+/pci@0/pci@1/pci@0/network@0      <--- Multifunction PCIX network device
+/pci@0/pci@1/pci@0/network@0,1    <--- Multifunction PCIX network device
+/pci@0/pci@2/pci@0                <--- PCIE to PCIX bridge with interrupt-map
+/pci@0/pci@2/pci@0/scsi@0         <--- PCIX SCSI device
+/pci@0/pci@3/pci@1234,5678        <--- PCIE card with no FCode (not in MD)

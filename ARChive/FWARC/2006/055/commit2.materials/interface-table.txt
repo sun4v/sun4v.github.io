@@ -1,0 +1,89 @@
+#ident "@(#)interface-table.txt	1.2 06/03/06 SAC"
+
+purpose: Interface table for FWARC/2006/055
+copyright: Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved
+copyright: Use is subject to license terms.
+
+Interface Table for FWARC/2006/055 - Domain Services
+
+   Exported Interfaces
+   -------------------
+
+   * In the following table the sub-commands are grouped under the 
+     command code category
+
+   Interface name                        Classification        Comments
+   -----------------------               --------------        --------
+   DS Fixed Message Types
+      DS_INIT_REQ                        Sun Private   Initiate DS connection
+      DS_INIT_ACK                        Sun Private   Initiation acknowledgement
+      DS_INIT_NACK                       Sun Private   Initiation negative 
+                                                                 acknowledgement
+   DS protocol version negotiation
+      Result Codes
+         DS_REG_VER_NACK                  Sun Private   Cannot support req major ver
+         DS_REG_DUP                       Sun Private   Duplicate registration attempt
+         DS_INV_HDL                       Sun Private   Service handle not valid
+         DS_TYPE_UNKNOWN                  Sun Private   Unknown message type
+         
+      DS Message types for v1.0
+         DS_REG_REQ                       Sun Private   Register service
+         DS_REG_ACK                       Sun Private   Register OK
+         DS_REG_NACK                      Sun Private   Register failed
+         DS_UNREG                         Sun Private   Unregister service
+         DS_UNREG_ACK                     Sun Private   Unregister OK
+         DS_UNREG_NACK                    Sun Private   Unregister failed
+         DS_DATA                          Sun Private   Data message
+         DS_NACK                          Sun Private   Data error
+
+  DS Capabilities
+  
+     MD Update notification - version 1.0
+         "md-update"                      Sun Private   Service ID
+         MD Update Request                Sun Private
+         MD Update Response               Sun Private
+         Result:
+           MD_UPDATE_SUCCESS              Sun Private   MD update success
+           MD_UPDATE_FAILURE              Sun Private   MD update failure
+           MD_UPDATE_INVALID_MSG          Sun Private   Invalid MD update msg
+           
+     Domain Shutdown - version 1.0
+         "domain-shutdown"                Sun Private   Request a graceful shutdown
+         Domain Shutdown Request          Sun Private
+         Domain Shutdown Response         Sun Private
+         Result:
+           DOMAIN_SHUTDOWN_SUCCESS        Sun Private   Shutdown success
+           DOMAIN_SHUTDOWN__FAILURE       Sun Private   Shutdown failure
+           DOMAIN_SHUTDOWN_INVALID_MSG    Sun Private   Invalid shutdown msg
+           
+     Domain Panic - version 1.0
+         "domain-panic"                   Sun Private   Request a panic
+         Domain Panic Request             Sun Private
+         Domain Panic Response            Sun Private
+         Result:
+           DOMAIN_PANIC_SUCCESS           Sun Private   Panic success
+           DOMAIN_PANIC_FAILURE           Sun Private   Panic failure
+           DOMAIN_PANIC_INVALID_MSG       Sun Private   Invalid panic msg
+
+     CPU DR - version 1.0
+         "dr-cpu"                         Sun Private   DR for virtual CPUs
+         CPU DR Message header            Sun Private
+         Request message types:
+           DR_CPU_CONFIGURE               Sun Private   Configure new CPU(s)
+           DR_CPU_UNCONFIGURE             Sun Private   Unconfigure CPU(s)
+           DR_CPU_FORCE_UNCONFIG          Sun Private   Forcibly Unconfigure CPU(s)
+           DR_CPU_STATUS                  Sun Private   Request the status of CPU(s)
+         Response message types:   
+           DR_CPU_OK                      Sun Private   Request completed OK                 
+           DR_CPU_ERROR                   Sun Private   Request failed
+           
+     Variable Configuration - version 1.0
+         "var-config"                     Sun Private   Primary LDom var mgmt
+         "var-config-backup"              Sun Private   Secondary LDom var mgmt
+         Variable Config message header   Sun Private
+         Message Types:
+           VAR_CONFIG_SET_REQ             Sun Private   Request setting a variable
+           VAR_CONFIG_DELETE_REQ          Sun Private   Request deleting a variable
+           VAR_CONFIG_SET_RESP            Sun Private   Response to a set request
+           VAR_CONFIG_DELETE_RESP         Sun Private   Response to a delete request
+

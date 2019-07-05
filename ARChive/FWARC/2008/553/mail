@@ -1,0 +1,985 @@
+From sacadmin Wed Aug 27 20:07:20 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m7S37Jeb008823
+	for <fwarc@sac.sfbay.Sun.COM>; Wed, 27 Aug 2008 20:07:19 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m7S37G22028847;
+	Thu, 28 Aug 2008 11:07:18 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K6A00901JC44100@brm-avmta-1.central.sun.com>; Wed,
+ 27 Aug 2008 21:07:16 -0600 (MDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K6A00DJ1JC4PP80@brm-avmta-1.central.sun.com>; Wed,
+ 27 Aug 2008 21:07:16 -0600 (MDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m7S37GuI015824; Thu,
+ 28 Aug 2008 03:07:16 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K6A00F01JA1EK00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Wed,
+ 27 Aug 2008 21:07:16 -0600 (MDT)
+Received: from [192.168.1.103] ([129.150.64.18])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0K6A0040NJC25740@mail-amer.sun.com>; Wed,
+ 27 Aug 2008 21:07:15 -0600 (MDT)
+Date: Wed, 27 Aug 2008 23:07:12 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: FWARC/2008/553 - VIO vNet/vSwitch changes to support jumbo frames -
+ fast-track timeout Sep 3, 2008
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>,
+        "ldoms-networking@sun.com" <ldoms-networking@sun.com>
+Message-id: <C3D0A952-CB7A-4651-992F-CF9CD61F83F5@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.926)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 1280
+
+I am sponsoring this fast-track case for Sriharsha Basavapatna. This  
+case
+extends both the VIO protocol and VIO MD node specifications for LDoms
+virtual network and switch devices in order to support jumbo frames.
+
+The VIO protocol specification was approved under FWARC/2006/195 and  
+then
+modified under FWARC/2006/583, FWARC/2006/602, FWARC/2007/672, FWARC/ 
+2008/017,
+and FWARC/2008/228. The VIO MD specification was approved under FWARC/ 
+2006/072
+and then modified under FWARC/2006/122, FWARC/2007/363, FWARC/2008/016  
+and
+FWARC/2008/228.
+
+This case will be approved for minor/micro/patch OS binding and
+minor/micro binding for the firmware.
+
+Case timer is set to expire on Sep 3, 2008.
+
+All of the changes are highlighted in the updated documents which
+can be found at:
+
+http://sac.eng/arc/FWARC/2008/553/materials/vio-protocol-update-7-diff.pdf
+
+http://sac.eng/arc/FWARC/2008/553/materials/vio-md-nodes-v7-diffs.pdf
+
+Brief description of the changes are:
+
+- Extension of the VIO protocol for virtual network and switch devices  
+to
+   support MTU negotiation as part of the attribute exchange as  
+defined in
+   sec 1.1.7.1 of the VIO protocol specification.
+
+- Addition of a new MD property to the 'virtual-device' node as defined
+   in section 1.1.3 of VIO MD spec.
+
+
+From sacadmin Wed Aug 27 21:34:08 2008
+Received: from jurassic-x4600.sfbay.sun.com (cretaceous.SFBay.Sun.COM [129.146.17.59])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m7S4Y86j010585;
+	Wed, 27 Aug 2008 21:34:08 -0700 (PDT)
+Received: from [129.146.11.145] (sr1-jurassic-02.SFBay.Sun.COM [129.146.11.145])
+	by jurassic-x4600.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id m7S4Y81V015050;
+	Wed, 27 Aug 2008 21:34:08 -0700 (PDT)
+Message-ID: <48B62AC0.8060702@Sun.COM>
+Date: Wed, 27 Aug 2008 21:34:08 -0700
+From: Kais Belgaied <Kais.Belgaied@Sun.COM>
+Reply-To: Kais.Belgaied@Sun.COM
+User-Agent: Thunderbird 2.0.0.14 (X11/20080505)
+MIME-Version: 1.0
+To: Narayan Venkatsubramanian <narayan@sac.sfbay.sun.com>
+CC: fwarc@sac.sfbay.sun.com, Nicolas Droux <Nicolas.Droux@Sun.COM>,
+        Sunay Tripathi <Sunay.Tripathi@Sun.COM>
+Subject: Re: VIO vNet/vSwitch changes to support jumbo frames [FWARC/2008/553
+ FastTrack timeout 09/03/2008]
+References: <200808280216.m7S2GRoj007726@sac.sfbay.sun.com>
+In-Reply-To: <200808280216.m7S2GRoj007726@sac.sfbay.sun.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 1219
+
+A couple of comments/questions:
+
+. With Crossbow (PSARC/2006/357), the vnNet/vSwitch accesses the networking
+  devices on the host through a client API to the virtualized MAC Layer 
+in the service domain.
+  Do the changes proposed for this case require any modification to that 
+MAC client API?
+
+. The case exposure is open, yet all documents are labeled ...
+  Either remove the label if the documents are cleared for exposure, or 
+change the case exposure to closed.
+
+    Kais.
+
+On 08/27/08 19:16, Narayan Venkatsubramanian wrote:
+> Template Version: @(#)sac_nextcase 1.66 04/17/08 SMI
+> This information is Copyright 2008 Sun Microsystems
+> 1. Introduction
+>     1.1. Project/Component Working Name:
+> 	 VIO vNet/vSwitch changes to support jumbo frames
+>     1.2. Name of Document Author/Supplier:
+> 	 Author:  Sriharsha Basavapatna
+>     1.3  Date of This Document:
+> 	27 August, 2008
+> 4. Technical Description
+>     See the case directory for more detail
+>
+> 6. Resources and Schedule
+>     6.4. Steering Committee requested information
+>    	6.4.1. Consolidation C-team Name:
+> 		sysfw, on
+>     6.5. ARC review type: FastTrack
+>     6.6. ARC Exposure: open
+>
+>   
+
+
+From sacadmin Fri Aug 29 10:12:13 2008
+Received: from dm-sfbay-02.sfbay.sun.com (dm-sfbay-02.SFBay.Sun.COM [129.146.11.31])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m7THCCC1009557
+	for <fwarc@sac.sfbay.sun.com>; Fri, 29 Aug 2008 10:12:12 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com (sca-es-mail-2.Sun.COM [192.18.43.133])
+	by dm-sfbay-02.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m7THCC0Q050431
+	for <fwarc@sac.sfbay.sun.com>; Fri, 29 Aug 2008 10:12:12 -0700 (PDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m7THC7p9014248
+	for <fwarc@sac.sfbay.sun.com>; Fri, 29 Aug 2008 10:12:07 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K6D00M01GX8A500@fe-sfbay-10.sun.com>
+ (original mail from Raghuram.Kothakota@Sun.COM) for fwarc@sac.sfbay.sun.com;
+ Fri, 29 Aug 2008 10:12:07 -0700 (PDT)
+Received: from [129.150.18.33] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K6D00J2KH469JA0@fe-sfbay-10.sun.com>; Fri,
+ 29 Aug 2008 10:12:07 -0700 (PDT)
+Date: Fri, 29 Aug 2008 10:11:56 -0700
+From: "Raghuram.Kothakota" <Raghuram.Kothakota@Sun.COM>
+Subject: Re: Fwd: VIO vNet/vSwitch changes to support jumbo frames
+ [FWARC/2008/553 FastTrack timeout 09/03/2008]
+In-reply-to: <5B19DAC7-F967-40CF-88CF-AF127A88269C@sun.com>
+Sender: Raghuram.Kothakota@Sun.COM
+To: Kais Belgaied <Kais.Belgaied@Sun.COM>, fwarc@sac.sfbay.sun.com,
+        Nicolas Droux <Nicolas.Droux@Sun.COM>, Sunay.Tripathi@Sun.COM
+Cc: Narayan Venkat <Narayan.Venkat@Sun.COM>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@Sun.COM>
+Message-id: <48B82DDC.9030201@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+References: <48B62AC0.8060702@Sun.COM>
+ <5B19DAC7-F967-40CF-88CF-AF127A88269C@sun.com>
+User-Agent: Thunderbird 2.0.0.16 (Windows/20080708)
+Status: RO
+Content-Length: 2645
+
+
+>> *From: *Kais Belgaied <Kais.Belgaied@Sun.COM 
+>> <mailto:Kais.Belgaied@Sun.COM>>
+>> *Date: *August 28, 2008 12:34:08 AM EDT
+>> *To: *Narayan Venkatsubramanian <narayan@sac.sfbay.sun.com 
+>> <mailto:narayan@sac.sfbay.sun.com>>
+>> *Cc: *fwarc@sac.sfbay.sun.com <mailto:fwarc@sac.sfbay.sun.com>, 
+>> Nicolas Droux <Nicolas.Droux@Sun.COM <mailto:Nicolas.Droux@Sun.COM>>, 
+>> Sunay Tripathi <Sunay.Tripathi@Sun.COM <mailto:Sunay.Tripathi@Sun.COM>>
+>> *Subject: **Re: VIO vNet/vSwitch changes to support jumbo frames 
+>> [FWARC/2008/553 FastTrack timeout 09/03/2008]*
+>> *Reply-To: *Kais.Belgaied@Sun.COM <mailto:Kais.Belgaied@Sun.COM>
+>>
+>> A couple of comments/questions:
+>>
+Please find my reply as below:
+
+>> . With Crossbow (PSARC/2006/357), the vnNet/vSwitch accesses the 
+>> networking
+>> devices on the host through a client API to the virtualized MAC Layer 
+>> in the service domain.
+>> Do the changes proposed for this case require any modification to 
+>> that MAC client API?
+Please note that the proposed MD node changes in this FWARC case itself
+are OS version independent. That is, they apply to both s10 and s11(or 
+any other
+OS that is supported by LDoms).  As for as the implementation of the 
+Jumbo Frames
+support in Crossbow, we have been discussing this with Nicolas Droux(also
+copied to Crossbow-core) and we have also been working with Brussels team.
+Please note, this is an OS implementation specific detail, it is not 
+related to the
+FWARC case itself.  Just a few mins back, I re-started the email
+thread with Nicolas on the mac client API topic, please use that thread 
+for any
+additional thoughts.
+>>
+>> . The case exposure is open, yet all documents are labeled ...
+>> Either remove the label if the documents are cleared for exposure, or 
+>> change the case exposure to closed.
+>>
+I believe, Narayan will fix this one.
+
+-Raghuram.
+>>   Kais.
+>>
+>> On 08/27/08 19:16, Narayan Venkatsubramanian wrote:
+>>> Template Version: @(#)sac_nextcase 1.66 04/17/08 SMI
+>>> This information is Copyright 2008 Sun Microsystems
+>>> 1. Introduction
+>>>    1.1. Project/Component Working Name:
+>>> VIO vNet/vSwitch changes to support jumbo frames
+>>>    1.2. Name of Document Author/Supplier:
+>>> Author:  Sriharsha Basavapatna
+>>>    1.3  Date of This Document:
+>>> 27 August, 2008
+>>> 4. Technical Description
+>>>    See the case directory for more detail
+>>>
+>>> 6. Resources and Schedule
+>>>    6.4. Steering Committee requested information
+>>>    6.4.1. Consolidation C-team Name:
+>>> sysfw, on
+>>>    6.5. ARC review type: FastTrack
+>>>    6.6. ARC Exposure: open
+>>>
+>>>  
+>>
+>
+
+
+From sacadmin Tue Sep  2 08:29:05 2008
+Received: from dm-sfbay-02.sfbay.sun.com (dm-sfbay-02.SFBay.Sun.COM [129.146.11.31])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m82FT55o009215
+	for <fwarc@sac.sfbay.sun.com>; Tue, 2 Sep 2008 08:29:05 -0700 (PDT)
+Received: from brmea-mail-3.sun.com (brmea-mail-3.Sun.COM [192.18.98.34])
+	by dm-sfbay-02.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m82FT5uc056038
+	for <fwarc@sac.sfbay.sun.com>; Tue, 2 Sep 2008 08:29:05 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m82FT45r027996
+	for <fwarc@sac.sfbay.sun.com>; Tue, 2 Sep 2008 15:29:05 GMT
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K6K00501QTQCA00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM) for fwarc@sac.sfbay.sun.com; Tue,
+ 02 Sep 2008 09:29:04 -0600 (MDT)
+Received: from dhcp-ubur03-180-96.East.Sun.COM ([129.148.180.96])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K6K003BDR0B9F20@mail-amer.sun.com>; Tue,
+ 02 Sep 2008 09:29:00 -0600 (MDT)
+Date: Tue, 02 Sep 2008 11:28:58 -0400
+From: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Subject: Re: VIO vNet/vSwitch changes to support jumbo frames [FWARC/2008/553
+ FastTrack timeout 09/03/2008]
+In-reply-to: <48B82DDC.9030201@Sun.COM>
+Sender: Narayan.Venkat@Sun.COM
+To: Kais Belgaied <Kais.Belgaied@Sun.COM>
+Cc: Narayan Venkat <Narayan.Venkat@Sun.COM>,
+        Nicolas Droux <Nicolas.Droux@Sun.COM>,
+        Sunay Tripathi <Sunay.Tripathi@Sun.COM>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@Sun.COM>,
+        fwarc@sac.sfbay.sun.com,
+        "Raghuram.Kothakota Kothakota" <Raghuram.Kothakota@Sun.COM>
+Message-id: <38043108-6DC0-4B3A-B6C1-8B0503F4AB04@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.926)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+References: <48B62AC0.8060702@Sun.COM>
+ <5B19DAC7-F967-40CF-88CF-AF127A88269C@sun.com> <48B82DDC.9030201@Sun.COM>
+Status: RO
+Content-Length: 1733
+
+Hi Kais
+
+>>> A couple of comments/questions:
+>>>
+> Please find my reply as below:
+>
+>>> . With Crossbow (PSARC/2006/357), the vnNet/vSwitch accesses the  
+>>> networking
+>>> devices on the host through a client API to the virtualized MAC  
+>>> Layer in the service domain.
+>>> Do the changes proposed for this case require any modification to  
+>>> that MAC client API?
+> Please note that the proposed MD node changes in this FWARC case  
+> itself
+> are OS version independent. That is, they apply to both s10 and  
+> s11(or any other
+> OS that is supported by LDoms).
+
+One slight clarification. The LDoms VIO protocol is not just
+OS version agnostic but OS agnostic itself. The changes being
+ARC'd here apply to all LDoms guest OSs that are users of
+the VIO protocol. This includes, Solaris 10, OpenSolaris and
+non-Solaris OSs like Linux.
+
+>  As for as the implementation of the Jumbo Frames
+> support in Crossbow, we have been discussing this with Nicolas  
+> Droux(also
+> copied to Crossbow-core) and we have also been working with Brussels  
+> team.
+> Please note, this is an OS implementation specific detail, it is not  
+> related to the
+> FWARC case itself.  Just a few mins back, I re-started the email
+> thread with Nicolas on the mac client API topic, please use that  
+> thread for any
+> additional thoughts.
+>>>
+>>> . The case exposure is open, yet all documents are labeled ...
+>>> Either remove the label if the documents are cleared for exposure,  
+>>> or change the case exposure to closed.
+>>>
+> I believe, Narayan will fix this one.
+
+I have deposited new docs in the materials directory with the
+labeling removed to reflect the case's exposure.
+
+Thanks
+-Narayan
+
+
+From sacadmin Tue Sep  2 09:12:55 2008
+Received: from jurassic-x4600.sfbay.sun.com (cretaceous.SFBay.Sun.COM [129.146.17.63])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m82GCsfq010686
+	for <fwarc@sac.sfbay.sun.com>; Tue, 2 Sep 2008 09:12:54 -0700 (PDT)
+Received: from [129.146.11.147] (sr1-jurassic-04.SFBay.Sun.COM [129.146.11.147])
+	by jurassic-x4600.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id m82GC68q010226;
+	Tue, 2 Sep 2008 09:12:12 -0700 (PDT)
+Message-ID: <48BD65D6.1020907@Sun.COM>
+Date: Tue, 02 Sep 2008 09:12:06 -0700
+From: Kais Belgaied <Kais.Belgaied@Sun.COM>
+Reply-To: Kais.Belgaied@Sun.COM
+User-Agent: Thunderbird 2.0.0.14 (X11/20080505)
+MIME-Version: 1.0
+To: "Raghuram.Kothakota" <Raghuram.Kothakota@Sun.COM>
+CC: fwarc@sac.sfbay.sun.com, Nicolas Droux <Nicolas.Droux@Sun.COM>,
+        Sunay.Tripathi@Sun.COM, Narayan Venkat <Narayan.Venkat@Sun.COM>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@Sun.COM>
+Subject: Re: Fwd: VIO vNet/vSwitch changes to support jumbo frames [FWARC/2008/553
+ FastTrack timeout 09/03/2008]
+References: <48B62AC0.8060702@Sun.COM> <5B19DAC7-F967-40CF-88CF-AF127A88269C@sun.com> <48B82DDC.9030201@Sun.COM>
+In-Reply-To: <48B82DDC.9030201@Sun.COM>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 2140
+
+Hi Raghuram,
+
+On 08/29/08 10:11, Raghuram.Kothakota wrote:
+>
+>>> *From: *Kais Belgaied <Kais.Belgaied@Sun.COM 
+>>> <mailto:Kais.Belgaied@Sun.COM>>
+>>> *Date: *August 28, 2008 12:34:08 AM EDT
+>>> *To: *Narayan Venkatsubramanian <narayan@sac.sfbay.sun.com 
+>>> <mailto:narayan@sac.sfbay.sun.com>>
+>>> *Cc: *fwarc@sac.sfbay.sun.com <mailto:fwarc@sac.sfbay.sun.com>, 
+>>> Nicolas Droux <Nicolas.Droux@Sun.COM 
+>>> <mailto:Nicolas.Droux@Sun.COM>>, Sunay Tripathi 
+>>> <Sunay.Tripathi@Sun.COM <mailto:Sunay.Tripathi@Sun.COM>>
+>>> *Subject: **Re: VIO vNet/vSwitch changes to support jumbo frames 
+>>> [FWARC/2008/553 FastTrack timeout 09/03/2008]*
+>>> *Reply-To: *Kais.Belgaied@Sun.COM <mailto:Kais.Belgaied@Sun.COM>
+>>>
+>>> A couple of comments/questions:
+>>>
+> Please find my reply as below:
+>
+>>> . With Crossbow (PSARC/2006/357), the vnNet/vSwitch accesses the 
+>>> networking
+>>> devices on the host through a client API to the virtualized MAC 
+>>> Layer in the service domain.
+>>> Do the changes proposed for this case require any modification to 
+>>> that MAC client API?
+> Please note that the proposed MD node changes in this FWARC case itself
+> are OS version independent. That is, they apply to both s10 and s11(or 
+> any other
+> OS that is supported by LDoms).  As for as the implementation of the 
+> Jumbo Frames
+
+In this case, the submitter listed:
+
+  	6.4.1. Consolidation C-team Name:
+		sysfw, on
+
+
+
+so, what will this case deliver in the on consolidation that happens to be
+OS version independent?
+
+
+> support in Crossbow, we have been discussing this with Nicolas Droux(also
+> copied to Crossbow-core) and we have also been working with Brussels 
+> team.
+> Please note, this is an OS implementation specific detail, it is not 
+> related to the
+> FWARC case itself.  Just a few mins back, I re-started the email
+> thread with Nicolas on the mac client API topic, please use that 
+> thread for any
+> additional thoughts.
+
+again, is this a self-contained ARC case,  does this case deliver 
+something useful and stands by itself without any changes
+elsewhere? or does it rely on changes covered by a different ARC case ?
+
+    Kais.
+
+
+From sacadmin Tue Sep  2 10:55:13 2008
+Received: from dm-sfbay-01.sfbay.sun.com (dm-sfbay-01.SFBay.Sun.COM [129.145.155.118])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m82HtDAK014938
+	for <fwarc@sac.sfbay.sun.com>; Tue, 2 Sep 2008 10:55:13 -0700 (PDT)
+Received: from brmea-mail-1.sun.com (brmea-mail-1.Sun.COM [192.18.98.31])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m82HtDeK038394
+	for <fwarc@sac.sfbay.sun.com>; Tue, 2 Sep 2008 10:55:13 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m82HtCqV013358
+	for <fwarc@sac.sfbay.sun.com>; Tue, 2 Sep 2008 17:55:12 GMT
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K6K00801W5LKL00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM) for fwarc@sac.sfbay.sun.com; Tue,
+ 02 Sep 2008 11:55:12 -0600 (MDT)
+Received: from dhcp-ubur03-180-96.East.Sun.COM ([129.148.180.96])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K6K005MLXRYOU20@mail-amer.sun.com>; Tue,
+ 02 Sep 2008 11:55:11 -0600 (MDT)
+Date: Tue, 02 Sep 2008 13:55:07 -0400
+From: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Subject: Re: VIO vNet/vSwitch changes to support jumbo frames [FWARC/2008/553
+ FastTrack timeout 09/03/2008]
+In-reply-to: <48BD65D6.1020907@Sun.COM>
+Sender: Narayan.Venkat@Sun.COM
+To: Kais.Belgaied@Sun.COM
+Cc: Narayan Venkat <Narayan.Venkat@Sun.COM>,
+        "Raghuram.Kothakota" <Raghuram.Kothakota@Sun.COM>,
+        fwarc@sac.sfbay.sun.com, Nicolas Droux <Nicolas.Droux@Sun.COM>,
+        Sunay.Tripathi@Sun.COM,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@Sun.COM>
+Message-id: <FCE34F21-552D-4D43-B7DC-268C39D982C7@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.926)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+References: <48B62AC0.8060702@Sun.COM>
+ <5B19DAC7-F967-40CF-88CF-AF127A88269C@sun.com> <48B82DDC.9030201@Sun.COM>
+ <48BD65D6.1020907@Sun.COM>
+Status: RO
+Content-Length: 1905
+
+Hi
+
+>> Please find my reply as below:
+>>
+>>>> . With Crossbow (PSARC/2006/357), the vnNet/vSwitch accesses the  
+>>>> networking
+>>>> devices on the host through a client API to the virtualized MAC  
+>>>> Layer in the service domain.
+>>>> Do the changes proposed for this case require any modification to  
+>>>> that MAC client API?
+>> Please note that the proposed MD node changes in this FWARC case  
+>> itself
+>> are OS version independent. That is, they apply to both s10 and  
+>> s11(or any other
+>> OS that is supported by LDoms).  As for as the implementation of  
+>> the Jumbo Frames
+>
+> In this case, the submitter listed:
+>
+> 	6.4.1. Consolidation C-team Name:
+> 		sysfw, on
+
+Will include OBP and Solaris changes - hence those C-Teams.
+
+> so, what will this case deliver in the on consolidation that happens  
+> to be
+> OS version independent?
+
+The protocol itself is guest OS independent, and the consolidations
+will include changes if the software being delivered to that  
+consolidation
+chooses to implement the protocol changes described in this case.
+
+>> support in Crossbow, we have been discussing this with Nicolas  
+>> Droux(also
+>> copied to Crossbow-core) and we have also been working with  
+>> Brussels team.
+>> Please note, this is an OS implementation specific detail, it is  
+>> not related to the
+>> FWARC case itself.  Just a few mins back, I re-started the email
+>> thread with Nicolas on the mac client API topic, please use that  
+>> thread for any
+>> additional thoughts.
+>
+> again, is this a self-contained ARC case,  does this case deliver  
+> something useful and stands by itself without any changes elsewhere?  
+> or does it rely on changes covered
+> by a different ARC case ?
+
+It does not rely on any other ARC case. If the software that implements
+the changes described here has other dependencies, those dependencies
+are outside the scope of this case.
+
+-Narayan
+
+
+
+From sacadmin Tue Sep  2 14:16:49 2008
+Received: from jurassic-x4600.sfbay.sun.com (cretaceous.SFBay.Sun.COM [129.146.17.63])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m82LGnNM021738
+	for <fwarc@sac.sfbay.sun.com>; Tue, 2 Sep 2008 14:16:49 -0700 (PDT)
+Received: from [129.146.11.147] (sr1-jurassic-04.SFBay.Sun.COM [129.146.11.147])
+	by jurassic-x4600.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id m82LG033015598;
+	Tue, 2 Sep 2008 14:16:06 -0700 (PDT)
+Message-ID: <48BDAD10.6000909@Sun.COM>
+Date: Tue, 02 Sep 2008 14:16:00 -0700
+From: Kais Belgaied <Kais.Belgaied@Sun.COM>
+Reply-To: Kais.Belgaied@Sun.COM
+User-Agent: Thunderbird 2.0.0.14 (X11/20080505)
+MIME-Version: 1.0
+To: Narayan Venkat <Narayan.Venkat@Sun.COM>
+CC: "Raghuram.Kothakota" <Raghuram.Kothakota@Sun.COM>, fwarc@sac.sfbay.sun.com,
+        Nicolas Droux <Nicolas.Droux@Sun.COM>, Sunay.Tripathi@Sun.COM,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@Sun.COM>
+Subject: Re: VIO vNet/vSwitch changes to support jumbo frames [FWARC/2008/553
+ FastTrack timeout 09/03/2008]
+References: <48B62AC0.8060702@Sun.COM> <5B19DAC7-F967-40CF-88CF-AF127A88269C@sun.com> <48B82DDC.9030201@Sun.COM> <48BD65D6.1020907@Sun.COM> <FCE34F21-552D-4D43-B7DC-268C39D982C7@Sun.COM>
+In-Reply-To: <FCE34F21-552D-4D43-B7DC-268C39D982C7@Sun.COM>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 2104
+
+On 09/02/08 10:55, Narayan Venkat wrote:
+> Hi
+>
+>>> Please find my reply as below:
+>>>
+>>>>> . With Crossbow (PSARC/2006/357), the vnNet/vSwitch accesses the 
+>>>>> networking
+>>>>> devices on the host through a client API to the virtualized MAC 
+>>>>> Layer in the service domain.
+>>>>> Do the changes proposed for this case require any modification to 
+>>>>> that MAC client API?
+>>> Please note that the proposed MD node changes in this FWARC case itself
+>>> are OS version independent. That is, they apply to both s10 and 
+>>> s11(or any other
+>>> OS that is supported by LDoms).  As for as the implementation of the 
+>>> Jumbo Frames
+>>
+>> In this case, the submitter listed:
+>>
+>>     6.4.1. Consolidation C-team Name:
+>>         sysfw, on
+>
+> Will include OBP and Solaris changes - hence those C-Teams.
+>
+>> so, what will this case deliver in the on consolidation that happens 
+>> to be
+>> OS version independent?
+>
+> The protocol itself is guest OS independent, and the consolidations
+> will include changes if the software being delivered to that 
+> consolidation
+> chooses to implement the protocol changes described in this case.
+
+
+this answers my question.
+Thanks Narayan.
+
+I have no further comments about this case.
+
+    Kais.
+
+>
+>>> support in Crossbow, we have been discussing this with Nicolas 
+>>> Droux(also
+>>> copied to Crossbow-core) and we have also been working with Brussels 
+>>> team.
+>>> Please note, this is an OS implementation specific detail, it is not 
+>>> related to the
+>>> FWARC case itself.  Just a few mins back, I re-started the email
+>>> thread with Nicolas on the mac client API topic, please use that 
+>>> thread for any
+>>> additional thoughts.
+>>
+>> again, is this a self-contained ARC case,  does this case deliver 
+>> something useful and stands by itself without any changes elsewhere? 
+>> or does it rely on changes covered
+>> by a different ARC case ?
+>
+> It does not rely on any other ARC case. If the software that implements
+> the changes described here has other dependencies, those dependencies
+> are outside the scope of this case.
+>
+> -Narayan
+>
+>
+
+
+From sacadmin Tue Sep  2 17:34:57 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m830YuHs026601
+	for <fwarc@sac.sfbay.sun.com>; Tue, 2 Sep 2008 17:34:57 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m830YpRr012822;
+	Wed, 3 Sep 2008 01:34:55 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K6L00607GA6IK00@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 02 Sep 2008 17:34:54 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K6L004XDGA6BD10@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 02 Sep 2008 17:34:54 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m830Yr84029271;
+ Tue, 02 Sep 2008 17:34:53 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K6L00501G7WPF00@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Tue,
+ 02 Sep 2008 17:34:53 -0700 (PDT)
+Received: from [129.153.85.16] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K6L00HDEGA4YB20@fe-sfbay-09.sun.com>; Tue,
+ 02 Sep 2008 17:34:53 -0700 (PDT)
+Date: Tue, 02 Sep 2008 17:34:52 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC/2008/553 - VIO vNet/vSwitch changes to support jumbo frames
+ - fast-track timeout Sep 3, 2008
+In-reply-to: <C3D0A952-CB7A-4651-992F-CF9CD61F83F5@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>,
+        "ldoms-networking@sun.com" <ldoms-networking@sun.com>
+Message-id: <48BDDBAC.8010506@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <C3D0A952-CB7A-4651-992F-CF9CD61F83F5@sun.com>
+User-Agent: Thunderbird 2.0.0.14 (X11/20080505)
+Status: RO
+Content-Length: 668
+
+On 08/27/08 20:07, Narayan Venkat wrote:
+>  
+>
+> - Addition of a new MD property to the 'virtual-device' node as defined
+>   in section 1.1.3 of VIO MD spec.
+>
+
+
+Why is new "mtu" property a "required" property?  Existing MDs
+don't have this property but for new MDs this will  required to be
+there, is that what's is intended here?   Looking at the table,
+it seems like this property is a required property for all
+vnet and vswitch devices.
+
+
+Thanks.
+
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Tue Sep  2 20:06:39 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8336c4O000074
+	for <fwarc@sac.sfbay.Sun.COM>; Tue, 2 Sep 2008 20:06:39 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m8336atY005120;
+	Wed, 3 Sep 2008 11:06:37 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K6L00305NAZL500@brm-avmta-1.central.sun.com>; Tue,
+ 02 Sep 2008 21:06:35 -0600 (MDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K6L000Q8NAZUT20@brm-avmta-1.central.sun.com>; Tue,
+ 02 Sep 2008 21:06:35 -0600 (MDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m8336ZOG026773; Wed,
+ 03 Sep 2008 03:06:35 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K6L00901N59ND00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Tue,
+ 02 Sep 2008 21:06:35 -0600 (MDT)
+Received: from [192.168.1.103] ([129.150.64.168])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0K6L008MBNAX7X90@mail-amer.sun.com>; Tue,
+ 02 Sep 2008 21:06:35 -0600 (MDT)
+Date: Tue, 02 Sep 2008 23:06:32 -0400
+From: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Subject: Re: FWARC/2008/553 - VIO vNet/vSwitch changes to support jumbo frames
+ - fast-track timeout Sep 3, 2008
+In-reply-to: <48BDDBAC.8010506@Sun.COM>
+Sender: Narayan.Venkat@Sun.COM
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Narayan Venkat <Narayan.Venkat@Sun.COM>, Firmware Arch <fwarc@Sun.COM>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@Sun.COM>,
+        "ldoms-networking@sun.com" <ldoms-networking@Sun.COM>
+Message-id: <20ECCB29-7558-452E-A2F6-0416F059F25D@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.926)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <C3D0A952-CB7A-4651-992F-CF9CD61F83F5@sun.com>
+ <48BDDBAC.8010506@Sun.COM>
+Status: RO
+Content-Length: 1018
+
+
+On Sep 2, 2008, at 8:34 PM, Hitendra Zhangada wrote:
+
+> On 08/27/08 20:07, Narayan Venkat wrote:
+>>
+>> - Addition of a new MD property to the 'virtual-device' node as  
+>> defined
+>>  in section 1.1.3 of VIO MD spec.
+>>
+>
+>
+> Why is new "mtu" property a "required" property?  Existing MDs
+> don't have this property but for new MDs this will  required to be
+> there, is that what's is intended here?   Looking at the table,
+> it seems like this property is a required property for all
+> vnet and vswitch devices.
+
+You are correct. This should not be a required property.
+I have made the change and updated the docs in the materials
+directory. If no one has objections I will leave the timer to
+expire as scheduled, as the changes are very minor.
+
+Thanks
+-Narayan
+
+
+>
+>
+>
+> Thanks.
+>
+>
+>
+> -- 
+> Hitendra Zhangada
+> ====================================
+> SPS Common SW Features Engineering
+> Software Group, Sun Microsystems, Inc.
+> Sun Ph# (858) 625 3757, Sun Ext. x53757
+> Internal homepage http://esp.west/~hitu
+>
+
+
+From sacadmin Wed Sep  3 09:48:00 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m83GlxqU022705
+	for <fwarc@sac.sfbay.Sun.COM>; Wed, 3 Sep 2008 09:47:59 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m83GlpQ3010149;
+	Thu, 4 Sep 2008 00:47:58 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K6M0080DPBT6100@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 03 Sep 2008 09:47:53 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K6M005ZZPBTPP30@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 03 Sep 2008 09:47:53 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m83Glrx4027029;
+ Wed, 03 Sep 2008 09:47:53 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K6M00H01OPMLX00@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Wed,
+ 03 Sep 2008 09:47:53 -0700 (PDT)
+Received: from [129.150.32.107] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K6M00E5RPBKJR30@fe-sfbay-09.sun.com>; Wed,
+ 03 Sep 2008 09:47:45 -0700 (PDT)
+Date: Wed, 03 Sep 2008 09:47:44 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC/2008/553 - VIO vNet/vSwitch changes to support jumbo frames
+ - fast-track timeout Sep 3, 2008
+In-reply-to: <20ECCB29-7558-452E-A2F6-0416F059F25D@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Narayan Venkat <Narayan.Venkat@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>,
+        Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>,
+        "ldoms-networking@sun.com" <ldoms-networking@sun.com>
+Message-id: <48BEBFB0.2020605@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <C3D0A952-CB7A-4651-992F-CF9CD61F83F5@sun.com>
+ <48BDDBAC.8010506@Sun.COM> <20ECCB29-7558-452E-A2F6-0416F059F25D@sun.com>
+User-Agent: Thunderbird 2.0.0.16 (Windows/20080708)
+Status: RO
+Content-Length: 1109
+
+Narayan Venkat wrote:
+>
+> On Sep 2, 2008, at 8:34 PM, Hitendra Zhangada wrote:
+>
+>> On 08/27/08 20:07, Narayan Venkat wrote:
+>>>
+>>> - Addition of a new MD property to the 'virtual-device' node as defined
+>>>  in section 1.1.3 of VIO MD spec.
+>>>
+>>
+>>
+>> Why is new "mtu" property a "required" property?  Existing MDs
+>> don't have this property but for new MDs this will  required to be
+>> there, is that what's is intended here?   Looking at the table,
+>> it seems like this property is a required property for all
+>> vnet and vswitch devices.
+>
+> You are correct. This should not be a required property.
+> I have made the change and updated the docs in the materials
+> directory. If no one has objections I will leave the timer to
+> expire as scheduled, as the changes are very minor.
+>
+
+Thanks.  I agree that no need to change the timer for this case
+as it is a minor change.
+
+
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Thu Sep  4 06:49:55 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m84DnsZc009136
+	for <fwarc@sac.sfbay.Sun.COM>; Thu, 4 Sep 2008 06:49:55 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m84Dna2U008225;
+	Thu, 4 Sep 2008 21:49:53 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K6O00G2BBR1XO00@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 04 Sep 2008 06:49:49 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K6O00FLTBR07M30@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 04 Sep 2008 06:49:49 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m84DnmUP019384; Thu,
+ 04 Sep 2008 13:49:48 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K6O00M01B27NG00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Thu,
+ 04 Sep 2008 07:49:48 -0600 (MDT)
+Received: from [192.168.1.103] ([129.150.64.152])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0K6O005W6BQX3UD0@mail-amer.sun.com>; Thu,
+ 04 Sep 2008 07:49:47 -0600 (MDT)
+Date: Thu, 04 Sep 2008 09:49:41 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: FWARC/2008/553 - VIO vNet/vSwitch changes to support jumbo frames
+ - fast-track timeout Sep 3, 2008
+In-reply-to: <C3D0A952-CB7A-4651-992F-CF9CD61F83F5@sun.com>
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Sriharsha Basavapatna <Sriharsha.Basavapatna@sun.com>,
+        "ldoms-networking@sun.com" <ldoms-networking@sun.com>
+Message-id: <31299B06-8CDF-4D7F-ABD8-311976E06369@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.926)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <C3D0A952-CB7A-4651-992F-CF9CD61F83F5@sun.com>
+Status: RO
+Content-Length: 1500
+
+This fast-track case has timed out and is now approved.
+
+IAM file has been updated.
+
+Thanks
+-Narayan
+
+On Aug 27, 2008, at 11:07 PM, Narayan Venkat wrote:
+
+> I am sponsoring this fast-track case for Sriharsha Basavapatna. This  
+> case
+> extends both the VIO protocol and VIO MD node specifications for LDoms
+> virtual network and switch devices in order to support jumbo frames.
+>
+> The VIO protocol specification was approved under FWARC/2006/195 and  
+> then
+> modified under FWARC/2006/583, FWARC/2006/602, FWARC/2007/672, FWARC/ 
+> 2008/017,
+> and FWARC/2008/228. The VIO MD specification was approved under  
+> FWARC/2006/072
+> and then modified under FWARC/2006/122, FWARC/2007/363, FWARC/ 
+> 2008/016 and
+> FWARC/2008/228.
+>
+> This case will be approved for minor/micro/patch OS binding and
+> minor/micro binding for the firmware.
+>
+> Case timer is set to expire on Sep 3, 2008.
+>
+> All of the changes are highlighted in the updated documents which
+> can be found at:
+>
+> http://sac.eng/arc/FWARC/2008/553/materials/vio-protocol-update-7-diff.pdf
+>
+> http://sac.eng/arc/FWARC/2008/553/materials/vio-md-nodes-v7-diffs.pdf
+>
+> Brief description of the changes are:
+>
+> - Extension of the VIO protocol for virtual network and switch  
+> devices to
+>  support MTU negotiation as part of the attribute exchange as  
+> defined in
+>  sec 1.1.7.1 of the VIO protocol specification.
+>
+> - Addition of a new MD property to the 'virtual-device' node as  
+> defined
+>  in section 1.1.3 of VIO MD spec.
+>
+
+

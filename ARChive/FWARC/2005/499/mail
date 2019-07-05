@@ -1,0 +1,1724 @@
+From sacadmin Wed Aug 31 22:22:23 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j815MMEu010494
+	for <fwarc@sac.eng.Sun.COM>; Wed, 31 Aug 2005 22:22:23 -0700 (PDT)
+Received: from brmea-mail-4.sun.com (brmea-mail-4.Sun.COM [192.18.98.36])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j815MLb00922;
+	Wed, 31 Aug 2005 23:22:21 -0600 (MDT)
+Received: from fe2.sun.com ([192.18.108.79])
+	by brmea-mail-4.sun.com (8.12.10/8.12.9) with ESMTP id j815MLTW004209;
+	Wed, 31 Aug 2005 23:22:21 -0600 (MDT)
+Received: from conversion-daemon.fe2.sun.com by fe2.sun.com
+ (Sun Java System Messaging Server 6.1 HotFix 0.02 (built Aug 25 2004))
+ id <0IM400I01CDJQ900@fe2.sun.com> (original mail from Tony.Sumpter@Sun.COM)
+ ; Wed, 31 Aug 2005 23:22:21 -0600 (MDT)
+Received: from sun.com ([129.150.24.198])
+ by fe2.sun.com (Sun Java System Messaging Server 6.1 HotFix 0.02 (built Aug 25
+ 2004)) with ESMTPSA id <0IM400ASNHL86W10@fe2.sun.com>; Wed,
+ 31 Aug 2005 23:22:21 -0600 (MDT)
+Date: Wed, 31 Aug 2005 22:22:45 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: FWARC/2005/499 sun4v core version API [fast-track]
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: pq-arch@Sun.COM, Richard Barnette <Richard.Barnette@Sun.COM>,
+   Tom Caron <Tom.Caron@Sun.COM>
+Message-id: <43169025.3020207@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 1108
+
+I'm sponsoring this case as a fast-track for Ashley Saulsbury.
+The fast-track timeout is Sept 12, 2005.
+
+The materials are in the case directory under 'materials':
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/499/
+The normative text in api-24-ver.pdf is in sections 5.1.1 and 5.1.2,
+and in the API_SET_VERSION and API_GET_VERSION number assignments
+in section 3.3.
+Section 5.1.1.2 is informative and the rest of the document should
+be ignored for this case.
+
+The case defines the HV APIs for API versioning. FWARC/2005/116
+reserved a single CORE TRAP API number name API_VER for this
+functionality. When the details of the versioning were written
+up, the need for separtate SET and GET APIs was apparent, so
+the reserved API has been renamed.
+
+The requested binding is for a minor release of the firmware and
+a micro release of the OS, the committment level of the interfaces
+is Sun Private.
+
+This case reserves CORE TRAP (0xff) function numbers
+0x00 and 0x03 for the APIs defined by the case, and
+these CORE TRAP function numbers will be documented
+in the registry created by 2005/116.
+
+Tony.
+
+
+
+From sacadmin Fri Sep  2 11:41:18 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j82IfIEu007573
+	for <fwarc@sac.eng.sun.com>; Fri, 2 Sep 2005 11:41:18 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j82IfGD05021;
+	Fri, 2 Sep 2005 11:41:16 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IM700107D8SQ800@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 02 Sep 2005 11:41:16 -0700 (PDT)
+Received: from uask4it.sfbay.sun.com ([10.4.102.30])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IM7001G8D8S4X10@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 02 Sep 2005 11:41:16 -0700 (PDT)
+Received: from [10.32.198.135] ([10.32.198.135])
+	by uask4it.sfbay.sun.com (8.13.3+Sun/8.13.3) with ESMTP id j82IfFun014987;
+ Fri, 02 Sep 2005 11:41:15 -0700 (PDT)
+Date: Fri, 02 Sep 2005 11:41:29 -0700
+From: Richard Barnette <richard.barnette@sun.com>
+Subject: Re: FWARC/2005/499 sun4v core version API [fast-track]
+In-reply-to: <43169025.3020207@sun.com>
+To: Firmware Arch <fwarc@sun.com>
+Cc: pq-arch@sun.com, Tom Caron <Tom.Caron@sun.com>
+Message-id: <f7f32291a32b496fb9375019338c3365@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.622)
+Content-type: text/plain; charset=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.0.3.165339
+References: <43169025.3020207@sun.com>
+Status: RO
+Content-Length: 1126
+
+On Aug 31, 2005, at 10:22 PM, Tony Sumpter wrote:
+
+> I'm sponsoring this case as a fast-track for Ashley Saulsbury.
+> The fast-track timeout is Sept 12, 2005.
+>
+> The materials are in the case directory under 'materials':
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/499/
+>
+[ ... ]
+
+I think one other piece of information is needed.  Once this
+case is approved, I would think the format of the API registry
+should be enhanced so that each entry identifies the api_group,
+major, and minor number in which the function is available.  This
+information would be relevant for every entry except the entries
+in the core API (mach_set_version, mach_get_version).
+
+The materials should show how all of the existing API entries
+will be categorized.
+
+
+> Tony.
+>
+>
+--
+Richard Barnette        | Belinda giggled till she shook the house,
+Sun Microsystems        | And Blink said Weeck! which is giggling for a 
+mouse,
+Supernova Software      | Ink and Mustard rudely asked his age,
+NWK20 3168 / UNWK20-310 | When Custard cried for a nice safe cage.
+(510) 936-3986 / x13986 |  - Ogden Nash, "The Tale of Custard the 
+Dragon"
+
+
+From sacadmin Fri Sep  2 12:36:29 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j82JaTEu010933
+	for <fwarc@sac.eng.Sun.COM>; Fri, 2 Sep 2005 12:36:29 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j82JaSb00609;
+	Fri, 2 Sep 2005 13:36:28 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j82JaRao003778;
+	Fri, 2 Sep 2005 12:36:27 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j82JaQkt030117;
+	Fri, 2 Sep 2005 12:36:26 -0700 (PDT)
+Message-ID: <4318A9BA.9000904@sun.com>
+Date: Fri, 02 Sep 2005 12:36:26 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.6 (Windows/20050716)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Richard Barnette <richard.barnette@sun.com>
+CC: Firmware Arch <fwarc@sun.com>, pq-arch@sun.com,
+   Tom Caron <Tom.Caron@sun.com>
+Subject: Re: FWARC/2005/499 sun4v core version API [fast-track]
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 651
+
+
+
+Richard Barnette wrote:
+
+> I think one other piece of information is needed.  Once this
+> case is approved, I would think the format of the API registry
+> should be enhanced so that each entry identifies the api_group,
+> major, and minor number in which the function is available.  This
+> information would be relevant for every entry except the entries
+> in the core API (mach_set_version, mach_get_version).
+> 
+> The materials should show how all of the existing API entries
+> will be categorized.
+
+Or we could have a separate file for this.
+
+This is an issue for fwarc to deal with and fwarc (Tony)
+will handle it and do the right thing.
+
+-David
+
+From sacadmin Fri Sep  2 13:13:54 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j82KDrEu013561
+	for <fwarc@sac.eng.sun.com>; Fri, 2 Sep 2005 13:13:53 -0700 (PDT)
+Received: from westmail2san.west.sun.com (westmail2san.West.Sun.COM [129.153.85.6])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j82KDpY17027;
+	Fri, 2 Sep 2005 13:13:51 -0700 (PDT)
+Received: from phys-san-1 (phys-san-1.West.Sun.COM [129.153.85.70])
+	by westmail2san.west.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j82KDoet014274;
+	Fri, 2 Sep 2005 13:13:51 -0700 (PDT)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IM700B01CSF01@san-mail1.west.sun.com>
+ (original mail from hitendra.zhangada@sun.com); Fri,
+ 02 Sep 2005 11:37:20 -0700 (PDT)
+Received: from [129.150.35.184]
+ (vpn-129-150-35-184.Central.Sun.COM [129.150.35.184])
+ by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IM700CM6D26TP@san-mail1.west.sun.com>; Fri,
+ 02 Sep 2005 11:37:20 -0700 (PDT)
+Date: Fri, 02 Sep 2005 11:37:18 -0700
+From: Hitendra Zhangada <hitendra.zhangada@Sun.COM>
+Subject: Re: FWARC/2005/499 sun4v core version API [fast-track]
+In-reply-to: <43169025.3020207@sun.com>
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: pq-arch@Sun.COM, Richard Barnette <Richard.Barnette@Sun.COM>,
+   Tom Caron <Tom.Caron@Sun.COM>, Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>
+Message-id: <43189BDE.4030404@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.2)
+ Gecko/20040804 Netscape/7.2 (ax)
+References: <43169025.3020207@sun.com>
+Status: RO
+Content-Length: 1805
+
+Tony Sumpter wrote:
+
+> I'm sponsoring this case as a fast-track for Ashley Saulsbury.
+> The fast-track timeout is Sept 12, 2005.
+> 
+> The materials are in the case directory under 'materials':
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/499/
+> The normative text in api-24-ver.pdf is in sections 5.1.1 and 5.1.2,
+> and in the API_SET_VERSION and API_GET_VERSION number assignments
+> in section 3.3.
+> Section 5.1.1.2 is informative and the rest of the document should
+> be ignored for this case.
+> 
+> The case defines the HV APIs for API versioning. FWARC/2005/116
+> reserved a single CORE TRAP API number name API_VER for this
+> functionality. When the details of the versioning were written
+> up, the need for separtate SET and GET APIs was apparent, so
+> the reserved API has been renamed.
+
+One comment.  For the api_set_version API's error status, the section
+5.1.1 states that for unsupported api_group it will return EINVAL.
+But in the section 5.1.1.2, 5th paragraph, last sentence, states
+that unsupported api_group would return ENOTSUPPORTED.  One of these
+sections are incorrect, please correct it.  I think section 5.1.1
+is correct and text in 5.1.1.2 is incorrect.
+
+
+> 
+> The requested binding is for a minor release of the firmware and
+> a micro release of the OS, the committment level of the interfaces
+> is Sun Private.
+> 
+> This case reserves CORE TRAP (0xff) function numbers
+> 0x00 and 0x03 for the APIs defined by the case, and
+> these CORE TRAP function numbers will be documented
+> in the registry created by 2005/116.
+> 
+> Tony.
+> 
+> 
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Wed Sep 14 23:28:50 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j8F6SoEu016130
+	for <fwarc@sac.eng.sun.com>; Wed, 14 Sep 2005 23:28:50 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j8F6SdP22143;
+	Wed, 14 Sep 2005 23:28:39 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IMU00G01HX5RY00@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 14 Sep 2005 23:27:05 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IMU007X4HX4RE80@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 14 Sep 2005 23:27:04 -0700 (PDT)
+Received: from fe1.sun.com ([192.18.108.78])
+	by brmea-mail-3.sun.com (8.12.10/8.12.9) with ESMTP id j8F6R41L029209; Thu,
+ 15 Sep 2005 00:27:04 -0600 (MDT)
+Received: from conversion-daemon.fe1.sun.com by fe1.sun.com
+ (Sun Java System Messaging Server 6.1 HotFix 0.02 (built Aug 25 2004))
+ id <0IMU00L01CD7Z700@fe1.sun.com> (original mail from Tony.Sumpter@Sun.COM)
+ ; Thu, 15 Sep 2005 00:27:04 -0600 (MDT)
+Received: from sun.com ([129.150.24.227])
+ by fe1.sun.com (Sun Java System Messaging Server 6.1 HotFix 0.02 (built Aug 25
+ 2004)) with ESMTPSA id <0IMU000ZVHX3YYZ6@fe1.sun.com>; Thu,
+ 15 Sep 2005 00:27:04 -0600 (MDT)
+Date: Wed, 14 Sep 2005 23:27:35 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: FWARC/2005/499 sun4v core version API [fast-track]
+In-reply-to: <43189BDE.4030404@sun.com>
+To: Hitendra Zhangada <hitendra.zhangada@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, pq-arch@Sun.COM,
+   Richard Barnette <Richard.Barnette@Sun.COM>, Tom Caron <Tom.Caron@Sun.COM>,
+   Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>
+Message-id: <43291457.2000106@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.0.3.165339
+References: <43169025.3020207@sun.com> <43189BDE.4030404@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 1744
+
+Hitendra Zhangada wrote:
+
+> Tony Sumpter wrote:
+> 
+>> I'm sponsoring this case as a fast-track for Ashley Saulsbury.
+>> The fast-track timeout is Sept 12, 2005.
+>>
+>> The materials are in the case directory under 'materials':
+>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/499/
+>> The normative text in api-24-ver.pdf is in sections 5.1.1 and 5.1.2,
+>> and in the API_SET_VERSION and API_GET_VERSION number assignments
+>> in section 3.3.
+>> Section 5.1.1.2 is informative and the rest of the document should
+>> be ignored for this case.
+>>
+>> The case defines the HV APIs for API versioning. FWARC/2005/116
+>> reserved a single CORE TRAP API number name API_VER for this
+>> functionality. When the details of the versioning were written
+>> up, the need for separtate SET and GET APIs was apparent, so
+>> the reserved API has been renamed.
+> 
+> 
+> One comment.  For the api_set_version API's error status, the section
+> 5.1.1 states that for unsupported api_group it will return EINVAL.
+> But in the section 5.1.1.2, 5th paragraph, last sentence, states
+> that unsupported api_group would return ENOTSUPPORTED.  One of these
+> sections are incorrect, please correct it.  I think section 5.1.1
+> is correct and text in 5.1.1.2 is incorrect.
+
+Agreed. The 5.1.1 is normative and has precedence over 5.1.1.2 which
+is informative.
+
+Tony.
+
+> 
+>>
+>> The requested binding is for a minor release of the firmware and
+>> a micro release of the OS, the committment level of the interfaces
+>> is Sun Private.
+>>
+>> This case reserves CORE TRAP (0xff) function numbers
+>> 0x00 and 0x03 for the APIs defined by the case, and
+>> these CORE TRAP function numbers will be documented
+>> in the registry created by 2005/116.
+>>
+>> Tony.
+>>
+>>
+> 
+> 
+
+
+
+From sacadmin Wed Sep 14 23:29:58 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j8F6TvEu016144
+	for <fwarc@sac.eng.Sun.COM>; Wed, 14 Sep 2005 23:29:57 -0700 (PDT)
+Received: from brmea-mail-3.sun.com (brmea-mail-3.Sun.COM [192.18.98.34])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j8F6Tvn08772;
+	Thu, 15 Sep 2005 00:29:57 -0600 (MDT)
+Received: from fe1.sun.com ([192.18.108.78])
+	by brmea-mail-3.sun.com (8.12.10/8.12.9) with ESMTP id j8F6Tv1L000882;
+	Thu, 15 Sep 2005 00:29:57 -0600 (MDT)
+Received: from conversion-daemon.fe1.sun.com by fe1.sun.com
+ (Sun Java System Messaging Server 6.1 HotFix 0.02 (built Aug 25 2004))
+ id <0IMU00L01CD7Z700@fe1.sun.com> (original mail from Tony.Sumpter@Sun.COM)
+ ; Thu, 15 Sep 2005 00:29:57 -0600 (MDT)
+Received: from sun.com ([129.150.24.227])
+ by fe1.sun.com (Sun Java System Messaging Server 6.1 HotFix 0.02 (built Aug 25
+ 2004)) with ESMTPSA id <0IMU000ZXI1VYYZ6@fe1.sun.com>; Thu,
+ 15 Sep 2005 00:29:57 -0600 (MDT)
+Date: Wed, 14 Sep 2005 23:30:27 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: FWARC/2005/499 sun4v core version API [fast-track]
+In-reply-to: <43169025.3020207@sun.com>
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: pq-arch@Sun.COM, Richard Barnette <Richard.Barnette@Sun.COM>,
+   Tom Caron <Tom.Caron@Sun.COM>
+Message-id: <43291503.6030202@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <43169025.3020207@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 1318
+
+The timer for this fast-track has expired and the case is now approved
+by FWARC.
+
+The IAM File has been updated.
+
+Thanks,
+Tony.
+
+Tony Sumpter wrote:
+
+> I'm sponsoring this case as a fast-track for Ashley Saulsbury.
+> The fast-track timeout is Sept 12, 2005.
+> 
+> The materials are in the case directory under 'materials':
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/499/
+> The normative text in api-24-ver.pdf is in sections 5.1.1 and 5.1.2,
+> and in the API_SET_VERSION and API_GET_VERSION number assignments
+> in section 3.3.
+> Section 5.1.1.2 is informative and the rest of the document should
+> be ignored for this case.
+> 
+> The case defines the HV APIs for API versioning. FWARC/2005/116
+> reserved a single CORE TRAP API number name API_VER for this
+> functionality. When the details of the versioning were written
+> up, the need for separtate SET and GET APIs was apparent, so
+> the reserved API has been renamed.
+> 
+> The requested binding is for a minor release of the firmware and
+> a micro release of the OS, the committment level of the interfaces
+> is Sun Private.
+> 
+> This case reserves CORE TRAP (0xff) function numbers
+> 0x00 and 0x03 for the APIs defined by the case, and
+> these CORE TRAP function numbers will be documented
+> in the registry created by 2005/116.
+> 
+> Tony.
+> 
+> 
+
+
+
+From sacadmin Thu Sep 15 10:51:14 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j8FHpDEu023848
+	for <fwarc@sac.eng.sun.com>; Thu, 15 Sep 2005 10:51:13 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j8FHpDP02300;
+	Thu, 15 Sep 2005 10:51:13 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IMV00J09DLD4P00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 15 Sep 2005 10:51:13 -0700 (PDT)
+Received: from westmail2san.west.sun.com ([129.153.85.6])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IMV007BIDLCMOF0@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 15 Sep 2005 10:51:13 -0700 (PDT)
+Received: from phys-san-1 (phys-san-1.West.Sun.COM [129.153.85.70])
+	by westmail2san.west.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id j8FHpCen028499; Thu, 15 Sep 2005 10:51:12 -0700 (PDT)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IMV00801CXU13@san-mail1.west.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Thu,
+ 15 Sep 2005 10:51:12 -0700 (PDT)
+Received: from [129.153.85.36] (sr1-usan-06.West.Sun.COM [129.153.85.36])
+ by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IMV00DLPDLBWC@san-mail1.west.sun.com>; Thu,
+ 15 Sep 2005 10:51:12 -0700 (PDT)
+Date: Thu, 15 Sep 2005 10:51:11 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: FWARC/2005/499 sun4v core version API [fast-track]
+In-reply-to: <43291457.2000106@sun.com>
+To: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, pq-arch@Sun.COM,
+   Richard Barnette <Richard.Barnette@Sun.COM>, Tom Caron <Tom.Caron@Sun.COM>,
+   Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>
+Reply-to: Hitendra.Zhangada@Sun.COM
+Message-id: <4329B48F.2040200@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.0.3.165339
+References: <43169025.3020207@sun.com> <43189BDE.4030404@sun.com>
+ <43291457.2000106@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7.11) Gecko/20050910
+Status: RO
+Content-Length: 1801
+
+Tony Sumpter wrote:
+> Hitendra Zhangada wrote:
+> 
+>> Tony Sumpter wrote:
+>>
+>>> I'm sponsoring this case as a fast-track for Ashley Saulsbury.
+>>> The fast-track timeout is Sept 12, 2005.
+>>>
+>>> The materials are in the case directory under 'materials':
+>>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/499/
+>>> The normative text in api-24-ver.pdf is in sections 5.1.1 and 5.1.2,
+>>> and in the API_SET_VERSION and API_GET_VERSION number assignments
+>>> in section 3.3.
+>>> Section 5.1.1.2 is informative and the rest of the document should
+>>> be ignored for this case.
+>>>
+>>> The case defines the HV APIs for API versioning. FWARC/2005/116
+>>> reserved a single CORE TRAP API number name API_VER for this
+>>> functionality. When the details of the versioning were written
+>>> up, the need for separtate SET and GET APIs was apparent, so
+>>> the reserved API has been renamed.
+>>
+>>
+>>
+>> One comment.  For the api_set_version API's error status, the section
+>> 5.1.1 states that for unsupported api_group it will return EINVAL.
+>> But in the section 5.1.1.2, 5th paragraph, last sentence, states
+>> that unsupported api_group would return ENOTSUPPORTED.  One of these
+>> sections are incorrect, please correct it.  I think section 5.1.1
+>> is correct and text in 5.1.1.2 is incorrect.
+> 
+> 
+> Agreed. The 5.1.1 is normative and has precedence over 5.1.1.2 which
+> is informative.
+
+Then the spec should be updated with this minor correction so that
+there is no confusion for the consumers of this API.  I would like
+to see the spec. updated.
+
+Thanks.
+
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Thu Sep 15 10:56:41 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j8FHufEu025530
+	for <fwarc@sac.eng.Sun.COM>; Thu, 15 Sep 2005 10:56:41 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j8FHuen22811;
+	Thu, 15 Sep 2005 11:56:40 -0600 (MDT)
+Received: from paranoia.sfbay (paranoia.SFBay.Sun.COM [129.146.96.132])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j8FHucao028123;
+	Thu, 15 Sep 2005 10:56:38 -0700 (PDT)
+Received: from [129.146.96.132] (paranoia [129.146.96.132])
+	by paranoia.sfbay (8.12.10+Sun/8.12.10) with ESMTP id j8FHuAR5019118;
+	Thu, 15 Sep 2005 10:56:11 -0700 (PDT)
+Message-ID: <4329B5BA.9020104@sun.com>
+Date: Thu, 15 Sep 2005 10:56:10 -0700
+From: Ashley Saulsbury <ashley.saulsbury@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (X11/20041208)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Hitendra.Zhangada@sun.com
+CC: Tony Sumpter <Tony.Sumpter@sun.com>, Firmware Arch <fwarc@sun.com>,
+   pq-arch@sun.com, Richard Barnette <Richard.Barnette@sun.com>,
+   Tom Caron <Tom.Caron@sun.com>
+Subject: Re: FWARC/2005/499 sun4v core version API [fast-track]
+References: <43169025.3020207@sun.com> <43189BDE.4030404@sun.com> <43291457.2000106@sun.com> <4329B48F.2040200@Sun.COM>
+In-Reply-To: <4329B48F.2040200@Sun.COM>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 1761
+
+Hitendra Zhangada wrote:
+> Tony Sumpter wrote:
+> 
+>> Hitendra Zhangada wrote:
+>>
+>>> Tony Sumpter wrote:
+>>>
+>>>> I'm sponsoring this case as a fast-track for Ashley Saulsbury.
+>>>> The fast-track timeout is Sept 12, 2005.
+>>>>
+>>>> The materials are in the case directory under 'materials':
+>>>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/499/
+>>>> The normative text in api-24-ver.pdf is in sections 5.1.1 and 5.1.2,
+>>>> and in the API_SET_VERSION and API_GET_VERSION number assignments
+>>>> in section 3.3.
+>>>> Section 5.1.1.2 is informative and the rest of the document should
+>>>> be ignored for this case.
+>>>>
+>>>> The case defines the HV APIs for API versioning. FWARC/2005/116
+>>>> reserved a single CORE TRAP API number name API_VER for this
+>>>> functionality. When the details of the versioning were written
+>>>> up, the need for separtate SET and GET APIs was apparent, so
+>>>> the reserved API has been renamed.
+>>>
+>>>
+>>>
+>>>
+>>> One comment.  For the api_set_version API's error status, the section
+>>> 5.1.1 states that for unsupported api_group it will return EINVAL.
+>>> But in the section 5.1.1.2, 5th paragraph, last sentence, states
+>>> that unsupported api_group would return ENOTSUPPORTED.  One of these
+>>> sections are incorrect, please correct it.  I think section 5.1.1
+>>> is correct and text in 5.1.1.2 is incorrect.
+>>
+>>
+>>
+>> Agreed. The 5.1.1 is normative and has precedence over 5.1.1.2 which
+>> is informative.
+> 
+> 
+> Then the spec should be updated with this minor correction so that
+> there is no confusion for the consumers of this API.  I would like
+> to see the spec. updated.
+> 
+
+No problem, I'll try and get that done today.
+Thanks for spotting the discrepancy!
+
+cheers,
+
+ash.
+
+
+
+> Thanks.
+> 
+> 
+> 
+
+
+From sacadmin Fri Sep 23 10:32:26 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j8NHWQEu016807
+	for <fwarc@sac.eng.Sun.COM>; Fri, 23 Sep 2005 10:32:26 -0700 (PDT)
+Received: from brmea-mail-4.sun.com (brmea-mail-4.Sun.COM [192.18.98.36])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j8NHWOn10074;
+	Fri, 23 Sep 2005 11:32:24 -0600 (MDT)
+Received: from fe2.sun.com ([192.18.108.79])
+	by brmea-mail-4.sun.com (8.12.10/8.12.9) with ESMTP id j8NHWOvD017347;
+	Fri, 23 Sep 2005 11:32:24 -0600 (MDT)
+Received: from conversion-daemon.fe2.sun.com by fe2.sun.com
+ (Sun Java System Messaging Server 6.1 HotFix 0.02 (built Aug 25 2004))
+ id <0INA001015Z25S00@fe2.sun.com> (original mail from Tony.Sumpter@Sun.COM)
+ ; Fri, 23 Sep 2005 11:32:24 -0600 (MDT)
+Received: from sun.com ([129.144.206.227])
+ by fe2.sun.com (Sun Java System Messaging Server 6.1 HotFix 0.02 (built Aug 25
+ 2004)) with ESMTPSA id <0INA005XV61ZGA20@fe2.sun.com>; Fri,
+ 23 Sep 2005 11:32:24 -0600 (MDT)
+Date: Fri, 23 Sep 2005 10:32:59 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: FWARC/2005/499 sun4v core version API [fast-track]
+In-reply-to: <4329B48F.2040200@Sun.COM>
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: pq-arch@Sun.COM, Richard Barnette <Richard.Barnette@Sun.COM>,
+   Tom Caron <Tom.Caron@Sun.COM>, Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>
+Message-id: <43343C4B.3010207@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <43169025.3020207@sun.com> <43189BDE.4030404@sun.com>
+ <43291457.2000106@sun.com> <4329B48F.2040200@Sun.COM>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 1719
+
+Hitendra Zhangada wrote:
+
+> Tony Sumpter wrote:
+> 
+>> Hitendra Zhangada wrote:
+>>
+>>> Tony Sumpter wrote:
+>>>
+>>>> I'm sponsoring this case as a fast-track for Ashley Saulsbury.
+>>>> The fast-track timeout is Sept 12, 2005.
+>>>>
+>>>> The materials are in the case directory under 'materials':
+>>>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/499/
+>>>> The normative text in api-24-ver.pdf is in sections 5.1.1 and 5.1.2,
+>>>> and in the API_SET_VERSION and API_GET_VERSION number assignments
+>>>> in section 3.3.
+>>>> Section 5.1.1.2 is informative and the rest of the document should
+>>>> be ignored for this case.
+>>>>
+>>>> The case defines the HV APIs for API versioning. FWARC/2005/116
+>>>> reserved a single CORE TRAP API number name API_VER for this
+>>>> functionality. When the details of the versioning were written
+>>>> up, the need for separtate SET and GET APIs was apparent, so
+>>>> the reserved API has been renamed.
+>>>
+>>>
+>>>
+>>>
+>>> One comment.  For the api_set_version API's error status, the section
+>>> 5.1.1 states that for unsupported api_group it will return EINVAL.
+>>> But in the section 5.1.1.2, 5th paragraph, last sentence, states
+>>> that unsupported api_group would return ENOTSUPPORTED.  One of these
+>>> sections are incorrect, please correct it.  I think section 5.1.1
+>>> is correct and text in 5.1.1.2 is incorrect.
+>>
+>>
+>>
+>> Agreed. The 5.1.1 is normative and has precedence over 5.1.1.2 which
+>> is informative.
+> 
+> 
+> Then the spec should be updated with this minor correction so that
+> there is no confusion for the consumers of this API.  I would like
+> to see the spec. updated.
+
+The spec file has been updated as requested (materials/api-24-ver.pdf).
+
+Tony.
+
+
+
+From sacadmin Wed Nov  9 14:29:06 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id jA9MT5IQ009468
+	for <fwarc@sac.eng.sun.com>; Wed, 9 Nov 2005 14:29:06 -0800 (PST)
+Received: from brmea-mail-4.sun.com (brmea-mail-4.Sun.COM [192.18.98.36])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id jA9MT4127898;
+	Wed, 9 Nov 2005 14:29:04 -0800 (PST)
+Received: from fe-amer-10.sun.com ([192.18.108.184])
+	by brmea-mail-4.sun.com (8.12.10/8.12.9) with ESMTP id jA9MT3D7021784;
+	Wed, 9 Nov 2005 15:29:04 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IPP00M01K8PXR00@mail-amer.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Wed,
+ 09 Nov 2005 15:29:03 -0700 (MST)
+Received: from sun.com ([129.150.29.192])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep  9
+ 2005)) with ESMTPSA id <0IPP004XBL4C9870@mail-amer.sun.com>; Wed,
+ 09 Nov 2005 15:29:01 -0700 (MST)
+Date: Wed, 09 Nov 2005 14:29:04 -0800
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: FWARC/2005/499 sun4v core version API [fast-track]
+In-reply-to: <43291503.6030202@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: pq-arch@Sun.COM, Richard Barnette <Richard.Barnette@Sun.COM>,
+   Tom Caron <Tom.Caron@Sun.COM>, Girish Goyal <Girish.Goyal@Sun.COM>
+Message-id: <43727830.6040903@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <43169025.3020207@sun.com> <43291503.6030202@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 380
+
+It was pointed out to me that I forgot to update the trap registry for
+this case: I have now done this.
+
+http://sac.eng.sun.com/arc/FWARC/Registries/trap-registry.txt
+
+Tony.
+
+Tony Sumpter wrote:
+
+> Date: Wed, 14 Sep 2005 23:30:27 -0700
+> The timer for this fast-track has expired and the case is now approved
+> by FWARC.
+> 
+> The IAM File has been updated.
+> 
+> Thanks,
+> Tony.
+
+
+
+From sacadmin Wed Nov  9 15:12:29 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id jA9NCSIQ011574
+	for <fwarc@sac.eng.sun.com>; Wed, 9 Nov 2005 15:12:28 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id jA9NCR719638;
+	Wed, 9 Nov 2005 15:12:27 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IPP00H03N4RB900@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 09 Nov 2005 15:12:27 -0800 (PST)
+Received: from nwkes-gis-mail-1.sun.com ([10.4.134.5])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IPP0027UN4R0V60@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 09 Nov 2005 15:12:27 -0800 (PST)
+Received: from d1-sfbay-03.sun.com ([192.18.39.113])
+	by nwkes-gis-mail-1.sun.com (8.12.9/8.12.9) with ESMTP id jA9NCQIU001495; Wed,
+ 09 Nov 2005 15:12:26 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-03.sun.com by d1-sfbay-03.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IPP00201KN8XA00@d1-sfbay-03.sun.com>
+ (original mail from Girish.Goyal@Sun.COM); Wed,
+ 09 Nov 2005 15:12:26 -0800 (PST)
+Received: from sun.com ([129.146.96.105])
+ by d1-sfbay-03.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0IPP00HAWN4Q1Y30@d1-sfbay-03.sun.com>; Wed,
+ 09 Nov 2005 15:12:26 -0800 (PST)
+Date: Wed, 09 Nov 2005 15:10:56 -0800
+From: Girish Goyal <Girish.Goyal@Sun.COM>
+Subject: Re: FWARC/2005/499 sun4v core version API [fast-track]
+In-reply-to: <43727830.6040903@sun.com>
+Sender: Girish.Goyal@Sun.COM
+To: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, pq-arch@Sun.COM,
+   Richard Barnette <Richard.Barnette@Sun.COM>, Tom Caron <Tom.Caron@Sun.COM>
+Message-id: <43728200.1080405@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_BXodOgcNHV4pQYST+wyjLw)"
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.0.207369
+References: <43169025.3020207@sun.com> <43291503.6030202@sun.com>
+ <43727830.6040903@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 2646
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_BXodOgcNHV4pQYST+wyjLw)
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+On 11/09/05 14:29, Tony Sumpter wrote:
+
+>It was pointed out to me that I forgot to update the trap registry for
+>this case: I have now done this.
+>
+>http://sac.eng.sun.com/arc/FWARC/Registries/trap-registry.txt
+>
+>Tony.
+>  
+>
+
+This is what I was looking for.  According to the above
+URL, you have 8 groups as follows:
+
+    Core
+    Diagnostic
+    Niagara
+    Niagara crypto
+    PCI IO
+    SIG
+    SVC
+    WDOG
+
+Can you also include the group value in your registry
+as some of these groups are not even in the FWARC case?
+
+Cheers,
+Girish
+
+>Tony Sumpter wrote:
+>
+>  
+>
+>>Date: Wed, 14 Sep 2005 23:30:27 -0700
+>>The timer for this fast-track has expired and the case is now approved
+>>by FWARC.
+>>
+>>The IAM File has been updated.
+>>
+>>Thanks,
+>>Tony.
+>>    
+>>
+>
+>
+>  
+>
+
+
+--Boundary_(ID_BXodOgcNHV4pQYST+wyjLw)
+Content-type: text/html; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+  <title></title>
+</head>
+<body text="#000000" bgcolor="#ffffff">
+On 11/09/05 14:29, Tony Sumpter wrote:<br>
+<blockquote type="cite" cite="mid43727830.6040903@sun.com">
+  <pre wrap="">It was pointed out to me that I forgot to update the trap registry for
+this case: I have now done this.
+
+<a class="moz-txt-link-freetext" href="http://sac.eng.sun.com/arc/FWARC/Registries/trap-registry.txt">http://sac.eng.sun.com/arc/FWARC/Registries/trap-registry.txt</a>
+
+Tony.
+  </pre>
+</blockquote>
+<br>
+This is what I was looking for.&nbsp; According to the above<br>
+URL, you have 8 groups as follows:<br>
+<br>
+&nbsp;&nbsp;&nbsp; Core<br>
+&nbsp;&nbsp;&nbsp; Diagnostic<br>
+&nbsp;&nbsp;&nbsp; Niagara<br>
+&nbsp;&nbsp;&nbsp; Niagara crypto<br>
+&nbsp;&nbsp;&nbsp; PCI IO<br>
+&nbsp;&nbsp;&nbsp; SIG<br>
+&nbsp;&nbsp;&nbsp; SVC<br>
+&nbsp;&nbsp;&nbsp; WDOG<br>
+<br>
+Can you also include the group value in your registry<br>
+as some of these groups are not even in the FWARC case?<br>
+<br>
+Cheers,<br>
+Girish<br>
+<blockquote type="cite" cite="mid43727830.6040903@sun.com">
+  <pre wrap="">
+Tony Sumpter wrote:
+
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">Date: Wed, 14 Sep 2005 23:30:27 -0700
+The timer for this fast-track has expired and the case is now approved
+by FWARC.
+
+The IAM File has been updated.
+
+Thanks,
+Tony.
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+
+  </pre>
+</blockquote>
+<br>
+</body>
+</html>
+
+--Boundary_(ID_BXodOgcNHV4pQYST+wyjLw)--
+
+From sacadmin Thu Nov 10 09:39:22 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id jAAHdLIQ006629
+	for <fwarc@sac.eng.sun.com>; Thu, 10 Nov 2005 09:39:21 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id jAAHdK713608;
+	Thu, 10 Nov 2005 09:39:20 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IPR00D0B2DK7A00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 10 Nov 2005 09:39:20 -0800 (PST)
+Received: from uask4it.sfbay.sun.com ([10.4.102.32])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IPR001PS2DKNE40@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 10 Nov 2005 09:39:20 -0800 (PST)
+Received: from [192.168.1.109]
+ (vpn-129-150-27-10.SFBay.Sun.COM [129.150.27.10])	by uask4it.sfbay.sun.com
+ (8.13.3+Sun/8.13.3) with ESMTP id jAAHdJub018414; Thu,
+ 10 Nov 2005 09:39:19 -0800 (PST)
+Date: Thu, 10 Nov 2005 09:39:45 -0800
+From: Richard Barnette <richard.barnette@sun.com>
+Subject: Re: FWARC/2005/499 sun4v core version API [fast-track]
+In-reply-to: <43728200.1080405@sun.com>
+To: Firmware Arch <fwarc@sun.com>
+Cc: pq-arch@sun.com, Girish Goyal <girish.goyal@sun.com>,
+   Tom Caron <Tom.Caron@sun.com>
+Message-id: <b4fa5b5e43fbfd85b4eea5fa4c57ed0a@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.623)
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+X-PMX-Version: 5.1.0.207369
+References: <43169025.3020207@sun.com> <43291503.6030202@sun.com>
+ <43727830.6040903@sun.com> <43728200.1080405@sun.com>
+Content-Transfer-Encoding: 8bit
+X-MIME-Autoconverted: from quoted-printable to 8bit by sac.sfbay.sun.com id jAAHdMIR006630
+Status: RO
+Content-Length: 973
+
+On Nov 9, 2005, at 3:10 PM, Girish Goyal wrote:
+[ ... ]
+>  This is what I was looking for.  According to the above
+>  URL, you have 8 groups as follows:
+>
+>      Core
+>      Diagnostic
+>      Niagara
+>      Niagara crypto
+>      PCI IO
+>      SIG
+>      SVC
+>      WDOG
+>
+I don't believe all of these are or should be separate API groups.
+
+>  Can you also include the group value in your registry
+>  as some of these groups are not even in the FWARC case?
+>
+When we include this information, it should also indicate the 
+major/minor
+number(s) of availability for the call within the group.
+
+
+>  Cheers,
+>  Girish
+
+--
+Richard Barnette        | Belinda giggled till she shook the house,
+Sun Microsystems        | And Blink said Weeck! which is giggling for a 
+mouse,
+Supernova Software      | Ink and Mustard rudely asked his age,
+NWK20 3168 / UNWK20-310 | When Custard cried for a nice safe cage.
+(510) 936-3986 / x13986 |  - Ogden Nash, "The Tale of Custard the 
+Dragon"
+
+
+
+From sacadmin Thu Nov 10 14:30:44 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id jAAMUhIQ018696
+	for <fwarc@sac.eng.Sun.COM>; Thu, 10 Nov 2005 14:30:43 -0800 (PST)
+Received: from brmea-mail-3.sun.com (brmea-mail-3.Sun.COM [192.18.98.34])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id jAAMUdV01000
+	for <fwarc@sun.com>; Thu, 10 Nov 2005 15:30:42 -0700 (MST)
+Received: from fe-amer-09.sun.com ([192.18.108.183])
+	by brmea-mail-3.sun.com (8.12.10/8.12.9) with ESMTP id jAAMUd3F021751
+	for <fwarc@sun.com>; Thu, 10 Nov 2005 15:30:39 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IPR00H01FB57V00@mail-amer.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 10 Nov 2005 15:30:39 -0700 (MST)
+Received: from sun.com ([129.150.29.48])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep  9
+ 2005)) with ESMTPSA id <0IPR007YTFUU7WC0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 10 Nov 2005 15:30:30 -0700 (MST)
+Date: Thu, 10 Nov 2005 14:30:33 -0800
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: FWARC/2005/499 sun4v core version API
+In-reply-to: <b4fa5b5e43fbfd85b4eea5fa4c57ed0a@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Message-id: <4373CA09.60902@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <43169025.3020207@sun.com> <43291503.6030202@sun.com>
+ <43727830.6040903@sun.com> <43728200.1080405@sun.com>
+ <b4fa5b5e43fbfd85b4eea5fa4c57ed0a@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 356
+
+It seems there is some confusion between the apparent grouping in the
+API registry at http://sac.eng.sun.com/arc/FWARC/Registries/trap-registry.txt
+(comments column) and the groups listed in 2005/499.
+
+I am considering whether a fast-track case is required to change the
+format of the registry to include version and version grouping information.
+
+Tony.
+
+
+
+From sacadmin Thu Nov 10 17:40:23 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id jAB1eNIQ027477
+	for <fwarc@sac.eng.Sun.COM>; Thu, 10 Nov 2005 17:40:23 -0800 (PST)
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id jAB1eNV12009
+	for <fwarc@sun.com>; Thu, 10 Nov 2005 18:40:23 -0700 (MST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id jAB1eM2f004746;
+	Thu, 10 Nov 2005 17:40:22 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id jAB1eLfR087872;
+	Thu, 10 Nov 2005 17:40:22 -0800 (PST)
+Message-ID: <4373F685.1000806@sun.com>
+Date: Thu, 10 Nov 2005 17:40:21 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.6 (Windows/20050716)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Tony Sumpter <Tony.Sumpter@sun.com>
+CC: Firmware Arch <fwarc@sun.com>
+Subject: Re: FWARC/2005/499 sun4v core version API
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 988
+
+
+No case is required to add fields that have been defined
+in existing cases. We own the registry and it's up to us
+to put the information we think is pertinent in the registry.
+
+That said, do we really have the version info and are we the
+ones that should be maintaining it, or is that more of a project
+issue? I can go either way on that Tony, so do the right thing.
+
+The group names are descriptive only at this point, as far
+as I'm concerned. The versioning APIs were supposed to
+define a set of name/subname/etc things for the interface,
+and I'm not sure they ever did that.
+
+-David
+
+
+Tony Sumpter wrote:
+> It seems there is some confusion between the apparent grouping in the
+> API registry at 
+> http://sac.eng.sun.com/arc/FWARC/Registries/trap-registry.txt
+> (comments column) and the groups listed in 2005/499.
+> 
+> I am considering whether a fast-track case is required to change the
+> format of the registry to include version and version grouping information.
+> 
+> Tony.
+> 
+> 
+
+From sacadmin Tue Dec 13 15:56:36 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id jBDNuaIQ027389
+	for <fwarc@sac.eng.sun.com>; Tue, 13 Dec 2005 15:56:36 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id jBDNuZO27885;
+	Tue, 13 Dec 2005 15:56:35 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IRG00201NUAWG00@brm-avmta-1.central.sun.com>; Tue,
+ 13 Dec 2005 16:56:34 -0700 (MST)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IRG00GQXNUA46D0@brm-avmta-1.central.sun.com>; Tue,
+ 13 Dec 2005 16:56:34 -0700 (MST)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-4.sun.com (8.12.10/8.12.9) with ESMTP id jBDNuYD7012791; Tue,
+ 13 Dec 2005 16:56:34 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IRG00601MSQV400@mail-amer.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Tue,
+ 13 Dec 2005 16:56:34 -0700 (MST)
+Received: from sun.com ([129.150.28.78])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep  9
+ 2005)) with ESMTPSA id <0IRG008MCNU3DA00@mail-amer.sun.com>; Tue,
+ 13 Dec 2005 16:56:34 -0700 (MST)
+Date: Tue, 13 Dec 2005 15:56:26 -0800
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: FWARC/2005/499 sun4v core version API
+In-reply-to: <4373F685.1000806@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, Ashley Saulsbury <ashley.saulsbury@Sun.COM>,
+   Girish Goyal <Girish.Goyal@Sun.COM>,
+   Richard Barnette <Richard.Barnette@Sun.COM>
+Message-id: <439F5FAA.6080703@sun.com>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_jAN47IIwOz8RT3ptqovAig)"
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.1.222179
+References: <4373F685.1000806@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 7204
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_jAN47IIwOz8RT3ptqovAig)
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+David Kahn wrote:
+
+> 
+> No case is required to add fields that have been defined
+> in existing cases. We own the registry and it's up to us
+> to put the information we think is pertinent in the registry.
+
+Given this, I have attached the registry format proposed by Ash.
+
+The comment column loses the textual group indication in
+favor of a more formal Group number column.
+
+The groups established by the version case are at the beginning
+of the registry.
+
+Cases that add API groups now must also add appropriate
+version groups.
+
+If all the members agree, the registry can be updated.
+ 
+> That said, do we really have the version info and are we the
+> ones that should be maintaining it, or is that more of a project
+> issue? I can go either way on that Tony, so do the right thing.
+
+I think this is correct: We should register the groupings, but
+the versioning and versions supported within the rules set by the
+version API case are up to the project teams.
+
+> The group names are descriptive only at this point, as far
+> as I'm concerned. The versioning APIs were supposed to
+> define a set of name/subname/etc things for the interface,
+> and I'm not sure they ever did that.
+
+I think they did and I believe Ash has captured that in the attached
+registry format.
+
+Tony.
+
+> -David
+> 
+> 
+> Tony Sumpter wrote:
+> 
+>> It seems there is some confusion between the apparent grouping in the
+>> API registry at 
+>> http://sac.eng.sun.com/arc/FWARC/Registries/trap-registry.txt
+>> (comments column) and the groups listed in 2005/499.
+>>
+>> I am considering whether a fast-track case is required to change the
+>> format of the registry to include version and version grouping 
+>> information.
+>>
+>> Tony.
+>>
+>>
+
+
+--Boundary_(ID_jAN47IIwOz8RT3ptqovAig)
+Content-type: text/plain; name=trap-registry.txt; x-mac-creator=74747874;
+ x-mac-type=54455854
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=trap-registry.txt
+
+Version Interface group numbers:
+
+Group		Group#	Group Definition
+=====		======	================
+
+Common		0x0	sun4v virtual machine version
+CoreAPI		0x1	Core API version
+MMUFSA		0x2	MMU Fault status area version
+TrapTrace	0x3	Trap Trace buffer format
+
+VPCI		0x100	VPCI
+LDC		0x101	Logical Domain Channels
+SVC		0x102	Service Channels
+
+Niagara		0x200	Niagara perf counters
+NiagaraCrypto	0x201	Niagara crypto interface
+NiagaraDiag	0x202	Niagara diagnostic APIs
+
+
+
+Group#	Trap#	Function#	Case#			Comments
+======	=====	=========	=====			========
+
+N/A	0x80	--		FWARC/2005/116		FAST_TRAP
+0x1	0x83	--		FWARC/2005/116		MMU_MAP_ADDR
+0x1	0x84	--		FWARC/2005/116		MMU_UNMAP_ADDR
+0x1	0x85	--		FWARC/2005/116		TTRACE_ADDENTRY
+N/A	0xff	--		FWARC/2005/116		CORE_TRAP
+
+
+0x1	0x80	0x00		FWARC/2005/116		MACH_EXIT
+0x1	0x80	0x01		FWARC/2005/116		MACH_DESC
+0x1	0x80	0x02		FWARC/2005/116		MACH_SIR
+0x1	0x80	0x03		FWARC/2005/419		MACH_SET_SOFT_STATE
+0x1	0x80	0x04		FWARC/2005/419		MACH_GET_SOFT_STATE
+
+
+0x1	0x80	0x10		FWARC/2005/116		CPU_START
+0x1	0x80	0x11		FWARC/2005/116		CPU_STOP
+0x1	0x80	0x12		FWARC/2005/116		CPU_YIELD
+0x1	0x80	0x13		FWARC/2005/367		MACH_SET_WATCHDOG
+0x1	0x80	0x14		FWARC/2005/116		CPU_QCONF
+0x1	0x80	0x15		FWARC/2005/116		CPU_QINFO
+0x1	0x80	0x16		FWARC/2005/116		CPU_MYID
+0x1	0x80	0x17		FWARC/2005/116		CPU_STATE
+0x1	0x80	0x18		FWARC/2005/116		CPU_SET_RTBA
+0x1	0x80	0x19		FWARC/2005/116		CPU_GET_RTBA
+
+
+0x1	0x80	0x20		FWARC/2005/116		MMU_TSB_CTX0
+0x1	0x80	0x21		FWARC/2005/116		MMU_TSB_CTXNON0
+0x1	0x80	0x22		FWARC/2005/116		MMU_DEMAP_PAGE
+0x1	0x80	0x23		FWARC/2005/116		MMU_DEMAP_CTX
+0x1	0x80	0x24		FWARC/2005/116		MMU_DEMAP_ALL
+0x1	0x80	0x25		FWARC/2005/116		MMU_MAP_PERM_ADDR
+0x1	0x80	0x26		FWARC/2005/116		MMU_FAULT_AREA_CONF
+0x1	0x80	0x27		FWARC/2005/116		MMU_ENABLE
+0x1	0x80	0x28		FWARC/2005/116		MMU_UNMAP_PERM_ADDR
+0x1	0x80	0x29		FWARC/2005/116		MMU_TSB_CTX0_INFO
+0x1	0x80	0x2a		FWARC/2005/116		MMU_TSB_CTXNON0_INFO
+0x1	0x80	0x2b		FWARC/2005/116		MMU_FAULT_AREA_INFO
+
+
+0x1	0x80	0x31		FWARC/2005/116		MEM_SCRUB
+0x1	0x80	0x32		FWARC/2005/116		MEM_SYNC
+
+
+0x1	0x80	0x42		FWARC/2005/116		CPU_MONDO_SEND
+
+
+0x1	0x80	0x50		FWARC/2005/116		TOD_GET
+0x1	0x80	0x51		FWARC/2005/116		TOD_SET
+
+
+0x1	0x80	0x60		FWARC/2005/116		CONS_GETCHAR
+0x1	0x80	0x61		FWARC/2005/116		CONS_PUTCHAR
+
+
+0x102	0x80	0x80		FWARC/2005/173		SVC_SEND
+0x102	0x80	0x81		FWARC/2005/173		SVC_RCV
+0x102	0x80	0x82		FWARC/2005/173		SVC_GETSTATUS
+0x102	0x80	0x83		FWARC/2005/173		SVC_SETSTATUS
+0x102	0x80	0x84		FWARC/2005/173		SVC_CLRSTATUS
+
+
+0x3	0x80	0x90		FWARC/2005/116		TTRACE_BUF_CONF
+0x3	0x80	0x91		FWARC/2005/116		TTRACE_BUF_INFO
+0x3	0x80	0x92		FWARC/2005/116		TTRACE_ENABLE
+0x3	0x80	0x93		FWARC/2005/116		TTRACE_FREEZE
+0x3	0x80	0x94		FWARC/2005/116		DUMP_BUF_UPDATE
+0x3	0x80	0x95		FWARC/2005/116		DUMP_BUF_INFO
+
+0x1	0x80	0xa0		FWARC/2005/116		INTR_DEVINO2SYSINO
+0x1	0x80	0xa1		FWARC/2005/116		INTR_GETENABLED
+0x1	0x80	0xa2		FWARC/2005/116		INTR_SETENABLED
+0x1	0x80	0xa3		FWARC/2005/116		INTR_GETSTATE
+0x1	0x80	0xa4		FWARC/2005/116		INTR_SETSTATE
+0x1	0x80	0xa5		FWARC/2005/116		INTR_GETTARGET
+0x1	0x80	0xa6		FWARC/2005/116		INTR_SETTARGET
+
+
+0x100	0x80	0xb0		FWARC/2005/112		PCI_IOMMU_MAP
+0x100	0x80	0xb1		FWARC/2005/112		PCI_IOMMU_DEMAP
+0x100	0x80	0xb2		FWARC/2005/112		PCI_IOMMU_GETMAP
+0x100	0x80	0xb3		FWARC/2005/112		PCI_IOMMU_GETBYPASS
+0x100	0x80	0xb4		FWARC/2005/112		PCI_CONFIG_GET
+0x100	0x80	0xb5		FWARC/2005/112		PCI_CONFIG_PUT
+0x100	0x80	0xb6		FWARC/2005/112		PCI_PEEK
+0x100	0x80	0xb7		FWARC/2005/112		PCI_POKE
+0x100	0x80	0xb8		FWARC/2005/112		PCI_DMA_SYNC
+
+
+0x100	0x80	0xc0		FWARC/2005/112		PCI_MSIQ_CONF
+0x100	0x80	0xc1		FWARC/2005/112		PCI_MSIQ_INFO
+0x100	0x80	0xc2		FWARC/2005/112		PCI_MSIQ_GETVALID
+0x100	0x80	0xc3		FWARC/2005/112		PCI_MSIQ_SETVALID
+0x100	0x80	0xc4		FWARC/2005/112		PCI_MSIQ_GETSTATE
+0x100	0x80	0xc5		FWARC/2005/112		PCI_MSIQ_SETSTATE
+0x100	0x80	0xc6		FWARC/2005/112		PCI_MSIQ_GETHEAD
+0x100	0x80	0xc7		FWARC/2005/112		PCI_MSIQ_SETHEAD
+0x100	0x80	0xc8		FWARC/2005/112		PCI_MSIQ_GETTAIL
+0x100	0x80	0xc9		FWARC/2005/112		PCI_MSI_GETVALID
+0x100	0x80	0xca		FWARC/2005/112		PCI_MSI_SETVALID
+0x100	0x80	0xcb		FWARC/2005/112		PCI_MSI_GETMSIQ
+0x100	0x80	0xcc		FWARC/2005/112		PCI_MSI_SETMSIQ
+0x100	0x80	0xcd		FWARC/2005/112		PCI_MSI_GETSTATE
+0x100	0x80	0xce		FWARC/2005/112		PCI_MSI_SETSTATE
+
+
+0x100	0x80	0xd0		FWARC/2005/112		PCI_MSG_GETMSIQ
+0x100	0x80	0xd1		FWARC/2005/112		PCI_MSG_SETMSIQ
+0x100	0x80	0xd2		FWARC/2005/112		PCI_MSG_GETVALID
+0x100	0x80	0xd3		FWARC/2005/112		PCI_MSG_SETVALID
+
+
+0x200	0x80	0x100		FWARC/2005/164		NIAGARA_GET_PERFREG
+0x200	0x80	0x101		FWARC/2005/164		NIAGARA_SET_PERFREG
+
+0x200	0x80	0x102		FWARC/2005/467		NIAGARA_MMUSTAT_CONF
+0x200	0x80	0x103		FWARC/2005/467		NIAGARA_MMUSTAT_INFO
+
+
+0x201	0x80	0x110		PSARC/2005/125		NCS_REQUEST
+
+0x202	0x80	0x200		FWARC/2005/251		Diagnostic - DIAG_RA2PA
+0x202	0x80	0x201		FWARC/2005/251		Diagnostic - DIAG_HEXEC
+
+
+N/A	0xff	0x00		FWARC/2005/116,499	API_SET_VERSION (API_VER)
+N/A	0xff	0x01		FWARC/2005/116		API_PUTCHAR
+N/A	0xff	0x02		FWARC/2005/116		API_EXIT
+N/A	0xff	0x03		FWARC/2005/499		API_GET_VERSION
+
+
+
+--Boundary_(ID_jAN47IIwOz8RT3ptqovAig)--
+
+From sacadmin Tue Dec 13 16:36:32 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id jBE0aVIQ028332
+	for <fwarc@sac.eng.sun.com>; Tue, 13 Dec 2005 16:36:32 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id jBE0aVe03967
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Tue, 13 Dec 2005 16:36:31 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IRG0040FPOTJ400@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 13 Dec 2005 17:36:29 -0700 (MST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IRG00GZZPOT49D0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 13 Dec 2005 17:36:29 -0700 (MST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id jBE0aPTe023337; Tue, 13 Dec 2005 16:36:25 -0800 (PST)
+Received: from [129.146.90.56] (pkg [129.146.90.56])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id jBE0aOoG082171;
+ Tue, 13 Dec 2005 16:36:24 -0800 (PST)
+Date: Tue, 13 Dec 2005 16:36:24 -0800
+From: Greg Onufer <greg.onufer@sun.com>
+Subject: Re: FWARC/2005/499 sun4v core version API
+In-reply-to: <439F5FAA.6080703@sun.com>
+To: Tony Sumpter <Tony.Sumpter@sun.com>
+Cc: David Kahn <David.Kahn@sun.com>, Firmware Arch <fwarc@sun.com>,
+   Ashley Saulsbury <ashley.saulsbury@sun.com>,
+   Girish Goyal <Girish.Goyal@sun.com>,
+   Richard Barnette <Richard.Barnette@sun.com>
+Message-id: <439F6908.7050607@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.1.222179
+References: <4373F685.1000806@sun.com> <439F5FAA.6080703@sun.com>
+User-Agent: Thunderbird 1.5 (X11/20051130)
+Status: RO
+Content-Length: 658
+
+Tony Sumpter wrote:
+> David Kahn wrote:
+> 
+>>
+>> No case is required to add fields that have been defined
+>> in existing cases. We own the registry and it's up to us
+>> to put the information we think is pertinent in the registry.
+> 
+> Given this, I have attached the registry format proposed by Ash.
+
+We need to know for each API the major and range of minors it is valid 
+for.  I think this information should be in the registry.
+
+Right now it would be impossible to mechanically generate a list of APIs 
+for "core v1.5", for example.  Or a list of everything I need to look at 
+if I want to write something that supports "core v1.0 - v1.5".
+
+Cheers!greg
+
+
+From sacadmin Tue Dec 13 17:21:11 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id jBE1LBIQ002129
+	for <fwarc@sac.eng.sun.com>; Tue, 13 Dec 2005 17:21:11 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id jBE1LAe14976
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Tue, 13 Dec 2005 17:21:10 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IRG00603RRADA00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 13 Dec 2005 18:21:10 -0700 (MST)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IRG004MBRRAZ510@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 13 Dec 2005 18:21:10 -0700 (MST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id jBE1L92f020284; Tue, 13 Dec 2005 17:21:09 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id jBE1L8oG084059;
+ Tue, 13 Dec 2005 17:21:08 -0800 (PST)
+Date: Tue, 13 Dec 2005 17:21:07 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: FWARC/2005/499 sun4v core version API
+In-reply-to: <439F5FAA.6080703@sun.com>
+To: Tony Sumpter <Tony.Sumpter@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Ashley Saulsbury <ashley.saulsbury@sun.com>,
+   Girish Goyal <Girish.Goyal@sun.com>,
+   Richard Barnette <Richard.Barnette@sun.com>
+Message-id: <439F7383.9070500@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.1.222179
+References: <4373F685.1000806@sun.com> <439F5FAA.6080703@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.6 (Windows/20050716)
+Status: RO
+Content-Length: 898
+
+
+
+Tony Sumpter wrote:
+
+>> The group names are descriptive only at this point, as far
+>> as I'm concerned. The versioning APIs were supposed to
+>> define a set of name/subname/etc things for the interface,
+>> and I'm not sure they ever did that.
+> 
+> 
+> I think they did and I believe Ash has captured that in the attached
+> registry format.
+
+I said we could add fields, but I didn't mean to imply that we
+could define APIs, such as versioning group names, which become part of
+the versioning APIs.
+
+That needs a case. Redefining our registry format doesn't, but
+that didn't imply adding fields that define interfaces.
+
+Did a case define these group names and which APIs are included
+in each group? That should have been part of, or a follow on to
+the versioning API. (it should include the group names, which
+APIs are part of the group, and what the versioning means if
+that makes sense.)
+
+-David
+
+
+From sacadmin Wed Dec 14 15:07:48 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id jBEN7mIQ025986
+	for <fwarc@sac.eng.sun.com>; Wed, 14 Dec 2005 15:07:48 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id jBEN7lT16166;
+	Wed, 14 Dec 2005 15:07:47 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IRI00A0DG8XUI00@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 14 Dec 2005 15:07:45 -0800 (PST)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IRI0095QG8UJW20@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 14 Dec 2005 15:07:42 -0800 (PST)
+Received: from fe-amer-05.sun.com ([192.18.108.179])
+	by brmea-mail-3.sun.com (8.12.10/8.12.9) with ESMTP id jBEN7g3F014113; Wed,
+ 14 Dec 2005 16:07:42 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IRI00201FHDEA00@mail-amer.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Wed,
+ 14 Dec 2005 16:07:42 -0700 (MST)
+Received: from sun.com ([129.150.26.212])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep  9
+ 2005)) with ESMTPSA id <0IRI006MWG8T6L00@mail-amer.sun.com>; Wed,
+ 14 Dec 2005 16:07:42 -0700 (MST)
+Date: Wed, 14 Dec 2005 15:07:41 -0800
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: FWARC/2005/499 sun4v core version API
+In-reply-to: <439F7383.9070500@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>,
+   Girish Goyal <Girish.Goyal@Sun.COM>,
+   Richard Barnette <Richard.Barnette@Sun.COM>,
+   Greg Onufer <greg.onufer@Sun.COM>
+Message-id: <43A0A5BD.9050406@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.1.222179
+References: <4373F685.1000806@sun.com> <439F5FAA.6080703@sun.com>
+ <439F7383.9070500@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 1345
+
+David Kahn wrote:
+
+> 
+> 
+> Tony Sumpter wrote:
+> 
+>>> The group names are descriptive only at this point, as far
+>>> as I'm concerned. The versioning APIs were supposed to
+>>> define a set of name/subname/etc things for the interface,
+>>> and I'm not sure they ever did that.
+>>
+>>
+>>
+>> I think they did and I believe Ash has captured that in the attached
+>> registry format.
+> 
+> 
+> I said we could add fields, but I didn't mean to imply that we
+> could define APIs, such as versioning group names, which become part of
+> the versioning APIs.
+> 
+> That needs a case. Redefining our registry format doesn't, but
+> that didn't imply adding fields that define interfaces.
+> 
+> Did a case define these group names and which APIs are included
+> in each group? That should have been part of, or a follow on to
+> the versioning API. (it should include the group names, which
+> APIs are part of the group, and what the versioning means if
+> that makes sense.)
+
+2005/499 defined group number 0x0, 0x1, 0x2, 0x100 and 0x101, so the example
+registry format has new interfaces.
+
+It didn't define what APIs belonged to what groups.
+
+It would be prudent to have a Fast Track to adopt the base set of groups
+for the existing list of APIs in the current registry.
+
+Since I'm on vacation 12/17-1/8, could someone sponsor a Fast Track
+for Ash on this?
+
+Tony.
+
+
+
+From sacadmin Wed Dec 14 15:22:51 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id jBENMpIQ026322
+	for <fwarc@sac.eng.sun.com>; Wed, 14 Dec 2005 15:22:51 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id jBENMoO28307
+	for <@sunmail3.sfbay.sun.com:fwarc@sun.com>; Wed, 14 Dec 2005 15:22:50 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IRI00B05GY18B00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 14 Dec 2005 15:22:49 -0800 (PST)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IRI009ZXGY1K220@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 14 Dec 2005 15:22:49 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id jBENMj2f029375; Wed, 14 Dec 2005 15:22:45 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id jBENMgoG023225;
+ Wed, 14 Dec 2005 15:22:43 -0800 (PST)
+Date: Wed, 14 Dec 2005 15:22:42 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: FWARC/2005/499 sun4v core version API
+In-reply-to: <43A0A5BD.9050406@sun.com>
+To: Tony Sumpter <Tony.Sumpter@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+   Girish Goyal <Girish.Goyal@sun.com>,
+   Richard Barnette <Richard.Barnette@sun.com>,
+   Greg Onufer <greg.onufer@sun.com>
+Message-id: <43A0A942.3040304@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.1.222179
+References: <4373F685.1000806@sun.com> <439F5FAA.6080703@sun.com>
+ <439F7383.9070500@sun.com> <43A0A5BD.9050406@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.6 (Windows/20050716)
+Status: RO
+Content-Length: 969
+
+
+
+Tony Sumpter wrote:
+
+>> Did a case define these group names and which APIs are included
+>> in each group? That should have been part of, or a follow on to
+>> the versioning API. (it should include the group names, which
+>> APIs are part of the group, and what the versioning means if
+>> that makes sense.)
+> 
+> 
+> 2005/499 defined group number 0x0, 0x1, 0x2, 0x100 and 0x101, so the 
+> example
+> registry format has new interfaces.
+> 
+> It didn't define what APIs belonged to what groups.
+> 
+> It would be prudent to have a Fast Track to adopt the base set of groups
+> for the existing list of APIs in the current registry.
+> 
+> Since I'm on vacation 12/17-1/8, could someone sponsor a Fast Track
+> for Ash on this?
+
+If somebody provides the fast-track, we'll find a sponsor for it,
+or I'll sponsor it myself if necessary. Assuming it gets reviewed
+by Greg, etc and includes any current versioning info, if we've
+released anything with more than one version.
+
+-David
+

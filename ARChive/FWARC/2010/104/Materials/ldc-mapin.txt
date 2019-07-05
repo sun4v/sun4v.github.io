@@ -1,0 +1,205 @@
+#pragma ident	"@(#)VIOTSB.txt	1.10	10/04/20 SMI"
+
+HV LDC Shared Memory Mapping Table Memory Allocation.
+
+1. Introduction.
+
+  The current hypervisor implementation uses static allocation for various
+  data structures required to provide virtual I/O services to guests.
+  As our system configurations grow, static allocation methods become
+  inefficient and don't scale well as the number of possible guest
+  domains increase.
+
+  The specific interface addressed in this document deals with backing
+  store for LDC shared memory mapin tables, (also known as VIOTSB).
+  See the specification for LDC Shared Memory map tables, [1], for
+  a detailed description of the LDC Shared memory map table.
+
+  Rather than statically allocating memory for VIOTSBs in the hypervisor,
+  a method is proposed that allows a guest OS or OpenBoot to pass in guest real
+  memory to the hypervisor, which the hypervisor will then use for the VIOTSB.
+
+  The interfaces are designed so that they will work with current and future
+  guest operating systems without change.
+
+1.1 Data Definitions
+
+1.1.1 table_type
+
+  This determines the page size of the entries mapped by the table
+
+	table_type 	1 => 8KB pages
+			2 => large pages.
+
+2. Proposed API to enable a guest to allocate memory for HV VIOTSBs
+
+   Existing LDC hcall group:
+
+	API_GROUP_LDC				0x101
+
+   New hcall#s:
+
+	LDC_VIOTSB_MEM_SIZE			0x187 (proposed)
+	LDC_VIOTSB_MEM_SET			0x188 (proposed)
+	LDC_VIOTSB_MEM_GET			0x189 (proposed)
+
+2.1. ldc_viotsb_mem_size
+
+	trap#		FAST_TRAP
+	function#	LDC_VIOTSB_MEM_SIZE
+	arg0		table_type 
+
+	ret1		table_size_max
+	ret2		table_entry_size
+
+	Returns the maximum table size supported for the LDC shared memory table
+	and the size of an individual entry.
+
+	table_size_max returns the maximum size of the VIOTSB in bytes.
+	table_entry_size is The size of a single table entry in bytes.
+
+2.1.1. Errors.
+
+	EINVAL		Invalid argument.
+
+2.2. ldc_viotsb_mem_set
+
+	trap#		FAST_TRAP
+	function#	LDC_VIOTSB_MEM_SET
+	arg0		table_type 
+	arg1		r_addr
+	arg2		table_size
+
+	Set the backing store for the VIOTSB identified by table_type to the
+	specified r_addr.
+
+	Calculate the table_size based on the desired #entries multiplied by the
+	entrysize.  Round off to the next higher power of two, but not less than
+	the smallest system supported page size, typically 8k bytes.
+	That value is the size and also the required alignment. If the
+	r_addr is not size-aligned, a value of EBADALIGN is returned.
+
+	The available RA memory range for LDC shared memory is determined
+	by the hypervisor MD. The size of the mapin table requested
+	(table_size) must not be greater than the maximum size required
+	to map that RA range.
+
+	Returns the error code EBUSY if the backing store for this VIOTSB is
+	already set and there are valid entries in the VIOTSB, or
+	if that memory range has already been allocated to the hypervisor
+	by the guest for another purpose.
+
+	If the guest wishes to change the memory allocated for a VIOTSB, it
+	must first unmap any entries that have been mapped for that table_type.
+
+	If table_size is zero, ignore the argument r_addr, and reset the backing store
+	for the VIOTSB identified by the argument table_type if the VIOTSB is empty
+	(ie there are no valid mappings in the table).
+
+	Upon guest reset, the VIOTSBs associated with this guest are removed,
+	any mappings in the VIOTSBs are deleted and are no longer available
+	for use by the guest. The VIOTSBs are unavailable until the guest
+	explicitly sets them up again using the ldc_viotsb_mem_set API.
+
+	Once memory is handed in to the hypervisor using this call, that memory
+	must not be accessed by the guest. Accesses to this memory will cause
+	a processor-specific exception.
+
+2.2.1. Errors.
+
+	EINVAL		Invalid table_type or table_size
+	EBADALIGN	Improperly aligned r_addr
+	ENORADDR	Invalid r_addr
+	EBUSY		VIOTSB in use
+			    -or-
+			The memory range (r_addr, size) cannot be protected,
+	ETOOMANY	Insufficient LDC shared memory RA space remaining
+			for this table size
+
+2.3. ldc_viotsb_mem_get
+
+
+	trap#		FAST_TRAP
+	function#	LDC_VIOTSB_MEM_GET
+	arg0		table_type
+
+	ret1		r_addr
+	ret2		table_size
+
+	Return the current backing store details for the VIOTSB identified by
+	table_type.
+
+	Upon successful return, ret1 shall contain the r_addr, ret2 shall
+	contain the table_size corresponding to the the backing store. If no
+	VIOTSB has been allocated for this table_type, ret1/ret2 will both
+	be set to 0.
+
+2.3.1. Errors.
+
+	EINVAL		Invalid table_type
+
+
+3. OpenBoot Changes
+---------------
+
+3.1. VIOTSB memory reservation.
+
+  OpenBoot shall be modified to negotiate the API group defined in section 2,
+  If successful, allocate suitably sized and aligned physical memory
+  (real memory), and call the ldc_VIOTSB_mem_set hcall defined in section 2.2,
+  above with the base r_addr and size of the allocated memory range for
+  both 8KB and large page tables.
+
+  For 8KB pages, (type 1), it shall allocate a table of at least 8192
+  entries. For large pages, (type 2), it shall allocate a table of at
+  least 64 entries. This will ensure that any legacy guest OS relying
+  on the current hypervisor behaviour will continue to operate correctly.
+
+  The memory shall be allocated from the available memory in the /memory node,
+  and shall be deducted from the available memory list used to generate
+  the "available" property in /memory, as with the "claim" method in the
+  /memory device node.
+
+  If any memory allocations are made as described above, create the
+  property defined in section 3.1.1.
+
+  Note that this approach is identical to that proposed for [2].
+
+3.1.1. Device Specific Properties
+
+  For all memory reserved for hypervisor use by OpenBoot, list each allocation
+  in the following property in the /memory node:
+
+  "hypervisor-reserved"						S
+
+	Propname, defines physical (real) memory reserved for the hypervisor
+	by Openboot.
+
+	Prop-encoded-array, optional reg-prop format; one or more entries
+	of the form {phys, size}, as defined below.
+
+	Each entry in this property defines a region of physical (real)
+	memory reserved by OpenBoot and passed in to the hypervisor by an
+	hcall. The property lists the base address and size of
+	each memory region reserved and passed into the hypervisor.
+
+	One or more entries of the form:
+
+		{phys, size}
+
+	As with the other reg-format properties in the /memory node,
+	phys and size are based on the parent #address-cells and
+	#size-cells properties. For sun4v based systems, phys and size 
+	fields are 2 cells each, thus for sun4v based systems each entry
+	contains 4 cells {phys.hi phys.lo size.hi size.lo}
+
+Reference:
+---------
+
+1. LDC Map Table Specification
+
+	http://arc.opensolaris.org/caselog/FWARC/2008/424/
+
+2. HV PCIe IOTSB Memory Allocation
+
+	http://cpubringup.sfbay.sun.com/twiki/bin/view/CSWFirmware/IOTsbAllocation

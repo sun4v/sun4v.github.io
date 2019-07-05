@@ -1,0 +1,174 @@
+
+1. Introduction
+   1.1. Project/Component Working Name:
+	sun4v interrupt cookies
+
+   1.2. Name of Document Author/Supplier:
+	Narayan.Venkat@sun.com
+
+   1.3. Date of This Document:
+        Mon Feb  6 18:23:46 PST 2006
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		HS PAC
+
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Tony Barreca
+
+	1.4.4. The name of your business unit:
+		Scalable Systems Group (SSG)
+			(Central Engineering)
+
+   1.5. Email Aliases:
+    	1.5.1. Responsible Manager: David.Banman@Sun.Com
+    	1.5.2. Responsible Engineer: Narayan.Venkat@sun.com
+    	1.5.3. Marketing Manager: Neil.Sadaranganey@sun.com
+	1.5.4. Interest List: sun4v-iteam@sun.com
+
+2. Project Summary
+   2.1. Project Description:
+
+	This case is a part of the sun4v umbrella case FWARC/2005/510 and
+	the Logical Domains umbrella case FWARC/2005/633. The functionality
+	will be delivered as part of the LDoms project.
+
+	This case describes extensions to the existing sun4v interrupt
+	API to support delivering guest specified cookies in the
+	second and third words of the dev_mondo payload. It proposes 
+	additions to the interrupt APIs specified as part of sun4v core API
+	case FWARC/2005/116.
+	
+   2.2. Risks and Assumptions:
+
+	See FWARC/2005/633
+
+3. Business Summary
+   3.1. Problem Area:
+
+	See FWARC/2005/633
+
+   3.2. Market/Requester:
+
+	See FWARC/2005/633
+
+   3.3. Business Justification:
+
+	See FWARC/2005/633
+
+   3.4. Competitive Analysis:
+
+	See FWARC/2005/633
+
+   3.5. Opportunity Window/Exposure:
+
+	See FWARC/2005/633
+
+   3.6. How will you know when you are done?:
+
+	See FWARC/2005/633
+
+4. Technical Description:
+
+   4.1 Overview
+
+	In current sun4v systems, when a dev_mondo trap is delivered to a guest
+	by the HV, an entry is added to the guest's dev_mondo queue. Currently 
+	each dev_mondo queue entry contains a system interrupt number in the 
+	first 64-bit word; (bytes 0 through 7) of the dev_mondo packet. This 
+	system interrupt number is obtained by making a call to the 
+	INTR_DEVINO2SYSINO API. The sysino is often used to index into a 
+	fixed-size interrupt table to obtain the PIL, interrupt handler and 
+	arguments. In addition to the interrupt number in the first word,
+	if the second and third word of the entry contained an arbitrary guest
+	defined values, call it interrupt cookies or a function pointer and 
+	argument, the guest can process the interrupt in a more efficient way.
+	This document describes an extension to the existing interrupt 
+	Hypervisor API to support this functionality.
+
+	The dev_mondo handler in a guest can be coded to handle both the 
+	interrupt number and interrupt cookies. The cookies may not be present
+	in the second and third word, but if present the guest has a means to 
+	expedite the interrupt handling.	
+	
+    4.2 Imported Interfaces :
+
+      Interface              Classification     Comments
+      =======================================================================
+
+      sun4v core API            Sun Private     Core APIs defined by
+                                                FWARC/2005/116
+
+
+    4.3 Exported Interfaces:
+
+      Interface               Classification     Comments
+      ========================================================================
+
+      INTR_GET_COOKIE           Sun Private     Trap 0x80 function number 0xa7
+      INTR_SET_COOKIE           Sun Private     Trap 0x80 function number 0xa8
+
+
+5. Reference Documents:
+	
+	The updated sun4v API specification detailing the new APIs is provided.
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+	
+	See FWARC/2005/633
+
+   6.2. Cost of Effort:
+
+	See FWARC/2005/633
+
+   6.3. Cost of Capital Resources:
+
+	Capital resources are subsumed as part of overall product development.
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation Name:
+		Delivery of firmware will be platform teams
+		Delivery of sun4v OS will be platform teams (ON) 
+		
+   	6.4.2. Contributing OpCo/BU/Division Name:
+		
+		Scalable Systems Group
+		
+	6.4.3. Type of PAC Review and Approval expected:
+		Standard
+
+        6.4.4. Project Boundary Conditions:
+		N/A
+
+	6.4.5. Is this a necessary project for OEM agreements:
+		No.
+
+	6.4.6. Notes/Dependencies:
+		SUN SPARC CPU specification
+
+	6.4.7. Target RTI Date/Release:
+	        N/A - Not a separate deliverable.
+
+	6.4.8. Target Code Design Review Date:
+		Q1CY06 for Niagara-I version 1.0
+
+	6.4.9. Update approval addition:
+	        N/A
+
+   6.5. ARC review type:
+		Full Review
+
+7. Prototype Availability: 
+   7.1. Prototype Availability:
+	Q1CY06
+
+   7.2. Prototype Cost:
+	Done using existing resources.
+
+
+
+

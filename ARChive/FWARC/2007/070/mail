@@ -1,0 +1,986 @@
+From sacadmin Thu Feb  1 12:07:11 2007
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l11K7BG1016032
+	for <fwarc@sac.eng.Sun.COM>; Thu, 1 Feb 2007 12:07:11 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id l11K7Au25450
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Thu, 1 Feb 2007 13:07:10 -0700 (MST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JCS00K2CVVUXA00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 01 Feb 2007 13:07:06 -0700 (MST)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JCS00B0FVVTWTF0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 01 Feb 2007 13:07:05 -0700 (MST)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l11K75TC028082	for
+ <fwarc@sun.com>; Thu, 01 Feb 2007 13:07:05 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JCS00201VMFS700@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 01 Feb 2007 13:07:05 -0700 (MST)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JCS00GR3VVS9J80@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 01 Feb 2007 13:07:05 -0700 (MST)
+Date: Thu, 01 Feb 2007 15:04:38 -0500
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: FWARC 2007/070: Machine Description IO Device Node Definitions
+Sender: Stephen.Ehring@Sun.COM
+To: fwarc@Sun.COM
+Message-id: <45C247D6.5070900@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0b2pre (X11/20070130)
+Status: RO
+Content-Length: 19066
+
+I'm sponsoring this FWARC Case for myself. I'd like to schedule an 
+inception review for 2/12/2007.
+
+Since I'm both the sponsor and the submitter, an intern volunteer would 
+be nice.
+
+http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2007/070/fwarc-20Q.txt
+http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2007/070/onepager.txt
+
+Steve
+
+1. What specifically is the proposal that we are reviewing?
+
+     This proposal represents a migration of hardware-specific data from
+     OpenBoot to the machine descriptions. The changes can be released 
+in a 
+     major/minor firmware release version.
+
+2. What is the motivation for it?
+
+     On current sun4v platforms, many pieces of hardware-specific data 
+is hard 
+     coded in OpenBoot. This hardware-specific data includes:
+          - interrupt-map topology
+          - MAC address allocation scheme
+          - dynamic IO configuration (XAUI vs. on board phy on Maramba)
+          - PCI/PCIE slot names
+
+     One of the goals of the sun4v architecture is to make each guest 
+domain 
+     (and hence OpenBoot) agnostic regarding the underlying hardware. In 
+order 
+     to accomplish this, all hardware-specific data needs to be 
+extracted from 
+     the MD. This proposal accomplishes this goal.
+
+3. What is its plan?
+
+     The proposal has been reviewed by key members of the OpenBoot, 
+     reset/config, and LDOMS manager teams, and it has been deemed an 
+     acceptable solution to the problems outlined in the onepager.
+
+4. Are there related projects in Sun?
+
+     This project is related to the sub-root-nexus IO partitioning 
+     functionality that is being designed by the LDOMs team. The way the 
+     proposal has been designed allows the LDOMs manager to trim various 
+IO 
+     devices from a guest, and the currently available MD cleanup routines 
+     will still work.
+
+5. What is the technical content of the project?
+
+     The content of the project is the definition of new MD nodes to 
+represent 
+     on board hardware IO devices. Then modifications to OpenBoot will 
+have to 
+     use these nodes during IO device probing.
+
+6. How is the project delivered into the system?
+
+     The project is delivered as a major/minor change to the firmware 
+(OpenBoot
+     and reset/config).
+
+7. What are the project's hardware platform dependencies? Is it expected to
+work on all systems (Desktop thru servers)?
+
+     The proposal will work on all sun4v systems.
+
+8. What is its FW operational environment:
+
+     The environment is similar to the current sun4v firmware environment, 
+     although OpenBoot will be reading much more information from the MDs.
+
+9. What is its user interface (tty, graphical, leds, sound, etc.)?
+
+     There is no user interface. Ideally, the end user will not notice a 
+single
+     difference in functionality.
+
+10. What are your project's other external interfaces (exported and
+imported)?
+
+     There are no external interfaces
+
+11. What are its other significant internal interfaces (inter-subsystem and
+inter-invocation)?
+
+     OpenBoot will now depend on the existence of IO device data in the 
+machine
+     description
+
+12. Is the interface extensible? How is the interface expected to evolve?
+
+   * How is versioning handled?
+
+     Via the pre-existing MD extraction versioning mechanisms.
+
+     The interface is extensible by defining new IO device-type nodes.
+
+13. How do the interfaces adapt to a changing world?
+
+     The interfaces attempt to make OpenBoot more stable in a changing 
+world by
+     moving hardware knowledge into the MDs.
+
+14. What internationalization issues are involved? N/A
+
+     [Note that Firmware is currently exempt from the "Big Rules" regarding
+     L10N and I18N because it represents a huge design and delivery problem
+     beyond the scope of the current architecture. Resolution is TBD.]
+
+15. How will the project contribute (positively or negatively) to "system
+load" and "perceived performance":
+
+     There should be no perceived performance effects. If anything, 
+performance
+     will improve since OpenBoot will not have to probe non-existent 
+devices.
+
+16. How does the project deal with failure and recovery?
+
+     Failure of the MD to create the correct IO topology will cause 
+incorrect 
+     IO device properties.
+
+17. Issues? Please identify the issues which you would like the ARC to
+address.
+
+      N/A
+
+18. Security
+
+      There are no major security issues.
+
+19. Database
+
+      N/A
+
+20. Appendices:
+
+     Materials are in the case directory.
+
+
+
+Onepager:
+
+Copyright 2006 Sun Microsystems
+
+1. Introduction
+   1.1. Project/Component Working Name:
+
+        Machine Description IO Device Node Definitions
+
+   1.2. Name of Document Author/Supplier:
+   
+        Stephen Ehring
+
+   1.3. Date of This Document:
+   
+        02/01/2007
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+    1.4.1. The PAC or CPT you expect to review your project:
+        HS PAC
+    1.4.2. The ARC(s) you expect to review your project:
+        FWARC
+    1.4.3. The Director/VP who is "Sponsoring" this project:
+        N/A
+    1.4.4. The name of your business unit:
+        Systems Group
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: chad.solomon@sun.com
+        1.5.2. Responsible Engineer: stephen.ehring@sun.com
+        1.5.3. Marketing Manager: N/A
+    1.5.4. Interest List:
+
+2. Project Summary
+   2.1. Project Description:
+   
+        This project defines new MD nodes that describe the static IO 
+topology
+        to the OpenBoot guest running in a domain. This allows OpenBoot to 
+        extract hardware-specific device information (MAC addresses, 
+        interrupt-maps, etc.) from the MD, thereby making the guest 
+hardware 
+        agnostic.
+
+   2.2. Risks and Assumptions:
+   
+        These changes will constitute a flag day between reset/config, 
+        OpenBoot, and the possibly the LDOMs manager.
+
+3. Business Summary
+   3.1. Problem Area:
+   
+        The sun4v architecture necessitates that the guest domain (and 
+hence 
+        OpenBoot) will need to become hardware agnostic. Currently, 
+OpenBoot
+        hard codes MAC address to device path association, interrupt-map 
+to 
+        device path association, PCI slot numbering/labeling 
+information, and 
+        other information that should be instead extracted from the 
+machine 
+        descriptions.
+
+   3.2. Market/Requester:
+   
+        The various firmware teams need these changes.
+
+   3.3. Business Justification:
+   
+        These changes allow future OpenBoot images to operate unmodified 
+on 
+        multiple platforms, thereby drastically decreasing OpenBoot 
+development
+        time.
+
+   3.4. Competitive Analysis:
+   
+        N/A
+
+   3.5. Opportunity Window/Exposure:
+
+        Project team is attempting to make changes available in time for 
+Huron 
+        RR
+
+   3.6. How will you know when you are done?:
+      
+        When code has been integrated into released system firmware image.
+
+4. Technical Description:
+    4.1. Details:
+
+        This project defines new MD nodes to represent on board hardware 
+IO 
+        devices. OpenBoot will use these nodes during IO device probing to 
+        determine which devices are present and need to be probed. The 
+device 
+        nodes in the machine description will also contain 
+hardware-specific 
+        properties that OpenBoot requires in order to create various 
+device 
+        tree properties.
+
+        The new MD nodes and their properties are described below. To help 
+        illustrate what this case is trying to accomplish, the materials 
+        directory contains a small sample device tree [3], what the MD 
+source 
+        file would look like for this IO topology [4], and a PDF file to 
+help 
+        drive the concept home [5].
+
+        This case is attempting to solve problems that were also 
+described in 
+        previous FWARC cases that concentrated on the MAC addresses [1] 
+and 
+        interrupt-maps [2]. However, the solutions presented in those 
+cases did
+        not fully solve all of the IO topolgy problems, and they were 
+        unpalatable to the ldoms manager team since they did not cleanly 
+fit 
+        into the MD lint cleanup protocol (the MD lint cleanup protocol 
+is how 
+        the ldoms manager controls domain to IO device association). 
+Approval
+        of this case will cause those cases to be withdrawn.        
+
+    4.1.1 I/O device node
+
+        Name:                   iodevice
+        Category:               optional
+        Required subordinates:  -
+        Optional subordinates:  iodevice, interrupt-map-entry
+
+        Description:
+
+        This node describes properties necessary to create an I/O device 
+node
+        in the OpenBoot device tree.
+
+        Properties:
+
+    Name              Tag        Req'd? Description
+    ----------------------------------------------------------------------
+    device-type       PROP_STR   Yes  A string type for this node. The 
+                                      remaining properties in the MD node 
+                                      for this device will vary depending 
+                                      on the value of this string. For 
+                                      each specific device-type allowed, 
+                                      the remaining properties are shown 
+                                      below. Current allowed device-type
+                                      values are:
+                                       - pci-switch-upstream
+                                         This value indicates the node is
+                                         an upstream port of a pci express
+                                         switch
+                                       - pci-switch-downstream
+                                         This value indicates the node is
+                                         a downstream  port of a pci 
+express
+                                         switch
+                                       - pci-pci-bridge
+                                         This value indicates the node is
+                                         a type of pci or pci-express 
+bridge.
+                                       - pci-network
+                                         This value indicates the node is
+                                         a pci-express or pci-x network
+                                         device
+                                       - pci-generic
+                                         This value indicates the node is
+                                         a pci-express or pci-x device
+    ----------------------------------------------------------------------
+
+
+        The following properties are allowed for device-types that have 
+the 
+        values:
+         - pci-switch-upstream
+         - pci-switch-downstream
+         - pci-pcix-bridge
+         - pci-network
+         - pci-generic
+
+    ----------------------------------------------------------------------
+    device-number     PROP_VAL   Yes  The PCI device number for this PCI
+                                      device
+    ----------------------------------------------------------------------
+    function-number   PROP_VAL   Yes  The PCI function number for this PCI
+                                      device
+    ----------------------------------------------------------------------
+    devalias          PROP_STR   No   The OpenBoot devalias for this PCI
+                                      device, if one exists.
+    ----------------------------------------------------------------------
+
+
+        The following properties are allowed for device-types that have 
+the 
+        values:
+         - pci-switch-upstream
+         - pci-switch-downstream
+         - pci-pcix-bridge
+
+    ----------------------------------------------------------------------
+    #interrupt-cells  PROP_VAL   No   This value will be converted
+                                      into the '#interrupt-cells'
+                                      property.
+                                      The value is the number of 32
+                                      bit integers required for the
+                                      representation of a single
+                                      interrupt specifier for this node.
+    ----------------------------------------------------------------------
+    interrupt-map-mask 
+                     PROP_DATA   No   This array of integers will specify
+                                      the interrupt-map-mask property that
+                                      OpenBoot needs to create in this PCI
+                                      device node.
+    ----------------------------------------------------------------------
+
+
+        The following properties are allowed for device-types that have 
+the 
+        values:
+         - pci-switch-downstream
+         - pci-pcix-bridge
+
+    ----------------------------------------------------------------------
+    slot-present?     PROP_VAL   Yes  A non-zero value for this property
+                                      means that a PCI slot is present at
+                                      this device/function number.
+    ----------------------------------------------------------------------
+    slot-names        PROP_STR   No   The 'slot-names' property as
+                                      described by the IEEE 1275 PCI
+                                      device binding.
+    ----------------------------------------------------------------------
+
+
+        The following properties are allowed for device-types that have 
+the 
+        values:
+         - pci-network
+
+    ----------------------------------------------------------------------
+    phy-type          PROP_STR   No   This property will contain a string
+                      that specifies the type of external
+                      physical layer transceiver is
+                      connected to the network device.
+                      The following are the allowed values
+                                      Value:    "xgc"  for 10Gb copper
+                                                "xgf"  for 10Gb fiber
+                                                "mif"  for  1G/100M/10M 
+copper
+                                                "pcs"  for  1Gb fiber
+    ----------------------------------------------------------------------
+    mac-addresses     PROP_DATA  No   An array of MAC addresses allocated
+                                      to this network device.
+    ----------------------------------------------------------------------
+
+
+    4.1.2 Interrupt mapping node
+
+        Name:                   interrupt-map-entry
+        Category:               optional
+        Required subordinates:  -
+        Optional subordinates:  -
+
+        Description:
+
+        This node describes a hardware interrupt mapping from a child
+        device interrupt domain to a parent device interrupt domain. I/O
+        device nodes may have forward links to these interrupt mapping 
+nodes.
+        Each node will correspond to a line in the device tree 
+'interrupt-map'
+        property.
+
+        Properties:
+
+    Name                Tag         Req'd? Description
+    
+---------------------------------------------------------------------------
+        parent-interrupt
+                   PROP_DATA   Yes    An array of integers that
+                                      describes the interrupt
+                                      number in the parent
+                                      interrupt domain.
+    
+---------------------------------------------------------------------------
+        child-interrupt
+                   PROP_DATA   Yes    An array of integers that
+                                      describes the interrupt
+                                      number in the child
+                                      interrupt domain.
+    
+---------------------------------------------------------------------------
+        child-unit-address
+                   PROP_DATA   Yes    The unit address of the device
+                                      that generates the interrupt
+                                      in the child interrupt domain.
+    
+---------------------------------------------------------------------------
+        parent-device-path
+                   PROP_STR    No     The textual device path of the
+                                      device tree node that serves as
+                                      the parent domain of the interrupt
+                                      mapping. If the parent device that
+                                      is specified by the 
+'parent-device-path'
+                                      property is not present in the device
+                                      tree, OpenBoot will eliminate the 
+child
+                                      device node from the device tree.
+    
+---------------------------------------------------------------------------
+
+
+    4.2. Bug/RFE Number(s):
+
+        N/A
+   
+    4.3. In Scope:
+   
+        MD node definitions and properties.
+
+    4.4. Out of Scope:
+
+        How OpenBoot extracts the MD information.
+   
+    4.5. Interfaces:
+
+    4.5.1 Imported Interfaces
+
+        Name                    Classification  Description
+        -----------------       --------------- -------------------
+        sun4v Machine           Sun Private     MD nodes definitions as
+        Description nodes                       defined by FWARC/2005/115
+
+    4.5.2 Exported Interfaces
+
+        Name                    Classification  Description
+        ----------------------  --------------  -------------------
+        "iodevice" MD node      Committed       MD node name and 
+properties as 
+                                                described in section 4.1.1
+
+        "interrupt-map-entry"   Committed       MD node name and 
+properties as
+        MD node                                 described in section 4.1.1
+ 
+5. Reference Documents:
+
+        [1] FWARC 2006/654 Machine Description MAC Address Representation
+            http://sac.eng/Archives/CaseLog/arc/FWARC/2006/654/
+
+        [2] FWARC 2006/636 Machine Description Interrupt Mapping
+            http://sac.eng/Archives/CaseLog/arc/FWARC/2006/636/
+
+        [3] Sample device tree
+            sample-device-tree
+
+        [4] Sample MD configuration source file
+            io.cfg
+
+        [5] Sample MD configuration visualization file
+            md-sample.pdf
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+   
+        Project teams wants completion by FY07Q2
+
+   6.2. Cost of Effort:
+   
+        Roughly 2 weeks uninterrupted development
+
+   6.3. Cost of Capital Resources:
+   
+        None
+
+   6.4. ARC review type:
+
+           Standard (convert to Fasttrack if no issues raised).
+
+7. Prototype Availability:
+   7.1. Prototype Availability:
+   
+        Working prototype is available.
+
+   7.2. Prototype Cost:
+
+        N/A
+
+From sacadmin Tue Feb  6 16:23:09 2007
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l170N99T028745
+	for <fwarc@sac.eng.sun.com>; Tue, 6 Feb 2007 16:23:09 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l170N8Rt019546;
+	Tue, 6 Feb 2007 16:23:08 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JD20031PH2K9Q00@brm-avmta-1.central.sun.com>; Tue,
+ 06 Feb 2007 17:23:08 -0700 (MST)
+Received: from sac.sfbay.sun.com ([129.146.175.66])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JD200KUIH2JX990@brm-avmta-1.central.sun.com>; Tue,
+ 06 Feb 2007 17:23:07 -0700 (MST)
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l170N7SN028742; Tue,
+ 06 Feb 2007 16:23:07 -0800 (PST)
+Received: (from ss146556@localhost)
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6/Submit) id l170N7JE028741; Tue,
+ 06 Feb 2007 16:23:07 -0800 (PST)
+Date: Tue, 06 Feb 2007 16:23:07 -0800 (PST)
+From: FWARC-coord@sun.com
+Subject: New FWARC Materials Submitted 2007/070 Machine Description IO Device
+ Node Definitons
+To: FWARC@sun.com
+Cc: Stephen.Ehring@sun.com, FWARC-coord@sun.com
+Message-id: <200702070023.l170N7JE028741@sac.sfbay.sun.com>
+MIME-version: 1.0
+Content-type: text/plain
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+Status: RO
+Content-Length: 491
+
+New Materials submitted for FWARC 2007/070 Machine Description IO Device Node Definitons
+Status: inception scheduled 02/12/2007
+
+Files:
+/shared/sac/FWARC/2007/070/inception.materials/fwarc-20Q.txt
+/shared/sac/FWARC/2007/070/inception.materials/io.cfg
+/shared/sac/FWARC/2007/070/inception.materials/md-sample.pdf
+/shared/sac/FWARC/2007/070/inception.materials/onepager.txt
+/shared/sac/FWARC/2007/070/inception.materials/sample-device-tree
+
+Please let me know if you have questions.
+
+- FWARC
+
+
+From sacadmin Tue Feb 20 12:32:26 2007
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l1KKWQSJ001030
+	for <fwarc@sac.eng.sun.com>; Tue, 20 Feb 2007 12:32:26 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l1KKWP7Z012700
+	for <@sunmail3mpk.sfbay.sun.com:fwarc@sun.com>; Tue, 20 Feb 2007 12:32:26 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JDS00J0V3Q1TS00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 20 Feb 2007 12:32:25 -0800 (PST)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JDS00EYG3PXG030@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 20 Feb 2007 12:32:21 -0800 (PST)
+Received: from fe-amer-05.sun.com ([192.18.108.179])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l1KKWLQT006778	for
+ <fwarc@sun.com>; Tue, 20 Feb 2007 20:32:21 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JDS00M013N6HU00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 20 Feb 2007 13:32:20 -0700 (MST)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JDS0063H3PWC874@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 20 Feb 2007 13:32:20 -0700 (MST)
+Date: Tue, 20 Feb 2007 15:29:47 -0500
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: FWARC 2007/070 Machine Description IO Device Node Definitons
+Sender: Stephen.Ehring@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Message-id: <45DB5A3B.70404@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0pre (X11/20070219)
+Status: RO
+Content-Length: 5274
+
+I believe I have sufficiently addressed all of the open issues. The new 
+case materials can be found here:
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2007/070/commit.materials/
+
+I'd like to schedule a commitment review for 2/26/2007 so we can 
+determine if everyone is okay with how I've resolved the issues.
+
+The new onepager is here:
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2007/070/commit.materials/onepager.txt
+
+Steve
+
+-------------------------------------------------------
+Issue 1 Open
+
+Hitendra 02/12/2007
+     Section, 4.1.1, "interrupt-map-mask" property.  I believe the
+     format of this property is derived from some other ARC case. Please
+     add a reference and add it to imported interfaces.
+
+Steve 02/12/2007
+I've added the document that describes this information as item [6] in 
+the references. I've also added a reference to it where the property is 
+defined in the MD.
+
+
+-------------------------------------------------------
+Issue 2 closed
+
+Hitendra 02/12/2007
+  Section, 4.1.1, "slot-present?", I think this is an optional property
+     and hence not required property.  The "required" column should say 
+"no".
+
+Steve 02/12/2007
+I've made this property optional, and removed the question mark. Instead 
+of looking at the boolean value, we will interpret it's presence as the 
+slot presence
+
+-------------------------------------------------------
+Issue 3 closed
+
+Hitendra 02/12/2007
+  Section, 4.1.1, "mac-addresses", I have a question on this property.
+     Currently, the addresses are fixed based on the device paths.  What
+     would happen if one of the device path is disabled or has failed?
+     How to make sure the MAC address assigned to each network device
+     does not change from one boot to another?
+
+Stephen 02/12/2007
+After explanation at the inception review, this issue is closed
+
+-------------------------------------------------------
+Issue 4 Open
+
+Hitendra 02/12/2007
+  Section, 4.1.2, "child-unit-address", by definition it seems like
+     this is one--integer value but the example shows three integers.
+     Please define format of this property or add reference to a case
+     which defines it.
+
+Steve 02/12/2007
+Added text to the property description to specify how many integers are 
+in this array
+-------------------------------------------------------
+Issue 5 Open
+
+Hitendra 02/12/2007
+  Section, 4.1.2, "parent-device-path", the comments about deleting
+     the child node are not clear.  Lets discuss at the meeting.
+
+Steve 02/12/2007
+I will mention about probing the nexus fully before applying the 
+interrupt maps. Then OpenBoot will have to trim nodes if their 
+interrupt-parent property does not exist. I will update the onepager 
+with this description.
+
+Steve 02/15/2007
+I've added a paragraph to section 4.1.2 explaining how OpenBoot will use 
+these interrupt mapping properties
+
+-------------------------------------------------------
+Issue 6 Closed
+
+Hitendra 02/12/2007
+    Since the "interrupt-map-entry" is an optional property, what does
+     it mean when it is missing?  How shall OpenBoot deal with that?
+
+Steve  02/12/2007 No interrupt-map-entry node, no need for an interrupt-map
+
+-------------------------------------------------------
+Issue 7 Open
+Sunit 02/12/2007
+Dynamic reconfiguration issues Supernova: chasis manager creates PRI. 
+How will this work?
+
+Ash: they need to sync with EricS, too.
+
+Steve 02/12/2007 Sunit will talk to the Supernova team and make sure 
+they are okay with the proposal. This issue will remain open until we 
+get confirmation.
+
+-------------------------------------------------------
+Issue 8 Open
+Ash 02/12/2007 pci-pcix to pci-pci bridge
+Ash: Need to have two device-types: pci-pcix and pci-pcie. Otherwise, 
+the LDOMs manager will not know which devices can be partitioned or not.
+
+Steve 02-20-2007: I'll update the onepager to represent this. I've 
+modified the case to define the following device_types:
+         - picex
+         - pcie-switch-upstream
+         - pcie-switch-downstream
+         - pcie-pcix-bridge
+         - pcix-pcix-bridge
+         - pci-network
+         - pci-scsi
+         - pci-generic
+
+
+-------------------------------------------------------
+Issue 9 Open
+Sunit 02/12/2007
+SASWWID? pci-scsi iodevice
+
+Steve 02/12/2007
+I will add saswwid and fix the function number in pci-generic example. I 
+will add a pci-scsi device with a SAS WWID property
+
+Steve 02/20/2007
+I've added 'pci-scsi'.
+
+-------------------------------------------------------
+Issue 10 Open
+Steve 02/12/2007
+Root nexus nodes need to be defined. I will add them to the onepager 
+since they are not defined anywhere yet.
+
+Steve 02/20/2007
+I've added the device_type 'pciex' which represents a root complex PCI 
+device (Fire, N2, etc).
+
+-------------------------------------------------------
+Issue 11 Closed
+Sunit 02/12/2007
+If a device is disabled in ASR database, would the iodevice node for 
+that device be present in the MD?
+
+Steve 02/12/2007: I'll think about it and come back with a proposal. 
+Leaving the issue open for now.
+
+Steve 02/20/2007: No, I don't think it's a good idea to combine the ASR 
+database and the iodevice MD node definition. One describes what 
+hardware is available to the guest, the other describes what hardware is 
+functional to the guest.
+
+
+
+
+
+
+From sacadmin Wed Feb 28 09:01:06 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l1SH15kj024408
+	for <fwarc@sac.eng.sun.com>; Wed, 28 Feb 2007 09:01:05 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l1SH0sIL013101
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Wed, 28 Feb 2007 17:01:04 GMT
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JE600D1DN9RK300@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 28 Feb 2007 10:01:03 -0700 (MST)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JE600M8GN9P1HD0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 28 Feb 2007 10:01:01 -0700 (MST)
+Received: from fe-amer-02.sun.com ([192.18.108.176])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l1SH11jL026160	for
+ <fwarc@sun.com>; Wed, 28 Feb 2007 17:01:01 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JE600F01MY4P700@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 28 Feb 2007 10:01:01 -0700 (MST)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JE600NBWN9P3W05@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 28 Feb 2007 10:01:01 -0700 (MST)
+Date: Wed, 28 Feb 2007 11:58:25 -0500
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: FWARC 2007/070 Machine Description IO Device Node Definitons
+Sender: Stephen.Ehring@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Message-id: <45E5B4B1.6080305@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0pre (X11/20070225)
+Status: RO
+Content-Length: 214
+
+All remaining issues with this case have been addressed, and since there 
+is no contention I'm converting this case to a fast track to time out 
+one week from today.
+
+Issues and IAM files have been updated.
+
+Steve
+
+From sacadmin Wed Feb 28 12:07:12 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l1SK7BPF004210
+	for <fwarc@sac.eng.sun.com>; Wed, 28 Feb 2007 12:07:11 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l1SK701X017205
+	for <@sunmail3mpk.sfbay.sun.com:fwarc@sun.com>; Wed, 28 Feb 2007 20:07:09 GMT
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JE60011NVVVV800@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 28 Feb 2007 12:07:07 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JE600LHEVVUUY30@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 28 Feb 2007 12:07:07 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id l1SK76an026378; Wed, 28 Feb 2007 12:07:06 -0800 (PST)
+Received: from [127.0.0.1] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l1SK76CW076226; Wed,
+ 28 Feb 2007 12:07:06 -0800 (PST)
+Date: Wed, 28 Feb 2007 12:07:03 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: FWARC 2007/070 Machine Description IO Device Node Definitons
+To: Stephen Ehring <Stephen.Ehring@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>
+Message-id: <45E5E0E7.4020903@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 1.5.0.9 (Windows/20061207)
+Status: RO
+Content-Length: 286
+
+
+
+Stephen Ehring wrote:
+> All remaining issues with this case have been addressed, and since there 
+> is no contention I'm converting this case to a fast track to time out 
+> one week from today.
+
+If you want to, I don't think you need to wait the full week,
+unless it doesn't matter.
+
+
+From sacadmin Tue Apr 10 08:01:02 2007
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l3AF12LS023117
+	for <fwarc@sac.eng.sun.com>; Tue, 10 Apr 2007 08:01:02 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l3AF0Nd6016288
+	for <@newsunmail1brm.central.sun.com:fwarc@sun.com>; Tue, 10 Apr 2007 09:00:24 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JGA0072DF0OY500@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Apr 2007 09:00:24 -0600 (MDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JGA00MLLF0MLJ50@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Apr 2007 09:00:22 -0600 (MDT)
+Received: from fe-amer-09.sun.com ([192.18.108.183])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l3AF0M6d024292	for
+ <fwarc@sun.com>; Tue, 10 Apr 2007 15:00:22 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JGA00901EU65900@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 10 Apr 2007 09:00:22 -0600 (MDT)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JGA0049FF0B1BLM@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Apr 2007 09:00:12 -0600 (MDT)
+Date: Tue, 10 Apr 2007 11:00:41 -0400
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: FWARC 2007/070 Machine Description IO Device Node Definitions
+Sender: Stephen.Ehring@sun.com
+To: fwarc@sun.com
+Message-id: <461BA699.5010108@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0.0.0pre (X11/20070407)
+Status: RO
+Content-Length: 150
+
+The timer for this case has expired. The case is closed as approved. The 
+interfaces can be released in a micro/minor version of the firmware.
+
+Steve
+

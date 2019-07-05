@@ -1,0 +1,30 @@
+
+Interfaces Imported
+
+Name			Classification		Comments
+====			==============		========
+PCI Bus Binding		Standard		Properties and methods defined
+to Open Firmware				in public specification.
+
+PCI Express Binding	Committed		FWARC/2005/545
+and Updates					FWARC/2005/048
+						FWARC/2003/637
+						PCIe updates to PCI Binding
+
+
+
+
+Interfaces Exported
+
+
+Name			Classification		Comments
+====			==============		========
+
+Behavior of emulated	Committed		Behavior of config space fields
+PCIe bridge nodes in				as defined by this case.
+an io domain.
+
+device-id 0xfa05	Committed		Device id of emulated bridge
+						(Sun's vendor id 0x108e)
+
+

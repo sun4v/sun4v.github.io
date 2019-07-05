@@ -1,0 +1,8 @@
+The following files and directories have been redacted:
+
+    SCCS - ignored directory
+    materials/cons-write-spec.txt.old - ignored file
+    sc - ignored directory
+    uirb - ignored directory
+
+See http://hub.opensolaris.org/bin/view/Community+Group+arc/arc-publish-historical-checklist for further information

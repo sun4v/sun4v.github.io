@@ -1,0 +1,32 @@
+A couple of OpenBoot Prom variables max-pci-depth and hotplug-memsize
+are pre-defined as 9 and 0x40000000 respectively for all current
+platforms.  Either one is not enough for Supernova platforms which
+need to support IOBox and PLX 8548/8648 reconfiguration.
+The trend is to move configuration and platform specific information
+from OpenBoot Prom to Machine Description.
+
+    "max-pci-depth" 
+
+    Optional max-pci-depth property for sun4v to PCI Express root nexus
+    device MD nodes.  An integer to specify the allowed maximum level of
+    pci device tree created by OpenBoot for the system.
+
+    If this property is missing in IO device MD then the maximum depth is
+    defined by the implementation of OpenBoot.
+
+    "hotplug-memsize" 
+
+    Optional hotplug-memsize property for sun4v to PCI Express root nexus
+    device  MD nodes.  An integer to specify the allowed maximum size of
+    PCI MEM32 space used by OpenBoot to do PCI Hotplug Resource Preallocation
+    as defined in FWARC/2006/198.
+
+    If this property is missing in IO device MD then the maximum PCI MEM32
+    size is defined by the implementation of OpenBoot.
+
+    "dma-sync-options" 
+
+    Optional dma-sync-options property for sun4v to PCI Express root nexus
+    device  MD nodes. An integer to specify the system syncing requirement
+    for Solaris. Refers to FWARC/2009/213 for detailed information.
+

@@ -1,0 +1,209 @@
+From sac-owner Mon Jun 23 17:45:27 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m5O0jQaI022927
+	for <one-pager@sac.eng.sun.com>; Mon, 23 Jun 2008 17:45:27 -0700 (PDT)
+Received: from sunmail5.uk.sun.com (localhost [127.0.0.1])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m5O0jPAP020718
+	for <one-pager-not-2b-used-directly@sunmail5.uk.sun.com>; Tue, 24 Jun 2008 01:45:25 +0100 (BST)
+Received: (from noaccess@localhost)
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/Submit) id m5O0jPnx020717
+	for one-pager-not-2b-used-directly; Tue, 24 Jun 2008 01:45:25 +0100 (BST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m5O0jKot020675;
+	Tue, 24 Jun 2008 01:45:25 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K2X00C01ZFNH600@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 23 Jun 2008 17:45:23 -0700 (PDT)
+Received: from uask4it.sfbay.sun.com ([10.7.80.228])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K2X00A3GZFNF410@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 23 Jun 2008 17:45:23 -0700 (PDT)
+Received: from dhcp-usca11-234-234.SFBay.Sun.COM
+ (dhcp-usca11-234-234.SFBay.Sun.COM [129.145.234.234])
+	by uask4it.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id m5O0jCfM002284;
+ Mon, 23 Jun 2008 17:45:12 -0700 (PDT)
+Date: Mon, 23 Jun 2008 17:45:22 -0700
+From: Richard Barnette <Richard.Barnette@Sun.Com>
+Subject: [2008/398]Hypervisor API for Transactional Memory Configuration
+To: one-pager@Sun.Com
+Cc: rs-staff <rs-staff@Sun.Com>
+Message-id: <EB923583-EEA4-4F7E-A5FD-CE87699E3C9C@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.924)
+Content-type: text/plain; charset=US-ASCII; format=flowed; delsp=yes
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 4718
+
+Template Version: @(#)onepager.txt 1.35 07/11/07 SMI
+Copyright 2007 Sun Microsystems
+
+1. Introduction
+    1.1. Project/Component Working Name:
+	Hypervisor API for Transactional Memory Configuration
+
+    1.2. Name of Document Author/Supplier:
+	Richard.Barnette@sun.com
+
+    1.3. Date of This Document:
+	06/23/08
+
+	1.3.1. Date this project was conceived:
+		02/28/08
+
+    1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		N/A
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Ravi.Subbarao@sun.com
+	1.4.4. The name of your business unit:
+		Systems
+
+    1.5. Email Aliases:
+     	1.5.1. Responsible Manager: Umesh.Sharma@sun.com
+     	1.5.2. Responsible Engineer: Richard.Barnette@sun.com
+     	1.5.3. Marketing Manager:
+	1.5.4. Interest List: us-staff@sun.com
+
+2. Project Summary
+    2.1. Project Description:
+	This project adds an API to the hypervisor to support
+	processors that provide hardware Transactional Memory.
+
+    2.2. Risks and Assumptions:
+	This project requires a processor that implements
+	Transactional Memory, and the processor is expected to
+	provide the ability to enable or disable the feature.
+
+3. Business Summary
+	Future UltraSPARC based systems will support Transactional
+	Memory (TM) capabilities.  TM is a revolutionary new
+	processor capability that can simultaneously simplify the
+	programming of multi-threaded application programs and
+	provide dramatic performance improvements.
+
+    3.1. Problem Area:
+	TM provides a greatly simplified programming model, but it
+	brings with it a new challenge: that of testing and debugging
+	transaction failure handlers.  The new API provides the ability
+	to perform such testing, without requiring applications to be
+	recompiled for the testing.
+
+    3.2. Market/Requester:
+         The primary consumers of the API will be internal
+	developers developing transactional memory based library
+	functions, and similar application level code that uses TM.
+	Third party developers learning to use TM may also benefit
+	from the capability.
+
+    3.3. Business Justification:
+
+    3.4. Competitive Analysis:
+
+    3.5. Opportunity Window/Exposure:
+
+    3.6. How will you know when you are done?:
+	The project is done when the API is implemented as specified
+	on hardware that supports the underlying capability.
+
+4. Technical Description:
+     4.1. Details:
+	The project adds a single Hypervisor API function that will
+	allow a guest operating system to enable or disable TM
+	capabilities on the calling virtual CPU.  When disabled,
+	TM specific instructions will be treated as legal, but
+	transactions started by the affected CPU will always fail.
+
+	Disabling TM allows software that contains transactions to
+	test the transaction failure code paths.  Because these
+	failure code paths are meant to be rarely executed by
+	design, they cannot always be easily tested.  Providing a
+	disable allows for more thorough testing.
+
+     4.2. Bug/RFE Number(s):
+
+     4.3. In Scope:
+
+     4.4. Out of Scope:
+
+     4.5. Interfaces:
+     4.5.1. Imported Interfaces:
+	N/A
+
+     4.5.2. Exported Interfaces:
+     Interface                   Classification  Comments
+      
+====================================================================
+     TM_GROUP			Committed	API group
+     TM_ENABLE			Committed	API call
+
+     4.6. Doc Impact:
+	N/A
+
+     4.7. Admin/Config Impact:
+	N/A
+
+     4.8. HA Impact:
+	N/A
+
+     4.9. I18N/L10N Impact:
+	N/A
+
+     4.10. Packaging & Delivery:
+	N/A
+
+     4.11. Security Impact:
+	N/A
+
+     4.12. Dependencies:
+	N/A
+
+5. Reference Documents:
+	N/A
+
+6. Resources and Schedule:
+    6.1. Projected Availability:
+
+    6.2. Cost of Effort:
+
+
+    6.3. Cost of Capital Resources:
+
+    6.4. Product Approval Committee requested information:
+    	6.4.1. Consolidation or Component Name:
+	6.4.3. Type of CPT Review and Approval expected:
+         6.4.4. Project Boundary Conditions:
+	6.4.5. Is this a necessary project for OEM agreements:
+		No
+	6.4.6. Notes:
+	6.4.7. Target RTI Date/Release:
+	6.4.8. Target Code Design Review Date:
+	6.4.9. Update approval addition:
+
+    6.5. ARC review type:
+		Standard
+    6.6. ARC Exposure:
+		open
+        6.6.1. Rationale:
+
+7. Prototype Availability:
+    7.1. Prototype Availability:
+
+    7.2. Prototype Cost:
+
+--
+Richard Barnette            | Gather ye rosebuds while ye may,
+Sun Microsystems            | Old Time is still a-flying:
+Enterprise Systems Software | And this same flower that smiles to-day
+SCA11 2384 / USCA11-205     | To-morrow will be dying.
+(408) 276-7541 / x17541     |   -- Robert Herrick
+.                           |      "To the Virgins, to Make Much of  
+Time"
+
+

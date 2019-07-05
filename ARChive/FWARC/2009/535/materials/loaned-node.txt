@@ -1,0 +1,219 @@
+#pragma ident	"@(#)loaned-node.txt	1.11	09/10/12 SMI"
+
+Title: SDIO Loaned Device Node Specification.
+
+
+1. Introduction.
+
+This specification defines the configuration space details for a "loaned"
+PCIe Function for the Static Direct IO (SDIO) project, on sun4v based systems.
+
+For SDIO, and future IO device sharing projects, the domain known as the
+"root domain" owns the Root Complex and the PCIe fabric. With SDIO support,
+and the appropriate hardware, firmware and software support provided by other
+related projects allows certain PCIe Functions to be loaned to other domains.
+The domain that borrows the PCIe Function is known as the "IO Domain".
+
+The specification has 2 major parts:
+
+a. The Programmer's Reference for a loaned Function which defines the
+   configuration space layout and behavior of a loaned Function in the root
+   domain.
+
+b. The Open Firmware device binding for a loaned Function, which defines the
+   properties of the loaned Function in the root domain.  In the IO Domain,
+   the borrowed Function will appear as the normal underlying PCIe Function.
+
+
+2. Definitions
+
+
+Root Domain - A domain that owns the PCIe fabric, including configuration,
+  management and global error handling of that physical root complex and all
+  devices in that fabric.
+
+IO Domain - A domain that borrows one or more Functions from a Root Domain.
+
+Loaned Function - A PCIe Function in a Root Domain that is assigned to an IO
+  Domain.
+
+Borrowed Function - A PCIe Function in an IO Domain that has been borrowed
+  from a Root Domain.
+
+Function - A PCIe Function, as defined by the PCIe Base Specification.
+
+
+3. Loaned Function Programmer's Reference.
+
+This section defines the configuration space layout and behavior of
+a loaned Function in the Root Domain.
+
+Unless otherwise specified in this section, all configuration space
+fields of the underlying (actual) Function are exposed in the root domain.
+Only fields which read back differently than the actual underlying loaned
+Function are shown in the following sections.
+
+3.1. Type 0 Header.
+
+
+  Offset  Field			Description
+  ======  =====			===========
+
+  0x00	  Vendor ID		Value 0x108e (Sun's vendor ID)
+
+  0x02	  Device ID		Value 0xfa04
+
+  0x08    Revision ID		Value 0x01, for a loaned device compliant
+				with this version of this specification.
+
+  0x09	  Class Code		0xff0000 (bcc 0xff - PCI SIG reserved value
+				for devices that do not fit in any defined
+				class)
+
+  0x2c	  Subsystem Vendor ID	Value 0
+
+  0x2e	  Subsystem ID		Value 0
+
+
+4. Open Firmware Device Binding For "Loaned Function".
+
+4.1. Description.
+
+This section defines the Open Firmware Device binding for a Function in a
+Root Domain that is loaned to another domain. In the IO Domain, which borrows
+the Function, the actual underlying Function will appear normally, thus the
+underlying device binding for the device applies in the IO Domain.
+
+This binding only applies to PCIe Functions, so all of the standard methods
+and properties defined for PCIe endpoint Functions apply to this binding.
+
+4.2 Open Firmware Defined Properties.
+
+These properties are defined in the latest version of the PCIe binding
+to Open Firmware. All propname, type and value definitions are inherited
+from that binding.
+
+4.2.1 OF Defined Properties that differ from the underlying Function.
+
+Propname		Property Value
+========		==============
+
+"name"			"SUNW,assigned-device"
+
+"vendor-id"		0x108e
+
+"device-id"		0xfa04
+
+"class-code"		0xff0000
+
+"compatible"		Defined by the PCIe Binding to Open Firmware (as
+			amended, see references) contains the following
+			strings in the order shown below:
+
+			"pciex,108e,fa04,1"			(4)
+			"pciex,108e,fa04"			(5)
+			"pciexclass,ff0000"			(6)
+			"pciexclass,ff00"			(7)
+
+Note: Using the standard interfaces, the guest will see these values
+in the corresponding configuration space registers, but they are
+called out separately here to emphasize the difference between the
+emulation and the underlying Function.
+
+
+
+4.2.2. OF Defined Properties that use the values from the underlying Function.
+
+Propname		Short Description
+========		=================
+
+"reg"			Defines the registers of the device.
+
+"assigned-addresses"	Defines PCI addresses assigned to the device BARs
+
+"device_type"		"pciex"
+
+"physical-slot#"	slot number of the device under a switch or root port.
+
+"interrupts"		Describes the Function's INTx interrupts.
+
+"alternate-reg"		Optional property defines alternate addressing.
+
+"fcode-rom-offset"	Optional property denotes offset of the FCode image
+			within the Function's expansion ROM.
+
+"power-consumption"	describes function's power requirements.
+
+4.2.3. Device Specific Properties
+
+The following properties expose the underlying Function's values to
+the guest.
+
+4.2.3.1. "real-vendor-id"
+
+	Propname defines the underlying Function's vendor ID field.
+
+	encoded integer, as with "vendor-id".
+
+4.2.3.2. "real-device-id"
+
+	Propname defines the underlying Function's device ID field.
+
+	encoded integer, as with "device-id".
+
+4.2.3.3. "real-class-code"
+
+	Propname defines the underlying Function's class code field.
+
+	encoded integer, as with "class-code".
+
+4.2.3.4. "real-subsystem-vendor-id"
+
+	Propname defines the underlying Function's subsystem vendor ID field.
+
+	encoded integer, as with "subsystem-vendor-id".
+
+	This property shall be present if the underlying Function's subsystem
+	vendor ID field is non-zero, and shall be absent otherwise.
+
+4.2.3.5. "real-subsystem-id"
+
+	Propname defines the underlying Function's subsystem device ID field.
+
+	encoded integer, as with "subsystem-id".
+
+	This property shall be present if the underlying Function's subsystem
+	ID field is non-zero, and shall be absent otherwise.
+
+4.2.3.6. "real-revision-id"
+
+	Propname defines the underlying Function's revision ID field.
+
+	encoded integer, as with "revision-id".
+
+4.3. Behavior of the Borrowed Function in the IO Domain.
+
+In the IO Domain, a borrowed Function's configuration space and
+associated address spaces behave in the way they normally do.
+
+BAR registers may be probed to determine the size requirements
+and BAR type, however, the addresses stored in the BARs should
+be within the parent ports address ranges. This is no different
+than standard PCI rules, and the hypervisor is not required to
+enforce this requirement since no damage can be done by programming
+incorrect values in the BARs.
+
+5. References
+
+[1] PCI Express Base Specification 2.0, available from pcisig.com
+
+[2] PCI Bus Binding to: IEEE 1275-1994 Standard for Boot (Initialization,
+    Configuration) Firmware, Revision 2.1. available from
+    http://playground.sun.com/1275/
+
+[3] PCI Express Binding Update: FWARC/2005/565
+    http://sac.eng/FWARC/2005/565
+
+[4] SDIO HV Interfaces:
+    FWARC/2009/537
+

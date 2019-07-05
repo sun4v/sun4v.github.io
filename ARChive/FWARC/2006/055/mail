@@ -1,0 +1,3212 @@
+From sacadmin Tue Feb  7 17:36:24 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k181aNIQ024333
+	for <fwarc@sac.eng.sun.com>; Tue, 7 Feb 2006 17:36:24 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k181aMC19346;
+	Tue, 7 Feb 2006 17:36:22 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IUC00L03HSL9600@brm-avmta-1.central.sun.com>; Tue,
+ 07 Feb 2006 18:36:21 -0700 (MST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IUC00AV3HSLO8A0@brm-avmta-1.central.sun.com>; Tue,
+ 07 Feb 2006 18:36:21 -0700 (MST)
+Received: from sac.sfbay.sun.com (sac.SFBay.Sun.COM [129.146.175.66])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k181aKTe020924; Tue, 07 Feb 2006 17:36:20 -0800 (PST)
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k181aKIQ024330; Tue,
+ 07 Feb 2006 17:36:20 -0800 (PST)
+Received: (from ss146556@localhost)
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9/Submit) id k181aKfo024329; Tue,
+ 07 Feb 2006 17:36:20 -0800 (PST)
+Date: Tue, 07 Feb 2006 17:36:20 -0800 (PST)
+From: FWARC-coord@sun.com
+Subject: New FWARC Materials Submitted 2006/055 Domain Services
+To: FWARC@sun.com
+Cc: Eric.Sharakan@sun.com, FWARC-coord@sun.com
+Message-id: <200602080136.k181aKfo024329@sac.sfbay.sun.com>
+MIME-version: 1.0
+Content-type: text/plain
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+Status: RO
+Content-Length: 207
+
+New Materials submitted for FWARC 2006/055 Domain Services
+Status: submitted
+
+Files:
+/shared/sac/FWARC/2006/055/inception.materials/DomainServices-06.sxw
+
+Please let me know if you have questions.
+
+- FWARC
+
+
+From sacadmin Tue Feb  7 17:47:54 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k181lrIQ024663
+	for <fwarc@sac.eng.sun.com>; Tue, 7 Feb 2006 17:47:54 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k181lrL22197;
+	Tue, 7 Feb 2006 17:47:53 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IUC00G0XIBTVO00@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 07 Feb 2006 17:47:53 -0800 (PST)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IUC00GWHIBR0U00@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 07 Feb 2006 17:47:51 -0800 (PST)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-2.sun.com (8.12.10/8.12.9) with ESMTP id k181lp8u013492; Tue,
+ 07 Feb 2006 18:47:51 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IUC00M01H6FP900@mail-amer.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Tue,
+ 07 Feb 2006 18:47:51 -0700 (MST)
+Received: from sun.com ([129.150.26.3])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep  9
+ 2005)) with ESMTPSA id <0IUC00JD8IBQ5R00@mail-amer.sun.com>; Tue,
+ 07 Feb 2006 18:47:50 -0700 (MST)
+Date: Tue, 07 Feb 2006 17:47:53 -0800
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: New FWARC Materials Submitted 2006/055 Domain Services
+In-reply-to: <200602080136.k181aKfo024329@sac.sfbay.sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: FWARC-coord@Sun.COM
+Cc: FWARC@Sun.COM, Eric.Sharakan@Sun.COM
+Message-id: <43E94DC9.6080908@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <200602080136.k181aKfo024329@sac.sfbay.sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 361
+
+FWARC-coord@sun.com wrote:
+
+> New Materials submitted for FWARC 2006/055 Domain Services
+> Status: submitted
+> 
+> Files:
+> /shared/sac/FWARC/2006/055/inception.materials/DomainServices-06.sxw
+> 
+> Please let me know if you have questions.
+
+Please can we have PDF files of the documents - having to run staroffice
+to read the materials is unacceptable.
+
+Tony.
+
+
+
+From sacadmin Tue Feb  7 17:51:18 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k181pIIQ024680
+	for <fwarc@sac.eng.Sun.COM>; Tue, 7 Feb 2006 17:51:18 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k181pCc17110;
+	Tue, 7 Feb 2006 18:51:13 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IUC00M03IHCZV00@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 07 Feb 2006 17:51:12 -0800 (PST)
+Received: from jurassic.eng.sun.com ([129.146.106.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IUC00MTHIHCMM00@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 07 Feb 2006 17:51:12 -0800 (PST)
+Received: from [129.150.32.30]
+ (vpn-129-150-32-30.Central.Sun.COM [129.150.32.30])
+	by jurassic.eng.sun.com (8.13.5+Sun/8.13.5) with ESMTP id k181pB3C611806; Tue,
+ 07 Feb 2006 17:51:11 -0800 (PST)
+Date: Tue, 07 Feb 2006 17:51:15 -0800
+From: Sherri Shieh <sherri.shieh@sun.com>
+Subject: Re: New FWARC Materials Submitted 2006/055 Domain Services
+In-reply-to: <43E94DC9.6080908@sun.com>
+To: Tony Sumpter <Tony.Sumpter@sun.com>
+Cc: FWARC-coord@sun.com, FWARC@sun.com, Eric.Sharakan@sun.com
+Reply-to: sherri.shieh@sun.com
+Message-id: <43E94E93.7040601@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <200602080136.k181aKfo024329@sac.sfbay.sun.com>
+ <43E94DC9.6080908@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 1157
+
+I'll change the SO file into a pdf and dump it in there.
+
+Thanks for the reminder,
+Sherri
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sherri Shieh
+Program Manager, Systems Architecture
+Sun Microsystems, Inc.
+Phone: 650-786-5245/x85245
+Email: Sherri.Shieh@sun.com    
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Tony Sumpter wrote:
+
+> FWARC-coord@sun.com wrote:
+>
+>> New Materials submitted for FWARC 2006/055 Domain Services
+>> Status: submitted
+>>
+>> Files:
+>> /shared/sac/FWARC/2006/055/inception.materials/DomainServices-06.sxw
+>>
+>> Please let me know if you have questions.
+>
+>
+> Please can we have PDF files of the documents - having to run staroffice
+> to read the materials is unacceptable.
+>
+> Tony.
+>
+>
+
+From sacadmin Tue Feb  7 17:57:30 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k181vTIQ025329
+	for <fwarc@sac.eng.Sun.COM>; Tue, 7 Feb 2006 17:57:30 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k181vNrX011426;
+	Wed, 8 Feb 2006 09:57:28 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IUC00005IRP4600@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 07 Feb 2006 17:57:25 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IUC00MDSIRPMM10@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 07 Feb 2006 17:57:25 -0800 (PST)
+Received: from sac.sfbay.sun.com (sac.SFBay.Sun.COM [129.146.175.66])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k181vOTe029297; Tue, 07 Feb 2006 17:57:24 -0800 (PST)
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k181vOIQ025326; Tue,
+ 07 Feb 2006 17:57:24 -0800 (PST)
+Received: (from ss146556@localhost)
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9/Submit) id k181vOtl025325; Tue,
+ 07 Feb 2006 17:57:24 -0800 (PST)
+Date: Tue, 07 Feb 2006 17:57:24 -0800 (PST)
+From: FWARC-coord@Sun.COM
+Subject: New FWARC Materials Submitted 2006/055 Domain Services
+To: FWARC@Sun.COM
+Cc: Eric.Sharakan@Sun.COM, FWARC-coord@Sun.COM
+Message-id: <200602080157.k181vOtl025325@sac.sfbay.sun.com>
+MIME-version: 1.0
+Content-type: text/plain
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+Status: RO
+Content-Length: 299
+
+New Materials submitted for FWARC 2006/055 Domain Services
+Status: inception scheduled 02/13/2006
+
+Files:
+/shared/sac/FWARC/2006/055/inception.materials/DomainServices-06-1.pdf
+/shared/sac/FWARC/2006/055/inception.materials/DomainServices-06.sxw
+
+Please let me know if you have questions.
+
+- FWARC
+
+
+From sacadmin Thu Feb  9 12:21:41 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k19KLfIQ001317
+	for <fwarc@sac.eng.sun.com>; Thu, 9 Feb 2006 12:21:41 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k19KLdm25661
+	for <@sunmail2.sfbay.sun.com:fwarc@sun.com>; Thu, 9 Feb 2006 12:21:39 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IUF0030BSK1DK00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Thu, 09 Feb 2006 12:21:37 -0800 (PST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IUF00LQNSK0D220@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Thu, 09 Feb 2006 12:21:36 -0800 (PST)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-1.sun.com (8.12.10/8.12.9) with ESMTP id k19KLZSF013723	for
+ <fwarc@Sun.COM>; Thu, 09 Feb 2006 13:21:36 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IUF00G01RTM3000@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Thu, 09 Feb 2006 13:21:35 -0700 (MST)
+Received: from [129.148.180.63] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IUF003XPSJXXSC0@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Thu, 09 Feb 2006 13:21:34 -0700 (MST)
+Date: Thu, 09 Feb 2006 15:21:33 -0500
+From: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Subject: Issues : 2006/055 Domain Services
+Sender: Narayan.Venkat@Sun.COM
+To: Eric Sharakan <Eric.Sharakan@Sun.COM>
+Cc: Narayan Venkat <Narayan.Venkat@Sun.COM>, Firmware Arch <fwarc@Sun.COM>
+Message-id: <43E18B6D-4FD6-4AA7-B7A2-8ECD96383E2B@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.746.2)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+Status: RO
+Content-Length: 1277
+
+Hi
+
+I have listed some issues related to this case ..
+
+1.2.1 - can you also put LDC in parentheses same place where it
+is being spelt out for the first time.
+
+1.2.1, 2nd para - you are using the acronym 'DS' for the first time
+can you expand this further in the first para of this section.
+
+2.3 - the word "..following.." is slightly misleading in the
+first sentence.
+
+2.3.{1,2,3} minor nit, Can you make it more clear that the value
+here is msg_type. I presume the structure here defines the content
+of the payload .. The size of the payload will then correspond
+to the size of this structure .. - correct ?
+
+2.4 It is implicit in the explanation here why you dont send back
+a major version in the ACK or what the minor version means. The minor
+version in the ACK means that you support the corresponding major
+version and all the minor version <= the version in the ACK. Right ?
+
+2.5.4 would it make sense to add a line or two to state when
+a DS_REG_NACK will be sent.
+
+2.5.5 4th para, I dont see anywhere in your structures the status
+field you are referring to here. There is no msg format defined
+for the error response.
+
+3.{1,2,3}.1 There is no explanation of what the seqno in
+these requests are for.
+
+3.2.1 what is the 'ms_delay' value for.
+
+Thanks
+
+-Narayan
+
+
+
+
+
+
+
+
+
+
+
+From sacadmin Thu Feb  9 12:31:04 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k19KV3IQ001774
+	for <fwarc@sac.eng.Sun.COM>; Thu, 9 Feb 2006 12:31:03 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k19KUeoS003881
+	for <@sunmail1brm.central.sun.com:fwarc@Sun.COM>; Fri, 10 Feb 2006 04:31:02 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IUF00G03SZOYZ00@brm-avmta-1.central.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Thu, 09 Feb 2006 13:31:00 -0700 (MST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IUF00AY4SZNED80@brm-avmta-1.central.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Thu, 09 Feb 2006 13:30:59 -0700 (MST)
+Received: from phys-mpk-1 (phys-mpk-1.SFBay.Sun.COM [129.146.11.81])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k19KUxTe029714	for <fwarc@Sun.COM>; Thu,
+ 09 Feb 2006 12:30:59 -0800 (PST)
+Received: from conversion-daemon.mpk-mail1.sfbay.sun.com by
+ mpk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IUF00601SML66@mpk-mail1.sfbay.sun.com>
+ (original mail from Sherri.Shieh@Sun.COM) for fwarc@Sun.COM; Thu,
+ 09 Feb 2006 12:30:59 -0800 (PST)
+Received: from Sun.COM (sr1-umpk-14.SFBay.Sun.COM [129.146.11.190])
+ by mpk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTP id <0IUF00MMFSZGLG@mpk-mail1.sfbay.sun.com>; Thu,
+ 09 Feb 2006 12:30:52 -0800 (PST)
+Date: Thu, 09 Feb 2006 12:30:52 -0800
+From: Sherri Shieh <Sherri.Shieh@sun.com>
+Subject: Re: Issues : 2006/055 Domain Services
+In-reply-to: <43E18B6D-4FD6-4AA7-B7A2-8ECD96383E2B@sun.com>
+To: Narayan Venkat <Narayan.Venkat@sun.com>
+Cc: Eric Sharakan <Eric.Sharakan@sun.com>, Firmware Arch <fwarc@sun.com>
+Message-id: <43EBA67C.4070904@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <43E18B6D-4FD6-4AA7-B7A2-8ECD96383E2B@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 1737
+
+All,
+
+These have been placed in the issues file:
+
+http://sac.eng/arc/FWARC/2006/055/issues
+
+- Sherri
+
+
+
+Narayan Venkat wrote On 02/09/06 12:21,:
+
+>Hi
+>
+>I have listed some issues related to this case ..
+>
+>1.2.1 - can you also put LDC in parentheses same place where it
+>is being spelt out for the first time.
+>
+>1.2.1, 2nd para - you are using the acronym 'DS' for the first time
+>can you expand this further in the first para of this section.
+>
+>2.3 - the word "..following.." is slightly misleading in the
+>first sentence.
+>
+>2.3.{1,2,3} minor nit, Can you make it more clear that the value
+>here is msg_type. I presume the structure here defines the content
+>of the payload .. The size of the payload will then correspond
+>to the size of this structure .. - correct ?
+>
+>2.4 It is implicit in the explanation here why you dont send back
+>a major version in the ACK or what the minor version means. The minor
+>version in the ACK means that you support the corresponding major
+>version and all the minor version <= the version in the ACK. Right ?
+>
+>2.5.4 would it make sense to add a line or two to state when
+>a DS_REG_NACK will be sent.
+>
+>2.5.5 4th para, I dont see anywhere in your structures the status
+>field you are referring to here. There is no msg format defined
+>for the error response.
+>
+>3.{1,2,3}.1 There is no explanation of what the seqno in
+>these requests are for.
+>
+>3.2.1 what is the 'ms_delay' value for.
+>
+>Thanks
+>
+>-Narayan
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>  
+>
+
+-- 
+
+
+=========================================================
+Sherri Shieh			Sun Microsystems, Inc.
+Program Manager			Email: sherri.shieh@sun.com
+Systems Architecture		Phone: 650-786-5245/x85245
+===========================================================
+
+
+
+From sacadmin Mon Feb 13 09:40:53 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1DHerIQ027765
+	for <fwarc@sac.eng.sun.com>; Mon, 13 Feb 2006 09:40:53 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k1DHep314659
+	for <@sunmail1brm.central.sun.com:fwarc@Sun.COM>; Mon, 13 Feb 2006 09:40:51 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IUM00005ZS2KU00@brm-avmta-1.central.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Mon, 13 Feb 2006 10:40:50 -0700 (MST)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IUM00IDNZS17W80@brm-avmta-1.central.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Mon, 13 Feb 2006 10:40:49 -0700 (MST)
+Received: from phys-hanwk-1 (phys-hanwk-1.SFBay.Sun.COM [129.149.2.111])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k1DHenLp013749	for <fwarc@Sun.COM>; Mon,
+ 13 Feb 2006 09:40:49 -0800 (PST)
+Received: from conversion-daemon.hanwk-mail1.sfbay.sun.com by
+ hanwk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IUM00L01ZOX4G@hanwk-mail1.sfbay.sun.com>
+ (original mail from s.jain@sun.com) for fwarc@Sun.COM; Mon,
+ 13 Feb 2006 09:40:49 -0800 (PST)
+Received: from sun.com (sr1-unwk-09.SFBay.Sun.COM [129.149.2.159])
+ by hanwk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTP id <0IUM00M16ZRK7Q@hanwk-mail1.sfbay.sun.com>; Mon,
+ 13 Feb 2006 09:40:32 -0800 (PST)
+Date: Mon, 13 Feb 2006 09:40:32 -0800
+From: sunit jain <s.jain@Sun.COM>
+Subject: Issues : 2006/055 Domain Services
+In-reply-to: <43E18B6D-4FD6-4AA7-B7A2-8ECD96383E2B@sun.com>
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Eric Sharakan <Eric.Sharakan@Sun.COM>
+Reply-to: s.jain@Sun.COM
+Message-id: <43F0C490.6050907@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <43E18B6D-4FD6-4AA7-B7A2-8ECD96383E2B@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 987
+
+
+[1] Section 2.5.1.3 Register Failed
+
+Are the values of 'svc_handle' and 'major_vers' valid for all cases for
+which NACK is generated? Even for DS_REG_NACK & DS_REG_DUP?
+
+Please explain status DS_OK - 'NACK with Status=Success' sounds
+confusing. I think DS_OK is really returned when the major version do
+not match and 'major_vers' contains supported major version. If that
+right, it needs to be added to the document.
+
+
+[2] Sections 2.5.5 & 256
+
+'ds_handle' is not defined in any of the structures in previous
+sections. Is 'ds_handle' same as 'svc_handle' ?
+
+
+Other issues are already covered by Narayan's issue list.
+
+Regards,
+Sunit
+
+-- 
+
+       o               Sunit Jain    S.Jain@Sun.Com
+    o )_) o            Sun Microsystems, Inc.
+   )_))_))_)           7788 Gateway Blvd., Bldg 20, MS UNWK20-210
+  \)_))_))_))          Newark, CA 94560
+ (-----------/         Phone/fax - 510-996-7099   Internal - x31726
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+From sacadmin Mon Feb 13 10:45:46 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1DIjkIQ000133
+	for <fwarc@sac.eng.sun.com>; Mon, 13 Feb 2006 10:45:46 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k1DIjg318795
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Mon, 13 Feb 2006 10:45:43 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IUN0030J2S22Q00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 13 Feb 2006 11:45:38 -0700 (MST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IUN00IER2S17UB0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 13 Feb 2006 11:45:38 -0700 (MST)
+Received: from fe-amer-02.sun.com ([192.18.108.176])
+	by brmea-mail-1.sun.com (8.12.10/8.12.9) with ESMTP id k1DIjbSD016447	for
+ <fwarc@sun.com>; Mon, 13 Feb 2006 11:45:37 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IUN00D012PPOG00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Mon, 13 Feb 2006 11:45:37 -0700 (MST)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IUN008432S0JSK2@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 13 Feb 2006 11:45:37 -0700 (MST)
+Date: Mon, 13 Feb 2006 13:45:28 -0500
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: Issues : 2006/055 Domain Services
+In-reply-to: <43F0C490.6050907@sun.com>
+Sender: Stephen.Ehring@Sun.COM
+Cc: Firmware Arch <fwarc@Sun.COM>
+Message-id: <43F0D3C8.9010204@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <43E18B6D-4FD6-4AA7-B7A2-8ECD96383E2B@sun.com>
+ <43F0C490.6050907@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.2 (X11/20050322)
+Status: RO
+Content-Length: 655
+
+A simple flow chart of how a domain services provider/consumer 
+negotiates capabilities with respect to the versioning would be much 
+easier to understand than a textual step-by-step description. Of course, 
+it's up to the project team to decide if they want to implement that.
+
+Appendix A should be some sort of registry, not just an appendix to a 
+document in the materials directory (similar to the hypervisor API 
+registry, or the vendor FCode registry).
+
+Will OBP be expected to support DS? If so, can we present the structures 
+in block/packet format instead of C-style so there are no endianness issues.
+
+All other issues covered by other members.
+
+From sacadmin Sun Feb 19 17:58:49 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1K1wnIQ010277
+	for <fwarc@sac.eng.sun.com>; Sun, 19 Feb 2006 17:58:49 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k1K1wnY12174
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Sun, 19 Feb 2006 17:58:49 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IUY00201QTX4J00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Sun, 19 Feb 2006 18:58:45 -0700 (MST)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IUY00F8KQTXVTC0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Sun, 19 Feb 2006 18:58:45 -0700 (MST)
+Received: from relay11.sun.com ([217.140.40.14])
+	by brmea-mail-4.sun.com (8.12.10/8.12.9) with ESMTP id k1K1wiuf027707	for
+ <fwarc@sun.com>; Sun, 19 Feb 2006 18:58:44 -0700 (MST)
+Received: from mms11es.sun.com (mms11es.sun.com [160.41.223.14])
+ by relay11.sun.com with ESMTP for fwarc@sun.com; Mon,
+ 20 Feb 2006 01:58:44 +0000 (Z)
+Received: from mms11bas.mms.eu.btsyntegra.com
+ (mms11bas.mms.eu.btsyntegra.com [217.140.40.10]) by mms11es.sun.com with ESMTP
+ for fwarc@sun.com; Mon, 20 Feb 2006 01:58:43 +0000 (Z)
+Received: from smtp108.sbc.mail.mud.yahoo.com
+ (smtp108.sbc.mail.mud.yahoo.com [68.142.198.207])
+ by relay11.sun.com for fwarc@sun.com; Mon, 20 Feb 2006 01:58:43 +0000 (Z)
+Received: (qmail 28436 invoked from network); Mon, 20 Feb 2006 01:58:42 +0000
+Received: from unknown (HELO ?192.168.2.2?) (hituz@71.136.82.173 with plain)
+ by smtp108.sbc.mail.mud.yahoo.com with SMTP; Mon, 20 Feb 2006 01:58:42 +0000
+Date: Sun, 19 Feb 2006 17:58:41 -0800
+From: Hitendra Zhangada <hitendra.zhangada@sun.com>
+Subject: FYI: 2006/055 - Domain Services - will be ready for review by early
+ Tuesday
+To: fwarc@sun.com
+Cc: LDoms Internal <ldoms-internal@sun.com>
+Message-id: <43F92251.1050006@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.2)
+ Gecko/20040804 Netscape/7.2 (ax)
+Status: RO
+Content-Length: 1176
+
+FYI.  The specification will be available by early Tuesday for
+review on Monday, February 27th. 
+
+I am working with Eric on final set of changes.  If you want to
+have an early access of the specification then Eric can send you
+an early version of it which is close to final version (few small
+changes are possible from now till late tomorrow).
+
+The specification will include following additional services.
+
+- CPU DR
+- CPU Offline
+- Mem. Page Retire
+- LDom variables store (primary & backup)
+
+The LDOM variables store service was part of 2006/086 but
+we decided to move it to Domain Services case.
+
+
+The project team would like this case be reviewed on February 27th.
+Thus, we will have two cases to review (2005/320 and 2006/055).
+
+
+Note that the specification would have been available by end of Monday
+but it is Sun Holiday and I won't be available tomorrow.  I will try
+to copy the specification by late Monday or early Tuesday.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Tue Feb 21 11:22:35 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1LJMYIQ026574
+	for <fwarc@sac.eng.Sun.COM>; Tue, 21 Feb 2006 11:22:35 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k1LJMW813534;
+	Tue, 21 Feb 2006 12:22:32 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IV100C01XTKHQ00@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 21 Feb 2006 11:22:32 -0800 (PST)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IV100AR0XTE1850@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 21 Feb 2006 11:22:27 -0800 (PST)
+Received: from d1-sfbay-06.sun.com ([192.18.39.116])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k1LJMQVs006985; Tue,
+ 21 Feb 2006 11:22:26 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-06.sun.com by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IV100601VGCAS00@d1-sfbay-06.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Tue,
+ 21 Feb 2006 11:22:26 -0800 (PST)
+Received: from [129.150.33.237] by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IV1006CAXTD7D10@d1-sfbay-06.sun.com>; Tue,
+ 21 Feb 2006 11:22:26 -0800 (PST)
+Date: Tue, 21 Feb 2006 11:22:26 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: 2006/055 - Domain Services - ready for review
+In-reply-to: <43F92251.1050006@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: fwarc@Sun.COM
+Cc: LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <43FB6872.1000504@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <43F92251.1050006@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.2)
+ Gecko/20040804 Netscape/7.2 (ax)
+Status: RO
+Content-Length: 1652
+
+Hitendra Zhangada wrote:
+
+> FYI.  The specification will be available by early Tuesday for
+> review on Monday, February 27th.
+> I am working with Eric on final set of changes.  If you want to
+> have an early access of the specification then Eric can send you
+> an early version of it which is close to final version (few small
+> changes are possible from now till late tomorrow).
+> 
+> The specification will include following additional services.
+> 
+> - CPU DR
+> - CPU Offline
+> - Mem. Page Retire
+> - LDom variables store (primary & backup)
+> 
+> The LDOM variables store service was part of 2006/086 but
+> we decided to move it to Domain Services case.
+> 
+> 
+> The project team would like this case be reviewed on February 27th.
+> Thus, we will have two cases to review (2005/320 and 2006/055).
+> 
+> 
+> Note that the specification would have been available by end of Monday
+> but it is Sun Holiday and I won't be available tomorrow.  I will try
+> to copy the specification by late Monday or early Tuesday.
+
+The material has been copied in the case directory and available at,
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/055/commit.materials/DomainServices-093.pdf
+
+(StarOffice file is also available in the commit.materials directory)
+
+
+Sherri, please put this on agenda for February 27th.  I suggest you
+put this on the first slot and put Sunit's OPL case (2005/320) on
+the second slot.
+
+
+Thanks a lot.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Thu Feb 23 11:22:50 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1NJMoIQ011808
+	for <fwarc@sac.eng.sun.com>; Thu, 23 Feb 2006 11:22:50 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k1NJMj129943;
+	Thu, 23 Feb 2006 11:22:45 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IV500C05N5VQM00@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 23 Feb 2006 11:22:43 -0800 (PST)
+Received: from nwkes-gis-mail-1.sun.com ([10.4.134.5])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IV5008XCN5UMY90@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 23 Feb 2006 11:22:42 -0800 (PST)
+Received: from d1-sfbay-01.sun.com (d1-sfbay-01 [192.18.39.111])
+	by nwkes-gis-mail-1.sun.com (8.12.9/8.12.9) with ESMTP id k1NJMgIU014204; Thu,
+ 23 Feb 2006 11:22:42 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-01.sun.com by d1-sfbay-01.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IV500I01K1B0A00@d1-sfbay-01.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Thu,
+ 23 Feb 2006 11:22:42 -0800 (PST)
+Received: from [129.150.32.128] by d1-sfbay-01.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IV500D6QN5TK660@d1-sfbay-01.sun.com>; Thu,
+ 23 Feb 2006 11:22:42 -0800 (PST)
+Date: Thu, 23 Feb 2006 11:22:41 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/055 - Domain Services - ready for review
+In-reply-to: <43FB6872.1000504@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: fwarc@Sun.COM
+Cc: LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <43FE0B81.9040400@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <43F92251.1050006@sun.com> <43FB6872.1000504@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.2)
+ Gecko/20040804 Netscape/7.2 (ax)
+Status: RO
+Content-Length: 2739
+
+Hitendra Zhangada wrote:
+
+> Hitendra Zhangada wrote:
+> 
+>> FYI.  The specification will be available by early Tuesday for
+>> review on Monday, February 27th.
+>> I am working with Eric on final set of changes.  If you want to
+>> have an early access of the specification then Eric can send you
+>> an early version of it which is close to final version (few small
+>> changes are possible from now till late tomorrow).
+>>
+>> The specification will include following additional services.
+>>
+>> - CPU DR
+>> - CPU Offline
+>> - Mem. Page Retire
+>> - LDom variables store (primary & backup)
+>>
+>> The LDOM variables store service was part of 2006/086 but
+>> we decided to move it to Domain Services case.
+>>
+>>
+>> The project team would like this case be reviewed on February 27th.
+>> Thus, we will have two cases to review (2005/320 and 2006/055).
+>>
+>>
+>> Note that the specification would have been available by end of Monday
+>> but it is Sun Holiday and I won't be available tomorrow.  I will try
+>> to copy the specification by late Monday or early Tuesday.
+> 
+> 
+> The material has been copied in the case directory and available at,
+> 
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/055/commit.materials/DomainServices-093.pdf 
+> 
+> 
+> (StarOffice file is also available in the commit.materials directory)
+
+Some last minutes inaccuracies were detected yesterday and team would
+like to correct them.  The project team would also like to remove the
+FMA section (3.5 and 3.6 in the version .93 of the document).  The FMA
+services (CPU offline and memory retire) will be submitted as another
+case later on.
+
+I have copied the latest version (0.96) and the delta pdf file so that
+you can see the "delta" between 0.96 and .93 versions of the document.
+Both versions are also in the case directory.  Following links may
+be useful for you to review the specification.
+
+Sorry about these changes but project team thought of correcting
+them before the actual review takes place this week.
+
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/055/commit.materials/DomainServices-096.pdf
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/055/commit.materials/DomainServices-096.sxw
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/055/commit.materials/DomainServices-096_093_delta.pdf
+
+
+The review will take place this Monday (02/27).  I have not seen an agenda
+go out about the review this Monday.  I think Sherri is on vacation.
+I will prepare and send out an agenda today.
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Tue Feb 28 00:11:29 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1S8BSIQ025802
+	for <fwarc@sac.eng.Sun.COM>; Tue, 28 Feb 2006 00:11:29 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k1S8BNG4004483;
+	Tue, 28 Feb 2006 16:11:27 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IVE001031F1W100@brm-avmta-1.central.sun.com>; Tue,
+ 28 Feb 2006 01:11:25 -0700 (MST)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IVE00A321F0ZMC0@brm-avmta-1.central.sun.com>; Tue,
+ 28 Feb 2006 01:11:24 -0700 (MST)
+Received: from d1-sfbay-06.sun.com ([192.18.39.116])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k1S8BNVs019351; Tue,
+ 28 Feb 2006 00:11:23 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-06.sun.com by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IVE001011EZ7R00@d1-sfbay-06.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Tue,
+ 28 Feb 2006 00:11:23 -0800 (PST)
+Received: from [129.150.32.31] by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IVE00K4C1EXFL70@d1-sfbay-06.sun.com>; Tue,
+ 28 Feb 2006 00:11:22 -0800 (PST)
+Date: Tue, 28 Feb 2006 00:11:23 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: 2006/055 : Updated material available
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: LDoms Internal <ldoms-internal@sun.com>
+Message-id: <440405AB.2050600@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 1206
+
+Eric has sent me updated domain services specification.
+I have copied it in the commit2.materials directory.
+Both PDF and StarOffice versions are available.  The new
+specification has addressed all of the issues raised
+at the meeting today.
+
+I have also created a PDF file to see the "delta" between
+the updated document and the one we reviewed on Monday.
+
+I am still working on the interface table.  It will be
+available later today (Tuesday).
+
+http://sac.sfbay.sun.com/arc/FWARC/2006/055/commit2.materials/DomainServices-097.pdf
+http://sac.sfbay.sun.com/arc/FWARC/2006/055/commit2.materials/DomainServices-097.sxw
+http://sac.sfbay.sun.com/arc/FWARC/2006/055/commit2.materials/DomainServices-097_096_delta.pdf
+
+
+The changes seems straight forward to me.  I don't think these set of
+changes requires another meeting of review.  My preference is to "vote"
+via e-mail after I publish the interface table.
+
+Can we review it via e-mails?  Let me know your thoughts.
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Tue Feb 28 01:13:58 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1S9DwIQ022505
+	for <fwarc@sac.eng.sun.com>; Tue, 28 Feb 2006 01:13:58 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k1S9Dwm04534;
+	Tue, 28 Feb 2006 01:13:58 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IVE004054B9P100@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 28 Feb 2006 01:13:57 -0800 (PST)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IVE00BFD4B7WSXB@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 28 Feb 2006 01:13:55 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k1S9DtLn005131; Tue, 28 Feb 2006 01:13:55 -0800 (PST)
+Received: from [127.0.0.1] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k1S9DrZO047382;
+ Tue, 28 Feb 2006 01:13:53 -0800 (PST)
+Date: Tue, 28 Feb 2006 01:13:49 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/055 : Updated material available
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware ARC <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Message-id: <4404144D.6020502@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+User-Agent: Thunderbird 1.5 (Windows/20051201)
+Status: RO
+Content-Length: 1103
+
+
+
+Hitendra Zhangada wrote:
+>
+> The changes seems straight forward to me.  I don't think these set of
+> changes requires another meeting of review.  My preference is to "vote"
+> via e-mail after I publish the interface table.
+> 
+> Can we review it via e-mails?  Let me know your thoughts.
+
+I object to email only review. That means we'll review
+this on Monday, since any member can request a review.
+
+A few issues after a brief look:
+
+In 2.3.1, why are the major and minor version fields only
+2 bytes each? What's the size of the major and minor version
+fields in the rest of the interfaces we've already approved?
+
+2.5.1 does not define a result code for Success (0), nor
+a description that success is returned unless otherwise
+noted. In prior cases, I believe that Hitendra has asked
+for the success code be listed as a possible return value
+for each function that can return 0. (the wording needs
+to change to accommodate that.)
+
+2.5.2.1 major/minor version field sizes.
+2.5.2.2   "
+2.5.2.3   "
+
+Finally, the issues file doesn't show the resolution
+of the new issues, and lists them as OPEN.
+
+-David
+
+
+From sacadmin Tue Feb 28 02:18:36 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1SAIaIQ023543
+	for <fwarc@sac.eng.sun.com>; Tue, 28 Feb 2006 02:18:36 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k1SAIZO03620;
+	Tue, 28 Feb 2006 02:18:35 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IVE00F077AX1U00@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 28 Feb 2006 02:18:33 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IVE001SF7AXOE70@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 28 Feb 2006 02:18:33 -0800 (PST)
+Received: from paranoia.sfbay (paranoia.SFBay.Sun.COM [129.146.96.132])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k1SAINTe006031; Tue, 28 Feb 2006 02:18:28 -0800 (PST)
+Received: from [129.146.96.132] (paranoia [129.146.96.132])
+	by paranoia.sfbay (8.12.10+Sun/8.12.10) with ESMTP id k1SAHEFU015093; Tue,
+ 28 Feb 2006 02:17:15 -0800 (PST)
+Date: Tue, 28 Feb 2006 02:17:14 -0800
+From: Ashley Saulsbury <ashley.saulsbury@sun.com>
+Subject: Re: 2006/055 : Updated material available
+In-reply-to: <4404144D.6020502@sun.com>
+To: David Kahn <David.Kahn@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+   Firmware ARC <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Message-id: <4404232A.9060409@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <4404144D.6020502@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.7 (X11/20050930)
+Status: RO
+Content-Length: 3024
+
+David Kahn wrote:
+> 
+> 
+> Hitendra Zhangada wrote:
+> 
+>>
+>> The changes seems straight forward to me.  I don't think these set of
+>> changes requires another meeting of review.  My preference is to "vote"
+>> via e-mail after I publish the interface table.
+>>
+>> Can we review it via e-mails?  Let me know your thoughts.
+> 
+> 
+> I object to email only review. That means we'll review
+> this on Monday, since any member can request a review.
+> 
+> A few issues after a brief look:
+> 
+> In 2.3.1, why are the major and minor version fields only
+> 2 bytes each? What's the size of the major and minor version
+> fields in the rest of the interfaces we've already approved?
+
+I guess that depends - for example the hypervisor versioning api 
+effectively takes 64bit major and minor numbers - while that's the 
+natrual size for something carried in a machine register it is excessive 
+for a message packet we are trying to keep relatively short.
+
+Even though the LDC reliable protocol will allow us to build LDC packets 
+longer than the basic link-layer 64B packet, it is more effective if we 
+don't have to do so - so the intent here was to save unnecessary packet 
+expansion. Nearly all of the DS request & responses will fit into a 
+single LDC 64B packet.
+
+We can set the version field sizes to anything we want, but we estimated 
+that 65535 major versions was likely to last us a while. Assuming 
+Solaris moves to a bi-monthly release schedule and we update the service 
+for each Solaris release the major version field should last us a little 
+over 10000 years ;-)
+
+> 
+> 2.5.1 does not define a result code for Success (0), nor
+> a description that success is returned unless otherwise
+> noted. In prior cases, I believe that Hitendra has asked
+> for the success code be listed as a possible return value
+> for each function that can return 0. (the wording needs
+> to change to accommodate that.)
+
+Success or failure is determined by the message type. For example, a 
+register request results in one of two message reply types: ack or nack. 
+The failure code is obviously only necessary for the nack case and would 
+therefore never have a value signifying 'OK' - since by design no 
+failure code of 'OK' is ever necessary, none is defined.
+
+There are hundreds of ways to implement this - the team tried to pick a 
+mechanism that was relatively straightforward; for several of the domain 
+services the success reponses required one packet format, while the 
+failure responses required another (e.g. to return a failure reason 
+string for logging). Consequently it is easier to key off a different 
+message type than to have to look in the packet for a failure code 
+before the code can decipher the remainder of the packet.
+
+> 
+> 2.5.2.1 major/minor version field sizes.
+> 2.5.2.2   "
+> 2.5.2.3   "
+
+See discussion above; all the sizes are consistent I think.
+
+
+> 
+> Finally, the issues file doesn't show the resolution
+> of the new issues, and lists them as OPEN.
+
+Agreed, we need to fix this.
+
+cheers,
+
+ash.
+
+
+
+> 
+> -David
+> 
+
+
+From sacadmin Tue Feb 28 02:32:58 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1SAWvIQ023629
+	for <fwarc@sac.eng.Sun.COM>; Tue, 28 Feb 2006 02:32:58 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k1SAWjT4016251;
+	Tue, 28 Feb 2006 18:32:56 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IVE00C017YRZC00@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 28 Feb 2006 02:32:51 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IVE00BZ87YRW54C@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 28 Feb 2006 02:32:51 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (dt101-150.SFBay.Sun.COM [10.6.101.150])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k1SAWoTe009308; Tue, 28 Feb 2006 02:32:50 -0800 (PST)
+Received: from [127.0.0.1] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k1SAWmZO049928;
+ Tue, 28 Feb 2006 02:32:49 -0800 (PST)
+Date: Tue, 28 Feb 2006 02:32:44 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/055 : Updated material available
+In-reply-to: <4404232A.9060409@sun.com>
+To: Ashley Saulsbury <ashley.saulsbury@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+   Firmware ARC <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Message-id: <440426CC.2050109@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <4404144D.6020502@sun.com> <4404232A.9060409@sun.com>
+User-Agent: Thunderbird 1.5 (Windows/20051201)
+Status: RO
+Content-Length: 2230
+
+
+
+Ashley Saulsbury wrote:
+
+> I guess that depends - for example the hypervisor versioning api 
+> effectively takes 64bit major and minor numbers - while that's the 
+> natrual size for something carried in a machine register it is excessive 
+> for a message packet we are trying to keep relatively short.
+
+But the versioning APIs that were approved did not restrict
+the fields to a specific subset of values within those 64-bit
+fields.
+
+Pragmatically speaking, since the OBP cif interfaces effectively
+only take 32-bit encoded integers, we at least implicitly agreed that
+they will fit into a 32-bit encoded-integer. (otherwise
+the interface would have been
+( ... major.hi major.low minor.hi minor.low ... )
+
+> 
+> Even though the LDC reliable protocol will allow us to build LDC packets 
+> longer than the basic link-layer 64B packet, it is more effective if we 
+> don't have to do so - so the intent here was to save unnecessary packet 
+> expansion. Nearly all of the DS request & responses will fit into a 
+> single LDC 64B packet.
+> 
+> We can set the version field sizes to anything we want, but we estimated 
+> that 65535 major versions was likely to last us a while. Assuming 
+> Solaris moves to a bi-monthly release schedule and we update the service 
+> for each Solaris release the major version field should last us a little 
+> over 10000 years ;-)
+
+If you want to revisit the versioning API cases and
+restrict the fields to 16 significant bits, I have
+no problem with that. I do have a problem with randomly
+assigning different sized fields for the same elements
+when the #significant bits hasn't been defined.
+
+Call me anal if you want to, but that's my position
+and I'm sticking with it. :) (In other words, I agree
+with your logic, though I haven't checked the match,
+but interfaces must be consistent and well-defined
+throughout.)
+
+I'm pretty sure that all the version negotiation
+requests and replies are far less than 64 bytes,
+since the only info is the short header the request/reply
+codes and at most 2 version number fields. I'd have
+to check to make sure, but I'll leave that up to you.
+
+We spent a lot of time arguing for consistency in these
+interfaces. (both in the field names and everywhere else.)
+
+-David
+
+From sacadmin Tue Feb 28 04:18:56 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1SCItIQ025427
+	for <fwarc@sac.eng.Sun.COM>; Tue, 28 Feb 2006 04:18:56 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k1SCIhQZ006208
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Tue, 28 Feb 2006 20:18:54 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IVE00C05CVFPY00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 28 Feb 2006 05:18:51 -0700 (MST)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IVE008HNCVFCL70@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 28 Feb 2006 05:18:51 -0700 (MST)
+Received: from paranoia.sfbay (paranoia.SFBay.Sun.COM [129.146.96.132])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k1SCInLn011916; Tue, 28 Feb 2006 04:18:49 -0800 (PST)
+Received: from [129.146.96.132] (paranoia [129.146.96.132])
+	by paranoia.sfbay (8.12.10+Sun/8.12.10) with ESMTP id k1SCHiFU015240; Tue,
+ 28 Feb 2006 04:17:44 -0800 (PST)
+Date: Tue, 28 Feb 2006 04:17:44 -0800
+From: Ashley Saulsbury <ashley.saulsbury@sun.com>
+Subject: Re: 2006/055 : Updated material available
+In-reply-to: <440426CC.2050109@sun.com>
+To: David Kahn <David.Kahn@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+   Firmware ARC <fwarc@sun.com>, Eric Sharakan <Eric.Sharakan@sun.com>,
+   Ryan Maeda <Ryan.Maeda@sun.com>, Narayan Venkat <narayan.venkat@sun.com>
+Message-id: <44043F68.4020502@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <4404144D.6020502@sun.com> <4404232A.9060409@sun.com>
+ <440426CC.2050109@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.7 (X11/20050930)
+Status: RO
+Content-Length: 5047
+
+(changed recipient list to those involved in this case)
+
+David Kahn wrote:
+> 
+> 
+> Ashley Saulsbury wrote:
+> 
+>> I guess that depends - for example the hypervisor versioning api 
+>> effectively takes 64bit major and minor numbers - while that's the 
+>> natrual size for something carried in a machine register it is 
+>> excessive for a message packet we are trying to keep relatively short.
+> 
+> 
+> But the versioning APIs that were approved did not restrict
+> the fields to a specific subset of values within those 64-bit
+> fields.
+> 
+> Pragmatically speaking, since the OBP cif interfaces effectively
+> only take 32-bit encoded integers, we at least implicitly agreed that
+> they will fit into a 32-bit encoded-integer. (otherwise
+> the interface would have been
+> ( ... major.hi major.low minor.hi minor.low ... )
+
+
+By virtue of the CIF interface the values within the 64bit major & minor 
+fields are then already restricted to the range 0...2^32-1. ? Except of 
+course the HV API spec doesn't specify that restriction ... should we 
+consider the CIF interface or HV interface broken ?
+
+The versioning APIs had 64bit values only because that was the size of 
+the machine registers not because we needed 64bit values. The registry 
+of versions starts at 1.0. The only valid values are the ones specified 
+in the registry - so the interface does not have arbitrary 64bit values 
+- and realistically speaking the range needed is very small.
+
+In reality, the values start at 1.0 and are defined as we need them 
+moving upwards - with luck we'll all be retired long before we ever see 
+more than a few handful of values - if we can apply pragmatism in one 
+case (the CIF) cant we apply it this one too ?
+
+
+> 
+>>
+>> Even though the LDC reliable protocol will allow us to build LDC 
+>> packets longer than the basic link-layer 64B packet, it is more 
+>> effective if we don't have to do so - so the intent here was to save 
+>> unnecessary packet expansion. Nearly all of the DS request & responses 
+>> will fit into a single LDC 64B packet.
+>>
+>> We can set the version field sizes to anything we want, but we 
+>> estimated that 65535 major versions was likely to last us a while. 
+>> Assuming Solaris moves to a bi-monthly release schedule and we update 
+>> the service for each Solaris release the major version field should 
+>> last us a little over 10000 years ;-)
+> 
+> 
+> If you want to revisit the versioning API cases and
+> restrict the fields to 16 significant bits, I have
+> no problem with that. I do have a problem with randomly
+> assigning different sized fields for the same elements
+> when the #significant bits hasn't been defined.
+
+I don't see why these cases are linked, nor are the fields randomly 
+assigned - they are well defined in their respective specs. Defining a 
+certain size field for this interface doesn't mean we have to go back 
+and re-define the range of bits for a totally independent interface. 
+They are different interfaces negotiating different versions for 
+different things ...
+
+> 
+> Call me anal if you want to, but that's my position
+> and I'm sticking with it. :) (In other words, I agree
+> with your logic, though I haven't checked the match,
+> but interfaces must be consistent and well-defined
+> throughout.)
+
+OK, you're being .... ;-) The field sizes dont really matter for the 
+project - the only thing that has bearing on the current definitions was 
+the impact on the overall packet size ...
+
+> 
+> I'm pretty sure that all the version negotiation
+> requests and replies are far less than 64 bytes,
+> since the only info is the short header the request/reply
+> codes and at most 2 version number fields. I'd have
+> to check to make sure, but I'll leave that up to you.
+
+With 64bit fields the registration request packet would look something like:
+
+words 0-1 - LDC header
+word  2   - DS packet header
+word  3   - service handle
+word  4   - major #
+word  5   - minor #
+
+Leaving 16 bytes for a nul terminated name string without over flowing ....
+
+.. we can change the numbers to 4 bytes each - increasing the string 
+length to 24 bytes, or leave them at 2 bytes each leaving a 28byte 
+string field.
+
+
+> 
+> We spent a lot of time arguing for consistency in these
+> interfaces. (both in the field names and everywhere else.)
+
+Consistency is good where it makes sense, but don't try to force all the 
+service protocols to use the same field definitions .... remember that 
+the purpose of the overall domain services protocol is that it is simply 
+a transport for packets.
+
+Each of the service protocols is a complete, separate and independent 
+protocol - they do not interact with each other in anyway - that's why 
+they each have their own version negotiation.
+
+You might think of the DS transport as like TCP - ensuring that packets 
+get to a specific application or module registered with a port (in this 
+case service handle). Other than that there is/should be no constraints 
+on the protocols DS carries - any more than TCP dictates the protocol 
+for telnet, smtp, or ssh.
+
+cheers,
+
+ash.
+
+> 
+> -David
+
+
+From sacadmin Tue Feb 28 04:51:59 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1SCpwIQ025609
+	for <fwarc@sac.eng.Sun.COM>; Tue, 28 Feb 2006 04:51:58 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k1SCpvF10412
+	for <@sunmail3.sfbay.sun.com:fwarc@sun.com>; Tue, 28 Feb 2006 05:51:58 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IVE00L03EEGXY00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 28 Feb 2006 04:51:52 -0800 (PST)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IVE001J8EEGO4C0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 28 Feb 2006 04:51:52 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k1SCppLn017523; Tue, 28 Feb 2006 04:51:51 -0800 (PST)
+Received: from [127.0.0.1] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k1SCpmZO052751;
+ Tue, 28 Feb 2006 04:51:49 -0800 (PST)
+Date: Tue, 28 Feb 2006 04:51:46 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/055 : Updated material available
+In-reply-to: <44043F68.4020502@sun.com>
+To: Ashley Saulsbury <ashley.saulsbury@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+   Firmware ARC <fwarc@sun.com>, Eric Sharakan <Eric.Sharakan@sun.com>,
+   Ryan Maeda <Ryan.Maeda@sun.com>, Narayan Venkat <narayan.venkat@sun.com>
+Message-id: <44044762.3020809@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <4404144D.6020502@sun.com> <4404232A.9060409@sun.com>
+ <440426CC.2050109@sun.com> <44043F68.4020502@sun.com>
+User-Agent: Thunderbird 1.5 (Windows/20051201)
+Status: RO
+Content-Length: 5462
+
+
+
+Ashley Saulsbury wrote:
+
+> By virtue of the CIF interface the values within the 64bit major & minor 
+> fields are then already restricted to the range 0...2^32-1. ? Except of 
+> course the HV API spec doesn't specify that restriction ... should we 
+> consider the CIF interface or HV interface broken ?
+
+Perhaps. I think a well-specified interface *should* specify the
+permitted range of values, especially if the permitted range
+is less than the size of the field.
+
+I think what we should do is go back to the HV API, and add
+the supported range of values in those fields. (fast track
+with updated spec would be fine.)
+
+> 
+> The versioning APIs had 64bit values only because that was the size of 
+> the machine registers not because we needed 64bit values. The registry 
+> of versions starts at 1.0. The only valid values are the ones specified 
+> in the registry - so the interface does not have arbitrary 64bit values 
+> - and realistically speaking the range needed is very small.
+> 
+> In reality, the values start at 1.0 and are defined as we need them 
+> moving upwards - with luck we'll all be retired long before we ever see 
+> more than a few handful of values - if we can apply pragmatism in one 
+> case (the CIF) cant we apply it this one too ?
+
+But I was pointing out that the cif or the HV API is incorrect,
+since the sizes of the fields don't match. Sorry, I've only
+realized that because of this discussion.
+
+Oh man .. that sounds a lot like what those of us that were
+programming in the 70's said. Basically, the life cycle of
+software projects was supposed to be on the order of 5 - 7
+years back then, though look at all the software that
+survived from those days (and needed to be "fixed") for y2k.
+
+>> If you want to revisit the versioning API cases and
+>> restrict the fields to 16 significant bits, I have
+>> no problem with that. I do have a problem with randomly
+>> assigning different sized fields for the same elements
+>> when the #significant bits hasn't been defined.
+> 
+> I don't see why these cases are linked, nor are the fields randomly 
+> assigned - they are well defined in their respective specs. Defining a 
+> certain size field for this interface doesn't mean we have to go back 
+> and re-define the range of bits for a totally independent interface. 
+> They are different interfaces negotiating different versions for 
+> different things ...
+
+Yes, I won't disagree with that, however, in my experience,
+it makes life much easier if similar interfaces use similar
+definitions. Doing otherwise makes things much more confusing
+for those that come after us.
+
+> OK, you're being .... ;-) The field sizes dont really matter for the 
+> project - the only thing that has bearing on the current definitions was 
+> the impact on the overall packet size ...
+
+I realize it's convenient to use 64 byte packets because
+of our current implementations. When we have a convenient
+instruction and/or cache-line size of 128 bytes, do we start
+optimizing for that size, and at the same time still support the
+older machines using a 64-byte packet size? It's a
+rhetorical question, but illustrating the implementation-
+specific nature of the current optimized packet size.
+And, no, I'm not saying it's unimportant to do that.
+We have to optimize for performance where possible.
+
+>> I'm pretty sure that all the version negotiation
+>> requests and replies are far less than 64 bytes,
+>> since the only info is the short header the request/reply
+>> codes and at most 2 version number fields. I'd have
+>> to check to make sure, but I'll leave that up to you.
+> 
+> With 64bit fields the registration request packet would look something 
+> like:
+> 
+> words 0-1 - LDC header
+> word  2   - DS packet header
+> word  3   - service handle
+> word  4   - major #
+> word  5   - minor #
+> 
+> Leaving 16 bytes for a nul terminated name string without over flowing ....
+> 
+> .. we can change the numbers to 4 bytes each - increasing the string 
+> length to 24 bytes, or leave them at 2 bytes each leaving a 28byte 
+> string field.
+
+What else could you possibly add to a version negotiation
+API besides the service id and the major, minor version?
+
+32-bits are good. But at the same time, it would be good
+to revise the HV versioning API with a fast-track, specifying
+the value limits. (Strictly speaking, they are separate
+interfaces, but I still think there's a lot of value in
+making these interfaces consistent.)
+
+
+> Consistency is good where it makes sense, but don't try to force all the 
+> service protocols to use the same field definitions .... remember that 
+> the purpose of the overall domain services protocol is that it is simply 
+> a transport for packets.
+
+Fair enough, but if the protocols are arbitrary, what's the harm
+in trying to make them look consistent? Do they have to be consistent?
+No, you and the project team and the other fwarc members that pointed
+that out are correct about that, but why shouldn't
+they be consistent? Making them consistent, where possible, makes it
+much easier to not screw things up in the future, and also provides
+the benefit that once you've learned how a couple of them work at
+the protocol layer, you now know how they all work at the protocol
+layer.
+
+Is this something that FWARC gets to enforce? No, not if the
+interfaces themselves are complete and supportable, however
+we are permitted to make suggestions. And I just want to point
+out that the suggestions are not intended to be arbitrary.
+
+-David
+
+
+From sacadmin Tue Feb 28 05:31:34 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1SDVXIQ026737
+	for <fwarc@sac.eng.Sun.COM>; Tue, 28 Feb 2006 05:31:33 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k1SDVL3Q014761
+	for <@sunmail2.sfbay.sun.com:fwarc@sun.com>; Tue, 28 Feb 2006 21:31:32 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IVE00807G8EUT00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 28 Feb 2006 05:31:26 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IVE00BXPG8DWFBC@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 28 Feb 2006 05:31:25 -0800 (PST)
+Received: from paranoia.sfbay (paranoia.SFBay.Sun.COM [129.146.96.132])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k1SDVITe015986; Tue, 28 Feb 2006 05:31:18 -0800 (PST)
+Received: from [129.146.96.132] (paranoia [129.146.96.132])
+	by paranoia.sfbay (8.12.10+Sun/8.12.10) with ESMTP id k1SDUCFU015317; Tue,
+ 28 Feb 2006 05:30:12 -0800 (PST)
+Date: Tue, 28 Feb 2006 05:30:12 -0800
+From: Ashley Saulsbury <ashley.saulsbury@Sun.COM>
+Subject: Re: 2006/055 : Updated material available
+In-reply-to: <44044762.3020809@sun.com>
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+   Firmware ARC <fwarc@Sun.COM>, Eric Sharakan <Eric.Sharakan@Sun.COM>,
+   Ryan Maeda <Ryan.Maeda@Sun.COM>, Narayan Venkat <narayan.venkat@Sun.COM>
+Message-id: <44045064.8080505@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <4404144D.6020502@sun.com> <4404232A.9060409@sun.com>
+ <440426CC.2050109@sun.com> <44043F68.4020502@sun.com>
+ <44044762.3020809@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.7 (X11/20050930)
+Status: RO
+Content-Length: 7612
+
+David Kahn wrote:
+> 
+> 
+> Ashley Saulsbury wrote:
+> 
+>> By virtue of the CIF interface the values within the 64bit major & 
+>> minor fields are then already restricted to the range 0...2^32-1. ? 
+>> Except of course the HV API spec doesn't specify that restriction ... 
+>> should we consider the CIF interface or HV interface broken ?
+> 
+> 
+> Perhaps. I think a well-specified interface *should* specify the
+> permitted range of values, especially if the permitted range
+> is less than the size of the field.
+
+I thought we had - isn't that what the registry of API versions is for ?
+
+> 
+> I think what we should do is go back to the HV API, and add
+> the supported range of values in those fields. (fast track
+> with updated spec would be fine.)
+
+By all means - you want to drive a fast track case to say that version 
+numbers in the registry must be between 0 and 2^32-1 ?
+
+> 
+>>
+>> The versioning APIs had 64bit values only because that was the size of 
+>> the machine registers not because we needed 64bit values. The registry 
+>> of versions starts at 1.0. The only valid values are the ones 
+>> specified in the registry - so the interface does not have arbitrary 
+>> 64bit values - and realistically speaking the range needed is very small.
+>>
+>> In reality, the values start at 1.0 and are defined as we need them 
+>> moving upwards - with luck we'll all be retired long before we ever 
+>> see more than a few handful of values - if we can apply pragmatism in 
+>> one case (the CIF) cant we apply it this one too ?
+> 
+> 
+> But I was pointing out that the cif or the HV API is incorrect,
+> since the sizes of the fields don't match. Sorry, I've only
+> realized that because of this discussion.
+
+It was news to me too - sigh
+
+> 
+> Oh man .. that sounds a lot like what those of us that were
+> programming in the 70's said. Basically, the life cycle of
+> software projects was supposed to be on the order of 5 - 7
+> years back then, though look at all the software that
+> survived from those days (and needed to be "fixed") for y2k.
+
+True - I'd buy the argument if the fields were one byte, but even if we 
+rev the major version upwards once a week - as fast as we can submit 
+FWARC cases ;-) With two bytes we're good for over 1000years. I don't 
+know about you, but honestly I'm not going to be worrying out peoples 
+problems with the LDoms architecture in 3006 ... ;-)
+
+> 
+>>> If you want to revisit the versioning API cases and
+>>> restrict the fields to 16 significant bits, I have
+>>> no problem with that. I do have a problem with randomly
+>>> assigning different sized fields for the same elements
+>>> when the #significant bits hasn't been defined.
+>>
+>>
+>> I don't see why these cases are linked, nor are the fields randomly 
+>> assigned - they are well defined in their respective specs. Defining a 
+>> certain size field for this interface doesn't mean we have to go back 
+>> and re-define the range of bits for a totally independent interface. 
+>> They are different interfaces negotiating different versions for 
+>> different things ...
+> 
+> 
+> Yes, I won't disagree with that, however, in my experience,
+> it makes life much easier if similar interfaces use similar
+> definitions. Doing otherwise makes things much more confusing
+> for those that come after us.
+
+I agree - that's why within the scope of domain services we kept the 
+fields the same size, and follow the same algorithm for negotiation, but 
+the document makes the version number fields pretty clear ...
+
+> 
+>> OK, you're being .... ;-) The field sizes dont really matter for the 
+>> project - the only thing that has bearing on the current definitions 
+>> was the impact on the overall packet size ...
+> 
+> 
+> I realize it's convenient to use 64 byte packets because
+> of our current implementations. When we have a convenient
+> instruction and/or cache-line size of 128 bytes, do we start
+> optimizing for that size, and at the same time still support the
+> older machines using a 64-byte packet size? It's a
+> rhetorical question, but illustrating the implementation-
+> specific nature of the current optimized packet size.
+> And, no, I'm not saying it's unimportant to do that.
+> We have to optimize for performance where possible.
+
+64bytes are baked in all over sun4v - not least for the mondo and error 
+queues. If we need to change them however we at least have the 
+versioning interface to cope with that ...
+
+> 
+>>> I'm pretty sure that all the version negotiation
+>>> requests and replies are far less than 64 bytes,
+>>> since the only info is the short header the request/reply
+>>> codes and at most 2 version number fields. I'd have
+>>> to check to make sure, but I'll leave that up to you.
+>>
+>>
+>> With 64bit fields the registration request packet would look something 
+>> like:
+>>
+>> words 0-1 - LDC header
+>> word  2   - DS packet header
+>> word  3   - service handle
+>> word  4   - major #
+>> word  5   - minor #
+>>
+>> Leaving 16 bytes for a nul terminated name string without over flowing 
+>> ....
+>>
+>> .. we can change the numbers to 4 bytes each - increasing the string 
+>> length to 24 bytes, or leave them at 2 bytes each leaving a 28byte 
+>> string field.
+> 
+> 
+> What else could you possibly add to a version negotiation
+> API besides the service id and the major, minor version?
+
+The service is defined by the name string. This is specified with a 
+short hand cookie (8bytes) so that once registered a caller can use the 
+cookie only and no longer needs to refer to the name ... the cookies are 
+dynamically allocated (they are not a defined namespace) and mean 
+nothing until bound to a name with the registration request.
+
+
+> 
+> 32-bits are good. But at the same time, it would be good
+> to revise the HV versioning API with a fast-track, specifying
+> the value limits. (Strictly speaking, they are separate
+> interfaces, but I still think there's a lot of value in
+> making these interfaces consistent.)
+
+I think the versioning registry covers it, but we can run a fast track 
+to add a note to the registry to restrict the range ...
+
+> 
+> 
+>> Consistency is good where it makes sense, but don't try to force all 
+>> the service protocols to use the same field definitions .... remember 
+>> that the purpose of the overall domain services protocol is that it is 
+>> simply a transport for packets.
+> 
+> 
+> Fair enough, but if the protocols are arbitrary, what's the harm
+> in trying to make them look consistent? Do they have to be consistent?
+> No, you and the project team and the other fwarc members that pointed
+> that out are correct about that, but why shouldn't
+> they be consistent? Making them consistent, where possible, makes it
+> much easier to not screw things up in the future, and also provides
+> the benefit that once you've learned how a couple of them work at
+> the protocol layer, you now know how they all work at the protocol
+> layer.
+
+I think we've tried to make them consistent within the space of domain 
+services - are they identical with *all* sun4v protocols and APIs - no. 
+Now that we have versioned interfaces anyway, it's likely that each 
+interface can have inconsistent definitions just by virtue of the 
+specifics of each interface version that has been selected.
+
+> 
+> Is this something that FWARC gets to enforce? No, not if the
+> interfaces themselves are complete and supportable, however
+> we are permitted to make suggestions. And I just want to point
+> out that the suggestions are not intended to be arbitrary.
+
+No the suggestions are good and welcome, I just wanted to point out the 
+reasoning behind the selections we have.
+
+cheers,
+
+ash.
+
+> 
+> -David
+> 
+
+
+From sacadmin Tue Feb 28 07:34:17 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1SFYHIQ029149
+	for <fwarc@sac.eng.sun.com>; Tue, 28 Feb 2006 07:34:17 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k1SFYDO25600;
+	Tue, 28 Feb 2006 07:34:13 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IVE00K07LWVZU00@brm-avmta-1.central.sun.com>; Tue,
+ 28 Feb 2006 08:34:07 -0700 (MST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IVE00JECLWUWEB0@brm-avmta-1.central.sun.com>; Tue,
+ 28 Feb 2006 08:34:06 -0700 (MST)
+Received: from phys-mpk-1 (phys-mpk-1.SFBay.Sun.COM [129.146.11.81])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k1SFY6Te024779; Tue, 28 Feb 2006 07:34:06 -0800 (PST)
+Received: from conversion-daemon.mpk-mail1.sfbay.sun.com by
+ mpk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IVE00H01LIEJT@mpk-mail1.sfbay.sun.com>
+ (original mail from sherri.shieh@sun.com); Tue,
+ 28 Feb 2006 07:34:06 -0800 (PST)
+Received: from [129.150.23.254]
+ (vpn-129-150-23-254.SFBay.Sun.COM [129.150.23.254]) by mpk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTP id <0IVE0089ALWKCN@mpk-mail1.sfbay.sun.com>; Tue,
+ 28 Feb 2006 07:33:57 -0800 (PST)
+Date: Tue, 28 Feb 2006 07:33:58 -0800
+From: Sherri Shieh <sherri.shieh@sun.com>
+Subject: Re: 2006/055 : Updated material available
+In-reply-to: <4404144D.6020502@sun.com>
+To: David Kahn <David.Kahn@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+   Firmware ARC <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Reply-to: sherri.shieh@sun.com
+Message-id: <44046D66.8080908@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <4404144D.6020502@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 1927
+
+I will go ahead and schedule this 2nd commitment review for monday then.
+
+- Sherri
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sherri Shieh
+Program Manager, Systems Architecture
+Sun Microsystems, Inc.
+Phone: 650-786-5245/x85245
+Email: Sherri.Shieh@sun.com    
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+David Kahn wrote:
+
+>
+>
+> Hitendra Zhangada wrote:
+>
+>>
+>> The changes seems straight forward to me.  I don't think these set of
+>> changes requires another meeting of review.  My preference is to "vote"
+>> via e-mail after I publish the interface table.
+>>
+>> Can we review it via e-mails?  Let me know your thoughts.
+>
+>
+> I object to email only review. That means we'll review
+> this on Monday, since any member can request a review.
+>
+> A few issues after a brief look:
+>
+> In 2.3.1, why are the major and minor version fields only
+> 2 bytes each? What's the size of the major and minor version
+> fields in the rest of the interfaces we've already approved?
+>
+> 2.5.1 does not define a result code for Success (0), nor
+> a description that success is returned unless otherwise
+> noted. In prior cases, I believe that Hitendra has asked
+> for the success code be listed as a possible return value
+> for each function that can return 0. (the wording needs
+> to change to accommodate that.)
+>
+> 2.5.2.1 major/minor version field sizes.
+> 2.5.2.2   "
+> 2.5.2.3   "
+>
+> Finally, the issues file doesn't show the resolution
+> of the new issues, and lists them as OPEN.
+>
+> -David
+>
+
+From sacadmin Tue Feb 28 11:03:53 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1SJ3rIQ009570
+	for <fwarc@sac.eng.sun.com>; Tue, 28 Feb 2006 11:03:53 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k1SJ3oO05516
+	for <@sunmail2.sfbay.sun.com:fwarc@sun.com>; Tue, 28 Feb 2006 11:03:50 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IVE00I1BVMBVX00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 28 Feb 2006 11:03:47 -0800 (PST)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IVE00BVAVM8WLDC@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 28 Feb 2006 11:03:44 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k1SJ3hLn003668; Tue, 28 Feb 2006 11:03:43 -0800 (PST)
+Received: from [127.0.0.1] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k1SJ3eZO066174;
+ Tue, 28 Feb 2006 11:03:41 -0800 (PST)
+Date: Tue, 28 Feb 2006 11:03:40 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/055 : Updated material available
+In-reply-to: <44045064.8080505@sun.com>
+To: Ashley Saulsbury <ashley.saulsbury@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+   Firmware ARC <fwarc@sun.com>, Eric Sharakan <Eric.Sharakan@sun.com>,
+   Ryan Maeda <Ryan.Maeda@sun.com>, Narayan Venkat <narayan.venkat@sun.com>
+Message-id: <44049E8C.9030705@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <4404144D.6020502@sun.com> <4404232A.9060409@sun.com>
+ <440426CC.2050109@sun.com> <44043F68.4020502@sun.com>
+ <44044762.3020809@sun.com> <44045064.8080505@sun.com>
+User-Agent: Thunderbird 1.5 (Windows/20051201)
+Status: RO
+Content-Length: 1427
+
+
+Ashley Saulsbury wrote:
+
+
+ > The two key interfaces that fixed this were the x-call I/F and the demap
+ > I/F - both of which take a cpu-list - which is defined as a list of
+ > 16bit CPU IDs. If I remember correctly the basic 4v architecture defines
+ > cpu IDs to be 16bits - which would de-facto define the valid range for
+ > the other API calls.
+
+OK, there is a precedent. Section 7.1 of the HV API document defines
+a cpuid as a 16 bit value, and a cpulist as an array of 16-bit
+cpuids. That's the reference I missed. Thanks.
+
+The project team can change v-cpuids back to 32-bits or even
+16-bits if they want to. Thanks for bearing with me on this,
+even though it turned out I was wrong.
+
+I give up on the size of the version fields. 2 bytes is fine.
+
+Write the fast-track up to define a major and minor version
+number as 16-bit values and I'll sponsor it. (modifies
+the HV versioning API case, this case doesn't depend on
+that change.
+
+---------------
+
+The registry just lists the interfaces and the trap#/function#
+assigned to an interface. (major.minor needs to be added,
+per the HV API case.) It doesn't, by itself, define any interface,
+but it's the official registry where the values assigned appear, so no
+project gets values that are formally assigned to another project.
+The list has to be somewhere, it might as well be maintained by
+FWARC since any case that defines a new HV API has to go through
+FWARC.
+
+-David
+
+
+From sacadmin Tue Feb 28 11:16:56 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1SJGuIQ010076
+	for <fwarc@sac.eng.Sun.COM>; Tue, 28 Feb 2006 11:16:56 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k1SJGoF03872;
+	Tue, 28 Feb 2006 12:16:53 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IVE00D0ZW7VOH00@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 28 Feb 2006 11:16:43 -0800 (PST)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IVE00BUWW7TO930@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 28 Feb 2006 11:16:41 -0800 (PST)
+Received: from d1-sfbay-02.sun.com ([192.18.39.112])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k1SJGfVs016801; Tue,
+ 28 Feb 2006 11:16:41 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-02.sun.com by d1-sfbay-02.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IVE00201T8A0700@d1-sfbay-02.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Tue,
+ 28 Feb 2006 11:16:41 -0800 (PST)
+Received: from [129.153.85.39] by d1-sfbay-02.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IVE00J47W7S2X70@d1-sfbay-02.sun.com>; Tue,
+ 28 Feb 2006 11:16:41 -0800 (PST)
+Date: Tue, 28 Feb 2006 11:16:40 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/055 : Updated material available
+In-reply-to: <44049E8C.9030705@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: Ashley Saulsbury <ashley.saulsbury@Sun.COM>,
+   Eric Sharakan <Eric.Sharakan@Sun.COM>, Ryan Maeda <Ryan.Maeda@Sun.COM>,
+   Narayan Venkat <Narayan.Venkat@Sun.COM>
+Message-id: <4404A198.10004@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <4404144D.6020502@sun.com> <4404232A.9060409@sun.com>
+ <440426CC.2050109@sun.com> <44043F68.4020502@sun.com>
+ <44044762.3020809@sun.com> <44045064.8080505@sun.com>
+ <44049E8C.9030705@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 2155
+
+David Kahn wrote On 02/28/06 11:03,:
+> 
+> Ashley Saulsbury wrote:
+> 
+> 
+>  > The two key interfaces that fixed this were the x-call I/F and the demap
+>  > I/F - both of which take a cpu-list - which is defined as a list of
+>  > 16bit CPU IDs. If I remember correctly the basic 4v architecture defines
+>  > cpu IDs to be 16bits - which would de-facto define the valid range for
+>  > the other API calls.
+>
+
+FYI.  I mentioned this yesterday, the "id" property under CPU
+node in MD is defined to be 64bit value.  The "id" property is
+defined as,
+
+   A unique 64-bit unsigned integer identifier for the virtual
+   CPU. This identifier is the one to use for all hypervisor CPU
+   services for the CPU represented by this node.
+
+Is MD property size is still 64bit or has it changed to 16bits?
+
+
+> OK, there is a precedent. Section 7.1 of the HV API document defines
+> a cpuid as a 16 bit value, and a cpulist as an array of 16-bit
+> cpuids. That's the reference I missed. Thanks.
+> 
+> The project team can change v-cpuids back to 32-bits or even
+> 16-bits if they want to. Thanks for bearing with me on this,
+> even though it turned out I was wrong.
+> 
+> I give up on the size of the version fields. 2 bytes is fine.
+> 
+> Write the fast-track up to define a major and minor version
+> number as 16-bit values and I'll sponsor it. (modifies
+> the HV versioning API case, this case doesn't depend on
+> that change.
+> 
+> ---------------
+> 
+> The registry just lists the interfaces and the trap#/function#
+> assigned to an interface. (major.minor needs to be added,
+> per the HV API case.) It doesn't, by itself, define any interface,
+> but it's the official registry where the values assigned appear, so no
+> project gets values that are formally assigned to another project.
+> The list has to be somewhere, it might as well be maintained by
+> FWARC since any case that defines a new HV API has to go through
+> FWARC.
+> 
+> -David
+> 
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Tue Feb 28 11:35:42 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k1SJZgIQ010795
+	for <fwarc@sac.eng.sun.com>; Tue, 28 Feb 2006 11:35:42 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k1SJZgO20330
+	for <@sunmail2.sfbay.sun.com:fwarc@sun.com>; Tue, 28 Feb 2006 11:35:42 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IVE00L03X3IXJ00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 28 Feb 2006 11:35:42 -0800 (PST)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IVE00BR4X3HW5SC@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 28 Feb 2006 11:35:41 -0800 (PST)
+Received: from paranoia.sfbay (paranoia.SFBay.Sun.COM [129.146.96.132])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k1SJZeLn021496; Tue, 28 Feb 2006 11:35:40 -0800 (PST)
+Received: from [129.146.96.132] (paranoia [129.146.96.132])
+	by paranoia.sfbay (8.12.10+Sun/8.12.10) with ESMTP id k1SJYXFU016069; Tue,
+ 28 Feb 2006 11:34:33 -0800 (PST)
+Date: Tue, 28 Feb 2006 11:34:33 -0800
+From: Ashley Saulsbury <ashley.saulsbury@sun.com>
+Subject: Re: 2006/055 : Updated material available
+In-reply-to: <4404A198.10004@Sun.COM>
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware ARC <fwarc@sun.com>, Eric Sharakan <Eric.Sharakan@sun.com>,
+   Ryan Maeda <Ryan.Maeda@sun.com>, Narayan Venkat <Narayan.Venkat@sun.com>
+Message-id: <4404A5C9.30306@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <4404144D.6020502@sun.com> <4404232A.9060409@sun.com>
+ <440426CC.2050109@sun.com> <44043F68.4020502@sun.com>
+ <44044762.3020809@sun.com> <44045064.8080505@sun.com>
+ <44049E8C.9030705@sun.com> <4404A198.10004@Sun.COM>
+User-Agent: Mozilla Thunderbird 1.0.7 (X11/20050930)
+Status: RO
+Content-Length: 2446
+
+Hitendra Zhangada wrote:
+> David Kahn wrote On 02/28/06 11:03,:
+> 
+>>
+>> Ashley Saulsbury wrote:
+>>
+>>
+>>  > The two key interfaces that fixed this were the x-call I/F and the 
+>> demap
+>>  > I/F - both of which take a cpu-list - which is defined as a list of
+>>  > 16bit CPU IDs. If I remember correctly the basic 4v architecture 
+>> defines
+>>  > cpu IDs to be 16bits - which would de-facto define the valid range for
+>>  > the other API calls.
+>>
+> 
+> FYI.  I mentioned this yesterday, the "id" property under CPU
+> node in MD is defined to be 64bit value.  The "id" property is
+> defined as,
+> 
+>   A unique 64-bit unsigned integer identifier for the virtual
+>   CPU. This identifier is the one to use for all hypervisor CPU
+>   services for the CPU represented by this node.
+> 
+> Is MD property size is still 64bit or has it changed to 16bits?
+
+Hi Hitu,
+
+All MD properties are defined to be 64bits.
+
+The issue here is the valid range of values - which is basically 
+architecturally constrained to 0-65535.
+
+We could go back and scatter this over all the docs we have, but I think 
+the precident David mentioned and that it is specified in the sun4v 
+architecture spec should suffice given that all these interface spec 
+back reference the same core specs.
+
+cheers,
+
+ash.
+
+
+
+
+
+> 
+> 
+>> OK, there is a precedent. Section 7.1 of the HV API document defines
+>> a cpuid as a 16 bit value, and a cpulist as an array of 16-bit
+>> cpuids. That's the reference I missed. Thanks.
+>>
+>> The project team can change v-cpuids back to 32-bits or even
+>> 16-bits if they want to. Thanks for bearing with me on this,
+>> even though it turned out I was wrong.
+>>
+>> I give up on the size of the version fields. 2 bytes is fine.
+>>
+>> Write the fast-track up to define a major and minor version
+>> number as 16-bit values and I'll sponsor it. (modifies
+>> the HV versioning API case, this case doesn't depend on
+>> that change.
+>>
+>> ---------------
+>>
+>> The registry just lists the interfaces and the trap#/function#
+>> assigned to an interface. (major.minor needs to be added,
+>> per the HV API case.) It doesn't, by itself, define any interface,
+>> but it's the official registry where the values assigned appear, so no
+>> project gets values that are formally assigned to another project.
+>> The list has to be somewhere, it might as well be maintained by
+>> FWARC since any case that defines a new HV API has to go through
+>> FWARC.
+>>
+>> -David
+>>
+> 
+
+
+From sacadmin Tue Feb 28 20:24:24 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k214ONIQ000044
+	for <fwarc@sac.eng.Sun.COM>; Tue, 28 Feb 2006 20:24:23 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k214OD6i022466;
+	Wed, 1 Mar 2006 12:24:22 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IVF00605LKJ1800@brm-avmta-1.central.sun.com>; Tue,
+ 28 Feb 2006 21:24:19 -0700 (MST)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IVF001FJLKI7L80@brm-avmta-1.central.sun.com>; Tue,
+ 28 Feb 2006 21:24:18 -0700 (MST)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k214OIVs013571; Tue,
+ 28 Feb 2006 20:24:18 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IVF00A01L2H5L00@d1-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Tue,
+ 28 Feb 2006 20:24:18 -0800 (PST)
+Received: from [129.150.32.123] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IVF00MGXLKHXW50@d1-sfbay-10.sun.com>; Tue,
+ 28 Feb 2006 20:24:18 -0800 (PST)
+Date: Tue, 28 Feb 2006 20:24:18 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/055 : Updated material available
+In-reply-to: <440405AB.2050600@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <440521F2.1030508@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <440405AB.2050600@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 691
+
+The specification is updated one more time based on e-mail
+discussions from today.  Lets review 0.9.8 version of the
+document next Monday.  The material is copied into case
+directory at,
+
+http://sac.sfbay.sun.com/arc/FWARC/2006/055/commit2.materials/DomainServices-098.pdf
+
+The differences from 0.9.6 version which we reviewed yesterday can be
+seen in,
+
+http://sac.sfbay.sun.com/arc/FWARC/2006/055/commit2.materials/DomainServices-098_096_delta.pdf
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Wed Mar  1 14:23:53 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k21MNqIQ005639
+	for <fwarc@sac.eng.Sun.COM>; Wed, 1 Mar 2006 14:23:52 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k21MNiWv028717
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Thu, 2 Mar 2006 06:23:51 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IVG00301ZJQTB00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Mar 2006 15:23:50 -0700 (MST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IVG0037YZJP0K40@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Mar 2006 15:23:50 -0700 (MST)
+Received: from phys-mpk-1 (phys-mpk-1.SFBay.Sun.COM [129.146.11.81])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k21MNnTe005264	for <fwarc@sun.com>; Wed,
+ 01 Mar 2006 14:23:49 -0800 (PST)
+Received: from conversion-daemon.mpk-mail1.sfbay.sun.com by
+ mpk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IVG00G01Z49AA@mpk-mail1.sfbay.sun.com>
+ (original mail from sherri.shieh@sun.com) for fwarc@sun.com; Wed,
+ 01 Mar 2006 14:23:49 -0800 (PST)
+Received: from [129.150.26.131]
+ (vpn-129-150-26-131.SFBay.Sun.COM [129.150.26.131]) by mpk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTP id <0IVG00DJQZJ4VL@mpk-mail1.sfbay.sun.com>; Wed,
+ 01 Mar 2006 14:23:28 -0800 (PST)
+Date: Wed, 01 Mar 2006 14:23:32 -0800
+From: Sherri Shieh <Sherri.Shieh@sun.com>
+Subject: FWARC Meeting Minutes 02/27/2006 Commitment: 2006/055; Commitment:
+ 2005/320
+To: Firmware Arch <fwarc@sun.com>, Eric Sharakan <Eric.Sharakan@sun.com>
+Reply-to: Sherri.Shieh@sun.com
+Message-id: <44061EE4.5040306@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 1416
+
+All,
+
+Meeting minutes for 02/27/2006 are now available:
+
+(1)http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2006/20060227.arcbiz
+
+Audio: 
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2006/20060227.arcbiz.mp3
+
+(2) 
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2006/20060227.2006.055.commitment
+
+Audio: 
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2006/20060227.2006.055.commitment.mp3
+
+(3) 
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2006/20060227.2005.320.commitment
+
+Audio: 
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2006/20060227.2005.320.commitment.mp3
+
+
+Sum up available at:
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2006/20060227.html
+
+
+If you have any corrections/feedback, please direct them to me.
+
+Thanks,
+Sherri
+
+-- 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sherri Shieh
+Program Manager, Systems Architecture
+Sun Microsystems, Inc.
+Phone: 650-786-5245/x85245
+Email: Sherri.Shieh@sun.com    
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+From sacadmin Mon Mar  6 04:26:58 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k26CQvIQ016753
+	for <fwarc@sac.eng.Sun.COM>; Mon, 6 Mar 2006 04:26:58 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k26CQu229088;
+	Mon, 6 Mar 2006 05:26:56 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IVP0030BH8VS300@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 06 Mar 2006 04:26:55 -0800 (PST)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IVP00BORH8VW1XK@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 06 Mar 2006 04:26:55 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k26CQsLn008356; Mon, 06 Mar 2006 04:26:54 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k26CQrZO073317;
+ Mon, 06 Mar 2006 04:26:54 -0800 (PST)
+Date: Mon, 06 Mar 2006 04:26:53 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/055 : Updated material available
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware ARC <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Message-id: <440C2A8D.1030402@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+User-Agent: Thunderbird 1.5 (Windows/20051201)
+Status: RO
+Content-Length: 587
+
+
+Remember, since we moved the meeting back to 11:00,
+it's possible I'll be a little late today.
+
+
+Minor comments only.
+
+editorial: "NULL terminated" should be "NUL Terminated"
+throughout the document. (It's the ASCII NUL character
+that terminates a c-string.)
+
+In 2.5.2, the definition of svc_id should include
+"NUL terminated ASCII string" (as it does in the
+rest of the document, where strings are used.)
+
+After these (and any other new issues) are fixed,
+and the issues list updated to show the resolutions
+of all the "open" issues, we can convert to fast-track
+approval.
+
+-David
+
+
+
+
+
+From sacadmin Mon Mar  6 05:59:40 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k26DxeIQ019822
+	for <fwarc@sac.eng.sun.com>; Mon, 6 Mar 2006 05:59:40 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k26DxdS23226;
+	Mon, 6 Mar 2006 05:59:39 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IVP00L0FLJDXP00@brm-avmta-1.central.sun.com>; Mon,
+ 06 Mar 2006 06:59:37 -0700 (MST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IVP00ITOLJDLLA0@brm-avmta-1.central.sun.com>; Mon,
+ 06 Mar 2006 06:59:37 -0700 (MST)
+Received: from fe-amer-01.sun.com ([192.18.108.175])
+	by brmea-mail-1.sun.com (8.12.10/8.12.9) with ESMTP id k26DxbSD000152; Mon,
+ 06 Mar 2006 06:59:37 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IVP00101KPN9500@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Mon,
+ 06 Mar 2006 06:59:37 -0700 (MST)
+Received: from [192.168.1.103] ([129.150.65.98])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep  9
+ 2005)) with ESMTPSA id <0IVP00F1JLJAVR21@mail-amer.sun.com>; Mon,
+ 06 Mar 2006 06:59:36 -0700 (MST)
+Date: Mon, 06 Mar 2006 08:59:32 -0500
+From: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Subject: FWARC/2006/055 - Issues file changes
+Sender: Narayan.Venkat@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Narayan Venkat <Narayan.Venkat@Sun.COM>,
+   Eric Sharakan <Eric.Sharakan@Sun.COM>, Ryan Maeda <Ryan.Maeda@Sun.COM>,
+   ldom internal <ldoms-internal@Sun.COM>
+Message-id: <64D3CCF3-809B-42CD-94FE-83599BAFB762@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.746.2)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+Status: RO
+Content-Length: 237
+
+Hi
+
+I have changed status of resolved OPEN issues to CLOSED
+in the issues file. I also added new commitment2 issues
+sent out by David to the file.
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/055/issues
+
+Thanks
+
+-Narayan
+  
+
+From sacadmin Mon Mar  6 07:00:30 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k26F0TIQ021409
+	for <fwarc@sac.eng.Sun.COM>; Mon, 6 Mar 2006 07:00:30 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k26F06Rg022598;
+	Mon, 6 Mar 2006 23:00:26 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IVP0011XOCF7R00@brm-avmta-1.central.sun.com>; Mon,
+ 06 Mar 2006 08:00:15 -0700 (MST)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IVP00MI0OCEQ220@brm-avmta-1.central.sun.com>; Mon,
+ 06 Mar 2006 08:00:14 -0700 (MST)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-4.sun.com (8.12.10/8.12.9) with ESMTP id k26F0Euf005688; Mon,
+ 06 Mar 2006 08:00:14 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IVP00501NYBT400@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Mon,
+ 06 Mar 2006 08:00:14 -0700 (MST)
+Received: from [192.168.1.103] ([129.150.65.98])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep  9
+ 2005)) with ESMTPSA id <0IVP001MEOCC5DT1@mail-amer.sun.com>; Mon,
+ 06 Mar 2006 08:00:14 -0700 (MST)
+Date: Mon, 06 Mar 2006 10:00:10 -0500
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: FWARC/2006/055 - Domain Services - Interface Table
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Eric Sharakan <Eric.Sharakan@sun.com>, Ryan Maeda <Ryan.Maeda@sun.com>,
+   ldom internal <ldoms-internal@sun.com>
+Message-id: <E4EF7FD4-9D4C-46F4-B0B1-CF11C650A50C@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.746.2)
+Content-type: text/plain; format=flowed; delsp=yes; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+Status: RO
+Content-Length: 238
+
+Hi
+
+I have added an interface table to the Domain Services case
+directory. I have also marked the corresponding issue as now closed.
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/055/ 
+interface-table.txt
+
+Thanks
+
+-Narayan
+  
+
+From sacadmin Mon Mar  6 13:47:03 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k26Ll2IQ010902
+	for <fwarc@sac.eng.Sun.COM>; Mon, 6 Mar 2006 13:47:03 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k26LkpLT018834;
+	Tue, 7 Mar 2006 05:47:00 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IVQ00K1L767OB00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 06 Mar 2006 13:46:55 -0800 (PST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IVQ009HA765IOE0@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 06 Mar 2006 13:46:54 -0800 (PST)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-1.sun.com (8.12.10/8.12.9) with ESMTP id k26LkrSD027520; Mon,
+ 06 Mar 2006 14:46:53 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IVQ00701712UK00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Mon,
+ 06 Mar 2006 14:46:53 -0700 (MST)
+Received: from [129.148.180.187] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IVQ00E6B764RRB2@mail-amer.sun.com>; Mon,
+ 06 Mar 2006 14:46:53 -0700 (MST)
+Date: Mon, 06 Mar 2006 16:46:50 -0500
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: FWARC/2006/055 - Post Commitment2 case materials
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Eric Sharakan <Eric.Sharakan@sun.com>, Ryan Maeda <Ryan.Maeda@sun.com>,
+   ldom internal <ldoms-internal@sun.com>
+Message-id: <C7611019-F295-43A4-AFF6-9FA391F5D934@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.746.2)
+Content-type: text/plain; format=flowed; delsp=yes; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+Status: RO
+Content-Length: 320
+
+Hi
+
+Please review the revised document containing changes for all
+the comments/issues from commitment-2 review.
+
+http://sac.sfbay/Archives/CaseLog/arc/FWARC/2006/055/ 
+commit2.materials/DomainServices-099.pdf
+
+If this addresses all the issues I will delete version 0.98 in the
+commitment-2 directory.
+
+Thanks
+
+-Narayan
+
+
+From sacadmin Mon Mar  6 14:25:15 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k26MPEIQ012712
+	for <fwarc@sac.eng.Sun.COM>; Mon, 6 Mar 2006 14:25:14 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k26MPC213228;
+	Mon, 6 Mar 2006 15:25:12 -0700 (MST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IVQ00I0T8XU4L00@brm-avmta-1.central.sun.com>; Mon,
+ 06 Mar 2006 15:25:06 -0700 (MST)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IVQ00D3J8XT2VD0@brm-avmta-1.central.sun.com>; Mon,
+ 06 Mar 2006 15:25:06 -0700 (MST)
+Received: from d1-sfbay-02.sun.com ([192.18.39.112])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k26MP5Vs006746; Mon,
+ 06 Mar 2006 14:25:05 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-02.sun.com by d1-sfbay-02.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IVQ00C016U41400@d1-sfbay-02.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Mon,
+ 06 Mar 2006 14:25:05 -0800 (PST)
+Received: from [129.153.85.10] by d1-sfbay-02.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IVQ008JM8XQVI70@d1-sfbay-02.sun.com>; Mon,
+ 06 Mar 2006 14:25:05 -0800 (PST)
+Date: Mon, 06 Mar 2006 14:25:01 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: FWARC/2006/055 - Post Commitment2 case materials
+In-reply-to: <C7611019-F295-43A4-AFF6-9FA391F5D934@Sun.COM>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: ldom internal <ldoms-internal@Sun.COM>
+Message-id: <440CB6BD.80502@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <C7611019-F295-43A4-AFF6-9FA391F5D934@Sun.COM>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 953
+
+Thanks Narayan.
+
+FWARC members, this case is now converted into a fast-track.
+I will mark it approved as fast-track case by end of today
+around 6 pm PST.  If you have any comments or wants to extend
+the timer past today then let us know ASAP.
+
+I will also remove the intermediate versions of the document
+later today.
+
+
+Thanks.
+
+
+Narayan Venkat wrote On 03/06/06 13:46,:
+> Hi
+> 
+> Please review the revised document containing changes for all
+> the comments/issues from commitment-2 review.
+> 
+> http://sac.sfbay/Archives/CaseLog/arc/FWARC/2006/055/ 
+> commit2.materials/DomainServices-099.pdf
+> 
+> If this addresses all the issues I will delete version 0.98 in the
+> commitment-2 directory.
+> 
+> Thanks
+> 
+> -Narayan
+> 
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Mon Mar  6 18:08:10 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k2728AIQ024876
+	for <fwarc@sac.eng.sun.com>; Mon, 6 Mar 2006 18:08:10 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k27289E18737;
+	Mon, 6 Mar 2006 18:08:09 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IVQ00I0BJ9LC100@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 06 Mar 2006 18:08:09 -0800 (PST)
+Received: from nwkes-gis-mail-1.sun.com ([10.4.134.5])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IVQ00BO3J9KWB5M@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 06 Mar 2006 18:08:08 -0800 (PST)
+Received: from d1-sfbay-06.sun.com ([192.18.39.116])
+	by nwkes-gis-mail-1.sun.com (8.12.9/8.12.9) with ESMTP id k27288IU023565; Mon,
+ 06 Mar 2006 18:08:08 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-06.sun.com by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IVQ00L01GCC1800@d1-sfbay-06.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Mon,
+ 06 Mar 2006 18:08:08 -0800 (PST)
+Received: from [129.153.85.10] by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IVQ00J40J9J5V20@d1-sfbay-06.sun.com>; Mon,
+ 06 Mar 2006 18:08:08 -0800 (PST)
+Date: Mon, 06 Mar 2006 18:08:07 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: FWARC/2006/055 - Post Commitment2 case materials
+In-reply-to: <440CB6BD.80502@Sun.COM>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, ldom internal <ldoms-internal@Sun.COM>
+Message-id: <440CEB07.1010105@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <C7611019-F295-43A4-AFF6-9FA391F5D934@Sun.COM>
+ <440CB6BD.80502@Sun.COM>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 1081
+
+Hitendra Zhangada wrote On 03/06/06 14:25,:
+> Thanks Narayan.
+> 
+> FWARC members, this case is now converted into a fast-track.
+> I will mark it approved as fast-track case by end of today
+> around 6 pm PST.  If you have any comments or wants to extend
+> the timer past today then let us know ASAP.
+
+This case is now approved.
+
+Thanks.
+
+
+> 
+> I will also remove the intermediate versions of the document
+> later today.
+> 
+> 
+> Thanks.
+> 
+> 
+> Narayan Venkat wrote On 03/06/06 13:46,:
+> 
+>> Hi
+>>
+>> Please review the revised document containing changes for all
+>> the comments/issues from commitment-2 review.
+>>
+>> http://sac.sfbay/Archives/CaseLog/arc/FWARC/2006/055/ 
+>> commit2.materials/DomainServices-099.pdf
+>>
+>> If this addresses all the issues I will delete version 0.98 in the
+>> commitment-2 directory.
+>>
+>> Thanks
+>>
+>> -Narayan
+>>
+> 
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Mon Mar  6 19:00:51 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k2730pIQ027593
+	for <fwarc@sac.eng.sun.com>; Mon, 6 Mar 2006 19:00:51 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k2730jS05368;
+	Mon, 6 Mar 2006 19:00:45 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IVQ00003LP1ZI00@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 06 Mar 2006 19:00:37 -0800 (PST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IVQ00B56LP1W14M@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 06 Mar 2006 19:00:37 -0800 (PST)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-1.sun.com (8.12.10/8.12.9) with ESMTP id k2730bSD004776; Mon,
+ 06 Mar 2006 20:00:37 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IVQ00601LFSXV00@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM); Mon,
+ 06 Mar 2006 20:00:37 -0700 (MST)
+Received: from [192.168.100.166]
+ (c-24-218-178-91.hsd1.ma.comcast.net [24.218.178.91])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep  9
+ 2005)) with ESMTPSA id <0IVQ00ECGLOZEA10@mail-amer.sun.com>; Mon,
+ 06 Mar 2006 20:00:37 -0700 (MST)
+Date: Mon, 06 Mar 2006 22:00:33 -0500
+From: Eric Sharakan <Eric.Sharakan@Sun.COM>
+Subject: Re: FWARC/2006/055 - Domain Services - Interface Table
+In-reply-to: <E4EF7FD4-9D4C-46F4-B0B1-CF11C650A50C@sun.com>
+Sender: Eric.Sharakan@Sun.COM
+To: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, Ryan Maeda <ryan.maeda@Sun.COM>,
+   ldom internal <ldoms-internal@Sun.COM>
+Message-id: <FD10C080-D2A2-41C7-8A12-2B20BF3E294E@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.746.2)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ boundary=Apple-Mail-2-184476466; micalg=sha1
+X-PMX-Version: 5.1.2.240295
+References: <E4EF7FD4-9D4C-46F4-B0B1-CF11C650A50C@sun.com>
+Status: RO
+Content-Length: 3881
+
+
+--Apple-Mail-2-184476466
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=US-ASCII;
+	delsp=yes;
+	format=flowed
+
+Narayan, this LGTM.
+
+Thanks.
+
+-Eric
+
+On Mar 6, 2006, at 10:00 AM, Narayan Venkat wrote:
+
+> Hi
+>
+> I have added an interface table to the Domain Services case
+> directory. I have also marked the corresponding issue as now closed.
+>
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/055/ 
+> interface-table.txt
+>
+> Thanks
+>
+> -Narayan
+
+
+--Apple-Mail-2-184476466
+Content-Transfer-Encoding: base64
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Disposition: attachment;
+	filename=smime.p7s
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGHjCCAtcw
+ggJAoAMCAQICAw/TQzANBgkqhkiG9w0BAQQFADBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhh
+d3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVt
+YWlsIElzc3VpbmcgQ0EwHhcNMDUxMTA5MTkwMDQzWhcNMDYxMTA5MTkwMDQzWjBHMR8wHQYDVQQD
+ExZUaGF3dGUgRnJlZW1haWwgTWVtYmVyMSQwIgYJKoZIhvcNAQkBFhVFcmljLlNoYXJha2FuQFN1
+bi5DT00wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDba3lxeBujsCl4O0ZN5yX9mAFc
+yYvW614QY6+qk1CzUYswsSb67a8NgqErQHGUFZ5OBwF2eyUQ3e9Y38dg/eN4goeU6I30zwXkyZ0P
+x/spuKASos2jpwhWuT60WocCW+nfnXR277sxQqQ6bACQ/9AmXgAP7VjR28s8Grk8E+nPvvW+f1Ey
+mlfIgionohSCdSv+gZTLZ6eoSWvswEb+KskFdBU+Uqb5x0J8F9RCKAMpZ34W1C9BICh9y4M9dPQ/
+3+FyBCwykQCTcm35u29YDA7sCWVa7SudI9/a39UJaGB1qAItWW8ZSq0ctZnR0aGcrajW1mSUsx7i
+DsHRvFuER5pPAgMBAAGjMjAwMCAGA1UdEQQZMBeBFUVyaWMuU2hhcmFrYW5AU3VuLkNPTTAMBgNV
+HRMBAf8EAjAAMA0GCSqGSIb3DQEBBAUAA4GBADnc8ZTwcfHsUDsI6x6jBUXtsAJyI8sAF1q/updX
+6HNG7nlNUetlQniC7kRWQFV2055llklmh095Mte0jI1uOKOC87S1tneWRvzbfdJwZlPOeU6zg9ee
+amA874LY/hW+6kAdCU3NMI/nnEIO6AR+zscz+giysoITuJVR7qaFi5hFMIIDPzCCAqigAwIBAgIB
+DTANBgkqhkiG9w0BAQUFADCB0TELMAkGA1UEBhMCWkExFTATBgNVBAgTDFdlc3Rlcm4gQ2FwZTES
+MBAGA1UEBxMJQ2FwZSBUb3duMRowGAYDVQQKExFUaGF3dGUgQ29uc3VsdGluZzEoMCYGA1UECxMf
+Q2VydGlmaWNhdGlvbiBTZXJ2aWNlcyBEaXZpc2lvbjEkMCIGA1UEAxMbVGhhd3RlIFBlcnNvbmFs
+IEZyZWVtYWlsIENBMSswKQYJKoZIhvcNAQkBFhxwZXJzb25hbC1mcmVlbWFpbEB0aGF3dGUuY29t
+MB4XDTAzMDcxNzAwMDAwMFoXDTEzMDcxNjIzNTk1OVowYjELMAkGA1UEBhMCWkExJTAjBgNVBAoT
+HFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQZXJzb25hbCBG
+cmVlbWFpbCBJc3N1aW5nIENBMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDEpjxVc1X7TrnK
+mVoeaMB1BHCd3+n/ox7svc31W/Iadr1/DDph8r9RzgHU5VAKMNcCY1osiRVwjt3J8CuFWqo/cVbL
+rzwLB+fxH5E2JCoTzyvV84J3PQO+K/67GD4Hv0CAAmTXp6a7n2XRxSpUhQ9IBH+nttE8YQRAHmQZ
+cmC3+wIDAQABo4GUMIGRMBIGA1UdEwEB/wQIMAYBAf8CAQAwQwYDVR0fBDwwOjA4oDagNIYyaHR0
+cDovL2NybC50aGF3dGUuY29tL1RoYXd0ZVBlcnNvbmFsRnJlZW1haWxDQS5jcmwwCwYDVR0PBAQD
+AgEGMCkGA1UdEQQiMCCkHjAcMRowGAYDVQQDExFQcml2YXRlTGFiZWwyLTEzODANBgkqhkiG9w0B
+AQUFAAOBgQBIjNFQg+oLLswNo2asZw9/r6y+whehQ5aUnX9MIbj4Nh+qLZ82L8D0HFAgk3A8/a3h
+YWLD2ToZfoSxmRsAxRoLgnSeJVCUYsfbJ3FXJY3dqZw5jowgT2Vfldr394fWxghOrvbqNOUQGls1
+TXfjViF4gtwhGTXeJLHTHUb/XV9lTzGCAucwggLjAgEBMGkwYjELMAkGA1UEBhMCWkExJTAjBgNV
+BAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQZXJzb25h
+bCBGcmVlbWFpbCBJc3N1aW5nIENBAgMP00MwCQYFKw4DAhoFAKCCAVMwGAYJKoZIhvcNAQkDMQsG
+CSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMDYwMzA3MDMwMDM0WjAjBgkqhkiG9w0BCQQxFgQU
+iKmeFeFEYDySNaw76yCR+sYZ4LIweAYJKwYBBAGCNxAEMWswaTBiMQswCQYDVQQGEwJaQTElMCMG
+A1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNv
+bmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECAw/TQzB6BgsqhkiG9w0BCRACCzFroGkwYjELMAkGA1UE
+BhMCWkExJTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBAgMP00MwDQYJKoZIhvcNAQEBBQAEggEA
+pqV/COHs6/0Z3ZxXdPUHI5x4M1nDLBzRxKgqEoxTObiWgZ2nYy2EgZxta86X7An2s7WvFdtRbpSQ
+O5jiedo5w/nyS3mBLunenxbc1bqPTFKgAMCnFLNJefnYfju5sTLeUrccdQVLTAAIPBtipEIdcc3K
+C7VBQAX7bGSipbnOgNzJ4o+HrdI1TMHzqAX2TuFXC0+oYvY3X0b7C2ONBt57Ckxlhu8Yzm/jzlwf
+zU+BbSrKYQm8VVcBwXfA9TwvKeJsIOyMuFmC4pClFjKLQFM/u1I3O6MfIFtsRelfUYN6Gk3wJRa9
+kKOzQi5lA+8W1EHF4mtgeE8jZgjU7ckG/KeopgAAAAAAAA==
+
+--Apple-Mail-2-184476466--
+
+From sacadmin Thu Mar  9 09:55:44 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k29HthIQ012899
+	for <fwarc@sac.eng.Sun.COM>; Thu, 9 Mar 2006 09:55:43 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k29Hthx17304
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Thu, 9 Mar 2006 10:55:43 -0700 (MST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IVV00005GGPIT00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 09 Mar 2006 10:55:37 -0700 (MST)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IVV00GDYGGOKQD0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 09 Mar 2006 10:55:36 -0700 (MST)
+Received: from phys-mpk-1 (phys-mpk-1.SFBay.Sun.COM [129.146.11.81])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k29HtaLn020879	for <fwarc@sun.com>; Thu,
+ 09 Mar 2006 09:55:36 -0800 (PST)
+Received: from conversion-daemon.mpk-mail1.sfbay.sun.com by
+ mpk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IVV00I01FFL3D@mpk-mail1.sfbay.sun.com>
+ (original mail from sherri.shieh@sun.com) for fwarc@sun.com; Thu,
+ 09 Mar 2006 09:55:36 -0800 (PST)
+Received: from [129.150.20.241]
+ (vpn-129-150-20-241.SFBay.Sun.COM [129.150.20.241]) by mpk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTP id <0IVV00GTKGG584@mpk-mail1.sfbay.sun.com>; Thu,
+ 09 Mar 2006 09:55:17 -0800 (PST)
+Date: Thu, 09 Mar 2006 09:55:22 -0800
+From: Sherri Shieh <sherri.shieh@sun.com>
+Subject: FWARC Meeting Minutes 03/06/2006 Commitment 2: 2006/055; Inception:
+ 2006/140
+To: Firmware Arch <fwarc@sun.com>, eric.sharakan@sun.com, ryan.maeda@sun.com
+Reply-to: sherri.shieh@sun.com
+Message-id: <44106C0A.70500@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 1417
+
+All,
+
+Meeting minutes for 03/06/2006 are now available:
+
+(1) http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2006/20060306.arcbiz
+
+Audio: 
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2006/20060306.arcbiz.mp3
+
+(2) 
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2006/20060306.2006.055.commitment2
+
+Audio: 
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2006/20060306.2006.055.commitment2.mp3
+
+(3) 
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2006/20060306.2006.140.inception
+
+Audio: 
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2006/20060306.2006.140.inception.mp3
+
+
+Sum up available at:
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2006/20060306.html
+
+
+If you have any corrections/feedback, please direct them to me.
+
+Thanks,
+Sherri
+
+-- 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sherri Shieh
+Program Manager, Systems Architecture
+Sun Microsystems, Inc.
+Phone: 650-786-5245/x85245
+Email: Sherri.Shieh@sun.com    
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+From sacadmin Sat Mar 11 15:14:12 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k2BNECIQ022318
+	for <fwarc@sac.eng.Sun.COM>; Sat, 11 Mar 2006 15:14:12 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k2BNE7N03010;
+	Sat, 11 Mar 2006 16:14:07 -0700 (MST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IVZ00J01KJJAP00@brm-avmta-1.central.sun.com>; Sat,
+ 11 Mar 2006 16:14:07 -0700 (MST)
+Received: from nwkes-gis-mail-1.sun.com ([10.4.134.5])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IVZ00ELYKJILHH0@brm-avmta-1.central.sun.com>; Sat,
+ 11 Mar 2006 16:14:07 -0700 (MST)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkes-gis-mail-1.sun.com (8.12.9/8.12.9) with ESMTP id k2BNE6IU013647; Sat,
+ 11 Mar 2006 15:14:06 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IVZ00B01J9T0J00@d1-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Sat,
+ 11 Mar 2006 15:14:06 -0800 (PST)
+Received: from [129.150.33.74] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IVZ007WMKJH6P40@d1-sfbay-09.sun.com>; Sat,
+ 11 Mar 2006 15:14:06 -0800 (PST)
+Date: Sat, 11 Mar 2006 15:14:08 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: 2006/055 & 2006/141 - Domain Services Registry created
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>, LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <441359C0.8030509@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 536
+
+I have created domain services registry under FWARC home page.
+You can get to it from,
+
+http://sac.sfbay.sun.com/arc/FWARC/
+
+Scroll down by a page and you will see list of FWARC Registries.
+You will find both Hypervisor API and Domain Services registry.
+
+Let me know if you have any comments.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Fri Mar 31 18:49:49 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k312nnIQ006769
+	for <fwarc-record@sac.eng.sun.com>; Fri, 31 Mar 2006 18:49:49 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k312nmp04309
+	for <@sunmail2.sfbay.sun.com:fwarc-record@sun.com>; Fri, 31 Mar 2006 18:49:48 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IX000A07VV0M800@nwk-avmta-1.sfbay.Sun.COM> for fwarc-record@sun.com
+ (ORCPT fwarc-record@sun.com); Fri, 31 Mar 2006 18:49:48 -0800 (PST)
+Received: from nwkes-gis-mail-1.sun.com ([10.4.134.5])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IX00049XVV0L390@nwk-avmta-1.sfbay.Sun.COM> for
+ fwarc-record@sun.com (ORCPT fwarc-record@sun.com); Fri,
+ 31 Mar 2006 18:49:48 -0800 (PST)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwkes-gis-mail-1.sun.com (8.12.9/8.12.9) with ESMTP id k312nmIU019218	for
+ <fwarc-record@sun.com>; Fri, 31 Mar 2006 18:49:48 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IX000M01VMX5300@d1-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc-record@sun.com (ORCPT fwarc-record@sun.com); Fri,
+ 31 Mar 2006 18:49:47 -0800 (PST)
+Received: from [129.150.64.106] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IX000HPDVUYFS30@d1-sfbay-10.sun.com> for
+ fwarc-record@sun.com (ORCPT fwarc-record@sun.com); Fri,
+ 31 Mar 2006 18:49:47 -0800 (PST)
+Date: Fri, 31 Mar 2006 18:49:46 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: OS/FW release binding for FWARC/2006/055
+Sender: Hitendra.Zhangada@Sun.COM
+To: fwarc-record@Sun.COM
+Message-id: <442DEA4A.1090805@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 346
+
+This case is approved for integration into a minor release of
+the firmware and a micro/patch release of the OS.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+

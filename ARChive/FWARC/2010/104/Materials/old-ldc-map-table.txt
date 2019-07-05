@@ -1,0 +1,84 @@
+1.0 Allocate LDC mapping Table
+------------------------------
+
+LDoms virtual networking is implementing a feature whereby the
+guest can directly map in remote buffers and deposit packets
+to avoid a bcopy() operation.
+
+The current HV implementation for LDC mappings supports 64MB of
+8k pages that can be directly mapped into a Guest's memory space.
+There are an additional 64 large page mappings that may also be used.
+We can only support a limited number of vnets with this size of 
+mapping tables.
+
+We need a mechanism to increase these mapping table sizes to optimise
+vnet performance.
+
+The proposal is to increase either or both the 8K page and large page table
+size to a size requested by the Guest. The guest will provide the memory
+for the expanded table(s). This memory will not be accessible by the
+guest while it is allocated for this purpose. The expanded table(s) will
+be used in conjunction with the existing tables, (as a form of secondary or
+overflow storage), so that guests which do not use the API retain the existing
+functionality.
+
+This API is implemented in the LDC group, 0x101.
+
+2.1 HV API interface Definition
+-------------------------------
+
+LDC_ALLOCATE_MAPIN_TABLE
+
+    Entry:
+
+      trap#             FAST_TRAP
+      function#         0x187
+      arg0              RA of map table
+      arg1              Size of map table
+      arg2		map table type (regular/large pages)
+
+    Exit:
+
+      ret0              status
+
+    Allocate an LDC mapin table of size arg1 at address RA for either 8kb
+    or large pages.
+
+    If arg0, the RA of the map table, is NULL, the size of a single 'mapping
+    table entry' in bytes will be returned. This will enable the guest to
+    determine the memory size required for a mappng table. A status of EINVAL
+    will also be returned.
+
+    The argument RA is the real address of a data buffer, which must be aligned
+    to the buffer size next highest power of two, (eg, if the buffer length is 500,
+    the buffer address must be aligned on a 512-byte boundary).
+
+    The memory range (RA, RA + size) must be valid for the guest. If the range
+    is not valid ENORADDR is returned.
+
+    The hypervisor will calculate the number of map table entries that will
+    fit in that size.
+
+    The map table type (arg2) should be 1 for 8kb pages, 2 for large pages.
+    Any other value will result in the request being rejected and a status
+    of EINVAL being returned. The page size(s) supported for a large page
+    table is processor-specific.
+
+    The memory range (RA, RA + size) should not be accessed by the guest
+    after a succesful map table allocation. Any such accesses will result
+    in an error trap.
+
+    If the size argument is 0, then any previously mapped table which was
+    mapped at RA will be de-allocated. The guest is now free to re-use
+    that memory. If there is no table with an RA matching the argument a
+    status of EINVAl will be returned and no de-allocation will take place.
+
+    If there is a table already allocated, any future requests will be refused
+    until the table is first de-allocated and a status of EBUSY returned.
+
+    Errors:
+
+      EBADALIGN         RA is badly aligned
+      ENORADDR          RA is an illegal real address for this guest
+      EINVAL            invalid argument(s)
+      EBUSY	        mapping table already allocated

@@ -1,0 +1,405 @@
+From sacadmin Tue Apr  8 13:40:58 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m38Kevnm010110
+	for <fwarc@sac.sfbay.Sun.COM>; Tue, 8 Apr 2008 13:40:57 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m38Kepxs015988;
+	Wed, 9 Apr 2008 04:40:56 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JZ000A23XG7L400@brm-avmta-1.central.sun.com>; Tue,
+ 08 Apr 2008 14:40:55 -0600 (MDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JZ0007XMXG6BX20@brm-avmta-1.central.sun.com>; Tue,
+ 08 Apr 2008 14:40:54 -0600 (MDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m38KesTL024952; Tue,
+ 08 Apr 2008 20:40:54 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JZ000601W2VK300@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Tue,
+ 08 Apr 2008 14:40:54 -0600 (MDT)
+Received: from [192.168.1.103] ([72.93.24.248])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0JZ0008A4XFU7FG0@mail-amer.sun.com>; Tue,
+ 08 Apr 2008 14:40:43 -0600 (MDT)
+Date: Tue, 08 Apr 2008 16:40:41 -0400
+From: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Subject: FWARC/2008/248 - Niagara2 NIU Hypervisor API Extensions - fast-track
+ timeout April 15, 2008
+Sender: Narayan.Venkat@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: David Finberg <David.Finberg@Sun.COM>,
+        hybrid <Hybrid_NIU_IO_Development@Sun.COM>
+Message-id: <C0FB5315-1786-4424-9FB3-78992792FE7F@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.919.2)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 583
+
+I am sponsoring this fast-track case for David Finberg. This case
+extends the Niagara-2 NIU Hypervisor API to support Network Hybrid IO.
+
+The Niagara-2 NIU Hypervisor API specification was approved under
+FWARC/2006/524.
+
+This case will be approved for minor/micro/patch OS binding and
+minor/micro binding for the firmware.
+
+All of the changes are highlighted in the 1-pager and the new API
+document which can be found at:
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2008/248/materials/niu-hvapi-1pager.txt
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2008/248/materials/niu-hvapi.txt
+
+
+
+From sacadmin Wed Apr  9 09:27:52 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m39GRqWn017683
+	for <fwarc@sac.sfbay.sun.com>; Wed, 9 Apr 2008 09:27:52 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m39GRlTe003876;
+	Wed, 9 Apr 2008 17:27:50 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JZ200I2XGECEO00@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 09 Apr 2008 09:27:48 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JZ20089XGE9WR90@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 09 Apr 2008 09:27:45 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m39GRjcu012565; Wed,
+ 09 Apr 2008 16:27:45 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JZ200M01FZOPV00@mail-amer.sun.com> (original mail from S.Jain@Sun.COM)
+ ; Wed, 09 Apr 2008 10:27:45 -0600 (MDT)
+Received: from [129.150.18.204] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JZ200A8SGE3MTE0@mail-amer.sun.com>; Wed,
+ 09 Apr 2008 10:27:39 -0600 (MDT)
+Date: Wed, 09 Apr 2008 09:27:38 -0700
+From: Sunit Jain <S.Jain@Sun.COM>
+Subject: Re: FWARC/2008/248 - Niagara2 NIU Hypervisor API Extensions -
+ fast-track timeout April 15, 2008
+In-reply-to: <C0FB5315-1786-4424-9FB3-78992792FE7F@Sun.COM>
+Sender: S.Jain@Sun.COM
+To: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, David Finberg <David.Finberg@Sun.COM>,
+        hybrid <Hybrid_NIU_IO_Development@Sun.COM>
+Reply-to: S.Jain@Sun.COM
+Message-id: <47FCEE7A.6090800@Sun.Com>
+Organization: Sun Microsystems, Inc.
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <C0FB5315-1786-4424-9FB3-78992792FE7F@Sun.COM>
+User-Agent: Thunderbird 2.0.0.12pre (Windows/20080123)
+Status: RO
+Content-Length: 779
+
+
+Could you please copy the "diffs" file (niu-hvapi.txt - FWARC/2006/524 
+vs FWAC/2008/248) to the
+case materials directory.
+
+Thanks,
+Sunit
+
+
+Narayan Venkat wrote:
+> I am sponsoring this fast-track case for David Finberg. This case
+> extends the Niagara-2 NIU Hypervisor API to support Network Hybrid IO.
+>
+> The Niagara-2 NIU Hypervisor API specification was approved under
+> FWARC/2006/524.
+>
+> This case will be approved for minor/micro/patch OS binding and
+> minor/micro binding for the firmware.
+>
+> All of the changes are highlighted in the 1-pager and the new API
+> document which can be found at:
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2008/248/materials/niu-hvapi-1pager.txt 
+>
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2008/248/materials/niu-hvapi.txt 
+>
+>
+>
+
+From sacadmin Wed Apr  9 13:10:45 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m39KAiSN000791
+	for <fwarc@sac.sfbay.Sun.COM>; Wed, 9 Apr 2008 13:10:45 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m39KAXdg019340;
+	Thu, 10 Apr 2008 04:10:43 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JZ200F09QPTK300@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 09 Apr 2008 13:10:41 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JZ2002X7QPSNOB0@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 09 Apr 2008 13:10:40 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m39KAe45022583; Wed,
+ 09 Apr 2008 20:10:40 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JZ200B01LU2MV00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Wed,
+ 09 Apr 2008 14:10:40 -0600 (MDT)
+Received: from [192.168.1.103] ([72.93.31.172])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0JZ20071MQPD4UF0@mail-amer.sun.com>; Wed,
+ 09 Apr 2008 14:10:27 -0600 (MDT)
+Date: Wed, 09 Apr 2008 16:10:25 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: FWARC/2008/248 - Niagara2 NIU Hypervisor API Extensions -
+ fast-track timeout April 15, 2008
+In-reply-to: <47FCEE7A.6090800@Sun.Com>
+Sender: Narayan.Venkat@sun.com
+To: S.Jain@sun.com
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>, Firmware Arch <fwarc@sun.com>,
+        David Finberg <David.Finberg@sun.com>,
+        hybrid <Hybrid_NIU_IO_Development@sun.com>
+Message-id: <B207F09C-3F43-4666-978B-F41E7A5DBED1@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.919.2)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <C0FB5315-1786-4424-9FB3-78992792FE7F@Sun.COM>
+ <47FCEE7A.6090800@Sun.Com>
+Status: RO
+Content-Length: 1167
+
+
+On Apr 9, 2008, at 12:27 PM, Sunit Jain wrote:
+>
+> Could you please copy the "diffs" file (niu-hvapi.txt - FWARC/ 
+> 2006/524 vs FWAC/2008/248) to the
+> case materials directory.
+
+I am not sure what the diff will provide. The APIs being ARC'd
+as part of 2008/248 are new APIs and are in the same group as
+the ones in 2006/524. They are a superset and do not invalidate
+the ones those were ARC'd in 2006/524. Hence the minor version
+bump from 1.0 to 1.1 for NIU group.
+
+Thanks
+-Narayan
+
+
+> Thanks,
+> Sunit
+>
+>
+> Narayan Venkat wrote:
+>> I am sponsoring this fast-track case for David Finberg. This case
+>> extends the Niagara-2 NIU Hypervisor API to support Network Hybrid  
+>> IO.
+>>
+>> The Niagara-2 NIU Hypervisor API specification was approved under
+>> FWARC/2006/524.
+>>
+>> This case will be approved for minor/micro/patch OS binding and
+>> minor/micro binding for the firmware.
+>>
+>> All of the changes are highlighted in the 1-pager and the new API
+>> document which can be found at:
+>>
+>> http://sac.eng/Archives/CaseLog/arc/FWARC/2008/248/materials/niu-hvapi-1pager.txt
+>>
+>> http://sac.eng/Archives/CaseLog/arc/FWARC/2008/248/materials/niu-hvapi.txt
+>>
+>>
+
+
+From sacadmin Thu Apr 10 20:12:50 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m3B3CnHw026556
+	for <fwarc@sac.sfbay.Sun.COM>; Thu, 10 Apr 2008 20:12:50 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m3B3CjlI028712;
+	Fri, 11 Apr 2008 11:12:48 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JZ5008194XA1400@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 10 Apr 2008 20:12:46 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JZ500KVZ4XAQY50@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 10 Apr 2008 20:12:46 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m3B3Cjqr022029; Fri,
+ 11 Apr 2008 03:12:45 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JZ500A014UXRK00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Thu,
+ 10 Apr 2008 21:12:45 -0600 (MDT)
+Received: from [192.168.1.103] ([72.70.108.155])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0JZ500BLE4X8LYD0@mail-amer.sun.com>; Thu,
+ 10 Apr 2008 21:12:45 -0600 (MDT)
+Date: Thu, 10 Apr 2008 23:12:43 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: FWARC/2008/248 - Niagara2 NIU Hypervisor API Extensions -
+ fast-track timeout April 15, 2008
+In-reply-to: <C0FB5315-1786-4424-9FB3-78992792FE7F@Sun.COM>
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: David Finberg <David.Finberg@sun.com>,
+        hybrid <Hybrid_NIU_IO_Development@sun.com>
+Message-id: <77AF3D25-D2D3-4E10-B758-32030290F9A1@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.919.2)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <C0FB5315-1786-4424-9FB3-78992792FE7F@Sun.COM>
+Status: RO
+Content-Length: 1735
+
+Hello All
+
+I received a number of questions from David in regards to the APIs
+defined by this case. After working with the team, I have revised
+the materials to include more detailed information for each API,
+its arguments, legal values and errors returned. The doc now
+includes a glossary and introduction section that provides additional
+background information.  No HV API interfaces or interface behavior
+was changed as a result of these document changes. I have deposited
+a new updated doc in the case materials directory. I have also
+generated a diff doc showing the additions and changes. Due to
+the nature of the changes I am extending the timer to now expire
+on April 16, 2008. Please let me know if anyone requires additional
+time for review. The new materials can be found at:
+
+Original document:
+http://sac.eng/Archives/CaseLog/arc/FWARC/2008/248/materials/niu-hvapi.txt
+
+Updated document:
+http://sac.eng/Archives/CaseLog/arc/FWARC/2008/248/materials/niu-hvapi-update.txt
+
+Diffs:
+http://sac.eng/Archives/CaseLog/arc/FWARC/2008/248/materials/niu-hvapi-diffs.txt
+
+
+On Apr 8, 2008, at 4:40 PM, Narayan Venkat wrote:
+> I am sponsoring this fast-track case for David Finberg. This case
+> extends the Niagara-2 NIU Hypervisor API to support Network Hybrid IO.
+>
+> The Niagara-2 NIU Hypervisor API specification was approved under
+> FWARC/2006/524.
+>
+> This case will be approved for minor/micro/patch OS binding and
+> minor/micro binding for the firmware.
+>
+> All of the changes are highlighted in the 1-pager and the new API
+> document which can be found at:
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2008/248/materials/niu-hvapi-1pager.txt
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2008/248/materials/niu-hvapi.txt
+>
+>
+
+
+From sacadmin Thu Apr 17 10:02:00 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m3HH1x8C029290
+	for <fwarc@sac.sfbay.sun.com>; Thu, 17 Apr 2008 10:01:59 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m3HH1uKD003455;
+	Thu, 17 Apr 2008 18:01:58 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JZH00D0XBB95500@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 17 Apr 2008 10:01:57 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JZH00J6MBB9T1E0@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 17 Apr 2008 10:01:57 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m3HH1uxd022774; Thu,
+ 17 Apr 2008 17:01:56 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JZH00801ACOPL00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Thu,
+ 17 Apr 2008 11:01:56 -0600 (MDT)
+Received: from dhcp-ubur03-180-129.East.Sun.COM ([129.148.180.129])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JZH008YMBA26ID0@mail-amer.sun.com>; Thu,
+ 17 Apr 2008 11:01:45 -0600 (MDT)
+Date: Thu, 17 Apr 2008 13:01:46 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: FWARC/2008/248 - Niagara2 NIU Hypervisor API Extensions -
+ fast-track timeout April 15, 2008
+In-reply-to: <C0FB5315-1786-4424-9FB3-78992792FE7F@Sun.COM>
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: David Finberg <David.Finberg@sun.com>,
+        hybrid <Hybrid_NIU_IO_Development@sun.com>
+Message-id: <51F969F0-0FB2-4B39-91F1-145142C7B7C7@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.919.2)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <C0FB5315-1786-4424-9FB3-78992792FE7F@Sun.COM>
+Status: RO
+Content-Length: 764
+
+This fast-track case has timed out and is now approved.
+
+IAM file has been updated.
+
+Thanks
+-Narayan
+
+
+On Apr 8, 2008, at 4:40 PM, Narayan Venkat wrote:
+> I am sponsoring this fast-track case for David Finberg. This case
+> extends the Niagara-2 NIU Hypervisor API to support Network Hybrid IO.
+>
+> The Niagara-2 NIU Hypervisor API specification was approved under
+> FWARC/2006/524.
+>
+> This case will be approved for minor/micro/patch OS binding and
+> minor/micro binding for the firmware.
+>
+> All of the changes are highlighted in the 1-pager and the new API
+> document which can be found at:
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2008/248/materials/niu-hvapi-1pager.txt
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2008/248/materials/niu-hvapi.txt
+>
+>
+
+

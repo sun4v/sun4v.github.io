@@ -1,0 +1,626 @@
+From sacadmin Tue Jul 11 17:41:46 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k6C0fjtn029471
+	for <fwarc@sac.eng.Sun.COM>; Tue, 11 Jul 2006 17:41:46 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k6C0fLNX006654
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Wed, 12 Jul 2006 08:41:44 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J2900E01LXHOY00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 11 Jul 2006 18:41:41 -0600 (MDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J2900MD2LXHH1D0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 11 Jul 2006 18:41:41 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id k6C0feek014431; Tue, 11 Jul 2006 17:41:40 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k6C0fdlO034551; Tue,
+ 11 Jul 2006 17:41:40 -0700 (PDT)
+Date: Tue, 11 Jul 2006 17:41:41 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: FWARC/2006/425 NCS HV API Update 2
+To: FWARC <fwarc@sun.com>
+Cc: Eric Pilmore <Eric.Pilmore@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Message-id: <44B44545.6090504@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 1.5.0.4 (Windows/20060516)
+Status: RO
+Content-Length: 877
+
+
+I'm sponsoring this fast-track for Eric Pilmore.
+The timer expires on July 18, 2006.
+
+This case updates and replaces 2006/145.
+The interfaces defined in 2006/145 have not shipped.
+
+The changes are relatively minor:
+
+- Increase CWQ entry size to 128 bytes
+- Add more detailed error info to both queue entries
+- Adds a new API: NCS_SETHEAD_MARKER (function# 0x117)
+
+And some other minor changes. You can diff the
+files with the old case to see all the differences.
+
+Or see them here with this webrev:
+http://esp.west/~ep32863/projects/crypto/niagara2/arc/ncs-hv-api/
+which is not part of the case materials.
+
+The interface table is at the end of the document,
+which is in the materials directory.
+
+The project seeks a minor/micro binding of the
+firmware and a patch/micro/minor binding of
+the OS for the OS components.
+
+The trap registry will be updated upon approval.
+
+-David
+
+
+From sacadmin Wed Jul 12 15:06:15 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k6CM6FDV018630
+	for <fwarc@sac.eng.sun.com>; Wed, 12 Jul 2006 15:06:15 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k6CM6E417916;
+	Wed, 12 Jul 2006 15:06:14 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J2B007039ECPW00@brm-avmta-1.central.sun.com>; Wed,
+ 12 Jul 2006 16:06:12 -0600 (MDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J2B005V29EB8G30@brm-avmta-1.central.sun.com>; Wed,
+ 12 Jul 2006 16:06:11 -0600 (MDT)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k6CM6BTR027281; Wed,
+ 12 Jul 2006 15:06:11 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J2B001019E78S00@d1-sfbay-10.sun.com>
+ (original mail from Eric.Pilmore@Sun.COM); Wed,
+ 12 Jul 2006 15:06:11 -0700 (PDT)
+Received: from [129.153.85.46] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J2B00GPP9EASE60@d1-sfbay-10.sun.com>; Wed,
+ 12 Jul 2006 15:06:11 -0700 (PDT)
+Date: Wed, 12 Jul 2006 15:06:10 -0700
+From: Eric Pilmore <Eric.Pilmore@Sun.COM>
+Subject: Re: FWARC/2006/425 NCS HV API Update 2
+In-reply-to: <44B44545.6090504@sun.com>
+Sender: Eric.Pilmore@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: FWARC <fwarc@Sun.COM>, Greg Onufer <greg.onufer@Sun.COM>
+Message-id: <44B57252.8080108@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <44B44545.6090504@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 1430
+
+Hi David,
+
+For the Niagara-2-only device node will the name value of
+"crypto" dictate that the actual driver have that name also?
+The driver name is currently "n2cp" and I have no plans (nor
+desire) to change it.  Not to mention the name "crypto" is
+rather generic and all-encompassing, and the n2cp driver will
+not encompass all the crypto capabilites of Niagara-2.
+
+If so, any issues with changing the 'name' from "crypto" to "n2cp"?
+
+Thanks,
+Eric
+
+
+
+David Kahn wrote On 07/11/06 17:41,:
+> 
+> I'm sponsoring this fast-track for Eric Pilmore.
+> The timer expires on July 18, 2006.
+> 
+> This case updates and replaces 2006/145.
+> The interfaces defined in 2006/145 have not shipped.
+> 
+> The changes are relatively minor:
+> 
+> - Increase CWQ entry size to 128 bytes
+> - Add more detailed error info to both queue entries
+> - Adds a new API: NCS_SETHEAD_MARKER (function# 0x117)
+> 
+> And some other minor changes. You can diff the
+> files with the old case to see all the differences.
+> 
+> Or see them here with this webrev:
+> http://esp.west/~ep32863/projects/crypto/niagara2/arc/ncs-hv-api/
+> which is not part of the case materials.
+> 
+> The interface table is at the end of the document,
+> which is in the materials directory.
+> 
+> The project seeks a minor/micro binding of the
+> firmware and a patch/micro/minor binding of
+> the OS for the OS components.
+> 
+> The trap registry will be updated upon approval.
+> 
+> -David
+> 
+
+
+From sacadmin Wed Jul 12 15:25:40 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k6CMPdR4019535
+	for <fwarc@sac.eng.Sun.COM>; Wed, 12 Jul 2006 15:25:39 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k6CMPXCr000035
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Thu, 13 Jul 2006 06:25:38 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J2B00803AAMNG00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 12 Jul 2006 16:25:34 -0600 (MDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J2B005G2AAM8G50@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 12 Jul 2006 16:25:34 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k6CMPYhR021625; Wed, 12 Jul 2006 15:25:34 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k6CMPXLl073471; Wed,
+ 12 Jul 2006 15:25:33 -0700 (PDT)
+Date: Wed, 12 Jul 2006 15:25:33 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: FWARC/2006/425 NCS HV API Update 2
+In-reply-to: <44B57252.8080108@sun.com>
+To: Eric Pilmore <Eric.Pilmore@sun.com>
+Cc: FWARC <fwarc@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Message-id: <44B576DD.101@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <44B44545.6090504@sun.com> <44B57252.8080108@sun.com>
+User-Agent: Thunderbird 1.5.0.4 (Windows/20060516)
+Status: RO
+Content-Length: 1345
+
+
+
+Eric Pilmore wrote:
+> Hi David,
+> 
+> For the Niagara-2-only device node will the name value of
+> "crypto" dictate that the actual driver have that name also?
+> The driver name is currently "n2cp" and I have no plans (nor
+> desire) to change it.  Not to mention the name "crypto" is
+> rather generic and all-encompassing, and the n2cp driver will
+> not encompass all the crypto capabilites of Niagara-2.
+> 
+> If so, any issues with changing the 'name' from "crypto" to "n2cp"?
+
+The "name" propval should be a generic name. "crypto" is
+as good as any.
+
+The driver binding should be in the "compatible" property
+and should have "SUNW," prefix in the name. The OS framework
+looks at the entries in "compatible" first (there can be more
+than one string in "compatible") in order from first string
+to last string to find a driver for the device, typically
+using /etc/driver_aliases so the driver name can be n2cp
+with an entry in /etc/driver_aliases so that SUNW,n2crypto
+(or whatever we publish in 'compatible') binds to the
+driver of your choice. If you use different compatible names there,
+you can always use separate drivers later, even if you
+are using the same driver now. If you use the same compatible
+string now, you can never separate the drivers later.
+
+compatible: SUNW,n2crypto
+
+Didn't we include 'compatible' in the bindings?
+
+-David
+
+From sacadmin Wed Jul 12 15:35:00 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k6CMZ0Nf019677
+	for <fwarc@sac.eng.sun.com>; Wed, 12 Jul 2006 15:35:00 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k6CMYxU21567;
+	Wed, 12 Jul 2006 15:34:59 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J2B00L01AQACW00@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 12 Jul 2006 15:34:58 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.6]) by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J2B00KKPAQA6TE0@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 12 Jul 2006 15:34:58 -0700 (PDT)
+Received: from d1-sfbay-06.sun.com ([192.18.39.116])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k6CMYvc5005437; Wed,
+ 12 Jul 2006 15:34:57 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-06.sun.com by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J2B00201AOK4A00@d1-sfbay-06.sun.com>
+ (original mail from Eric.Pilmore@Sun.COM); Wed,
+ 12 Jul 2006 15:34:57 -0700 (PDT)
+Received: from [129.153.85.46] by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J2B000PVAQ9C710@d1-sfbay-06.sun.com>; Wed,
+ 12 Jul 2006 15:34:57 -0700 (PDT)
+Date: Wed, 12 Jul 2006 15:34:56 -0700
+From: Eric Pilmore <Eric.Pilmore@Sun.COM>
+Subject: Re: FWARC/2006/425 NCS HV API Update 2
+In-reply-to: <44B576DD.101@sun.com>
+Sender: Eric.Pilmore@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: FWARC <fwarc@Sun.COM>, Greg Onufer <greg.onufer@Sun.COM>
+Message-id: <44B57910.5080006@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <44B44545.6090504@sun.com> <44B57252.8080108@sun.com>
+ <44B576DD.101@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 1752
+
+David Kahn wrote On 07/12/06 15:25,:
+> 
+> 
+> Eric Pilmore wrote:
+> 
+>> Hi David,
+>>
+>> For the Niagara-2-only device node will the name value of
+>> "crypto" dictate that the actual driver have that name also?
+>> The driver name is currently "n2cp" and I have no plans (nor
+>> desire) to change it.  Not to mention the name "crypto" is
+>> rather generic and all-encompassing, and the n2cp driver will
+>> not encompass all the crypto capabilites of Niagara-2.
+>>
+>> If so, any issues with changing the 'name' from "crypto" to "n2cp"?
+> 
+> 
+> The "name" propval should be a generic name. "crypto" is
+> as good as any.
+> 
+> The driver binding should be in the "compatible" property
+> and should have "SUNW," prefix in the name. The OS framework
+> looks at the entries in "compatible" first (there can be more
+> than one string in "compatible") in order from first string
+> to last string to find a driver for the device, typically
+> using /etc/driver_aliases so the driver name can be n2cp
+> with an entry in /etc/driver_aliases so that SUNW,n2crypto
+> (or whatever we publish in 'compatible') binds to the
+> driver of your choice. If you use different compatible names there,
+> you can always use separate drivers later, even if you
+> are using the same driver now. If you use the same compatible
+> string now, you can never separate the drivers later.
+> 
+> compatible: SUNW,n2crypto
+> 
+> Didn't we include 'compatible' in the bindings?
+
+Yes, there is a compatible already in there, SUNW,n2-cwq.
+
+Is there some kind of default behavior that if there is
+no entry in /etc/driver_aliases that it will look for
+the "name"?  I guess I was simply hoping to get away from
+being forced to install an entry /etc/driver_aliases.
+Oh well.
+
+Thanks,
+Eric
+
+
+
+> -David
+
+
+From sacadmin Wed Jul 12 15:41:53 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k6CMfqU3019926
+	for <fwarc@sac.eng.sun.com>; Wed, 12 Jul 2006 15:41:53 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k6CMfmPb017332
+	for <@sunmail3.sfbay.sun.com:fwarc@sun.com>; Wed, 12 Jul 2006 23:41:51 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J2B0070BB1OET00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 12 Jul 2006 15:41:48 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J2B004SEB1O7Q30@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 12 Jul 2006 15:41:48 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k6CMfmLS027511; Wed, 12 Jul 2006 15:41:48 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k6CMflOK074151; Wed,
+ 12 Jul 2006 15:41:47 -0700 (PDT)
+Date: Wed, 12 Jul 2006 15:41:46 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: FWARC/2006/425 NCS HV API Update 2
+In-reply-to: <44B57910.5080006@sun.com>
+To: Eric Pilmore <Eric.Pilmore@sun.com>
+Cc: FWARC <fwarc@sun.com>, Greg Onufer <greg.onufer@sun.com>
+Message-id: <44B57AAA.8070702@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <44B44545.6090504@sun.com> <44B57252.8080108@sun.com>
+ <44B576DD.101@sun.com> <44B57910.5080006@sun.com>
+User-Agent: Thunderbird 1.5.0.4 (Windows/20060516)
+Status: RO
+Content-Length: 1216
+
+
+
+Eric Pilmore wrote:
+
+>> Didn't we include 'compatible' in the bindings?
+> 
+> Yes, there is a compatible already in there, SUNW,n2-cwq.
+> 
+> Is there some kind of default behavior that if there is
+> no entry in /etc/driver_aliases that it will look for
+> the "name"?  I guess I was simply hoping to get away from
+> being forced to install an entry /etc/driver_aliases.
+> Oh well.
+
+Yes, it will fall back to using the "name" propval,
+which is there for when we added "compatible" support
+years ago. (Devices with non-generic names still work.)
+
+but don't do that, because anybody using the generic name
+"crypto" might get your driver. (Imagine that the hw is
+installed first, before the software is added, so even
+if they have a compatible binding, it's not been added
+yet.)
+
+While it seems
+that might be convenient for you, don't do it,
+since it hurts everybody else. You wouldn't appreciate
+it if somebody already used the name "crypto" as a
+driver binding, would you?
+
+Add the entries to driver_aliases. If your driver
+is in ON, you just add them to the source file in ON.
+If it's unbundled, just use options to add_drv(1M)
+to add them.
+
+If you already shipped like this, then it might create
+a flag day.
+
+-David
+
+From sacadmin Wed Jul 12 16:09:31 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k6CN9VM9021482
+	for <fwarc@sac.eng.sun.com>; Wed, 12 Jul 2006 16:09:31 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k6CN9UU29802;
+	Wed, 12 Jul 2006 16:09:30 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J2B00A01CBTVK00@brm-avmta-1.central.sun.com>; Wed,
+ 12 Jul 2006 17:09:29 -0600 (MDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J2B0050ECBS8I80@brm-avmta-1.central.sun.com>; Wed,
+ 12 Jul 2006 17:09:29 -0600 (MDT)
+Received: from d1-sfbay-01.sun.com ([192.18.39.111])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k6CN9SO2015102; Wed,
+ 12 Jul 2006 16:09:28 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-01.sun.com by d1-sfbay-01.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J2B00C01BPBK100@d1-sfbay-01.sun.com>
+ (original mail from Eric.Pilmore@Sun.COM); Wed,
+ 12 Jul 2006 16:09:28 -0700 (PDT)
+Received: from [129.153.85.46] by d1-sfbay-01.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J2B007O1CBSMC20@d1-sfbay-01.sun.com>; Wed,
+ 12 Jul 2006 16:09:28 -0700 (PDT)
+Date: Wed, 12 Jul 2006 16:09:28 -0700
+From: Eric Pilmore <Eric.Pilmore@Sun.COM>
+Subject: Re: FWARC/2006/425 NCS HV API Update 2
+In-reply-to: <44B57AAA.8070702@sun.com>
+Sender: Eric.Pilmore@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: FWARC <fwarc@Sun.COM>, Greg Onufer <greg.onufer@Sun.COM>
+Message-id: <44B58128.6060107@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <44B44545.6090504@sun.com> <44B57252.8080108@sun.com>
+ <44B576DD.101@sun.com> <44B57910.5080006@sun.com> <44B57AAA.8070702@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 1420
+
+David Kahn wrote On 07/12/06 15:41,:
+> 
+> 
+> Eric Pilmore wrote:
+> 
+>>> Didn't we include 'compatible' in the bindings?
+>>
+>>
+>> Yes, there is a compatible already in there, SUNW,n2-cwq.
+>>
+>> Is there some kind of default behavior that if there is
+>> no entry in /etc/driver_aliases that it will look for
+>> the "name"?  I guess I was simply hoping to get away from
+>> being forced to install an entry /etc/driver_aliases.
+>> Oh well.
+> 
+> 
+> Yes, it will fall back to using the "name" propval,
+> which is there for when we added "compatible" support
+> years ago. (Devices with non-generic names still work.)
+> 
+> but don't do that, because anybody using the generic name
+> "crypto" might get your driver. (Imagine that the hw is
+> installed first, before the software is added, so even
+> if they have a compatible binding, it's not been added
+> yet.)
+> 
+> While it seems
+> that might be convenient for you, don't do it,
+> since it hurts everybody else. You wouldn't appreciate
+> it if somebody already used the name "crypto" as a
+> driver binding, would you?
+> 
+> Add the entries to driver_aliases. If your driver
+> is in ON, you just add them to the source file in ON.
+> If it's unbundled, just use options to add_drv(1M)
+> to add them.
+> 
+> If you already shipped like this, then it might create
+> a flag day.
+
+No, none of this has shipped yet.
+
+Okay, will plan on driver_aliases addition.
+
+Thanks,
+Eric
+
+
+> -David
+
+
+From sacadmin Wed Jul 19 18:53:56 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k6K1rtGj001731
+	for <fwarc@sac.eng.sun.com>; Wed, 19 Jul 2006 18:53:56 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k6K1rmpk010156;
+	Thu, 20 Jul 2006 02:53:51 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J2O00J05ILPS300@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 19 Jul 2006 18:53:49 -0700 (PDT)
+Received: from noho.SFBay.Sun.COM ([10.6.92.101]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J2O00CGGILO2430@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 19 Jul 2006 18:53:48 -0700 (PDT)
+Received: from noho.SFBay.Sun.COM (localhost [127.0.0.1])
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0) with ESMTP id k6K1rmdM011087; Wed,
+ 19 Jul 2006 18:53:48 -0700 (PDT)
+Received: (from dmk@localhost)	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0/Submit)
+ id k6K1rlXa011086; Wed, 19 Jul 2006 18:53:47 -0700 (PDT)
+Date: Wed, 19 Jul 2006 18:53:47 -0700 (PDT)
+From: David Kahn <dmk@noho.SFBay.Sun.COM>
+Subject: Re: FWARC/2006/425 NCS HV API Update 2
+To: David.Kahn@sun.com, fwarc@sun.com
+Cc: Eric.Pilmore@sun.com, greg.onufer@sun.com
+Message-id: <200607200153.k6K1rlXa011086@noho.SFBay.Sun.COM>
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+Status: RO
+Content-Length: 46
+
+This fast-track case is now approved.
+
+-David
+
+From owner-uirb Tue Oct 10 08:57:14 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k9AFvEao001105
+	for <uirb@sac.sfbay.sun.com>; Tue, 10 Oct 2006 08:57:14 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k9AFvD602951
+	for <@sunmail1brm.central.sun.com:uirb@sun.com>; Tue, 10 Oct 2006 08:57:13 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J6X00909GBDH900@brm-avmta-1.central.sun.com> for uirb@sun.com
+ (ORCPT uirb@sun.com); Tue, 10 Oct 2006 09:57:13 -0600 (MDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J6X008K6GBCE720@brm-avmta-1.central.sun.com> for uirb@sun.com
+ (ORCPT uirb@sun.com); Tue, 10 Oct 2006 09:57:12 -0600 (MDT)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k9AFvC6F004596	for
+ <uirb@sun.com>; Tue, 10 Oct 2006 09:57:12 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J6X00301FWUOA00@mail-amer.sun.com>
+ (original mail from Devjani.Ray@Sun.COM) for uirb@sun.com (ORCPT uirb@sun.com)
+ ; Tue, 10 Oct 2006 09:57:12 -0600 (MDT)
+Received: from [129.148.171.148] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J6X0011QGBBY3K2@mail-amer.sun.com> for uirb@sun.com
+ (ORCPT uirb@sun.com); Tue, 10 Oct 2006 09:57:12 -0600 (MDT)
+Date: Tue, 10 Oct 2006 11:54:48 -0400
+From: Devjani Ray - Sun Microsystems <Devjani.Ray@Sun.COM>
+Subject: UIRB 2006/425 - OPL BUI - dialin information
+Sender: Devjani.Ray@Sun.COM
+To: Soraya Younossi <Soraya.Younossi@Sun.COM>, Bruce Lee <Bruce.G.Lee@Sun.COM>,
+        John Ackerley <John.Ackerley@Sun.COM>
+Cc: UIRB <uirb@Sun.COM>
+Message-id: <452BC248.8040201@Sun.COM>
+MIME-version: 1.0
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0b1pre (X11/20061009)
+Status: RO
+Content-Length: 597
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+</head>
+<body bgcolor="#ffffff" text="#000000">
+Bruce, John, Soraya, FYI, the dialin information for the UIRB meeting
+today is:<br>
+<br>
+Tuesday,&nbsp; October 10th, 2006 <br>
+9:00 am to 12:00 pm PT&nbsp; /&nbsp; 12:00 pm to 2:00 pm ET <br>
+<a href="http://sac.sfbay/Archives/CaseLog/rb/UIRB/2006/415/">UIRB
+2006/415</a>&nbsp; OPL BUI<br>
+Case Owner: Jaime Guerrero<br>
+<br>
+<ul>
+  <li>Dial-in: (866)-545-5198</li>
+  <li>Intl Dial-in: (865)-521-8904</li>
+  <li>Access Code: 5164591</li>
+</ul>
+<br>
+<br>
+</body>
+</html>
+

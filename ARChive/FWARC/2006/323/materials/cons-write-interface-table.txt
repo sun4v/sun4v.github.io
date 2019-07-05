@@ -1,0 +1,37 @@
+$Revision: 1.2 $ $Date: 2006/05/18 12:16:53 $
+
+Imported Interfaces
+===================
+
+Interface Name             Classification           Comment
+--------------------------------------------------------------------------
+Hypervisor Error Code      Sun Private            FWARC/2005/116
+   Values, Calling
+   Conventions
+
+Machine Desc. Transport,   Sun Private            FWARC/2005/115
+   Node Types, and Names
+
+
+Exported Interfaces
+===================
+
+Interface Name            Classification             Comment
+--------------------------------------------------------------------------
+
+cons-write-buffer-size     Sun Private             Machine  Description 
+						   platform node property
+
+cons-read-buffer-size      Sun Private             Machine  Description 
+						   platform node property 
+
+CONS_READ		   Sun Private		   cons-read API Call
+
+CONS_WRITE		   Sun Private		   cons-write API Call
+
+
+#Name			Group#	Trap#	Func#	Major#	Minor#	Case#s	Comment
+#====			======	=====	=====	======	======	======	=======
+
+CONS_READ		0x1	0x80	0x62	1	1	2006/323
+CONS_WRITE		0x1	0x80	0x63	1	1	2006/323

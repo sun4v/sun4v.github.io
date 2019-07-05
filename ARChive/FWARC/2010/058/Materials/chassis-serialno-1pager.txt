@@ -1,0 +1,244 @@
+1. Introduction
+
+1.1 Project/Component Working Name
+
+	Logical Domains Agent Chassis Serial Number Message
+
+1.2 Name of Document Author/Supplier
+
+	Michael Christensen
+
+1.3 Date of This Document
+
+	09-FEB-2010
+
+1.4 Name of Major Document Customer(s)/Consumer(s)
+
+	1.4.1 The PAC or CPT you expect to review your project
+		HS PAC
+
+	1.4.2 The ARC(s) you expect to review your project
+
+		FWARC
+
+	1.4.3 The Director/VP who is sponsoring this project
+
+		john.falkenthal@sun.com
+
+	1.4.4 The Name of Your Business Unit
+
+		Solaris Core OS
+
+1.5 Email Aliases
+
+	1.5.1 Responsible Manager:	jay.jayachandran@sun.com
+
+	1.5.2 Responsible Engineer:	michael.christensen@sun.com
+
+	1.5.3 Marketing Manager:	duncan.hardie@sun.com
+
+	1.5.4 Interest List:		ldoms-internal@sun.com
+
+2. Project Summary
+
+2.1 Project Description
+
+	This project adds a new message to the Logical Domains Agents
+	framework service 'agent-system', as defined in FWARC 2009/426.
+
+	The Chassis Serial Number is needed to support PSARC 2010/004
+	"Virtual Information API and virtinfo program", which specifies
+	the display of the "Chassis Serial Number".
+
+2.2 Risks and Assumptions
+
+	None.
+
+3. Business Summary
+
+3.1 Problem Area
+
+	The Chassis Serial Number on a sun4v LDoms system is only
+	available in the PRI of the control domain.  This information
+	is needed in the guest domains.  A message needs to be added
+	to the ldmad 'agent-system' domain service to provide
+	Chassis Serial Number from the control domain.
+
+3.2 Market/Requestor
+
+	See FWARC 2005/633.
+
+3.3 Business Justification
+
+	See FWARC 2005/633.
+
+3.4 Competitive Analysis
+
+	See FWARC 2005/633.
+
+3.5 Opportunity Window/Exposure
+
+	See FWARC 2005/633.
+
+3.6 How will you know when you are done?
+
+	See FWARC 2005/633.
+
+4. Technical Description
+
+4.1 Overview
+
+	The Chassis Serial Number Message will be added to the definition
+	of the Logical Domains Agent 'agent-system' domain service defined
+	in FWARC 2009/426.
+
+	The agent and its messages are described in the updated "Logical
+	Domain Agents Specification" document, provided as part of this case.
+
+4.2 Bug/RFE Number(s)
+
+	6680702 Want a mechanism for Solaris to know if it is an LDOM and if so what type
+	6712763 Need information about control domain from within a guest domain
+
+4.3 Scope
+
+	Not Applicable.
+
+4.4 Out of Scope
+
+	Not Applicable.
+
+4.5 Interfaces
+
+	4.5.1 Interfaces
+
+		The new message is embodied in the format of the
+		messages passed between the control domain and the
+		different agents.
+
+		For a detailed description of the interface see the
+		Logical Domain Agents Specification document.
+
+	4.5.2 Imported Interfaces
+
+            Interface           Classification  Comments
+            =================================================================
+
+            Domain Services      Sun Private    Domain Services protocol
+                                                and messages formats
+                                                FWARC/2006/055
+
+            Domain Services API  Sun Private    Logical Domain's Domain
+                                                Services API
+                                                PSARC/2008/568
+
+            Logical Domains      Sun Private    Logical Domain Agent
+            Agent 'agent-system'                FWARC/2009/426
+
+      4.5.3 Exported Interfaces
+
+            Interface           Classification  Comments
+            ================================================================
+
+            'agent-system'      Sun Private     Logical Domains Agents
+            Chassis Serial                      Specification v1.2 - Sec 7.
+            Number Message
+
+  4.6 Doc Impact
+
+      N/A
+
+  4.7 Admin/Config Impact
+
+      None.
+
+  4.8 HA Impact
+
+      None.
+
+  4.9 I18N/L10N
+
+       Not affected.
+
+  4.10 Packaging & Delivery
+
+       This project defines a generic interface and is not tied to a
+	particular architecture.
+
+	The Solaris implementation will be delivered as part of Solaris
+	LDoms and LDoms manager packages.
+
+  4.11 Security Impact
+
+       None.
+
+  4.12 Dependencies
+
+       None.
+
+5. Reference Documents
+
+  	FWARC 2005/633 LDoms: Project Q Logical Domaining Umbrella
+  	FWARC 2006/055 Domain Services
+	FWARC 2008/563 Virtual Domain Service MD nodes and misc. properties
+	FWARC 2009/426 Logical Domains Agents
+	PSARC 2008/568 Logical Domain's Domain Services
+	PSARC 2010/004 Virtualization Information API and virtinfo program
+
+6. Resources and Schedule
+
+  6.1 Projected Availability
+
+      Q4FY10 (S10U9)
+
+  6.2 Cost of Effort
+
+      2 person month
+
+  6.3 Cost of Capital Resources
+
+  6.4 Product Approval Committee requested information
+
+      6.4.1 Consolidation Or Component Name
+
+            OS-Networking (ON)
+
+      6.4.3 Type of CPT Approval Expected
+
+            FastTrack
+
+      6.4.4 Project Boundary Conditions
+
+      6.4.5 Is this a necessary project for OEM agreements:
+
+            No.
+
+     6.4.6 Notes
+
+     6.4.7 Target RTI Date/Release
+
+           December 2009
+
+     6.4.8 Target Code Design Review Date:
+
+     6.4.9 Update approval addition:
+
+           Not applicable
+
+  6.5 ARC review type
+
+       FastTrack
+
+  6.6 ARC Exposure
+
+       open
+
+7. Prototype Availability:
+
+   7.1 Prototype Availability
+
+       A prototype is already available.
+
+   7.2 Prototype Cost:
+
+       A prototype is already available.

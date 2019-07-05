@@ -1,0 +1,91 @@
+#pragma   ident   "@(#)md_prop_spec.txt   1.8   06/09/29 SMI" 
+
+1. Technical Description: 
+
+  1.1 Overview 
+
+    The current Machine Description definition does not provide a way 
+    for a guest to determine the maximum number of virtual CPUs it should 
+    support, or the amount of time a CPU mondo may take. 
+
+    This leads to guest software such as Solaris using hard coded constants 
+    that are applied to all sun4v platforms. However, the appropriate value 
+    for these parameters are platform specific. This leads to suboptimal 
+    values being used on some platforms. 
+
+    By introducing properties in the MD which provide more appropriate 
+    platform specific values for these parameters, the guest has the 
+    opportunity to make more sensible decisions based on actual platform 
+   constraints. 
+
+
+  1.1.1  max-cpus platform node property 
+
+    Additional property added to platform node as described below. 
+
+    Name                  Tag     Req'd?   Description 
+    ---------------------------------------------------------------------- 
+    max-cpus            PROP_VAL   No      A 64-bit unsigned integer that 
+                                           represents the theoretical maximum 
+                                           number of virtual CPUs a guest can 
+                                           have for a particular platform. 
+
+                                           If defined, the guest software 
+                                           can assume that it will not see 
+                                           more virtual CPUs than specified 
+                                           by this property. 
+
+    Note: The presence of this property does not place any requirement on 
+    the guest to support the number of virtual CPUs specified. The guest 
+    is free to further constrain the number of virtual CPUs that it will 
+    support. 
+
+
+  1.1.2  inter-cpu-latency platform node property 
+
+    Additional property added to the platform node as described below. 
+
+    Name                  Tag     Req'd?  Description 
+    ---------------------------------------------------------------------- 
+    inter-cpu-latency  PROP_VAL    No     A 64-bit unsigned integer containing
+                                          the maximum number of nanoseconds
+                                          of delay the system might encounter 
+                                          when two processors attempt to 
+                                          rendezvous (inter-processor
+                                          communication using interrupts,
+                                          shared memory, etc). 
+
+
+    Programming note: this value is intended to bound the amount of time the
+    privileged software should take into consideration when calculating 
+    timeouts to be used to detect non-responsive processors.  This value does
+    not account for additional time required due to the implementation of the
+    privileged code, such as executing for prolonged periods with interrupts 
+    disabled (pstate.ie==0).  The amount of time imposed by the system added
+    to the amount of time imposed by the guest together should be used as the 
+    basis for calculating timeout values. 
+
+
+
+  1.2 Imported Interfaces: 
+
+    Interface             Classification      Comments 
+    ==================================================================== 
+
+    sun4v Machine         Sun Private         MD nodes definitions as 
+    Description nodes                         defined by FWARC 2005/115 
+
+
+  1.3 Exported Interfaces: 
+
+
+    Interface              Classification     Comments 
+    ==================================================================== 
+
+    "max-cpus"             Sun Private        A platform MD node property 
+                                              to describe the maximum number 
+                                              of virtual cpus in a guest. 
+
+    "inter-cpu-latency"    Sun Private        A platform MD node property 
+                                              to describe inter cpu maximum
+                                              latency. 

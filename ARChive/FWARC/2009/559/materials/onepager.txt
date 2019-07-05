@@ -1,0 +1,351 @@
+1. Introduction
+   1.1. Project/Component Working Name:
+        Domain Suspend Domain Service 1.0
+
+   1.2. Name of Document Author/Supplier:
+        Haik Aftandilian
+
+   1.3. Date of This Document:
+        10/11/2009
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+        1.4.1. The PAC or CPT you expect to review your project:
+                HS PAC
+        1.4.2. The ARC(s) you expect to review your project:
+                FWARC
+        1.4.3. The Director/VP who is "Sponsoring" this project:
+                Jerriann.Meyer@sun.com
+        1.4.4. The name of your business unit:
+                Solaris Core OS
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: jay.jayachandran@sun.com
+        1.5.2. Responsible Engineer: haik.aftandilian@sun.com
+        1.5.3. Marketing Manager: duncan.hardie@sun.com
+        1.5.4. Interest List: ldoms-internal@sun.com
+
+2. Project Summary
+   2.1. Project Description:
+        This project implements a domain service to facilitate LDoms
+        Cooperative Guest domain migration.
+
+3. Business Summary
+   3.1. Problem Area:
+        For Cooperative Guest Migration, the guest OS will suspend itself
+        rather than be suspended by the hypervisor. The suspend operation
+        will be initiated by the guest domain at the request of the domain
+        manager via this new "suspend-domain" domain service. Cooperative
+        Guest Migration removes some of the operational restrictions imposed
+        on Warm Migration.
+
+4. Technical Description
+
+4.1 Overview - Domain Suspend Domain Service 1.0
+
+   The Domain Suspend domain service allows Solaris to initiate a domain
+   suspend operation at the request of the domain manager. This is required
+   for Cooperative Guest migration wherein the guest initiates the suspend
+   operation by calling into the hypervisor. Existing Warm Migration makes
+   use of CPU DR to reduce a domain to 1-strand before the hypervisor pauses
+   the domain. In order to eliminate CPU DR from migration and to eliminate
+   other restrictions on Warm Migration, Solaris on the guest will call into
+   the hypervisor to initiate suspension of the domain. Hypervisor calls to
+   support the guest initiated suspend were introduced with FWARC 2009/452.
+
+4.1.1 Service IDs
+
+   A new domain service with the service ID "domain-suspend" will exist on
+   guest domains. The service will listen for domain suspend requests.
+
+        Service ID              Description
+        ----------              -----------
+        "domain-suspend"        Sequence a suspend operation on the domain
+
+4.1.2 Domain Suspend Request
+
+        Offset  Size    Field name      Description
+        ------  ----    ----------      -----------
+        0       8       req_num         Request number
+        8       8       type            Message type
+
+        Only one message type is supported and therefore there is only
+        one valid value for the type field. However, a type field is
+        used to allow for more request types to be added in the future
+        without changing the request format.
+
+4.1.3 Domain Suspend Request Messages Types
+
+        Type                            Value   Definition
+        ----                            -----   ----------
+        DOMAIN_SUSPEND_SUSPEND          0x0     Request to suspend
+
+4.1.4 Domain Suspend Response
+
+        Offset  Size    Field name      Description
+        ------  ----    ----------      -----------
+        0       8       req_num         Request number
+        8       4       result          Result of operation
+        12      4       rec_result      Result of recovery operation
+        16   variable   reason          NULL-terminated ASCII string
+                                        describing reason for error
+
+        The NULL-terminated reason string is limited to 512
+        characters in length, including the NULL-terminator.
+
+        When the reason field begins with its first byte being the
+        NULL terminator, it is said to be set to the empty string.
+
+4.1.5 Domain Suspend Response Result Values
+
+   The following constants are defined for the suspend service response
+   result and rec_result values.
+
+        Result                          Value   Definition
+        ------                          -----   ----------
+        DOMAIN_SUSPEND_PRE_SUCCESS      0x0     Pre-suspend success
+        DOMAIN_SUSPEND_PRE_FAILURE      0x1     Pre-suspend failure
+        DOMAIN_SUSPEND_INVALID_MSG      0x2     The request is invalid
+        DOMAIN_SUSPEND_INPROGRESS       0x3     Existing suspend is in progress
+        DOMAIN_SUSPEND_FAILURE          0x4     Suspend failure
+        DOMAIN_SUSPEND_POST_SUCCESS     0x5     Post-suspend success
+        DOMAIN_SUSPEND_POST_FAILURE     0x6     Post-suspend failure
+
+        Recovery Result                 Value   Definition
+        ---------------                 ----------
+        DOMAIN_SUSPEND_REC_SUCCESS      0x0     Recovery success
+        DOMAIN_SUSPEND_REC_FAILURE      0x1     Recovery failure
+
+   For responses with a result value of DOMAIN_SUSPEND_PRE_FAILURE,
+   DOMAIN_SUSPEND_FAILURE, or DOMAIN_SUSPEND_POST_FAILURE, the reason field
+   may be populated with a NULL-terminated string describing the reason for
+   the failure. This is optional and when a NULL-terminated reason string is
+   not provided, the reason field must must be set to the empty string. For
+   all other response messages (DOMAIN_SUSPEND_PRE_SUCCESS,
+   DOMAIN_SUSPEND_INVALID_MSG, DOMAIN_SUSPEND_INPROGRESS, and
+   DOMAIN_SUSPEND_POST_SUCCESS,) the reason field is not used and should be
+   set to the empty string.
+
+   For responses with a result value of DOMAIN_SUSPEND_PRE_FAILURE or
+   DOMAIN_SUSPEND_FAILURE the rec_result must be set to either
+   DOMAIN_SUSPEND_REC_SUCCESS or DOMAIN_SUSPEND_REC_FAILURE.
+   For all other response messages (DOMAIN_SUSPEND_PRE_SUCCESS,
+   DOMAIN_SUSPEND_INVALID_MSG, DOMAIN_SUSPEND_INPROGRESS, and
+   DOMAIN_SUSPEND_POST_SUCCESS, and DOMAIN_SUSPEND_POST_FAILURE) the
+   rec_result field is not used and its value should be
+   DOMAIN_SUSPEND_REC_SUCCESS.
+
+4.1.6 Domain Suspend Request Handling
+
+   4.1.6.1 Invalid Request
+
+        Upon receiving a suspend domain request, the guest domain will
+        confirm that the request is a DOMAIN_SUSPEND_SUSPEND request type.
+        If the request has a type field other than DOMAIN_SUSPEND_SUSPEND,
+        the guest will send a response message with result value
+        DOMAIN_SUSPEND_INVALID_MSG and a req_num equal to request req_num
+        and then take no further action in response to the message.
+
+   4.1.6.2 Suspend in Progress
+
+        If the request is a valid DOMAIN_SUSPEND_SUSPEND request, but the guest
+        is already processing a suspend request, the guest will send a response
+        message with result value DOMAIN_SUSPEND_INPROGRESS and req_num value
+        equal to the req_num received in the newer request. The guest will take
+        no further action in response to the message.
+
+   4.1.6.3 Pre-suspend
+
+        The guest will then perform any pre-suspend processing which results in
+        either success or failure. In the event of success, the guest will send
+        a response message with result value DOMAIN_SUSPEND_PRE_SUCCESS and a
+        req_num value equal to the request req_num. In the event of failure,
+        the guest will undo any partial pre-suspend processing that
+        successfully completed and then send a response message with result
+        value DOMAIN_PRE_SUSPEND_FAILURE, a req_num value equal to the request
+        req_num, and optionally a NULL-terminated reason string describing the
+        reason for the failure. If the partial pre-suspend processing is
+        successfully undone, the rec_result field will be set to
+        DOMAIN_SUSPEND_REC_SUCCESS. Otherwise, the rec_result field will be
+        set to DOMAIN_SUSPEND_REC_FAILURE. The guest will then take no further
+        action in response to the request. The intent here is for the user to
+        be presented with a warning message derived from the reason field
+        indicating that the pre-suspend processing failed and (if applicable)
+        that a particular recovery operation failed. If a recovery operation
+        failed, the user must then inspect the guest domain and take any
+        action required to cleanup after failed recovery.
+
+   4.1.6.4 Suspend
+
+        Next, after the guest sends the DOMAIN_SUSPEND_PRE_SUCCESS response, it
+        will attempt to suspend itself using the hypervisor interface described
+        in FWARC 2009/452 which results in either success or failure. In the
+        event of success, the guest will be suspended and will do no further
+        processing until it is resumed. 
+
+                Implementation note:  although not described here, an out-of-
+                band mechanism exists allowing the domain manager to query the
+                state of the domain and to determine when the guest has
+                successfully suspended itself. It is expected that the domain
+                manager will monitor the guest state until the guest state
+                indicates that the guest is suspended OR until a
+                DOMAIN_SUSPEND_FAILURE response is received.
+
+        In the event that the guest fails to suspend, the guest will undo the
+        pre-suspend processing and then send a response message with result
+        value DOMAIN_SUSPEND_FAILURE, a req_num value equal to the request
+        req_num, and optionally a NULL-terminated reason string describing the
+        reason for the failure. If the pre-suspend processing is successfully
+        undone, the rec_result field will be set to DOMAIN_SUSPEND_REC_SUCCESS.
+        Otherwise, the rec_result field will be set to
+        DOMAIN_SUSPEND_REC_FAILURE. The guest will then take no further action
+        in response to the request. The intent here is for the user to be
+        presented with a warning message derived from the reason field
+        indicating that the suspend operation failed and (if applicable) that
+        a particular recovery operation failed. If a recovery operation failed,
+        the user would then inspect the guest domain and take any action
+        required to cleanup after failed recovery.
+
+   4.1.6.5 Resume and Post-suspend
+
+        After the guest has successfully suspended itself by calling into the
+        hypervisor, the domain manager performs an out-of-band operation to
+        resume the domain.
+
+        After the guest has been resumed, the guest will perform any post-
+        suspend processing which results in either success or failure. In the
+        event of success, the guest will send a response message with result
+        value DOMAIN_SUSPEND_POST_SUCCESS and a req_num value equal to the
+        request req_num. The guest will then take no further action in response
+        to the request and the suspend operation will have completed
+        successfully, leaving the domain in a normal state. In the event of
+        failure, the guest will send a response message with result value
+        DOMAIN_SUSPEND_POST_FAILURE, a req_num value equal to the request
+        req_num, and optionally a NULL-terminated reason string describing the
+        reason for the failure. The guest will then take no further action in
+        response to the request. At this point, the guest is operational,
+        subject to how the failing post-suspend processing leaves the guest.
+        The intent here is for the user to be presented with a warning message,
+        derived from the reason string, indicating that the domain was resumed,
+        but that a particular post-suspend operation failed. The user would
+        then inspect the guest domain and take any action required to cleanup
+        after failed post-suspend processing.
+ 
+4.1.7 Message Sequences
+
+   Sections 4.1.7.1 through 4.1.7.8 are the possible message sequences.
+
+   4.1.7.1 Sequence 1 (failure):
+
+        -> Request:  (req_num:n, type: Invalid)
+        <- Response: (req_num:n, result:DOMAIN_SUSPEND_INVALID_MSG,
+                      rec_result: DOMAIN_SUSPEND_REC_SUCCESS, reason:0)
+
+   4.1.7.2 Sequence 2 (failure):
+
+        -> Request:  (req_num:n, type:DOMAIN_SUSPEND_SUSPEND)
+        <- Response: (req_num:n, result:DOMAIN_SUSPEND_INPROGRESS
+                      rec_result: DOMAIN_SUSPEND_REC_SUCCESS, reason: 0)
+
+   4.1.7.3 Sequence 3 (failure):
+
+        -> Request:  (req_num:n, type:DOMAIN_SUSPEND_SUSPEND)
+        <- Response: (req_num:n, result:DOMAIN_PRE_SUSPEND_FAILURE,
+                      rec_result: DOMAIN_SUSPEND_REC_SUCCESS,
+                      reason: [optional string])
+
+   4.1.7.4 Sequence 4 (failure):
+
+        -> Request:  (req_num:n, type:DOMAIN_SUSPEND_SUSPEND)
+        <- Response: (req_num:n, result:DOMAIN_PRE_SUSPEND_FAILURE,
+                      rec_result: DOMAIN_SUSPEND_REC_FAILURE,
+                      reason: [optional string])
+
+   4.1.7.5 Sequence 5 (failure):
+
+        -> Request:  (req_num:n, type:DOMAIN_SUSPEND_SUSPEND)
+        <- Response: (req_num:n, result:DOMAIN_SUSPEND_PRE_SUCCESS, reason: 0)
+        <- Response: (req_num:n, result:DOMAIN_SUSPEND_FAILURE,
+                      rec_result: DOMAIN_SUSPEND_REC_SUCCESS,
+                      reason: [optional string])
+
+   4.1.7.6 Sequence 6 (failure):
+
+        -> Request:  (req_num:n, type:DOMAIN_SUSPEND_SUSPEND)
+        <- Response: (req_num:n, result:DOMAIN_SUSPEND_PRE_SUCCESS, reason: 0)
+        <- Response: (req_num:n, result:DOMAIN_SUSPEND_FAILURE,
+                      rec_result: DOMAIN_SUSPEND_REC_FAILURE,
+                      reason: [optional string])
+
+   4.1.7.7 Sequence 7 (suspend success, post-suspend failure):
+
+        -> Request:  (req_num:n, type:DOMAIN_SUSPEND_SUSPEND)
+        <- Response: (req_num:n, result:DOMAIN_SUSPEND_PRE_SUCCESS, reason: 0)
+        -- [suspend and resume occurs]
+        <- Response: (req_num:n, result:DOMAIN_SUSPEND_POST_FAILURE,
+                      rec_result: DOMAIN_SUSPEND_REC_SUCCESS,
+                      reason: [optional string])
+
+   4.1.7.8 Sequence 8 (success):
+
+        -> Request:  (req_num:n, type:DOMAIN_SUSPEND_SUSPEND)
+        <- Response: (req_num:n, result:DOMAIN_SUSPEND_PRE_SUCCESS, reason: 0)
+        -- [suspend and resume occurs]
+        <- Response: (req_num:n, result:DOMAIN_SUSPEND_POST_SUCCESS,
+                      rec_result: DOMAIN_SUSPEND_REC_SUCCESS,
+                      reason: 0)
+
+4.2 Imported Interfaces:
+
+        Interface               Classification  Comments
+        ---------               -------------   --------
+        Domain Services         Sun Private     Defined by FWARC/2006/055
+        Specification
+
+4.3 Exported Interfaces:
+
+        Interface               Classification  Comments
+        ---------               --------------  --------
+        Service                 Sun Private     Defined in 4.1.1
+        "domain-suspend"
+
+            Domain Suspend      Sun Private     Defined in 4.1.2
+            Request
+
+              Message Types     Sun Private     Defined in 4.1.3
+                DOMAIN_SUSPEND_SUSPEND
+
+            Domain Suspend      Sun Private     Defined in 4.1.4
+            Response 
+
+              Response Codes    Sun Private     Defined in 4.1.5
+                DOMAIN_SUSPEND_PRE_SUCCESS
+                DOMAIN_SUSPEND_PRE_FAILURE
+                DOMAIN_SUSPEND_INVALID_MSG
+                DOMAIN_SUSPEND_INPROGRESS
+                DOMAIN_SUSPEND_FAILURE  
+                DOMAIN_SUSPEND_POST_SUCCESS
+                DOMAIN_SUSPEND_POST_FAILURE
+
+             Recovery Response  Sun Private     Defined in 4.1.5
+             Codes
+                DOMAIN_SUSPEND_REC_SUCCESS
+                DOMAIN_SUSPEND_REC_FAILURE
+
+5. Reference Documents:
+        FWARC 2009/452 - HV APIs for cooperative guest migration
+        FWARC 2006/055 - Domain Services Specification
+        FWARC 2006/473 - sun4v guest state API update
+        CR 6741065 Solaris should support cooperative migration
+        CR 6873667 a domain running Sun Cluster should notify the cluster
+                   framework when it is migrating
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+        S10U9
+
+   6.2. Cost of Effort:
+        1 engineer week
+
+   6.3. Cost of Capital Resources:
+        N/A
+

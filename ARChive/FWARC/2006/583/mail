@@ -1,0 +1,75 @@
+From sacadmin Mon Oct 16 11:21:56 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k9GILtgr005074
+	for <fwarc@sac.eng.sun.com>; Mon, 16 Oct 2006 11:21:56 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k9GILt225976;
+	Mon, 16 Oct 2006 11:21:55 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J7800603R0DUK00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 16 Oct 2006 11:21:49 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J78003Q2R0DBV20@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 16 Oct 2006 11:21:49 -0700 (PDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k9GILmNG011714; Mon,
+ 16 Oct 2006 12:21:48 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J7800K01QEPAQ00@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Mon,
+ 16 Oct 2006 12:21:48 -0600 (MDT)
+Received: from [129.150.32.214] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J7800MN1R0B3AY5@mail-amer.sun.com>; Mon,
+ 16 Oct 2006 12:21:48 -0600 (MDT)
+Date: Mon, 16 Oct 2006 11:21:50 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Self-Review : 2006/583 - VIO Protocol updates
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <4533CDBE.9000101@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 999
+
+I am sponsoring this self-review case for Narayan Venkat. This case
+makes a minor addition to the descriptor ring data message in section
+1.1.4.2.   The VIO specification was approved under FWARC/2006/195.
+This case amends section 1.1.4.2 of the specification as described below.
+
+The updated specification, a diff file and an interface table are available
+in the materials directory at,
+
+http://sac.sfbay.sun.com/arc/FWARC/2006/583/materials/
+
+
+Here are the details.
+
+1.  The descriptor ring data message includes a process state (proc_state)
+    field (Word 5, Bits 0-7) used by the receiver to indicate whether it is
+    actively processing requests or not.
+
+2.  Modifications to section 1.1.4.2 on page 7 to describe the proc_state
+    field and proc_state field values.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+

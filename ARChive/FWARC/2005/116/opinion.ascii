@@ -1,0 +1,226 @@
+		
+ sun
+   microsystems              Systems Architecture Committee
+_________________________________________________________________
+
+Subject:	sun4v Core API
+
+Submitted by:	john.johnson@sun.com
+
+File:   	FWARC/2005/116/opinion.ascii
+
+Date:		March 29th, 2005
+
+Committee:      Tony Sumpter (opinion written by Stephen Ehring),
+                David Kahn,
+                Hitendra Zhangada,
+                David Redman.
+
+1.  Summary 
+
+The project defines the core interfaces used for communicating with the 
+Hypervisor on any machine that implements the sun4v architecture. The 
+Hypervisor uses various SPARC traps to pass data between a client and the 
+Hypervisor, and this FWARC case reserves certain trap numbers and defines 
+the arguments that the traps consume and produce.
+
+A fundamental set of traps is defined by this case as specified in [1]. 
+Other traps and functions will be defined in the future to extend 
+Hypervisor's functionality to satisfy OBP and Solaris requirements. This 
+case establishes a registry of trap numbers and function numbers that will 
+be updated whenever a new trap or function is added.
+
+2.  Decision & Precedence Information
+
+        The project  is  approved  as  specified  in  reference  [1]
+
+        The project may be delivered in a minor release of Solaris and a
+        minor release of OBP. The project defines the first release of 
+        the Hypervisor
+
+        The project is related to the following other projects. They 
+        may not be delivered until this project has been implemented 
+        since they are extension of this project.
+        FWARC 2005/112 sun4v io-api
+        FWARC 2005/117 sun4v niagara and great lakes APIs
+        FWARC 2005/164 sun4v Niagara CPU API
+        FWARC 2005/173 Hypervisor Service API 
+
+3. Interfaces
+
+___________________________________________________________________________
+                        Interfaces Exported                           
+___________________________________________________________________________
+Interface Name		Classification	Comment                      
+___________________________________________________________________________
+HYPERFAST TRAPS		Sun Private	argument/result format.
+___________________________________________________________________________
+FAST_TRAP		Sun Private	arg/result format trap 0x80
+___________________________________________________________________________
+CORE_TRAP		Sun Private	arg/result format trap 0xff
+___________________________________________________________________________
+HV Error IDs		Sun Private	Error code values.
+___________________________________________________________________________
+MMU Fault Status Area	Sun Private	Data Structure format & content
+___________________________________________________________________________
+Trap Trace Buffer	Sun Private	Data structure format & content
+___________________________________________________________________________
+Initial Guest State	Sun Private	Initial guest state
+___________________________________________________________________________
+API_VER			Sun Private	Trap 0xff function number 0x00
+						Note: reservation only
+___________________________________________________________________________
+API_PUTCHAR		Sun Private	Trap 0xff function number 0x01
+___________________________________________________________________________
+API_EXIT		Sun Private	Trap 0xff function number 0x02
+___________________________________________________________________________
+FAST_TRAP		Sun Private	trap 0x80 - fast-trap
+___________________________________________________________________________
+MMU_MAP_ADDR		Sun Private	trap 0x83 - mmu_map_addr
+___________________________________________________________________________
+MMU_UNMAP_ADDR		Sun Private	trap 0x84 - mmu_unmap_addr
+___________________________________________________________________________
+TTRACE_ADDENTRY		Sun Private	trap 0x85 - ttrace_addentry
+___________________________________________________________________________
+MACH_EXIT		Sun Private	Trap 0x80 function number 0x00
+___________________________________________________________________________
+MACH_DESC		Sun Private	Trap 0x80 function number 0x01
+___________________________________________________________________________
+MACH_SIR		Sun Private	Trap 0x80 function number 0x02
+___________________________________________________________________________
+CPU_START		Sun Private	Trap 0x80 function number 0x10
+___________________________________________________________________________
+CPU_STOP		Sun Private	Trap 0x80 function number 0x11
+___________________________________________________________________________
+CPU_YIELD		Sun Private	Trap 0x80 function number 0x12
+___________________________________________________________________________
+CPU_QCONF		Sun Private	Trap 0x80 function number 0x14
+___________________________________________________________________________
+CPU_QINFO		Sun Private	Trap 0x80 function number 0x15
+___________________________________________________________________________
+CPU_MYID		Sun Private	Trap 0x80 function number 0x16
+___________________________________________________________________________
+CPU_STATE		Sun Private	Trap 0x80 function number 0x17
+___________________________________________________________________________
+CPU_SET_RTBA		Sun Private	Trap 0x80 function number 0x18
+___________________________________________________________________________
+CPU_GET_RTBA		Sun Private	Trap 0x80 function number 0x19
+___________________________________________________________________________
+MMU_TSB_CTX0		Sun Private	Trap 0x80 function number 0x20
+___________________________________________________________________________
+MMU_TSB_CTXNON0		Sun Private	Trap 0x80 function number 0x21
+___________________________________________________________________________
+MMU_DEMAP_PAGE		Sun Private	Trap 0x80 function number 0x22
+___________________________________________________________________________
+MMU_DEMAP_CTX		Sun Private	Trap 0x80 function number 0x23
+___________________________________________________________________________
+MMU_DEMAP_ALL		Sun Private	Trap 0x80 function number 0x24
+___________________________________________________________________________
+MMU_MAP_PERM_ADDR	Sun Private	Trap 0x80 function number 0x25
+___________________________________________________________________________
+MMU_FAULT_AREA_CONF	Sun Private	Trap 0x80 function number 0x26
+___________________________________________________________________________
+MMU_ENABLE		Sun Private	Trap 0x80 function number 0x27
+___________________________________________________________________________
+MMU_UNMAP_PERM_ADDR	Sun Private	Trap 0x80 function number 0x28
+___________________________________________________________________________
+MMU_TSB_CTX0_INFO	Sun Private	Trap 0x80 function number 0x29
+___________________________________________________________________________
+MMU_TSB_CTXNON0_INFO	Sun Private	Trap 0x80 function number 0x2a
+___________________________________________________________________________
+MMU_FAULT_AREA_INFO	Sun Private	Trap 0x80 function number 0x2b
+___________________________________________________________________________
+MEM_SCRUB		Sun Private	Trap 0x80 function number 0x31
+___________________________________________________________________________
+MEM_SYNC		Sun Private	Trap 0x80 function number 0x32
+___________________________________________________________________________
+CPU_MONDO_SEND		Sun Private	Trap 0x80 function number 0x42
+___________________________________________________________________________
+TOD_GET			Sun Private	Trap 0x80 function number 0x50
+___________________________________________________________________________
+TOD_SET			Sun Private	Trap 0x80 function number 0x51
+___________________________________________________________________________
+CONS_GETCHAR		Sun Private	Trap 0x80 function number 0x60
+___________________________________________________________________________
+CONS_PUTCHAR		Sun Private	Trap 0x80 function number 0x61
+___________________________________________________________________________
+TTRACE_BUF_CONF		Sun Private	Trap 0x80 function number 0x90
+___________________________________________________________________________
+TTRACE_BUF_INFO		Sun Private	Trap 0x80 function number 0x91
+___________________________________________________________________________
+TTRACE_ENABLE		Sun Private	Trap 0x80 function number 0x92
+___________________________________________________________________________
+TTRACE_FREEZE		Sun Private	Trap 0x80 function number 0x93
+___________________________________________________________________________
+DUMP_BUF_UPDATE		Sun Private	Trap 0x80 function number 0x94
+___________________________________________________________________________
+DUMP_BUF_INFO		Sun Private	Trap 0x80 function number 0x95
+___________________________________________________________________________
+INTR_DEVINO2SYSINO	Sun Private	Trap 0x80 function number 0xa0
+___________________________________________________________________________
+INTR_GETENABLED		Sun Private	Trap 0x80 function number 0xa1
+___________________________________________________________________________
+INTR_SETENABLED		Sun Private	Trap 0x80 function number 0xa2
+___________________________________________________________________________
+INTR_GETSTATE		Sun Private	Trap 0x80 function number 0xa3
+___________________________________________________________________________
+INTR_SETSTATE		Sun Private	Trap 0x80 function number 0xa4
+___________________________________________________________________________
+INTR_GETTARGET		Sun Private	Trap 0x80 function number 0xa5
+___________________________________________________________________________
+INTR_SETTARGET		Sun Private	Trap 0x80 function number 0xa6
+___________________________________________________________________________
+
+
+4.  Opinion
+
+This  case  only  approves  the trap numbers and function numbers that are 
+listed in the case materials. FWARC will approve other function and trap 
+numbers as part of different cases as listed above in section 2.
+
+An issue was raised about how the guest client will extract versioning 
+information from the hypervisor to determine compatibility. It was 
+concluded that this will be defined by a later FWARC case.
+
+The FWARC members requested that a registry be created as part of this 
+proposal to tabulate all of the hypervisor traps and function numbers for 
+this case and any additional cases that extend this interface. This Registry
+will be named the "Hypervisor API Regsitry" and can be found at the link 
+pointed to by [3]. Any FWARC cases that extend the Hypervisor API will be 
+required to update this registry 
+
+The majority of other issues were editorial in nature to clarify 
+definitions in the API specificiation.
+
+5.  Minority Opinion(s)
+
+None.
+
+6.  Advisory Information
+
+None.
+
+7.  Appendices
+
+7.1.  Appendix A: Technical Changes Required
+
+None.
+
+7.2.  Appendix B: Technical Changes Advised
+	
+None.
+
+7.3.  Appendix C: Reference Material
+
+     Unless otherwise noted, materials are relative to the case directory:
+     FWARC/2005/116/
+
+     1.  Sun4v Hypervisor Core API Specification
+         File: commitment2.materials/api.pdf
+
+     2.  mail log 
+         File: mail
+
+     3.  Hypervisor API Registry
+         File: http://sac.eng.sun.com/arc/FWARC/Registries/trap-registry.txt
+

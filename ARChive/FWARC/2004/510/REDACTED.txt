@@ -1,0 +1,14 @@
+The following files and directories have been redacted:
+
+    20050228.2004.510.inception.mp3 - ignored file
+    sc - ignored directory
+    uirb - ignored directory
+    20040618_ashley.saulsbury - Sun Proprietary
+    20050228.2004.510.inception - case redacted
+    inception.materials/README - case redacted
+    inception.materials/slides.pdf - case redacted
+    inception.materials/sun4v-arch.pdf - case redacted
+    inception.materials/sun4v-overview.pdf - case redacted
+    mail - case redacted
+
+See http://hub.opensolaris.org/bin/view/Community+Group+arc/arc-publish-historical-checklist for further information

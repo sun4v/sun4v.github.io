@@ -1,0 +1,2207 @@
+From sacadmin Wed Jun 27 09:00:59 2007
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l5RG0xrr003940;
+	Wed, 27 Jun 2007 09:00:59 -0700 (PDT)
+Received: (from ehring@localhost)
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit) id l5RG0wqF003936;
+	Wed, 27 Jun 2007 09:00:58 -0700 (PDT)
+Date: Wed, 27 Jun 2007 09:00:58 -0700 (PDT)
+From: Stephen Ehring <ehring@sac.sfbay.sun.com>
+Message-Id: <200706271600.l5RG0wqF003936@sac.sfbay.sun.com>
+To: FWARC-record@sac.sfbay.sun.com
+Subject: Machine Description IO Device Node Definition Updates [FWARC/2007/386 FastTrack timeout 07/04/2006]
+Status: RO
+Content-Length: 593
+
+
+Template Version: @(#)sac_nextcase 1.63 06/14/07 SMI
+This information is Copyright 2007 Sun Microsystems
+1. Introduction
+    1.1. Project/Component Working Name:
+	 Machine Description IO Device Node Definition Updates
+    1.2. Name of Document Author/Supplier:
+	 Author:  Stephen Ehring
+    1.3  Date of This Document:
+	27 June, 2007
+4. Technical Description
+    See the case directory for more detail
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		unknown
+    6.5. ARC review type: FastTrack
+    6.6. ARC Exposure: open
+
+
+From sacadmin Wed Jun 27 09:12:23 2007
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l5RGCN2j004149
+	for <fwarc@sac.eng.sun.com>; Wed, 27 Jun 2007 09:12:23 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l5RGA07g025015
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 27 Jun 2007 10:10:01 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JKA00I0FY9RS200@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 09:10:39 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JKA00GQ7Y9Q4M30@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 09:10:38 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.108.184])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l5RGAcSZ013352	for
+ <fwarc@sun.com>; Wed, 27 Jun 2007 16:10:38 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JKA00D01Y4S8Z00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 10:10:38 -0600 (MDT)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JKA00M98Y9PFVBM@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 10:10:38 -0600 (MDT)
+Date: Wed, 27 Jun 2007 12:10:37 -0400
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: FWARC 2007/386: Machine Description IO Device Node Definition Updates
+Sender: Stephen.Ehring@Sun.COM
+To: fwarc@Sun.COM
+Message-id: <46828BFD.2050508@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0.0.5pre (X11/20070623)
+Status: RO
+Content-Length: 9864
+
+I am sponsoring the FWARC case as a fast track for myself. The case 
+updates the machine description iodevice nodes to fix certain problems 
+which were made obvious during the implementation of the original case.
+
+The interfaces can be released in a micro/minor version of the firmware.
+
+Since many people are on vacation next week, I'm extending the timer to 
+07/10/2007
+
+Steve
+
+http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2007/386/materials/onepager.txt
+
+Copyright 2007 Sun Microsystems
+
+1. Introduction
+   1.1. Project/Component Working Name:
+
+        Machine Description IO Device Node Definition Updates
+
+   1.2. Name of Document Author/Supplier:
+  
+        Stephen Ehring
+
+   1.3. Date of This Document:
+  
+        06/26/2007
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+    1.4.1. The PAC or CPT you expect to review your project:
+        HS PAC
+    1.4.2. The ARC(s) you expect to review your project:
+        FWARC
+    1.4.3. The Director/VP who is "Sponsoring" this project:
+        N/A
+    1.4.4. The name of your business unit:
+        Systems Group
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: chad.solomon@sun.com
+        1.5.2. Responsible Engineer: stephen.ehring@sun.com
+        1.5.3. Marketing Manager: N/A
+    1.5.4. Interest List:
+
+2. Project Summary
+   2.1. Project Description:
+  
+        This project updates the machine description iodevice nodes
+        originally defined in case 2007/070. While implementing the
+        properties described in that case, certain problems were
+        encountered which the updates presented in this case attempt
+        to solve.
+
+   2.2. Risks and Assumptions:
+  
+        The proposed changes will constitute a flag day between
+        reset/config and OpenBoot. This is not a difficult problem
+        since the two components are released as part of the same
+        consolidation.
+
+3. Business Summary
+   3.1. Problem Area:
+  
+        The reasoning behind the creation of these iodevice MD nodes
+        is beyond the scope of this case (interested parties can
+        refer to the material in the original FWARC case [1]). The
+        problem being addressed is that while implementing the
+        interfaces defined in that case, certain problems were
+        encountered which require tweaking some of the approved
+        interfaces. The problems which are being solved are presented
+        in this section.
+
+     3.1.1 slot-names
+
+        The 'slot-names' property as defined in the original case
+        consisted of a single PROP_STR data type, however, the
+        'slot-names' property as defined in [2] consists of an encoded
+        integer followed by encoded string(s). The encoded integer
+        is the number of encoded strings which follow. This case
+        proposes to fix this problem by modifying the PCI slot MD
+        device properties so that instead of having a 'slot-names'
+        property the PCI slot MD node can have multiple forward links
+        to 'slot-name' MD nodes. Then each 'slot-name' MD node can have
+        a single property of type PROP_STR which describes one of the
+        strings that OpenBoot is to encode. OpenBoot can glean the
+        integer that is to be encoded by counting the number of forward
+        links
+
+     3.1.2 devaliases
+
+        In the original case, any iodevice could have a single
+        property named 'devalias' of type PROP_STR. However, it's
+        possible for a single iodevice node to have multiple device
+        aliases pointing to it (for example, 'net' and 'net0' often
+        point to the same actual device path). To allow this to work,
+        this case is proposing that any iodevice node can have forward
+        links to devalias nodes which contain a single 'devalias'
+        property of type PROP_STR. Then OpenBoot can parse all forward
+        links and create a devalias entry for each node that it finds.
+        This is similar to the mechanism proposed for the virtual-device
+        nodes in [3].
+
+     3.1.3 level1-hotplug-slot-count and level2-hotplug-slot-count
+
+        FWARC case 2006/198 (PCI Hotplug Resource Preallocation) [4]
+        defines two properties 'level1-hotplug-slot-count' and
+        'level2-hotplug-slot-count' which are hardware-topology dependent.
+        As such, OpenBoot will have to extract this information from the
+        MDs. This case proposes adding two new optional properties of
+        type PROP_VAL to pass this information along to the guest OpenBoot.
+
+     3.1.4 hotplug-supported
+
+        The method by which OpenBoot allocates and retains PCI resources
+        during nexus probe varies based on whether or not a platform
+        supports PCI hotplug in any of its slots. Currently, this is
+        determined by a compile time switch, although it is desired to
+        modify the behavior at run time so that the same OpenBoot binary
+        can be used across all platforms. In order to make this check
+        dynamic, we are adding a property 'hotplug-supported' to the MD,
+        and OpenBoot can modify it's behavior based on the property's
+        presence.
+
+   3.2. Market/Requester:
+  
+        OpenBoot and VBSC firmware teams
+
+   3.3. Business Justification:
+  
+        These changes allow future OpenBoot images to operate unmodified on
+        multiple platforms, thereby drastically decreasing OpenBoot 
+development
+        time.
+
+   3.4. Competitive Analysis:
+  
+        N/A
+
+   3.5. Opportunity Window/Exposure:
+
+        Project team is attempting to make changes available in time for 
+Huron
+        RR
+
+   3.6. How will you know when you are done?:
+     
+        When code has been integrated into released system firmware image.
+
+4. Technical Description:
+    4.1. Details:
+
+        The updated technical description of the iodevice nodes can be
+        found in the case materials directory [5]. The list of changes
+        from the previous version are listed here.
+
+    4.1.1 Slot name change
+
+        The case removes the 'slot-name' property from the available
+        properties for PCI slot device properties. A section defining
+        the new slot name node is being added.
+
+    4.1.2 devalias change
+
+        The case removes the 'devalias' property from the available
+        properties for PCI slot device properties. A section defining
+        the new devalias node is being added.
+
+    4.1.3 level1-hotplug-slot-count and level2-hotplug-slot-count change
+
+        The case defines the new optional properties
+        'level1-hotplug-slot-count' and 'level2-hotplug-slot-count'
+        for Sun4v to PCI Express root nexus device  MD nodes.
+
+    4.1.4 hotplug-supported
+
+        The case defines the new optional property 'hotplug-supported'
+        for Sun4v to PCI Express root nexus device  MD nodes.
+
+    4.2. Bug/RFE Number(s):
+
+        N/A
+  
+    4.3. In Scope:
+  
+        Changes to the MD iodevice node definitions
+
+    4.4. Out of Scope:
+
+        Properties and MD nodes that are not being modified.
+  
+    4.5. Interfaces:
+
+    4.5.1 Imported Interfaces
+
+        Name                    Classification  Description
+        -----------------       --------------- -------------------
+        sun4v Machine           Sun Private     MD nodes definitions as
+        Description nodes                       defined by FWARC/2005/115
+
+        Standard IEEE 1275      Committed       FWARC/1998/392 (see [6])
+        properties                      
+
+        "iodevice" MD node      Committed       MD node name and 
+properties as
+                                                described in FWARC 2007/070
+
+    4.5.2 Exported Interfaces
+
+        Name                    Classification  Description
+        ----------------------  --------------  -------------------
+        "slot-name" MD node     Committed       MD node name and properties
+                                                as described in section
+                                                4.1.3 of [5]
+
+
+        "devalias" MD node      Committed       MD node name and properties
+                                                as described in section
+                                                4.1.4 of [5]
+
+        "level1-hotplug-slot-count" MD property
+                                Committed       MD node property described
+                                                in section 4.1.1.1 of [5]
+
+        "level2-hotplug-slot-count" MD property
+                                Committed       MD node property described
+                                                in section 4.1.1.1 of [5]
+
+        "hotplug-supported"     Committed       MD node property described
+         MD property                            in section 4.1.1.1 of [5]
+
+
+5. Reference Documents:
+
+        [1] FWARC 2007/070 Machine Description IO Device Node Definitions
+            http://sac.eng/Archives/CaseLog/arc/FWARC/2007/070
+
+        [2] FWARC 2000/030 Safari Bus Binding to IEEE 1275-1994
+            http://sac.sfbay/FWARC/2000/033/final.materials/safbind.txt
+
+        [3] FWARC 2007/222 in-line devalias creation
+            
+http://sac.eng/Archives/CaseLog/arc/FWARC/2007/222/materials/one-pager.txt
+
+        [4] FWARC 2006/198 PCI Hotplug Resource Preallocation
+            http://sac.sfbay/FWARC/2006/198/material/hotplug.one_pager
+
+        [5] Updated iodevice MD node details
+            updated-iodevice-details.txt
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+  
+        Project teams wants completion by FY07Q3
+
+   6.2. Cost of Effort:
+  
+        N/A
+
+   6.3. Cost of Capital Resources:
+  
+        None
+
+   6.4. ARC review type:
+
+        Fast track
+
+7. Prototype Availability:
+   7.1. Prototype Availability:
+  
+        Working prototype is available.
+
+   7.2. Prototype Cost:
+
+        N/A
+
+
+
+From sacadmin Wed Jun 27 09:49:37 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l5RGna0f005165
+	for <fwarc@sac.eng.Sun.COM>; Wed, 27 Jun 2007 09:49:37 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l5RGlcXc021443
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 28 Jun 2007 00:47:53 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JKA00L03ZZRYT00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 09:47:51 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JKA00GYVZZR4J80@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 09:47:51 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.108.183])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l5RGlpoO026148	for
+ <fwarc@sun.com>; Wed, 27 Jun 2007 16:47:51 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JKA00C01XXN5200@mail-amer.sun.com> (original mail from S.Jain@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 10:47:51 -0600 (MDT)
+Received: from [129.150.20.90] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JKA004ZRZZBR4KS@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 10:47:36 -0600 (MDT)
+Date: Wed, 27 Jun 2007 09:47:45 -0700
+From: Sunit Jain <S.Jain@sun.com>
+Subject: Re: FWARC 2007/386: Machine Description IO Device Node Definition
+ Updates
+In-reply-to: <46828BFD.2050508@sun.com>
+Sender: S.Jain@sun.com
+To: fwarc@sun.com
+Reply-to: S.Jain@sun.com
+Message-id: <468294B1.9030002@Sun.Com>
+Organization: Sun Microsystems, Inc.
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <46828BFD.2050508@sun.com>
+User-Agent: Thunderbird 2.0.0.5pre (Windows/20070604)
+Status: RO
+Content-Length: 10555
+
+
+FWARC/2007/288 defined two new "phy-type" property values:
+    "xgsd" 10G SerDes
+    "gsd" 1G SerDes
+Should we include those in the list in section 4.1.1.5?
+
+Section 4.1.1.4 - If "slot-present" property is present in a bridge, is 
+it mandatory for that bridge node to have "slot-name" child node? Can we 
+clarify this in the spec?
+
+Regards,
+Sunit
+
+
+
+Stephen Ehring wrote:
+> I am sponsoring the FWARC case as a fast track for myself. The case 
+> updates the machine description iodevice nodes to fix certain problems 
+> which were made obvious during the implementation of the original case.
+>
+> The interfaces can be released in a micro/minor version of the firmware.
+>
+> Since many people are on vacation next week, I'm extending the timer 
+> to 07/10/2007
+>
+> Steve
+>
+> http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2007/386/materials/onepager.txt 
+>
+>
+> Copyright 2007 Sun Microsystems
+>
+> 1. Introduction
+>   1.1. Project/Component Working Name:
+>
+>        Machine Description IO Device Node Definition Updates
+>
+>   1.2. Name of Document Author/Supplier:
+>  
+>        Stephen Ehring
+>
+>   1.3. Date of This Document:
+>  
+>        06/26/2007
+>
+>   1.4. Name of Major Document Customer(s)/Consumer(s):
+>    1.4.1. The PAC or CPT you expect to review your project:
+>        HS PAC
+>    1.4.2. The ARC(s) you expect to review your project:
+>        FWARC
+>    1.4.3. The Director/VP who is "Sponsoring" this project:
+>        N/A
+>    1.4.4. The name of your business unit:
+>        Systems Group
+>
+>   1.5. Email Aliases:
+>        1.5.1. Responsible Manager: chad.solomon@sun.com
+>        1.5.2. Responsible Engineer: stephen.ehring@sun.com
+>        1.5.3. Marketing Manager: N/A
+>    1.5.4. Interest List:
+>
+> 2. Project Summary
+>   2.1. Project Description:
+>  
+>        This project updates the machine description iodevice nodes
+>        originally defined in case 2007/070. While implementing the
+>        properties described in that case, certain problems were
+>        encountered which the updates presented in this case attempt
+>        to solve.
+>
+>   2.2. Risks and Assumptions:
+>  
+>        The proposed changes will constitute a flag day between
+>        reset/config and OpenBoot. This is not a difficult problem
+>        since the two components are released as part of the same
+>        consolidation.
+>
+> 3. Business Summary
+>   3.1. Problem Area:
+>  
+>        The reasoning behind the creation of these iodevice MD nodes
+>        is beyond the scope of this case (interested parties can
+>        refer to the material in the original FWARC case [1]). The
+>        problem being addressed is that while implementing the
+>        interfaces defined in that case, certain problems were
+>        encountered which require tweaking some of the approved
+>        interfaces. The problems which are being solved are presented
+>        in this section.
+>
+>     3.1.1 slot-names
+>
+>        The 'slot-names' property as defined in the original case
+>        consisted of a single PROP_STR data type, however, the
+>        'slot-names' property as defined in [2] consists of an encoded
+>        integer followed by encoded string(s). The encoded integer
+>        is the number of encoded strings which follow. This case
+>        proposes to fix this problem by modifying the PCI slot MD
+>        device properties so that instead of having a 'slot-names'
+>        property the PCI slot MD node can have multiple forward links
+>        to 'slot-name' MD nodes. Then each 'slot-name' MD node can have
+>        a single property of type PROP_STR which describes one of the
+>        strings that OpenBoot is to encode. OpenBoot can glean the
+>        integer that is to be encoded by counting the number of forward
+>        links
+>
+>     3.1.2 devaliases
+>
+>        In the original case, any iodevice could have a single
+>        property named 'devalias' of type PROP_STR. However, it's
+>        possible for a single iodevice node to have multiple device
+>        aliases pointing to it (for example, 'net' and 'net0' often
+>        point to the same actual device path). To allow this to work,
+>        this case is proposing that any iodevice node can have forward
+>        links to devalias nodes which contain a single 'devalias'
+>        property of type PROP_STR. Then OpenBoot can parse all forward
+>        links and create a devalias entry for each node that it finds.
+>        This is similar to the mechanism proposed for the virtual-device
+>        nodes in [3].
+>
+>     3.1.3 level1-hotplug-slot-count and level2-hotplug-slot-count
+>
+>        FWARC case 2006/198 (PCI Hotplug Resource Preallocation) [4]
+>        defines two properties 'level1-hotplug-slot-count' and
+>        'level2-hotplug-slot-count' which are hardware-topology dependent.
+>        As such, OpenBoot will have to extract this information from the
+>        MDs. This case proposes adding two new optional properties of
+>        type PROP_VAL to pass this information along to the guest 
+> OpenBoot.
+>
+>     3.1.4 hotplug-supported
+>
+>        The method by which OpenBoot allocates and retains PCI resources
+>        during nexus probe varies based on whether or not a platform
+>        supports PCI hotplug in any of its slots. Currently, this is
+>        determined by a compile time switch, although it is desired to
+>        modify the behavior at run time so that the same OpenBoot binary
+>        can be used across all platforms. In order to make this check
+>        dynamic, we are adding a property 'hotplug-supported' to the MD,
+>        and OpenBoot can modify it's behavior based on the property's
+>        presence.
+>
+>   3.2. Market/Requester:
+>  
+>        OpenBoot and VBSC firmware teams
+>
+>   3.3. Business Justification:
+>  
+>        These changes allow future OpenBoot images to operate 
+> unmodified on
+>        multiple platforms, thereby drastically decreasing OpenBoot 
+> development
+>        time.
+>
+>   3.4. Competitive Analysis:
+>  
+>        N/A
+>
+>   3.5. Opportunity Window/Exposure:
+>
+>        Project team is attempting to make changes available in time 
+> for Huron
+>        RR
+>
+>   3.6. How will you know when you are done?:
+>            When code has been integrated into released system firmware 
+> image.
+>
+> 4. Technical Description:
+>    4.1. Details:
+>
+>        The updated technical description of the iodevice nodes can be
+>        found in the case materials directory [5]. The list of changes
+>        from the previous version are listed here.
+>
+>    4.1.1 Slot name change
+>
+>        The case removes the 'slot-name' property from the available
+>        properties for PCI slot device properties. A section defining
+>        the new slot name node is being added.
+>
+>    4.1.2 devalias change
+>
+>        The case removes the 'devalias' property from the available
+>        properties for PCI slot device properties. A section defining
+>        the new devalias node is being added.
+>
+>    4.1.3 level1-hotplug-slot-count and level2-hotplug-slot-count change
+>
+>        The case defines the new optional properties
+>        'level1-hotplug-slot-count' and 'level2-hotplug-slot-count'
+>        for Sun4v to PCI Express root nexus device  MD nodes.
+>
+>    4.1.4 hotplug-supported
+>
+>        The case defines the new optional property 'hotplug-supported'
+>        for Sun4v to PCI Express root nexus device  MD nodes.
+>
+>    4.2. Bug/RFE Number(s):
+>
+>        N/A
+>  
+>    4.3. In Scope:
+>  
+>        Changes to the MD iodevice node definitions
+>
+>    4.4. Out of Scope:
+>
+>        Properties and MD nodes that are not being modified.
+>  
+>    4.5. Interfaces:
+>
+>    4.5.1 Imported Interfaces
+>
+>        Name                    Classification  Description
+>        -----------------       --------------- -------------------
+>        sun4v Machine           Sun Private     MD nodes definitions as
+>        Description nodes                       defined by FWARC/2005/115
+>
+>        Standard IEEE 1275      Committed       FWARC/1998/392 (see [6])
+>        properties                     
+>        "iodevice" MD node      Committed       MD node name and 
+> properties as
+>                                                described in FWARC 
+> 2007/070
+>
+>    4.5.2 Exported Interfaces
+>
+>        Name                    Classification  Description
+>        ----------------------  --------------  -------------------
+>        "slot-name" MD node     Committed       MD node name and 
+> properties
+>                                                as described in section
+>                                                4.1.3 of [5]
+>
+>
+>        "devalias" MD node      Committed       MD node name and 
+> properties
+>                                                as described in section
+>                                                4.1.4 of [5]
+>
+>        "level1-hotplug-slot-count" MD property
+>                                Committed       MD node property described
+>                                                in section 4.1.1.1 of [5]
+>
+>        "level2-hotplug-slot-count" MD property
+>                                Committed       MD node property described
+>                                                in section 4.1.1.1 of [5]
+>
+>        "hotplug-supported"     Committed       MD node property described
+>         MD property                            in section 4.1.1.1 of [5]
+>
+>
+> 5. Reference Documents:
+>
+>        [1] FWARC 2007/070 Machine Description IO Device Node Definitions
+>            http://sac.eng/Archives/CaseLog/arc/FWARC/2007/070
+>
+>        [2] FWARC 2000/030 Safari Bus Binding to IEEE 1275-1994
+>            http://sac.sfbay/FWARC/2000/033/final.materials/safbind.txt
+>
+>        [3] FWARC 2007/222 in-line devalias creation
+>            
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2007/222/materials/one-pager.txt 
+>
+>
+>        [4] FWARC 2006/198 PCI Hotplug Resource Preallocation
+>            http://sac.sfbay/FWARC/2006/198/material/hotplug.one_pager
+>
+>        [5] Updated iodevice MD node details
+>            updated-iodevice-details.txt
+>
+> 6. Resources and Schedule:
+>   6.1. Projected Availability:
+>  
+>        Project teams wants completion by FY07Q3
+>
+>   6.2. Cost of Effort:
+>  
+>        N/A
+>
+>   6.3. Cost of Capital Resources:
+>  
+>        None
+>
+>   6.4. ARC review type:
+>
+>        Fast track
+>
+> 7. Prototype Availability:
+>   7.1. Prototype Availability:
+>  
+>        Working prototype is available.
+>
+>   7.2. Prototype Cost:
+>
+>        N/A
+>
+>
+
+From sacadmin Wed Jun 27 09:51:06 2007
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l5RGp5vZ005179
+	for <fwarc@sac.eng.sun.com>; Wed, 27 Jun 2007 09:51:05 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l5RGnMdX021006
+	for <@sunmail3mpk.sfbay.sun.com:fwarc@sun.com>; Wed, 27 Jun 2007 09:49:23 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JKB00F0502AYF00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 09:49:22 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JKB00DQY02AQ260@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 09:49:22 -0700 (PDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l5RGnMxR006459	for
+ <fwarc@sun.com>; Wed, 27 Jun 2007 16:49:22 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JKA00501ZNZVW00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 10:49:22 -0600 (MDT)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JKB00ED10267BO0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 10:49:19 -0600 (MDT)
+Date: Wed, 27 Jun 2007 12:49:18 -0400
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: Re: FWARC 2007/386: Machine Description IO Device Node Definition
+ Updates
+In-reply-to: <46828BFD.2050508@sun.com>
+Sender: Stephen.Ehring@sun.com
+To: Stephen Ehring <Stephen.Ehring@sun.com>
+Cc: fwarc@sun.com
+Message-id: <4682950E.6050105@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <46828BFD.2050508@sun.com>
+User-Agent: Thunderbird 2.0.0.5pre (X11/20070623)
+Status: RO
+Content-Length: 2992
+
+Based on feedback from Eduardo, I've updated the case materials so that 
+the 'hotplug-capable' flag is now a property in the PCI slot iodevice 
+nodes as opposed to the root nexus PCI node, and the 'slot-name' 
+iodevice nodes have the associated PCI device number as well as the 
+string (which is required to assemble the bitmask as described in the 
+PCI bus binding).
+
+Steve
+
+Details of the diffs in case anyone's already looked at the case materials:
+
+ sac: /export/sac/FWARC/2007/386 66> diff materials/onepager.txt 
+materials.old1/onepager.txt
+68c68
+<         is a bitmask of available devices as described in [6]. This case
+---
+ >         is the number of encoded strings which follow. This case
+73,77c73,76
+<         two properties; one of type PROP_STR which describes one of the
+<         strings that OpenBoot is to encode and the other of type PROP_VAL
+<         which describes the associated available device number. 
+OpenBoot can
+<         glean the integer that is to be encoded by assembling a bitmask
+<         based on the device numbers.
+---
+ >         a single property of type PROP_STR which describes one of the
+ >         strings that OpenBoot is to encode. OpenBoot can glean the
+ >         integer that is to be encoded by counting the number of forward
+ >         links
+165c164
+<         for PCI slot device MD nodes.
+---
+ >         for Sun4v to PCI Express root nexus device  MD nodes.
+216c215
+<          MD property                            in section 4.1.1.4 of [5]
+---
+ >          MD property                            in section 4.1.1.1 of [5]
+236,238d234
+<         [6] PCI Bus Supplement to IEEE 1275
+<             http://noho.eng/1275/bindings/pci/pci2_1.pdf
+<
+ sac: /export/sac/FWARC/2007/386 67> !!:gs\onepager\updated-iodevice-details
+diff materials/updated-iodevice-details.txt 
+materials.old1/updated-iodevice-details.txt
+152a153,157
+ >     hotplug-supported  PROP_VAL  No   The presence of this property means
+ >                                       that the platform supports PCI
+ >                                       hotplug and should adjust it's
+ >                                       resource allocation accordingly.
+ >     
+----------------------------------------------------------------------
+218,221d222
+<     hotplug-supported  PROP_VAL  No   The presence of this property means
+<                                       that the slot supports PCI
+<                                       hotplug.
+<     ----------------------------------------------------------------------
+327c328
+<         One of possibly multiple slot names for this node. The 
+properties in
+---
+ >         One of possibly multiple slot names for this node. The 
+property in
+339,341d339
+<     device#          PROP_VAL  Yes    The device number that is 
+associated with
+<                                       the slot-name property of this node.
+<     
+---------------------------------------------------------------------------
+ sac: /export/sac/FWARC/2007/386 68>
+
+
+From sacadmin Wed Jun 27 10:00:21 2007
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l5RH0LvE005797
+	for <fwarc@sac.eng.sun.com>; Wed, 27 Jun 2007 10:00:21 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l5RGwcst022847
+	for <@sunmail3mpk.sfbay.sun.com:fwarc@sun.com>; Wed, 27 Jun 2007 09:58:38 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JKB00G030HQAX00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 09:58:38 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JKB00D8H0HQQ280@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 09:58:38 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.108.183])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l5RGwcb5005322	for
+ <fwarc@sun.com>; Wed, 27 Jun 2007 16:58:38 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JKB001010A8U900@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 10:58:38 -0600 (MDT)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JKB004070H5R32N@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 10:58:18 -0600 (MDT)
+Date: Wed, 27 Jun 2007 12:58:17 -0400
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: Re: FWARC 2007/386: Machine Description IO Device Node Definition
+ Updates
+In-reply-to: <468294B1.9030002@Sun.Com>
+Sender: Stephen.Ehring@sun.com
+To: S.Jain@sun.com
+Cc: fwarc@sun.com
+Message-id: <46829729.9040104@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <46828BFD.2050508@sun.com> <468294B1.9030002@Sun.Com>
+User-Agent: Thunderbird 2.0.0.5pre (X11/20070623)
+Status: RO
+Content-Length: 1162
+
+Sunit Jain wrote:
+>
+> FWARC/2007/288 defined two new "phy-type" property values:
+>    "xgsd" 10G SerDes
+>    "gsd" 1G SerDes
+> Should we include those in the list in section 4.1.1.5?
+
+Technically, that case should have done it, but I've added them to the 
+new version so the list is complete moving forward.
+
+>
+> Section 4.1.1.4 - If "slot-present" property is present in a bridge, 
+> is it mandatory for that bridge node to have "slot-name" child node? 
+> Can we clarify this in the spec?
+>
+
+No, 'slot-name' is an optional node. Some platforms have not implemented 
+the 'slot-names' properties. I've added text in the node description to 
+highlight this.
+
+Steve
+
+diff materials/updated-iodevice-details.txt 
+materials.old2/updated-iodevice-details.txt
+240,241d239
+<                                                 "xgsd" for  10G SerDes
+<                                                 "gsd"  for  1G SerDes
+331,333c329
+<         tree property. Note that this is an optional node, since not all
+<         platforms have implemented the 'slot-names' properties for 
+thier PCI
+<         slots.
+---
+ >         tree property.
+ sac: /export/sac/FWARC/2007/386 75>
+
+
+From sacadmin Wed Jun 27 10:04:47 2007
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l5RH4lsi006746
+	for <fwarc@sac.eng.sun.com>; Wed, 27 Jun 2007 10:04:47 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l5RH2M0v038354
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 27 Jun 2007 11:02:25 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JKB000210P39E00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 10:03:03 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JKB00GYX0P14M80@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 10:03:02 -0700 (PDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l5RH31a4003024	for
+ <fwarc@sun.com>; Wed, 27 Jun 2007 17:03:01 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JKB00H010HAO500@mail-amer.sun.com> (original mail from S.Jain@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 11:03:01 -0600 (MDT)
+Received: from [129.150.20.90] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JKB00EDA0OZ71B0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 11:03:01 -0600 (MDT)
+Date: Wed, 27 Jun 2007 10:03:10 -0700
+From: Sunit Jain <S.Jain@sun.com>
+Subject: Re: FWARC 2007/386: Machine Description IO Device Node Definition
+ Updates
+In-reply-to: <46829729.9040104@sun.com>
+Sender: S.Jain@sun.com
+To: Stephen Ehring <Stephen.Ehring@sun.com>
+Cc: fwarc@sun.com
+Reply-to: S.Jain@sun.com
+Message-id: <4682984E.3040409@Sun.Com>
+Organization: Sun Microsystems, Inc.
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <46828BFD.2050508@sun.com> <468294B1.9030002@Sun.Com>
+ <46829729.9040104@sun.com>
+User-Agent: Thunderbird 2.0.0.5pre (Windows/20070604)
+Status: RO
+Content-Length: 1446
+
+
+I believe the Solaris hotplug code is dependent on the presence 
+"slot-name" or "physical-slot#" property to perform any hotplug 
+operation. Do we support PCI hotplug on sun4v machines?
+
+Regards,
+Sunit
+
+
+Stephen Ehring wrote:
+> Sunit Jain wrote:
+>>
+>> FWARC/2007/288 defined two new "phy-type" property values:
+>>    "xgsd" 10G SerDes
+>>    "gsd" 1G SerDes
+>> Should we include those in the list in section 4.1.1.5?
+>
+> Technically, that case should have done it, but I've added them to the 
+> new version so the list is complete moving forward.
+>
+>>
+>> Section 4.1.1.4 - If "slot-present" property is present in a bridge, 
+>> is it mandatory for that bridge node to have "slot-name" child node? 
+>> Can we clarify this in the spec?
+>>
+>
+> No, 'slot-name' is an optional node. Some platforms have not 
+> implemented the 'slot-names' properties. I've added text in the node 
+> description to highlight this.
+>
+> Steve
+>
+> diff materials/updated-iodevice-details.txt 
+> materials.old2/updated-iodevice-details.txt
+> 240,241d239
+> <                                                 "xgsd" for  10G SerDes
+> <                                                 "gsd"  for  1G SerDes
+> 331,333c329
+> <         tree property. Note that this is an optional node, since not 
+> all
+> <         platforms have implemented the 'slot-names' properties for 
+> thier PCI
+> <         slots.
+> ---
+> >         tree property.
+> sac: /export/sac/FWARC/2007/386 75>
+>
+
+From sacadmin Wed Jun 27 10:13:46 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l5RHDjfk007361
+	for <fwarc@sac.eng.sun.com>; Wed, 27 Jun 2007 10:13:46 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l5RHBgnc007324
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 27 Jun 2007 18:12:02 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JKB0010F1412D00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 10:12:01 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JKB00GEF1404JA0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 10:12:00 -0700 (PDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l5RHC02u027603	for
+ <fwarc@sun.com>; Wed, 27 Jun 2007 17:12:00 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JKB00H010HAO500@mail-amer.sun.com>
+ (original mail from Eduardo.Horvath@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 11:12:00 -0600 (MDT)
+Received: from [129.146.96.43] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JKB00CAK13BC4N0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 27 Jun 2007 11:11:37 -0600 (MDT)
+Date: Wed, 27 Jun 2007 10:10:17 -0700
+From: Eduardo E Horvath - Sun Microsystems - Newark United States
+ <Eduardo.Horvath@sun.com>
+Subject: Re: FWARC 2007/386: Machine Description IO Device Node Definition
+ Updates
+In-reply-to: <4682984E.3040409@Sun.Com>
+Sender: Eduardo.Horvath@sun.com
+To: S.Jain@sun.com
+Cc: Stephen Ehring <Stephen.Ehring@sun.com>, fwarc@sun.com
+Message-id: <468299F9.60609@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <46828BFD.2050508@sun.com> <468294B1.9030002@Sun.Com>
+ <46829729.9040104@sun.com> <4682984E.3040409@Sun.Com>
+User-Agent: Thunderbird 2.0.0.5pre (X11/20070623)
+Status: RO
+Content-Length: 1606
+
+
+Hotplug is supported on St. Paul and Glendale.
+
+Eduardo
+
+Sunit Jain wrote:
+> 
+> I believe the Solaris hotplug code is dependent on the presence 
+> "slot-name" or "physical-slot#" property to perform any hotplug 
+> operation. Do we support PCI hotplug on sun4v machines?
+> 
+> Regards,
+> Sunit
+> 
+> 
+> Stephen Ehring wrote:
+>> Sunit Jain wrote:
+>>>
+>>> FWARC/2007/288 defined two new "phy-type" property values:
+>>>    "xgsd" 10G SerDes
+>>>    "gsd" 1G SerDes
+>>> Should we include those in the list in section 4.1.1.5?
+>>
+>> Technically, that case should have done it, but I've added them to the 
+>> new version so the list is complete moving forward.
+>>
+>>>
+>>> Section 4.1.1.4 - If "slot-present" property is present in a bridge, 
+>>> is it mandatory for that bridge node to have "slot-name" child node? 
+>>> Can we clarify this in the spec?
+>>>
+>>
+>> No, 'slot-name' is an optional node. Some platforms have not 
+>> implemented the 'slot-names' properties. I've added text in the node 
+>> description to highlight this.
+>>
+>> Steve
+>>
+>> diff materials/updated-iodevice-details.txt 
+>> materials.old2/updated-iodevice-details.txt
+>> 240,241d239
+>> <                                                 "xgsd" for  10G SerDes
+>> <                                                 "gsd"  for  1G SerDes
+>> 331,333c329
+>> <         tree property. Note that this is an optional node, since not 
+>> all
+>> <         platforms have implemented the 'slot-names' properties for 
+>> thier PCI
+>> <         slots.
+>> ---
+>> >         tree property.
+>> sac: /export/sac/FWARC/2007/386 75>
+>>
+
+
+-- 
+Eduardo Horvath				
+
+
+From sacadmin Thu Jun 28 11:52:54 2007
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l5SIqsDW014979
+	for <fwarc@sac.eng.sun.com>; Thu, 28 Jun 2007 11:52:54 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l5SIoUc0056051
+	for <@sunmail3mpk.sfbay.sun.com:fwarc@sun.com>; Thu, 28 Jun 2007 12:50:30 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JKD00L050D9AB00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 28 Jun 2007 11:51:09 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JKD00DXE0D8TKE0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 28 Jun 2007 11:51:08 -0700 (PDT)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l5SIp8xY015476	for
+ <fwarc@sun.com>; Thu, 28 Jun 2007 18:51:08 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JKD0070109IQO00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 28 Jun 2007 12:51:08 -0600 (MDT)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JKD001M60D7QFN4@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 28 Jun 2007 12:51:08 -0600 (MDT)
+Date: Thu, 28 Jun 2007 14:51:06 -0400
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: FWARC 2007/386 update
+Sender: Stephen.Ehring@sun.com
+To: fwarc@sun.com
+Message-id: <4684031A.9080507@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0.0.5pre (X11/20070623)
+Status: RO
+Content-Length: 2377
+
+I had to update the definition of the 'devalias' MD node to include a 
+second property which explicitly states what the device path is. This is 
+because certain IO devices don't have MD nodes (USB devices for example) 
+and also because certain devaliases have colon arguments (like the cdrom 
+for example).
+
+http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2007/386/materials/
+
+Steve
+
+ sac: /export/sac/FWARC/2007/386 111> diff 
+materials/updated-iodevice-details.txt 
+materials.old3/updated-iodevice-details.txt
+356,357c356,357
+<         One of possibly multiple devaliases associated with this node.
+<         The properties in this node will become a devalias in OpenBoot.
+---
+ >         One of possibly multiple devaliases for this node. The 
+property in
+ >         this node will become a devalias in OpenBoot.
+363,368c363,365
+<     devalias         PROP_STR  Yes    A device alias for the device path
+<                                       described by the 'path' property 
+of this
+<                                       node
+<     
+---------------------------------------------------------------------------
+<     path             PROP_STR  Yes    The device path which will be 
+aliased to
+<                                       the 'devalias' property of this 
+node.
+---
+ >     devalias         PROP_STR  Yes    A device alias for the PCI 
+device whose
+ >                                       MD iodevice node  points to 
+this devalias
+ >                                       MD node
+ sac: /export/sac/FWARC/2007/386 112> diff materials/onepager.txt 
+materials.old3/onepager.txt
+87,92c87,91
+<         links to devalias nodes which contain a 'devalias' property of
+<         type PROP_STR and a 'path' property also of type PROP_STR. Then
+<         OpenBoot can parse all forward links and create a devalias entry
+<         for each node that it finds. This is similar to the mechanism
+<         proposed for the virtual-device nodes in [3], although here we
+<         have to explictly state the path.
+---
+ >         links to devalias nodes which contain a single 'devalias'
+ >         property of type PROP_STR. Then OpenBoot can parse all forward
+ >         links and create a devalias entry for each node that it finds.
+ >         This is similar to the mechanism proposed for the virtual-device
+ >         nodes in [3].
+ sac: /export/sac/FWARC/2007/386 113>
+
+
+From sacadmin Tue Jul  3 14:58:48 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l63LwlWZ020737
+	for <fwarc@sac.eng.sun.com>; Tue, 3 Jul 2007 14:58:48 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l63LuvEV019381
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 3 Jul 2007 22:56:57 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JKM00G03IARIZ00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 03 Jul 2007 14:56:51 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JKM00FP8IAQ0RC0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 03 Jul 2007 14:56:50 -0700 (PDT)
+Received: from fe-amer-05.sun.com ([192.18.108.179])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l63Luoin001274	for
+ <fwarc@sun.com>; Tue, 03 Jul 2007 21:56:50 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JKM00001HOR3800@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 03 Jul 2007 15:56:50 -0600 (MDT)
+Received: from [129.148.180.175] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JKM00AKHIAP3G10@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 03 Jul 2007 15:56:50 -0600 (MDT)
+Date: Tue, 03 Jul 2007 17:56:48 -0400
+From: Eric Sharakan <Eric.Sharakan@Sun.COM>
+Subject: Re: FWARC 2007/386: Machine Description IO Device Node Definition
+ Updates
+In-reply-to: <46828BFD.2050508@sun.com>
+Sender: Eric.Sharakan@Sun.COM
+To: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Cc: fwarc@Sun.COM
+Message-id: <A7E3A934-0F37-4B77-95BE-2A62D8AA3371@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.3)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ boundary=Apple-Mail-23--965821876; micalg=sha1
+X-PMX-Version: 5.2.0.264296
+References: <46828BFD.2050508@sun.com>
+Status: RO
+Content-Length: 5498
+
+
+--Apple-Mail-23--965821876
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=US-ASCII;
+	delsp=yes;
+	format=flowed
+
+Steve, I have one comment, see below:
+
+On Jun 27, 2007, at 12:10 PM, Stephen Ehring wrote:
+
+> I am sponsoring the FWARC case as a fast track for myself. The case  
+> updates the machine description iodevice nodes to fix certain  
+> problems which were made obvious during the implementation of the  
+> original case.
+>
+> The interfaces can be released in a micro/minor version of the  
+> firmware.
+>
+> Since many people are on vacation next week, I'm extending the  
+> timer to 07/10/2007
+>
+> Steve
+>
+> http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2007/386/ 
+> materials/onepager.txt
+>
+
+<snip>
+
+>     3.1.2 devaliases
+>
+>        In the original case, any iodevice could have a single
+>        property named 'devalias' of type PROP_STR. However, it's
+>        possible for a single iodevice node to have multiple device
+>        aliases pointing to it (for example, 'net' and 'net0' often
+>        point to the same actual device path). To allow this to work,
+>        this case is proposing that any iodevice node can have forward
+>        links to devalias nodes which contain a single 'devalias'
+>        property of type PROP_STR. Then OpenBoot can parse all forward
+>        links and create a devalias entry for each node that it finds.
+>        This is similar to the mechanism proposed for the virtual- 
+> device
+>        nodes in [3].
+
+Actually, [3] describes having multiple 'devalias' properties in the  
+same virtual-device node, not included in fwd linked nodes.  Any  
+reason why we should do it any differently for the iodevice node?
+
+Actually^2, the only discussion regarding multiple 'devalias'  
+properties in [3] (FWARC/2007/222) is contained in the directory  
+named materials-old.  If having multiple 'devalias' properties in the  
+virtual-device node is meant to be part of the approved case, the one- 
+pager.txt file presumably needs to be moved.
+
+-Eric
+--Apple-Mail-23--965821876
+Content-Transfer-Encoding: base64
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Disposition: attachment;
+	filename=smime.p7s
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEFTfUBSm04O9csLdiMZKo0YwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA2MTEwMTA0MDc0N1oXDTA3MTEwMTA0MDc0
+N1owRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1JWiATbJ
+kDoiiNur5YXkIb8Jm7RhIPgiF9/m9Pb8P9FWAVVu5sl3OcmCxOnqdPLK0Me9zL8QVJCKZzi/CWyE
+iRXHcorqn5hJZcLoXpRjiLOqqz1W0hyf/Vi/VNH9p8mAunBpeUln2WRV+2ekZUVV5gqS9FhggcEE
+EaTeNZI4YrTbOqhMA0VksYMexa7Ygn2KoQiBYtnn52g2FojTfxuwjWIbzGpwLMaLly6MePSqlM3l
+d3ZrRQiUG396IZI9J6uZ9iTdyVxV5mGa2qMvQF8UnT9z0r121JtZHkSPjQ54PvegzQ76mtBSTqPU
+Zlo/yfs+gHb9caKjTuZn5glOrACF6QIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQCN8sqiw30hzI1/b5GZKW+t
+OjvyglKLV0PpoJBzNatTr82ixDXeh6C1CspHEBO7gFPx1vW90obDfG8kjHgZKaZvysrjbeny6eFr
+Qd/eNNCTHkBCFKadle9w8ERdr7vyHFpZ/3lmo/2ogAK34t3qV5NKjngY978NUNkS4dDnItCqWzCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQVN9QFKbTg71ywt2IxkqjRjAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wNzA3
+MDMyMTU2NDhaMCMGCSqGSIb3DQEJBDEWBBRByo9HccI5JtkgYdmfwJjECLnWajCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEFTfUBSm
+04O9csLdiMZKo0YwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEFTfUBSm04O9csLdiMZKo0YwDQYJKoZIhvcNAQEBBQAEggEADklC
+rW2WJ7gGRXg2aEbdmhFjjvmZNllxdZxkr9/L4812dRfd/mS4wegbk6lz5WCnmjZwzYtUPEQNxf4j
+9nvRoRPJQ1JnkLW87s3CxksxyvSw96SbnO1VldVW9mNKFCfxqIUXyvIWmtGjhnFsSbG/bA4MIHDm
+TZONiDeidsfU9nxzRwx8LtggHJIrxyYiOKNBBFinlMHmo7Pvv5PjFq/j/c6O4E0g4q5ufExZy1x2
+h7DlLLywsW7ZDyg3QUtl0m93y/LITRIbSEmHdBfnaWx0sJg7rKWkYxS0TJTo+8PunAyRrkWSIXOm
+YH/OzaiFSPIPmmNh451NfhJ5m8H2CP3F4QAAAAAAAA==
+
+--Apple-Mail-23--965821876--
+
+From sacadmin Tue Jul  3 15:09:43 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l63M9ggs021323
+	for <fwarc@sac.eng.Sun.COM>; Tue, 3 Jul 2007 15:09:43 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l63M7dgg000408
+	for <@newsunmail1brm.central.sun.com:fwarc@sun.com>; Wed, 4 Jul 2007 06:07:52 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JKM00A07IT1K900@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 03 Jul 2007 16:07:49 -0600 (MDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JKM004G8IT15440@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 03 Jul 2007 16:07:49 -0600 (MDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l63M7nFH000411	for
+ <fwarc@sun.com>; Tue, 03 Jul 2007 22:07:49 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JKM00H01IPA9100@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 03 Jul 2007 16:07:49 -0600 (MDT)
+Received: from [129.148.180.175] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JKM007Z9IT03B90@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 03 Jul 2007 16:07:49 -0600 (MDT)
+Date: Tue, 03 Jul 2007 18:07:46 -0400
+From: Eric Sharakan <Eric.Sharakan@Sun.COM>
+Subject: Re: FWARC 2007/386 update
+In-reply-to: <4684031A.9080507@sun.com>
+Sender: Eric.Sharakan@Sun.COM
+To: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Cc: fwarc@Sun.COM
+Message-id: <4C1C7367-9E4F-469A-BC33-909F91D5CA56@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.3)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ boundary=Apple-Mail-24--965163217; micalg=sha1
+X-PMX-Version: 5.2.0.264296
+References: <4684031A.9080507@sun.com>
+Status: RO
+Content-Length: 6330
+
+
+--Apple-Mail-24--965163217
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=US-ASCII;
+	delsp=yes;
+	format=flowed
+
+On Jun 28, 2007, at 2:51 PM, Stephen Ehring wrote:
+
+> I had to update the definition of the 'devalias' MD node to include  
+> a second property which explicitly states what the device path is.  
+> This is because certain IO devices don't have MD nodes (USB devices  
+> for example) and also because certain devaliases have colon  
+> arguments (like the cdrom for example).
+
+I'm missing something obvious here: if an IO device doesn't have an  
+MD node, where would the devalias subordinate node go?
+
+-Eric
+
+>
+> http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2007/386/materials/
+>
+> Steve
+>
+> sac: /export/sac/FWARC/2007/386 111> diff materials/updated- 
+> iodevice-details.txt materials.old3/updated-iodevice-details.txt
+> 356,357c356,357
+> <         One of possibly multiple devaliases associated with this  
+> node.
+> <         The properties in this node will become a devalias in  
+> OpenBoot.
+> ---
+> >         One of possibly multiple devaliases for this node. The  
+> property in
+> >         this node will become a devalias in OpenBoot.
+> 363,368c363,365
+> <     devalias         PROP_STR  Yes    A device alias for the  
+> device path
+> <                                       described by the 'path'  
+> property of this
+> <                                       node
+> <      
+> ---------------------------------------------------------------------- 
+> -----
+> <     path             PROP_STR  Yes    The device path which will  
+> be aliased to
+> <                                       the 'devalias' property of  
+> this node.
+> ---
+> >     devalias         PROP_STR  Yes    A device alias for the PCI  
+> device whose
+> >                                       MD iodevice node  points to  
+> this devalias
+> >                                       MD node
+> sac: /export/sac/FWARC/2007/386 112> diff materials/onepager.txt  
+> materials.old3/onepager.txt
+> 87,92c87,91
+> <         links to devalias nodes which contain a 'devalias'  
+> property of
+> <         type PROP_STR and a 'path' property also of type  
+> PROP_STR. Then
+> <         OpenBoot can parse all forward links and create a  
+> devalias entry
+> <         for each node that it finds. This is similar to the  
+> mechanism
+> <         proposed for the virtual-device nodes in [3], although  
+> here we
+> <         have to explictly state the path.
+> ---
+> >         links to devalias nodes which contain a single 'devalias'
+> >         property of type PROP_STR. Then OpenBoot can parse all  
+> forward
+> >         links and create a devalias entry for each node that it  
+> finds.
+> >         This is similar to the mechanism proposed for the virtual- 
+> device
+> >         nodes in [3].
+> sac: /export/sac/FWARC/2007/386 113>
+>
+
+
+--Apple-Mail-24--965163217
+Content-Transfer-Encoding: base64
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Disposition: attachment;
+	filename=smime.p7s
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEFTfUBSm04O9csLdiMZKo0YwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA2MTEwMTA0MDc0N1oXDTA3MTEwMTA0MDc0
+N1owRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1JWiATbJ
+kDoiiNur5YXkIb8Jm7RhIPgiF9/m9Pb8P9FWAVVu5sl3OcmCxOnqdPLK0Me9zL8QVJCKZzi/CWyE
+iRXHcorqn5hJZcLoXpRjiLOqqz1W0hyf/Vi/VNH9p8mAunBpeUln2WRV+2ekZUVV5gqS9FhggcEE
+EaTeNZI4YrTbOqhMA0VksYMexa7Ygn2KoQiBYtnn52g2FojTfxuwjWIbzGpwLMaLly6MePSqlM3l
+d3ZrRQiUG396IZI9J6uZ9iTdyVxV5mGa2qMvQF8UnT9z0r121JtZHkSPjQ54PvegzQ76mtBSTqPU
+Zlo/yfs+gHb9caKjTuZn5glOrACF6QIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQCN8sqiw30hzI1/b5GZKW+t
+OjvyglKLV0PpoJBzNatTr82ixDXeh6C1CspHEBO7gFPx1vW90obDfG8kjHgZKaZvysrjbeny6eFr
+Qd/eNNCTHkBCFKadle9w8ERdr7vyHFpZ/3lmo/2ogAK34t3qV5NKjngY978NUNkS4dDnItCqWzCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQVN9QFKbTg71ywt2IxkqjRjAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wNzA3
+MDMyMjA3NDdaMCMGCSqGSIb3DQEJBDEWBBQnMgbGsB8iRbo1b8nb853k7wP6tzCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEFTfUBSm
+04O9csLdiMZKo0YwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEFTfUBSm04O9csLdiMZKo0YwDQYJKoZIhvcNAQEBBQAEggEAEzr2
+BsF7bLnE+m39+khAlgEEb4iqSxUfgIUQ5W1bqpv7PwX4uoHajQ9BQwGWvOIFgspSQtSMfHJvFzEW
+zRSPc8zttjGFbHj01qE5JjHmxugVlKdIqCS2B/1ADMkySJ4FtKQOsDFzEo09VsyOKpU/ErUhUkdY
+XkodJBKGtvZAkaZn1q1HLLODiFLjReosieNtpHNfpRAs6K5V0kyrbhgLSpDJ467G8Zd+XZdd0Ljm
++W2bb6URCEi6djXJp9h+jYkaEFmciViMbkCe4OLTbSUlajzyi3C4Aw/J6yiXVKEIe/9rqBQM++Fx
+RMfiwz6jpYyeKNSbg90I6seKI4aHIJTqZwAAAAAAAA==
+
+--Apple-Mail-24--965163217--
+
+From sacadmin Thu Jul  5 09:59:30 2007
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l65GxUCr001011
+	for <fwarc@sac.eng.sun.com>; Thu, 5 Jul 2007 09:59:30 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l65GvdWK005232
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 5 Jul 2007 09:57:40 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JKP00L0JTS26F00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 09:57:38 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JKP00HEITRZWM20@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 09:57:36 -0700 (PDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l65GvZRJ026662	for
+ <fwarc@sun.com>; Thu, 05 Jul 2007 16:57:35 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JKP00L01TPS6E00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 10:57:35 -0600 (MDT)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JKP00E8BTRY7303@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 10:57:34 -0600 (MDT)
+Date: Thu, 05 Jul 2007 12:57:30 -0400
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: Re: FWARC 2007/386 update
+In-reply-to: <4C1C7367-9E4F-469A-BC33-909F91D5CA56@Sun.COM>
+Sender: Stephen.Ehring@sun.com
+To: Eric Sharakan <Eric.Sharakan@sun.com>
+Cc: fwarc@sun.com
+Message-id: <468D22FA.30304@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <4684031A.9080507@sun.com>
+ <4C1C7367-9E4F-469A-BC33-909F91D5CA56@Sun.COM>
+User-Agent: Thunderbird 2.0.0.5pre (X11/20070702)
+Status: RO
+Content-Length: 1129
+
+Eric Sharakan wrote:
+> On Jun 28, 2007, at 2:51 PM, Stephen Ehring wrote:
+>
+>> I had to update the definition of the 'devalias' MD node to include a 
+>> second property which explicitly states what the device path is. This 
+>> is because certain IO devices don't have MD nodes (USB devices for 
+>> example) and also because certain devaliases have colon arguments 
+>> (like the cdrom for example).
+>
+> I'm missing something obvious here: if an IO device doesn't have an MD 
+> node, where would the devalias subordinate node go?
+>
+Good question. The devalias subordinate would be a fwd link from the 
+iodevice node that is the closest parent in the device path hierarchy.
+
+For example if we needed to add devaliases for the following two nodes:
+
+/pci@0/network@2
+/pci@0/usb@3/cdrom@0
+
+Then the MD would look something like this:
+
+iodevice (pci@0) -> iodevice (network@2) -> devalias (net)
+iodevice (pci@0) -> iodevice (usb@3) -> devalias (cdrom)
+
+There is no iodevice node for the cdrom, so the devalias is a child of 
+the usb iodevice. Since we can't partition the USB, the devalias would 
+still follow the proper domain.
+
+Steve
+
+From sacadmin Thu Jul  5 11:03:43 2007
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l65I3gm2003501
+	for <fwarc@sac.eng.sun.com>; Thu, 5 Jul 2007 11:03:43 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l65I1pY8018685
+	for <@newsunmail1brm.central.sun.com:fwarc@sun.com>; Thu, 5 Jul 2007 11:01:52 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JKP00K0PWR37I00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 12:01:51 -0600 (MDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JKP004WWWR24BD0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 12:01:50 -0600 (MDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l65I1nKP023500	for
+ <fwarc@sun.com>; Thu, 05 Jul 2007 18:01:49 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JKP00401WQGY700@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 12:01:49 -0600 (MDT)
+Received: from [129.148.180.232] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JKP00D42WR10Q40@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 12:01:49 -0600 (MDT)
+Date: Thu, 05 Jul 2007 14:01:45 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: FWARC 2007/386 update
+In-reply-to: <468D22FA.30304@sun.com>
+Sender: Eric.Sharakan@sun.com
+To: Stephen Ehring <Stephen.Ehring@sun.com>
+Cc: fwarc@sun.com
+Message-id: <B5DAD1BA-F506-484F-8243-712D4A8CE356@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.3)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ boundary=Apple-Mail-4--807124066; micalg=sha1
+X-PMX-Version: 5.2.0.264296
+References: <4684031A.9080507@sun.com>
+ <4C1C7367-9E4F-469A-BC33-909F91D5CA56@Sun.COM> <468D22FA.30304@sun.com>
+Status: RO
+Content-Length: 5135
+
+
+--Apple-Mail-4--807124066
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=US-ASCII;
+	delsp=yes;
+	format=flowed
+
+On Jul 5, 2007, at 12:57 PM, Stephen Ehring wrote:
+
+> Eric Sharakan wrote:
+>> On Jun 28, 2007, at 2:51 PM, Stephen Ehring wrote:
+>>
+>>> I had to update the definition of the 'devalias' MD node to  
+>>> include a second property which explicitly states what the device  
+>>> path is. This is because certain IO devices don't have MD nodes  
+>>> (USB devices for example) and also because certain devaliases  
+>>> have colon arguments (like the cdrom for example).
+>>
+>> I'm missing something obvious here: if an IO device doesn't have  
+>> an MD node, where would the devalias subordinate node go?
+>>
+> Good question. The devalias subordinate would be a fwd link from  
+> the iodevice node that is the closest parent in the device path  
+> hierarchy.
+>
+> For example if we needed to add devaliases for the following two  
+> nodes:
+>
+> /pci@0/network@2
+> /pci@0/usb@3/cdrom@0
+>
+> Then the MD would look something like this:
+>
+> iodevice (pci@0) -> iodevice (network@2) -> devalias (net)
+> iodevice (pci@0) -> iodevice (usb@3) -> devalias (cdrom)
+>
+> There is no iodevice node for the cdrom, so the devalias is a child  
+> of the usb iodevice. Since we can't partition the USB, the devalias  
+> would still follow the proper domain.
+
+I'm okay with this approach.  Once LDoms starts supporting allocation  
+of individual PCI leaf devices to domains, any device we would so  
+allocate will need to be represented with its own node in the MD anyway.
+
+Would it be appropriate to clarify the case materials with this info?
+
+-Eric
+--Apple-Mail-4--807124066
+Content-Transfer-Encoding: base64
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Disposition: attachment;
+	filename=smime.p7s
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEFTfUBSm04O9csLdiMZKo0YwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA2MTEwMTA0MDc0N1oXDTA3MTEwMTA0MDc0
+N1owRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1JWiATbJ
+kDoiiNur5YXkIb8Jm7RhIPgiF9/m9Pb8P9FWAVVu5sl3OcmCxOnqdPLK0Me9zL8QVJCKZzi/CWyE
+iRXHcorqn5hJZcLoXpRjiLOqqz1W0hyf/Vi/VNH9p8mAunBpeUln2WRV+2ekZUVV5gqS9FhggcEE
+EaTeNZI4YrTbOqhMA0VksYMexa7Ygn2KoQiBYtnn52g2FojTfxuwjWIbzGpwLMaLly6MePSqlM3l
+d3ZrRQiUG396IZI9J6uZ9iTdyVxV5mGa2qMvQF8UnT9z0r121JtZHkSPjQ54PvegzQ76mtBSTqPU
+Zlo/yfs+gHb9caKjTuZn5glOrACF6QIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQCN8sqiw30hzI1/b5GZKW+t
+OjvyglKLV0PpoJBzNatTr82ixDXeh6C1CspHEBO7gFPx1vW90obDfG8kjHgZKaZvysrjbeny6eFr
+Qd/eNNCTHkBCFKadle9w8ERdr7vyHFpZ/3lmo/2ogAK34t3qV5NKjngY978NUNkS4dDnItCqWzCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQVN9QFKbTg71ywt2IxkqjRjAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wNzA3
+MDUxODAxNDZaMCMGCSqGSIb3DQEJBDEWBBSRKpRjBNR29HKfyHBjbJyE0l8wYjCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEFTfUBSm
+04O9csLdiMZKo0YwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEFTfUBSm04O9csLdiMZKo0YwDQYJKoZIhvcNAQEBBQAEggEAX3ET
+Df9lc53tOlbSlslsEMqPRBYBFgaeZ3lSYG8ymZeg8SWOrOZ5/o50RRyxY5XlkowIpMu9q3E6q/PX
+4NnxM7Hz79R2N43oQyXXDJ3blHImV3DA51bVHWEYBhCjsb1nScJzyIYSLeqhy8UfClqA4Z4yJPEU
+PSyJcrtb+0HFwW4fezTz4CxRcPW7v6usy1Qgtz5QT5SwELTCIUu57zWlvMbBcr3Mjf+vSlI99v3N
+qwNjGR/vAtGsdbaXmpFu0hcJ0uV8C+fc5y+qGMXQE6H8EqqV2sehTGjl8fQGuKUqTTDZWqQqxXMp
+YmicxMtoDVYNBpRNwfPiplgWiU2OnThB2wAAAAAAAA==
+
+--Apple-Mail-4--807124066--
+
+From sacadmin Thu Jul  5 11:14:41 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l65IEeo2004222
+	for <fwarc@sac.eng.sun.com>; Thu, 5 Jul 2007 11:14:40 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l65ICWwC019339
+	for <@sunmail3mpk.sfbay.sun.com:fwarc@sun.com>; Thu, 5 Jul 2007 19:12:49 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JKP00507X9BLU00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 11:12:47 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JKP00KR3X9AJKD0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 11:12:46 -0700 (PDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l65ICkm9000454	for
+ <fwarc@sun.com>; Thu, 05 Jul 2007 18:12:46 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JKP00701X072M00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 12:12:46 -0600 (MDT)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JKP00EARX997323@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 12:12:46 -0600 (MDT)
+Date: Thu, 05 Jul 2007 14:12:42 -0400
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: Re: FWARC 2007/386: Machine Description IO Device Node Definition
+ Updates
+In-reply-to: <A7E3A934-0F37-4B77-95BE-2A62D8AA3371@Sun.COM>
+Sender: Stephen.Ehring@sun.com
+To: Eric Sharakan <Eric.Sharakan@sun.com>
+Cc: fwarc@sun.com
+Message-id: <468D349A.2040208@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <46828BFD.2050508@sun.com>
+ <A7E3A934-0F37-4B77-95BE-2A62D8AA3371@Sun.COM>
+User-Agent: Thunderbird 2.0.0.5pre (X11/20070702)
+Status: RO
+Content-Length: 1272
+
+Eric Sharakan wrote:
+>
+> Actually, [3] describes having multiple 'devalias' properties in the 
+> same virtual-device node, not included in fwd linked nodes.  Any 
+> reason why we should do it any differently for the iodevice node?
+>
+
+Two reasons:
+
+1. Virtual-devices are unique from iodevice MD nodes since with 
+virtual-device nodes there is a one-to-one correlation between MD nodes 
+and device tree nodes, whereas that may not be the case with iodevice MD 
+nodes and device tree nodes (I think I addressed this in the previous 
+mail I sent).
+
+2. devaliases for non-virtual-device nodes can have extra arguments (for 
+example, a ':f' is appended to the end of the cdrom device tree path).
+
+You are correct that this is no longer similar to the case pointed to by 
+[3], so I've updated the onepager accordingly.
+
+Steve
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2007/386/materials/onepager.txt
+
+ sac: /export/sac/FWARC/2007/386 46> diff materials/onepager.txt 
+materials.old4/onepager.txt
+90c90,92
+<         for each node that it finds.
+---
+ >         for each node that it finds. This is similar to the mechanism
+ >         proposed for the virtual-device nodes in [3], although here we
+ >         have to explictly state the path.
+ sac: /export/sac/FWARC/2007/386 47>
+
+
+From sacadmin Thu Jul  5 11:17:07 2007
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l65IH7pn004236
+	for <fwarc@sac.eng.sun.com>; Thu, 5 Jul 2007 11:17:07 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l65IEV4v039252
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 5 Jul 2007 12:14:31 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JKP00305XDFOO00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 11:15:15 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JKP00HJ9XDEWS60@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 11:15:14 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id l65IFDA9012125; Thu, 05 Jul 2007 11:15:13 -0700 (PDT)
+Received: from [192.168.0.2] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l65IFCgr039840; Thu,
+ 05 Jul 2007 11:15:12 -0700 (PDT)
+Date: Thu, 05 Jul 2007 11:15:10 -0700
+From: David Kahn <David.Kahn@Sun.COM>
+Subject: Re: FWARC 2007/386 update
+To: Eric Sharakan <Eric.Sharakan@Sun.COM>
+Cc: Stephen Ehring <Stephen.Ehring@Sun.COM>, fwarc@Sun.COM
+Message-id: <468D352E.4000503@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0.0.4 (Windows/20070604)
+Status: RO
+Content-Length: 497
+
+
+
+Eric Sharakan wrote:
+
+> I'm okay with this approach.  Once LDoms starts supporting allocation of 
+> individual PCI leaf devices to domains, any device we would so allocate 
+> will need to be represented with its own node in the MD anyway.
+> 
+> Would it be appropriate to clarify the case materials with this info?
+
+Why? Nothing in this case precludes it as far
+as I can tell, and I would imagine that many
+things will change for that project and that
+project will have cases of its own.
+
+-David
+
+From sacadmin Thu Jul  5 13:46:37 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l65Kkamu007207
+	for <fwarc@sac.eng.sun.com>; Thu, 5 Jul 2007 13:46:36 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l65Kiah5027690
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 5 Jul 2007 21:44:44 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JKQ00I034AKZ500@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 13:44:44 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JKQ00HOO4AJWPD0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 13:44:44 -0700 (PDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l65Kiht6010712	for
+ <fwarc@sun.com>; Thu, 05 Jul 2007 20:44:43 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JKQ00C0149KMO00@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 14:44:43 -0600 (MDT)
+Received: from [129.148.180.232] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JKQ00D3S4AI0Q60@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 14:44:43 -0600 (MDT)
+Date: Thu, 05 Jul 2007 16:44:39 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: FWARC 2007/386: Machine Description IO Device Node Definition
+ Updates
+In-reply-to: <468D349A.2040208@sun.com>
+Sender: Eric.Sharakan@sun.com
+To: Stephen Ehring <Stephen.Ehring@sun.com>
+Cc: fwarc@sun.com
+Message-id: <F8CB4749-63B2-43DC-883A-2D1EF8CFE4A9@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.3)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ boundary=Apple-Mail-8--797350285; micalg=sha1
+X-PMX-Version: 5.2.0.264296
+References: <46828BFD.2050508@sun.com>
+ <A7E3A934-0F37-4B77-95BE-2A62D8AA3371@Sun.COM> <468D349A.2040208@sun.com>
+Status: RO
+Content-Length: 5150
+
+
+--Apple-Mail-8--797350285
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=US-ASCII;
+	delsp=yes;
+	format=flowed
+
+On Jul 5, 2007, at 2:12 PM, Stephen Ehring wrote:
+
+> Eric Sharakan wrote:
+>>
+>> Actually, [3] describes having multiple 'devalias' properties in  
+>> the same virtual-device node, not included in fwd linked nodes.   
+>> Any reason why we should do it any differently for the iodevice node?
+>>
+>
+> Two reasons:
+>
+> 1. Virtual-devices are unique from iodevice MD nodes since with  
+> virtual-device nodes there is a one-to-one correlation between MD  
+> nodes and device tree nodes, whereas that may not be the case with  
+> iodevice MD nodes and device tree nodes (I think I addressed this  
+> in the previous mail I sent).
+
+Yes you did, and as I said in response, I'm okay with this approach.
+
+>
+> 2. devaliases for non-virtual-device nodes can have extra arguments  
+> (for example, a ':f' is appended to the end of the cdrom device  
+> tree path).
+>
+> You are correct that this is no longer similar to the case pointed  
+> to by [3], so I've updated the onepager accordingly.
+
+Great; thanks.  I have no other issues with this case.
+
+-Eric
+
+>
+> Steve
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2007/386/materials/ 
+> onepager.txt
+>
+> sac: /export/sac/FWARC/2007/386 46> diff materials/onepager.txt  
+> materials.old4/onepager.txt
+> 90c90,92
+> <         for each node that it finds.
+> ---
+> >         for each node that it finds. This is similar to the  
+> mechanism
+> >         proposed for the virtual-device nodes in [3], although  
+> here we
+> >         have to explictly state the path.
+> sac: /export/sac/FWARC/2007/386 47>
+>
+
+
+--Apple-Mail-8--797350285
+Content-Transfer-Encoding: base64
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Disposition: attachment;
+	filename=smime.p7s
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEFTfUBSm04O9csLdiMZKo0YwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA2MTEwMTA0MDc0N1oXDTA3MTEwMTA0MDc0
+N1owRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1JWiATbJ
+kDoiiNur5YXkIb8Jm7RhIPgiF9/m9Pb8P9FWAVVu5sl3OcmCxOnqdPLK0Me9zL8QVJCKZzi/CWyE
+iRXHcorqn5hJZcLoXpRjiLOqqz1W0hyf/Vi/VNH9p8mAunBpeUln2WRV+2ekZUVV5gqS9FhggcEE
+EaTeNZI4YrTbOqhMA0VksYMexa7Ygn2KoQiBYtnn52g2FojTfxuwjWIbzGpwLMaLly6MePSqlM3l
+d3ZrRQiUG396IZI9J6uZ9iTdyVxV5mGa2qMvQF8UnT9z0r121JtZHkSPjQ54PvegzQ76mtBSTqPU
+Zlo/yfs+gHb9caKjTuZn5glOrACF6QIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQCN8sqiw30hzI1/b5GZKW+t
+OjvyglKLV0PpoJBzNatTr82ixDXeh6C1CspHEBO7gFPx1vW90obDfG8kjHgZKaZvysrjbeny6eFr
+Qd/eNNCTHkBCFKadle9w8ERdr7vyHFpZ/3lmo/2ogAK34t3qV5NKjngY978NUNkS4dDnItCqWzCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQVN9QFKbTg71ywt2IxkqjRjAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wNzA3
+MDUyMDQ0NDBaMCMGCSqGSIb3DQEJBDEWBBTG2B0mGtRGZLuq7ZDpn7pIGSMmbTCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEFTfUBSm
+04O9csLdiMZKo0YwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEFTfUBSm04O9csLdiMZKo0YwDQYJKoZIhvcNAQEBBQAEggEAZaUr
+5bcN5YNMXayq0tJbjPvk/WEX1wyagrPGyepAX6m/918IR1bKIU3+EkUlseAeE1bDz6CrB9RzlXEQ
+TeudCKpnGDrqdmq7YHZ9I4nzt48yYqcs8fe94a7QvSlzedrS05vHgQdqNHbRnQwoJMCoirMXdJFK
+pJF4vKwwsDu+34SeaN21qkRp9a3HV+P5Ssgwx58Phq+nUwqXQNPNuYqzhbG2vaSesQ5JJ3dpPuV2
+hvI458fUnQ0BfUX1RoF9BG1daXPVU6k2Ww1wiHlz8wMKTw0p7GnoA3uFir8WWTmvPf5iUuu+qJQk
+oGfoUkvTbHyLwfc0rLIUG2v4DxeEwg046AAAAAAAAA==
+
+--Apple-Mail-8--797350285--
+
+From sacadmin Thu Jul  5 13:51:30 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l65KpTt0007483
+	for <fwarc@sac.eng.sun.com>; Thu, 5 Jul 2007 13:51:30 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l65Knbdo028747
+	for <@newsunmail1brm.central.sun.com:fwarc@sun.com>; Thu, 5 Jul 2007 21:49:38 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JKQ0081R4IQSQ00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 14:49:38 -0600 (MDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JKQ004DK4IC1M90@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 14:49:24 -0600 (MDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l65KnOeF017634	for
+ <fwarc@sun.com>; Thu, 05 Jul 2007 20:49:24 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JKQ00C0149KMO00@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 05 Jul 2007 14:49:24 -0600 (MDT)
+Received: from [129.148.180.232] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JKQ00D5B4IB0Q60@mail-amer.sun.com>; Thu,
+ 05 Jul 2007 14:49:24 -0600 (MDT)
+Date: Thu, 05 Jul 2007 16:49:20 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: FWARC 2007/386 update
+In-reply-to: <468D352E.4000503@sun.com>
+Sender: Eric.Sharakan@sun.com
+To: David Kahn <David.Kahn@sun.com>
+Cc: Stephen Ehring <Stephen.Ehring@sun.com>, fwarc@sun.com
+Message-id: <73F9309C-FF66-43A2-82DC-65E35BDDB7B2@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.3)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ boundary=Apple-Mail-9--797069239; micalg=sha1
+X-PMX-Version: 5.2.0.264296
+References: <468D352E.4000503@sun.com>
+Status: RO
+Content-Length: 4572
+
+
+--Apple-Mail-9--797069239
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=US-ASCII;
+	delsp=yes;
+	format=flowed
+
+On Jul 5, 2007, at 2:15 PM, David Kahn wrote:
+
+>
+>
+> Eric Sharakan wrote:
+>
+>> I'm okay with this approach.  Once LDoms starts supporting  
+>> allocation of individual PCI leaf devices to domains, any device  
+>> we would so allocate will need to be represented with its own node  
+>> in the MD anyway.
+>> Would it be appropriate to clarify the case materials with this info?
+>
+> Why? Nothing in this case precludes it as far
+> as I can tell, and I would imagine that many
+> things will change for that project and that
+> project will have cases of its own.
+>
+> -David
+
+
+Sorry, the above was very poorly written.  I meant do we need to  
+document in the case materials the handling of the devalias nodes  
+when there is no corresponding immediate parent corresponding to the  
+device in question.  I'm satisfied with Steve's subsequent comment to  
+me that the example is captured in the email record.  The issue is  
+closed as far as I'm concerned.
+
+-Eric
+
+
+--Apple-Mail-9--797069239
+Content-Transfer-Encoding: base64
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Disposition: attachment;
+	filename=smime.p7s
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEFTfUBSm04O9csLdiMZKo0YwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA2MTEwMTA0MDc0N1oXDTA3MTEwMTA0MDc0
+N1owRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1JWiATbJ
+kDoiiNur5YXkIb8Jm7RhIPgiF9/m9Pb8P9FWAVVu5sl3OcmCxOnqdPLK0Me9zL8QVJCKZzi/CWyE
+iRXHcorqn5hJZcLoXpRjiLOqqz1W0hyf/Vi/VNH9p8mAunBpeUln2WRV+2ekZUVV5gqS9FhggcEE
+EaTeNZI4YrTbOqhMA0VksYMexa7Ygn2KoQiBYtnn52g2FojTfxuwjWIbzGpwLMaLly6MePSqlM3l
+d3ZrRQiUG396IZI9J6uZ9iTdyVxV5mGa2qMvQF8UnT9z0r121JtZHkSPjQ54PvegzQ76mtBSTqPU
+Zlo/yfs+gHb9caKjTuZn5glOrACF6QIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQCN8sqiw30hzI1/b5GZKW+t
+OjvyglKLV0PpoJBzNatTr82ixDXeh6C1CspHEBO7gFPx1vW90obDfG8kjHgZKaZvysrjbeny6eFr
+Qd/eNNCTHkBCFKadle9w8ERdr7vyHFpZ/3lmo/2ogAK34t3qV5NKjngY978NUNkS4dDnItCqWzCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQVN9QFKbTg71ywt2IxkqjRjAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wNzA3
+MDUyMDQ5MjFaMCMGCSqGSIb3DQEJBDEWBBTzaVQ4HQoXtH31wfUoYKD/eMvtmTCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEFTfUBSm
+04O9csLdiMZKo0YwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEFTfUBSm04O9csLdiMZKo0YwDQYJKoZIhvcNAQEBBQAEggEAMIwP
+vaVa4Gsfu3yagleQP0XPcVvZFr0FG8ZI0l5cgw8469pMR3h5bB+c/JgPc2x3msSEyc/kYe5hbtF8
+/tgEvYU76pSPcHwSkX0qfe+0EdeYmzgXhscjE5aojvILb1CSuFdZ8S6fPeqnGb/tbQW8NLocFb5T
+qFVlZFVFs1IjNYgBJktZbI777maJSFsLC1YF8vRFeS0w7yTywH3gHCgi/lC8Bj0Jj7GP5VysyQUU
+6W+weMVub+fjufCNm0sBK6TOCuBUJDVPJ7GQKnIWmPWQTaZRPfeT807PMGNto2aZEut/QSz9jD9F
+hWdDHVASi+yRMrVjyQDe41NZ+k9RdBFbuwAAAAAAAA==
+
+--Apple-Mail-9--797069239--
+

@@ -1,0 +1,786 @@
+#pragma ident	"@(#)bridge-emulation.txt	1.6	09/10/12 SMI"
+
+Title: SDIO Bridge Emulation Specification.
+
+
+1. Introduction.
+
+This specification defines the configuration space details for a PCI-PCI
+bridge emulation in the IO Domain, on sun4v based systems.
+
+For SDIO, and future IO device sharing projects, the domain known as the
+"Root Domain" owns the Root Complex and the PCIe fabric. With SDIO support,
+and the appropriate hardware, firmware and software support provided by other
+related projects allows certain PCIe Functions to be loaned to other domains.
+The domain that borrows the PCIe Function is known as the "IO Domain".
+
+Bridge emulation includes root ports, upstream switch ports and downstream
+switch ports.
+
+The IO Domain reflects the same fabric topology as the Root Domain,
+which is accomplished via the use of PCI-PCI bridge emulation devices in
+the IO Domain. If the Root Domain includes a root port, then the fabric
+topology in the IO Domain shall include a root port.
+
+This specification defines the behavior a generic pci-pci bridge node,
+with no device specific features, such that a generic pci-pci bridge
+driver should work when attached to a node compliant with this specification.
+
+This version of this spec has no error handling in the bridge nodes for
+generic PCIe fabric errors. All fabric errors will be reported to the Root
+Domain. Note that device specific errors reported via device specific interrupt
+messages, as with any device specific interrupts, are reported directly
+to the guest in the domain that "owns" the Function.
+
+
+The specification has 2 major parts:
+
+a. The Programmer's Reference for a PCI-PCI bridge nodes which defines the
+   configuration space layout and behavior of a the bridge emulation in
+   the IO Domains.
+
+b. The Open Firmware device binding for the PCI-PCI emulated bridge nodes,
+   which defines the properties of the bridge nodes in the IO Domain.
+
+
+2. Definitions
+
+
+Root Domain - A domain that owns the PCIe fabric, including configuration,
+  management and global error handling of that physical root complex and all
+  devices in that fabric.
+
+IO Domain - A domain that borrows one or more Functions from a Root Domain.
+
+Loaned Function - A PCIe Function in a Root Domain that is assigned to an IO
+  Domain.
+
+Borrowed Function - A PCIe Function in an IO Domain that has been borrowed
+  from a Root Domain.
+
+Function - A PCIe Function, as defined by the PCIe Base Specification.
+
+PCI-PCI bridge node - An upstream or downstream switch port.
+
+2.1. Notation
+
+This document uses the following notations:
+
+RO - Field is Read Only, writes are dropped.
+RW - Field is Read/Write
+
+(Base) - Behavior is the same as the associated base specification
+
+(Physical) - Field reflects and/or affects the physical instance of the
+  Function.
+
+RsvdZ - Field is reserved, Value 0, as with the base spec.
+
+RsvdP - Field is reserved and preserved, as defined in the base spec.
+
+Note: "Base spec" refers to the associated PCI SIG defined base specification.
+
+
+3. PCI-PCI Bridge (Emulated, IO Domain) Programmer's Reference.
+
+This section defines the configuration space layout and behavior of
+the PCI-PCI bridge emulation in the IO Domain.
+
+3.1. Type 1 Header.
+
+
+  Offset  Field				Description
+  ======  =====				===========
+
+  0x00	  Vendor ID			RO 0x108e (Base) - Sun's vendor ID
+
+  0x02	  Device ID			RO 0xfa05 (Base)
+
+  0x04	  Command			RO default value 0x7
+					IO Space Enable, Memory Space Enable,
+					BME are Set, writes are dropped.
+
+  0x06	  Status			RO 0X10
+					4: Cap List Present - RO Set (Base)
+					All other bits: 0, writes ignored.
+
+  0x08    Revision ID			RO 0x01 (Base)
+
+  0x09	  Class Code			RO 0x060400 (Base)
+
+  0x0c	  Cache Line Size		RO - Unspecified, writes ignored
+
+  0x0d	  Latency Timer			RO 0x0 (Base)
+
+  0x0e	  Header Type			RO (Base)
+
+					6:0 Header Type - 0x1
+
+					7: Multi-Function bit - Variable,
+					depending on Root Domain topology
+					exposed in the IO Domain.
+
+  0x0f	  BIST				RO 0x0 (Base) - BIST not supported.
+
+  0x10	  BAR0				RO 0X0
+					Writes are silently ignored.
+
+  0x14	  BAR1				RO 0X0 (Base)
+					Writes are silently ignored.
+
+  0x18	  Primary Bus#			RO - value inherited from Root Domain.
+					Writes are silently ignored.
+
+  0x19	  Secondary Bus#		RO - Value inherited from Root Domain.
+					Writes are silently ignored.
+
+  0x1a	  Subordinate Bus#		RO - Value inherited from Root Domain.
+					Writes are silently ignored.
+
+  0x1b	  Secondary Latency Timer	RO 0x0 (Base)
+
+  0x1c	  I/O Base			RO - Value inherited from Root Domain
+					Writes are silently ignored.
+
+  0x1d	  I/O Limit			RO - Value inherited from Root Domain
+					Writes are silently ignored.
+
+  0x1e	  Secondary Status		RO 0x0 - Writes are silently dropped
+
+  0x20	  Memory Base			RO - Value inherited from Root Domain
+					Writes are silently ignored.
+
+  0x22	  Memory Limit			RO - Value inherited from Root Domain
+					Writes are silently ignored.
+
+  0x24	  Prefetchable Memory Base	RO - Value inherited from Root Domain
+					Writes are silently ignored.
+
+  0x26	  Prefetchable Memory Limit	RO - Value inherited from Root Domain
+					Writes are silently ignored.
+
+  0x28	  Prefetchable Base Upper 32	RO - Value inherited from Root Domain
+					Writes are silently ignored.
+
+  0x2c	  Prefetchable Limit Upper 32	RO - Value inherited from Root Domain
+					Writes are silently ignored.
+
+  0x30	  I/O Base Upper 16 Bits	RO - Value inherited from Root Domain
+					Writes are silently ignored.
+
+  0x32	  I/O Limit Upper 16 Bits	RO - Value inherited from Root Domain
+					Writes are silently ignored.
+
+  0x34	  Capability Pointer		RO 0x40 (Base)
+
+  0x35	  Reserved			RO unspecified (Base)
+
+  0x38	  Expansion ROM BAR		RO 0x0
+					Writes are silently ignored.
+
+  0x3c	  Interrupt Line		RO unspecified (Base)
+
+  0x3d	  Interrupt Pin			RO value 0x0 (Base)
+
+  0x3e	  Bridge Control		RO Value 0x0 (Base)
+					Writes are silently ignored.
+
+3.2. PCI Power Management Capability - Offset 0x40
+
+To avoid conflicts, physical power management of bridges must be implemented
+in the Root Domain. This capability is included for compliance with the base
+spec.
+
+  0x40	  PM Cap ID			RO Value 0x1 (Base)
+
+  0x41	  Next Cap Pointer		RO Value 0x50 (Base)
+
+  0x42	  PM Capabilities		RO 0xc803 (base)
+					2:0 version - value 011b
+					15, 14, 11 required by PCIe
+					All other bits - 0x0
+
+  0x44	  PM Control/Status		RO 0x0
+					Writes are silently ignored.
+
+  0x46	  PMCSR Bride Extensions	RO 0x0 (Base)
+					Inherited from Root Domain.
+
+  0x47	  Data				RO 0x0 (Base)
+
+3.3. PCI Express Capability - Offset 0x50
+
+  0x50	  PCI Express Cap ID		RO Value 0x10 (Base)
+
+  0x51	  Next Cap Pointer		RO Value 0 (Base)
+
+  0x52	  PCI Express Capabilities	RO Variable (Base)
+
+					3:0 Capability Version value 0x2 (Base)
+
+					7:4 Device/Port Type (Base):
+					    0100b - Root Port
+					    0101b - Upstream Switch Port
+					    0110b - Downstream Switch port
+
+					8: Slot Implemented (Base) 0x0.
+
+					13:9 Interrupt Message Number 0x0 (Base)
+
+					All other bits: 0
+
+  0x54	  Device Capabilities		RO Variable (Base)
+
+					2:0 Max Payload Size Supported (Base)
+					  (Physical)
+
+					4:3 Phantom Functions Supported 0 (Base)
+
+					5: Extended Tag Supported 0 (Base)
+
+					8:6 Endpoint L0s Latency 0 (Base)
+
+					11:9 Endpoint L1 Latency 0 (Base)
+
+					14:12 Reserved/Undefined 0 (Base)
+
+					15: Role Based Error Reporting 1 (Base)
+
+					25:18 Captured Slot Power Limit Value
+					  0x0 (Base)
+
+					27:26 Captured Slot Power Limit Scale
+					  0x0 (Base)
+
+					28: Function Level Reset Cap 0 (Base)
+
+  0x58	  Device Control		RO Variable, Writes are dropped
+
+					Device Control is done via the physical
+					interface in the Root Domain.
+
+					0: Correctable Error Reporting Enable
+					  Default value 0, ignored.
+
+					1: Non-Fatal Error Reporting Enable
+					  Default value 0, ignored.
+
+					2: Fatal Error Reporting Enable
+					  Default value 0, ignored.
+
+					3: UR Reporting Enable
+					  Default value 0, ignored.
+
+					4: Enable Relaxed Ordering,
+					  Default value 0 (not supported).
+
+					7:5 Max Payload Size, Default value 0.
+					  Note: MPS must be managed in the Root
+					  Domain.
+
+					8: Extended Tag Field Enable, RO 0.
+
+					9: Phantom Function Enable, RO 0.
+
+					10: Aux Power PM Enable, RO 0.
+
+					11: Enable No Snoop, RO 0.
+
+					14:12 Max Read Request Size. RO 0.
+					  Note: MRRS must be managed in the
+					  Root Domain.
+
+					15: Reserved, RO 0
+
+  0x5a	  Device Status			RO Default Value 0, writes ignored.
+
+					Note: For this version of the spec,
+					all device status bits are reported
+					via the physical interface in the Root
+					Domain.
+
+  0x5c	  Link Capabilities		RO Variable, Value 0
+
+					All bits are (Physical) and report
+					the value from the Root Domain except
+					for the following fields:
+
+					19: Surprise Down Error Reporting
+					  Capable - 0
+
+					20: DLL Active Reporting - 0
+
+					21: Link Bandwidth Notification Cap
+					  0 RO.
+
+  0x60	  Link Control			RO Variable, 0, writes are dropped
+
+					PM and Link management is done in via
+					  the physical interface in the  Root
+					  Domain only. Writes are ignored in
+					  by the emulation.
+
+					1:0 ASPM Control 0 RO
+
+					3: Read Completion Boundary 0 RO
+
+					4: Link Disable, default value 0, RO
+
+					5: Retrain Link 0 RO (drop writes)
+
+					6: Common Clock Configuration, 0 RO,
+					  drop writes.
+
+					7: Extended Synch 0 RO, drop writes
+
+					8: Enable Clock Power Management,
+					  default value 0, RO, drop writes.
+
+					9: HW Autonomous Width Disable,
+					  hardwired 0 RO.
+
+					10: Link Bandwidth Management Interrupt
+					  Enable, 0 RO.
+
+					11: Link Autonomous Bandwidth Interrupt
+					  Enable, 0 RO.
+
+  0x62	  Link Status			RO Variable
+
+					3:0 Current Link Speed (Physical)
+
+					9:4 Negotiated Link Width (Physical)
+
+					10: Undefined 0.
+
+					11: Link Training, 0
+
+					12: Slot Clock Configuration (Physical)
+
+					13: DLL Active, 0 RO.
+
+					14: Link Bandwidth Management Status,
+					  0 RO.
+
+					15: Link Autonomous Bandwidth Status,
+					  0 RO.
+
+  0x64	  Slot Capabilities		RO 0 (not implemented)
+
+					Slot Capabilities, Status and Control
+					registers are present only if the
+					"slot implemented" bit in the PCI
+					Express Capabilities register is Set.
+
+					For this version of the specification,
+					the "slot implemented" bit will never
+					be set, thus, this register is not
+					implemented.
+
+					0: Attention Button Present,
+					  implementation specific. Optional.
+
+					1: Power Controller Present
+
+					2: MRL Sensor Present
+
+					3: Attention Indicator Present,
+					  implementation specific, Optional.
+
+					4: Power Indicator Present,
+					  implementation specific, Optional.
+
+					5: Hot Plug Surprise, Variable,
+					  implementation specific, Optional.
+
+					6: Hot Plug Capable, Optional,
+					  implementation specific.
+
+					14:7 Slot Power Limit Value, RO.
+					   PM is done in the Root Domain only.
+
+					16:15 Slot Power Limit Scale, RO.
+					   PM is done in the Root Domain only.
+
+					17: Electromechanical Interlock Present,
+					   Optional, implementation specific.
+
+					18: No Command Completed Support,
+					   Optional.
+
+					31:19 Physical Slot Number, Variable,
+					   RO.
+
+  0x68	  Slot Control			RO 0 (not implemented)
+
+					Slots are not implemented in this
+					version of this specification.
+
+					See text in "Slot Capabilities".
+
+					0: Attention Button Pressed Enable.
+
+					1: Power Fault Detected Enable.
+
+					2: MRL Sensor Changed Enable.
+
+					3: Presence Detect Changed Enable.
+
+					4: Command Completed Interrupt Enable.
+
+					5: Hot Plug Interrupt Enable.
+
+					7:6 Attention Indicator Control.
+
+					9:8 Power Indicator Control.
+
+					10: Power Controller Control.
+
+					11: Electromechanical Interlock
+					  Control.
+
+					12: DLL State Change Enabled.
+
+
+  0x6a	  Slot Status			R0 0, (not implemented)
+
+					Slots are not implemented in this
+					version of this specification.
+
+					See text in "Slot Capabilities".
+
+					0: Attention Button Pressed.
+
+					1: Power Fault Detected.
+
+					2: MRL Sensor Changed.
+
+					3: Presence Detect Changed.
+
+					4: Command Completed.
+
+					5: MRL Sensor State, RO
+
+					6: Presence Detect State, RO
+
+					7: Electromechanical Interlock Status,
+					  RO
+
+					8: DLL State Changed, 0.
+
+
+  0x6c	  Root Control			RO 0, if present, writes are dropped
+
+					Present only for root ports, if the
+					Root Domain implements a Root Port for
+					this RC, a virtual root port shall be
+					present in the IO Domain.
+
+					In this version of this specification,
+					these bits have no effect since root
+					port error detection and reporting is
+					done in the Root Domain.
+
+					0: System Error on Correctable Error
+					  Enable, default value 0, RO
+
+					1: System Error on Non-Fatal Error
+					  Enable, default value 0, RO
+
+					2: System Error on Fatal Error Enable,
+					  default value 0, RO
+
+					3: PME Interrupt Enable, default
+					  value 0, RO.
+
+					4. CRS Software Visibility Enable,
+					  hardwired 0b, RO
+
+
+  0x6e	  Root Capabilities		RO 0x0 (Base)
+
+					0: CRS Software Visibility, RO 0.
+
+  0x70	  Root Status			RO 0x0
+
+					Root Port PM is managed in the Root
+					Domain.
+
+					15:0 PME Requester ID, 0, RO
+
+					16: PME Status, RO 0 (ignore writes)
+
+					17: PME Pending RO 0
+
+  0x74	  Device Capabilities 2		RO, Variable
+
+					In general, device capability, control
+					and status are managed and controlled
+					in the root domain.
+
+					3:0 Completion Timeout Ranges Supported
+					  0, RO.  Applicable to root ports only.
+					  If available, this feature is
+					  managed in the Root Domain only.
+
+					4: Completion Timeout Disable Support,
+					  0, RO. Not applicable to port types
+					  supported by the emulation.
+
+					5: ARI Forwarding Supported. RO, Set
+					  if Root Ports and downstream switch
+					  port emulation supports ARI
+					  forwarding, otherwise Clear.
+					  (Physical)
+
+					6: Atomic Op Routing Supported,
+					   RO (Physical).
+
+					7: 32-bit AtomicOp Completer Supported,
+					   RO (Physical).
+
+					8: 64-bit AtomicOp Completer Supported,
+					   RO (Physical).
+
+					9: 128-bit CAS Completer Supported,
+					   RO (Physical).
+
+					10: No RO-enabled PR-PR Passing,
+					   RO, 0.
+
+					11: LTR Mechanism Supported, RO, 0.
+
+					13:12 TPH Completer Supported. RO, 0.
+
+					20: Extended Fmt Field Supported, RO,
+					  0 (Managed in the Root Domain, if
+					  available.)
+
+					21: End-End TLP Prefix Supported, RO,
+					  0. (Managed in the Root Domain, if
+					  available.)
+
+					23:22 Max End-End TLP Prefixes, RO, 0,
+					  (Managed in the Root Domain, if
+					  available.)
+
+  0x78	  Device Control 2		RO, Variable
+
+					Device Control is done on the physical
+					device in the Root Domain.
+
+					3:0 Completion Timeout Value, RO,
+					  hardwired value 0.
+
+					4: Completion Timeout Disable, RO
+					  hardwire value 0.
+
+					5: ARI Forwarding Enable, RO,
+					  (Physical) Writes are dropped. ARI is
+					  managed in the Root Domain.
+
+					6: AtomicOp Requester Enable, RO, 0.
+					  This bit has no effect, the feature,
+					  if available, is controlled in the
+					  Root Domain.
+
+					7: AtomicOp Egress Blocking, RO, 0.
+					  This bit has no effect, the feature,
+					  if available, is controller in the
+					  Root Domain.
+
+					8: IDO Request Enable, RO, hardwired
+					  0. For Root Ports, this bit, if
+					  implemented, is controlled in the
+					  Root Domain.
+
+					9: IDO Completion Enable, RO, hardwired
+					  0. For Root Ports, this bit, if
+					  implemented, is controlled in the
+					  Root Domain.
+
+					10: LTR Mechanism Enable, RO, hardwired
+					  0. LTR, if implemented, is available
+					  only in the Root Domain.
+
+					15: End-End TLP Prefix Blocking, 0.
+					  Writing this bit has no effect on
+					  the hardware in the IO Domain.
+					  If implemented by the hw, this bit
+					  is managed in the Root Domain only.
+
+  0x7a	  Device Status 2		RsvdZ (Base), Reads as value 0.
+
+					This register is reserved by the
+					base spec. Writes in the IO Domain
+					are silently dropped.
+
+  0x7c	  Link Capabilities 2		RsvdP (Base), Reads as value 0.
+
+					This register is reserved by the
+					base spec. Writes in the IO Domain
+					are silently dropped.
+
+  0x80	  Link Control 2		RO, Variable, Writes are dropped.
+
+					All link management is done in the
+					Root Domain.
+
+					3:0 Target Link Speed, RO (Physical)
+					  Writes are dropped in the IO Domain
+
+					4: Enter Compliance, RO 0
+					  Writes are dropped in the IO Domain
+
+					5: Hardware Autonomous Speed Disable,
+					  RsvdP, 0. Managed in the Root Domain
+					  only, if implemented.
+
+					6: Selectable De-emphasis, Variable,
+					  RO (Physical).
+
+					9:7 Transmit Margin, 0, RO
+
+					10 Enter Modified Compliance, 0, RO
+					  Writes are dropped.
+
+					11 Compliance SOS, 0, RO
+					  Writes are dropped.
+
+					12 Compliance De-emphasis, 0, RO
+					  Writes are dropped.
+
+
+  0x82	  Link Status 2			0, RO
+
+					0: Current De-emphasis level, 0, RO
+
+
+  0x84	  Slot Capabilities 2		0, RO (reserved by base spec)
+
+  0x88	  Slot Control 2		0, RO (reserved by base spec)
+
+  0x8a	  Slot Status 2			0, RO (reserved by base spec)
+
+
+3.4. PCI Express Extended Capabilities - Offset 0x100, Value 0, RO.
+
+This version of the spec does not support any PCI Express Extended
+Capabilities.
+
+4. Open Firmware Device Binding For "Emulated PCI-PCI Bridge nodes".
+
+4.1. Description.
+
+This section defines the Open Firmware Device binding for a PCI-PCI bridge
+nodes in the IO Domain. Bridge nodes includes root ports (if present in the
+Root Domain), upstream and downstream switch ports.
+
+4.2 Open Firmware Defined Properties for Device and Bus Nodes.
+
+These properties are defined in the latest version of the PCIe binding
+to Open Firmware. All propname, type and value definitions are inherited
+from that binding.
+
+4.2.1 OF Defined Properties.
+
+Propname		Property Value
+========		==============
+
+"name"			"pci"
+
+"vendor-id"		0x108e
+
+"device-id"		0xfa05
+
+"class-code"		0x060400
+
+"compatible"		Defined by the PCIe Binding to Open Firmware (as
+			amended, see references) contains the following
+			strings in the order shown below:
+
+			"pciex,108e,fa05,1"			(4)
+			"pciex,108e,fa05"			(5)
+			"pciexclass,060400"			(6)
+			"pciexclass,0604"			(7)
+
+"reg"			Defines the registers of the device.
+			Contains a single entry with the config space address.
+
+"device_type"		"pciex"
+
+"interrupts"		Describes the Function's INTx interrupts.
+
+"#address-cells"	Value 3
+
+"#size-cells"		Value 2
+
+"ranges"		Variable values, reflects the addresses assigned
+			to the bridges mapping registers.
+
+"bus-range"		Variable values, reflects the bus# ranges passed
+			through this bridge.
+
+"slot-names"		Variable values, contains slot names of the child
+			slots.
+
+"available"		PCI adress spaces decoded by this device, but
+			not assigned to any child device.
+
+4.2.2. OF Defined Methods
+
+A bridge node compliant with this spec shall implement the following
+methods. See PCI Binding to Open Firmware [4], for details of each
+method.
+
+
+open		( -- okay? )		Prepare this device for subsequent use
+close		( -- )			Close this previously open device
+
+map-in	( phys.low phys.mid phys.hi size -- virt ) Map the specified region
+map-out		( virt size -- )	Destroy a mapping from prev. map-in
+
+dma-alloc	( size -- virt )	Allocate a memory region for later use
+dma-free	( virt size -- )	Free memory allocated with dma-alloc
+dma-map-in ( virt size cacheable? -- devaddr ) Convert virt addr to device
+					bus DMA address
+dma-map-out  ( virt devaddr size -- )	Free DMA mapping set up with dma-map-in
+dma-sync  ( virt devaddr size -- )	Synchronize (flush) DMA caches
+
+probe-self ( arg-str arg-len reg-str reg-len fcode-str fcode-len -- ) 
+					Interpret FCode, as a child of this node
+
+decode-unit ( addr len -- phys.lo phys.mid phys.hi ) Convert text representation
+					of address to numerical representation
+
+encode-unit ( phys.lo phys.mid phys.hi -- addr len ) Convert numerical
+					representation of address to text
+
+config-l@	( config-addr -- data )	Perform a 32-bit Configuration read
+config-l!	( data config-addr -- ) Perform a 32-bit Configuration write
+config-w@	( config-addr -- data )	Perform a 16-bit Configuration read
+config-w!	( data config-addr -- ) Perform a 16-bit Configuration write
+config-b@	( config-addr -- data )	Perform an 8-bit Configuration read
+config-b!	( data config-addr -- ) Perform an 8-bit Configuration write
+
+assign-package-addresses ( phandle -- )	Assign addresses for the child node
+					denoted by phandle.
+
+5. References
+
+[1] PCI Express Base Specification 2.0, available from pcisig.com
+
+[2] PCI Local Bus Specification Revision 3.0, available from pcisig.com
+
+[3] PCI Power Management Specification, available from pcisig.com
+
+[4] PCI Bus Binding to: IEEE 1275-1994 Standard for Boot (Initialization,
+    Configuration) Firmware, Revision 2.1. available from
+    http://playground.sun.com/1275/
+
+[5] PCI Express Binding Update: FWARC/2005/565
+    http://sac.eng/FWARC/2005/565
+
+[6] SDIO HV Interfaces:
+    FWARC/2009/537
+

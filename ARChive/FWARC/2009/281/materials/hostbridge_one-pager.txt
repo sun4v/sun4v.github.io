@@ -1,0 +1,114 @@
+1. Introduction
+   1.1. Project/Component Working Name:
+        PRI clarifications for hostbridge id & PCI-E root complex node
+
+   1.2. Name of Document Author/Supplier:
+        Eric Sharakan
+
+   1.3. Date of This Document:
+        5/4/2009
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+        1.4.1. The PAC or CPT you expect to review your project:
+                None.
+
+        1.4.2. The ARC(s) you expect to review your project:
+                FWARC.
+
+        1.4.3. The Director/VP who is "Sponsoring" this project:
+                Jerri-Ann Meyer
+
+        1.4.4. The name of your business unit:
+                Software Group (SG)
+                        (Sparc Platform Software)
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: john.falkenthal@sun.com
+        1.5.2. Responsible Engineer: eric.sharakan@sun.com
+        1.5.3. Marketing Manager: duncan.hardie@sun.com
+        1.5.4. Interest List: ldoms-internal@sun.com
+
+2. Project Summary
+
+   2.1. Project Description:
+
+	This case provides additional constraints around the definition of
+	the "id" property in the hostbridge component node (i.e. the node whose 
+	"topo-hc-name" property is "hostbridge") as defined in FWARC/2008/300.
+
+	In addition, this case removes discrepancies between the specification
+	of the "hostbridge" and "pciexrc" topo-hc-name values and their actual
+	use.  Finally, inappropriate comments regarding cases in which the
+	'cfg-handle' and 'path' properties in the 'iodevice' node are not
+	required have been removed.
+
+   2.2. Risks and Assumptions:
+
+	It is assumed the new rules for the "id" property as defined in this
+	case will be in force for all PRIs conforming to FWARC/2008/300.
+
+
+3. Business Summary
+   3.1. Problem Area:
+
+   	Software needs to be able to interpret & intelligently act upon the PRI
+	as it is enhanced & updated.
+
+   3.2. Market/Requester:
+        Supernova/RF platforms, to provide the necessary infrastructure to
+	allow the LDom Manager to produce proper "rcid" property values to
+	Hypervisor.  Also, the specification needs to match the actual
+	implementation.
+
+   3.3. Business Justification:
+        
+
+   3.4. Competitive Analysis:
+        
+
+   3.5. Opportunity Window/Exposure:
+        Supernova Firmware.
+
+   3.6. How will you know when you are done?:
+        When the changes are integrated into the vBSC gates.
+
+4. Technical Description:
+
+   See updated PRI specification and diffs files including with the case
+   materials.
+
+5. Reference Documents:
+  [1] Physical Resource Inventory (PRI) FWARC case
+	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/700/
+  [2] Updates to PRI structures
+	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2007/138/
+  [3] Sun4v FMA Platform Independent FMA Topology Enumeration
+	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2008/300
+  [4] Physical Resource Inventory (PRI) Specification
+  	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/Specifications/PRI_Specification.txt
+
+6. Resources and Schedule:
+   6.1. Projected Availability:	Q1FY10
+
+   6.2. Cost of Effort: 1 person month
+
+   6.3. Cost of Capital Resources: N/A
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation or Component Name: vBSC, Solaris
+	6.4.3. Type of CPT Review and Approval expected: N/A
+        6.4.4. Project Boundary Conditions: N/A
+	6.4.5. Is this a necessary project for OEM agreements: No.
+	6.4.6. Notes: None
+	6.4.7. Target RTI Date/Release: TBD
+	6.4.8. Target Code Design Review Date: TBD
+	6.4.9. Update approval addition: N/A		
+
+   6.5. ARC review type: N/A
+		
+7. Prototype Availability:
+   7.1. Prototype Availability:
+	Q4FY09
+
+   7.2. Prototype Cost:
+      1 person month

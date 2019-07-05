@@ -1,0 +1,282 @@
+From sacadmin Wed Aug 19 11:48:27 2009
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n7JImRTe015758;
+	Wed, 19 Aug 2009 11:48:27 -0700 (PDT)
+Received: (from tychon@localhost)
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit) id n7JImRew015754;
+	Wed, 19 Aug 2009 11:48:27 -0700 (PDT)
+Date: Wed, 19 Aug 2009 11:48:27 -0700 (PDT)
+From: Tycho Nightingale <tychon@sac.sfbay.sun.com>
+Message-Id: <200908191848.n7JImRew015754@sac.sfbay.sun.com>
+To: FWARC-record@sac.sfbay.sun.com
+Cc: David.Finberg@Sun.COM
+Subject: HV APIs for cooperative guest migration [FWARC/2009/452 FastTrack]
+Status: RO
+Content-Length: 580
+
+
+Template Version: @(#)sac_nextcase 1.68 02/23/09 SMI
+This information is Copyright 2009 Sun Microsystems
+1. Introduction
+    1.1. Project/Component Working Name:
+	 HV APIs for cooperative guest migration
+    1.2. Name of Document Author/Supplier:
+	 Author:  David Finberg
+    1.3  Date of This Document:
+	19 August, 2009
+4. Technical Description
+    See the case directory for more detail
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		unknown
+    6.5. ARC review type: FastTrack
+    6.6. ARC Exposure: open
+
+
+From sacadmin Wed Aug 19 12:19:07 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n7JJJ7hQ022461
+	for <fwarc@sac.sfbay.sun.com>; Wed, 19 Aug 2009 12:19:07 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n7JJJ45c010194
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 19 Aug 2009 13:19:07 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KON00B1H1NTVE00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 19 Aug 2009 13:19:05 -0600 (MDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KON005EZ1NSJD40@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 19 Aug 2009 13:19:04 -0600 (MDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n7JJJ4MK002147	for
+ <fwarc@sun.com>; Wed, 19 Aug 2009 19:19:04 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KON00K001FAJZ00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 19 Aug 2009 13:19:04 -0600 (MDT)
+Received: from burl-legion-0 ([unknown] [10.8.28.177])
+ by mail-amer.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KON00HER1N9UY30@mail-amer.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 19 Aug 2009 13:18:46 -0600 (MDT)
+Date: Wed, 19 Aug 2009 15:18:45 -0400 (EDT)
+From: Tycho Nightingale <Tycho.Nightingale@sun.com>
+Subject: FWARC/2009/452 HV APIs for cooperative guest migration
+Sender: Tycho.Nightingale@sun.com
+X-X-Sender: tychon@burl-legion-0
+To: FWARC <fwarc@sun.com>
+Cc: David.Finberg@sun.com
+Reply-to: Tycho Nightingale <Tycho.Nightingale@sun.com>
+Message-id: <Pine.SOC.4.64.0908191514580.28452@burl-legion-0>
+MIME-version: 1.0
+Content-type: TEXT/PLAIN; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 386
+
+
+I'm sponsoring this fast-track for David Finberg.
+
+This case introduces Hypervisor APIs for support of cooperative guest 
+migrations.  These APIs will be used by sun4v guest domains.
+
+The onepager is in the materials directory.
+
+The project seeks a minor/micro binding of the firmware and the trap 
+registry will be updated upon approval.
+
+The timer expires on August 26, 2009.
+
+Tycho
+
+From sacadmin Wed Aug 26 08:34:17 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n7QFYHxu011416
+	for <fwarc@sac.sfbay.sun.com>; Wed, 26 Aug 2009 08:34:17 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n7QFYEAe007612
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 26 Aug 2009 08:34:17 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KOZ00M3BPX4U800@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 26 Aug 2009 09:34:16 -0600 (MDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KOZ008QFPX24WD0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 26 Aug 2009 09:34:14 -0600 (MDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n7QFYENA012536	for
+ <fwarc@sun.com>; Wed, 26 Aug 2009 15:34:14 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KOZ00600PRFCJ00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 26 Aug 2009 09:34:14 -0600 (MDT)
+Received: from dartmouth ([unknown] [129.148.180.127])
+ by mail-amer.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KOZ00CBFPWRMED0@mail-amer.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 26 Aug 2009 09:34:04 -0600 (MDT)
+Date: Wed, 26 Aug 2009 11:34:03 -0400 (EDT)
+From: David Finberg <David.Finberg@sun.com>
+Subject: Re: FWARC/2009/452 HV APIs for cooperative guest migration
+In-reply-to: <Pine.SOC.4.64.0908191514580.28452@burl-legion-0>
+Sender: David.Finberg@sun.com
+To: Tycho Nightingale <Tycho.Nightingale@sun.com>
+Cc: FWARC <fwarc@sun.com>
+Message-id: <alpine.SOC.1.00.0908261010470.12582@dartmouth>
+Content-id: <alpine.SOC.1.00.0908261131291.12582@dartmouth>
+MIME-version: 1.0
+Content-type: TEXT/PLAIN; CHARSET=US-ASCII; FORMAT=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <Pine.SOC.4.64.0908191514580.28452@burl-legion-0>
+User-Agent: Alpine 1.00 (SOC 882 2007-12-20)
+Status: RO
+Content-Length: 2773
+
+On Wed, 19 Aug 2009, Tycho Nightingale wrote:
+
+>
+> I'm sponsoring this fast-track for David Finberg.
+>
+> This case introduces Hypervisor APIs for support of cooperative guest 
+> migrations.  These APIs will be used by sun4v guest domains.
+>
+> The onepager is in the materials directory.
+
+I noticed that I had chosen trap numbers that were higher than necessary, 
+and have updated the materials to reflect the change to lower trap 
+numbers.  Diffs are below, I'll work with Tycho to get the directory 
+updated.
+
+-- Dave
+
+
+--- onepager.txt        Wed Aug 26 10:12:25 2009
++++ onepager.txt.v2     Wed Aug 26 10:13:18 2009
+@@ -98,9 +98,9 @@
+     The Core API group version 1.2 adds the following hcalls
+
+     Function#   Name    Description
+-   0x190       GUEST_SUSPEND   Suspend the guest
+-   0x191       CPU_TICK_NPT    Set/Unset the NPT bit on tick on this cpu
+-   0x192       CPU_STICK_NPT   Set/Unset the NPT bit on stick on this cpu
++   0x181       GUEST_SUSPEND   Suspend the guest
++   0x182       CPU_TICK_NPT    Set/Unset the NPT bit on tick on this cpu
++   0x183       CPU_STICK_NPT   Set/Unset the NPT bit on stick on this cpu
+
+
+    4.1.1.2 GUEST_SUSPEND
+@@ -107,7 +107,7 @@
+
+    Entry :
+       trap#      FAST_TRAP
+-     function#         GUEST_SUSPEND (0x190)
++     function#         GUEST_SUSPEND (0x181)
+    Exit :
+       ret0      status (success or error code)
+
+@@ -131,7 +131,7 @@
+
+     Entry :
+       trap#      FAST_TRAP
+-     function#  CPU_TICK_NPT (0x191)
++     function#  CPU_TICK_NPT (0x182)
+       arg0       enable/disable
+     Exit :
+       ret0       status (success or error code)
+@@ -149,7 +149,7 @@
+
+     Entry :
+       trap#      FAST_TRAP
+-     function#  CPU_STICK_NPT (0x191)
++     function#  CPU_STICK_NPT (0x183)
+       arg0       enable/disable
+     Exit :
+       ret0       status (success or error code)
+@@ -181,13 +181,13 @@
+        Interface        Classification       Comments
+
+=======================================================================
+
+-      GUEST_SUSPEND       Committed          Function 0x190, group 0x1, 
+version 1.2
++      GUEST_SUSPEND       Committed          Function 0x181, group 0x1, 
+version 1.2
+                                               as defined in section 
+4.1.1.2
+
+-      CPU_TICK_NPT        Committed          Function 0x191, group 0x1, 
+version 1.2
++      CPU_TICK_NPT        Committed          Function 0x182, group 0x1, 
+version 1.2
+                                               as defined in section 
+4.1.1.3
+
+-      CPU_STICK_NPT       Committed          Function 0x192, group 0x1, 
+version 1.2
++      CPU_STICK_NPT       Committed          Function 0x183, group 0x1, 
+version 1.2
+                                               as defined in section 
+4.1.1.4
+
+  5. Reference Documents:
+
+
+From sacadmin Wed Sep  2 10:28:13 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n82HSDUV002500
+	for <fwarc@sac.sfbay.sun.com>; Wed, 2 Sep 2009 10:28:13 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n82HSCMQ022918
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 2 Sep 2009 10:28:13 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KPC00701TV1ZG00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 02 Sep 2009 10:28:13 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KPC001W8TV048E0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 02 Sep 2009 10:28:12 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n82HSCYG016801	for
+ <fwarc@sun.com>; Wed, 02 Sep 2009 17:28:12 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KPC00000TSDCY00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 02 Sep 2009 11:28:12 -0600 (MDT)
+Received: from burl-legion-0 ([unknown] [10.8.28.177])
+ by mail-amer.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KPC00IFFTUXRLA0@mail-amer.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 02 Sep 2009 11:28:09 -0600 (MDT)
+Date: Wed, 02 Sep 2009 13:28:09 -0400 (EDT)
+From: Tycho Nightingale <Tycho.Nightingale@sun.com>
+Subject: Re: FWARC/2009/452 HV APIs for cooperative guest migration
+In-reply-to: <Pine.SOC.4.64.0908191514580.28452@burl-legion-0>
+Sender: Tycho.Nightingale@sun.com
+X-X-Sender: tychon@burl-legion-0
+To: FWARC <fwarc@sun.com>
+Cc: David.Finberg@sun.com
+Reply-to: Tycho Nightingale <Tycho.Nightingale@sun.com>
+Message-id: <Pine.SOC.4.64.0909021323340.26321@burl-legion-0>
+MIME-version: 1.0
+Content-type: TEXT/PLAIN; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <Pine.SOC.4.64.0908191514580.28452@burl-legion-0>
+Status: RO
+Content-Length: 70
+
+
+The case timer has expired.  The case is approved and closed.
+
+Tycho
+

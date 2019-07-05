@@ -1,0 +1,141 @@
+From sacadmin Fri Mar  2 15:07:52 2007
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l22N7qLT004787
+	for <fwarc@sac.eng.sun.com>; Fri, 2 Mar 2007 15:07:52 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l22N7pGx024820;
+	Fri, 2 Mar 2007 15:07:51 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JEA0022XTL30I00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 02 Mar 2007 15:07:51 -0800 (PST)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JEA00MXXTL1RY20@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 02 Mar 2007 15:07:50 -0800 (PST)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l22N7n6q011430; Fri,
+ 02 Mar 2007 23:07:49 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JEA00F01T7BY000@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Fri,
+ 02 Mar 2007 16:07:49 -0700 (MST)
+Received: from [129.150.34.109] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JEA006J6TL09ME3@mail-amer.sun.com>; Fri,
+ 02 Mar 2007 16:07:49 -0700 (MST)
+Date: Fri, 02 Mar 2007 15:07:48 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Self-review: 2007/122 - VIO MD node updates
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Message-id: <45E8AE44.6050301@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=windows-1252
+Content-transfer-encoding: 8BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0b2 (Windows/20070116)
+Status: RO
+Content-Length: 3720
+
+I am sponsoring this self-review case for Eric Sharakan.  This case
+amends the VIO MD nodes as defined in FWARC/2006/072.
+
+This case will be approved for minor/micro/patch OS binding and
+minor/micro binding for the firmware
+
+All of the changes are highlighted in the updated document which
+can be found at,
+
+http://sac.sfbay.sun.com/arc/FWARC/2007/122/materials/vio-md-nodes-v3.pdf
+
+The brief description of the changes are,
+
+
+1.  Section 5.1.3, virtual-device class table (channel devices).
+
+     Add following three rows/entries.
+
+
+   Service  Class   compatible                 device-type  name
+   Group
+   =========================================================================
+
+    Serial  Client   SUNW,sun4v-channel            serial virtual-channel-
+                                                          client
+    Serial  Server   SUNW,sun4v-data-plane-channel serial virtual-data-plane-
+                                                          channel
+    Serial  Client   SUNW,sun4v-data-plane-channel serial virtual-data-plane-
+                                                          channel-client
+
+
+Notes: the virtual-channel-client was missing from the earlier version of
+        the document.  It should have been there in the first place.  This
+        case corrects that.
+
+        virtual-data-plane-channel and virtual-data-plane-channel-client are
+        needed to support Netra products.  These products rely on the
+        low-level channel services, but have different driver implementation
+        and loading needs.  They also have both Solaris and non-Solaris
+        drivers (one for each end of the channel) on these platforms.
+
+
+2. Section 5.1.4, Device class specific properties table
+
+    Add followings.
+
+
+    Name                   Tag       Required  Description
+
+    vds-block-device-opts  PROP_DATA no        An array of string names
+                                               identifying the options for
+                                               the device used by a vds-port
+                                               in SUNW,sun4v-disk-server
+                                               device. Current valid options
+                                               are:
+
+                                               “ro” - The device is used
+                                               and exported by vds as a
+                                               read-only device
+
+                                               “slice” - The device is
+                                               exported by vds as a disk
+                                                slice.
+
+
+     vdpc-svc-name         PROP_STR   no        A string name specifying the
+                                                service
+                                                SUNW,sun4v-data-plane-channel
+                                                or
+                                         SUNW,sun4v-data-plane-channel-client
+                                                is providing over this port
+
+
+3.  Section 5.1.4, virtual-device-port class table
+
+     Added a column to describe the name of parent virtual-device node
+     for clarity.
+
+
+     And add followings.
+
+    Service  Group   Class name    name of parent virtual-device node
+
+    Serial   Client  vldc-port     virtual-channel-client
+    Serial   Server  vdpc-port     virtual-data-plane-channel
+    Serial   Client  vdpc-port     virtual-data-plane-channel-client
+
+
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+

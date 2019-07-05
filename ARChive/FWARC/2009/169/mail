@@ -1,0 +1,1117 @@
+From sacadmin Wed Mar 11 11:03:25 2009
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n2BI3P5v008287;
+	Wed, 11 Mar 2009 11:03:25 -0700 (PDT)
+Received: (from tychon@localhost)
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit) id n2BI3Pvr008283;
+	Wed, 11 Mar 2009 11:03:25 -0700 (PDT)
+Date: Wed, 11 Mar 2009 11:03:25 -0700 (PDT)
+From: Tycho Nightingale <tychon@sac.sfbay.sun.com>
+Message-Id: <200903111803.n2BI3Pvr008283@sac.sfbay.sun.com>
+To: FWARC-record@sac.sfbay.sun.com
+Subject: "max_guest_dependencies" property requirement in PRI [FWARC/2009/169 FastTrack timeout 3/18/2009]
+Status: RO
+Content-Length: 592
+
+
+Template Version: @(#)sac_nextcase 1.68 02/23/09 SMI
+This information is Copyright 2009 Sun Microsystems
+1. Introduction
+    1.1. Project/Component Working Name:
+	 "max_guest_dependencies" property requirement in PRI
+    1.2. Name of Document Author/Supplier:
+	 Author:  David Finberg
+    1.3  Date of This Document:
+	11 March, 2009
+4. Technical Description
+    See the case directory for more detail
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		unknown
+    6.5. ARC review type: FastTrack
+    6.6. ARC Exposure: open
+
+
+From sacadmin Mon Mar 16 09:54:18 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n2GGsH4Q000864
+	for <fwarc@sac.sfbay.sun.com>; Mon, 16 Mar 2009 09:54:17 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n2GGsDHY059878
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 16 Mar 2009 10:54:17 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KGL00101YYG9100@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 16 Mar 2009 10:54:16 -0600 (MDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KGL00ILJYWTAI70@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 16 Mar 2009 10:53:17 -0600 (MDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n2GGrHok018892	for
+ <fwarc@sun.com>; Mon, 16 Mar 2009 09:53:17 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KGL00E00YRCXL00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 16 Mar 2009 09:53:17 -0700 (PDT)
+Received: from [129.150.32.202] ([unknown] [129.150.32.202])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ with ESMTPSA id <0KGL0085GYWPEVH0@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 16 Mar 2009 09:53:14 -0700 (PDT)
+Date: Mon, 16 Mar 2009 09:53:14 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: [Fwd: Fast-track : 2009/169 - "max_guest_dependencies" property
+ requirement in PRI]
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Message-id: <49BE83FA.1080107@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_WBMeqIj5CkCywJnKNxL1oA)"
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.19 (Windows/20081209)
+Status: RO
+Content-Length: 5928
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_WBMeqIj5CkCywJnKNxL1oA)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+Corrected case number in the subject so that this mail gets
+archived in a proper FWARC case.
+
+-------- Original Message --------
+Subject: 	Fast-track : 2009/161 - "max_guest_dependencies" property 
+requirement in PRI
+Date: 	Wed, 11 Mar 2009 14:27:01 -0400 (EDT)
+From: 	Tycho Nightingale <Tycho.Nightingale@Sun.COM>
+Reply-To: 	Tycho Nightingale <Tycho.Nightingale@Sun.COM>
+To: 	Firmware ARC <fwarc@sun.com>
+CC: 	David Finberg <David.Finberg@Sun.COM>
+
+
+
+I am sponsoring this fast-track case for Dave Finberg.
+
+The proposal is to update the firmware node of the PRI to list a maximum 
+number of other domains that a guest may depend on.  When a domain resets, 
+it can be configured to have the hypervisor act on its dependent domains 
+(typically stop them).  This is desired for HA applications.
+
+A diff file, updated PRI specifications and interface table are available 
+in case directory at:
+
+ http://sac.eng/Archives/CaseLog/arc/FWARC/2009/169/materials/17-to-18.diff.txt
+ http://sac.eng/Archives/CaseLog/arc/FWARC/2009/169/materials/PRI_Specification.txt
+ http://sac.eng/Archives/CaseLog/arc/FWARC/2009/169/materials/Interface_Table.txt
+
+The proposed changes are as follows:
+
+ Add Section 1.4.1 to Section 1.4 Firmware Node:
+
+  * 1.4.1 max_guests Property
+    Name            Tag             Required
+    ----            ---             --------
+    max_guests      PROP_VAL        yes
+
+    Description
+    -----------
+    This property describes the maximum number of guests that the firmware
+    supports.
+
+Timer is set for one week from today, March 18th, 2009.
+
+This case is seeking following release bindings:
+
+ Release Binding:
+  firmware: minor/micro firmware release
+  OS: minor/micro/patch OS release.
+
+Tycho
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_WBMeqIj5CkCywJnKNxL1oA)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<font size="-1"><tt>Corrected case number in the subject so that this
+mail gets<br>
+archived in a proper FWARC case.<br>
+</tt></font><br>
+-------- Original Message --------
+<table class="moz-email-headers-table" border="0" cellpadding="0"
+ cellspacing="0">
+  <tbody>
+    <tr>
+      <th align="right" nowrap="nowrap" valign="baseline">Subject: </th>
+      <td>Fast-track : 2009/161 - "max_guest_dependencies" property
+requirement in PRI</td>
+    </tr>
+    <tr>
+      <th align="right" nowrap="nowrap" valign="baseline">Date: </th>
+      <td>Wed, 11 Mar 2009 14:27:01 -0400 (EDT)</td>
+    </tr>
+    <tr>
+      <th align="right" nowrap="nowrap" valign="baseline">From: </th>
+      <td>Tycho Nightingale <a class="moz-txt-link-rfc2396E" href="mailto:Tycho.Nightingale@Sun.COM">&lt;Tycho.Nightingale@Sun.COM&gt;</a></td>
+    </tr>
+    <tr>
+      <th align="right" nowrap="nowrap" valign="baseline">Reply-To: </th>
+      <td>Tycho Nightingale <a class="moz-txt-link-rfc2396E" href="mailto:Tycho.Nightingale@Sun.COM">&lt;Tycho.Nightingale@Sun.COM&gt;</a></td>
+    </tr>
+    <tr>
+      <th align="right" nowrap="nowrap" valign="baseline">To: </th>
+      <td>Firmware ARC <a class="moz-txt-link-rfc2396E" href="mailto:fwarc@sun.com">&lt;fwarc@sun.com&gt;</a></td>
+    </tr>
+    <tr>
+      <th align="right" nowrap="nowrap" valign="baseline">CC: </th>
+      <td>David Finberg <a class="moz-txt-link-rfc2396E" href="mailto:David.Finberg@Sun.COM">&lt;David.Finberg@Sun.COM&gt;</a></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<pre>I am sponsoring this fast-track case for Dave Finberg.
+
+The proposal is to update the firmware node of the PRI to list a maximum 
+number of other domains that a guest may depend on.  When a domain resets, 
+it can be configured to have the hypervisor act on its dependent domains 
+(typically stop them).  This is desired for HA applications.
+
+A diff file, updated PRI specifications and interface table are available 
+in case directory at:
+
+ <a class="moz-txt-link-freetext" href="http://sac.eng/Archives/CaseLog/arc/FWARC/2009/169/materials/17-to-18.diff.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/2009/169/materials/17-to-18.diff.txt</a>
+ <a class="moz-txt-link-freetext" href="http://sac.eng/Archives/CaseLog/arc/FWARC/2009/169/materials/PRI_Specification.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/2009/169/materials/PRI_Specification.txt</a>
+ <a class="moz-txt-link-freetext" href="http://sac.eng/Archives/CaseLog/arc/FWARC/2009/169/materials/Interface_Table.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/2009/169/materials/Interface_Table.txt</a>
+
+The proposed changes are as follows:
+
+ Add Section 1.4.1 to Section 1.4 Firmware Node:
+
+  * 1.4.1 max_guests Property
+    Name            Tag             Required
+    ----            ---             --------
+    max_guests      PROP_VAL        yes
+
+    Description
+    -----------
+    This property describes the maximum number of guests that the firmware
+    supports.
+
+Timer is set for one week from today, March 18th, 2009.
+
+This case is seeking following release bindings:
+
+ Release Binding:
+  firmware: minor/micro firmware release
+  OS: minor/micro/patch OS release.
+
+Tycho
+</pre>
+<br>
+<pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_WBMeqIj5CkCywJnKNxL1oA)--
+
+From sacadmin Mon Mar 16 10:02:20 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n2GH2Kwf001198
+	for <fwarc@sac.sfbay.sun.com>; Mon, 16 Mar 2009 10:02:20 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n2GH2JZp001260
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 16 Mar 2009 11:02:20 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KGL0080DZBVP000@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 16 Mar 2009 10:02:19 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KGL00MZ2ZBSR5E0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 16 Mar 2009 10:02:16 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n2GH2Gqj020301	for
+ <fwarc@sun.com>; Mon, 16 Mar 2009 10:02:16 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KGL00200Z2GXA00@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 16 Mar 2009 10:02:16 -0700 (PDT)
+Received: from [129.150.32.202] ([unknown] [129.150.32.202])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ with ESMTPSA id <0KGL00A1VZBK3YE0@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 16 Mar 2009 10:02:09 -0700 (PDT)
+Date: Mon, 16 Mar 2009 10:02:09 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Fast-track : 2009/169 - "max_guest_dependencies" property
+ requirement in PRI
+In-reply-to: <alpine.SOC.1.00.0903111827490.29023@dartmouth>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: David Finberg <David.Finberg@sun.com>
+Message-id: <49BE8611.8030309@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <Pine.SOC.4.64.0903111425220.28408@burl-legion-0>
+ <alpine.SOC.1.00.0903111827490.29023@dartmouth>
+User-Agent: Thunderbird 2.0.0.19 (Windows/20081209)
+Status: RO
+Content-Length: 1816
+
+David Finberg wrote:
+> On Wed, 11 Mar 2009, Tycho Nightingale wrote:
+>>
+>> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/169/materials/17-to-18.diff.txt 
+>>
+>> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/169/materials/PRI_Specification.txt 
+>>
+>> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/169/materials/Interface_Table.txt 
+>>
+>>
+>> The proposed changes are as follows:
+>>
+>> Add Section 1.4.1 to Section 1.4 Firmware Node:
+>
+> This should be 1.4.4 instead, all the other materials are correct :
+>
+>> Name                  Tag             Required
+>> ----                  ---             --------
+>> max_guest_dependencies        PROP_VAL        no
+>>
+>> Description
+>> -----------
+>> This property describes the maximum number of guest dependencies
+>> (per guest) that the firmware supports.  If not present, should be
+>> treated as 0.
+>>
+
+What are "guest dependencies"?  What does it represent?   It is not clear
+The explanation in the mail Tycho sent out stated,
+
+"list a maximum number of other domains that a guest may depend on.  
+When a domain resets, it can be configured to have the hypervisor act on 
+its dependent domains (typically stop them)."
+
+Lets say the dependency is greater than 0, how does HV know
+which guest domain is dependent on which other guest domain?
+
+Also, is the max number in "max_guest_dependencies" same
+among ALL guest domains?   I am assuming that this max represents
+the max number of dependency that is possible among multiple
+guests.  How is dependency among guest domains identified to HV
+so that it can stop them etc.?
+
+
+Thanks.
+>
+> -- Dave
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Mon Mar 16 11:23:43 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n2GINgmc005220
+	for <fwarc@sac.sfbay.sun.com>; Mon, 16 Mar 2009 11:23:42 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n2GINWtP017911
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 17 Mar 2009 02:23:41 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KGM0091733G6S00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 16 Mar 2009 11:23:40 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KGM008MM33FN200@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 16 Mar 2009 11:23:39 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n2GINdI9015157	for
+ <fwarc@sun.com>; Mon, 16 Mar 2009 18:23:39 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KGM0000021SMV00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 16 Mar 2009 12:23:39 -0600 (MDT)
+Received: from dartmouth ([unknown] [129.148.180.127])
+ by mail-amer.sun.com (Sun Java(tm) System Messaging Server 7.0-5.01 64bit
+ (built Feb 19 2009)) with ESMTPSA id <0KGM00IW033A0Z70@mail-amer.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Mon, 16 Mar 2009 12:23:35 -0600 (MDT)
+Date: Mon, 16 Mar 2009 14:21:13 -0400 (EDT)
+From: David Finberg <David.Finberg@sun.com>
+Subject: Re: Fast-track : 2009/169 - "max_guest_dependencies" property
+ requirement in PRI
+In-reply-to: <49BE8611.8030309@sun.com>
+Sender: David.Finberg@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware ARC <fwarc@sun.com>
+Message-id: <alpine.SOC.1.00.0903161415220.1200@dartmouth>
+MIME-version: 1.0
+Content-type: TEXT/PLAIN; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <Pine.SOC.4.64.0903111425220.28408@burl-legion-0>
+ <alpine.SOC.1.00.0903111827490.29023@dartmouth> <49BE8611.8030309@sun.com>
+User-Agent: Alpine 1.00 (SOC 882 2007-12-20)
+Status: RO
+Content-Length: 1076
+
+On Mon, 16 Mar 2009, Hitendra Zhangada wrote:
+
+>
+> What are "guest dependencies"?  What does it represent?   It is not clear
+> The explanation in the mail Tycho sent out stated,
+
+There is a spec at
+  http://austin.central.sun.com/~rf157361/Master-slave-CLI.odt
+
+It should have a lot more detail on this.
+
+> "list a maximum number of other domains that a guest may depend on.  When a 
+> domain resets, it can be configured to have the hypervisor act on its 
+> dependent domains (typically stop them)."
+>
+> Lets say the dependency is greater than 0, how does HV know
+> which guest domain is dependent on which other guest domain?
+
+That will be communicated to the HV via the HV MD from the ldom manager. 
+Initially there will be no dependencies.  The functional spec should the
+details on the HV MD interfaces.  When requested, the ldom manager will 
+create a guestdependency node with the guestids that are being depended 
+on.
+
+> Also, is the max number in "max_guest_dependencies" same
+> among ALL guest domains?
+
+No, it is per guest.  I can make that more explicit.
+
+-- Dave
+
+From sacadmin Wed Mar 18 12:49:26 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n2IJnPSq024636
+	for <fwarc@sac.sfbay.sun.com>; Wed, 18 Mar 2009 12:49:26 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n2IJnNJ9012518
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 19 Mar 2009 03:49:25 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KGP00209WECOD00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Mar 2009 13:49:24 -0600 (MDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KGP00M6IWEB9S30@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Mar 2009 13:49:24 -0600 (MDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n2IJnNkm012388	for
+ <fwarc@sun.com>; Wed, 18 Mar 2009 12:49:23 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KGP00000VR3W200@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Mar 2009 12:49:23 -0700 (PDT)
+Received: from [129.150.37.155] ([unknown] [129.150.37.155])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ with ESMTPSA id <0KGP003MCWEAFU50@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Mar 2009 12:49:23 -0700 (PDT)
+Date: Wed, 18 Mar 2009 12:49:21 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Fast-track : 2009/169 - "max_guest_dependencies" property
+ requirement in PRI
+In-reply-to: <alpine.SOC.1.00.0903161415220.1200@dartmouth>
+Sender: Hitendra.Zhangada@sun.com
+To: David Finberg <David.Finberg@sun.com>
+Cc: Firmware ARC <fwarc@sun.com>
+Message-id: <49C15041.9080700@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_qpFAAS2ZQzFmTkVmsy3LZQ)"
+X-PMX-Version: 5.4.1.325704
+References: <Pine.SOC.4.64.0903111425220.28408@burl-legion-0>
+ <alpine.SOC.1.00.0903111827490.29023@dartmouth> <49BE8611.8030309@sun.com>
+ <alpine.SOC.1.00.0903161415220.1200@dartmouth>
+User-Agent: Thunderbird 2.0.0.19 (Windows/20081209)
+Status: RO
+Content-Length: 7343
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_qpFAAS2ZQzFmTkVmsy3LZQ)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+David Finberg wrote:
+> On Mon, 16 Mar 2009, Hitendra Zhangada wrote:
+>
+>>
+>> What are "guest dependencies"?  What does it represent?   It is not 
+>> clear
+>> The explanation in the mail Tycho sent out stated,
+>
+> There is a spec at
+>  http://austin.central.sun.com/~rf157361/Master-slave-CLI.odt
+>
+> It should have a lot more detail on this.
+
+Yes, but I still have a question.  As per above specification I see,
+
+/guestdependency node and inside is the propery "guest_id" with a 
+matching resource_id of the controlling mater domain (see example 
+below). This means the master domain shall dictate any action to take 
+should the master stop for any reason./
+
+
+ From above what I understand is that one "master" guest domain can dictate
+one or more guest domain actions.  All of those "slave" guest domains will
+have the guestdependency node with "guest_id" pointing to the master guest
+domain.  Did I get that right?  What happens if there are multiple 
+master guest
+domains?  Is that not possible?
+
+Back to this case, so the max number of "slaves" a "master" guest domain can
+have is defined by the PRI property proposed by this case.  Did I get 
+this right?
+If not then I would like to have a quick chat with you or someone to better
+understand this new property.  One more comment below.
+
+>
+>> "list a maximum number of other domains that a guest may depend on.  
+>> When a domain resets, it can be configured to have the hypervisor act 
+>> on its dependent domains (typically stop them)."
+>>
+>> Lets say the dependency is greater than 0, how does HV know
+>> which guest domain is dependent on which other guest domain?
+>
+> That will be communicated to the HV via the HV MD from the ldom 
+> manager. Initially there will be no dependencies.  The functional spec 
+> should the
+> details on the HV MD interfaces.  When requested, the ldom manager 
+> will create a guestdependency node with the guestids that are being 
+> depended on.
+>
+>> Also, is the max number in "max_guest_dependencies" same
+>> among ALL guest domains?
+>
+> No, it is per guest.  I can make that more explicit.
+
+The proposed "max_guests" property in PRI is in the "firmware" node.
+I think this node is NOT per guest node.  There is only one such node
+in PRI and so the value of the property must apply to ALL guest domains.
+What I mean is, the MAX is the most dependency one guest can have
+with the other.
+
+Lastly, why is this property needed in PRI?  Is this because of the reason
+that HV needs to be aware of this via HV MD?
+
+
+Tycho, please extend timer until my questions are answered (or at least
+you get LGTM from me).
+
+
+Thanks.
+
+>
+> -- Dave
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_qpFAAS2ZQzFmTkVmsy3LZQ)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+David Finberg wrote:
+<blockquote cite="mid:alpine.SOC.1.00.0903161415220.1200@dartmouth"
+ type="cite">On Mon, 16 Mar 2009, Hitendra Zhangada wrote:
+  <br>
+  <br>
+  <blockquote type="cite"><br>
+What are "guest dependencies"?&nbsp; What does it represent?&nbsp;&nbsp; It is not
+clear
+    <br>
+The explanation in the mail Tycho sent out stated,
+    <br>
+  </blockquote>
+  <br>
+There is a spec at
+  <br>
+&nbsp;<a class="moz-txt-link-freetext" href="http://austin.central.sun.com/~rf157361/Master-slave-CLI.odt">http://austin.central.sun.com/~rf157361/Master-slave-CLI.odt</a>
+  <br>
+  <br>
+It should have a lot more detail on this.
+  <br>
+</blockquote>
+<br>
+Yes, but I still have a question.&nbsp; As per above specification I see,<br>
+<br>
+<p style="margin-top: 0.19in; margin-bottom: 0in; font-weight: normal;"
+ align="left">
+<i><font face="Times, serif"><font size="3">guestdependency node and
+inside is the propery &#8220;guest_id&#8221; with a matching resource_id of
+the controlling mater domain (see example below). This means the
+master domain shall dictate any action to take should the master stop
+for any reason.</font></font></i></p>
+<br>
+From above what I understand is that one "master" guest domain can
+dictate<br>
+one or more guest domain actions.&nbsp; All of those "slave" guest domains
+will<br>
+have the guestdependency node with "guest_id" pointing to the master
+guest<br>
+domain.&nbsp; Did I get that right?&nbsp; What happens if there are multiple
+master guest<br>
+domains?&nbsp; Is that not possible?<br>
+<br>
+Back to this case, so the max number of "slaves" a "master" guest
+domain can<br>
+have is defined by the PRI property proposed by this case.&nbsp; Did I get
+this right?<br>
+If not then I would like to have a quick chat with you or someone to
+better<br>
+understand this new property.&nbsp; One more comment below.<br>
+<br>
+<blockquote cite="mid:alpine.SOC.1.00.0903161415220.1200@dartmouth"
+ type="cite"><br>
+  <blockquote type="cite">"list a maximum number of other domains that
+a guest may depend on.&nbsp; When a domain resets, it can be configured to
+have the hypervisor act on its dependent domains (typically stop
+them)."
+    <br>
+    <br>
+Lets say the dependency is greater than 0, how does HV know
+    <br>
+which guest domain is dependent on which other guest domain?
+    <br>
+  </blockquote>
+  <br>
+That will be communicated to the HV via the HV MD from the ldom
+manager. Initially there will be no dependencies.&nbsp; The functional spec
+should the
+  <br>
+details on the HV MD interfaces.&nbsp; When requested, the ldom manager will
+create a guestdependency node with the guestids that are being depended
+on.
+  <br>
+  <br>
+  <blockquote type="cite">Also, is the max number in
+"max_guest_dependencies" same
+    <br>
+among ALL guest domains?
+    <br>
+  </blockquote>
+  <br>
+No, it is per guest.&nbsp; I can make that more explicit.
+  <br>
+</blockquote>
+<br>
+The proposed "max_guests" property in PRI is in the "firmware" node.<br>
+I think this node is NOT per guest node.&nbsp; There is only one such node<br>
+in PRI and so the value of the property must apply to ALL guest domains.<br>
+What I mean is, the MAX is the most dependency one guest can have<br>
+with the other.<br>
+<br>
+Lastly, why is this property needed in PRI?&nbsp; Is this because of the
+reason<br>
+that HV needs to be aware of this via HV MD?<br>
+<br>
+<br>
+Tycho, please extend timer until my questions are answered (or at least<br>
+you get LGTM from me).<br>
+<br>
+<br>
+Thanks.<br>
+<br>
+<blockquote cite="mid:alpine.SOC.1.00.0903161415220.1200@dartmouth"
+ type="cite"><br>
+-- Dave
+  <br>
+</blockquote>
+<br>
+<br>
+<pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_qpFAAS2ZQzFmTkVmsy3LZQ)--
+
+From sacadmin Thu Mar 19 10:24:55 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n2JHOthI003398
+	for <fwarc@sac.sfbay.sun.com>; Thu, 19 Mar 2009 10:24:55 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n2JHOoOk014311
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 20 Mar 2009 01:24:54 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KGR00019KDHF600@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 19 Mar 2009 10:24:53 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KGR00GDLKDHPUE0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 19 Mar 2009 10:24:53 -0700 (PDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n2JHOrpg015050	for
+ <fwarc@sun.com>; Thu, 19 Mar 2009 10:24:53 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KGR00500JXYC600@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 19 Mar 2009 10:24:52 -0700 (PDT)
+Received: from [129.150.37.149] ([unknown] [129.150.37.149])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ with ESMTPSA id <0KGR009M0KD5J930@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 19 Mar 2009 10:24:43 -0700 (PDT)
+Date: Thu, 19 Mar 2009 10:24:40 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Fast-track : 2009/169 - "max_guest_dependencies" property
+ requirement in PRI
+In-reply-to: <49C15041.9080700@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: David Finberg <David.Finberg@sun.com>
+Message-id: <49C27FD8.6050900@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_La5+i4R+Nz7hvQkqti/qbA)"
+X-PMX-Version: 5.4.1.325704
+References: <Pine.SOC.4.64.0903111425220.28408@burl-legion-0>
+ <alpine.SOC.1.00.0903111827490.29023@dartmouth> <49BE8611.8030309@sun.com>
+ <alpine.SOC.1.00.0903161415220.1200@dartmouth> <49C15041.9080700@sun.com>
+User-Agent: Thunderbird 2.0.0.21 (Windows/20090302)
+Status: RO
+Content-Length: 10926
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_La5+i4R+Nz7hvQkqti/qbA)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+Hitendra Zhangada wrote:
+> David Finberg wrote:
+>> On Mon, 16 Mar 2009, Hitendra Zhangada wrote:
+>>
+>>>
+>>> What are "guest dependencies"?  What does it represent?   It is not 
+>>> clear
+>>> The explanation in the mail Tycho sent out stated,
+>>
+>> There is a spec at
+>>  http://austin.central.sun.com/~rf157361/Master-slave-CLI.odt
+>>
+>> It should have a lot more detail on this.
+>
+> Yes, but I still have a question.  As per above specification I see,
+>
+> /guestdependency node and inside is the propery "guest_id" with a 
+> matching resource_id of the controlling mater domain (see example 
+> below). This means the master domain shall dictate any action to take 
+> should the master stop for any reason./
+>
+>
+> From above what I understand is that one "master" guest domain can dictate
+> one or more guest domain actions.  All of those "slave" guest domains will
+> have the guestdependency node with "guest_id" pointing to the master guest
+> domain.  Did I get that right?  What happens if there are multiple 
+> master guest
+> domains?  Is that not possible?
+>
+> Back to this case, so the max number of "slaves" a "master" guest 
+> domain can
+> have is defined by the PRI property proposed by this case.  Did I get 
+> this right?
+> If not then I would like to have a quick chat with you or someone to 
+> better
+> understand this new property.  One more comment below.
+>
+>>
+>>> "list a maximum number of other domains that a guest may depend on.  
+>>> When a domain resets, it can be configured to have the hypervisor 
+>>> act on its dependent domains (typically stop them)."
+>>>
+>>> Lets say the dependency is greater than 0, how does HV know
+>>> which guest domain is dependent on which other guest domain?
+>>
+>> That will be communicated to the HV via the HV MD from the ldom 
+>> manager. Initially there will be no dependencies.  The functional 
+>> spec should the
+>> details on the HV MD interfaces.  When requested, the ldom manager 
+>> will create a guestdependency node with the guestids that are being 
+>> depended on.
+>>
+>>> Also, is the max number in "max_guest_dependencies" same
+>>> among ALL guest domains?
+>>
+>> No, it is per guest.  I can make that more explicit.
+>
+> The proposed "max_guests" property in PRI is in the "firmware" node.
+> I think this node is NOT per guest node.  There is only one such node
+> in PRI and so the value of the property must apply to ALL guest domains.
+> What I mean is, the MAX is the most dependency one guest can have
+> with the other.
+>
+> Lastly, why is this property needed in PRI?  Is this because of the reason
+> that HV needs to be aware of this via HV MD?
+>
+>
+> Tycho, please extend timer until my questions are answered (or at least
+> you get LGTM from me).
+
+FYI.  I had some private mail exchanges and also offline discussions
+on the proposed changes with David F.  I understand now what this new PRI
+property is there for.  Here is summary of what I understand and based on
+this the case LGTM but would have hoped a better description then what is
+proposed.
+
+The new property is,
+
+1.4.4
+
+Name			Tag		Required
+----			---		--------
+max_guest_dependencies	PROP_VAL	no
+
+Description
+-----------
+This property describes the maximum number of guest dependencies
+(per guest) that the firmware supports.  If not present, should be
+treated as 0.
+
+
+This is the max HV can support, since both HV and Zeus needs to
+know about the max it is added to the PRI.
+
+
+Here is little bit of more information on how this property and
+the overall design is expected to work.  Note that this design is
+not part of this project but I am including following brief
+description to understand the role of the proposed PRI property.
+
+
+- Each slave guest may define up to max_guest_dependencies master domains.
+  Each of those master domains has an independent policy of what to do
+  (typically stop) when the master reboots.  You can have as many slaves off
+  of one master as there are guests.
+
+- A slave defines its masters.  There will be one guestdependency in the
+  guest node in HV MD, but it will have multiple guest_id properties in it
+  (up to max_guest_dependencies).
+
+
+Refer to the specification David had sent out for more details.
+
+
+
+As far as I am concerned, this case can time-out anytime.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_La5+i4R+Nz7hvQkqti/qbA)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<tt>Hitendra Zhangada wrote:</tt>
+<blockquote cite="mid:49C15041.9080700@sun.com" type="cite">
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+  <tt>David Finberg wrote:
+  </tt>
+  <blockquote cite="mid:alpine.SOC.1.00.0903161415220.1200@dartmouth"
+ type="cite"><tt>On Mon, 16 Mar 2009, Hitendra Zhangada wrote: <br>
+    <br>
+    </tt>
+    <blockquote type="cite"><tt><br>
+What are "guest dependencies"?&nbsp; What does it represent?&nbsp;&nbsp; It is not
+clear <br>
+The explanation in the mail Tycho sent out stated, <br>
+      </tt> </blockquote>
+    <tt><br>
+There is a spec at <br>
+&nbsp;<a moz-do-not-send="true" class="moz-txt-link-freetext"
+ href="http://austin.central.sun.com/%7Erf157361/Master-slave-CLI.odt">http://austin.central.sun.com/~rf157361/Master-slave-CLI.odt</a>
+    <br>
+    <br>
+It should have a lot more detail on this. <br>
+    </tt> </blockquote>
+  <tt><br>
+Yes, but I still have a question.&nbsp; As per above specification I see,<br>
+  <br>
+  </tt>
+  <p
+ style="margin-top: 0.19in; margin-bottom: 0in; font-weight: normal;"
+ align="left"><tt><i><font size="3">guestdependency node and
+inside is the propery &#8220;guest_id&#8221; with a matching resource_id of
+the controlling mater domain (see example below). This means the
+master domain shall dictate any action to take should the master stop
+for any reason.</font></i></tt></p>
+  <tt><br>
+From above what I understand is that one "master" guest domain can
+dictate<br>
+one or more guest domain actions.&nbsp; All of those "slave" guest domains
+will<br>
+have the guestdependency node with "guest_id" pointing to the master
+guest<br>
+domain.&nbsp; Did I get that right?&nbsp; What happens if there are multiple
+master guest<br>
+domains?&nbsp; Is that not possible?<br>
+  <br>
+Back to this case, so the max number of "slaves" a "master" guest
+domain can<br>
+have is defined by the PRI property proposed by this case.&nbsp; Did I get
+this right?<br>
+If not then I would like to have a quick chat with you or someone to
+better<br>
+understand this new property.&nbsp; One more comment below.<br>
+  <br>
+  </tt>
+  <blockquote cite="mid:alpine.SOC.1.00.0903161415220.1200@dartmouth"
+ type="cite"><tt><br>
+    </tt>
+    <blockquote type="cite"><tt>"list a maximum number of other domains
+that
+a guest may depend on.&nbsp; When a domain resets, it can be configured to
+have the hypervisor act on its dependent domains (typically stop
+them)." <br>
+      <br>
+Lets say the dependency is greater than 0, how does HV know <br>
+which guest domain is dependent on which other guest domain? <br>
+      </tt> </blockquote>
+    <tt><br>
+That will be communicated to the HV via the HV MD from the ldom
+manager. Initially there will be no dependencies.&nbsp; The functional spec
+should the <br>
+details on the HV MD interfaces.&nbsp; When requested, the ldom manager will
+create a guestdependency node with the guestids that are being depended
+on. <br>
+    <br>
+    </tt>
+    <blockquote type="cite"><tt>Also, is the max number in
+"max_guest_dependencies" same <br>
+among ALL guest domains? <br>
+      </tt> </blockquote>
+    <tt><br>
+No, it is per guest.&nbsp; I can make that more explicit. <br>
+    </tt></blockquote>
+  <tt><br>
+The proposed "max_guests" property in PRI is in the "firmware" node.<br>
+I think this node is NOT per guest node.&nbsp; There is only one such node<br>
+in PRI and so the value of the property must apply to ALL guest domains.<br>
+What I mean is, the MAX is the most dependency one guest can have<br>
+with the other.<br>
+  <br>
+Lastly, why is this property needed in PRI?&nbsp; Is this because of the
+reason<br>
+that HV needs to be aware of this via HV MD?<br>
+  <br>
+  <br>
+Tycho, please extend timer until my questions are answered (or at least<br>
+you get LGTM from me).<br>
+  </tt>
+</blockquote>
+<tt><br>
+FYI.&nbsp; I had some private mail exchanges and also offline discussions<br>
+on the proposed changes with David F.&nbsp; I understand now what this new
+PRI <br>
+property is there for.&nbsp; Here is summary of what I understand and based
+on<br>
+this the case LGTM but would have hoped a better description then what
+is <br>
+proposed.<br>
+<br>
+The new property is,<br>
+<br>
+</tt>
+<pre><tt>1.4.4
+
+Name			Tag		Required
+----			---		--------
+max_guest_dependencies	PROP_VAL	no
+
+Description
+-----------
+This property describes the maximum number of guest dependencies
+(per guest) that the firmware supports.  If not present, should be
+treated as 0.
+
+
+This is the max HV can support, since both HV and Zeus needs to
+know about the max it is added to the PRI.
+
+
+Here is little bit of more information on how this property and
+the overall design is expected to work.  Note that this design is
+not part of this project but I am including following brief
+description to understand the role of the proposed PRI property.
+</tt></pre>
+<tt><br>
+- Each slave guest may define up to max_guest_dependencies master
+domains. <br>
+&nbsp; Each of those master domains has an independent policy of what to do <br>
+&nbsp; (typically stop) when the master reboots.&nbsp; You can have as many
+slaves off<br>
+&nbsp; of one master as there are guests.<br>
+<br>
+- A slave defines its masters.&nbsp; There will be one guestdependency in the<br>
+&nbsp; guest node in HV MD, but it will have multiple guest_id properties in
+it<br>
+&nbsp; (up to max_guest_dependencies).<br>
+<br>
+<br>
+Refer to the specification David had sent out for more details.<br>
+<br>
+<br>
+<br>
+As far as I am concerned, this case can time-out anytime.<br>
+</tt><tt><br>
+<br>
+Thanks.<br>
+<br>
+</tt>
+<pre class="moz-signature" cols="80"><tt>-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</tt></pre>
+</body>
+</html>
+
+--Boundary_(ID_La5+i4R+Nz7hvQkqti/qbA)--
+
+From sacadmin Fri Mar 20 10:57:11 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n2KHvAWU021570
+	for <fwarc@sac.sfbay.sun.com>; Fri, 20 Mar 2009 10:57:11 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n2KHv97G026542
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Sat, 21 Mar 2009 01:57:09 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KGT00M0XGJ88800@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 20 Mar 2009 11:57:08 -0600 (MDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KGT00K3BGJ65I60@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 20 Mar 2009 11:57:06 -0600 (MDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n2KHv6n8005396	for
+ <fwarc@sun.com>; Fri, 20 Mar 2009 17:57:06 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KGT00100GEG5A00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 20 Mar 2009 11:57:06 -0600 (MDT)
+Received: from burl-legion-0 ([unknown] [10.8.28.177])
+ by mail-amer.sun.com (Sun Java(tm) System Messaging Server 7.0-5.01 64bit
+ (built Feb 19 2009)) with ESMTPSA id <0KGT00NHNGJ53810@mail-amer.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 20 Mar 2009 11:57:05 -0600 (MDT)
+Date: Fri, 20 Mar 2009 13:57:04 -0400 (EDT)
+From: Tycho Nightingale <Tycho.Nightingale@sun.com>
+Subject: Re: Fast-track : 2009/169 - "max_guest_dependencies" property
+ requirement in PRI
+In-reply-to: <49C27FD8.6050900@sun.com>
+Sender: Tycho.Nightingale@sun.com
+X-X-Sender: tychon@burl-legion-0
+To: Firmware ARC <fwarc@sun.com>
+Cc: David Finberg <David.Finberg@sun.com>
+Reply-to: Tycho Nightingale <Tycho.Nightingale@sun.com>
+Message-id: <Pine.SOC.4.64.0903201354420.18426@burl-legion-0>
+MIME-version: 1.0
+Content-type: TEXT/PLAIN; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <Pine.SOC.4.64.0903111425220.28408@burl-legion-0>
+ <alpine.SOC.1.00.0903111827490.29023@dartmouth> <49BE8611.8030309@sun.com>
+ <alpine.SOC.1.00.0903161415220.1200@dartmouth> <49C15041.9080700@sun.com>
+ <49C27FD8.6050900@sun.com>
+Status: RO
+Content-Length: 70
+
+
+The case timer has expired.  The case is approved and closed.
+
+Tycho
+

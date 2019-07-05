@@ -1,0 +1,1557 @@
+From sacadmin Mon Dec 14 15:13:58 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nBENDwlU011953
+	for <fwarc@sac.sfbay.sun.com>; Mon, 14 Dec 2009 15:13:58 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.4) with ESMTP id nBENDv5V002198
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 14 Dec 2009 16:13:57 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KUO009010J9CZ00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 14 Dec 2009 15:13:57 -0800 (PST)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KUO006BK0J8OLA0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 14 Dec 2009 15:13:57 -0800 (PST)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id nBENDuhe016111	for
+ <fwarc@sun.com>; Mon, 14 Dec 2009 23:13:56 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KUO00A0009HUC00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 14 Dec 2009 16:13:56 -0700 (MST)
+Received: from dhcp-ubur03-180-104.east.sun.com ([unknown] [129.148.180.104])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KUO005BF0J0QO60@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 14 Dec 2009 16:13:49 -0700 (MST)
+Date: Mon, 14 Dec 2009 18:13:43 -0500
+From: Eric Sharakan <Eric.Sharakan@Sun.COM>
+Subject: FWARC/2009/644:  Updates to PRI for Static Direct IO (PCI-E
+ Virtualization)
+Sender: Eric.Sharakan@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: Tarl Neustaedter <Tarl.Neustaedter@Sun.COM>
+Message-id: <792EE87D-A1B1-4084-92A8-E60ADC1F72F8@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.1077)
+Content-type: multipart/signed; micalg=sha1;
+ protocol="application/pkcs7-signature"; boundary=Apple-Mail-19--942617871
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 4680
+
+
+--Apple-Mail-19--942617871
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=us-ascii
+
+Hi, I am converting the subject case to a fast-track with the timeout =
+set to 12/21/2009.  This case adds three properties to the PRI in =
+support of Static Direct I/O:
+
+assignable-path         Evolving        Property in component PRI node,
+                                        provides physical path of =
+assignable
+                                        unit (usually a PCI card).
+
+rcid                    Evolving        Property in root-complex PRI =
+node,
+                                        provides an enumeration of RCs.
+
+directio-capability     Evolving        Property in Firmware node, =
+indicates
+                                        particular platform and firmware =
+support
+                                        IO virtualization.
+
+I've also taken the liberty of converting the case from closed to open, =
+on the basis of their being no compelling reason to keep it closed.
+
+Case materials have been copied into the materials directory.
+
+Requested binding is for a minor/micro firmware release and a =
+minor/micro/patch OS release.
+
+Thanks.
+
+-Eric=
+
+--Apple-Mail-19--942617871
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA5MDgxMzAzMjY0MloXDTEwMDgxMzAzMjY0
+MlowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4ShwcG0r
+XTowrE2zjfBkP5uPCfMPbkDTk6AV/L/SDFaj3XqIuvioNhnSAJc18VqdhTMteQzf275qEXJEpjii
+UhtBQQEeVNUuDJl7Yn935nXzkhMa5iDKQebgMRYsj47l4M2kVRDwKpPcrBT5eL1Pt0aSD0cF1APy
+3KCd9vakWX/3/oO14tiEs84trInW8iWym8JW9O2iKnRFQHSvOulBVyzKbjJ7+qr3oO/t4BB5hjeK
+NaLSfztfFVJaW8P0gdMD0oR9ZCKjl8IK5CUNLFk3sXh+RFrkCsP2W38hZJ0EhKPuunw4z4A7FK8h
+NIL9OeKmzKhH3JIitIfW/wPUFoupQQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQBua9PL8rPiAgVHwF+IdBIk
+nIGR42xuszIDi3E9WvDdWdkw5aG0FJwei0RvHHraYaPofBlvZcyIuABPcJrqpm5jfl9ksrUmrYV9
+veWQwF3t9hp+IcaD/a9+4Cdh8b0YlzXGX7DyaDa5omOLrLBp9M3K8lSkQDSjMcDu1RSlS+ZjFDCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQRP84uN1QvZysfOz2m7JJpTAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wOTEy
+MTQyMzEzNDRaMCMGCSqGSIb3DQEJBDEWBBTxyp99uXldgCbRIFjGHMWbNOmQ8TCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjd
+UL2crHzs9puySaUwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEBBQAEggEAl4md
+2ecwurBe2yOluejcDt0mlzNMVE2wHaPVW8kzc04C3/DW9FPxSiaOJY1vFvCA/Rj5QhtDIuIKCyOi
+xWpSuQirE3NLQWvqwzaV2aBTfFph2WbvkbZaHBQbGZIIEZbg+bWIyd3tcL1oIEcWw2r0ttosjdK9
+drQhLni8h7GuLU0AGxsh+WRdNjpfW+Lggd/2gYKLF7XWnqi/nTLaNEm6nAga6Dky8RZxqf7YY46y
+0rgEo0AL+OlQZ0yrFkLl9Xd7Yqee6S1svvSyyrtuGNHYkyQsfZnjAnmiXft65VxPmtpk8mrsQfLD
+kL2V6WM7iSRPeTbzYcPg8jnYKxWX3+yGvAAAAAAAAA==
+
+--Apple-Mail-19--942617871--
+
+From sacadmin Thu Dec 17 14:22:16 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nBHMMGY8012656
+	for <fwarc@sac.sfbay.sun.com>; Thu, 17 Dec 2009 14:22:16 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nBHMMFDi010743
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 17 Dec 2009 14:22:15 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KUT0000BI53NZ00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 17 Dec 2009 15:22:15 -0700 (MST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KUT00823I52JCB0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 17 Dec 2009 15:22:14 -0700 (MST)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id nBHMME3K008157	for
+ <fwarc@sun.com>; Thu, 17 Dec 2009 22:22:14 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KUT00600FPFZQ00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 17 Dec 2009 15:22:14 -0700 (MST)
+Received: from [192.168.100.167]
+ (c-24-63-226-34.hsd1.ma.comcast.net [24.63.226.34])
+ by mail-amer.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KUT005D4I4XGN30@mail-amer.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 17 Dec 2009 15:22:10 -0700 (MST)
+Date: Thu, 17 Dec 2009 17:22:07 -0500
+From: Eric Sharakan <Eric.Sharakan@Sun.COM>
+Subject: Re: FWARC/2009/644:  Updates to PRI for Static Direct IO (PCI-E
+ Virtualization)
+In-reply-to: <792EE87D-A1B1-4084-92A8-E60ADC1F72F8@Sun.COM>
+Sender: Eric.Sharakan@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: Tarl Neustaedter <Tarl.Neustaedter@Sun.COM>
+Message-id: <E11C54F7-5740-43FF-A2F6-F61FC7558844@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.1077)
+Content-type: multipart/signed; micalg=sha1;
+ protocol="application/pkcs7-signature"; boundary=Apple-Mail-28--686514181
+X-PMX-Version: 5.4.1.325704
+References: <792EE87D-A1B1-4084-92A8-E60ADC1F72F8@Sun.COM>
+Status: RO
+Content-Length: 5010
+
+
+--Apple-Mail-28--686514181
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=us-ascii
+
+An updated specification has been placed in the materials directory that =
+corrects a couple spelling & formatting errors.
+
+The technical content has not changed; the timer remains set for =
+12/21/2009.
+
+Thanks.
+
+-Eric
+
+On Dec 14, 2009, at 6:13 PM, Eric Sharakan wrote:
+
+> Hi, I am converting the subject case to a fast-track with the timeout =
+set to 12/21/2009.  This case adds three properties to the PRI in =
+support of Static Direct I/O:
+>=20
+> assignable-path         Evolving        Property in component PRI =
+node,
+>                                        provides physical path of =
+assignable
+>                                        unit (usually a PCI card).
+>=20
+> rcid                    Evolving        Property in root-complex PRI =
+node,
+>                                        provides an enumeration of RCs.
+>=20
+> directio-capability     Evolving        Property in Firmware node, =
+indicates
+>                                        particular platform and =
+firmware support
+>                                        IO virtualization.
+>=20
+> I've also taken the liberty of converting the case from closed to =
+open, on the basis of their being no compelling reason to keep it =
+closed.
+>=20
+> Case materials have been copied into the materials directory.
+>=20
+> Requested binding is for a minor/micro firmware release and a =
+minor/micro/patch OS release.
+>=20
+> Thanks.
+>=20
+> -Eric
+
+
+--Apple-Mail-28--686514181
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA5MDgxMzAzMjY0MloXDTEwMDgxMzAzMjY0
+MlowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4ShwcG0r
+XTowrE2zjfBkP5uPCfMPbkDTk6AV/L/SDFaj3XqIuvioNhnSAJc18VqdhTMteQzf275qEXJEpjii
+UhtBQQEeVNUuDJl7Yn935nXzkhMa5iDKQebgMRYsj47l4M2kVRDwKpPcrBT5eL1Pt0aSD0cF1APy
+3KCd9vakWX/3/oO14tiEs84trInW8iWym8JW9O2iKnRFQHSvOulBVyzKbjJ7+qr3oO/t4BB5hjeK
+NaLSfztfFVJaW8P0gdMD0oR9ZCKjl8IK5CUNLFk3sXh+RFrkCsP2W38hZJ0EhKPuunw4z4A7FK8h
+NIL9OeKmzKhH3JIitIfW/wPUFoupQQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQBua9PL8rPiAgVHwF+IdBIk
+nIGR42xuszIDi3E9WvDdWdkw5aG0FJwei0RvHHraYaPofBlvZcyIuABPcJrqpm5jfl9ksrUmrYV9
+veWQwF3t9hp+IcaD/a9+4Cdh8b0YlzXGX7DyaDa5omOLrLBp9M3K8lSkQDSjMcDu1RSlS+ZjFDCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQRP84uN1QvZysfOz2m7JJpTAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wOTEy
+MTcyMjIyMDdaMCMGCSqGSIb3DQEJBDEWBBQ5DuRfX5ytn0u3LG8b/paPqFz54DCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjd
+UL2crHzs9puySaUwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEBBQAEggEAdhPV
+R/K85ZDeiNcNqKkA8prOWAULyVOTwsJ07KuVdkTdZtNWrR9ZXNfnGzQh75iCWsIAePOST+caPuYz
+HuxtgWyPvw+sEJ9lMF7l/cKey7GJ0s3SxeTk7Tkta+x4N3FfhwRVnDjdpq+KALtOCPaUn6z+Mu7K
+XLFE8hVOCyGynygYEpMoUZ1KmIUIDwbBiS14SVcnjzz92P1mJw7782zqCZ6jzJl2LBsPnLUJIa4c
+iL2bM7X4gHifY/IK3PFaxtuffuYcYaj60/4+Pn4Dm7TCX7VXbIydiXYiavBkV+6eMukpeuG0XG9D
+irX2pnPWi3UuCLrZ6JHQk4BCZOXAZti5nQAAAAAAAA==
+
+--Apple-Mail-28--686514181--
+
+From sacadmin Fri Dec 18 21:36:19 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nBJ5aJSK026763
+	for <fwarc@sac.sfbay.sun.com>; Fri, 18 Dec 2009 21:36:19 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.4) with ESMTP id nBJ5aICg026861
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 18 Dec 2009 22:36:18 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KUV00I03WWIHW00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 18 Dec 2009 21:36:18 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KUV00IJKWWI1ZC0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 18 Dec 2009 21:36:18 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nBJ5aHIs011089	for
+ <fwarc@sun.com>; Fri, 18 Dec 2009 21:36:17 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KUV00A00WKR0E00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 18 Dec 2009 21:36:17 -0800 (PST)
+Received: from [129.150.177.136] ([unknown] [129.150.177.136])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KUV00DYMWWGRT80@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 18 Dec 2009 21:36:17 -0800 (PST)
+Date: Fri, 18 Dec 2009 21:36:21 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC/2009/644:  Updates to PRI for Static Direct IO (PCI-E
+ Virtualization)
+In-reply-to: <E11C54F7-5740-43FF-A2F6-F61FC7558844@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Eric Sharakan <Eric.Sharakan@sun.com>
+Cc: Firmware ARC <fwarc@sun.com>, Tarl Neustaedter <Tarl.Neustaedter@sun.com>
+Message-id: <4B2C6655.5010802@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <792EE87D-A1B1-4084-92A8-E60ADC1F72F8@Sun.COM>
+ <E11C54F7-5740-43FF-A2F6-F61FC7558844@Sun.COM>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.5)
+ Gecko/20091204 Lightning/1.0b2pre Thunderbird/3.0
+Status: RO
+Content-Length: 2736
+
+On 12/17/2009 2:22 PM, Eric Sharakan wrote:
+> An updated specification has been placed in the materials directory that corrects a couple spelling&  formatting errors.
+>
+> The technical content has not changed; the timer remains set for 12/21/2009.
+>    
+
+
+Couple of comment.
+
+Please change the version number and date in the updated specification
+to reflect proper values for both.
+
+Delete version 11 specification from the materials directory.  It may be 
+confusing
+to have both versions.  The "diff" file is good to have.
+
+All other properties under "firmware" node have underscore instead of dash.
+To stay consistent shall we use underscore for "directio capability" 
+property
+(change it to "directio_capability)?
+
+The definition of the "assignable-path" is not very clear to me.  Can we 
+change it
+as follows?
+
+1.3.20 assignable-path
+
+Name		Tag		Required
+----		---		--------
+assignable-path PROP_STR	No
+
+Description
+-----------
+
+This property defines the exact physical path of an assignable PCI-E device
+(where ownership can be transferred to a guest domain). This path is similar
+to but not identical to the path property defined in 1.3.9.
+
+
+I think the interfaces classification needs to be "Sun Private" instead 
+of Evolving.
+I see other cases defining PRI properties as "Sun Private"
+
+> Thanks.
+>
+> -Eric
+>
+> On Dec 14, 2009, at 6:13 PM, Eric Sharakan wrote:
+>
+>    
+>> Hi, I am converting the subject case to a fast-track with the timeout set to 12/21/2009.  This case adds three properties to the PRI in support of Static Direct I/O:
+>>
+>> assignable-path         Evolving        Property in component PRI node,
+>>                                         provides physical path of assignable
+>>                                         unit (usually a PCI card).
+>>
+>> rcid                    Evolving        Property in root-complex PRI node,
+>>                                         provides an enumeration of RCs.
+>>
+>> directio-capability     Evolving        Property in Firmware node, indicates
+>>                                         particular platform and firmware support
+>>                                         IO virtualization.
+>>
+>> I've also taken the liberty of converting the case from closed to open, on the basis of their being no compelling reason to keep it closed.
+>>
+>> Case materials have been copied into the materials directory.
+>>
+>> Requested binding is for a minor/micro firmware release and a minor/micro/patch OS release.
+>>
+>> Thanks.
+>>
+>> -Eric
+>>      
+>    
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Mon Dec 21 08:43:06 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nBLGh6YN018039
+	for <fwarc@sac.sfbay.sun.com>; Mon, 21 Dec 2009 08:43:06 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail3mpk.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nBLGh4nU004754
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 21 Dec 2009 08:43:06 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KV00030LH3TM800@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 08:43:05 -0800 (PST)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KV0009VVH3SLMC0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 08:43:04 -0800 (PST)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id nBLGh43l023364	for
+ <fwarc@sun.com>; Mon, 21 Dec 2009 16:43:04 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KV000F00GNUTV00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 09:43:04 -0700 (MST)
+Received: from dhcp-ubur03-180-104.east.sun.com ([unknown] [129.148.180.104])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KV000HZ8H3FP5A0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 09:42:52 -0700 (MST)
+Date: Mon, 21 Dec 2009 11:42:45 -0500
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: FWARC/2009/644:  Updates to PRI for Static Direct IO (PCI-E
+ Virtualization)
+In-reply-to: <4B2C6655.5010802@sun.com>
+Sender: Eric.Sharakan@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Raghuram Kothakota <Raghuram.Kothakota@sun.com>,
+        Tarl Neustaedter <Tarl.Neustaedter@sun.com>,
+        Jim Marks - Sun Microsystems <James.Marks@sun.com>
+Cc: Firmware ARC <fwarc@sun.com>
+Message-id: <9AD64DBB-F35A-4FCD-BDC3-29C97CEF2332@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.1077)
+Content-type: multipart/signed; micalg=sha1;
+ protocol="application/pkcs7-signature"; boundary=Apple-Mail-1--361275665
+X-PMX-Version: 5.4.1.325704
+References: <792EE87D-A1B1-4084-92A8-E60ADC1F72F8@Sun.COM>
+ <E11C54F7-5740-43FF-A2F6-F61FC7558844@Sun.COM> <4B2C6655.5010802@sun.com>
+Status: RO
+Content-Length: 5545
+
+
+--Apple-Mail-1--361275665
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=us-ascii
+
+On Dec 19, 2009, at 12:36 AM, Hitendra Zhangada wrote:
+
+> On 12/17/2009 2:22 PM, Eric Sharakan wrote:
+>> An updated specification has been placed in the materials directory =
+that corrects a couple spelling&  formatting errors.
+>>=20
+>> The technical content has not changed; the timer remains set for =
+12/21/2009.
+>>  =20
+>=20
+>=20
+> Couple of comment.
+
+Thanks for your feedback Hitu.
+>=20
+> Please change the version number and date in the updated specification
+> to reflect proper values for both.
+
+Fixed.
+>=20
+> Delete version 11 specification from the materials directory.  It may =
+be confusing
+> to have both versions.  The "diff" file is good to have.
+
+Done.
+>=20
+> All other properties under "firmware" node have underscore instead of =
+dash.
+> To stay consistent shall we use underscore for "directio capability" =
+property
+> (change it to "directio_capability)?
+
+I can't make this change without consulting the project team.  Tarl, I =
+think Raghuram & Jim are both out this week; is this change okay with =
+you?  I expect the only code impact to be to Zeus, which hasn't =
+integrated yet, so I'm willing to make this change on your okay.
+
+>=20
+> The definition of the "assignable-path" is not very clear to me.  Can =
+we change it
+> as follows?
+>=20
+> 1.3.20 assignable-path
+>=20
+> Name		Tag		Required
+> ----		---		--------
+> assignable-path PROP_STR	No
+>=20
+> Description
+> -----------
+>=20
+> This property defines the exact physical path of an assignable PCI-E =
+device
+> (where ownership can be transferred to a guest domain). This path is =
+similar
+> to but not identical to the path property defined in 1.3.9.
+
+Done.
+>=20
+>=20
+> I think the interfaces classification needs to be "Sun Private" =
+instead of Evolving.
+> I see other cases defining PRI properties as "Sun Private"
+
+Done.
+
+Assuming we get a timely response from the project team regarding =
+directio_capability, I'd like to keep the timeout set to COB today.
+
+-Eric=
+
+--Apple-Mail-1--361275665
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA5MDgxMzAzMjY0MloXDTEwMDgxMzAzMjY0
+MlowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4ShwcG0r
+XTowrE2zjfBkP5uPCfMPbkDTk6AV/L/SDFaj3XqIuvioNhnSAJc18VqdhTMteQzf275qEXJEpjii
+UhtBQQEeVNUuDJl7Yn935nXzkhMa5iDKQebgMRYsj47l4M2kVRDwKpPcrBT5eL1Pt0aSD0cF1APy
+3KCd9vakWX/3/oO14tiEs84trInW8iWym8JW9O2iKnRFQHSvOulBVyzKbjJ7+qr3oO/t4BB5hjeK
+NaLSfztfFVJaW8P0gdMD0oR9ZCKjl8IK5CUNLFk3sXh+RFrkCsP2W38hZJ0EhKPuunw4z4A7FK8h
+NIL9OeKmzKhH3JIitIfW/wPUFoupQQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQBua9PL8rPiAgVHwF+IdBIk
+nIGR42xuszIDi3E9WvDdWdkw5aG0FJwei0RvHHraYaPofBlvZcyIuABPcJrqpm5jfl9ksrUmrYV9
+veWQwF3t9hp+IcaD/a9+4Cdh8b0YlzXGX7DyaDa5omOLrLBp9M3K8lSkQDSjMcDu1RSlS+ZjFDCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQRP84uN1QvZysfOz2m7JJpTAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wOTEy
+MjExNjQyNDZaMCMGCSqGSIb3DQEJBDEWBBT+8iLsH6PCY0Ezaa/Ofkiihr39kjCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjd
+UL2crHzs9puySaUwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEBBQAEggEAuE8A
+cdC5y9Aq9xUh8hmLpkMrhiwntWEeXBresXLn3d8Uvm7WYpAhSDaYOHpAmSxnz7jsCf5I89dQ99MQ
+aGsjxPh0BrkWdB3N+apTppTdw4BmMugn3idKEBcIMKvAMdvA+m1Cu5yaUfmdLn+hTJ/5QB4yvsn/
+e3XLW9FWypdIuFfual6M7d/YlHil/OFuNyeNmGST/kCYwDEDDg4fEXuxsjB/vwdqEIofRWP7vjWA
+m8x9hFJepmdR6rJYALPTA7zN4OfiVrJlGqk2p7euLPJGFdCX1o+QUqxBWLXYxkBtep2eEoKODaJf
+rWjMCnFUZoL25PxfCrkOtgN//KzEMW4+xQAAAAAAAA==
+
+--Apple-Mail-1--361275665--
+
+From sacadmin Mon Dec 21 09:00:00 2009
+Received: from sunmail6brm.central.sun.com (sunmail6brm.Central.Sun.COM [129.147.4.169])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nBLGxxVK018554
+	for <fwarc@sac.sfbay.sun.com>; Mon, 21 Dec 2009 09:00:00 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail6brm.central.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nBLGxx8N026595
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 21 Dec 2009 10:59:59 -0600 (CST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KV000407HVZ4500@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 09:59:59 -0700 (MST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KV000234HVWJN20@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 09:59:57 -0700 (MST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nBLGxuq6006578	for
+ <fwarc@sun.com>; Mon, 21 Dec 2009 08:59:56 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KV000F00HUMD600@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 08:59:56 -0800 (PST)
+Received: from raghuram-kothakotas-macbook-pro.local ([unknown] [24.6.80.128])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KV000LRQHVVE640@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 08:59:55 -0800 (PST)
+Date: Mon, 21 Dec 2009 08:59:54 -0800
+From: Raghuram Kothakota <Raghuram.Kothakota@sun.com>
+Subject: Re: FWARC/2009/644:  Updates to PRI for Static Direct IO (PCI-E
+ Virtualization)
+In-reply-to: <9AD64DBB-F35A-4FCD-BDC3-29C97CEF2332@Sun.COM>
+Sender: Raghuram.Kothakota@sun.com
+To: Eric Sharakan <Eric.Sharakan@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Tarl Neustaedter <Tarl.Neustaedter@sun.com>,
+        Jim Marks - Sun Microsystems <James.Marks@sun.com>,
+        Firmware ARC <fwarc@sun.com>
+Message-id: <4B2FA98A.6040006@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <792EE87D-A1B1-4084-92A8-E60ADC1F72F8@Sun.COM>
+ <E11C54F7-5740-43FF-A2F6-F61FC7558844@Sun.COM> <4B2C6655.5010802@sun.com>
+ <9AD64DBB-F35A-4FCD-BDC3-29C97CEF2332@Sun.COM>
+User-Agent: Thunderbird 2.0.0.23 (Macintosh/20090812)
+Status: RO
+Content-Length: 2288
+
+Eric Sharakan wrote:
+> On Dec 19, 2009, at 12:36 AM, Hitendra Zhangada wrote:
+>
+>   
+>> On 12/17/2009 2:22 PM, Eric Sharakan wrote:
+>>     
+>>> An updated specification has been placed in the materials directory that corrects a couple spelling&  formatting errors.
+>>>
+>>> The technical content has not changed; the timer remains set for 12/21/2009.
+>>>   
+>>>       
+>> Couple of comment.
+>>     
+>
+> Thanks for your feedback Hitu.
+>   
+>> Please change the version number and date in the updated specification
+>> to reflect proper values for both.
+>>     
+>
+> Fixed.
+>   
+>> Delete version 11 specification from the materials directory.  It may be confusing
+>> to have both versions.  The "diff" file is good to have.
+>>     
+>
+> Done.
+>   
+>> All other properties under "firmware" node have underscore instead of dash.
+>> To stay consistent shall we use underscore for "directio capability" property
+>> (change it to "directio_capability)?
+>>     
+>
+> I can't make this change without consulting the project team.  Tarl, I think Raghuram & Jim are both out this week; is this change okay with you?  I expect the only code impact to be to Zeus, which hasn't integrated yet, so I'm willing to make this change on your okay.
+>   
+I agree with this change, please go ahead and make this change.
+In fact, I believe our current implementation uses underscore, looks
+like this change got in the fwarc case proposal without getting noticed, 
+thanks for
+catching this.
+
+-Raghuram.
+>   
+>> The definition of the "assignable-path" is not very clear to me.  Can we change it
+>> as follows?
+>>
+>> 1.3.20 assignable-path
+>>
+>> Name		Tag		Required
+>> ----		---		--------
+>> assignable-path PROP_STR	No
+>>
+>> Description
+>> -----------
+>>
+>> This property defines the exact physical path of an assignable PCI-E device
+>> (where ownership can be transferred to a guest domain). This path is similar
+>> to but not identical to the path property defined in 1.3.9.
+>>     
+>
+> Done.
+>   
+>> I think the interfaces classification needs to be "Sun Private" instead of Evolving.
+>> I see other cases defining PRI properties as "Sun Private"
+>>     
+>
+> Done.
+>
+> Assuming we get a timely response from the project team regarding directio_capability, I'd like to keep the timeout set to COB today.
+>
+> -Eric
+
+
+From sacadmin Mon Dec 21 09:08:47 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nBLH8l1p018845
+	for <fwarc@sac.sfbay.sun.com>; Mon, 21 Dec 2009 09:08:47 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2sca.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nBLH8kVL023954
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 21 Dec 2009 09:08:47 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KV00040HIANXA00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 10:08:47 -0700 (MST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KV0002PHIAMJN30@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 10:08:47 -0700 (MST)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id nBLH8kFw013789	for
+ <fwarc@sun.com>; Mon, 21 Dec 2009 17:08:46 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KV000D00GM7AW00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 10:08:46 -0700 (MST)
+Received: from dhcp-ubur03-180-104.east.sun.com ([unknown] [129.148.180.104])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KV000JKVIA9HOB0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 10:08:34 -0700 (MST)
+Date: Mon, 21 Dec 2009 12:08:27 -0500
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: FWARC/2009/644:  Updates to PRI for Static Direct IO (PCI-E
+ Virtualization)
+In-reply-to: <4B2FA98A.6040006@Sun.COM>
+Sender: Eric.Sharakan@sun.com
+To: Raghuram Kothakota <Raghuram.Kothakota@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Tarl Neustaedter <Tarl.Neustaedter@sun.com>,
+        Jim Marks - Sun Microsystems <James.Marks@sun.com>,
+        Firmware ARC <fwarc@sun.com>
+Message-id: <CF1B73F0-630B-41A4-9063-FE2FB4920946@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.1077)
+Content-type: multipart/signed; micalg=sha1;
+ protocol="application/pkcs7-signature"; boundary=Apple-Mail-3--359733639
+X-PMX-Version: 5.4.1.325704
+References: <792EE87D-A1B1-4084-92A8-E60ADC1F72F8@Sun.COM>
+ <E11C54F7-5740-43FF-A2F6-F61FC7558844@Sun.COM> <4B2C6655.5010802@sun.com>
+ <9AD64DBB-F35A-4FCD-BDC3-29C97CEF2332@Sun.COM> <4B2FA98A.6040006@Sun.COM>
+Status: RO
+Content-Length: 6257
+
+
+--Apple-Mail-3--359733639
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=us-ascii
+
+On Dec 21, 2009, at 11:59 AM, Raghuram Kothakota wrote:
+
+> Eric Sharakan wrote:
+>> On Dec 19, 2009, at 12:36 AM, Hitendra Zhangada wrote:
+>>=20
+>> =20
+>>> On 12/17/2009 2:22 PM, Eric Sharakan wrote:
+>>>   =20
+>>>> An updated specification has been placed in the materials directory =
+that corrects a couple spelling&  formatting errors.
+>>>>=20
+>>>> The technical content has not changed; the timer remains set for =
+12/21/2009.
+>>>>       =20
+>>> Couple of comment.
+>>>   =20
+>>=20
+>> Thanks for your feedback Hitu.
+>> =20
+>>> Please change the version number and date in the updated =
+specification
+>>> to reflect proper values for both.
+>>>   =20
+>>=20
+>> Fixed.
+>> =20
+>>> Delete version 11 specification from the materials directory.  It =
+may be confusing
+>>> to have both versions.  The "diff" file is good to have.
+>>>   =20
+>>=20
+>> Done.
+>> =20
+>>> All other properties under "firmware" node have underscore instead =
+of dash.
+>>> To stay consistent shall we use underscore for "directio capability" =
+property
+>>> (change it to "directio_capability)?
+>>>   =20
+>>=20
+>> I can't make this change without consulting the project team.  Tarl, =
+I think Raghuram & Jim are both out this week; is this change okay with =
+you?  I expect the only code impact to be to Zeus, which hasn't =
+integrated yet, so I'm willing to make this change on your okay.
+>> =20
+> I agree with this change, please go ahead and make this change.
+> In fact, I believe our current implementation uses underscore, looks
+> like this change got in the fwarc case proposal without getting =
+noticed, thanks for
+> catching this.
+>=20
+> -Raghuram.
+
+Thanks Raghuram.  All materials have been updated to reflect to the =
+corrected property name.  Timer remains set to expire COB today 12/21.
+
+-Eric
+
+>> =20
+>>> The definition of the "assignable-path" is not very clear to me.  =
+Can we change it
+>>> as follows?
+>>>=20
+>>> 1.3.20 assignable-path
+>>>=20
+>>> Name		Tag		Required
+>>> ----		---		--------
+>>> assignable-path PROP_STR	No
+>>>=20
+>>> Description
+>>> -----------
+>>>=20
+>>> This property defines the exact physical path of an assignable PCI-E =
+device
+>>> (where ownership can be transferred to a guest domain). This path is =
+similar
+>>> to but not identical to the path property defined in 1.3.9.
+>>>   =20
+>>=20
+>> Done.
+>> =20
+>>> I think the interfaces classification needs to be "Sun Private" =
+instead of Evolving.
+>>> I see other cases defining PRI properties as "Sun Private"
+>>>   =20
+>>=20
+>> Done.
+>>=20
+>> Assuming we get a timely response from the project team regarding =
+directio_capability, I'd like to keep the timeout set to COB today.
+>>=20
+>> -Eric
+>=20
+
+
+--Apple-Mail-3--359733639
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA5MDgxMzAzMjY0MloXDTEwMDgxMzAzMjY0
+MlowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4ShwcG0r
+XTowrE2zjfBkP5uPCfMPbkDTk6AV/L/SDFaj3XqIuvioNhnSAJc18VqdhTMteQzf275qEXJEpjii
+UhtBQQEeVNUuDJl7Yn935nXzkhMa5iDKQebgMRYsj47l4M2kVRDwKpPcrBT5eL1Pt0aSD0cF1APy
+3KCd9vakWX/3/oO14tiEs84trInW8iWym8JW9O2iKnRFQHSvOulBVyzKbjJ7+qr3oO/t4BB5hjeK
+NaLSfztfFVJaW8P0gdMD0oR9ZCKjl8IK5CUNLFk3sXh+RFrkCsP2W38hZJ0EhKPuunw4z4A7FK8h
+NIL9OeKmzKhH3JIitIfW/wPUFoupQQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQBua9PL8rPiAgVHwF+IdBIk
+nIGR42xuszIDi3E9WvDdWdkw5aG0FJwei0RvHHraYaPofBlvZcyIuABPcJrqpm5jfl9ksrUmrYV9
+veWQwF3t9hp+IcaD/a9+4Cdh8b0YlzXGX7DyaDa5omOLrLBp9M3K8lSkQDSjMcDu1RSlS+ZjFDCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQRP84uN1QvZysfOz2m7JJpTAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wOTEy
+MjExNzA4MjhaMCMGCSqGSIb3DQEJBDEWBBR0/MgyUK0Xpujv2af+Wg69kQzdWTCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjd
+UL2crHzs9puySaUwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEBBQAEggEADkpL
+Rh6yZfoNXllNHMal0qORmvOwPkb+yWw151RtiLCbCkvZxIpXlrdf/YQq5sUHEd9IJHB9QC71Ys3y
+bVc58ZTd14ZRXV/oUbAmSK+YB3pQpf6P/rdXq3E5FJn3mb1f1KwysAc+zZ2ydyl4g8f0pRHyCefh
+F/r4RW5adcZ1k1TBCY3cOSSutgwEbwMQwRC9NzVO0cvBnil9uBp20dyhEDT6KYyixER/pIQUgppI
+g1+f4Tibzuid0csPhr9ePIcI3H4cgFQA2o3t1N0AMizCK8r+/g3Slg1wSbczw3amCplsxW0vPche
+X27c38TVu6wlYomfpFgvqC92EbqcXXtITAAAAAAAAA==
+
+--Apple-Mail-3--359733639--
+
+From sacadmin Mon Dec 21 10:55:15 2009
+Received: from sunmail6brm.central.sun.com (sunmail6brm.Central.Sun.COM [129.147.4.169])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nBLItFac020462
+	for <fwarc@sac.sfbay.sun.com>; Mon, 21 Dec 2009 10:55:15 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail6brm.central.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nBLItEeA012129
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 21 Dec 2009 12:55:14 -0600 (CST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KV000B0VN822V00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 10:55:14 -0800 (PST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KV0003KJN81KP90@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 10:55:13 -0800 (PST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nBLItDAr019120	for
+ <fwarc@sun.com>; Mon, 21 Dec 2009 10:55:13 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KV000F00N3V0R00@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 10:55:13 -0800 (PST)
+Received: from [129.153.85.8] ([unknown] [129.153.85.8])
+ by fe-sfbay-09.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KV000DUGN80GWC0@fe-sfbay-09.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 10:55:12 -0800 (PST)
+Date: Mon, 21 Dec 2009 10:55:12 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC/2009/644:  Updates to PRI for Static Direct IO (PCI-E
+ Virtualization)
+In-reply-to: <CF1B73F0-630B-41A4-9063-FE2FB4920946@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Eric Sharakan <Eric.Sharakan@sun.com>
+Cc: Raghuram Kothakota <Raghuram.Kothakota@sun.com>,
+        Tarl Neustaedter <Tarl.Neustaedter@sun.com>,
+        Jim Marks - Sun Microsystems <James.Marks@sun.com>,
+        Firmware ARC <fwarc@sun.com>
+Message-id: <4B2FC490.5070100@Sun.COM>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_0PFjDpIw5bR6HKRvoX9sag)"
+X-PMX-Version: 5.4.1.325704
+References: <792EE87D-A1B1-4084-92A8-E60ADC1F72F8@Sun.COM>
+ <E11C54F7-5740-43FF-A2F6-F61FC7558844@Sun.COM> <4B2C6655.5010802@sun.com>
+ <9AD64DBB-F35A-4FCD-BDC3-29C97CEF2332@Sun.COM> <4B2FA98A.6040006@Sun.COM>
+ <CF1B73F0-630B-41A4-9063-FE2FB4920946@Sun.COM>
+User-Agent: Thunderbird 2.0.0.23 (X11/20090910)
+Status: RO
+Content-Length: 8150
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_0PFjDpIw5bR6HKRvoX9sag)
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+
+On 12/21/09 09:08, Eric Sharakan wrote:
+> On Dec 21, 2009, at 11:59 AM, Raghuram Kothakota wrote:
+>
+>   
+>> Eric Sharakan wrote:
+>>     
+>>> On Dec 19, 2009, at 12:36 AM, Hitendra Zhangada wrote:
+>>>
+>>>  
+>>>       
+>>>> On 12/17/2009 2:22 PM, Eric Sharakan wrote:
+>>>>    
+>>>>         
+>>>>> An updated specification has been placed in the materials directory that corrects a couple spelling&  formatting errors.
+>>>>>
+>>>>> The technical content has not changed; the timer remains set for 12/21/2009.
+>>>>>        
+>>>>>           
+>>>> Couple of comment.
+>>>>    
+>>>>         
+>>> Thanks for your feedback Hitu.
+>>>  
+>>>       
+>>>> Please change the version number and date in the updated specification
+>>>> to reflect proper values for both.
+>>>>    
+>>>>         
+>>> Fixed.
+>>>  
+>>>       
+>>>> Delete version 11 specification from the materials directory.  It may be confusing
+>>>> to have both versions.  The "diff" file is good to have.
+>>>>    
+>>>>         
+>>> Done.
+>>>  
+>>>       
+>>>> All other properties under "firmware" node have underscore instead of dash.
+>>>> To stay consistent shall we use underscore for "directio capability" property
+>>>> (change it to "directio_capability)?
+>>>>    
+>>>>         
+>>> I can't make this change without consulting the project team.  Tarl, I think Raghuram & Jim are both out this week; is this change okay with you?  I expect the only code impact to be to Zeus, which hasn't integrated yet, so I'm willing to make this change on your okay.
+>>>  
+>>>       
+>> I agree with this change, please go ahead and make this change.
+>> In fact, I believe our current implementation uses underscore, looks
+>> like this change got in the fwarc case proposal without getting noticed, thanks for
+>> catching this.
+>>
+>> -Raghuram.
+>>     
+>
+> Thanks Raghuram.  All materials have been updated to reflect to the corrected property name.  Timer remains set to expire COB today 12/21.
+>   
+
+LGTM.  Make sure to update the PRI specification link on the
+FWARC page  to point to the latest specification when this case
+gets approved.
+
+
+Thanks.
+
+> -Eric
+>
+>   
+>>>  
+>>>       
+>>>> The definition of the "assignable-path" is not very clear to me.  Can we change it
+>>>> as follows?
+>>>>
+>>>> 1.3.20 assignable-path
+>>>>
+>>>> Name		Tag		Required
+>>>> ----		---		--------
+>>>> assignable-path PROP_STR	No
+>>>>
+>>>> Description
+>>>> -----------
+>>>>
+>>>> This property defines the exact physical path of an assignable PCI-E device
+>>>> (where ownership can be transferred to a guest domain). This path is similar
+>>>> to but not identical to the path property defined in 1.3.9.
+>>>>    
+>>>>         
+>>> Done.
+>>>  
+>>>       
+>>>> I think the interfaces classification needs to be "Sun Private" instead of Evolving.
+>>>> I see other cases defining PRI properties as "Sun Private"
+>>>>    
+>>>>         
+>>> Done.
+>>>
+>>> Assuming we get a timely response from the project team regarding directio_capability, I'd like to keep the timeout set to COB today.
+>>>
+>>> -Eric
+>>>       
+>
+>   
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_0PFjDpIw5bR6HKRvoX9sag)
+Content-type: text/html; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+  <title></title>
+</head>
+<body bgcolor="#ffffff" text="#000000">
+On 12/21/09 09:08, Eric Sharakan wrote:
+<blockquote cite="mid:CF1B73F0-630B-41A4-9063-FE2FB4920946@Sun.COM"
+ type="cite">
+  <pre wrap="">On Dec 21, 2009, at 11:59 AM, Raghuram Kothakota wrote:
+
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">Eric Sharakan wrote:
+    </pre>
+    <blockquote type="cite">
+      <pre wrap="">On Dec 19, 2009, at 12:36 AM, Hitendra Zhangada wrote:
+
+ 
+      </pre>
+      <blockquote type="cite">
+        <pre wrap="">On 12/17/2009 2:22 PM, Eric Sharakan wrote:
+   
+        </pre>
+        <blockquote type="cite">
+          <pre wrap="">An updated specification has been placed in the materials directory that corrects a couple spelling&amp;  formatting errors.
+
+The technical content has not changed; the timer remains set for 12/21/2009.
+       
+          </pre>
+        </blockquote>
+        <pre wrap="">Couple of comment.
+   
+        </pre>
+      </blockquote>
+      <pre wrap="">Thanks for your feedback Hitu.
+ 
+      </pre>
+      <blockquote type="cite">
+        <pre wrap="">Please change the version number and date in the updated specification
+to reflect proper values for both.
+   
+        </pre>
+      </blockquote>
+      <pre wrap="">Fixed.
+ 
+      </pre>
+      <blockquote type="cite">
+        <pre wrap="">Delete version 11 specification from the materials directory.  It may be confusing
+to have both versions.  The "diff" file is good to have.
+   
+        </pre>
+      </blockquote>
+      <pre wrap="">Done.
+ 
+      </pre>
+      <blockquote type="cite">
+        <pre wrap="">All other properties under "firmware" node have underscore instead of dash.
+To stay consistent shall we use underscore for "directio capability" property
+(change it to "directio_capability)?
+   
+        </pre>
+      </blockquote>
+      <pre wrap="">I can't make this change without consulting the project team.  Tarl, I think Raghuram &amp; Jim are both out this week; is this change okay with you?  I expect the only code impact to be to Zeus, which hasn't integrated yet, so I'm willing to make this change on your okay.
+ 
+      </pre>
+    </blockquote>
+    <pre wrap="">I agree with this change, please go ahead and make this change.
+In fact, I believe our current implementation uses underscore, looks
+like this change got in the fwarc case proposal without getting noticed, thanks for
+catching this.
+
+-Raghuram.
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+Thanks Raghuram.  All materials have been updated to reflect to the corrected property name.  Timer remains set to expire COB today 12/21.
+  </pre>
+</blockquote>
+<br>
+LGTM.&nbsp; Make sure to update the PRI specification link on the<br>
+FWARC page&nbsp; to point to the latest specification when this case<br>
+gets approved.<br>
+<br>
+<br>
+Thanks.<br>
+<br>
+<blockquote cite="mid:CF1B73F0-630B-41A4-9063-FE2FB4920946@Sun.COM"
+ type="cite">
+  <pre wrap="">
+-Eric
+
+  </pre>
+  <blockquote type="cite">
+    <blockquote type="cite">
+      <pre wrap=""> 
+      </pre>
+      <blockquote type="cite">
+        <pre wrap="">The definition of the "assignable-path" is not very clear to me.  Can we change it
+as follows?
+
+1.3.20 assignable-path
+
+Name		Tag		Required
+----		---		--------
+assignable-path PROP_STR	No
+
+Description
+-----------
+
+This property defines the exact physical path of an assignable PCI-E device
+(where ownership can be transferred to a guest domain). This path is similar
+to but not identical to the path property defined in 1.3.9.
+   
+        </pre>
+      </blockquote>
+      <pre wrap="">Done.
+ 
+      </pre>
+      <blockquote type="cite">
+        <pre wrap="">I think the interfaces classification needs to be "Sun Private" instead of Evolving.
+I see other cases defining PRI properties as "Sun Private"
+   
+        </pre>
+      </blockquote>
+      <pre wrap="">Done.
+
+Assuming we get a timely response from the project team regarding directio_capability, I'd like to keep the timeout set to COB today.
+
+-Eric
+      </pre>
+    </blockquote>
+  </blockquote>
+  <pre wrap=""><!---->
+  </pre>
+</blockquote>
+<br>
+<br>
+<pre class="moz-signature" cols="72">-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_0PFjDpIw5bR6HKRvoX9sag)--
+
+From sacadmin Mon Dec 21 16:10:27 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nBM0ARgD025118
+	for <fwarc@sac.sfbay.sun.com>; Mon, 21 Dec 2009 16:10:27 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail2sca.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nBM0AQnl024973
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 21 Dec 2009 16:10:26 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KV10070N1TEHI00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 16:10:26 -0800 (PST)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KV10057P1TE8C20@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 16:10:26 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4)
+ with ESMTP id nBM0AO7b015527; Mon, 21 Dec 2009 16:10:24 -0800 (PST)
+Received: from [192.168.0.39] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id nBM0ANOm028479; Mon,
+ 21 Dec 2009 16:10:23 -0800 (PST)
+Date: Mon, 21 Dec 2009 16:10:24 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: FWARC/2009/644:  Updates to PRI for Static Direct IO (PCI-E
+ Virtualization)
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Eric Sharakan <Eric.Sharakan@sun.com>,
+        Raghuram Kothakota <Raghuram.Kothakota@sun.com>,
+        Tarl Neustaedter <Tarl.Neustaedter@sun.com>,
+        Jim Marks - Sun Microsystems <James.Marks@sun.com>,
+        Firmware ARC <fwarc@sun.com>
+Message-id: <4B300E70.8070005@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.5)
+ Gecko/20091204 Thunderbird/3.0
+Status: RO
+Content-Length: 286
+
+
+> LGTM. Make sure to update the PRI specification link on the
+> FWARC page to point to the latest specification when this case
+> gets approved.
+
+It's not a link there. the file goes there, along with it's
+full SCCS file, if there is one. That one seems to be missing
+an SCCS history.
+
+
+From sacadmin Mon Dec 21 16:30:15 2009
+Received: from sunmail6brm.central.sun.com (sunmail6brm.Central.Sun.COM [129.147.4.169])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nBM0UFWF025326
+	for <fwarc@sac.sfbay.sun.com>; Mon, 21 Dec 2009 16:30:15 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail6brm.central.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nBM0UEQl018266
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 21 Dec 2009 18:30:15 -0600 (CST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KV1003072QEP700@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 17:30:14 -0700 (MST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KV1000JY2QED710@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 17:30:14 -0700 (MST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id nBM0UEEV006800	for
+ <fwarc@sun.com>; Mon, 21 Dec 2009 16:30:14 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KV100H002D8KZ00@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 21 Dec 2009 16:30:14 -0800 (PST)
+Received: from [129.153.85.8] ([unknown] [129.153.85.8])
+ by fe-sfbay-09.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KV1001O12QDNLE0@fe-sfbay-09.sun.com>;
+ Mon, 21 Dec 2009 16:30:13 -0800 (PST)
+Date: Mon, 21 Dec 2009 16:30:13 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC/2009/644:  Updates to PRI for Static Direct IO (PCI-E
+ Virtualization)
+In-reply-to: <4B300E70.8070005@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: David Kahn <David.Kahn@sun.com>
+Cc: Eric Sharakan <Eric.Sharakan@sun.com>,
+        Raghuram Kothakota <Raghuram.Kothakota@sun.com>,
+        Tarl Neustaedter <Tarl.Neustaedter@sun.com>,
+        Jim Marks - Sun Microsystems <James.Marks@sun.com>,
+        Firmware ARC <fwarc@sun.com>
+Message-id: <4B301315.2050404@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4B300E70.8070005@sun.com>
+User-Agent: Thunderbird 2.0.0.23 (X11/20090910)
+Status: RO
+Content-Length: 1125
+
+On 12/21/09 16:10, David Kahn wrote:
+>
+>> LGTM. Make sure to update the PRI specification link on the
+>> FWARC page to point to the latest specification when this case
+>> gets approved.
+>
+> It's not a link there. the file goes there, along with it's
+> full SCCS file, if there is one. That one seems to be missing
+> an SCCS history.
+>
+
+Well, what we have now is a link to the latest specification.
+Actually, the Specification directory does not have SCCS
+directory.  I agree that it is a good idea to create one and
+add all the history information for all the PRI specification
+revisions. 
+
+Eric, would you be able to recreate SCCS  history using
+past approved PRI cases/specification?    If you can not do
+it then I can help with it.  I think we can "search" using
+PRI and it should give us all the various revisions.
+
+As for other specifications, I think we should do that
+if and when they change.
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Tue Dec 22 12:56:43 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nBMKuh7P027217
+	for <fwarc@sac.sfbay.sun.com>; Tue, 22 Dec 2009 12:56:43 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.4) with ESMTP id nBMKugIx025665
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 22 Dec 2009 13:56:42 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KV200H16NIIJZ00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 22 Dec 2009 12:56:42 -0800 (PST)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KV200FN5NIHHQ40@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 22 Dec 2009 12:56:42 -0800 (PST)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id nBMKuf3f003514	for
+ <fwarc@sun.com>; Tue, 22 Dec 2009 20:56:41 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KV200200N919100@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 22 Dec 2009 13:56:41 -0700 (MST)
+Received: from dhcp-ubur03-180-104.east.sun.com ([unknown] [129.148.180.104])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KV2008VBNI19A00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 22 Dec 2009 13:56:26 -0700 (MST)
+Date: Tue, 22 Dec 2009 15:56:25 -0500
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: FWARC/2009/644:  Updates to PRI for Static Direct IO (PCI-E
+ Virtualization)
+In-reply-to: <792EE87D-A1B1-4084-92A8-E60ADC1F72F8@Sun.COM>
+Sender: Eric.Sharakan@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: Tarl Neustaedter <Tarl.Neustaedter@sun.com>,
+        Raghuram Kothakota <Raghuram.Kothakota@sun.com>,
+        Jim Marks - Sun Microsystems <James.Marks@sun.com>
+Message-id: <DD0FCC2B-B04E-4129-BEBF-D0480EBBCA69@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.1077)
+Content-type: multipart/signed; micalg=sha1;
+ protocol="application/pkcs7-signature"; boundary=Apple-Mail-9--259655984
+X-PMX-Version: 5.4.1.325704
+References: <792EE87D-A1B1-4084-92A8-E60ADC1F72F8@Sun.COM>
+Status: RO
+Content-Length: 5231
+
+
+--Apple-Mail-9--259655984
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=us-ascii
+
+This case has timed out and is now approved.  The IAM file has been =
+updated, and the 1.12 version of the PRI Specification has been copied =
+into the Specifications directory.
+
+In addition, I've placed the subject specification under sccs control; =
+all future updates should pull from the sccs history, and all subsequent =
+version information should be kept via sccs comments, rather than as =
+text within the file itself.
+
+Thanks.
+
+-Eric
+
+On Dec 14, 2009, at 6:13 PM, Eric Sharakan wrote:
+
+> Hi, I am converting the subject case to a fast-track with the timeout =
+set to 12/21/2009.  This case adds three properties to the PRI in =
+support of Static Direct I/O:
+>=20
+> assignable-path         Evolving        Property in component PRI =
+node,
+>                                        provides physical path of =
+assignable
+>                                        unit (usually a PCI card).
+>=20
+> rcid                    Evolving        Property in root-complex PRI =
+node,
+>                                        provides an enumeration of RCs.
+>=20
+> directio-capability     Evolving        Property in Firmware node, =
+indicates
+>                                        particular platform and =
+firmware support
+>                                        IO virtualization.
+>=20
+> I've also taken the liberty of converting the case from closed to =
+open, on the basis of their being no compelling reason to keep it =
+closed.
+>=20
+> Case materials have been copied into the materials directory.
+>=20
+> Requested binding is for a minor/micro firmware release and a =
+minor/micro/patch OS release.
+>=20
+> Thanks.
+>=20
+> -Eric
+
+
+--Apple-Mail-9--259655984
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA5MDgxMzAzMjY0MloXDTEwMDgxMzAzMjY0
+MlowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4ShwcG0r
+XTowrE2zjfBkP5uPCfMPbkDTk6AV/L/SDFaj3XqIuvioNhnSAJc18VqdhTMteQzf275qEXJEpjii
+UhtBQQEeVNUuDJl7Yn935nXzkhMa5iDKQebgMRYsj47l4M2kVRDwKpPcrBT5eL1Pt0aSD0cF1APy
+3KCd9vakWX/3/oO14tiEs84trInW8iWym8JW9O2iKnRFQHSvOulBVyzKbjJ7+qr3oO/t4BB5hjeK
+NaLSfztfFVJaW8P0gdMD0oR9ZCKjl8IK5CUNLFk3sXh+RFrkCsP2W38hZJ0EhKPuunw4z4A7FK8h
+NIL9OeKmzKhH3JIitIfW/wPUFoupQQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQBua9PL8rPiAgVHwF+IdBIk
+nIGR42xuszIDi3E9WvDdWdkw5aG0FJwei0RvHHraYaPofBlvZcyIuABPcJrqpm5jfl9ksrUmrYV9
+veWQwF3t9hp+IcaD/a9+4Cdh8b0YlzXGX7DyaDa5omOLrLBp9M3K8lSkQDSjMcDu1RSlS+ZjFDCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQRP84uN1QvZysfOz2m7JJpTAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wOTEy
+MjIyMDU2MjVaMCMGCSqGSIb3DQEJBDEWBBQXfRqm6vbtvw0fZF1jarm6g3Lk+DCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjd
+UL2crHzs9puySaUwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEET/OLjdUL2crHzs9puySaUwDQYJKoZIhvcNAQEBBQAEggEAPEIy
+/7sD73HaY6D3mUCkBbJgpu+84OnMaeJCLkD984uD6AjaQ3iGBjWXnD+MJZPF+baZjocZ7OhDyy9Y
+anUAnsBKkFSkSl31GY8+SlveMnCejV88tMmW6A5Zxe+gaRxvGOm1wwICvPj13x5OGRZmV0P4g1J8
+8WK6Yy/nWpDmX37WU2xBXPaaYvvLgt+Eqof94gESCLUAmj93jx6G2lYaJ9EsUPlR4klw+6wuhMYT
+kYOzzo9nNo+C8Mg+/Jk/h8gGOgDw0v7NvuzzmyKcySMchKn+EcOvgr8O+ak/NGHr+VOt4Z6YqAIb
+BU4L+J73uADdJXvrsK+XthUhI9Zv1i3ovgAAAAAAAA==
+
+--Apple-Mail-9--259655984--
+

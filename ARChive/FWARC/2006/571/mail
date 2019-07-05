@@ -1,0 +1,94 @@
+From sacadmin Mon Oct  9 16:03:10 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k99N39XH010304
+	for <fwarc@sac.eng.Sun.COM>; Mon, 9 Oct 2006 16:03:09 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k99N2kiY010508;
+	Tue, 10 Oct 2006 07:03:07 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J6W00E0T5D3SM00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 09 Oct 2006 16:03:03 -0700 (PDT)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.5]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J6W00H3S5D2B2F0@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 09 Oct 2006 16:03:02 -0700 (PDT)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k99N32Di028301; Mon,
+ 09 Oct 2006 16:03:02 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J6W002015C2V500@d1-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Mon,
+ 09 Oct 2006 16:03:02 -0700 (PDT)
+Received: from [129.153.85.31] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J6W00D685D1CBSJ@d1-sfbay-10.sun.com>; Mon,
+ 09 Oct 2006 16:03:02 -0700 (PDT)
+Date: Mon, 09 Oct 2006 16:03:01 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Self-Review : 2006/571 - Corrections of LDC protocol
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Message-id: <452AD525.6020601@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 2012
+
+I am sponsoring this self-review case for Narayan Venkat.  This
+case outlines corrections to the LDC specification approved under
+ARC case number 2006/140.  The major changes are document corrections
+and addition of streaming capability as part of the reliable protocol.
+
+The project team has been using the below mentioned changes in its
+implementation.  This case is to document these changes.
+
+Here are the details.
+
+
+1.  The reliable mode now includes data streaming to improve performance
+     by allocating large Tx/Rx queues for data transfer.
+
+2.  The mode number of 0x2 was previously used for reliable mode, and
+     is now replaced with mode number of 0x3. Mode value of 0x2 is now
+     reserved and should not be used by any client. The mode value of
+     0x3 is used to support both older and newer clients in the
+     implementation.
+
+     The Packet Envelope (Word 0, Bits 24-31) field in a RTS or RTR
+     message also now specifies mode 3 for reliable mode since mode 2
+     is marked as reserved.
+
+3.  Correction to both unreliable and reliable datagram.  The original
+     session id is now a sequence ID.  The original sequence ID field is
+     now marked as reserved field.  The Session IDs are not used as the
+     HV provides the ability to detect session resets via asynchronous
+     notifications.  All clients have been using the new datagram
+     structures for a while.  This case correct the documentation error.
+
+4.  Changes through out the document related to above mentioned changes.
+
+
+I have copied both the new specification and a PDF of diffs generated
+from start office document source in the materials directory.  An interface
+table is also in the materials directory,
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/571/materials/
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+

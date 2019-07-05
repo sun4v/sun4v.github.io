@@ -1,0 +1,796 @@
+From sacadmin Tue May 16 20:18:00 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4H3HxTw028878
+	for <fwarc@sac.eng.Sun.COM>; Tue, 16 May 2006 20:18:00 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k4H3HlVm003690
+	for <@sunmail2.sfbay.sun.com:fwarc@sun.com>; Wed, 17 May 2006 11:17:59 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IZE002013TVOI00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 16 May 2006 20:17:55 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IZE00CX13TVSB50@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 16 May 2006 20:17:55 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k4H3HtTF028443; Tue, 16 May 2006 20:17:55 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4H3Hs6G082221; Tue,
+ 16 May 2006 20:17:54 -0700 (PDT)
+Date: Tue, 16 May 2006 20:17:54 -0700
+From: David Kahn <David.Kahn@Sun.COM>
+Subject: 2006/323 - console read/write hv APIs - fast track timeout 5/23/2006
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Greg Onufer <greg.onufer@Sun.COM>
+Message-id: <446A95E2.2000805@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+User-Agent: Thunderbird 1.5.0.2 (Windows/20060308)
+Status: RO
+Content-Length: 404
+
+
+I'm sponsoring this fast-track for Greg Onufer.
+The fast track times out on May 23.
+
+This case creates 2 new hypervisor APIs, CONS_READ and
+CONS_WRITE. Materials are in the case dir. The case
+reserves fast trap function numbers 0x62 and 0x63.
+The registry will be updated upon approval.
+
+Commitment level is Sun Private.
+Binding for OS: micro/patch release
+Binding for firmware: minor release
+
+-David
+
+
+
+From sacadmin Wed May 17 20:06:27 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4I36PXp008875
+	for <fwarc@sac.eng.Sun.COM>; Wed, 17 May 2006 20:06:26 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k4I36J3K028447;
+	Thu, 18 May 2006 11:06:23 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IZF00603XYL6C00@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 17 May 2006 20:06:21 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.5]) by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IZF00341XYKZR10@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 17 May 2006 20:06:20 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.12.10+Sun/8.12.9) with ESMTP id k4I36KpK002603; Wed,
+ 17 May 2006 20:06:20 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IZF00M01XUDSQ00@d1-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Wed,
+ 17 May 2006 20:06:20 -0700 (PDT)
+Received: from [129.150.33.24] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IZF009R8XYJZ880@d1-sfbay-09.sun.com>; Wed,
+ 17 May 2006 20:06:20 -0700 (PDT)
+Date: Wed, 17 May 2006 20:06:20 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2006/323 - console read/write hv APIs - fast track timeout
+ 5/23/2006
+In-reply-to: <446A95E2.2000805@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Greg Onufer <greg.onufer@sun.com>
+Message-id: <446BE4AC.3060402@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <446A95E2.2000805@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 1028
+
+David Kahn wrote:
+
+> I'm sponsoring this fast-track for Greg Onufer.
+> The fast track times out on May 23.
+> 
+> This case creates 2 new hypervisor APIs, CONS_READ and
+> CONS_WRITE. Materials are in the case dir. The case
+> reserves fast trap function numbers 0x62 and 0x63.
+> The registry will be updated upon approval.
+> 
+> Commitment level is Sun Private.
+> Binding for OS: micro/patch release
+> Binding for firmware: minor release
+
+One comment.  The case refers to optional MD platform node
+properties 'cons-write-buffer-size' and 'cons-read-buffer-size'.
+I did not find previous definitions of these properties.  Are
+they defined in past or is this case defining them?  If these
+are defined by this case then we need a clear definition in the
+specification and also part of interface table.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Wed May 17 21:02:43 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4I42hmE009616
+	for <fwarc@sac.eng.Sun.COM>; Wed, 17 May 2006 21:02:43 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k4I42hp13640
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Wed, 17 May 2006 22:02:43 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IZG00B2D0KG8D00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 17 May 2006 22:02:40 -0600 (MDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IZG00A840KGVE10@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 17 May 2006 22:02:40 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k4I42eoc022259; Wed, 17 May 2006 21:02:40 -0700 (PDT)
+Received: from [192.168.100.13] (x-files [129.146.96.102])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4I42dV4048285; Wed,
+ 17 May 2006 21:02:39 -0700 (PDT)
+Date: Wed, 17 May 2006 21:02:38 -0700
+From: Greg Onufer <greg.onufer@sun.com>
+Subject: Re: 2006/323 - console read/write hv APIs - fast track timeout
+ 5/23/2006
+In-reply-to: <446BE4AC.3060402@sun.com>
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>
+Message-id: <C4D193B8-C824-42CA-950D-AA4D79D5D90A@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.750)
+Content-type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <446A95E2.2000805@sun.com> <446BE4AC.3060402@sun.com>
+Status: RO
+Content-Length: 1498
+
+On May 17, 2006, at 8:06 PM, Hitendra Zhangada wrote:
+> One comment.  The case refers to optional MD platform node
+> properties 'cons-write-buffer-size' and 'cons-read-buffer-size'.
+> I did not find previous definitions of these properties.  Are
+> they defined in past or is this case defining them?  If these
+> are defined by this case then we need a clear definition in the
+> specification and also part of interface table.
+
+I had already updated the spec after dmk had a similar comment  
+earlier... the current spec mentions the names of the properties, the  
+node in which the properties would exist, the types of the  
+properties, and the meanings of the properties.
+
+The interface table additions:
+
+Imported Interfaces
+=================
+
+Interface Name                 Classification          Comment
+------------------------------------------------------------------------ 
+--------------------
+Hypervisor Error Code    Sun Private             FWARC/2005/116
+   Values, Calling
+   Conventions
+
+Machine Desc. Transport,   Sun Private         FWARC/2005/115
+   Node Types, and Names
+
+Interfaces Exported
+===================
+
+Interface Name                 Classification          Comment
+------------------------------------------------------------------------ 
+--------------------
+cons-write-buffer-size      Sun Private             Machine  
+Description platform node property
+cons-read-buffer-size      Sun Private             Machine  
+Description platform node property
+
+Cheers!greg
+
+
+
+
+From sacadmin Thu May 18 11:20:40 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4IIKdol013465
+	for <fwarc@sac.eng.Sun.COM>; Thu, 18 May 2006 11:20:40 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k4IIKE8r020540;
+	Fri, 19 May 2006 02:20:37 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IZH0090D4A9RI00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 18 May 2006 11:20:33 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.5]) by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IZH009G04A9FG00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 18 May 2006 11:20:33 -0700 (PDT)
+Received: from d1-sfbay-01.sun.com (d1-sfbay-01 [192.18.39.111])
+	by nwkea-pix-1.sun.com (8.12.10+Sun/8.12.9) with ESMTP id k4IIKXpK013114; Thu,
+ 18 May 2006 11:20:33 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-01.sun.com by d1-sfbay-01.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IZH00E0142SNT00@d1-sfbay-01.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Thu,
+ 18 May 2006 11:20:33 -0700 (PDT)
+Received: from [129.153.85.10] by d1-sfbay-01.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IZH0030U4A8F920@d1-sfbay-01.sun.com>; Thu,
+ 18 May 2006 11:20:33 -0700 (PDT)
+Date: Thu, 18 May 2006 11:20:32 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2006/323 - console read/write hv APIs - fast track timeout
+ 5/23/2006
+In-reply-to: <C4D193B8-C824-42CA-950D-AA4D79D5D90A@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Greg Onufer <greg.onufer@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>
+Message-id: <446CBAF0.9030403@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <446A95E2.2000805@sun.com> <446BE4AC.3060402@sun.com>
+ <C4D193B8-C824-42CA-950D-AA4D79D5D90A@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 2659
+
+Greg Onufer wrote On 05/17/06 21:02,:
+> On May 17, 2006, at 8:06 PM, Hitendra Zhangada wrote:
+> 
+>> One comment.  The case refers to optional MD platform node
+>> properties 'cons-write-buffer-size' and 'cons-read-buffer-size'.
+>> I did not find previous definitions of these properties.  Are
+>> they defined in past or is this case defining them?  If these
+>> are defined by this case then we need a clear definition in the
+>> specification and also part of interface table.
+> 
+> 
+> I had already updated the spec after dmk had a similar comment  
+> earlier... the current spec mentions the names of the properties, the  
+> node in which the properties would exist, the types of the  properties, 
+> and the meanings of the properties.
+
+It seems like the updated specification you mentioned is not in the
+case's material's directory.  I did not see the properties described
+in its own sections.  What I see is references similar to,
+
+   An optional integer property 'cons-write-buffer-size' in the machine
+   description's 'platform' node provides a hint as to the
+   size of the console device's internal output buffering.
+
+Is this what you are referring as the definition of these properties?
+I see them as a reference to the properties and not the definition
+itself.  I expected the definitions be in their own sections in the spec.
+
+The spec is dated April 21st at following link.
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/323/materials/
+
+Dave, are we missing the latest specification and interface table
+in the case directory?
+
+
+> 
+> The interface table additions:
+> 
+> Imported Interfaces
+> =================
+> 
+> Interface Name                 Classification          Comment
+> ------------------------------------------------------------------------ 
+> --------------------
+> Hypervisor Error Code    Sun Private             FWARC/2005/116
+>    Values, Calling
+>    Conventions
+> 
+> Machine Desc. Transport,   Sun Private         FWARC/2005/115
+>    Node Types, and Names
+> 
+> Interfaces Exported
+> ===================
+> 
+> Interface Name                 Classification          Comment
+> ------------------------------------------------------------------------ 
+> --------------------
+> cons-write-buffer-size      Sun Private             Machine  Description 
+> platform node property
+> cons-read-buffer-size      Sun Private             Machine  Description 
+> platform node property
+> 
+> Cheers!greg
+> 
+> 
+> 
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Thu May 18 11:35:38 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4IIZbVk013920
+	for <fwarc@sac.eng.sun.com>; Thu, 18 May 2006 11:35:37 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k4IIZZgV026927
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Thu, 18 May 2006 19:35:36 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IZH001034Z8NV00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 18 May 2006 12:35:32 -0600 (MDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IZH00HNV4Z7W2A0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 18 May 2006 12:35:32 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k4IIZVoc028689; Thu, 18 May 2006 11:35:31 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4IIZUaL084826; Thu,
+ 18 May 2006 11:35:30 -0700 (PDT)
+Date: Thu, 18 May 2006 11:35:30 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/323 - console read/write hv APIs - fast track timeout
+ 5/23/2006
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Greg Onufer <greg.onufer@sun.com>, Firmware Arch <fwarc@sun.com>
+Message-id: <446CBE72.2050109@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+User-Agent: Thunderbird 1.5.0.2 (Windows/20060308)
+Status: RO
+Content-Length: 629
+
+
+
+Hitendra Zhangada wrote:
+
+> Dave, are we missing the latest specification and interface table
+> in the case directory?
+
+I think it's current. It has some wording about the actual size
+returned being invalid if there's an error, and that's one of
+the things that Greg clarified during the review. The document
+has been around for a while.
+
+If you want to add the two missing md props to the interface
+table file, feel free to do so. To me the update in the email
+is sufficient for a fast-track case, plus it's obvious, but
+I don't mind if you feel the need to update the file and
+the md registry if we have one.
+
+Thanks,
+David
+
+
+From sacadmin Thu May 18 12:07:32 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4IJ7VSo014917
+	for <fwarc@sac.eng.sun.com>; Thu, 18 May 2006 12:07:32 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k4IJ7Ie8004694;
+	Thu, 18 May 2006 20:07:29 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IZH0061B6GFDX00@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 18 May 2006 12:07:27 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.6]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IZH00IG06GE4FB0@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 18 May 2006 12:07:27 -0700 (PDT)
+Received: from d1-sfbay-06.sun.com ([192.18.39.116])
+	by nwkea-pix-1.sun.com (8.12.10+Sun/8.12.9) with ESMTP id k4IJ7Qba003484; Thu,
+ 18 May 2006 12:07:26 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-06.sun.com by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IZH00D0169QYB00@d1-sfbay-06.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Thu,
+ 18 May 2006 12:07:26 -0700 (PDT)
+Received: from [129.153.85.10] by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IZH00LI16GEVU30@d1-sfbay-06.sun.com>; Thu,
+ 18 May 2006 12:07:26 -0700 (PDT)
+Date: Thu, 18 May 2006 12:07:25 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2006/323 - console read/write hv APIs - fast track timeout
+ 5/23/2006
+In-reply-to: <446CBE72.2050109@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Greg Onufer <Greg.Onufer@sun.com>
+Message-id: <446CC5ED.9030508@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <446CBE72.2050109@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 1824
+
+David Kahn wrote On 05/18/06 11:35,:
+> 
+> 
+> Hitendra Zhangada wrote:
+> 
+>> Dave, are we missing the latest specification and interface table
+>> in the case directory?
+> 
+> 
+> I think it's current. It has some wording about the actual size
+> returned being invalid if there's an error, and that's one of
+> the things that Greg clarified during the review. The document
+> has been around for a while.
+> 
+> If you want to add the two missing md props to the interface
+> table file, feel free to do so. To me the update in the email
+> is sufficient for a fast-track case, plus it's obvious, but
+> I don't mind if you feel the need to update the file and
+> the md registry if we have one.
+
+Ok, done.  I have updated the interface table.  It would be nice
+if the specification is also updated and clearly defines the MD
+node properties but I can leave with the way it is.
+
+I do understand the spec. and the interfaces but what I am trying
+to point out is that since we have copied the specification in the
+materials directory those can be updated to avoid confusion in future.
+The first place I generally go to look for specification and interfaces
+is in the materials directory and not the mail file.  Further, all of
+the past MD node property definitions have used certain format for
+the description which I did not see in this case.  I am not saying
+that every case must follows the same format but at the least new
+definition should have its own section in the specification and
+not be implied by reference.
+
+I will leave this up to the case owner (which I think is to leave
+the specification as is).
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Thu May 18 12:08:59 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4IJ8xxr014937
+	for <fwarc@sac.eng.sun.com>; Thu, 18 May 2006 12:08:59 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k4IJ8qvo004992
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Thu, 18 May 2006 20:08:58 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IZH003036IV2T00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 18 May 2006 13:08:55 -0600 (MDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IZH00H2F6IVW4D0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 18 May 2006 13:08:55 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k4IJ8sTF020433; Thu, 18 May 2006 12:08:54 -0700 (PDT)
+Received: from [192.168.100.13] (x-files [129.146.96.102])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4IJ8sRc086600; Thu,
+ 18 May 2006 12:08:54 -0700 (PDT)
+Date: Thu, 18 May 2006 12:08:54 -0700
+From: Greg Onufer <greg.onufer@sun.com>
+Subject: Re: 2006/323 - console read/write hv APIs - fast track timeout
+ 5/23/2006
+In-reply-to: <446CBAF0.9030403@Sun.COM>
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>
+Message-id: <6B24F3AC-5390-417B-908E-23786AD2405E@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.750)
+Content-type: multipart/mixed; boundary="Boundary_(ID_tAL+upzOSPaMO+BLTD2UYw)"
+X-PMX-Version: 5.1.2.240295
+References: <446A95E2.2000805@sun.com> <446BE4AC.3060402@sun.com>
+ <C4D193B8-C824-42CA-950D-AA4D79D5D90A@sun.com> <446CBAF0.9030403@Sun.COM>
+Status: RO
+Content-Length: 4514
+
+
+--Boundary_(ID_tAL+upzOSPaMO+BLTD2UYw)
+Content-type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Content-transfer-encoding: 7BIT
+
+On May 18, 2006, at 11:20 AM, Hitendra Zhangada wrote:
+> What I see is references similar to,
+>
+>   An optional integer property 'cons-write-buffer-size' in the machine
+>   description's 'platform' node provides a hint as to the
+>   size of the console device's internal output buffering.
+>
+> Is this what you are referring as the definition of these properties?
+
+Yes:  the name, the type, the location, and what it means. I can just  
+move those paragraphs somewhere else.
+
+Updated case materials attached.
+
+Cheers!greg
+
+
+--Boundary_(ID_tAL+upzOSPaMO+BLTD2UYw)
+Content-type: text/plain; x-unix-mode=0444; name=cons-write-spec.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: attachment; filename=cons-write-spec.txt
+
+$Revision: 1.5 $ $Date: 2006/05/18 19:05:31 $
+
+1 Introduction
+
+  This document specifies a hypervisor API function to provide a
+  multi-character console output interface to supplement the core
+  console putchar interface.
+
+
+2 cons-write API Call
+
+  Entry:
+	trap#		FAST_TRAP
+	function#	CONS_WRITE
+	arg0		raddr
+	arg1		size
+
+  Exit:
+	ret0		status
+	ret1		characters written
+
+  Errors:
+	ENORADDR	Invalid real address
+	EWOULDBLOCK	Cannot complete operation without blocking
+	EIO		I/O error
+
+  Writes 'size' characters contained in the buffer
+  indicated by the 'raddr' argument to the console device.
+
+  On success, ret1 contains the actual number of characters
+  written to the console device which may be fewer than the
+  requested number of characters.
+
+  If ret0 (status) is non-zero, then no characters have been written
+  to the device and ret1 is not valid.
+
+
+3 cons-read API Call
+
+  Entry:
+	trap#		FAST_TRAP
+	function#	CONS_READ
+	arg0		raddr
+	arg1		size
+
+  Exit:
+	ret0		status
+	ret1		characters read or special value
+
+  Errors:
+	ENORADDR	Invalid real address
+	EWOULDBLOCK	Cannot complete operation without blocking
+	EIO		I/O error
+
+  Reads up to 'size' characters from the console device and
+  places them in the buffer specified by the 'raddr' argument.
+
+  On success, ret1 contains either a special value (CONS_BREAK,
+  CONS_HUP as per CONS_GETCHAR) or the number of characters placed
+  into the buffer which may be fewer than the requested number of
+  characters.
+
+  If ret0 (status) is non-zero, then no characters have been read from
+  the console device and ret1 is not valid.
+
+
+4 cons-write-buffer-size Machine Description Property
+
+  The optional integer property 'cons-write-buffer-size' in the machine
+  description's 'platform' node provides a hint as to the
+  size of the console device's internal output buffering.
+
+
+5 cons-read-buffer-size Machine Description Property
+
+  The optional integer property 'cons-read-buffer-size' in the machine
+  description's 'platform' node provides a hint as to the
+  size of the console devices's internal input buffering.
+
+
+6 References
+
+  [1] Sun4v Hypervisor API (FWARC/2005/116)
+	http://sac.sfbay/Archives/CaseLog/arc/FWARC/2005/116/
+	http://projectq.sfbay.sun.com/docs/api.pdf
+
+  [2] Sun4v Machine Description (FWARC/2005/115)
+	http://sac.sfbay/Archives/CaseLog/arc/FWARC/2005/115/
+
+--Boundary_(ID_tAL+upzOSPaMO+BLTD2UYw)
+Content-type: text/plain; x-unix-mode=0444; name=cons-write-interface-table.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: attachment; filename=cons-write-interface-table.txt
+
+$Revision: 1.3 $ $Date: 2006/05/18 19:05:09 $
+
+
+Imported Interfaces
+===================
+
+Interface Name            Classification  Comment
+---------------------------------------------------------------------
+Hypervisor Error Code     Sun Private     FWARC/2005/116
+  Values, Calling
+  Conventions
+
+Machine Desc. Transport,  Sun Private    FWARC/2005/115
+  Node Types, and Names
+
+
+Exported Interfaces
+===================
+
+#Name			Group#	Trap#	Func#	Major#	Minor#	Case#s	Comment
+#====			======	=====	=====	======	======	======	=======
+
+CONS_READ		0x1	0x80	0x62	1	?	2006/XXX
+CONS_WRITE		0x1	0x80	0x63	1	?
+2006/XXX
+
+Interface Name          Classification  Comment
+--------------------------------------------------------------------
+cons-write-buffer-size  Sun Private     Machine Description platform
+					node property
+cons-read-buffer-size   Sun Private     Machine Description platform
+					node property
+
+
+
+--Boundary_(ID_tAL+upzOSPaMO+BLTD2UYw)
+Content-type: text/plain; charset=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+
+
+
+--Boundary_(ID_tAL+upzOSPaMO+BLTD2UYw)--
+
+From sacadmin Thu May 18 12:22:07 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4IJM7dc015181
+	for <fwarc@sac.eng.Sun.COM>; Thu, 18 May 2006 12:22:07 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k4IJM6U27450
+	for <@sunmail2.sfbay.sun.com:fwarc@sun.com>; Thu, 18 May 2006 13:22:06 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IZH00G0974T5V00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 18 May 2006 12:22:05 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.5]) by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IZH009J074TFK80@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 18 May 2006 12:22:05 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.12.10+Sun/8.12.9) with ESMTP id k4IJM5pK022788	for
+ <fwarc@sun.com>; Thu, 18 May 2006 12:22:05 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IZH0060172KC300@d1-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 18 May 2006 12:22:05 -0700 (PDT)
+Received: from [129.153.85.10] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IZH008UT74S2E60@d1-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 18 May 2006 12:22:05 -0700 (PDT)
+Date: Thu, 18 May 2006 12:22:04 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/323 - console read/write hv APIs - fast track timeout
+ 5/23/2006
+In-reply-to: <6B24F3AC-5390-417B-908E-23786AD2405E@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Message-id: <446CC95C.80603@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <446A95E2.2000805@sun.com> <446BE4AC.3060402@sun.com>
+ <C4D193B8-C824-42CA-950D-AA4D79D5D90A@sun.com> <446CBAF0.9030403@Sun.COM>
+ <6B24F3AC-5390-417B-908E-23786AD2405E@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 310
+
+FYI.  Both spec and the interface tables have been updated
+in the materials directory.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Tue May 23 18:03:43 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4O13hdO001606
+	for <fwarc@sac.eng.Sun.COM>; Tue, 23 May 2006 18:03:43 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k4O13gB03911;
+	Tue, 23 May 2006 19:03:42 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IZQ0000JWA2O900@brm-avmta-1.central.sun.com>; Tue,
+ 23 May 2006 19:03:38 -0600 (MDT)
+Received: from noho.SFBay.Sun.COM ([10.6.92.101])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IZQ00K3JW9WGC30@brm-avmta-1.central.sun.com>; Tue,
+ 23 May 2006 19:03:37 -0600 (MDT)
+Received: from noho.SFBay.Sun.COM (localhost [127.0.0.1])
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0) with ESMTP id k4O13WGt000405; Tue,
+ 23 May 2006 18:03:32 -0700 (PDT)
+Received: (from dmk@localhost)	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0/Submit)
+ id k4O13WvV000404; Tue, 23 May 2006 18:03:32 -0700 (PDT)
+Date: Tue, 23 May 2006 18:03:32 -0700 (PDT)
+From: David Kahn <dmk@noho.SFBay.Sun.COM>
+Subject: Re: 2006/323 - console read/write hv APIs - fast track timeout
+ 5/23/2006
+To: fwarc@sun.com
+Cc: greg.onufer@sun.com
+Message-id: <200605240103.k4O13WvV000404@noho.SFBay.Sun.COM>
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+Status: RO
+Content-Length: 32
+
+This case is approved.
+
+-David
+
+

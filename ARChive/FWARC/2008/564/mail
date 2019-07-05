@@ -1,0 +1,364 @@
+From sacadmin Thu Sep  4 17:08:55 2008
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8508tss021518
+	for <fwarc@sac.sfbay.sun.com>; Thu, 4 Sep 2008 17:08:55 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m8508tF5006136
+	for <@sunmail2sca.sfbay.sun.com:FWARC@sun.com>; Thu, 4 Sep 2008 18:08:55 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K6P00B034ES3700@brm-avmta-1.central.sun.com> for FWARC@sun.com
+ (ORCPT FWARC@sun.com); Thu, 04 Sep 2008 18:08:52 -0600 (MDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K6P00MLK4ERCAB0@brm-avmta-1.central.sun.com> for FWARC@sun.com
+ (ORCPT FWARC@sun.com); Thu, 04 Sep 2008 18:08:51 -0600 (MDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m8508pfL014731	for
+ <FWARC@sun.com>; Thu, 04 Sep 2008 17:08:51 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K6P00F014D6SZ00@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for FWARC@sun.com (ORCPT FWARC@sun.com); Thu, 04 Sep 2008 17:08:51 -0700 (PDT)
+Received: from [129.153.85.16] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K6P00JDC4EQ2LC0@fe-sfbay-09.sun.com> for FWARC@sun.com
+ (ORCPT FWARC@sun.com); Thu, 04 Sep 2008 17:08:50 -0700 (PDT)
+Date: Thu, 04 Sep 2008 17:08:49 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Fast-track - 2008/564 :  MEM_IFLUSH_ALL Hypervisor API call
+Sender: Hitendra.Zhangada@sun.com
+To: FWARC@sun.com
+Cc: Shesha Sreenivasamurthy <Shesha.Sreenivasamurthy@sun.com>,
+        Prashanth Sreenivasa <Prashanth.Sreenivasa@sun.com>,
+        Richard Barnette <Richard.Barnette@sun.com>
+Message-id: <48C07891.10100@Sun.COM>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_+A6isTyhLeZ7cil6VkryuQ)"
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.14 (X11/20080505)
+Status: RO
+Content-Length: 7038
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_+A6isTyhLeZ7cil6VkryuQ)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+I am sponsoring this fast-track case for Shesha Sreenivasamurthy.
+This case defines a HV API to flush all the entries in the Instruction
+Cache (I$).   See details in the attached one-pager.
+
+This case will be approved for minor/micro/patch OS binding
+and minor/micro binding for the firmware.
+
+The case timer is set to expire on September 11, 2008.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_+A6isTyhLeZ7cil6VkryuQ)
+Content-type: text/plain; name=mem_iflush_all.1pager
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=mem_iflush_all.1pager
+
+1. Introduction
+   1.1. Project/Component Working Name:
+	MEM_IFLUSH_ALL Hypervisor API call
+
+   1.2. Name of Document Author/Supplier:
+	Shesha Sreenivasamurthy
+
+   1.3. Date of This Document:
+	08/13/2008
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		N/A
+
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Ravi Subbarao
+
+	1.4.4. The name of your business unit:
+		Systems
+
+   1.5. Email Aliases:
+    	1.5.1. Responsible Manager: umesh.sharma@sun.com
+    	1.5.2. Responsible Engineer: sheshas@sun.com
+    	1.5.3. Marketing Manager:
+
+2. Project Summary
+   2.1. Project Description:
+	A new hypervisor API function to allow privileged
+	software to efficiently make sure that all the instruction
+	caches in the system (and therefore all future instruction
+	fetches by all strands in the system) see a consistent view
+	of memory with respect to data stores and DMA.
+
+3. Business Summary
+   3.1. Problem Area:
+	This new API will allow privileged software to take advantage of
+	processor specific capabilities of current and future sun4v CPUs without
+	requiring changes to the SPARC privileged (sun4v) instruction set
+	architecture.
+
+   3.2. Market/Requester:
+	Implementing this functionality in privileged mode would be
+	very inefficient, and in any case would require new information
+	in the MD to more completely describe the caches in the system.
+
+   3.3. Business Justification:
+	Required to fix a critical bug in the original Solaris sun4v
+	virtual machine implementation (see CR 6717663).
+
+   3.4. Competitive Analysis:
+
+   3.5. Opportunity Window/Exposure:
+	Required for I$ coherency on platforms that has non-coherent I$
+
+   3.6. How will you know when you are done?:
+	The project will be done when the API is implemented according
+	to specification, and use of the API demonstrates correctness
+	of Solaris modules using this API.
+
+
+4. Technical Description:
+
+    4.1. Introduction:
+	This document specifies Hypervisor API to flush all the entries in
+	the Instruction Cache (I$). This specification provides description
+	of single function that the guest can use to make sure all loads and
+	stores made by any strand prior to the call is visible to the strand
+	making this function call.
+
+    4.2. I$ flush:
+	There can be two types of caches based on the coherency.
+		a. Coherent caches
+		b. Non-coherent caches
+	In case of coherent caches, any change made by a strand
+	in the memory is eventually visible to the caches. Whereas
+	in case of non-coherent caches that is not the case. Therefore
+	the software has to explicitly load changes to the caches.
+	Another approach would be to invalidate the entries in the caches
+	so that the next access to that memory location automatically
+	brings in the new value to the caches. Here the cache of interest
+	is the I$.
+
+
+    4.3. MEM_IFLUSH_ALL
+
+        Group#:			MEM_IFLUSH (0x10)
+		Major#:		1
+		Minor#:		0
+	Trap#:			FAST_TRAP
+	Function#:		MEM_IFLUSH_ALL (0x34)
+	args:			NONE
+	ret0:			EOK: Success
+
+	This function should be implemented on any processors that provides
+	MEM_IFLUSH API group. When the call returns, instruction fetches
+	from the calling strand will see the results of any data store that
+	any strand executed prior to the call. The effect on other strands
+	is unspecified.
+
+    4.3. Bug/RFE Number(s):
+	N/A
+
+    4.4. In Scope:
+	N/A
+
+    4.5. Out of Scope:
+	N/A
+
+    4.6. Interfaces:
+
+    4.6.1 Imported Interfaces :
+
+      Interface                 Classification	      Comments
+      ==============================================================
+
+      HV APIs                      Committed       FWARC/2005/116
+      HV APIs                      Committed       FWARC/2007/462
+
+
+    4.6.2 Exported Interfaces :
+
+      Interface                   Classification	   Comments
+      ===================================================================
+
+      MEM_IFLUSH_ALL API function    Committed      Function 0x34, group
+                                              	    0x10 as defined in
+                                                    section 4.3
+
+    4.7. Doc Impact:
+	The "UltraSPARC Virtual Machine Specification" (a.k.a. the
+	Hypervisor API spec) must be updated to reflect the new
+	API.
+
+    4.8. Admin/Config Impact:
+	No change to system administration or configuration.
+
+    4.9. HA Impact:
+	No impact on High Availability or Clustering.
+
+    4.10. I18N/L10N Impact:
+	No impact on internationalization or localization.
+
+    4.11. Packaging & Delivery:
+	The API will be an integral part of the system firmware.
+
+    4.12. Security Impact:
+	No security impact.
+
+    4.13. Dependencies:
+	No dependencies.
+
+5. Reference Documents:
+	SPARC V9 manual:
+	    http://developers.sun.com/solaris/articles/sparcv9.pdf
+	Hypervisor API (Open document available on opensparc.net):
+	    http://opensparc-t1.sunsource.net/specs/Hypervisor-api-current-draft.pdf
+	FWARC/2007/462.
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+	The API is implemented and available now.
+
+   6.2. Cost of Capital Resources:
+	Negligible (existing bringup systems are adequate)
+
+   6.3. Product Approval Committee requested information:
+   	6.3.1. Consolidation or Component Name:
+		SPARC System Firmware (Hypervisor)
+	6.3.3. Type of CPT Review and Approval expected:
+		N/A
+        6.3.4. Project Boundary Conditions:
+		N/A
+	6.3.5. Is this a necessary project for OEM agreements:
+		No
+	6.3.6. Notes:
+	6.3.7. Target RTI Date/Release:
+		TBD.
+	6.3.8. Target Code Design Review Date:
+		Formal review of all Hypervisor code changes will be held
+		prior to RTI for the Hypervisor; that review will include
+		the support for this API.
+
+		Initial review of this code change has already taken
+		place on the hypervisior reviewers  alias.
+
+	6.3.9. Update approval addition:
+	        N/A
+
+   6.4. ARC review type:
+		FastTrack
+
+   6.5. ARC Exposure
+		open
+
+7. Prototype Availability:
+   7.1. Prototype Availability:
+	Currently available.
+
+   7.2. Prototype Cost:
+	Negligible.
+
+--Boundary_(ID_+A6isTyhLeZ7cil6VkryuQ)--
+
+From sacadmin Fri Sep 12 12:04:01 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8CJ40Us003057
+	for <fwarc@sac.sfbay.Sun.COM>; Fri, 12 Sep 2008 12:04:01 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m8CJ3o6Z025288
+	for <@sunmail2sca.sfbay.sun.com:FWARC@sun.com>; Sat, 13 Sep 2008 03:03:59 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K7300I0JJMKIU00@nwk-avmta-2.sfbay.sun.com> for FWARC@sun.com
+ (ORCPT FWARC@sun.com); Fri, 12 Sep 2008 12:03:56 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K7300FYGJMJ4E50@nwk-avmta-2.sfbay.sun.com> for FWARC@sun.com
+ (ORCPT FWARC@sun.com); Fri, 12 Sep 2008 12:03:55 -0700 (PDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m8CJ3tSX015341	for
+ <FWARC@sun.com>; Fri, 12 Sep 2008 12:03:55 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K7300H01HP9K600@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for FWARC@sun.com (ORCPT FWARC@sun.com); Fri, 12 Sep 2008 12:03:55 -0700 (PDT)
+Received: from [129.150.32.24] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K7300FLNJM4ZGD0@fe-sfbay-10.sun.com> for FWARC@sun.com
+ (ORCPT FWARC@sun.com); Fri, 12 Sep 2008 12:03:41 -0700 (PDT)
+Date: Fri, 12 Sep 2008 12:03:40 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: Fast-track - 2008/564 :  MEM_IFLUSH_ALL Hypervisor API call
+In-reply-to: <48C07891.10100@Sun.COM>
+Sender: Hitendra.Zhangada@Sun.COM
+To: FWARC@Sun.COM
+Cc: Shesha Sreenivasamurthy <Shesha.Sreenivasamurthy@Sun.COM>,
+        Prashanth Sreenivasa <Prashanth.Sreenivasa@Sun.COM>,
+        Richard Barnette <Richard.Barnette@Sun.COM>
+Message-id: <48CABD0C.6070504@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <48C07891.10100@Sun.COM>
+User-Agent: Thunderbird 2.0.0.16 (Windows/20080708)
+Status: RO
+Content-Length: 757
+
+Hitendra Zhangada wrote:
+> I am sponsoring this fast-track case for Shesha Sreenivasamurthy.
+> This case defines a HV API to flush all the entries in the Instruction
+> Cache (I$).   See details in the attached one-pager.
+>
+> This case will be approved for minor/micro/patch OS binding
+> and minor/micro binding for the firmware.
+>
+> The case timer is set to expire on September 11, 2008.
+
+This case has timed out and is now approved.
+
+
+I will update IAM file and add the API to the registry later today.
+
+
+Thanks.
+
+>
+>
+> Thanks.
+>
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+

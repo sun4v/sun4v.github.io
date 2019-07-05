@@ -1,0 +1,242 @@
+Copyright 2006 Sun Microsystems
+
+1. Introduction
+   1.1. Project/Component Working Name:
+	MEM_IFLUSH Hypervisor API call
+
+   1.2. Name of Document Author/Supplier:
+	Richard Barnette
+
+   1.3. Date of This Document:
+	08/13/2007
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		N/A (work will be part of the Supernova RR deliverable,
+		but this item will not be specifically reviewed by any
+		business team).
+
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Ravi Subbarao
+
+	1.4.4. The name of your business unit:
+		Systems
+
+   1.5. Email Aliases:
+    	1.5.1. Responsible Manager: umesh.sharma@sun.com
+    	1.5.2. Responsible Engineer: richard.barnette@sun.com
+    	1.5.3. Marketing Manager:
+	1.5.4. Interest List: hvrock-dev@sun.com
+
+2. Project Summary
+   2.1. Project Description:
+	Implement a new hypervisor API function to allow privileged
+	software to take advantage of Rock's page flush feature.
+
+   2.2. Risks and Assumptions:
+	This proposal assumes other CPUs (including successors to Rock
+	such as Rock+ or Rock2) may or may not choose to implement the
+	API.  Other CPUs may not be able to provide an equally
+	significant performance benefit, or may not require a
+	hyperprivileged function to do so.
+
+3. Business Summary
+   3.1. Problem Area:
+	This new API will allow privileged software to take advantage of
+	non-standard performance capabilities of current and future
+	sun4v CPUs without requiring changes to the SPARC privileged
+	(sun4v) instruction set architecture.
+
+   3.2. Market/Requester:
+	The feature is to be provided to improve the performance of
+	Supernova systems.  Other system platforms may be able to
+	provide benefit from this new API as well.
+
+   3.3. Business Justification:
+	This API will provide measurable performance improvements to
+	Supernova systems at negligible cost.
+
+   3.4. Competitive Analysis:
+
+   3.5. Opportunity Window/Exposure:
+	Required for Supernova RR, in the second half of CY2008.
+
+   3.6. How will you know when you are done?:
+	The project will be done when the API is implemented according
+	to specification, and use of the API demonstrates statistically
+	significant, measurable performance improvements on Supernova
+	systems running Solaris.
+
+
+4. Technical Description:
+    4.1. Details:
+	The API will be added with the following registry values:
+        Name:                           MEM_IFLUSH
+	API group:			0x10
+	API major number:		1
+	API minor number:		0
+	FAST_TRAP function number:	0x33
+
+	Input arguments:
+	arg0 		raddr
+	arg1		length
+
+	Return values:
+	ret0		status
+	ret1		act_length
+
+	Errors:
+	EOK		"act_length" bytes successfully flushed,
+			starting at "raddr".
+	EINVAL		"length" is 0.
+	ENORADDR	"raddr" not valid.
+
+	The call requests that instruction memory be synchronized with
+	data memory for all addresses in the range from "raddr" through
+	"raddr+length-1", inclusive.
+
+	The call may flush fewer bytes than actually requested, in which
+	case the returned "act_length" value indicates the number of
+	bytes actually flushed.  The call may also flush addresses
+	outside the requested range (either lower addresses, or higher
+	addresses); flushes outside the requested range are not
+	reported.
+
+	When the call returns, instruction fetches from the calling
+	virtual CPU in the range between "raddr" and
+	"raddr+act_length-1", inclusive (including virtual address
+	references that translate to this range) will see the results of
+	any data store that the virtual CPU executed prior to the call.
+	Instruction fetches on other virtual CPUs within the guest will
+	eventually also see the same updates.
+
+	Although the latency for updates to become visible on other
+	virtual CPUs is not specified, this API call does impose an
+	ordering requirement:  Updates on other CPUs will be ordered so
+	that any load or store made after a virtual CPU completes this
+	call will not complete until all updates resulting from that
+	call are visible to all other virtual CPUs.
+
+	Implementation note:
+	This call is equivalent to using a FLUSH instruction on every
+	address in the flushed range, followed by "membar #Sync", except
+	for the following:
+	   * The call will typically execute faster than equivalent
+	     FLUSH instructions, at least for large "length" values.
+	   * The operation requires a real, rather than a virtual
+	     address.
+
+
+    4.2. Bug/RFE Number(s):
+	N/A
+
+    4.3. In Scope:
+	N/A
+
+    4.4. Out of Scope:
+	N/A
+
+    4.5. Interfaces:
+    
+    4.5.1 Imported Interfaces :
+    
+      Interface                 Classification	      Comments
+      ==============================================================
+
+      HV APIs                   Sun Private       FWARC/2005/116 
+      
+      
+    4.5.2 Exported Interfaces :
+    
+      Interface                 Classification	      Comments
+      ==============================================================
+
+      MEM_IFLUSH API function   Sun Private     Function 0x33, group 
+                                                0x10 as defined in 
+                                                section 4.1  
+  
+    4.6. Doc Impact:
+	The "UltraSPARC Virtual Machine Specification" (a.k.a. the
+	Hypervisor API spec) must be updated to reflect the new
+	API.
+    
+    4.7. Admin/Config Impact:
+	No change to system administration or configuration.
+
+    4.8. HA Impact:
+	No impact on High Availability or Clustering.
+
+    4.9. I18N/L10N Impact:
+	No impact on internationalization or localization.
+
+    4.10. Packaging & Delivery:
+	The API will be an integral part of the Hypervisor firmware
+	on Supernova systems.
+
+    4.11. Security Impact:
+	No security impact.
+
+    4.12. Dependencies:
+	No dependencies.
+
+5. Reference Documents:
+	SPARC V9 manual:
+	    https://systemsweb.sfbay.sun.com/archperf/SPARC/SPARC-V9-current.pdf
+	Rock PRM (Latest Book):
+	    https://systemsweb.sfbay.sun.com/rock/team/docs/rkprm_1.4.pdf
+	Hypervisor API (Open document available on opensparc.net):
+	    http://opensparc-t1.sunsource.net/specs/Hypervisor-api-current-draft.pdf
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+	The API is implemented and available now.  Performance testing
+	will begin when sufficient machine and developer resources are
+	available.
+
+   6.2. Cost of Effort:
+	Implementation/debug:
+	  (Rock HV): 1 week
+	  (Solaris): 1 week
+	Performance testing:
+	  (Test, evaluate, tune): 2 weeks
+
+
+   6.3. Cost of Capital Resources:
+	Negligible (existing bringup systems are adequate)
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation or Component Name:
+		SPARC System Firmware (Hypervisor)
+	6.4.3. Type of CPT Review and Approval expected:
+		N/A
+        6.4.4. Project Boundary Conditions:
+		N/A
+	6.4.5. Is this a necessary project for OEM agreements:
+		No
+	6.4.6. Notes:
+	6.4.7. Target RTI Date/Release:
+		TBD.  Will be part of Supernova RTI; other
+		platforms could choose to implement sooner.
+	6.4.8. Target Code Design Review Date:
+		Formal review of all Supernova Hypervisor code changes
+		will be held prior to RTI for the Supernova Hypervisor;
+		that review will include the Rock support for this API.
+
+		Initial review of this code change has already taken
+		place on the hvreview@sun.com alias.
+
+	6.4.9. Update approval addition:
+	        N/A
+
+   6.5. ARC review type:
+		FastTrack
+
+7. Prototype Availability:
+   7.1. Prototype Availability:
+	Currently available.
+
+   7.2. Prototype Cost:
+	Negligible.

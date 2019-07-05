@@ -1,0 +1,39 @@
+
+Interfaces Imported
+
+Name			Classification		Comments
+====			==============		========
+PCI Bus Binding		Standard		Properties and methods defined
+to Open Firmware				in public specification.
+
+PCI Express Binding	Committed		FWARC/2005/545
+and Updates					FWARC/2005/048
+						FWARC/2003/637
+						PCIe updates to PCI Binding
+
+
+
+
+Interfaces Exported
+
+Name			Classification		Comments
+====			==============		========
+
+config space		Committed		Behavior of loaned device
+						node config space fields
+						as defined by this case.
+
+"SUNW,assigned-device"	Committed		name propval of loaned device
+						node.
+
+device-id 0xfa04	Committed		device id of a loaned device,
+						with Sun's vendor id 0x108e.
+
+"real-vendor-id"	Committed		Loaned device node properties
+"real-device-id"				with values from the underlying
+"real-class-code"				device. (exported by OBP).
+"real-subsystem-vendor-id"
+"real-subsystem-id"
+"real-revision-id"
+
+

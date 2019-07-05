@@ -1,0 +1,93 @@
+#pragma ident	"@(#)interface-table.txt	1.3	05/03/04 SMI"
+
+
+Exported Interfaces
+
+
+HYPERFAST TRAPS			Sun Private	argument/result format.
+
+FAST_TRAP			Sun Private	arg/result format trap 0x80
+
+CORE_TRAP			Sun Private	arg/result format trap 0xff
+
+HV Error IDs			Sun Private	Error code values.
+
+MMU Fault Status Area		Sun Private	Data Structure format & content
+
+Trap Trace Buffer		Sun Private	Data structure format & content
+
+Initial Guest State		Sun Private	Initial guest state
+
+
+						CORE TRAP GROUP
+
+API_VER				Sun Private	Trap 0xff function number 0x00
+						Note: reservation only
+
+API_PUTCHAR			Sun Private	Trap 0xff function number 0x01
+
+API_EXIT			Sun Private	Trap 0xff function number 0x02
+
+
+						HYPERFAST TRAP GROUP
+
+FAST_TRAP			Sun Private	trap 0x80 - fast-trap
+MMU_MAP_ADDR			Sun Private	trap 0x83 - mmu_map_addr
+MMU_UNMAP_ADDR			Sun Private	trap 0x84 - mmu_unmap_addr
+TTRACE_ADDENTRY			Sun Private	trap 0x85 - ttrace_addentry
+
+
+						FAST TRAP GROUP
+						Function numbers, args
+						and results for trap 0x80
+
+MACH_EXIT			Sun Private	Trap 0x80 function number 0x00
+MACH_DESC			Sun Private	Trap 0x80 function number 0x01
+MACH_SIR			Sun Private	Trap 0x80 function number 0x02
+
+CPU_START			Sun Private	Trap 0x80 function number 0x10
+CPU_STOP			Sun Private	Trap 0x80 function number 0x11
+CPU_YIELD			Sun Private	Trap 0x80 function number 0x12
+CPU_QCONF			Sun Private	Trap 0x80 function number 0x14
+CPU_QINFO			Sun Private	Trap 0x80 function number 0x15
+CPU_MYID			Sun Private	Trap 0x80 function number 0x16
+CPU_STATE			Sun Private	Trap 0x80 function number 0x17
+
+MMU_TSB_CTX0			Sun Private	Trap 0x80 function number 0x20
+MMU_TSB_CTXNON0			Sun Private	Trap 0x80 function number 0x21
+MMU_DEMAP_PAGE			Sun Private	Trap 0x80 function number 0x22
+MMU_DEMAP_CTX			Sun Private	Trap 0x80 function number 0x23
+MMU_DEMAP_ALL			Sun Private	Trap 0x80 function number 0x24
+MMU_MAP_PERM_ADDR		Sun Private	Trap 0x80 function number 0x25
+MMU_FAULT_AREA			Sun Private	Trap 0x80 function number 0x26
+MMU_ENABLE			Sun Private	Trap 0x80 function number 0x27
+MMU_UNMAP_PERM_ADDR		Sun Private	Trap 0x80 function number 0x28
+MMU_TSB_CTX0_INFO		Sun Private	Trap 0x80 function number 0x29
+MMU_TSB_CTXNON0_INFO		Sun Private	Trap 0x80 function number 0x2a
+
+MEM_SCRUB			Sun Private	Trap 0x80 function number 0x31
+MEM_SYNC			Sun Private	Trap 0x80 function number 0x32
+
+CPU_MONDO_SEND			Sun Private	Trap 0x80 function number 0x42
+
+TOD_GET				Sun Private	Trap 0x80 function number 0x50
+TOD_SET				Sun Private	Trap 0x80 function number 0x51
+
+CONS_GETCHAR			Sun Private	Trap 0x80 function number 0x60
+CONS_PUTCHAR			Sun Private	Trap 0x80 function number 0x61
+
+TTRACE_BUFCONF			Sun Private	Trap 0x80 function number 0x90
+TTRACE_BUFINFO			Sun Private	Trap 0x80 function number 0x91
+TTRACE_ENABLE			Sun Private	Trap 0x80 function number 0x92
+TTRACE_FREEZE			Sun Private	Trap 0x80 function number 0x93
+DUMP_BUFCONF			Sun Private	Trap 0x80 function number 0x94
+DUMP_BUFINFO			Sun Private	Trap 0x80 function number 0x95
+
+INTR_DEVINO2SYSINO		Sun Private	Trap 0x80 function number 0xa0
+INTR_GETVALID			Sun Private	Trap 0x80 function number 0xa1
+INTR_SETVALID			Sun Private	Trap 0x80 function number 0xa2
+INTR_GETSTATE			Sun Private	Trap 0x80 function number 0xa3
+INTR_SETSTATE			Sun Private	Trap 0x80 function number 0xa4
+INTR_GETTARGET			Sun Private	Trap 0x80 function number 0xa5
+INTR_SETTARGET			Sun Private	Trap 0x80 function number 0xa6
+

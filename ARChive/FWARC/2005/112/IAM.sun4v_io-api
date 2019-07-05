@@ -1,0 +1,11 @@
+Name:		sun4v io-api
+Submitter:	david.kahn@sun.com
+Owner:		Hitendra Zhangada
+Intern:		Stephen Ehring
+Interest:	sun4v-iteam@sun.com,psarc@sun.com
+Status:         closed approved fast-track 03/07/2005 
+Comment:	inception held 03/07/2005
+Comment:	this case converted to fast-track and has been approved by FWARC members
+Comment:	The case is approved but it can not be delivered until the
+Comment:	Sun4v Core API case (2005/116) is approved.
+Exposure:	open

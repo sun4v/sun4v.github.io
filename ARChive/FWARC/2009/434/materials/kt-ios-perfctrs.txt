@@ -1,0 +1,131 @@
+#pragma ident	"@(#)kt-ios-perfctrs.txt	1.2	09/08/11 SMI"
+
+KT IOS Performance Counters - Hypervisor API
+
+    Introduction
+
+	This case defines the KT IOS-specific performance counters API
+	for sun4v.
+
+    API Versioning
+
+	This interface will abide by FWARC/2006/052 with respect
+	to versioning.  The interface presented here represents
+	version 1.0.
+
+	See the section on Exported Interfaces below for specific API
+	group-number.
+
+    References
+
+	FWARC/2004/510 sun4v umbrella case
+	FWARC/2005/112 sun4v io-api
+	FWARC/2006/002 Fire Performance Counter API
+	FWARC/2006/052 sun4v version API update
+	KT PRM v 0.2 (6/30/2008) Chp 18 IOS PRM
+	- https://systemsweb.sfbay.sun.com/kt/team/arch_specs/index.html
+
+    Function Number
+
+	See the section on Exported Interfaces below for specific API
+	function numbers.
+
+    KT IOS Performance Counter API Definitions
+
+	1.	General
+
+	The argument "pci device handle" is a "devhandle" as defined in
+	FWARC/2005/112 section 3.1
+
+	The argument "Performance register ID" refers to the registers as
+	defined in KT Programmer's Reference Manual sections as
+	indicated below. Values read and written as defined by KT PRM.
+
+	Performance		Description			KT
+	register ID						PRM
+	-----------	--------------------------------------  --------
+           0            PEX Performance Counter Select		18.14.3.30
+	   1            PEX Performance Counter Zero		18.14.3.31
+	   2            PEX Performance Counter One		18.14.3.32
+
+	   3            ATU Performance Counter Select		18.14.4.29
+           4		ATU Performance Counter Zero		18.14.4.30
+           5		ATU Performance Counter One		18.14.4.31
+
+	   6		IMU Performance Counter Select		18.14.5.39
+	   7	        IMU Performance Counter Zero		18.14.5.40
+	   8	        IMU Performance Counter One		18.14.5.41
+
+	   9	        NPU Performance Counter Select		18.14.6.26
+	   10	        NPU Performance Counter Zero		18.14.6.27
+	   11	        NPU Performance Counter One		18.14.6.28
+
+	   12	        PEU0 Performance Counter Select		18.15.2.36
+	   13	        PEU0 Performance Counter One		18.15.2.37
+	   14	        PEU0 Performance Counter Two		18.15.2.38
+
+	   15	        PEU1 Performance Counter Select		18.15.2.36
+	   16	        PEU1 Performance Counter One		18.15.2.37
+	   17	        PEU1 Performance Counter Two		18.15.2.38
+
+	2.1 kt_ios_get_perf_reg
+
+	    Entry:
+		trap#		FAST_TRAP
+		function#	KT_IOS_GET_PERFREG
+		arg0		pci device handle
+		arg1		Performance register ID
+
+	    Exit:
+		ret0		status (success or error code)
+		ret1		Performance register value
+
+	This call reads the value of the KT IOS performance register
+	specified by the argument "Performance register ID" of the pci
+	leaf specified by the argument "pci device handle".
+
+	Upon successful completion, it returns EOK status and performance
+	register value. Otherwise, it returns one of the following errors:
+
+	EINVAL			Invalid performance register number
+	ENOACCESS		No access allowed to performance registers
+
+
+	2.2 kt_ios_set_perf_reg
+
+	    Entry:
+		trap#		FAST_TRAP
+		function#	KT_IOS_SET_PERFREG
+		arg0		pci device handle
+		arg1		Performance register ID
+		arg2		Performance register value
+
+	    Exit:
+		ret0		status (success or error code)
+
+	This call sets the value of the KT IOS performance register as
+	specified by the argument "Performance register ID" of the pci
+	leaf specified by the argument "pci device handle" to the
+	value specified by the argument "Performance register value".
+
+	Upon successful completion, it updates the specified
+	performance register value and returns EOK status. Otherwise,
+	it returns one of the following errors:
+
+	EINVAL			Invalid performance register number
+	ENOACCESS		No access allowed to performance registers
+
+
+========================================================================
+Exported Interfaces
+
+HV Fast Trap:
+
+	0x165		Uncommitted	KT_IOS_GET_PERFREG	API v1.0
+	0x166		Uncommitted	KT_IOS_SET_PERFREG	API v1.0
+
+KT IOS API Group Number:
+
+	0x020a		Uncommitted	KT IOS Performance Counters
+
+

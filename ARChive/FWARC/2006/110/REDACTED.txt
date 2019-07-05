@@ -1,0 +1,12 @@
+The following files and directories have been redacted:
+
+    20060216_ashley.saulsbury - ignored file (manual case)
+    SCCS - ignored directory
+    issues - ignored file (manual case)
+    mail - ignored file (manual case)
+    materials/dom_services_md_misc_prop_one-pager.txt - ignored file (manual case)
+    materials/updated_spec.txt - ignored file (manual case)
+    sc - ignored directory
+    uirb - ignored directory
+
+See http://hub.opensolaris.org/bin/view/Community+Group+arc/arc-publish-historical-checklist for further information

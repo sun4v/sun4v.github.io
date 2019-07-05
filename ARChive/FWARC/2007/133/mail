@@ -1,0 +1,325 @@
+From sacadmin Wed Mar  7 20:21:08 2007
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l284L8h9013754
+	for <fwarc@sac.eng.sun.com>; Wed, 7 Mar 2007 20:21:08 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l284L8bi019775;
+	Wed, 7 Mar 2007 20:21:08 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JEK00K03HF8Z400@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 07 Mar 2007 20:21:08 -0800 (PST)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JEK00EU3HF7JG40@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 07 Mar 2007 20:21:07 -0800 (PST)
+Received: from fe-amer-10.sun.com ([192.18.108.184])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l284L70O006371; Thu,
+ 08 Mar 2007 04:21:07 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JEK00K01HE04C00@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Wed,
+ 07 Mar 2007 21:21:07 -0700 (MST)
+Received: from [129.150.32.16] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JEK00FREHF5ZHI0@mail-amer.sun.com>; Wed,
+ 07 Mar 2007 21:21:06 -0700 (MST)
+Date: Wed, 07 Mar 2007 20:21:07 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Self-Review : 2007/133 - SNMP Domain Service
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>, LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <45EF8F33.1070302@sun.com>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_dZamHpsi+rT3LdNzgCsM4g)"
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0b2 (Windows/20070116)
+Status: RO
+Content-Length: 9592
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_dZamHpsi+rT3LdNzgCsM4g)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+I am sponsoring this case for Kevin Rathbun as a self-review case.
+This case adds a domain service very much similar to how we have added
+other services such as PRI, ASR, etc.  One-pager with technical changes
+in section 4 is attached.
+
+This case introduces a domain service to support host to SC communicates
+using the snmp protocol.  It defines service id "snmp" and 3 message types
+that go along.
+
+The changes are approved for minor/micro/patch OS binding and
+minor/micro binding for the firmware.
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+--Boundary_(ID_dZamHpsi+rT3LdNzgCsM4g)
+Content-type: text/plain; name=SNMP_DS_one-pager.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=SNMP_DS_one-pager.txt
+
+1. Introduction
+   1.1. Project/Component Working Name:
+        SNMP Domain Service
+
+   1.2. Name of Document Author/Supplier:
+        Kevin Rathbun
+
+   1.3. Date of This Document:
+        03/06/07
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+        1.4.1. The PAC or CPT you expect to review your project:
+                HS PAC
+
+        1.4.2. The ARC(s) you expect to review your project:
+                FWARC
+
+        1.4.3. The Director/VP who is "Sponsoring" this project:
+                Mike Sanfratello
+
+        1.4.4. The name of your business unit:
+                Systems Group (SG)
+                        (Sparc Platform Software)
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: gary.hethcoat@Sun.Com
+        1.5.2. Responsible Engineer: kevin.rathbun@sun.com
+        1.5.3. Marketing Manager:
+        1.5.4. Interest List: environ-data-ldoms@sun.com
+
+2. Project Summary
+
+   2.1. Project Description:
+
+        This case describes the domain service interface through which a 
+        client communicates with the SC using the snmp protocol. This will
+	be used by PICL on sun4v platforms, beginning with Huron, to access
+	environmental fru data and other information which will be used to
+	populate the /physical-platform tree. This information can be
+	dynamically updated and is accessible to user commands such as 
+	prtpicl and prtdiag.
+
+   2.2. Risks and Assumptions:
+
+        If this feature is not available in time for the full software stack
+        to be tested then it risks missing s10u4 and hence Huron RR. This 
+        would be a significant customer dissatisfier and is already an
+        escalation on Ontario.
+
+3. Business Summary
+   3.1. Problem Area:
+
+        This project proposes an interface to support the snmp protocol
+        over a domain service channel.
+
+   3.2. Market/Requester:
+        Ontario/Huron/Maramba platforms, means to satisfy key requirement for
+        PICL.
+
+   3.3. Business Justification:
+
+   3.4. Competitive Analysis:
+
+   3.5. Opportunity Window/Exposure:
+        Solaris s10u4
+
+   3.6. How will you know when you are done?:
+        When the changes are integrated into both Solaris Nevada
+        and S10u4, and into the Huron firmware gate for vbsc.
+
+4. Technical Description:
+
+    4.1 Overview
+
+	Each of the SNMP Messages consists of a header and a payload.
+	The headers are defined by this specification and the payloads
+	consist of data encoded according to the SNMP protocol, as defined
+	by a number of IETF RFC's. The SNMP protocol versions supported
+	and their message formats are not part of this specification. The
+	version support is negotiated between the domain ds_snmp driver
+	and the SNMP Agent resident on the SC. The SNMP PDUs are simply
+	encapsulated by the SNMP Domain Service that is the subject of
+	this specification. The length of the SNMP PDU is encoded in the
+	message itself and is not part of the header. It is left to the
+	consumers at the endpoints on this domain service to send and
+	receive and detect properly formed SNMP messages.
+
+    4.1.2 SNMP domain service 1.0
+
+        The version of the domain service described below is 1.0.
+    
+    4.1.2.1 Service ID
+
+        The following service ID should be added to the Domain Services
+        registry for the SNMP service capabilities.
+
+        Service ID                Description
+        ----------                ----------------------------------
+        "snmp"                     SNMP domain service
+
+    4.1.2.2 Message Header Formats
+
+        All SNMP Messages have the same header format consisting of a
+        Message Number and a Message Type.
+
+        The Message Number is a monotonically increasing number that uniquely 
+        identifies each message. Responses to messages are expected to use 
+        the same message number so that they can be paired with their original 
+        message. The Message Number may also be used to distinguish between
+        multiple instances of the same message type.
+
+        New messages may be issued without waiting for a response to a
+        preceding message.  The underlying transport protocol is responsible
+        to ensure reliable, in-order and unduplicated message packets.
+
+        Messages are to be processed in the order received.
+
+        The Message Type is used to distinguish the different message types.
+        There are three types defined in this initial version of the protocol
+        specification.
+
+        Offset Size   Field name
+        ------ ----   ----------
+        0       8     Message Number
+        8       8     Message Type
+
+        Message Type  Value
+        ------------  -----
+        Request       0
+        Reply         1
+        Error         2
+
+    4.1.2.3 SNMP Request Message
+
+        An SNMP Request Message is sent by the client carrying a payload to
+        be delivered to the snmp agent.
+
+        The Message Number value will be used in the SNMP Reply Message
+        sent in response to this request.
+
+        The Message Type field should indicate an SNMP Request Message.
+
+        The payload field has variable length depending on the snmp data.
+
+        Offset Size   Field
+        ------ ----   ----------
+        0       8     Message Number
+        8       8     Message Type
+        16      Var   payload
+
+    4.1.2.4 SNMP Reply Message
+
+        An SNMP Reply Message is sent by the server in response to a request
+	from the client. It carries a payload whose content is determined
+	by the snmp agent acting on the request.
+
+        The Message Number field contains the value in the Message Number field
+        of the request being serviced.
+
+        The Message Type field should indicate an SNMP Reply Message.
+
+        The payload field has variable length depending on the snmp data.
+
+        Offset Size   Field
+        ------ ----   ----------
+        0       8     Message Number
+        8       8     Message Type
+        16      Var   payload
+
+    4.1.2.5 SNMP Error Message
+
+        An SNMP Error Message is sent by the server in response to a request
+	from the client that cannot be serviced. These include errors such as
+	being unable to contact the SNMP Agent or timing out waiting for a 
+	reply from the SNMP agent. It has no payload.
+
+        The Message Number field contains the value in the Message Number field
+        of the request that could not be serviced.
+
+        The Message Type field should indicate an SNMP Error Message.
+
+        Offset Size   Field
+        ------ ----   ----------
+        0       8     Message Number
+        8       8     Message Type
+
+
+   4.2 Imported Interfaces :
+                
+        Interface                  Classification      Comments
+        =================          ================    ========================
+
+        Domain Services            Sun Private         Defined by FWARC/2006/055
+        Specification
+
+   4.3 Exported Interfaces:
+
+
+        Interface                       Classification   Comments
+        ================                ===============  =====================
+
+        SNMP domain service 
+        version 1.0
+    
+        Service ID: "snmp"              Sun Private      Section 4.1.2.1
+
+        SNMP domain service             Sun Private      Section 4.1.2.2
+        message header
+
+        SNMP Request Message            Sun Private      Section 4.1.2.3
+
+        SNMP Reply Message              Sun Private      Section 4.1.2.4
+
+        SNMP Error Message              Sun Private      Section 4.1.2.5
+
+
+5. Reference Documents:
+  [1] Domain Services
+        http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/055/
+
+6. Resources and Schedule:
+   6.1. Projected Availability:	Q3FY07
+
+   6.2. Cost of Effort: 3 person months
+
+   6.3. Cost of Capital Resources: N/A
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation or Component Name: vBSC, Solaris
+	6.4.3. Type of CPT Review and Approval expected: FastTrack
+        6.4.4. Project Boundary Conditions: N/A
+	6.4.5. Is this a necessary project for OEM agreements: No.
+	6.4.6. Notes: None
+	6.4.7. Target RTI Date/Release: S10u4_b3
+	6.4.8. Target Code Design Review Date: 02/05/2007
+	6.4.9. Update approval addition: N/A		
+
+   6.5. ARC review type: FastTrack
+		
+7. Prototype Availability:
+   7.1. Prototype Availability:
+	Q2FY07
+
+   7.2. Prototype Cost:
+      3 person months	
+
+--Boundary_(ID_dZamHpsi+rT3LdNzgCsM4g)--
+

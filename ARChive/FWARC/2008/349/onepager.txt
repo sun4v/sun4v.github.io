@@ -1,0 +1,115 @@
+1. Introduction
+  1.1. Project/Component Working Name:
+    New MD Nodes to Support I/O Reconfiguration for Failover Conditions.
+
+  1.2. Name of Document Author/Supplier:
+    Marc Fidler
+
+  1.3. Date of This Document:
+    05/27/2008
+
+  1.4. Email Aliases:
+       1.4.1. Responsible Manager: Chad Solomon
+       1.4.2. Responsible Engineer: Marc Fidler
+       1.4.3. Interest List: John Johnson
+
+2. Project Summary
+  2.1. Project Description:
+    This project defines new MD nodes to represent the current and potential paths to 
+    a PCIe switch when multiple IO topology configurations are possible.
+
+3. Business Summary
+  3.1. Problem Area:
+    Current architecture prevents operating system boot if the PCIE device paths have 
+    changed since the previous OS boot. This can happen, for example, due to a host-to-PCIE
+    bridge being eliminated from the system where the PCI switches are re-routed to work
+    around the missing bridge.
+
+    This case is attempting to solve a long standing problem where I/O topology changes 
+    necessitate an operating system reinstall.
+
+4. Technical Description:
+   4.1. Details:
+    This project defines new MD nodes to associate all possible device paths to the upstream
+    port of a PCIE switch. The operating system will use these nodes to remap existing 
+    device node paths.
+
+    Solaris uses the device node paths to configure devices. A unique device_instance 
+    number is created in /dev and /etc/path_to_inst file for every I/O path.  Solaris 
+    expects the I/O path to be constant.  When the same device is found at a different 
+    I/O patsh after power-cycle it is treated as a new device, which can happen when a 
+    node is removed or added. 
+
+    In order for vBSC to remain stateless, there must be some mechanism to name all of
+    the potential PCIe paths to a switch.
+
+    For example, on Batoka, the switch below cpu0 can be reached with the following paths:
+	/pci@400
+	/pci@500/pci@0/pci@1/pci@0/pci@1
+	/pci@600/pci@0/pci@1
+	/pci@700/pci@0/pci@1/pci@0/pci@1/pci@0/pci@1
+
+    When cpu0 exists, we use the first path (/pci@400) to acces the switch, and the rest 
+    are aliases.  So the resulting ioalias node would be:
+
+    node ioalias pcie0 {
+        current = "/pci@400";
+        aliases = "/pci@500/pci@0/pci@1/pci@0/pci@1" +
+              "/pci@600/pci@0/pci@1" +
+              "/pci@700/pci@0/pci@1/pci@0/pci@1/pci@0/pci@1";
+        back -> ioaliases;
+    };
+
+    Software has developed a script that looks through the alias list, and check for
+    device paths below the aliases paths.  Any that exist will be re-written to use the 
+    current path. 
+
+       4.1.1 ioalias MD node
+	   Name:                  ioalias
+	   Category:              optionally required by ioaliases
+	   Required Subordinates:
+	   Optional Subordinates:
+	   Description:           This node provides the current path to a PCIe 
+				  switch's upstream port and a list of all possible paths 
+				  to the same PCIe switch upstream port.
+	   Properties:
+   	     Name              Tag        Req'd? Description
+             ---------------------------------------------------------------------- 
+	     current	   PROP_STR   yes    A string containing the path to a 
+					     PCIe switch upstream port.
+	     aliases	   PROP_STR   yes    A list of space separated strings containing all the 
+					     possible paths to a PCI root nexus.
+
+       4.1.2 ioaliases MD node
+	   Name:                  ioaliases
+	   Category:              optionally required by root
+	   Required Subordinates:
+	   Optional Subordinates: ioalias device node
+	   Description:           This node provides forward pointers to all 
+				  system ioalias nodes
+
+	   For example on Batoka system the ioaliases node would be:
+	   node ioaliases ioaliases {
+	           fwd -> pcie0;
+	           fwd -> pcie1;
+	           fwd -> pcie2;
+	           fwd -> pcie3;
+                   back -> root;
+           };
+
+
+   4.2 Interface tables
+
+    4.2.1 Imported Interfaces
+
+        Name                    Classification  Description
+        -----------------       --------------- -------------------
+        sun4v Machine           Sun Private     MD nodes definitions as
+        Description nodes                       defined by FWARC/2005/115
+
+    4.5.2 Exported Interfaces
+
+        Name                    Classification  Description
+        ----------------------  --------------  -------------------
+        ioaliases and ioalias    Sun Private     MD nodes defined
+        MD nodes                                 by this case

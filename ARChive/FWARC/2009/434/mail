@@ -1,0 +1,211 @@
+From sacadmin Tue Aug 11 14:43:19 2009
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n7BLhJaB026227;
+	Tue, 11 Aug 2009 14:43:19 -0700 (PDT)
+Received: (from dmk@localhost)
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit) id n7BLhJ0d026223;
+	Tue, 11 Aug 2009 14:43:19 -0700 (PDT)
+Date: Tue, 11 Aug 2009 14:43:19 -0700 (PDT)
+From: David Kahn <dmk@sac.sfbay.sun.com>
+Message-Id: <200908112143.n7BLhJ0d026223@sac.sfbay.sun.com>
+To: FWARC-record@sac.sfbay.sun.com
+Cc: Tayfun.Kocaoglu@Sun.COM
+Subject: KT IOS Performance Counters API Update [FWARC/2009/434 FastTrack]
+Status: RO
+Content-Length: 579
+
+
+Template Version: @(#)sac_nextcase 1.68 02/23/09 SMI
+This information is Copyright 2009 Sun Microsystems
+1. Introduction
+    1.1. Project/Component Working Name:
+	 KT IOS Performance Counters API Update
+    1.2. Name of Document Author/Supplier:
+	 Author:  Tayfun Kocaoglu
+    1.3  Date of This Document:
+	11 August, 2009
+4. Technical Description
+    See the case directory for more detail
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		sysfw
+    6.5. ARC review type: FastTrack
+    6.6. ARC Exposure: open
+
+
+From sacadmin Tue Aug 11 14:57:13 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n7BLvCRb026892
+	for <fwarc@sac.sfbay.sun.com>; Tue, 11 Aug 2009 14:57:13 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n7BLvBbl011105
+	for <@sunmail2sca.sfbay.sun.com:fwarc@Sun.COM>; Tue, 11 Aug 2009 15:57:12 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KO800H0HFNC2P00@brm-avmta-1.central.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Tue, 11 Aug 2009 15:57:12 -0600 (MDT)
+Received: from dm-sfbay-02.sfbay.sun.com ([129.146.11.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KO800CGQFNAU420@brm-avmta-1.central.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Tue, 11 Aug 2009 15:57:11 -0600 (MDT)
+Received: from sac.sfbay.sun.com (sac.SFBay.Sun.COM [129.146.226.132])
+	by dm-sfbay-02.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id n7BLvA10044397; Tue, 11 Aug 2009 14:57:10 -0700 (PDT)
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n7BLvAqC026889; Tue,
+ 11 Aug 2009 14:57:10 -0700 (PDT)
+Received: (from dmk@localhost)	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit)
+ id n7BLvAlf026888; Tue, 11 Aug 2009 14:57:10 -0700 (PDT)
+Date: Tue, 11 Aug 2009 14:57:10 -0700 (PDT)
+From: David Kahn <dmk@sac.sfbay.sun.com>
+Subject: KT IOS Performance Counters API Update [FWARC/2009/434 FastTrack
+ timeout 18 Aug 2009]
+To: fwarc@sun.com
+Cc: Tayfun.Kocaoglu@sun.com
+Message-id: <200908112157.n7BLvAlf026888@sac.sfbay.sun.com>
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 264
+
+I'm sponsoring this case for Tayfun.
+
+It's a minor update to 2008/613, and adds PEU0 and PEU1 perf counters
+to this case, which hasn't shipped yet.
+
+Updated materials and diffs in the materials directory.
+
+Requested release binding is minor/micro/patch.
+
+-David
+
+
+
+From sacadmin Mon Aug 17 16:05:18 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n7HN5IVl023303
+	for <fwarc@sac.sfbay.sun.com>; Mon, 17 Aug 2009 16:05:18 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n7HN5Emf016690
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 18 Aug 2009 00:05:17 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KOJ0050ZMSQN400@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 17 Aug 2009 16:05:14 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KOJ002FHMSQ9S20@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 17 Aug 2009 16:05:14 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n7HN5ERw006338	for
+ <fwarc@sun.com>; Mon, 17 Aug 2009 16:05:14 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KOJ00200MQ2LU00@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 17 Aug 2009 16:05:14 -0700 (PDT)
+Received: from [129.150.32.126] ([unknown] [129.150.32.126])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KOJ00LG1MSPOD90@fe-sfbay-09.sun.com>; Mon,
+ 17 Aug 2009 16:05:13 -0700 (PDT)
+Date: Mon, 17 Aug 2009 16:05:14 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: KT IOS Performance Counters API Update [FWARC/2009/434 FastTrack
+ timeout 18 Aug 2009]
+In-reply-to: <200908112157.n7BLvAlf026888@sac.sfbay.sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: fwarc@sun.com
+Cc: Tayfun.Kocaoglu@sun.com
+Message-id: <4A89E22A.8040709@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200908112157.n7BLvAlf026888@sac.sfbay.sun.com>
+User-Agent: Thunderbird 2.0.0.22 (Windows/20090605)
+Status: RO
+Content-Length: 535
+
+David Kahn wrote:
+> I'm sponsoring this case for Tayfun.
+>
+> It's a minor update to 2008/613, and adds PEU0 and PEU1 perf counters
+> to this case, which hasn't shipped yet.
+>
+> Updated materials and diffs in the materials directory.
+>
+> Requested release binding is minor/micro/patch.
+>
+> -David
+>
+>   
+
+LGTM.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Fri Aug 21 20:32:04 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n7M3W3b9016045
+	for <fwarc@sac.sfbay.sun.com>; Fri, 21 Aug 2009 20:32:03 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n7M3VwWf003959
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Sat, 22 Aug 2009 11:32:02 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KOR00801DTDDZ00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 21 Aug 2009 20:32:01 -0700 (PDT)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KOR0028IDTCE860@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 21 Aug 2009 20:32:00 -0700 (PDT)
+Received: from sac.sfbay.sun.com (sac.SFBay.Sun.COM [129.146.226.132])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id n7M3W0fw035958; Fri, 21 Aug 2009 20:32:00 -0700 (PDT)
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n7M3W0I5016025; Fri,
+ 21 Aug 2009 20:32:00 -0700 (PDT)
+Received: (from dmk@localhost)	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit)
+ id n7M3W0nI016024; Fri, 21 Aug 2009 20:32:00 -0700 (PDT)
+Date: Fri, 21 Aug 2009 20:32:00 -0700 (PDT)
+From: David Kahn <dmk@sac.sfbay.sun.com>
+Subject: Re: KT IOS Performance Counters API Update [FWARC/2009/434 FastTrack
+ timeout 18 Aug 2009]
+To: fwarc@sun.com
+Cc: Tayfun.Kocaoglu@sun.com
+Message-id: <200908220332.n7M3W0nI016024@sac.sfbay.sun.com>
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 297
+
+This case is approved.
+
+>I'm sponsoring this case for Tayfun.
+>
+>It's a minor update to 2008/613, and adds PEU0 and PEU1 perf counters
+>to this case, which hasn't shipped yet.
+>
+>Updated materials and diffs in the materials directory.
+>
+>Requested release binding is minor/micro/patch.
+>
+>-David
+
+

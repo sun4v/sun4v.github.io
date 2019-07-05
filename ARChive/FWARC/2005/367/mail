@@ -1,0 +1,1765 @@
+From sacadmin Mon Jun 13 14:09:23 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j5DL9Ns0020082
+	for <fwarc@sac.eng.Sun.COM>; Mon, 13 Jun 2005 14:09:23 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j5DL8r103148
+	for <fwarc@sun.com>; Mon, 13 Jun 2005 15:08:53 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j5DL8q0l013371;
+	Mon, 13 Jun 2005 14:08:52 -0700 (PDT)
+Received: from sun.com (vpn-129-150-30-89.SFBay.Sun.COM [129.150.30.89])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j5DL8qMh089957;
+	Mon, 13 Jun 2005 14:08:52 -0700 (PDT)
+Message-ID: <42ADF642.7050905@sun.com>
+Date: Mon, 13 Jun 2005 14:10:26 -0700
+From: Tony Sumpter <tony.sumpter@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4) Gecko/20030624
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: fwarc@sun.com
+CC: Richard Barnette <Richard.Barnette@sun.com>, Tom Caron <Tom.Caron@sun.com>
+Subject: FWARC/2005/367 sun4v watchdog service API
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 591
+
+I'm sponsoring this case as a fast-track for Richard Barnette.
+The fast-track timeout is June 21, 2005.
+
+The materials are in the case directory under 'materials':
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/367/
+
+The case defines an optional HV API for setting a watchdog timeout.
+
+The requested binding is minor release, the committment
+level of the interface is Sun Private.
+
+This case reserves FAST TRAP (0x80) function number
+0x13 for the API defined by the case, and
+this FAST TRAP function numbers should be documented
+in the registry being created by 2005/116.
+
+Tony.
+
+
+
+From sacadmin Tue Jun 14 23:44:29 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j5F6iSs0019497
+	for <fwarc@sac.eng.sun.com>; Tue, 14 Jun 2005 23:44:29 -0700 (PDT)
+Received: from westmail1mpk.West.Sun.COM (westmail1mpk.West.Sun.COM [129.153.100.33])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j5F6hwi24092
+	for <fwarc@sun.com>; Tue, 14 Jun 2005 23:43:58 -0700 (PDT)
+Received: from phys-san-2 (phys-san-2.West.Sun.COM [129.153.85.71])
+	by westmail1mpk.West.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j5F6hwk6003791
+	for <fwarc@sun.com>; Tue, 14 Jun 2005 23:43:58 -0700 (PDT)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0II40000155FQ0@san-mail1.west.sun.com>
+ (original mail from Hitendra.Zhangada@sun.com) for fwarc@sun.com; Tue,
+ 14 Jun 2005 23:43:58 -0700 (PDT)
+Received: from [129.150.32.129]
+ (vpn-129-150-32-129.Central.Sun.COM [129.150.32.129])
+ by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0II4006UZ5D8JV@san-mail1.west.sun.com>; Tue,
+ 14 Jun 2005 23:43:58 -0700 (PDT)
+Date: Tue, 14 Jun 2005 23:43:58 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC/2005/367 sun4v watchdog service API
+In-reply-to: <42ADF642.7050905@sun.com>
+To: fwarc@sun.com
+Cc: Richard Barnette <Richard.Barnette@sun.com>, Tom Caron <Tom.Caron@sun.com>
+Message-id: <42AFCE2E.6010402@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.2)
+ Gecko/20040804 Netscape/7.2 (ax)
+References: <42ADF642.7050905@sun.com>
+Status: RO
+Content-Length: 2058
+
+Tony Sumpter wrote:
+
+> I'm sponsoring this case as a fast-track for Richard Barnette.
+> The fast-track timeout is June 21, 2005.
+> 
+> The materials are in the case directory under 'materials':
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/367/
+
+Couple of questions and a suggestion.
+
+1.  The return value "time_remaining" indicates time remaining
+     prior to new timeout_seconds set, right?  Lets say I set
+     timer to expire in 60 seconds.  The time_remaining will
+     actually return the remaining seconds before the new 60 sec
+     timer is set.  Is this correct?  If it is correct then I am
+     wondering usefulness of the return value.  Why would guest
+     care about time remaining from previous timer settings?
+
+2.  Since the maximum timer value supported by hypervisor is
+     an implementation specific, how would guest know the max
+     value?  Lets say guest wants to set timer for 600 seconds
+     but hypervisor only supports 300 seconds.  How would guest
+     know the max value supported by hypervisor?  In order for
+     guest to re-try it will pity much have to guess the value
+     and hope that it is below the max value.
+
+     Would it be better for the API to return a max value hypervisor
+     implementation supports along with EINVAL?  This way guest
+     can retry with different value within the max bounds.
+
+
+I suggest the time_remaining be changed to time_set.  For guest asking
+for a larger timeout value then hypervisor can support, the timer can
+be set to what max value and return the max value as a return value.
+Similarly, for the case were the timeout value is set to larger then
+guest asked for, the time_set returns the actual value set.  This way
+guest can adjust itself to deal with the actual timeout values.  In all
+cases guest should not ignore the return value.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Thu Jun 16 10:02:15 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j5GH2Fs0028224
+	for <fwarc@sac.eng.Sun.COM>; Thu, 16 Jun 2005 10:02:15 -0700 (PDT)
+Received: from uask4it.sfbay.sun.com (uask4it2.SFBay.Sun.COM [10.4.102.32])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j5GH1h105313;
+	Thu, 16 Jun 2005 11:01:43 -0600 (MDT)
+Received: from [192.168.2.166] (vpn-129-150-29-70.SFBay.Sun.COM [129.150.29.70])
+	by uask4it.sfbay.sun.com (8.13.3+Sun/8.13.3) with ESMTP id j5GH1gQx014096;
+	Thu, 16 Jun 2005 10:01:42 -0700 (PDT)
+In-Reply-To: <42AFCE2E.6010402@sun.com>
+References: <42ADF642.7050905@sun.com> <42AFCE2E.6010402@sun.com>
+Mime-Version: 1.0 (Apple Message framework v622)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: <944a401bab3632439e9939b58466b592@sun.com>
+Content-Transfer-Encoding: 7bit
+Cc: Tom Caron <Tom.Caron@sun.com>
+From: Richard Barnette <richard.barnette@sun.com>
+Subject: Re: FWARC/2005/367 sun4v watchdog service API
+Date: Thu, 16 Jun 2005 10:01:43 -0700
+To: fwarc@sun.com
+X-Mailer: Apple Mail (2.622)
+Status: RO
+Content-Length: 3362
+
+On Jun 14, 2005, at 11:43 PM, Hitendra Zhangada wrote:
+
+> Tony Sumpter wrote:
+>
+>> I'm sponsoring this case as a fast-track for Richard Barnette.
+>> The fast-track timeout is June 21, 2005.
+>> The materials are in the case directory under 'materials':
+>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/367/
+>
+> Couple of questions and a suggestion.
+>
+> 1.  The return value "time_remaining" indicates time remaining
+>     prior to new timeout_seconds set, right?  Lets say I set
+>     timer to expire in 60 seconds.  The time_remaining will
+>     actually return the remaining seconds before the new 60 sec
+>     timer is set.  Is this correct?  If it is correct then I am
+>     wondering usefulness of the return value.  Why would guest
+>     care about time remaining from previous timer settings?
+>
+The return value is intended to be useful to the following
+idiom:
+
+wdt_cookie_t watchdog_suspend(void)
+{
+     return mach_watchdog_set(0);
+}
+
+void watchdog_resume(wdt_cookie_t val)
+{
+     (void) mach_watchdog_set(val);
+}
+
+This allows the guest (or more to the point, a debugger resident
+in the guest) to suspend the watchdog timer for the length of a
+debug session, and the restore the watchdog timer to its state
+prior to debugger invokation.
+
+
+> 2.  Since the maximum timer value supported by hypervisor is
+>     an implementation specific, how would guest know the max
+>     value?  Lets say guest wants to set timer for 600 seconds
+>     but hypervisor only supports 300 seconds.  How would guest
+>     know the max value supported by hypervisor?  In order for
+>     guest to re-try it will pity much have to guess the value
+>     and hope that it is below the max value.
+>
+>     Would it be better for the API to return a max value hypervisor
+>     implementation supports along with EINVAL?  This way guest
+>     can retry with different value within the max bounds.
+>
+We should add a machine description entry with the maximum timeout
+supported.  Guests that need to know the maximum timeout can consult
+the machine description.
+
+Alternatively, we can just declare that the maximum timeout is
+really large (say, 24 hours), and leave it at that.
+
+>
+> I suggest the time_remaining be changed to time_set.  For guest asking
+> for a larger timeout value then hypervisor can support, the timer can
+> be set to what max value and return the max value as a return value.
+> Similarly, for the case were the timeout value is set to larger then
+> guest asked for, the time_set returns the actual value set.  This way
+> guest can adjust itself to deal with the actual timeout values.  In all
+> cases guest should not ignore the return value.
+>
+>
+> -- 
+> Hitendra Zhangada
+> =============================================
+> SPS Common SW Features Engineering
+> Scalable Systems Group, Sun Microsystems, Inc.
+> Work Ph# (858) 625 3757, Ext. x53757
+> SUN Internal homepage http://esp.west/~hitu
+>
+--
+Richard Barnette         | Belinda was as brave as a barrel full of
+Sun Microsystems         |     bears,
+Scalable Systems Group   | And Ink and Blink chased lions down the
+Supernova Software       |     stairs,
+NWK20 3168 / UNWK20-310  | Mustard was as brave as a tiger in a rage,
+richard.barnette@sun.com | But Custard cried for a nice, safe cage.
+(510) 936-3986 / x13986  |  - Ogden Nash, "The Tale of Custard the
+                          |     Dragon"
+
+
+From sacadmin Thu Jun 16 12:20:21 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j5GJKLs0007566
+	for <fwarc@sac.eng.sun.com>; Thu, 16 Jun 2005 12:20:21 -0700 (PDT)
+Received: from westmail1mpk.West.Sun.COM (westmail1mpk.West.Sun.COM [129.153.100.33])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j5GJJni22960
+	for <fwarc@Sun.COM>; Thu, 16 Jun 2005 12:19:49 -0700 (PDT)
+Received: from phys-san-2 (phys-san-2.West.Sun.COM [129.153.85.71])
+	by westmail1mpk.West.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j5GJJmk6004161
+	for <fwarc@sun.com>; Thu, 16 Jun 2005 12:19:49 -0700 (PDT)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0II600401YGFFT@san-mail1.west.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM) for fwarc@sun.com; Thu,
+ 16 Jun 2005 12:19:48 -0700 (PDT)
+Received: from [129.153.85.32] (sr1-usan-04.West.Sun.COM [129.153.85.32])
+ by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0II6000H0Z10CB@san-mail1.west.sun.com>; Thu,
+ 16 Jun 2005 12:19:48 -0700 (PDT)
+Date: Thu, 16 Jun 2005 12:19:48 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: FWARC/2005/367 sun4v watchdog service API
+In-reply-to: <944a401bab3632439e9939b58466b592@sun.com>
+To: Richard Barnette <Richard.Barnette@Sun.COM>
+Cc: fwarc@Sun.COM, Tom Caron <Tom.Caron@Sun.COM>
+Reply-to: Hitendra.Zhangada@Sun.COM
+Message-id: <42B1D0D4.7010001@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7.8) Gecko/20050608
+References: <42ADF642.7050905@sun.com> <42AFCE2E.6010402@sun.com>
+ <944a401bab3632439e9939b58466b592@sun.com>
+Status: RO
+Content-Length: 4445
+
+Richard Barnette wrote:
+> On Jun 14, 2005, at 11:43 PM, Hitendra Zhangada wrote:
+> 
+>> Tony Sumpter wrote:
+>>
+>>> I'm sponsoring this case as a fast-track for Richard Barnette.
+>>> The fast-track timeout is June 21, 2005.
+>>> The materials are in the case directory under 'materials':
+>>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/367/
+>>
+>>
+>> Couple of questions and a suggestion.
+>>
+>> 1.  The return value "time_remaining" indicates time remaining
+>>     prior to new timeout_seconds set, right?  Lets say I set
+>>     timer to expire in 60 seconds.  The time_remaining will
+>>     actually return the remaining seconds before the new 60 sec
+>>     timer is set.  Is this correct?  If it is correct then I am
+>>     wondering usefulness of the return value.  Why would guest
+>>     care about time remaining from previous timer settings?
+>>
+> The return value is intended to be useful to the following
+> idiom:
+> 
+> wdt_cookie_t watchdog_suspend(void)
+> {
+>     return mach_watchdog_set(0);
+> }
+> 
+> void watchdog_resume(wdt_cookie_t val)
+> {
+>     (void) mach_watchdog_set(val);
+> }
+> 
+> This allows the guest (or more to the point, a debugger resident
+> in the guest) to suspend the watchdog timer for the length of a
+> debug session, and the restore the watchdog timer to its state
+> prior to debugger invokation.
+> 
+
+I see, so this can help save and restore the timeout value prior
+to either disabling or setting new timeout value.  In your example
+it is possible that a program wants to set a different timeout
+value and restore it later.
+
+> 
+>> 2.  Since the maximum timer value supported by hypervisor is
+>>     an implementation specific, how would guest know the max
+>>     value?  Lets say guest wants to set timer for 600 seconds
+>>     but hypervisor only supports 300 seconds.  How would guest
+>>     know the max value supported by hypervisor?  In order for
+>>     guest to re-try it will pity much have to guess the value
+>>     and hope that it is below the max value.
+>>
+>>     Would it be better for the API to return a max value hypervisor
+>>     implementation supports along with EINVAL?  This way guest
+>>     can retry with different value within the max bounds.
+>>
+> We should add a machine description entry with the maximum timeout
+> supported.  Guests that need to know the maximum timeout can consult
+> the machine description.
+> 
+> Alternatively, we can just declare that the maximum timeout is
+> really large (say, 24 hours), and leave it at that.
+
+Ok, then need to specify one of the two into your specification
+for this fasttrack?  For the first solution, there may be a change
+in machine description data structure and for the second option the
+max limit is specified in the specification we are reviewing.  The
+second option also means that all implementations must support at
+least 24 hours (or whatever you specify) as a max value.
+
+I like the first option in which the max is platform specific and
+part of machine descriptor.
+
+
+Thanks for the explanation about time_remaining usage.
+
+
+>> I suggest the time_remaining be changed to time_set.  For guest asking
+>> for a larger timeout value then hypervisor can support, the timer can
+>> be set to what max value and return the max value as a return value.
+>> Similarly, for the case were the timeout value is set to larger then
+>> guest asked for, the time_set returns the actual value set.  This way
+>> guest can adjust itself to deal with the actual timeout values.  In all
+>> cases guest should not ignore the return value.
+>>
+>>
+>> -- 
+>> Hitendra Zhangada
+>> =============================================
+>> SPS Common SW Features Engineering
+>> Scalable Systems Group, Sun Microsystems, Inc.
+>> Work Ph# (858) 625 3757, Ext. x53757
+>> SUN Internal homepage http://esp.west/~hitu
+>>
+> -- 
+> Richard Barnette         | Belinda was as brave as a barrel full of
+> Sun Microsystems         |     bears,
+> Scalable Systems Group   | And Ink and Blink chased lions down the
+> Supernova Software       |     stairs,
+> NWK20 3168 / UNWK20-310  | Mustard was as brave as a tiger in a rage,
+> richard.barnette@sun.com | But Custard cried for a nice, safe cage.
+> (510) 936-3986 / x13986  |  - Ogden Nash, "The Tale of Custard the
+>                          |     Dragon"
+> 
+
+
+-- 
+
+Hitendra Zhangada
+====================================
+ESP Firmware, Sun Microsystems, Inc.
+Ph# (858) 625 3757, Sun Ext. x53757
+Internal link http://esp.west/~hitu
+
+
+From sacadmin Sat Jun 18 09:28:13 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j5IGSCEu012204
+	for <fwarc@sac.eng.sun.com>; Sat, 18 Jun 2005 09:28:12 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j5IGSBp25186;
+	Sat, 18 Jun 2005 09:28:11 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IIA00F01GD69Z00@nwk-avmta-1.sfbay.Sun.COM>; Sat,
+ 18 Jun 2005 09:27:06 -0700 (PDT)
+Received: from uask4it.sfbay.sun.com ([10.4.102.30])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IIA009Z7GD66G70@nwk-avmta-1.sfbay.Sun.COM>; Sat,
+ 18 Jun 2005 09:27:06 -0700 (PDT)
+Received: from [192.168.2.168]
+ (vpn-129-150-24-149.SFBay.Sun.COM [129.150.24.149])
+ by uask4it.sfbay.sun.com (8.13.3+Sun/8.13.3) with ESMTP id j5IGSAIE021531;
+ Sat, 18 Jun 2005 09:28:10 -0700 (PDT)
+Date: Sat, 18 Jun 2005 09:28:11 -0700
+From: Richard Barnette <richard.barnette@sun.com>
+Subject: Re: FWARC/2005/367 sun4v watchdog service API
+In-reply-to: <944a401bab3632439e9939b58466b592@sun.com>
+To: fwarc@sun.com
+Cc: Tom Caron <Tom.Caron@sun.com>
+Message-id: <50ddb1143f4c9ab82f1e070f08dc3782@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.622)
+Content-type: multipart/mixed; boundary="Boundary_(ID_Tg/siMg6diV+o16ED4GitA)"
+X-PMX-Version: 5.0.1.144180
+References: <42ADF642.7050905@sun.com> <42AFCE2E.6010402@sun.com>
+ <944a401bab3632439e9939b58466b592@sun.com>
+Status: RO
+Content-Length: 5420
+
+
+--Boundary_(ID_Tg/siMg6diV+o16ED4GitA)
+Content-type: text/plain; charset=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+
+
+On Jun 16, 2005, at 10:01 AM, Richard Barnette wrote:
+
+>
+[ ... ]
+
+> We should add a machine description entry with the maximum timeout
+> supported.  Guests that need to know the maximum timeout can consult
+> the machine description.
+>
+> Alternatively, we can just declare that the maximum timeout is
+> really large (say, 24 hours), and leave it at that.
+>
+Attached is an updated specification with new text covering the
+machine description entry I suggested above.
+
+Don't know how to update the materials directory for the case, but
+this file should replace the file that's currently there.
+
+
+--Boundary_(ID_Tg/siMg6diV+o16ED4GitA)
+Content-type: text/plain; x-unix-mode=0644; name=wdt-spec.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: attachment; filename=wdt-spec.txt
+
+1 Introduction
+
+This document specifies a hypervisor API function to provide a
+basic watchdog timer facility to guests that choose to use it.
+
+The specification provides for a single function that guests may
+call to set a timeout, and a machine description property describing
+the timer.  The function can also be used to disable the timeout
+when the guest no longers needs or wants the facility.
+
+2 References
+
+[1] Sun4v Hypervisor API (FWARC/2005/116)
+	http://sac.eng/Archives/CaseLog/arc/FWARC/2005/116/
+	http://projectq.sfbay.sun.com/docs/api.pdf
+
+[2] Sun4v Machine Description (FWARC/2005/115)
+	http://sac.eng/Archives/CaseLog/arc/FWARC/2005/115/
+	http://projectq.sfbay.sun.com/docs/mach-desc.pdf
+
+[3] Sun4v Architecture Specification
+	http://projectq.sfbay.sun.com/docs/sun4v.pdf
+
+[4] Hyperprivileged Reference Architecture
+	http://projectq.sfbay.sun.com/docs/hyperpriv.pdf
+
+3 Watchdog timer machine description
+	Different platforms may have different constraints on the
+	supported watchdog timeout values.  The largest supported
+	watchdog timer value is provided to the guest as a property
+	in the machine description.
+
+	The property name is "watchdog-max-timeout", and is stored
+	in the "platform" node.  Its numeric value is the largest
+	number of seconds that is valid as a parameter to the
+	watchdog timer service API function.
+
+4 Watchdog timer service
+	The watchdog timer service provides provides the guest with
+	a single timer that can be set to expire with 1 second
+	granularity.  Once the guest has set the timer, it must call
+	the timer service again either to disable or postpone the
+	expiration.  Failure to reset the timer before it expires
+	will generally result in the hypervisor terminating the
+	guest.
+
+	The watchdog timer service function number
+	(MACH_SET_WATCHDOG) is 0x13.
+
+4.1 mach_set_watchdog
+	trap#		FAST_TRAP
+	function#	MACH_SET_WATCHDOG
+	arg0		timeout_seconds
+
+	ret0		status
+	ret1		time_remaining
+
+	Sets the guest's watchdog timer to expire after the interval
+	provided in the "timeout_seconds" parameter, and cancels any
+	previous watchdog timer setting in effect for the guest.
+
+	If the "timeout_seconds" argument is not zero, the watchdog
+	timer is set to expire after the number of seconds indicated
+	by the argument.  If the argument is zero, the watchdog
+	timer is disabled.
+
+	The timer should expire as soon as possible after the
+	requested timeout has elapsed; in no event may the watchdog
+	timer expire before the requested timeout period.
+
+	If the hypervisor cannot support the exact timeout value
+	requested, but can support a larger timeout value, the
+	hypervisor should round the actual timeout to the smallest
+	supported timeout value larger than the requested timeout.
+	In this case, a subsequent call to this function may return
+	a time remaining larger than the previously requested
+	timeout value.
+
+	If the requested timeout value exceeds the value of the
+	"watchdog-max-timeout" property, the hypervisor leaves the
+	watchdog timer state unchanged, and returns a status of
+	EINVAL.  The "time_remaining" return value is valid
+	regardless of whether the return status is EOK or EINVAL.
+
+	The hypervisor shall support timeout values up to at least
+	10 seconds.
+
+	A non-zero return value indicates the number of seconds that
+	were remaining until the timer was to expire.  The
+	hypervisor should round up fractional seconds to the next
+	higher second.  If less than one second remains, the return
+	value is 1.  If the watchdog timer was disabled at the time
+	of the call, the return value is 0.
+
+	If the timer expires, then the hypervisor takes a platform
+	specific action.  The platform specific action should lead to
+	guest termination within a bounded time period.  The
+	platform action may include recovery actions such as
+	reporting the expiration to a Service Processor, and/or
+	automatically restarting the guest.
+
+--Boundary_(ID_Tg/siMg6diV+o16ED4GitA)
+Content-type: text/plain; charset=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+
+
+
+--
+Richard Barnette         | Belinda was as brave as a barrel full of
+Sun Microsystems         |     bears,
+Scalable Systems Group   | And Ink and Blink chased lions down the
+Supernova Software       |     stairs,
+NWK20 3168 / UNWK20-310  | Mustard was as brave as a tiger in a rage,
+richard.barnette@sun.com | But Custard cried for a nice, safe cage.
+(510) 936-3986 / x13986  |  - Ogden Nash, "The Tale of Custard the
+                          |     Dragon"
+
+--Boundary_(ID_Tg/siMg6diV+o16ED4GitA)--
+
+From sacadmin Sat Jun 18 09:44:49 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j5IGinEu012862
+	for <fwarc@sac.eng.Sun.COM>; Sat, 18 Jun 2005 09:44:49 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j5IGim119709;
+	Sat, 18 Jun 2005 10:44:48 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j5IGilPu009743;
+	Sat, 18 Jun 2005 09:44:47 -0700 (PDT)
+Received: from sun.com (vpn-129-150-24-109.SFBay.Sun.COM [129.150.24.109])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j5IGifMh029456;
+	Sat, 18 Jun 2005 09:44:46 -0700 (PDT)
+Message-ID: <42B44FDF.5080403@sun.com>
+Date: Sat, 18 Jun 2005 09:46:23 -0700
+From: Tony Sumpter <tony.sumpter@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4) Gecko/20030624
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: fwarc@sun.com
+CC: Richard Barnette <Richard.Barnette@sun.com>, Tom Caron <Tom.Caron@sun.com>,
+   pq-arch@sun.com
+Subject: FWARC/2005/367 sun4v watchdog service API - updated
+References: <42ADF642.7050905@sun.com>
+In-Reply-To: <42ADF642.7050905@sun.com>
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 764
+
+The wdt-spec.txt file has been updated in the materials directory.
+The previous version has been renamed.
+
+Tony.
+
+Tony Sumpter wrote:
+
+> I'm sponsoring this case as a fast-track for Richard Barnette.
+> The fast-track timeout is June 21, 2005.
+> 
+> The materials are in the case directory under 'materials':
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/367/
+> 
+> The case defines an optional HV API for setting a watchdog timeout.
+> 
+> The requested binding is minor release, the committment
+> level of the interface is Sun Private.
+> 
+> This case reserves FAST TRAP (0x80) function number
+> 0x13 for the API defined by the case, and
+> this FAST TRAP function numbers should be documented
+> in the registry being created by 2005/116.
+> 
+> Tony.
+> 
+
+
+
+
+From sacadmin Mon Jun 20 14:46:59 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j5KLkxEu010732
+	for <fwarc@sac.eng.sun.com>; Mon, 20 Jun 2005 14:46:59 -0700 (PDT)
+Received: from westmail2san.west.sun.com (westmail2san.West.Sun.COM [129.153.85.6])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j5KLkwi23978
+	for <fwarc@Sun.COM>; Mon, 20 Jun 2005 14:46:59 -0700 (PDT)
+Received: from phys-san-2 (phys-san-2.West.Sun.COM [129.153.85.71])
+	by westmail2san.west.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j5KLkwen015493
+	for <fwarc@sun.com>; Mon, 20 Jun 2005 14:46:58 -0700 (PDT)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IIE00L01JV06O@san-mail1.west.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM) for fwarc@sun.com; Mon,
+ 20 Jun 2005 14:46:58 -0700 (PDT)
+Received: from [129.153.85.32] (sr1-usan-04.West.Sun.COM [129.153.85.32])
+ by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IIE00ELLKIANR@san-mail1.west.sun.com>; Mon,
+ 20 Jun 2005 14:46:58 -0700 (PDT)
+Date: Mon, 20 Jun 2005 14:46:58 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: FWARC/2005/367 sun4v watchdog service API
+In-reply-to: <50ddb1143f4c9ab82f1e070f08dc3782@sun.com>
+To: Richard Barnette <Richard.Barnette@Sun.COM>
+Cc: fwarc@Sun.COM, Tom Caron <Tom.Caron@Sun.COM>
+Reply-to: Hitendra.Zhangada@Sun.COM
+Message-id: <42B73952.2010509@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7.8) Gecko/20050616
+References: <42ADF642.7050905@sun.com> <42AFCE2E.6010402@sun.com>
+ <944a401bab3632439e9939b58466b592@sun.com>
+ <50ddb1143f4c9ab82f1e070f08dc3782@sun.com>
+Status: RO
+Content-Length: 1667
+
+Richard Barnette wrote:
+> 
+> On Jun 16, 2005, at 10:01 AM, Richard Barnette wrote:
+> 
+>>
+> [ ... ]
+> 
+>> We should add a machine description entry with the maximum timeout
+>> supported.  Guests that need to know the maximum timeout can consult
+>> the machine description.
+>>
+>> Alternatively, we can just declare that the maximum timeout is
+>> really large (say, 24 hours), and leave it at that.
+>>
+> Attached is an updated specification with new text covering the
+> machine description entry I suggested above.
+> 
+> Don't know how to update the materials directory for the case, but
+> this file should replace the file that's currently there.
+> 
+
+<snip>
+
+> 
+> 3 Watchdog timer machine description
+> 	Different platforms may have different constraints on the
+> 	supported watchdog timeout values.  The largest supported
+> 	watchdog timer value is provided to the guest as a property
+> 	in the machine description.
+> 
+> 	The property name is "watchdog-max-timeout", and is stored
+> 	in the "platform" node.  Its numeric value is the largest
+> 	number of seconds that is valid as a parameter to the
+> 	watchdog timer service API function.
+
+So, you are modifying section 5.5.6 of the machine descriptor
+bindings (FWARC case# 2005/115) by adding a "required" property
+name "watchdog-max-timeout" to the node name "platform" with a tag
+type "PROP_VAL".  Correct?
+
+I want to make sure the addition is defined similar to how other
+properties are defined in the machine description bindings.
+
+
+Thanks.
+
+
+
+-- 
+
+Hitendra Zhangada
+====================================
+ESP Firmware, Sun Microsystems, Inc.
+Ph# (858) 625 3757, Sun Ext. x53757
+Internal link http://esp.west/~hitu
+
+
+From sacadmin Tue Jun 21 16:47:28 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j5LNlSEu019582
+	for <fwarc@sac.eng.Sun.COM>; Tue, 21 Jun 2005 16:47:28 -0700 (PDT)
+Received: from uask4it.sfbay.sun.com (uask4it.SFBay.Sun.COM [10.4.102.30])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j5LNlR104948;
+	Tue, 21 Jun 2005 17:47:27 -0600 (MDT)
+Received: from [129.149.205.109] (d-nwk20-205-109.SFBay.Sun.COM [129.149.205.109])
+	by uask4it.sfbay.sun.com (8.13.3+Sun/8.13.3) with ESMTP id j5LNlRip002598;
+	Tue, 21 Jun 2005 16:47:27 -0700 (PDT)
+In-Reply-To: <42B73952.2010509@Sun.COM>
+References: <42ADF642.7050905@sun.com> <42AFCE2E.6010402@sun.com> <944a401bab3632439e9939b58466b592@sun.com> <50ddb1143f4c9ab82f1e070f08dc3782@sun.com> <42B73952.2010509@Sun.COM>
+Mime-Version: 1.0 (Apple Message framework v622)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: <501f3d51808c57e96bac4b5a3a7a1f71@sun.com>
+Cc: Tom Caron <Tom.Caron@sun.com>
+From: Richard Barnette <richard.barnette@sun.com>
+Subject: Re: FWARC/2005/367 sun4v watchdog service API
+Date: Tue, 21 Jun 2005 16:47:28 -0700
+To: fwarc@sun.com
+X-Mailer: Apple Mail (2.622)
+Content-Transfer-Encoding: 8bit
+X-MIME-Autoconverted: from quoted-printable to 8bit by sac.sfbay.sun.com id j5LNlSEv019583
+Status: RO
+Content-Length: 2144
+
+On Jun 20, 2005, at 2:46 PM, Hitendra Zhangada wrote:
+
+> Richard Barnette wrote:
+>>
+[ ... ]
+>> 3 Watchdog timer machine description
+>> 	Different platforms may have different constraints on the
+>> 	supported watchdog timeout values.  The largest supported
+>> 	watchdog timer value is provided to the guest as a property
+>> 	in the machine description.
+>> 	The property name is "watchdog-max-timeout", and is stored
+>> 	in the "platform" node.  Its numeric value is the largest
+>> 	number of seconds that is valid as a parameter to the
+>> 	watchdog timer service API function.
+>
+> So, you are modifying section 5.5.6 of the machine descriptor
+> bindings (FWARC case# 2005/115) by adding a "required" property
+> name "watchdog-max-timeout" to the node name "platform" with a tag
+> type "PROP_VAL".  Correct?
+>
+The machine description in FWARC 2005/115 is intended to be
+extensible.  In conversation with Tony, we realized that we're
+lacking a registry for machine description properties.
+
+The property is not "required".  The property will be present
+if the service is present.  The property will be absent if the
+service is absent.
+
+As you note, the property tag is PROP_VAL, with name
+"watchdog-max-timeout".
+
+Was your question for clarification, or is there a particular
+update to the text of the specification that you're looking for?
+
+Thanks!
+
+
+> I want to make sure the addition is defined similar to how other
+> properties are defined in the machine description bindings.
+>
+>
+> Thanks.
+>
+>
+>
+> -- 
+>
+> Hitendra Zhangada
+> ====================================
+> ESP Firmware, Sun Microsystems, Inc.
+> Ph# (858) 625 3757, Sun Ext. x53757
+> Internal link http://esp.west/~hitu
+>
+--
+Richard Barnette         | Belinda was as brave as a barrel full of
+Sun Microsystems         |     bears,
+Scalable Systems Group   | And Ink and Blink chased lions down the
+Supernova Software       |     stairs,
+NWK20 3168 / UNWK20-310  | Mustard was as brave as a tiger in a rage,
+richard.barnette@sun.com | But Custard cried for a nice, safe cage.
+(510) 936-3986 / x13986  |  - Ogden Nash, "The Tale of Custard the
+                          |     Dragon"
+
+
+
+From sacadmin Tue Jun 21 17:34:37 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j5M0YbEu027927
+	for <fwarc@sac.eng.sun.com>; Tue, 21 Jun 2005 17:34:37 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j5M0Yap13193
+	for <@sunmail2.sfbay.sun.com:fwarc@sun.com>; Tue, 21 Jun 2005 17:34:36 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IIG00403MXO0U00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 21 Jun 2005 17:34:36 -0700 (PDT)
+Received: from westmail2san.west.sun.com ([129.153.85.6])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IIG00LY7MXO4D10@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 21 Jun 2005 17:34:36 -0700 (PDT)
+Received: from phys-san-2 (phys-san-2.West.Sun.COM [129.153.85.71])
+ by westmail2san.west.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id j5M0Yaen010556	for <fwarc@sun.com>; Tue,
+ 21 Jun 2005 17:34:36 -0700 (PDT)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IIG00G01M3HPG@san-mail1.west.sun.com>
+ (original mail from Hitendra.Zhangada@sun.com) for fwarc@sun.com; Tue,
+ 21 Jun 2005 17:34:36 -0700 (PDT)
+Received: from [129.150.34.86]
+ (vpn-129-150-34-86.Central.Sun.COM [129.150.34.86]) by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IIG00DFGMXMHX@san-mail1.west.sun.com>; Tue,
+ 21 Jun 2005 17:34:35 -0700 (PDT)
+Date: Tue, 21 Jun 2005 17:34:34 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC/2005/367 sun4v watchdog service API
+In-reply-to: <501f3d51808c57e96bac4b5a3a7a1f71@sun.com>
+To: Richard Barnette <Richard.Barnette@sun.com>
+Cc: fwarc@sun.com, Tom Caron <Tom.Caron@sun.com>
+Message-id: <42B8B21A.7060904@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.0.1.144180
+References: <42ADF642.7050905@sun.com> <42AFCE2E.6010402@sun.com>
+ <944a401bab3632439e9939b58466b592@sun.com>
+ <50ddb1143f4c9ab82f1e070f08dc3782@sun.com> <42B73952.2010509@Sun.COM>
+ <501f3d51808c57e96bac4b5a3a7a1f71@sun.com>
+Status: RO
+Content-Length: 2210
+
+Richard Barnette wrote:
+
+> On Jun 20, 2005, at 2:46 PM, Hitendra Zhangada wrote:
+> 
+>> Richard Barnette wrote:
+>>
+>>>
+> [ ... ]
+> 
+>>> 3 Watchdog timer machine description
+>>>     Different platforms may have different constraints on the
+>>>     supported watchdog timeout values.  The largest supported
+>>>     watchdog timer value is provided to the guest as a property
+>>>     in the machine description.
+>>>     The property name is "watchdog-max-timeout", and is stored
+>>>     in the "platform" node.  Its numeric value is the largest
+>>>     number of seconds that is valid as a parameter to the
+>>>     watchdog timer service API function.
+>>
+>>
+>> So, you are modifying section 5.5.6 of the machine descriptor
+>> bindings (FWARC case# 2005/115) by adding a "required" property
+>> name "watchdog-max-timeout" to the node name "platform" with a tag
+>> type "PROP_VAL".  Correct?
+>>
+> The machine description in FWARC 2005/115 is intended to be
+> extensible.  In conversation with Tony, we realized that we're
+> lacking a registry for machine description properties.
+> 
+> The property is not "required".  The property will be present
+> if the service is present.  The property will be absent if the
+> service is absent.
+> 
+> As you note, the property tag is PROP_VAL, with name
+> "watchdog-max-timeout".
+> 
+> Was your question for clarification, or is there a particular
+> update to the text of the specification that you're looking for?
+
+Both.  I wanted to make sure we update all fields of the machine
+descriptor specification appropriately.
+
+As far as FWARC is concerned, capturing these changes via this mail
+thread, which gets logged in the case directory, is sufficient.  No
+changes to machine descriptor specification are required to move forward 
+with this case.  But It would be nice if the machine descriptor 
+specification is updated so that this new addition in the specification.
+
+
+As far as I am concerned, I am done with the review of this case.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Wed Jun 22 15:00:27 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j5MM0REu026902
+	for <fwarc@sac.eng.sun.com>; Wed, 22 Jun 2005 15:00:27 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j5MM0Qp26845;
+	Wed, 22 Jun 2005 15:00:26 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0III0000LAGPKL00@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 22 Jun 2005 15:00:25 -0700 (PDT)
+Received: from uask4it.sfbay.sun.com ([10.4.102.32])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0III00FRAAGPFI30@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 22 Jun 2005 15:00:25 -0700 (PDT)
+Received: from [192.168.2.169]
+ (vpn-129-150-28-36.SFBay.Sun.COM [129.150.28.36])	by uask4it.sfbay.sun.com
+ (8.13.3+Sun/8.13.3) with ESMTP id j5MM0OAQ000831; Wed,
+ 22 Jun 2005 15:00:25 -0700 (PDT)
+Date: Wed, 22 Jun 2005 15:00:26 -0700
+From: Richard Barnette <richard.barnette@sun.com>
+Subject: Re: FWARC/2005/367 sun4v watchdog service API
+In-reply-to: <42B8B21A.7060904@sun.com>
+To: fwarc@sun.com
+Cc: Tom Caron <Tom.Caron@sun.com>
+Message-id: <e2a79ff5772c15c22c4866c8576407e0@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.622)
+Content-type: text/plain; charset=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.0.1.144180
+References: <42ADF642.7050905@sun.com> <42AFCE2E.6010402@sun.com>
+ <944a401bab3632439e9939b58466b592@sun.com>
+ <50ddb1143f4c9ab82f1e070f08dc3782@sun.com> <42B73952.2010509@Sun.COM>
+ <501f3d51808c57e96bac4b5a3a7a1f71@sun.com> <42B8B21A.7060904@sun.com>
+Status: RO
+Content-Length: 1621
+
+On Jun 21, 2005, at 5:34 PM, Hitendra Zhangada wrote:
+
+>
+[ ... ]
+
+> Both.  I wanted to make sure we update all fields of the machine
+> descriptor specification appropriately.
+>
+> As far as FWARC is concerned, capturing these changes via this mail
+> thread, which gets logged in the case directory, is sufficient.  No
+> changes to machine descriptor specification are required to move 
+> forward with this case.  But It would be nice if the machine 
+> descriptor specification is updated so that this new addition in the 
+> specification.
+>
+>
+OK.  I've updated the spec text to list all content associated with
+node properties in the machine description specification.
+
+Although updating the machine description spec is a possibility, I
+think a more maintainable solution would be some sort of registry
+of nodes and properties.
+
+
+> As far as I am concerned, I am done with the review of this case.
+>
+>
+> Thanks.
+>
+> -- 
+> Hitendra Zhangada
+> =============================================
+> SPS Common SW Features Engineering
+> Scalable Systems Group, Sun Microsystems, Inc.
+> Work Ph# (858) 625 3757, Ext. x53757
+> SUN Internal homepage http://esp.west/~hitu
+>
+--
+Richard Barnette         | Belinda was as brave as a barrel full of
+Sun Microsystems         |     bears,
+Scalable Systems Group   | And Ink and Blink chased lions down the
+Supernova Software       |     stairs,
+NWK20 3168 / UNWK20-310  | Mustard was as brave as a tiger in a rage,
+richard.barnette@sun.com | But Custard cried for a nice, safe cage.
+(510) 936-3986 / x13986  |  - Ogden Nash, "The Tale of Custard the
+                          |     Dragon"
+
+
+From sacadmin Wed Jun 22 21:37:35 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j5N4bZEu019520
+	for <fwarc@sac.eng.sun.com>; Wed, 22 Jun 2005 21:37:35 -0700 (PDT)
+Received: from uask4it.sfbay.sun.com (uask4it.SFBay.Sun.COM [10.4.102.30])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j5N4bZi08120;
+	Wed, 22 Jun 2005 21:37:35 -0700 (PDT)
+Received: from [192.168.2.169] (vpn-129-150-25-11.SFBay.Sun.COM [129.150.25.11])
+	by uask4it.sfbay.sun.com (8.13.3+Sun/8.13.3) with ESMTP id j5N4bXd9015690;
+	Wed, 22 Jun 2005 21:37:33 -0700 (PDT)
+In-Reply-To: <e2a79ff5772c15c22c4866c8576407e0@sun.com>
+References: <42ADF642.7050905@sun.com> <42AFCE2E.6010402@sun.com> <944a401bab3632439e9939b58466b592@sun.com> <50ddb1143f4c9ab82f1e070f08dc3782@sun.com> <42B73952.2010509@Sun.COM> <501f3d51808c57e96bac4b5a3a7a1f71@sun.com> <42B8B21A.7060904@sun.com> <e2a79ff5772c15c22c4866c8576407e0@sun.com>
+Mime-Version: 1.0 (Apple Message framework v622)
+Content-Type: multipart/mixed; boundary=Apple-Mail-24--539667312
+Message-Id: <b03fe4a69c8b4d0aa0419f9cf7a76d03@sun.com>
+Cc: Tom Caron <Tom.Caron@sun.com>, fwarc@sun.com
+From: Richard Barnette <richard.barnette@sun.com>
+Subject: Re: FWARC/2005/367 sun4v watchdog service API
+Date: Wed, 22 Jun 2005 21:37:33 -0700
+To: Richard Barnette <richard.barnette@sun.com>
+X-Mailer: Apple Mail (2.622)
+Status: RO
+Content-Length: 5372
+
+
+--Apple-Mail-24--539667312
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed
+
+On Jun 22, 2005, at 3:00 PM, Richard Barnette wrote:
+
+>
+[ ... ]
+
+> OK.  I've updated the spec text to list all content associated with
+> node properties in the machine description specification.
+>
+> Although updating the machine description spec is a possibility, I
+> think a more maintainable solution would be some sort of registry
+> of nodes and properties.
+>
+<sigh> It's been one of those days.  The updated spec is attached.
+
+
+
+--Apple-Mail-24--539667312
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	x-unix-mode=0644;
+	name="wdt-spec.txt"
+Content-Disposition: attachment;
+	filename=wdt-spec.txt
+
+1 Introduction
+
+This document specifies a hypervisor API function to provide a
+basic watchdog timer service to guests that choose to use it.
+
+The specification provides for a single function that guests may
+call to set a timeout, and a machine description property describing
+the timer.  The function can also be used to disable the timeout
+when the guest no longers needs or wants the service.
+
+2 References
+
+[1] Sun4v Hypervisor API (FWARC/2005/116)
+	http://sac.eng/Archives/CaseLog/arc/FWARC/2005/116/
+	http://projectq.sfbay.sun.com/docs/api.pdf
+
+[2] Sun4v Machine Description (FWARC/2005/115)
+	http://sac.eng/Archives/CaseLog/arc/FWARC/2005/115/
+	http://projectq.sfbay.sun.com/docs/mach-desc.pdf
+
+[3] Sun4v Architecture Specification
+	http://projectq.sfbay.sun.com/docs/sun4v.pdf
+
+[4] Hyperprivileged Reference Architecture
+	http://projectq.sfbay.sun.com/docs/hyperpriv.pdf
+
+3 Watchdog timer machine description
+	Different platforms may have different constraints on the
+	supported watchdog timeout values.  The largest supported
+	watchdog timer value is provided to the guest as a property
+	in the machine description.  The property is stored in the
+	"platform" node, and has these characteristics:
+
+	Name: watchdog-max-timeout
+	Tag: PROP_VAL
+	Required: No
+	Description:  The largest number of seconds that is valid as
+	    a parameter to the watchdog timer service API function.
+
+	The property is present if the watchdog timer is service is
+	available, but is otherwise not required.
+
+4 Watchdog timer service
+	The watchdog timer service provides provides the guest with
+	a single timer that can be set to expire with 1 second
+	granularity.  Once the guest has set the timer, it must call
+	the timer service again either to disable or postpone the
+	expiration.  Failure to reset the timer before it expires
+	will generally result in the hypervisor terminating the
+	guest.
+
+	The watchdog timer service function number
+	(MACH_SET_WATCHDOG) is 0x13.
+
+4.1 mach_set_watchdog
+	trap#		FAST_TRAP
+	function#	MACH_SET_WATCHDOG
+	arg0		timeout_seconds
+
+	ret0		status
+	ret1		time_remaining
+
+	Sets the guest's watchdog timer to expire after the interval
+	provided in the "timeout_seconds" parameter, and cancels any
+	previous watchdog timer setting in effect for the guest.
+
+	If the "timeout_seconds" argument is not zero, the watchdog
+	timer is set to expire after the number of seconds indicated
+	by the argument.  If the argument is zero, the watchdog
+	timer is disabled.
+
+	The timer should expire as soon as possible after the
+	requested timeout has elapsed; in no event may the watchdog
+	timer expire before the requested timeout period.
+
+	If the hypervisor cannot support the exact timeout value
+	requested, but can support a larger timeout value, the
+	hypervisor should round the actual timeout to the smallest
+	supported timeout value larger than the requested timeout.
+	In this case, a subsequent call to this function may return
+	a time remaining larger than the previously requested
+	timeout value.
+
+	If the requested timeout value exceeds the value of the
+	"watchdog-max-timeout" property, the hypervisor leaves the
+	watchdog timer state unchanged, and returns a status of
+	EINVAL.  The "time_remaining" return value is valid
+	regardless of whether the return status is EOK or EINVAL.
+
+	The hypervisor shall support timeout values up to at least
+	10 seconds.
+
+	A non-zero return value indicates the number of seconds that
+	were remaining until the timer was to expire.  The
+	hypervisor should round up fractional seconds to the next
+	higher second.  If less than one second remains, the return
+	value is 1.  If the watchdog timer was disabled at the time
+	of the call, the return value is 0.
+
+	If the timer expires, then the hypervisor takes a platform
+	specific action.  The platform specific action should lead to
+	guest termination within a bounded time period.  The
+	platform action may include recovery actions such as
+	reporting the expiration to a Service Processor, and/or
+	automatically restarting the guest.
+
+--Apple-Mail-24--539667312
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed
+
+
+
+--
+Richard Barnette         | Belinda was as brave as a barrel full of
+Sun Microsystems         |     bears,
+Scalable Systems Group   | And Ink and Blink chased lions down the
+Supernova Software       |     stairs,
+NWK20 3168 / UNWK20-310  | Mustard was as brave as a tiger in a rage,
+richard.barnette@sun.com | But Custard cried for a nice, safe cage.
+(510) 936-3986 / x13986  |  - Ogden Nash, "The Tale of Custard the
+                          |     Dragon"
+
+--Apple-Mail-24--539667312--
+
+
+From sacadmin Wed Jun 22 21:57:37 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j5N4vbEu021950
+	for <fwarc@sac.eng.sun.com>; Wed, 22 Jun 2005 21:57:37 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j5N4vai14830
+	for <fwarc@sun.com>; Wed, 22 Jun 2005 21:57:36 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j5N4vZPu021325;
+	Wed, 22 Jun 2005 21:57:35 -0700 (PDT)
+Received: from [127.0.0.1] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j5N4vWMh094002;
+	Wed, 22 Jun 2005 21:57:33 -0700 (PDT)
+Message-ID: <42BA413A.8090007@sun.com>
+Date: Wed, 22 Jun 2005 21:57:30 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.2 (Windows/20050317)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Richard Barnette <richard.barnette@sun.com>
+CC: Tom Caron <Tom.Caron@sun.com>, fwarc@sun.com
+Subject: Re: FWARC/2005/367 sun4v watchdog service API
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 920
+
+
+(Sorry, this probably isn't addressing your comment, Richard)
+
+
+>> Although updating the machine description spec is a possibility, I
+>> think a more maintainable solution would be some sort of registry
+>> of nodes and properties.
+
+We don't do anything like that now for device nodes and properties,
+and I don't see a lot of value in creating a registry for machine
+descriptor nodes.
+
+The original case that introduced the MD, provided the framework
+(basic node types, value types, cyclic data, etc.) Then each
+different machine should be maintaining what it is that they
+need that isn't generic, in some way, much like we do for bus, device
+and platform bindings.
+
+So, it might be a good idea for a given project (eg, Ontario,
+or sun4v-niagara1 or sun4v-fire) to maintain some document on
+their website that lists the current known set of MD records
+pertinent to that platform (or that CPU or that io bridge).
+
+-David
+
+From sacadmin Thu Jun 23 14:54:58 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j5NLswEu006105
+	for <fwarc@sac.eng.sun.com>; Thu, 23 Jun 2005 14:54:58 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j5NLswp12598;
+	Thu, 23 Jun 2005 14:54:58 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IIK00K0N4VMRS00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 23 Jun 2005 14:54:58 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IIK00KCC4VL7400@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 23 Jun 2005 14:54:57 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+ by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id j5NLsuPu023512; Thu, 23 Jun 2005 14:54:56 -0700 (PDT)
+Received: from sun.com (vpn-129-150-29-14.SFBay.Sun.COM [129.150.29.14])
+ by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j5NLsuMh024124;
+ Thu, 23 Jun 2005 14:54:56 -0700 (PDT)
+Date: Thu, 23 Jun 2005 14:56:41 -0700
+From: Tony Sumpter <tony.sumpter@sun.com>
+Subject: FWARC/2005/367 sun4v watchdog service API - updated
+In-reply-to: <42B44FDF.5080403@sun.com>
+To: fwarc@sun.com
+Cc: Richard Barnette <Richard.Barnette@sun.com>, Tom Caron <Tom.Caron@sun.com>,
+   pq-arch@sun.com
+Message-id: <42BB3019.1000609@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.0.1.144180
+References: <42ADF642.7050905@sun.com> <42B44FDF.5080403@sun.com>
+Status: RO
+Content-Length: 2046
+
+The final cleaned-up version of wdt-spec.txt has been deposited
+in the materials directory (diffs below.)
+
+I'm setting the timeout to 6/27/05.
+
+Tony.
+
+Tony Sumpter wrote:
+
+> The wdt-spec.txt file has been updated in the materials directory.
+> The previous version has been renamed.
+> 
+> Tony.
+> 
+> Tony Sumpter wrote:
+> 
+>> I'm sponsoring this case as a fast-track for Richard Barnette.
+>> The fast-track timeout is June 21, 2005.
+>>
+>> The materials are in the case directory under 'materials':
+>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/367/
+>>
+>> The case defines an optional HV API for setting a watchdog timeout.
+>>
+>> The requested binding is minor release, the committment
+>> level of the interface is Sun Private.
+>>
+>> This case reserves FAST TRAP (0x80) function number
+>> 0x13 for the API defined by the case, and
+>> this FAST TRAP function numbers should be documented
+>> in the registry being created by 2005/116.
+>>
+>> Tony.
+
+------ diff -b wdt-spec.txt-20050618 wdt-spec.txt -----
+4c4
+< basic watchdog timer facility to guests that choose to use it.
+---
+> basic watchdog timer service to guests that choose to use it.
+9c9
+< when the guest no longers needs or wants the facility.
+---
+> when the guest no longers needs or wants the service.
+31c31,32
+<       in the machine description.
+---
+>       in the machine description.  The property is stored in the
+>       "platform" node, and has these characteristics:
+33,36c34,38
+<       The property name is "watchdog-max-timeout", and is stored
+<       in the "platform" node.  Its numeric value is the largest
+<       number of seconds that is valid as a parameter to the
+<       watchdog timer service API function.
+---
+>       Name: watchdog-max-timeout
+>       Tag: PROP_VAL
+>       Required: No
+>       Description:  The largest number of seconds that is valid as
+>           a parameter to the watchdog timer service API function.
+37a40,42
+>       The property is present if the watchdog timer is service is
+>       available, but is otherwise not required.
+> 
+
+
+
+From sacadmin Tue Jun 28 10:19:40 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j5SHJeEu028917
+	for <fwarc@sac.eng.sun.com>; Tue, 28 Jun 2005 10:19:40 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j5SHJdq02565;
+	Tue, 28 Jun 2005 10:19:39 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IIT0010B1GRUR00@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 28 Jun 2005 10:19:39 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IIT005JC1GQRC70@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 28 Jun 2005 10:19:39 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+ by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id j5SHJc0l028552; Tue, 28 Jun 2005 10:19:38 -0700 (PDT)
+Received: from sun.com (vpn-129-150-29-35.SFBay.Sun.COM [129.150.29.35])
+ by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j5SHJbMh065333;
+ Tue, 28 Jun 2005 10:19:37 -0700 (PDT)
+Date: Tue, 28 Jun 2005 10:21:25 -0700
+From: Tony Sumpter <tony.sumpter@sun.com>
+Subject: FWARC/2005/367 - sun4v watchdog service API
+To: fwarc@sun.com
+Cc: Richard Barnette <Richard.Barnette@sun.com>, Tom Caron <Tom.Caron@sun.com>,
+   pq-arch@sun.com
+Message-id: <42C18715.1040302@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.0.1.144180
+Status: RO
+Content-Length: 197
+
+This case is now approved for integration into
+a minor release of the firmware and a micro release
+of the OS. All interfaces are "Sun Private".
+
+The HV API has been added to the registry.
+
+Tony.
+
+
+
+From sacadmin Fri Sep  9 10:02:20 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j89H2KEu027762
+	for <fwarc@sac.eng.sun.com>; Fri, 9 Sep 2005 10:02:20 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j89H22005526
+	for <fwarc@sun.com>; Fri, 9 Sep 2005 10:02:20 -0700 (PDT)
+Received: from phys-hanwk-1 (phys-hanwk-1.SFBay.Sun.COM [129.149.2.111])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j89H22ao015500
+	for <fwarc@sun.com>; Fri, 9 Sep 2005 10:02:02 -0700 (PDT)
+Received: from conversion-daemon.hanwk-mail1.sfbay.sun.com by
+ hanwk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IMK00I0179MF3@hanwk-mail1.sfbay.sun.com>
+ (original mail from eh29855@hanwk-mail1.sfbay.sun.com) for fwarc@sun.com; Fri,
+ 09 Sep 2005 10:02:02 -0700 (PDT)
+Received: from nonplus (nonplus.SFBay.Sun.COM [129.149.194.94])
+ by hanwk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with SMTP id <0IMK009V37BBLB@hanwk-mail1.sfbay.sun.com> for fwarc@sun.com;
+ Fri, 09 Sep 2005 10:02:00 -0700 (PDT)
+Date: Fri, 09 Sep 2005 10:01:59 -0700 (PDT)
+From: Eduardo E Horvath - Sun Microsystems - Newark United States
+ <eh29855@hanwk-mail1.sfbay.sun.com>
+Subject: 2005/367 sun4v watchdog service API
+To: fwarc@sun.com
+Reply-to: Eduardo E Horvath - Sun Microsystems - Newark United States
+ <eh29855@hanwk-mail1.sfbay.sun.com>
+Message-id: <0IMK009V47BBLB@hanwk-mail1.sfbay.sun.com>
+MIME-version: 1.0
+X-Mailer: dtmail 1.3.0 @(#)CDE Version 1.5.5 SunOS 5.9 sun4u sparc
+Content-type: TEXT/plain; charset=us-ascii
+Content-MD5: shXL8wP8Oui1OLKnuIhCeQ==
+Status: RO
+Content-Length: 633
+
+
+I know that this case has already been approved, but I have
+just had the time to look at it in detail and we have a small
+issue with it. 
+
+Right now it provides a watchdog granularity in seconds:
+
+4.1 mach_set_watchdog
+	trap#		FAST_TRAP
+	function#	MACH_SET_WATCHDOG
+	arg0		timeout_seconds
+
+	ret0		status
+	ret1		time_remaining
+
+
+I am working on the Montoya project which needs to be compatible with
+IPMI specification, and IPMI provides watchdog functionality with 100ms
+granularity.
+
+Would it cause a great deal of difficulty if the arg0 parameter
+were changed from seconds to miliseconds or microseconds?
+
+Eduardo Horvath				   
+
+
+
+From sacadmin Fri Sep  9 14:17:37 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j89LHaEu015250
+	for <fwarc@sac.eng.sun.com>; Fri, 9 Sep 2005 14:17:36 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j89LHZ024513
+	for <fwarc@sun.com>; Fri, 9 Sep 2005 14:17:35 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j89LHZf8002311;
+	Fri, 9 Sep 2005 14:17:35 -0700 (PDT)
+Received: from [127.0.0.1] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j89LHXkt013615;
+	Fri, 9 Sep 2005 14:17:34 -0700 (PDT)
+Message-ID: <4321FBEB.6080909@sun.com>
+Date: Fri, 09 Sep 2005 14:17:31 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.6 (Windows/20050716)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Eduardo E Horvath - Sun Microsystems - Newark United States <eh29855@hanwk-mail1.sfbay.sun.com>
+CC: fwarc@sun.com
+Subject: Re: 2005/367 sun4v watchdog service API
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 804
+
+
+Talk to the people that submitted the case.
+
+-David
+
+
+Eduardo E Horvath - Sun Microsystems - Newark United States wrote:
+> I know that this case has already been approved, but I have
+> just had the time to look at it in detail and we have a small
+> issue with it. 
+> 
+> Right now it provides a watchdog granularity in seconds:
+> 
+> 4.1 mach_set_watchdog
+> 	trap#		FAST_TRAP
+> 	function#	MACH_SET_WATCHDOG
+> 	arg0		timeout_seconds
+> 
+> 	ret0		status
+> 	ret1		time_remaining
+> 
+> 
+> I am working on the Montoya project which needs to be compatible with
+> IPMI specification, and IPMI provides watchdog functionality with 100ms
+> granularity.
+> 
+> Would it cause a great deal of difficulty if the arg0 parameter
+> were changed from seconds to miliseconds or microseconds?
+> 
+> Eduardo Horvath				   
+> 
+> 
+
+From sacadmin Fri Sep  9 14:18:40 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j89LIeEu015285
+	for <fwarc@sac.eng.Sun.COM>; Fri, 9 Sep 2005 14:18:40 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j89LIdn24542
+	for <fwarc@sun.com>; Fri, 9 Sep 2005 15:18:39 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j89LIdao003677;
+	Fri, 9 Sep 2005 14:18:39 -0700 (PDT)
+Received: from [127.0.0.1] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j89LIbkt013749;
+	Fri, 9 Sep 2005 14:18:38 -0700 (PDT)
+Message-ID: <4321FC2B.6080804@sun.com>
+Date: Fri, 09 Sep 2005 14:18:35 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.6 (Windows/20050716)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Eduardo E Horvath - Sun Microsystems - Newark United States <eh29855@hanwk-mail1.sfbay.sun.com>
+CC: fwarc@sun.com
+Subject: Re: 2005/367 sun4v watchdog service API
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 899
+
+
+Also, off the top of my head, this doesn't seem like the
+interface you want. But maybe I'm just confused. Talk
+to the original submitters.
+
+-David
+
+
+Eduardo E Horvath - Sun Microsystems - Newark United States wrote:
+> I know that this case has already been approved, but I have
+> just had the time to look at it in detail and we have a small
+> issue with it. 
+> 
+> Right now it provides a watchdog granularity in seconds:
+> 
+> 4.1 mach_set_watchdog
+> 	trap#		FAST_TRAP
+> 	function#	MACH_SET_WATCHDOG
+> 	arg0		timeout_seconds
+> 
+> 	ret0		status
+> 	ret1		time_remaining
+> 
+> 
+> I am working on the Montoya project which needs to be compatible with
+> IPMI specification, and IPMI provides watchdog functionality with 100ms
+> granularity.
+> 
+> Would it cause a great deal of difficulty if the arg0 parameter
+> were changed from seconds to miliseconds or microseconds?
+> 
+> Eduardo Horvath				   
+> 
+> 
+
+From sacadmin Wed Sep 14 23:08:37 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j8F68bEu016022
+	for <fwarc@sac.eng.sun.com>; Wed, 14 Sep 2005 23:08:37 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j8F68aP15120;
+	Wed, 14 Sep 2005 23:08:36 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IMU00E01H2CTS00@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 14 Sep 2005 23:08:36 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IMU0078YH2CRE80@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 14 Sep 2005 23:08:36 -0700 (PDT)
+Received: from fe1.sun.com ([192.18.108.78])
+	by brmea-mail-3.sun.com (8.12.10/8.12.9) with ESMTP id j8F68a1L019369; Thu,
+ 15 Sep 2005 00:08:36 -0600 (MDT)
+Received: from conversion-daemon.fe1.sun.com by fe1.sun.com
+ (Sun Java System Messaging Server 6.1 HotFix 0.02 (built Aug 25 2004))
+ id <0IMU00L01CD7Z700@fe1.sun.com> (original mail from Tony.Sumpter@Sun.COM)
+ ; Thu, 15 Sep 2005 00:08:36 -0600 (MDT)
+Received: from sun.com ([129.150.24.227])
+ by fe1.sun.com (Sun Java System Messaging Server 6.1 HotFix 0.02 (built Aug 25
+ 2004)) with ESMTPSA id <0IMU000ZJH26YYZ6@fe1.sun.com>; Thu,
+ 15 Sep 2005 00:08:36 -0600 (MDT)
+Date: Wed, 14 Sep 2005 23:09:02 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: 2005/367 sun4v watchdog service API
+In-reply-to: <4321FC2B.6080804@sun.com>
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: Eduardo E Horvath - Sun Microsystems - Newark United States
+ <eh29855@hanwk-mail1.sfbay.sun.com>,
+   fwarc@Sun.COM, Richard Barnette <Richard.Barnette@Sun.COM>
+Message-id: <43290FFE.4090807@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.0.3.165339
+References: <4321FC2B.6080804@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 1077
+
+David Kahn wrote:
+
+> 
+> Also, off the top of my head, this doesn't seem like the
+> interface you want. But maybe I'm just confused. Talk
+> to the original submitters.
+
+Richard has talked with Eduardo. No change is advised to this case.
+
+Tony.
+
+> -David
+> 
+> 
+> Eduardo E Horvath - Sun Microsystems - Newark United States wrote:
+> 
+>> I know that this case has already been approved, but I have
+>> just had the time to look at it in detail and we have a small
+>> issue with it.
+>> Right now it provides a watchdog granularity in seconds:
+>>
+>> 4.1 mach_set_watchdog
+>>     trap#        FAST_TRAP
+>>     function#    MACH_SET_WATCHDOG
+>>     arg0        timeout_seconds
+>>
+>>     ret0        status
+>>     ret1        time_remaining
+>>
+>>
+>> I am working on the Montoya project which needs to be compatible with
+>> IPMI specification, and IPMI provides watchdog functionality with 100ms
+>> granularity.
+>>
+>> Would it cause a great deal of difficulty if the arg0 parameter
+>> were changed from seconds to miliseconds or microseconds?
+>>
+>> Eduardo Horvath                  
+>>
+
+
+
+From sacadmin Tue Jun 20 14:45:27 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k5KLjQlV012415
+	for <fwarc@sac.eng.sun.com>; Tue, 20 Jun 2006 14:45:26 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k5KLjQF19463;
+	Tue, 20 Jun 2006 14:45:26 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J1600E0LHRNH600@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 20 Jun 2006 14:45:23 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.6]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J160063EHRNS980@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 20 Jun 2006 14:45:23 -0700 (PDT)
+Received: from d1-sfbay-05.sun.com ([192.18.39.115])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k5KLjN8D023881; Tue,
+ 20 Jun 2006 14:45:23 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-05.sun.com by d1-sfbay-05.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J1600D01HJM1P00@d1-sfbay-05.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Tue,
+ 20 Jun 2006 14:45:23 -0700 (PDT)
+Received: from sun.com ([129.150.22.218])
+ by d1-sfbay-05.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0J1600CY9HRKE140@d1-sfbay-05.sun.com>; Tue,
+ 20 Jun 2006 14:45:22 -0700 (PDT)
+Date: Tue, 20 Jun 2006 14:45:23 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: FWARC/2005/367 - sun4v watchdog service API
+In-reply-to: <42C18715.1040302@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: fwarc@Sun.COM
+Cc: Richard Barnette <Richard.Barnette@Sun.COM>, Tom Caron <Tom.Caron@Sun.COM>,
+        pq-arch@Sun.COM, Craig Payne <Craig.Payne@Sun.COM>
+Message-id: <44986C73.9060900@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <42C18715.1040302@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 438
+
+Tony Sumpter wrote:
+
+> This case is now approved for integration into
+> a minor release of the firmware and a micro release
+> of the OS. All interfaces are "Sun Private".
+> 
+> The HV API has been added to the registry.
+
+Apologies to all - I missed 'patch' when sending out the case approval
+which should read:
+
+"This case is now approved for integration into
+a minor release of the firmware and a micro/patch release
+of the OS."
+
+Tony.
+
+
+

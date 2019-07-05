@@ -1,0 +1,12 @@
+The following files and directories have been redacted:
+
+    SCCS - ignored directory
+    sc - ignored directory
+    uirb - ignored directory
+    20060320_narayan.venkat - Sun Proprietary
+    issues - case redacted
+    mail - case redacted
+    materials/ldc-shm.pdf - case redacted
+    materials/sun4v-channel-shmem-1pager.txt - case redacted
+
+See http://hub.opensolaris.org/bin/view/Community+Group+arc/arc-publish-historical-checklist for further information

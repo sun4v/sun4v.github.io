@@ -1,0 +1,7 @@
+Name:		minor clarifications to sun4v io_api.txt
+Submitter:	David Kahn
+Owner:		David Kahn
+Interest:	David.Kahn@Sun.COM
+Status:         closed approved automatic 04/28/2009
+Exposure:	open
+Comment:	

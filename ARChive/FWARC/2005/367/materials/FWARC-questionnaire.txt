@@ -1,0 +1,190 @@
+1. What specifically is the proposal that we are reviewing?
+
+     A new function to be added to the Hypervisor API.  The function
+     is intended to be part of the Niagara/Ontario RR release.
+
+     The new function will provide a simple watchdog timer (WDT)
+     facility to guests that choose to use it.
+
+2. What is the motivation for it?
+
+     To provide a watchdog timer facility for sun4v based
+     Solaris platforms, notably Ontario and Supernova systems.
+
+3. What is its plan?
+     An implementation strategy for the hypervisor has been
+     identified, but resources are not yet assigned.
+
+     The guest requirements for Solaris and OBP have been
+     identified.
+
+     Solaris changes have been designed and a prototype has been
+     tested.
+
+4. Are there related projects in Sun?
+
+     Various sun4u systems that Sun has shipped have had WDT
+     functionality in various forms, including Sunfire classic,
+     Serengeti, and Starcat.
+
+     There are no known current projects relating to watchdog
+     timers for Solaris.
+
+     This project has no dependencies on other projects.
+
+5. What is the technical content of the project?
+
+     The proposal adds a single function to the Hypervisor API.  A
+     guest may call the function to set a timer that, if it expires,
+     will terminate the guest.  The guest can use the same function
+     to postpone or stop the timer any time before expiration.
+
+6. How is the project delivered into the system?
+
+     The code will be delivered as an integral part of each sun4v
+     hypervisor.
+
+7. What are the project's hardware platform dependencies? Is it expected to
+work on all systems (Desktop thru servers)?
+
+    The proposed function would be required to be implemented in
+    every sun4v hypervisor.
+
+8. What is its FW operational environment:
+
+   * Environment variables?
+    N/A
+
+   * Exit status? Signals issued?
+    N/A
+
+   * Command line or calling syntax:
+    N/A
+
+   * Does it depend on non-1275 kernel features?
+   N/A
+
+9. What is its user interface (tty, graphical, leds, sound, etc.)?
+    N/A
+
+10. What are your project's other external interfaces (exported and
+imported)?
+
+    The sole interface is one Hypervisor API function.
+
+   * Exported public library APIs and ABIs
+    N/A
+
+   * Protocols (public or private)
+    N/A
+
+   * Are the interfaces documented clearly enough for a non-Sun client to
+     use them successfully?
+     Yes.
+
+   * What is the classification of these interfaces in the Interface
+     Taxonomy (e.g. "Standard", "Stable", "Evolving", etc.; see the
+     interface taxonomy document in /shared/sac/doc/interface.taxonomy)?
+     Sun Private.
+
+11. What are its other significant internal interfaces (inter-subsystem and
+inter-invocation)?
+
+   * Protocols (public or private)
+    N/A
+   * Other
+    N/A
+
+12. Is the interface extensible? How is the interface expected to evolve?
+
+   * How is versioning handled?
+    Changes to the interface should be managed using the standard
+    Hypervisor API versioning mechanism.
+
+   * What was the commitment level of the previous version? Can this version
+     co-exist with existing standards and with earlier and later versions or
+     with alternative implementations (perhaps by other vendors)?
+     N/A
+
+   * What are the clients over which a change should be managed? How is
+     transition to a new version to be accomplished? What are the
+     consequences to ISV's and their customers?
+     Clients impacted by a change would be either OBP and/or Solaris.
+     Management of the change would be as for any hypervisor version
+     change.  In general, enhancements to this interface would be
+     provided by adding a new function to the Hypervisor API, not
+     by altering this function.
+
+   * Does this scale from low-end Desktops to high-end Servers? What, if
+     any, trade-offs are involved?
+     Scalability should not be an issue.
+
+13. How do the interfaces adapt to a changing world?
+
+   * What is its relationship with (or difficulties with) System Service
+     Processors?
+     There is no direct relationship with an SP.  However, the
+     hypervisor on any platform having an SP would presumbly deliver
+     an E-report to the SP for any guest WDT expiration event.
+     The proposal as specified allows handling of WDT expiration on
+     a platform by platform basis.
+
+   * What security issues do you address in your project?
+    None.
+
+14. What internationalization issues are involved?
+    N/A
+
+15. How will the project contribute (positively or negatively) to "system
+load" and "perceived performance":
+
+   * What are the performance goals of the project? How were they evaluated?
+     On what type of test platform?
+     Performance of this feature is not considered an issue.
+
+   * Does the application pause for significant amounts of time? Can the
+     user interact with the application while it is performing long-duration
+     tasks?
+     N/A.
+
+   * Does memory usage or heap space tend to grow with time/load? What
+     mechanisms does the user have to use to control this? What happens to
+     performance/system load?
+     Impact of the WDT on system load should be negligible.
+
+   * What are the project's effects on boot time requirements?
+    N/A.
+
+16. How does the project deal with failure and recovery?
+
+   * How will it respond to failures? (Does it ever require reset? Use of
+     stop key? Can it lock up?)
+     The hypervisor is expected to terminate the guest in the event of
+     WDT expiration.
+
+   * Does it attempt to isolate and contain the failure to allow for
+     automatic recovery?
+     Platforms may provide automatic restart of a failed guest at
+     their discretion.
+
+   * How does it communicate a fault event? Does it depend on a working
+     console device?
+     Platforms may communicate the failures to an SP (if one is
+     present) at their discretion.
+
+17. Issues? Please identify the issues which you would like the ARC to
+address.
+    N/A.
+
+18. Appendices:
+
+Interface		Classification
+mach_set_watchdog	Sun Private
+
+References:
+FWARC 2005/116
+
+19. Security
+    N/A.
+
+	#pragma ident	"@(#)fwarc-18Q.txt	1.3	03/08/21 SMI"

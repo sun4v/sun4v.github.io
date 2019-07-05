@@ -1,0 +1,349 @@
+#ident	"@(#)vf_perf_api.txt 1.11	07/09/13 SMI"
+
+1.0 Introduction
+
+This document describes the Victoria Falls hardware performance monitoring
+features and the sun4v API used for guest access to those features.
+
+This document also describes the sun4v API for the guest to access 
+the Zambezi performance counter registers on the VictoriaFalls based
+Batoka system.
+
+Section 2.0 summarizes the performance instrumentation
+support provided by the Victoria Falls processor and Zambezi chip.
+
+Section 3.0 describes the sun4v API used to access
+Victoria Falls performance registers and Zambezi performance registers.
+
+
+2.0 Victoria Falls Performance Instrumentation
+
+The Victoria Falls processor provides the following categories of
+performance instrumentation:
+
+	- SPARC performance instrumentation
+	- DRAM performance instrumentation
+	- CLC performance instrumentation
+
+Victoria Falls platforms may contain up to four Victoria Falls nodes. Each 
+node has an instance of the DRAM performance instrumention.
+
+Zambezi is the new ASIC introduced to the Batoka system where the
+motherboard uses four Zambezi chips to connect four Niagara2 based
+VictoriaFalls processors. Zambezi provides performance counter registers
+(1 control/select register, 2 counter registers per core) throughout the chip
+to aid in analysis, debug and performance tuning applications. Performance counter
+registers are provided in the following three areas:
+
+	- Link Port Unit (LPU)
+	- General Purpose Design block (GPD)
+	- Address Serialization Unit (ASU)
+
+
+2.1 SPARC Performance Instrumentation
+
+Each hardware strand has a pair of registers to control and capture
+CPU-specific performance information:
+
+	Description					Access
+	-------------------------------------		--------
+	SPARC Performance Control Register		ASR=0x10
+	SPARC Performance Instrumentation counter	ASR=0x11
+
+These registers are directly accessible by the privileged code. The HT
+bit in SPARC PCR controls the counting of hyperprivileged events and may
+be set only in hyperprivileged mode.
+
+2.2 DRAM Performance Instrumentation
+
+Each DRAM channel in Victoria Falls node has a pair of performance counters
+packed into a single register and a register to control what is counted.
+The following table summarizes the location of these counters:
+
+	Description			Location
+	--------------------------	------------------
+	DRAM Perf Control Register	0x84.0000.n400
+	DRAM Perf Counter Register	0x84.0000.n408
+
+where 'n' is 0 through 1 for a total of two different DRAM channels.  These
+registers are only accessible from hyperprivileged mode.
+
+2.3 L2 Control Register
+
+The L2 Control Register adds address interleave ceiling mask and nodeid fileds. The
+PERF_CONFIG bits are the only bits that are exposed with this interface. The  perf
+control bits in the L2 Control Register are 37:36 which are bits 1:0 in the
+virtualized L2 Control Register.
+
+	Description			Location
+	--------------------------	------------------
+	L2 Control Register		0xA9.0000.0000
+
+
+2.4 LPU Performance Instrumentation
+
+There are three performance counter registers contained in the LPU
+core on a per port basis:
+
+Description             Zambezi address         VF access address
+			     [15:0]            [39:28][17:14][13:12][11:0]
+------------------------------------------------------------------------------
+porT A perf cntr select      0x1000            0x813  | 0x1  |  n  | 0x000
+port A perf cntr zero        0x1008            0x813  | 0x1  |  n  | 0x008
+port A perf cntr one         0x1010            0x813  | 0x1  |  n  | 0x010
+port B perf cntr select      0x3000            0x813  | 0x3  |  n  | 0x000
+port B perf cntr zero        0x3008            0x813  | 0x3  |  n  | 0x008
+port B perf cntr one         0x3010            0x813  | 0x3  |  n  | 0x010
+port C perf cntr select      0x5000            0x813  | 0x5  |  n  | 0x000
+port C perf cntr zero        0x5008            0x813  | 0x5  |  n  | 0x008
+port C perf cntr one         0x5010            0x813  | 0x5  |  n  | 0x010
+port D perf cntr select      0x7000            0x813  | 0x7  |  n  | 0x000
+port D perf cntr zero        0x7008            0x813  | 0x7  |  n  | 0x008
+port D perf cntr one         0x7010            0x813  | 0x7  |  n  | 0x010
+
+where 'n' is 0 through 3 to identify one of four different Zambezi instances.
+
+
+2.5 GPD Performance Instrumentation
+
+There is one set of performance counter registers contained in the GPD core:
+
+			   Zambezi address    VF access address
+Description                   [15:0]          [39:28][17:14][13:12][11:0]
+------------------------------------------------------------------------------
+GPD perf cntr select          0x9000           0x813  | 0x9  |  n  | 0x000
+GPD perf cntr zero            0x9008           0x813  | 0x9  |  n  | 0x008
+GPD perf cntr one             0x9010           0x813  | 0x9  |  n  | 0x010
+
+where 'n' is 0 through 3 to identify one of four different Zambezi instances.
+
+
+2.6 ASU Performance Instrumentation
+
+There is one set of performance counter registers contained in the ASU core:
+
+			   Zambezi address     VF access address
+Description                  [15:0]            [39:28][17:14][13:12][11:0]
+------------------------------------------------------------------------------
+ASU perf cntr select          0xB000           0x813  | 0xB  |  n  | 0x000
+ASU perf cntr zero            0xB008           0x813  | 0xB  |  n  | 0x008
+ASU perf cntr one             0xB010           0x813  | 0xB  |  n  | 0x010
+
+where 'n' is 0 through 3 to identify one of four different Zambezi instances.
+
+
+3.0 sun4v API for SPARC and DRAM Performance Registers
+
+These sun4v APIs provide an interface to read and write the DRAM 
+performance registers as they are not accessible by the privileged
+software.
+
+The privileged software can use this interface to write the HT bit
+in the SPARC performance control register as well. The access to write
+to the HT bit can be denied, in which case the sun4v API returns
+ENOACCESS. The code using these interfaces must handle such a failure
+gracefully.
+
+The SPARC performance registers are used to get CLC performance counters
+by setting the PERF_CONFIG bits in L2_CONTROL_REG. In default mode all L2
+misses are counted. The PERF_CONFIG bits in L2 control register can be
+programmed to count misses serviced from local memory, misses serviced
+from remote memory or misses serviced by cache-to-cache transfers. As
+most of the L2_CONTROL_REG is not accessable by the privilege code,
+a virtualized generic register is used to program PERF_CONFIG bits in
+all L2_CONTROL_REG.
+
+Zambezi performance registers are used to track events in the link and
+transaction layer.
+
+3.1 Definitions
+
+The SPARC PCR, the virtualized L2_CONTROL_REG, the DRAM and Zambezi
+performance registers are assigned unique performance register numbers
+(PerfReg#) which uniquely identifies each performance register.
+
+The table below describes PerfReg# to access the performance control and
+counter registers, a total of 90 registers:
+
+PerfReg# Node Group Description     Local address   Global address
+-------- ---- ----- -----------     -------------   --------------
+0     local  -   SPARC PCR           -               -
+
+1     local  all L2 Bank CRs         -               -
+
+2       0    0   NODE0_MCU0_PCR  0x84.0000.0400  0xD0.0000.0400
+3       0    0   NODE0_MCU0_PIC  0x84.0000.0408  0xD0.0000.0408
+4       0    1   NODE0_MCU1_PCR  0x84.0000.1400  0xD0.0000.1400
+5       0    1   NODE0_MCU1_PIC  0x84.0000.1408  0xD0.0000.1408
+
+6       1    0   NODE1_MCU0_PCR  0x84.0000.0400  0xD4.0000.0400
+7       1    0   NODE1_MCU0_PIC  0x84.0000.0408  0xD4.0000.0408
+8       1    1   NODE1_MCU1_PCR  0x84.0000.1400  0xD4.0000.1400
+9       1    1   NODE1_MCU1_PIC  0x84.0000.1408  0xD4.0000.1408
+
+10      2    0   NODE2_MCU0_PCR  0x84.0000.0400  0xD8.0000.0400
+11      2    0   NODE2_MCU0_PIC  0x84.0000.0408  0xD8.0000.0408
+12      2    1   NODE2_MCU1_PCR  0x84.0000.1400  0xD8.0000.1400
+13      2    1   NODE2_MCU1_PIC  0x84.0000.1408  0xD8.0000.1408
+
+14      3    0   NODE3_MCU0_PCR  0x84.0000.0400  0xDC.0000.0400
+15      3    0   NODE3_MCU0_PIC  0x84.0000.0408  0xDC.0000.0408
+16      3    1   NODE3_MCU1_PCR  0x84.0000.1400  0xDC.0000.1400
+17      3    1   NODE3_MCU1_PIC  0x84.0000.1408  0xDC.0000.1408
+
+18      0   LPU0 ZAM0_LPU_A_PCR  0x81.3000.1000  0xE1.3000.4000
+19      0   LPU0 ZAM0_LPU_A_PIC0 0x81.3000.1008  0xE1.3000.4008
+20      0   LPU0 ZAM0_LPU_A_PIC1 0x81.3000.1010  0xE1.3000.4010
+21      0   LPU1 ZAM0_LPU_B_PCR  0x81.3000.3000  0xE1.3000.C000
+22      0   LPU1 ZAM0_LPU_B_PIC0 0x81.3000.3008  0xE1.3000.C008
+23      0   LPU1 ZAM0_LPU_B_PIC1 0x81.3000.3010  0xE1.3000.C010
+24      0   LPU2 ZAM0_LPU_C_PCR  0x81.3000.5000  0xE1.3001.4000
+25      0   LPU2 ZAM0_LPU_C_PIC0 0x81.3000.5008  0xE1.3001.4008
+26      0   LPU2 ZAM0_LPU_C_PIC1 0x81.3000.5010  0xE1.3001.4010
+27      0   LPU3 ZAM0_LPU_D_PCR  0x81.3000.7000  0xE1.3001.C000
+28      0   LPU3 ZAM0_LPU_D_PIC0 0x81.3000.7008  0xE1.3001.C008
+29      0   LPU3 ZAM0_LPU_D_PIC1 0x81.3000.7010  0xE1.3001.C010
+30      0   GPD  ZAM0_GPD_PCR    0x81.3000.9000  0xE1.3002.4000
+31      0   GPD  ZAM0_GPD_PIC0   0x81.3000.9008  0xE1.3002.4008
+32      0   GPD  ZAM0_GPD_PIC1   0x81.3000.9010  0xE1.3002.4010
+33      0   ASU  ZAM0_ASU_PCR    0x81.3000.b000  0xE1.3002.C000
+34      0   ASU  ZAM0_ASU_PIC0   0x81.3000.b008  0xE1.3002.C008
+35      0   ASU  ZAM0_ASU_PIC1   0x81.3000.b010  0xE1.3002.C010
+
+36      1   LPU0 ZAM1_LPU_A_PCR  0x81.3000.1000  0xE5.3000.5000 
+37      1   LPU0 ZAM1_LPU_A_PIC0 0x81.3000.1008  0xE5.3000.5008
+38      1   LPU0 ZAM1_LPU_A_PIC1 0x81.3000.1010  0xE5.3000.5010
+39      1   LPU1 ZAM1_LPU_B_PCR  0x81.3000.3000  0xE5.3000.D000
+40      1   LPU1 ZAM1_LPU_B_PIC0 0x81.3000.3008  0xE5.3000.D008
+41      1   LPU1 ZAM1_LPU_B_PIC1 0x81.3000.3010  0xE5.3000.D010
+42      1   LPU2 ZAM1_LPU_C_PCR  0x81.3000.5000  0xE5.3001.5000
+43      1   LPU2 ZAM1_LPU_C_PIC0 0x81.3000.5008  0xE5.3001.5008
+44      1   LPU2 ZAM1_LPU_C_PIC1 0x81.3000.5010  0xE5.3001.5010
+45      1   LPU3 ZAM1_LPU_D_PCR  0x81.3000.7000  0xE5.3001.D000
+46      1   LPU3 ZAM1_LPU_D_PIC0 0x81.3000.7008  0xE5.3001.D008
+47      1   LPU3 ZAM1_LPU_D_PIC1 0x81.3000.7010  0xE5.3001.D010
+48      1   GPD  ZAM1_GPD_PCR    0x81.3000.9000  0xE5.3002.5000
+49      1   GPD  ZAM1_GPD_PIC0   0x81.3000.9008  0xE5.3002.5008
+50      1   GPD  ZAM1_GPD_PIC1   0x81.3000.9010  0xE5.3002.5010
+51      1   ASU  ZAM1_ASU_PCR    0x81.3000.b000  0xE5.3002.D000
+52      1   ASU  ZAM1_ASU_PIC0   0x81.3000.b008  0xE5.3002.D008
+53      1   ASU  ZAM1_ASU_PIC1   0x81.3000.b010  0xE5.3002.D010
+
+54      2   LPU0 ZAM2_LPU_A_PCR  0x81.3000.1000  0xE9.3000.6000
+55      2   LPU0 ZAM2_LPU_A_PIC0 0x81.3000.1008  0xE9.3000.6008
+56      2   LPU0 ZAM2_LPU_A_PIC1 0x81.3000.1010  0xE9.3000.6010
+57      2   LPU1 ZAM2_LPU_B_PCR  0x81.3000.3000  0xE9.3000.E000
+58      2   LPU1 ZAM2_LPU_B_PIC0 0x81.3000.3008  0xE9.3000.E008
+59      2   LPU1 ZAM2_LPU_B_PIC1 0x81.3000.3010  0xE9.3000.E010
+60      2   LPU2 ZAM2_LPU_C_PCR  0x81.3000.5000  0xE9.3001.6000
+61      2   LPU2 ZAM2_LPU_C_PIC0 0x81.3000.5008  0xE9.3001.6008
+62      2   LPU2 ZAM2_LPU_C_PIC1 0x81.3000.5010  0xE9.3001.6010
+63      2   LPU3 ZAM2_LPU_D_PCR  0x81.3000.7000  0xE9.3001.E000
+64      2   LPU3 ZAM2_LPU_D_PIC0 0x81.3000.7008  0xE9.3001.E008
+65      2   LPU3 ZAM2_LPU_D_PIC1 0x81.3000.7010  0xE9.3001.E010
+66      2   GPD  ZAM2_GPD_PCR    0x81.3000.9000  0xE9.3002.6000
+67      2   GPD  ZAM2_GPD_PIC0   0x81.3000.9008  0xE9.3002.6008
+68      2   GPD  ZAM2_GPD_PIC1   0x81.3000.9010  0xE9.3002.6010
+69      2   ASU  ZAM2_ASU_PCR    0x81.3000.b000  0xE9.3002.E000
+70      2   ASU  ZAM2_ASU_PIC0   0x81.3000.b008  0xE9.3002.E008
+71      2   ASU  ZAM2_ASU_PIC1   0x81.3000.b010  0xE9.3002.E010
+
+72      3   LPU0 ZAM3_LPU_A_PCR  0x81.3000.1000  0xED.3000.7000 
+73      3   LPU0 ZAM3_LPU_A_PIC0 0x81.3000.1008  0xED.3000.7008
+74      3   LPU0 ZAM3_LPU_A_PIC1 0x81.3000.1010  0xED.3000.7010
+75      3   LPU1 ZAM3_LPU_B_PCR  0x81.3000.3000  0xED.3000.F000
+76      3   LPU1 ZAM3_LPU_B_PIC0 0x81.3000.3008  0xED.3000.F008
+77      3   LPU1 ZAM3_LPU_B_PIC1 0x81.3000.3010  0xED.3000.F010
+78      3   LPU2 ZAM3_LPU_C_PCR  0x81.3000.5000  0xED.3001.7000
+79      3   LPU2 ZAM3_LPU_C_PIC0 0x81.3000.5008  0xED.3001.7008
+80      3   LPU2 ZAM3_LPU_C_PIC1 0x81.3000.5010  0xED.3001.7010
+81      3   LPU3 ZAM3_LPU_D_PCR  0x81.3000.7000  0xED.3001.F000
+82      3   LPU3 ZAM3_LPU_D_PIC0 0x81.3000.7008  0xED.3001.F008
+83      3   LPU3 ZAM3_LPU_D_PIC1 0x81.3000.7010  0xED.3001.F010
+84      3   GPD  ZAM3_GPD_PCR    0x81.3000.9000  0xED.3002.7000
+85      3   GPD  ZAM3_GPD_PIC0   0x81.3000.9008  0xED.3002.7008
+86      3   GPD  ZAM3_GPD_PIC1   0x81.3000.9010  0xED.3002.7010
+87      3   ASU  ZAM3_ASU_PCR    0x81.3000.b000  0xED.3002.F000
+88      3   ASU  ZAM3_ASU_PIC0   0x81.3000.b008  0xED.3002.F008
+89      3   ASU  ZAM3_ASU_PIC1   0x81.3000.b010  0xED.3002.F010
+---------------------------------------------------------------------
+
+The interface for accessing the SPARC Performance Control Register
+operates on the entire register and always on the current hardware
+strand.
+
+
+3.2 API calls
+
+The following function numbers are applicable when accessing the
+Victoria Falls SPARC, DRAM and Zambezi performance registers:
+
+	VFALLS_GET_PERFREG		0x106
+	VFALLS_SET_PERFREG		0x107
+
+These API calls are part of the following API group:
+
+	Group#		Description
+	-----		------------
+	0x205		Victoria Falls Performance Counters
+
+The API version 1.0 includes only the Victoria Falls SPARC and DRAM 
+perofrmance counters.
+The API version 1.1 is an extension of version 1.0 and includes Zambezi
+performance counters as well.
+
+For Zambezi performance counters there is a case where multiple accesses
+cannot be satisfied given the hardware restrictions in Zambezai and where
+the hypervisor cannot spit waiting to access Zambezi for which api calls
+returns EWOULDBLOCK error code. 
+A error code EINVAL is returned when the register number is out of range,
+i.e Regid is not in 0-89.
+A error code ENOTSUPPORTED is returned when the regid is not supported,
+for e.g., zambezi registers are not supported on 2-way Maramba system.
+When a guest does not have access to a register the api call returns 
+ENOACCESS error code.
+
+3.2.1 vfalls_get_perfreg
+
+	    Entry:
+		trap#		FAST_TRAP
+		function#	VFALLS_GET_PERFREG
+		arg0		PerfReg#
+
+	    Exit:
+		ret0		status (success or error code)
+		ret1		Performance register value
+
+This call reads the value of the SPARC, virtualized L2_CONTROL_REG, DRAM or
+Zambezi performance register as specified by the "PerfReg#" argument.
+
+On success, the call returns a status of EOK and the value of
+the requested PerfReg.  Otherwise, it returns one of the following errors:
+
+	EINVAL			Invalid performance register number
+	ENOTSUPPORTED		register number not supported
+	ENOACCESS		No access allowed to the performance register
+	EWOULDBLOCK		Can not complete operation without blocking
+
+3.2.2 vfalls_set_perfreg
+	    Entry:
+		trap#		FAST_TRAP
+		function#	VFALLS_SET_PERFREG
+		arg0		PerfReg#
+		arg1		PerfReg value
+
+	    Exit:
+		ret0		status (success or error code)
+
+This calls sets the SPARC, virtualized L2_CONTROL_REG, DRAM or Zambezi
+performance register as specified by the "PerfReg#" argument to the value
+as specified by the "PerfReg value" argument.
+
+On success the call returns a status of EOK.  Otherwise, it returns one
+of the following errors:
+
+	EINVAL			Invalid performance register number
+	ENOTSUPPORTED		register number not supported
+	ENOACCESS		No access allowed to the performance register
+	EWOULDBLOCK		Can not complete operation without blocking
+

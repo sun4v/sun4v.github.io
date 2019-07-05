@@ -1,0 +1,23 @@
+Imported Interfaces :
+
+     Interface                   Classification     Comments
+     =========                   ==============     ========
+
+     PRI structures              Sun Private        Defined by FWARC/2008/761
+         
+
+
+Exported Interfaces:
+
+      Interface                  Classification     Comments
+      ================           ==============     ========
+
+      "path" property           Sun Private        Defined in section 1.3.9 of
+      in Component node                            the specification.
+
+      "cfg-handle" property     Obsolete           Defined in section 1.3.18 of
+      in Component node                            the specification version 1.6.
+
+      "path" property           Sun Private        Defined in section 1.12.1 of
+      in IO Device node                            the specification.
+

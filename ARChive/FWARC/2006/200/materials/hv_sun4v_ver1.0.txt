@@ -1,0 +1,286 @@
+
+Sun4v Hypervisor Error Handling Interfaces 
+-------------------------------------------
+
+1.0 Sun4v Error Report For CPU, Memory, and Programmed I/O (PIO) Access
+
+The sun4v error report for CPU, memory, and PIO access errors is a fixed
+length error report that describes the underlying hardware error in terms
+of resumable or non-resumable error to the sun4v guest.
+
+On startup, the sun4v guest and the hypervisor exchange the versions which
+they support and pick the latest version that is compatible.
+
+Please refer to [1] for more information. 
+
+The table 1-1 below describes the format of the sun4v error report record.
+
+	--------------------------------------------------------------------
+	Offset	Size	Field	Description
+		(bytes)
+	--------------------------------------------------------------------
+	0x0	8	EHDL#	Unique error handle
+        0x8	8	STICK	Value of the %STICK register
+	0x10	3	Rsvd	Reserved, always set to zero.
+	0x13	1	DESC	Error descriptor (see section 4.0)
+	0x14	4	ATTR	Error attributes (see section 5.0)
+        0x18	8	RA	Real address of the affected memory region
+				or PIO transaction address
+        0x20	4	SZ	Size, in bytes, of the affected memory region
+        0x24	2	CPUID	ID of the affected CPU
+	0x26	20	Rsvd	Reserved, ignored.
+	--------------------------------------------------------------------
+	    Table 1-1 Sun4v Error Report Format
+
+2.0 Error Handle (EHDL#).
+
+This field specifies the handle of the error. Error handles are unique opaque
+values that will not be reused until the hypervisor in the hardware domain is
+restarted. If multiple error reports are generated for the same error, they will
+all have the same EHDL value.
+
+3.0 Stick register (STICK).
+
+This field contains the contents of the %STICK register that was captured by the
+hypervisor trap handler.
+
+4.0 Error Descriptor (DESC).
+
+This field specifies the type of the error report. The table 4-1 below lists the
+currently defined values.
+
+ 	------------------------------------------------------------
+ 	Value	Mnemonic	Description
+ 	------------------------------------------------------------
+	0	UNDEF		Undefined
+ 	1	R_UE		Uncorrected resumable error report
+ 	2	NR_PR  		Precise non-resumable error report
+ 	3	NR_DF 		Deferred non-resumable error report
+ 	------------------------------------------------------------
+		Table 4-1. Error Report Descriptors
+
+All other values are reserved.
+
+The value R_UE is valid only for error reports that are queued on the
+resumable_error queue. The values NR_PREC and NR_DEF are valid only for the
+error reports that are queued on the nonresumable_error queue. For details of
+the resumable/nonresumable error queues, see [1], chapter 6.
+
+4.1 R_UE: Uncorrected resumable error report.
+
+An uncorrected resumable error report is always queued on the resumable_error
+queue of a CPU that belongs to the affected partition. It specifies that the
+underlying error was not corrected. The resource in error is specified by the
+ATTR (section 5.0) field of the error report.
+
+An uncorrected resumable error report is used to indicate a CPU in error. For
+example, in a partition with multiple CPUs when a permanent error in a register
+file of a CPU is detected, the CPU is marked in error and an uncorrected resumable
+error report indicating the CPU in error is queued on a different CPU of the
+same partition.
+
+When the only running CPU in a partition is in error, the partition is reset.
+
+4.2 NR_PR: Precise non-resumable error report. 
+
+A precise non-resumable error report is always queued on the nonresumable_error
+queue of the CPU that executed the instruction that induced the error. It specifies
+that the nonresumable_error trap taken is a precise trap where TPC[TL] points
+to the instruction that induced the error. The error report contains enough
+information about the error for the guest to take appropriate actions before
+resuming or terminating the interrupted instruction stream. The location of the
+error is specified by the ATTR (section 5.0) field of the error report. A hypervisor
+call is provided for the guest to scrub the error location.
+
+When multiple non-resumable error reports are queued on the nonresumable_error
+queue of a CPU the deferred error reports will be queued ahead of the precise
+non-resumable error reports.
+
+4.3 NR_DF: Deferred non-resumable error report. 
+
+A deferred non-resumable error report is always queued on the nonresumable_error
+queue of the CPU that executed the instruction which induced the error. It
+specifies that the nonresumable_error trap taken is a deferred trap which means
+that the error is unrecoverable and the instruction stream should be terminated.
+The location of the error is specified by the ATTR (section 5.0) field of the error
+report. The MODE (section 5.6) field in the ATTR specifies the execution mode in
+which the error occurred.
+
+When multiple non-resumable error reports are queued on the nonresumable_error
+queue of a CPU the deferred error reports will be queued ahead of the precise
+non-resumable error reports.
+
+5.0 Error Attributes (ATTR).
+
+The meaning of this field depends on the error descriptor (section 4.0) of the
+error report. It also includes the resumable queue full indicator (sesction 9.0).
+
+In uncorrected resumable error reports, this field specifies the resource
+affected by the error. When a CPU has an uncorrected error, whether the CPU was
+executing in user or privileged mode, if known, is also included in the error report. 
+
+In precise non-resumable error reports, this field specifies the location in error.
+
+In deferred non-resumable error reports, this field specifies the location in error
+as well as the execution mode in which the error occurred, if that can be determined.
+
+The settings of this field also determines which of the additional information
+fields included in the error report have valid contents.
+
+The table 5-1 below describes the format of this field.
+
+    ---------------------------------------------------------------------
+    Field	Bit 		Location/ 		Valid Fields
+		Position	Impact			In Error Report
+    ---------------------------------------------------------------------
+    RQFULL	31		Resumable Queue Full
+    RSVD	30:26		Undefined. Reserved
+				for future use.
+    MODE	25:24		Execution Mode
+				(see section 5.6)
+    RSVD0	23:5		Undefined. Reserved
+				for future use.
+    FRF		4		Floating-point		CPUID
+				Register File
+    IRF		3		Integer Register File	CPUID
+    PIO		2		Programmed I/O Access	RA
+    MEM 	1		Memory	Hierarchy	RA, SZ
+    CPU		0		CPU       		CPUID
+    ---------------------------------------------------------------------
+	Table 5-1. Format of the Error Attributes (ATTR) Field
+
+The unused bits may have undefined values and are reserved for future use.
+The PIO and MEM bits cannot be set in the same error report.
+
+The table 5-2 below shows the applicable attibute fields for the 
+different types of error reports. 'Y' indicates applicable. '-' indicates not
+applicable.
+
++---------------------------------------------------------------------------+
+|Error|           Error Attributes           |                              |
+|DESC |CPU |MEM |PIO |IRF |FRF |MODE |RQFULL |  Notes                       |
++-----|----|----|----|----|----|-----|-------|------------------------------+
+|R_UE | Y  | Y  | -  | -  | -  | Y   |  Y    | PIO, IRF, and FRF not        |
+|     |    |    |    |    |    |     |       | applicable in uncorrected    |
+|     |    |    |    |    |    |     |       | resumable error reports.     |
+|NR_PR| -  | Y  | Y  | Y  | Y  | -   |  -    | CPU not applicable in        |
+|     |    |    |    |    |    |     |       | precise non-resumable error  |
+|     |    |    |    |    |    |     |       | reports. PIO and MEM cannot  |
+|     |    |    |    |    |    |     |       | be set in the same report.   |
+|NR_DF| -  | Y  | Y  | -  | -  | Y   |  -    | CPU, IRF, FRF not applicable |
+|     |    |    |    |    |    |     |       | in deferred non-resumable    |
+|     |    |    |    |    |    |     |       | error reports. PIO and MEM   |
+|     |    |    |    |    |    |     |       | cannot be set in the same    |
+|     |    |    |    |    |    |     |       | report.                      |
++---------------------------------------------------------------------------+
+	Table 5-2. Applicable Error Attributes Map
+
+5.1 CPU Field.
+
+In an uncorrected resumable error report, the CPU bit when set specifies that
+a CPU belonging to the same partition is in error. The ID of the CPU in error
+is specified by the CPUID (see section 6.0) field in the error report.
+
+The CPU bit is not used in non-resumable error reports.
+
+5.2 MEM Field.
+
+In uncorrected resumable error reports and in non-resumable error reports,
+the MEM bit when set specifies that there exists an uncorrected data error
+in the memory hierarchy. 
+
+The uncorrected error could be either due to a bad ECC syndrome or NotData.
+The starting real address and the size, in bytes, of the affected memory
+region are specified by the RA (section 7.0) and SZ (section 8.0) fields
+in the error report, respectively.  Subsequent reads from the affected
+memory region would also generate an error unless there was an
+intervening hypervisor call to scrub the memory error. A hypervisor
+call is provided for the guest to scrub the memory region in error.
+
+The MEM field and the PIO field (section 5.3) cannot be set in the same
+error report.
+
+5.3 PIO Field.
+
+In non-resumable error reports, the PIO bit when set specifies that an
+unrecoverable error was encountered on a PIO access. The PIO address accessed
+is specified by the RA (section 7.0) field in the error report. The I/O device
+corresponding to the PIO transaction that failed can be determined based on
+the PIO address specified by the RA field in the error report.
+
+The PIO bit is not used in resumable error reports.
+
+The PIO field and the MEM field (section 5.2) cannot be set in the same
+error report.
+
+5.4 IRF Field.
+
+In precise non-resumable error reports, the IRF bit when set specifies that
+a non-permanent uncorrectable error in the integer register file occurred when
+executing that instruction (pointed to TPC[TL]). The data in one or more
+register operands of that instruction has been corrupted by the error, but
+the source of error has been cleared.
+
+The IRF field is not used in uncorrected resumable error reports.
+
+NOTE: For permanent errors in the integer register file of a CPU, the CPU is
+marked in error. An uncorrected resumable error report is sent to a different
+CPU in the same partition indicating the ID of the CPU in error.
+
+5.5 FRF Field.
+
+This is same as the IRF (section 5.4) field except that when set it specifies that
+the error was in the floating-point register file instead of the integer register
+file. Please see IRF (section 5.4) description for more information.
+
+5.6 Execution Mode (MODE).
+
+This field specifies the execution mode of the operation that induced the error.
+The table 5-3 below lists the currently defined values.
+
+ 	---------------------------------
+ 	Value	Description
+ 	---------------------------------
+	0b00	Unknown
+	0b01	User mode
+	0b10	Privilege mode
+	0b11	Reserved
+ 	---------------------------------
+	 Table 5-3. Execution Mode
+
+The 'Unknown' execution mode will be used in error reports when the hypervisor
+cannot determine the CPU's state at the time of the error.
+
+6.0 ID of the CPU (CPUID).
+
+This field specifies the ID of the CPU affected by the reported error. It is
+valid when the ATTR field in the error report has either the CPU, IRF, or FRF
+bit set.
+
+7.0 Real Address (RA).
+
+This field specifies the real address associated with the error. If the MEM bit
+in the ATTR field in the error report is set, then this field contains the starting
+address of the memory region affected by the error. If the PIO bit in the ATTR
+field in the error report is set, then this field contains the PIO transaction
+address.
+
+8.0 Size of the Memory Region (SZ).
+
+This field specifies the size in bytes of the memory region affected by the reported
+error. It is valid when the MEM bit in the error attributes (ATTR) field is set.
+
+9.0 Resumable queue is full (RQFULL).
+
+This field applies only to resumable error reports. When set, it specifies that zero
+or more resumable errors might have been dropped since the queueing of that
+error report and the next one.
+
+
+References
+----------
+
+1. The sun4v Architecture Specification.
+
+	http://projectq.sfbay.sun.com/docs/sun4v.pdf
+

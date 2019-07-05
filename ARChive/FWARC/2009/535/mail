@@ -1,0 +1,226 @@
+From sacadmin Tue Oct  6 17:37:05 2009
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n970b4O7002225;
+	Tue, 6 Oct 2009 17:37:04 -0700 (PDT)
+Received: (from dmk@localhost)
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit) id n970b4R6002221;
+	Tue, 6 Oct 2009 17:37:04 -0700 (PDT)
+Date: Tue, 6 Oct 2009 17:37:04 -0700 (PDT)
+From: David Kahn <dmk@sac.sfbay.sun.com>
+Message-Id: <200910070037.n970b4R6002221@sac.sfbay.sun.com>
+To: FWARC-record@sac.sfbay.sun.com
+Subject: SDIO Loaned Device Node Spec [FWARC/2009/535 FastTrack timeout 10/13/2009]
+Status: RO
+Content-Length: 565
+
+
+Template Version: @(#)sac_nextcase 1.68 02/23/09 SMI
+This information is Copyright 2009 Sun Microsystems
+1. Introduction
+    1.1. Project/Component Working Name:
+	 SDIO Loaned Device Node Spec
+    1.2. Name of Document Author/Supplier:
+	 Author:  David Kahn
+    1.3  Date of This Document:
+	06 October, 2009
+4. Technical Description
+    See the case directory for more detail
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		sysfw
+    6.5. ARC review type: FastTrack
+    6.6. ARC Exposure: open
+
+
+From sacadmin Tue Oct  6 17:45:10 2009
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n970jAih002410;
+	Tue, 6 Oct 2009 17:45:10 -0700 (PDT)
+Received: (from dmk@localhost)
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit) id n970jA3W002409;
+	Tue, 6 Oct 2009 17:45:10 -0700 (PDT)
+Date: Tue, 6 Oct 2009 17:45:10 -0700 (PDT)
+From: David Kahn <dmk@sac.sfbay.sun.com>
+Message-Id: <200910070045.n970jA3W002409@sac.sfbay.sun.com>
+To: fwarc@sac.sfbay.sun.com
+Subject: SDIO Loaned Device Node Spec [FWARC/2009/535 FastTrack timeout 10/13/2009]
+Cc: pcie-iov-arch@sun.com
+Status: RO
+Content-Length: 296
+
+I'm sponsoring this fast-track case for myself and the firmware team.
+The timeout is Oct 13, 2009.
+
+This is the SDIO Loaned Device spec and PRM. The materials are
+in the materials directory.
+
+This is the first of 3 related fast-track cases for SDIO.
+
+Requested release binding is "any".
+
+-David
+
+
+From sacadmin Mon Oct 12 15:06:44 2009
+Received: from dm-sfbay-01.sfbay.sun.com (dm-sfbay-01.SFBay.Sun.COM [129.145.155.118])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n9CM6ilr029876
+	for <fwarc@sac.sfbay.sun.com>; Mon, 12 Oct 2009 15:06:44 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com (sca-es-mail-2.Sun.COM [192.18.43.133])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n9CM6ilY023127
+	for <fwarc@sac.sfbay.sun.com>; Mon, 12 Oct 2009 15:06:44 -0700 (PDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n9CM6dqt021116
+	for <fwarc@sac.sfbay.sun.com>; Mon, 12 Oct 2009 15:06:39 -0700 (PDT)
+MIME-version: 1.0
+Content-transfer-encoding: 7BIT
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KRF00C0094DOX00@fe-sfbay-10.sun.com> for fwarc@sac.sfbay.sun.com; Mon,
+ 12 Oct 2009 15:06:39 -0700 (PDT)
+Received: from [129.150.33.156] ([unknown] [129.150.33.156])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KRF00I9G9F2G1F0@fe-sfbay-10.sun.com>; Mon,
+ 12 Oct 2009 15:06:39 -0700 (PDT)
+Date: Mon, 12 Oct 2009 15:06:39 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: SDIO Loaned Device Node Spec [FWARC/2009/535 FastTrack timeout
+ 10/13/2009]
+In-reply-to: <200910070045.n970jA3W002409@sac.sfbay.sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: fwarc@sac.sfbay.sun.com
+Cc: pcie-iov-arch@Sun.COM
+Message-id: <4AD3A86F.8080407@sun.com>
+References: <200910070045.n970jA3W002409@sac.sfbay.sun.com>
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+Status: RO
+Content-Length: 819
+
+David Kahn wrote:
+> I'm sponsoring this fast-track case for myself and the firmware team.
+> The timeout is Oct 13, 2009.
+>
+> This is the SDIO Loaned Device spec and PRM. The materials are
+> in the materials directory.
+>
+> This is the first of 3 related fast-track cases for SDIO.
+>
+> Requested release binding is "any".
+>
+> -David
+>   
+
+Few comments and questions.
+
+1.  Interface table is missing Imported Interfaces
+
+2.  In the section 5, Reference, the #4 link is incorrect.  The correct 
+link is,
+     
+http://cpubringup.sfbay.sun.com/twiki/bin/view/CSWFirmware/IovHVInterfaces
+
+
+Rest LGTM.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Mon Oct 12 18:13:30 2009
+Received: from pkg.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n9D1DTxv003483
+	for <fwarc@sac.sfbay.sun.com>; Mon, 12 Oct 2009 18:13:29 -0700 (PDT)
+Received: from [192.168.0.39] (noho.SFBay.Sun.COM [10.6.92.101])
+	by pkg.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n9D1DSwF011385;
+	Mon, 12 Oct 2009 18:13:28 -0700 (PDT)
+Message-ID: <4AD3D432.2090108@sun.com>
+Date: Mon, 12 Oct 2009 18:13:22 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+MIME-Version: 1.0
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+CC: fwarc@sac.sfbay.sun.com, pcie-iov-arch@sun.com
+Subject: Re: SDIO Loaned Device Node Spec [FWARC/2009/535 FastTrack timeout
+ 10/13/2009]
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 180
+
+
+
+Hitendra Zhangada wrote:
+
+> 2.  In the section 5, Reference, the #4 link is incorrect.  The correct 
+> link is,
+
+I fixed the reference to point to the proper fwarc case.
+
+-David
+
+From sacadmin Mon Oct 12 20:16:11 2009
+Received: from pkg.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n9D3GAxh005616
+	for <fwarc@sac.sfbay.sun.com>; Mon, 12 Oct 2009 20:16:10 -0700 (PDT)
+Received: from [192.168.0.39] (noho.SFBay.Sun.COM [10.6.92.101])
+	by pkg.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n9D3G9lH006330;
+	Mon, 12 Oct 2009 20:16:10 -0700 (PDT)
+Message-ID: <4AD3F0F3.2000601@sun.com>
+Date: Mon, 12 Oct 2009 20:16:03 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+MIME-Version: 1.0
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+CC: fwarc@sac.sfbay.sun.com, pcie-iov-arch@sun.com
+Subject: Re: SDIO Loaned Device Node Spec [FWARC/2009/535 FastTrack timeout
+ 10/13/2009]
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 159
+
+
+
+Hitendra Zhangada wrote:
+
+> 1.  Interface table is missing Imported Interfaces
+
+Copied over imported interfaces pci boilerplate
+from 2009/536. Done.
+
+-David
+
+From sacadmin Mon Nov  2 16:47:11 2009
+Received: from noho.sfbay.sun.com (noho.SFBay.Sun.COM [10.6.92.101])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nA30lBv7026717
+	for <fwarc@sac.sfbay.sun.com>; Mon, 2 Nov 2009 16:47:11 -0800 (PST)
+Received: from noho.sfbay.sun.com (localhost [127.0.0.1])
+	by noho.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id nA30lBuT029844;
+	Mon, 2 Nov 2009 16:47:11 -0800 (PST)
+Received: (from dmk@localhost)
+	by noho.sfbay.sun.com (8.13.7+Sun/8.13.7/Submit) id nA30lB33029843;
+	Mon, 2 Nov 2009 16:47:11 -0800 (PST)
+Date: Mon, 2 Nov 2009 16:47:11 -0800 (PST)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Message-Id: <200911030047.nA30lB33029843@noho.sfbay.sun.com>
+To: fwarc@sac.sfbay.sun.com
+Subject: Re: SDIO Loaned Device Node Spec [FWARC/2009/535 FastTrack timeout 10/13/2009]
+Cc: pcie-iov-arch@sun.com
+Status: RO
+Content-Length: 63
+
+
+This case is approved.
+
+>Requested release binding is "any".
+
+

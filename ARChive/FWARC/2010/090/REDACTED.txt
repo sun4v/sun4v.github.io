@@ -1,0 +1,13 @@
+The following files and directories have been redacted:
+
+    SCCS - ignored directory
+    sc - ignored directory
+    uirb - ignored directory
+    20100312_eric.sharakan - case redacted
+    issues - case redacted
+    mail - case redacted
+    materials/1pager.txt - Sun Proprietary
+    materials/PRI_Specification.txt - case redacted
+    materials/PRI_Specification_diffs_13_14.txt - case redacted
+
+See http://hub.opensolaris.org/bin/view/Community+Group+arc/arc-publish-historical-checklist for further information

@@ -1,0 +1,555 @@
+From sacadmin Fri Sep  5 20:26:33 2008
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m863QXI6006170
+	for <fwarc@sac.sfbay.sun.com>; Fri, 5 Sep 2008 20:26:33 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m863QWBE022464
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 5 Sep 2008 20:26:33 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K6R00F05888P300@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 05 Sep 2008 21:26:32 -0600 (MDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K6R0098L8878K40@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 05 Sep 2008 21:26:31 -0600 (MDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m863QVPj010860	for
+ <fwarc@sun.com>; Fri, 05 Sep 2008 20:26:31 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K6R0050186A8300@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 05 Sep 2008 20:26:31 -0700 (PDT)
+Received: from [129.150.36.231] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K6R000WA885ZU10@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 05 Sep 2008 20:26:31 -0700 (PDT)
+Date: Fri, 05 Sep 2008 20:26:28 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Converting to Fast-track : 2008/399 - Rock Performance
+ Counters/Samplers Hypervisor API
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: Shesha Sreenivasamurthy <Shesha.Sreenivasamurthy@sun.com>,
+        Prashanth Sreenivasa <pks@sun.com>
+Message-id: <48C1F864.8050803@sun.com>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_8gj8j8JFKaAipt3A455Lsw)"
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.16 (Windows/20080708)
+Status: RO
+Content-Length: 16020
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_8gj8j8JFKaAipt3A455Lsw)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+I am converting this case to fast-track case for Shesha Sreenivasamurthy.
+This case describes ROCK performance counters and samplers along with
+their associated Hypervisor APIs.  See details in the attached specification.
+
+This case will be approved for minor/micro/patch OS binding
+and minor/micro binding for the firmware.
+
+The case timer is set to expire on September 12, 2008.
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+
+--Boundary_(ID_8gj8j8JFKaAipt3A455Lsw)
+Content-type: text/plain; name=perf.spec
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=perf.spec
+
+1. Introduction:
+	This document provides description of performance counters and samplers
+	along with their associated Hypervisor API. This specification provides
+	description of family of functions to initialize, release, get, set,
+	configure, stop, get overflows for both counters and samplers. There
+	are a total of 13 APIs in this document, 7 APIs for counters and 6 for
+	samplers. All these new APIs are a part of new API group
+	API_GROUP_RKPERF (0x206)
+
+2. References:
+	Rock PRM can be found at:
+		https://systemsweb.sfbay.sun.com/rock/team/docs/index.html
+
+3. Performance Counters and Samplers description:
+	In earlier processors, a config register was set with an event
+	of interest and the count was read off a different register after
+	a specific duration of time. In Rock that is not the case.
+	Lot of different registers has to be touched before the actual
+	value can be read.
+
+	In addition to counters Rock implements samplers that enables
+	collection of statistical data. Software can express interest in
+	certain types of events and when such an event occurs, the
+	software is informed by the hardware by means of a trap. Software
+	may have to then read multiple registers to get a detailed report
+	of the event.
+
+	Counters and samplers are shared by multiple strands. A strand
+	cannot use a counter/sampler without initialization. In most
+	of the cases a combination of counter and sampler is used
+	to measure events. Therefore, a strand will have exclusive access
+	to both counters and samplers or none of them.
+	To facilitate the correctness and ease of operation a family of
+	APIs are provided. Combination of counters and samplers enables
+	the guest to count various events.
+
+4: Performance Event Trap handler:
+	At the core of performance counter framework lies the performance
+	event trap and its handler. When a counter/sampler overflows/
+	underflows, a performance event trap is generated. There will be
+	one trap handling strand per chip. The trap handler determines
+	what is the event and which strand is responsible for the event.
+	The handler sends a hyper-privileged cross call to the responsible
+	strand for further processing of the event. The strand restarts
+	counting and sampling before it informs the guest about that event.
+
+	In case of samplers, handler will put all the sample information
+	requested by the guest in a ring-buffer whose start address and
+	size is provided by the guest during initializing the counter.
+	Hypervisor performs address validation before ring-buffer.
+	Ring-buffer is allocated by the guest. Hypervisor is the producer
+	of events into the ring-buffer.  It validates the addresses before
+	touching any address and updates the tail pointer. Guest acts as
+	the consumer and updates the head once it consumes the samples in
+	the ring-buffer.
+
+5. Interfaces:
+	In all the interfaces, counter type is a combination of two values.
+	Lower 32 bits {31..0} contains the counter type and upper 32 bits
+	{63..32} contains the source type.
+
+		a. Valid counter/sampler types:
+			RK_PERF_CYC	(0x100)
+			RK_PERF_INSTR	(0x200)
+			RK_PERF_L2	(0x400)
+			RK_PERF_MMU	(0x800)
+			RK_PERF_SPEC	(0x1000)
+			RK_PERF_YANK	(0x2000)
+			RK_PERF_SIBLK	(0x4000)
+			RK_PERF_LVLK	(0x8000)
+
+		b.Valid source types:
+			RK_PERF_SRC_STRAND 	(0x1)
+			RK_PERF_SRC_STRANDS	(0x2)
+			RK_PERF_SRC_SIU		(0x4)
+			RK_PERF_SRC_MMU		(0x8)
+
+	Source types are used to control the source of the events.
+	When interested in only one strand's event, RK_PERF_SRC_STRAND
+	is specified. When interested in event from all the strands
+	in a chip RK_PERF_SRC_STRANDS is specified. Similarly for L2
+	counters/samplers there can be two additional source of events,
+	SIU and MMU. They can be specified using RK_PERF_SRC_SIU &
+	RK_PERF_SRC_MMU respectively.
+
+	All the interfaces belong to:
+		Group#:		API_GROUP_RKPERF (0x206)
+			Major#:	1
+			Minor#:	0
+
+	5.1: COUNTERS:
+`
+		5.1.1:
+		Trap#:		FAST_TRAP
+		Function:	RK_PERF_COUNT_INIT (0x108)
+		arg0:		Counter Type
+		ret0:		EOK:		Success
+				EINVAL:		Invalid Counter type
+				ENOACCESS:	Counter is in use by a strand
+						in a different guest
+				EWOULDBLOCK:	Counter is in use by a strand
+						in the same guest
+				ENOCPU:		Source or destination CPU-ID
+						is not a part of current guest
+
+		This interface provides exclusive access of the counter to the
+		strand on success and initializes different configuration
+		registers.
+
+		5.1.2:
+		Trap#:		FAST_TRAP
+		Function:	RK_PERF_COUNT_RELEASE (0x109)
+		arg0:		Counter Type
+		ret0:		EOK:		Success
+				EINVAL:		Invalid Counter type
+						Counter un-initialized
+				ENOACCESS:	Current strand is not the
+						owner of the counter
+
+		This interfaces stops any counting activity and removes
+		exclusive access to the counter. It also clears off the
+		counter and associated configuration values.
+
+		5.1.3:
+		Trap#:		FAST_TRAP
+		Function:	RK_PERF_COUNT_SET (0x10A)
+		arg0:		Counter Type
+		arg1:		Counter Value
+		ret0:		EOK:		Success
+				EINVAL:		Invalid Counter type
+						Counter out of range
+						Counter un-initialized
+				ENOACCESS:	Current strand is not the
+						owner of the counter
+
+		This API can be used to preset a counter to a specific value.
+		This is usually used to stop a particular counter on one CPU &
+		restart counting on a different CPU from where the first CPU
+		had stopped. At the start of initial counting, it is set to
+		zero.
+
+		5.1.4:
+		Trap#:		FAST_TRAP
+		Function:	RK_PERF_COUNT_GET (0x10B)
+		arg0:		Counter Type
+		ret0:		EOK:		Success
+				EINVAL:		Invalid Counter type
+						Counter un-initialized
+				ENOACCESS:	Current strand is not the
+						owner of the counter
+		ret1:		Counter Value
+
+		This returns the value of the counter. In case of RK_PERF_LVLK,
+		RK_PERF_SIBLK and RK_PERF_YANK, there is a start of day counter
+		that records all the events. To determine the count for a
+		specific duration, the performance counter framework takes a
+		checkpoint of current count when the counter is started, and
+		returns the difference of current value and the checkpoint as
+		the actual count for that duration.
+
+		5.1.5:
+		Trap#:		FAST_TRAP
+		Function:	RK_PERF_COUNT_START (0x10C)
+		arg0:		Counter Type
+		arg1:		Configuration value
+		ret0:		EOK:		Success
+				EINVAL:		Invalid Counter type
+						Counter un-initialized
+				ENOACCESS:	Current strand is not the
+						owner of the counter
+
+		This API can be used to start a counter. The configuration
+		value (arg1) to start a counter depends on the counter type
+		(arg0).  Fields specified in arg1 may belong to different
+		hardware registers. Hypervisor takes care of setting appropriate
+		bits in appropriate registers. Different configuration values for
+		different counters are explained below.
+
+		Format of arg1 when arg0 is RK_PERF_CYC or RK_PERF_INSTR:
+
+		   63    |62   3|   2  |   1  |   0   |
+		 +-------|------|------|------|-------+
+		 |  TOE  | RSVD | User | Priv | Hpriv |
+		 +-------|------|------|------|-------+
+
+		Format of arg1 when arg0 is RK_PERF_L2 or RK_PERF_MMU:
+
+		    63   |62   7|6    0
+		 +-------|------|-----+
+		 |  TOE  | RSVD | TXN |
+		 +-------|------|-----+
+
+		TXN corresponds to  ASI_PERF_L2_CNT_FILTER.TXN for RK_PERF_L2
+		and ASI_PERF_MMU_CNT_FILTER.TXN for RK_PERF_MMU
+
+		Format of arg1 when arg0 is RK_PERF_YANK, RK_PERF_SIBLK or
+		RK_PERF_LVLK:
+
+		    63   |62    0
+		 +-------|------|
+		 |  TOE  | RSVD |
+		 +-------|------+
+
+		TOE bit corresponds to ASI_CC_ERER.YANK/SIBLK/LVLK
+
+		5.1.6:
+		Trap#:		FAST_TRAP
+		Function:	RK_PERF_COUNT_OVERFLOW (0x10D)
+		arg0:		Counter Type
+		ret0:		EOK:		Success
+				EINVAL:		Invalid Counter type
+						Counter un-initialized
+				ENOACCESS:	Current strand is not the
+						owner of the counter
+		ret1:		Num of times counter has overflowed since
+				last call to this function
+
+		Hypervisor performance counter framework will record number
+		of times a counter overflowed. This API is used by the
+		guest to retrieve that value and as a side effect, the old
+		value is reset to zero after it is read and before returning
+		to the guest.
+
+		5.1.7:
+		Trap#:		FAST_TRAP
+		Function:	RK_PERF_COUNT_STOP (0x10E)
+		arg0:		Counter Type
+		ret0:		EOK:		Success
+				EINVAL:		Invalid Counter type
+						Counter un-initialized
+				ENOACCESS:	Current strand is not the
+						owner of the counter
+
+		This will effectively stop counting. This is achieved by
+		different techniques depending on the counter type. In
+		case of cycle and instruction counters, counters are stopped
+		by zeroing the priv bits, meaning, filtering out user, sys
+		and hpriv cycles/instructions, which effectively stops
+		counting. In case of L2 and MMU counters, it is stopped
+		by zeroing out the source bits, meaning, there is no
+		source for these events, which effectively stops counting.
+		RK_PERF_LVLK, RK_PERF_SIBLK and RK_PERF_YANK counters are never
+		stopped. Therefore, a different algorithm is used to stop these
+		counters. Explanation of this algorithm is beyond the scope of
+		this document.
+
+
+	5.2: SAMPLERS:
+
+		In every function the "Sampler type" follows the same convention
+		as counter type (Refer section 5.1).
+		5.2.1:
+		Trap#:		FAST_TRAP
+		Function:	RK_PERF_SAMPLE_INIT (0x135)
+		arg0:		Sampler Type
+		arg1:		Ring-buffer Real Address
+		ret0:		EOK:		Success
+				EINVAL:		Invalid sampler type
+				ENOADDR:	Invalid address
+				ENOACCESS:	Sampler is in use by a strand
+						in a different guest
+				EWOULDBLOCK:	Sampler is in use by a strand
+						in the same guest
+				ENOCPU:		Source or destination CPU-ID
+						is not a part of current guest
+
+		This interface will provide exclusive access of sampler to the
+		strand on success and initializes different configuration
+		registers. Validates the real address provided by the guest.
+
+		5.2.2:
+		Trap#:		FAST_TRAP
+		Function:	RK_PERF_SAMPLE_RELEASE (0x136)
+		arg0:		Sampler Type
+		ret0:		EOK:		Success
+				EINVAL:		Invalid sampler type
+						Sampler un-initialized
+				ENOACCESS:	Current strand is not the
+						owner of the sampler
+
+		This interfaces stops any counting activity and removes
+		exclusive access to the sampler. It also clears off
+		associated configuration values.
+
+		5.2.3:
+		Trap#:		FAST_TRAP
+		Function:	RK_PERF_SAMPLE_CONFIG (0x137)
+		arg0:		Sampler Type
+		arg1:		VA of the configuration ASI
+		arg2:		Raw value for the configuration ASI
+		ret0:		EOK:		Success
+				EINVAL:		Invalid Sampler type
+						Un-initialized sampler
+						Invalid ASI-VA specified
+				ENOACCESS:	Current strand is not the
+						owner of the sampler
+
+		Hypervisor maintains a list of configuration ASIs that
+		can be configured by the guest. This fucntion validates
+		the ASI specified by the guest against its own list before
+		setting the value. It also validates the value specified
+		on need basis, for example, too low candidate counter value
+		can lead to denial of service.
+
+		5.2.4:
+		Trap#:		FAST_TRAP
+		Function:	RK_PERF_SAMPLE_START (0x138)
+		arg0:		Sampler Type
+		arg1:		Frequency (Candidate counter value)
+		arg2:		Size (Num of bytes for the VA list in
+				arg3. A multiple of x-words)
+		arg3:		Start address of the VA list
+		ret0:		EOK:		Success
+				EINVAL:		Invalid Sampler type
+						Un-initialized sampler
+						Frequency out of range
+				ENOADDR:	Invalid address in arg3
+				ENOACCESS:	Current strand is not the
+						owner of the sampler
+
+		This function validates the address range specified by
+		the guest. It then validates all the VAs in the list
+		specified.  The guest should populate a list of VAs
+		that it is interested in in its memory and specify
+		the size and start address of the list via this API.
+		Since each VA should be specified in a x-word, size is
+		a multiple of x-words in bytes. All the VAs in the list
+		should be valid for the call to be successful. Hypervisor
+		saves this information in its belly, which  is used by the
+		performance event trap handler while recording samples.
+
+		5.2.5:
+		Trap#:		FAST_TRAP
+		Function:	RK_PERF_SAMPLE_PENDING (0x139)
+		arg0:		Sampler Type
+		ret0:		EOK:		Success
+				EINVAL:		Invalid Sampler type
+						Un-initialized sampler
+				ENOACCESS:	Current strand is not the
+						owner of the sampler
+		ret1:		Sample count
+
+		This function returns the number of unclaimed samples in
+		the ring-buffer since the last call to this function. As
+		a side effect clears the count.
+
+		5.2.6:
+		Trap#:		FAST_TRAP
+		Function:	RK_PERF_SAMPLE_STOP (0x13A)
+		arg0:		Sampler Type
+		ret0:		EOK:		Success
+				EINVAL:		Invalid Sampler type
+						Un-initialized sampler
+				ENOACCESS:	Current strand is not the
+						owner of the sampler
+
+		Stops taking any further samples. Unclaimed samples
+		that are in the ring-buffer are untouched.
+
+    5.3 Imported Interfaces:
+
+      Interface                  Classification	         Comments
+      ========================================================================
+      HV APIs                      Committed          FWARC/2005/116
+
+    5.4 Exported Interface Table:
+
+      Interface                  Classification	         Comments
+      ========================================================================
+      RK_PERF_COUNT_INIT API        Committed     Function 0x108, group 0x206
+                                                  as defined in section 5.1.1
+      RK_PERF_COUNT_RELEASE API     Committed     Function 0x109, group 0x206
+                                                  as defined in section 5.1.2
+      RK_PERF_COUNT_SET API         Committed     Function 0x10A, group 0x206
+                                                  as defined in section 5.1.3
+      RK_PERF_COUNT_GET API         Committed     Function 0x10B, group 0x206
+                                                  as defined in section 5.1.4
+      RK_PERF_COUNT_START API       Committed     Function 0x10C, group 0x206
+                                                  as defined in section 5.1.5
+      RK_PERF_COUNT_OVERFLOW API    Committed     Function 0x10D, group 0x206
+                                                  as defined in section 5.1.6
+      RK_PERF_COUNT_STOP API        Committed     Function 0x10E, group 0x206
+                                                  as defined in section 5.1.7
+
+      RK_PERF_SAMPLE_INIT API       Committed     Function 0x135, group 0x206
+                                                  as defined in section 5.2.1
+      RK_PERF_SAMPLE_RELEASE API    Committed     Function 0x136, group 0x206
+                                                  as defined in section 5.2.2
+      RK_PERF_SAMPLE_CONFIG API     Committed     Function 0x137, group 0x206
+                                                  as defined in section 5.2.3
+      RK_PERF_SAMPLE_START API      Committed     Function 0x138, group 0x206
+                                                  as defined in section 5.2.4
+      RK_PERF_SAMPLE_PENDING API    Committed     Function 0x139, group 0x206
+                                                  as defined in section 5.2.5
+      RK_PERF_SAMPLE_STOP API       Committed     Function 0x13A, group 0x206
+                                                  as defined in section 5.2.6
+
+--Boundary_(ID_8gj8j8JFKaAipt3A455Lsw)--
+
+From sacadmin Fri Sep 12 15:52:57 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8CMquwt011005
+	for <fwarc@sac.sfbay.Sun.COM>; Fri, 12 Sep 2008 15:52:56 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m8CMqqOK016811
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Sat, 13 Sep 2008 06:52:55 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K7300905U862J00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 12 Sep 2008 15:52:54 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K7300332U85Q230@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 12 Sep 2008 15:52:53 -0700 (PDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m8CMqrIK013716	for
+ <fwarc@sun.com>; Fri, 12 Sep 2008 15:52:53 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K7300B01U6FPH00@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 12 Sep 2008 15:52:53 -0700 (PDT)
+Received: from [129.150.32.24] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K7300AACU844R80@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 12 Sep 2008 15:52:53 -0700 (PDT)
+Date: Fri, 12 Sep 2008 15:52:52 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Converting to Fast-track : 2008/399 - Rock Performance
+ Counters/Samplers Hypervisor API
+In-reply-to: <48C1F864.8050803@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: Shesha Sreenivasamurthy <Shesha.Sreenivasamurthy@sun.com>,
+        Prashanth Sreenivasa <pks@sun.com>
+Message-id: <48CAF2C4.2090504@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <48C1F864.8050803@sun.com>
+User-Agent: Thunderbird 2.0.0.16 (Windows/20080708)
+Status: RO
+Content-Length: 751
+
+Hitendra Zhangada wrote:
+> I am converting this case to fast-track case for Shesha Sreenivasamurthy.
+> This case describes ROCK performance counters and samplers along with
+> their associated Hypervisor APIs.  See details in the attached 
+> specification.
+>
+> This case will be approved for minor/micro/patch OS binding
+> and minor/micro binding for the firmware.
+>
+> The case timer is set to expire on September 12, 2008.
+
+This case has timed out and is now approved.
+
+I am update IAM file and HV registry later.
+
+
+Thanks.
+
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+

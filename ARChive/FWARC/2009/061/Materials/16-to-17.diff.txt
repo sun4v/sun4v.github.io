@@ -1,0 +1,75 @@
+1,2c1,2
+< Version 1.6
+< Date : 12/15/2008
+---
+> Version 1.7
+> Date : 02/03/2009
+16c16,17
+<       Added 'cfg-handle' property to node compnents where "topo-hc-name=pciexrc"
+---
+>       Added 'cfg-handle' property to node components where
+>         "topo-hc-name=pciexrc"
+20a22,26
+> 1.7   Added 'path' property as a requirement to node components where
+>         "topo-hc-name=pciexrc"
+>       Deprecated 'cfg-handle' property to node components where
+>         "topo-hc-name=pciexrc"
+>       Corrected a few minor typos.
+105c111
+< resulting topology in Solaris. In addition to heierarchy, new properties
+---
+> resulting topology in Solaris. In addition to hierarchy, new properties
+226c232,233
+< set the cfg-handle property.
+---
+> set the path property. Previous requirements for setting the cfg-handle
+> property for a node representing a root complex is now deprecated.
+336c343
+< path            PROP_STR        no
+---
+> path            PROP_STR        yes
+341c348,349
+< full device path with device names removed.
+---
+> full device path with device names removed. It is required on nodes where
+> the topo-hc-name property is set to "pciexrc".
+480c488
+< 1.3.18	cfg-handle Property
+---
+> 1.3.18	topo-hc-name Property
+484c492
+< cfg-handle	PROP_VAL	yes
+---
+> topo-hc-name	PROP_STR	yes
+488,498d495
+< This property uniquely identifies a device. It is only required on
+< nodes where the topo-hc-name property is set to "pciexrc".
+< 
+< 1.3.19	topo-hc-name Property
+< 
+< Name		Tag		Required
+< ----		---		--------
+< cfg-handle	PROP_STR	yes
+< 
+< Description
+< -----------
+504c501
+< 1.3.20	topo-skip
+---
+> 1.3.19	topo-skip
+966a964,965
+> This property is required except for nodes where topo-hc-name="pciexrc".
+> 
+967a967,978
+> ----            ---             --------
+> path		PROP_STR	Yes
+> 
+> Description
+> -----------
+> A string which contains the address of, and is unique to, this device on the
+> sun4v bus.
+> 
+> This property is required for nodes where topo-hc-name="pciexrc", otherwise
+> it is not required.
+> 
+> Name            Tag             Required

@@ -1,0 +1,197 @@
+
+1. Introduction
+   1.1. Project/Component Working Name:
+	
+	Guest State Supported CIF
+
+   1.2. Name of Document Author/Supplier:
+	
+	Eric Blanchard (eric.blanchard@sun.com)
+
+   1.3. Date of This Document:
+	
+	9/13/06
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		
+		N/A
+
+	1.4.2. The ARC(s) you expect to review your project:
+		
+		FWARC
+
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+	
+		Bill Nesheim
+
+	1.4.4. The name of your business unit:
+	
+		Systems Group
+
+   1.5. E-mail Aliases:
+    	1.5.1. Responsible Manager:	chad.solomon@sun.com
+    	1.5.2. Responsible Engineer:	eric.blanchard@sun.com
+    	1.5.3. Marketing Manager:
+	1.5.4. Interest List:
+
+2. Project Summary
+   2.1. Project Description:
+
+	The soft state supported client interface function is used by client 
+	programs to notify Openboot that the client program supports the Guest 
+	State Feature described by FWARC 2006/473 [1].
+
+   2.2. Risks and Assumptions:
+
+	N/A
+
+3. Business Summary
+   3.1. Problem Area:
+
+	The guest state is maintained by the current guest in a domain. While
+	booting, Openboot transfers control of the domain to a new guest. When
+	a guest that supports guest state has fully started the guest changes 
+	the guest state from SIS_TRANSITIONAL to SIS_NORMAL. If the new guest 
+	does not support guest state, i.e. a legacy version of Solaris, then 
+	the guest will not be able to change the guest state from 
+	SIS_TRANSITIONAL to SIS_NORMAL. When booting a guest which is unaware of 
+	this interface, guest state aware Openboot is expected to set the guest 
+	state to SIS_NORMAL when the guest takes the trap table.
+
+   3.2. Market/Requester:
+	
+	N/A
+
+   3.3. Business Justification:
+	
+	This CIF is needed to support legacy versions of Solaris and other 
+	guests that do not support the guest state feature. To function 
+	properly, guest state needs to be updated when a guest takes control
+	of the trap table. Legacy versions of Solaris do not support the new Guest 
+	State feature and cannot update the guest state after they have taken 
+	control of the domain from Openboot. The SUNW,support-soft-state CIF 
+	allows versions of guests that support guest state to differentiate 
+	themselves from guests that do not support guest state.
+
+   3.4. Competitive Analysis:
+
+	N/A
+
+   3.5. Opportunity Window/Exposure:
+
+	Need for Huron RR
+
+   3.6. How will you know when you are done?:
+	
+	The project will be completed when the interface is implemented and 
+	tested on on n2 platforms and Openboot and Solaris code is integrated 
+	in Openboot 4.x and ON gate respectively.
+
+4. Technical Description:
+    4.1. Details:
+
+	A new CIF is required to allow the guest to inform Openboot that it 
+	supports the guest state mechanism. If the guest does not call into 
+	Openboot with the soft state supported CIF, then Openboot assumes the 
+	new guest does not support guest state. The guest needs to notify 
+	Openboot with the CIF before the Openboot trap table is replaced with 
+	the guest trap table.
+
+	If Openboot assumes the new guest does not support guest state then it 
+	will change the guest state from SIS_TRANSITIONAL to SIS_NORMAL when
+	the guest requests control of the trap table. The CIF will be defined as:
+
+	SUNW,soft-state-supported ( -- )
+
+	The call has no arguments or return values.
+
+    4.2. Bug/RFE Number(s):
+	
+	None
+    
+    4.3. In Scope:
+	
+	N/A
+
+    4.4. Out of Scope:
+
+	N/A
+    
+    4.5. Interfaces:
+
+	---------------------------------------------------------------
+	| Exported Interfaces       | Classification | Comments       |
+	---------------------------------------------------------------
+	| SUNW,soft-state-supported | Evolving       | CIF defined    |
+	|                           |                | in section 4.1 |
+	--------------------------------------------------------------- 
+
+    4.6. Doc Impact:
+
+	None
+    
+    4.7. Admin/Config Impact:
+
+	None
+    
+    4.8. HA Impact:
+
+	None
+    
+    4.9. I18N/L10N Impact:
+
+	None
+    
+    4.10. Packaging & Delivery:
+
+	Delivered as Openboot Firmware Binary
+    
+    4.11. Security Impact:
+	
+	None
+    
+    4.12. Dependencies:
+
+	None
+
+5. Reference Documents:
+
+        [1] FWARC 2006/473 sun4v guest state API update
+	      http://sac.sfbay/FWARC/2006/473/
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+
+	Q1 FY07
+
+   6.2. Cost of Effort:
+
+	1 work month
+	
+
+   6.3. Cost of Capital Resources:
+	
+	N/A
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation or Component Name: Openboot
+	6.4.3. Type of CPT Review and Approval expected: FastTrack
+        6.4.4. Project Boundary Conditions: 
+	6.4.5. Is this a necessary project for OEM agreements: No
+	6.4.6. Notes:
+	6.4.7. Target RTI Date/Release: 10/16
+	6.4.8. Target Code Design Review Date:
+	6.4.9. Update approval addition: N/A
+
+   6.5. ARC review type: FastTrack
+
+7. Prototype Availability:
+   7.1. Prototype Availability:
+	
+	Available now
+
+   7.2. Prototype Cost:
+
+	1 work month
+

@@ -1,0 +1,70 @@
+Inception: 2005/112 sunv4 io API
+Submitter:  david.kahn@sun.com	
+Owner:	    Hitendra Zhangada 
+Intern:     Stephen Ehring 
+
+DMK gave an overview about the project. The following is summary of his
+overview:
+
+* This case defines the I/O API for sun4v, and specifically for PCI* style 
+buses. Therefore, I/O API can be referred as PCI I/O API. 
+
+Issues
+------
+
+Hitendra Zhangada
+
+1.  18Q, Q# 15, last bullet refers to "some measurable effect.."
+     Have measure the boot time effects?  Similar question for
+     the core API case (2005/116) states that there are no measurable
+     boot time effects.  So, is this true that IO APIs have boot
+     time effects but the core APIs don't?
+
+     Further, for the same answer, it states that the systems that
+     implement sun4v tend to be larger systems.  I don't think this
+     is true.  Sun4v is implemented on Ontario and Niagara-2 based
+     smaller systems.
+
+DMK: Will work offline with Hitu on this issue.
+
+Following comments/issues are for IO API specification version 1.29.
+
+2.  Section 1, middle of third paragraph seems to have a typo.
+     "Results 0 - 5 are returned in %o0 - %o4" seems to be incorrect.
+     I think the correct sentence is "Results 0 - 4 are ..."
+     
+DMK: Will fix this.      
+
+3.  Section 5.1, we may want to have registry for MSI function
+     numbers.  Is there a reason why we skipped 0xcf?
+
+DMK: Yes, there is a reason to skip 0xcf because MSI and MSIQ have
+different range. It does not matter which number to use, it can be
+random number. 
+
+Status: CLOSED. 
+
+4.  Section 5.3.13, typo, the last word should be "msiqid".
+
+5.  Section 5.3.13.1, typo, "msium" should be "msinum".
+
+6.  Section 5.3.17, typo, the last word should be "msiqid".
+
+The above issues are accepted by DMK and will fix the specs.
+
+Tony - note in the opinion that this case is dependent upon 2005/116 and
+there is no issue in 2005/116 that affects this case.  
+
+Redman: The registry can affect this case too.
+
+Question: Converting this case into a fast-track case ??
+
+** VOTE to APPROVE this case as a fast-track:
+
+Redman, Hitu, Tony, DMK: Yes
+
+Status: This case is approved contingent upon updated spec from DMK. Then, Hitu 
+will mark this case closed approved. It's also agreed that the registry that
+is created by case FWARC 2005/116 will include APIs from this case. 
+
+===========================================================================   

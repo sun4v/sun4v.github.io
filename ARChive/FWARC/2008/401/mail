@@ -1,0 +1,1302 @@
+From sacadmin Fri Sep  5 22:51:44 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m865pio5009343
+	for <fwarc@sac.sfbay.sun.com>; Fri, 5 Sep 2008 22:51:44 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m865peGC016054
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Sat, 6 Sep 2008 06:51:43 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K6R00K03EY54800@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 05 Sep 2008 22:51:41 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K6R00NHBEY54HB0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 05 Sep 2008 22:51:41 -0700 (PDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m865pfIx021048	for
+ <fwarc@sun.com>; Fri, 05 Sep 2008 22:51:41 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K6R00H01ER3LN00@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 05 Sep 2008 22:51:41 -0700 (PDT)
+Received: from [129.150.36.231] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K6R00HD1EY2JW00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 05 Sep 2008 22:51:40 -0700 (PDT)
+Date: Fri, 05 Sep 2008 22:51:38 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Converting to Fast-track : 2008/401 - MMU TLB page search Hypervisor
+ API
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: Shesha Sreenivasamurthy <Shesha.Sreenivasamurthy@sun.com>,
+        Prashanth Sreenivasa <pks@sun.com>,
+        Charles Kunzman <Charles.Kunzman@sun.com>,
+        James Barnette Jr <Richard.Barnette@sun.com>
+Message-id: <48C21A6A.10007@sun.com>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_+e9wYWqKUxBoT6c3l8GG+g)"
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.16 (Windows/20080708)
+Status: RO
+Content-Length: 15881
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_+e9wYWqKUxBoT6c3l8GG+g)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+I am converting this case to fast-track case for Charles Kunzman.
+This case adds new, optional hypervisor API calls and associated
+MD properties for sun4v platforms.  API group MMU_EXT (0x4) is
+created for the APIs defined by this case. See details in the
+attached specification (only updated sections 4 and 5 of the
+one-pager are included as the specification).
+
+This case will be approved for minor/micro/patch OS binding
+and minor/micro binding for the firmware.
+
+The case timer is set to expire on September 12, 2008.
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+
+
+--Boundary_(ID_+e9wYWqKUxBoT6c3l8GG+g)
+Content-type: text/plain; name=sun4vMMUTLBsearch.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=sun4vMMUTLBsearch.txt
+
+4. Technical Description:
+    4.1. Details:
+	As the capabilities of MMUs for SPARC processors increase, it is
+	no longer feasible in all cases to implement a TLB with a single
+	associative lookup.  UltraSPARC processors now allow for the
+	following inputs into the TLB lookup:
+	  * A Partition id (number of bits depends on CPU)
+	  * A tag from the VA (up to 51 bits)
+	  * A private context number (up to 16 bits)
+	  * One or more shared context numbers (up to 16 bits each)
+	Additionally, the TLB must be able to recognize mappings to as
+	many as 8 distinct page sizes.
+
+	The total number of inputs means that for CPU hardware to find
+	the mapping for a given memory access, multiple TLB probes may
+	be required.  With the CPU performing multiple probes, it may
+	be important for software to control either the number or order
+	of the probes:
+	  * Controlling the number of probes may improve performance by
+	    eliminating unnecessary probes.
+	  * Controlling the order of probes may improve performance by
+	    searching frequently accessed mappings before searching
+	    rarer ones.
+	  * Controlling the order of probes can make it possible to
+	    have multiple mappings for the same address without
+	    ambiguitiy, by indicating which mapping has precedence.
+
+	The API below provides control over the order and number of
+	probes performed by the MMU, where each probe can be different
+	in the following parameters:
+	  * Which context register (private or shared) is used to
+	    determine the context number.
+	  * The page size of the mapping to probe for.
+
+    4.1.1. MD property updates:
+    4.1.1.1. Default search order:
+	On systems supporting the TLB search API, there is a default
+	search order that is in effect for all MMU accesses (privileged
+	and non-privileged, instruction and data) if the guest does not
+	use the new API.  The characteristics of that default search
+	order are indicated by existing properties in the MD node:
+
+    Name			         Tag
+	    Description
+    ----------------------------------------------------------------------
+    mmu-#shared-contexts		PROP_VAL
+        A 64-bit unsigned integer giving the number of primary and secondary
+        shared context registers supported by this virtual CPU's MMU and
+        the number of shared contexts in the default search order.
+        If not present the default value is assumed to be 0. 
+
+    mmu-page-size-list			PROP_VAL
+        A 64-bit unsigned integer treated as a bit field describing the page
+        sizes that may be used on this virtual CPU and page sizes supported in
+        the default search order. Page size encodings are defined according to
+        the sun4v Architecture Specification. A bit N in this field, if set,
+        indicates that sun4v defined page size with encoding N is available
+        for use.
+
+	The default search order searches every combination of context
+	register and page size specified in these two properties.  The
+	order of the default search is not specified.
+
+	These properties exist merely to provide compatibility for
+	guests that do not use the TLB search API, and have no meaning
+	for a virtual CPU that has changed its search order.
+
+    4.1.1.2. New MD properties:
+	The properties below are part of the CPU node.  All of these
+	properties are required to be present for any CPU that supports
+	the new API calls described in this specification.  None are
+	present in the CPU node unless the CPU supports the calls.
+
+    Name			         Tag
+	    Description
+    ----------------------------------------------------------------------
+    mmu-search-#shared-contexts		PROP_VAL
+	    The number of shared contexts (in addition to the private
+	    context) supported in search list entries.  The
+	    interpretation is equivalent to the mmu-#shared-contexts
+	    property; however, the value may be different.
+
+    mmu-search-page-size-list		PROP_VAL
+	    The set of page sizes supported in search list entries.  The
+	    format is equivalent to the mmu-page-size-list property;
+	    however, the value may be different.
+
+    mmu-max-search-order		PROP_VAL
+	    The maximum number of entries allowed in a search list.  All
+	    search lists terminate after this many entries, with or
+	    without a terminator entry with its enable bit clear.
+
+    mmu-priv-search-unified		PROP_VAL
+    mmu-non-priv-search-unified		PROP_VAL
+	    Indicates whether the privileged and non-privileged search
+	    orders have unified or separate I- and D- search orders.  A
+	    value of 1 indicates the search order is unified (I- and D-
+	    search orders must be the same).  A value of 0 indicates
+	    that the I- and D- search orders may be different.
+
+    4.1.1.3. Notes and caveats for MD properties:
+	The mmu-page-size-list and mmu-search-page-size-list properties
+	are distinct, and may have different values; similarly for
+	mmu-#shared-contexts and mmu-search-#shared-contexts.  To
+	understand why, consider the case of a CPU that supports 8 page
+	sizes and 1 shared context (meaning 2 contexts total).  To
+	search every context for every page size requires 8*2=16 probes.
+	If mmu-max-search-order is less than 16, the default search
+	order cannot search every valid combination.
+
+	To guarantee compatibility for guests that don't use (or know
+	about) TLB search orders, the product of the number of sizes in
+	mmu-page-size-list and mmu-#shared-contexts must be selected to
+	be less than mmu-max-search-order.  To achieve this, in some
+	cases the default search order may disable page sizes, context
+	registers, or both.
+
+
+    4.1.2. API specification:    
+    4.1.2.1. Search lists for MMU translations and MMU flag :
+	The new API introduces a new data type for specifying MMU search
+	lists.  A search list is the real address of an array of
+	two-byte search entries; the size of the array is specified in
+	the mmu-max-search-order property.  Each entry specifies a
+	context register and page size for a TLB probe, plus an enable
+	bit.
+
+	To guarantee a hit for a particular mapping, the mapping must be
+	installed normally in a TSB, or with one of the mapping API
+	calls; additionally there must be an entry in the applicable TLB
+	search order specifying the page size for the mapping and a
+	context register that holds the context number of the mapping.
+
+	To guarantee a miss on a particular address it is necessary to
+	demap the address fully.  If a mapping is valid with the current
+	context registers and TSB contents, it may hit even if the
+	mapping cannot be found using the current applicable search
+	order.
+
+	The ordering of entries in the searchlist is significant in
+	two ways:
+	  * Probes to entries earlier in the search order may perform
+	    faster than probes to later entries.
+	  * For the non-privileged search list, if the MMU has two
+	    mappings for the same address distinguished by the size
+	    of the mappings, a page size that occurs earlier in
+	    the search order takes precedence over a size later in
+	    the search order.
+
+	Mappings in the MMU must be unique except in the case of
+	non-privileged mappings distinguished by page size.  This
+	includes the case of the same VA being mapped differently by two
+	different context registers, even if one of the context
+	registers is not used in the search order.  (This is the same
+	restriction documented in section 14.12.2 of the UltraSPARC
+	Architecture 2007 specification).
+
+	The API calls for configuring a search order allow specifying
+	flags indicating whether the search order is for instruction
+	accesses, data accesses, or both.  However, in some cases,
+	there may be a unified search order for both instruction and
+	data accesses.  In this case, the appropriate property in the MD
+	(either mmu-priv-search-unified or mmu-non-priv-search-unified)
+	will indicate that separate search lists are not available.
+
+	The individual bit fields of each search list table entry are
+	laid out as follows:
+	    | Enable | reserved | Context | reserved | Size |
+	      [15]     [14:11]    [10:7]    [6:3]      [2:0]
+
+	Enable - The Enable field is 1 to indicate a valid search entry.
+	    If a search entry has its Enable bit cleared, that entry
+	    and all higher-indexed entries are ignored.
+	Context - The Context field is 0 to indicate CONTEXT0 (the
+	    private context), 1 to indicate CONTEXT1 (the 1st shared
+	    context), and so forth.  The value of the field cannot
+	    exceed mmu-search-#shared-contexts (see below).  If shared
+	    contexts are not supported, the field must be 0.  The
+	    Context field is only supported for non-privileged search
+	    lists; privileged search lists must set Context to 0
+	    (indicating only CONTEXT0 is searched).
+	Size - The Size field encodes a standard page size field:
+		PageSize = 1 << (3 * Size + 13)
+	    The size must be one of the valid sizes indicated in
+	    mmu-search-page-size-list.
+        
+        
+    The MMU Flag argument for each API is the same as defined by core API
+    bindings (FWARC/2005/116, see link to Virtual Machine Specification in
+    section 5 below) but is duplicated here for quick reference.
+    
+    The flags argument applies the API operation to instruction translations
+    if bit 1 is set, and in addition applies the API operation to data
+    translation entries if bit 0 is set. For every API service requiring
+    a flags argument, at least one of bit 0 and/or bit 1 must be set.
+    
+
+    4.1.2.2. API function call summary:
+    MMU_EXT (0x4) is created for the MMU extension APIs defined below.
+    These are the calls for configuring the new MMU mapping resources:
+
+    #Name			Group#	Trap#	Func#	Major#	Minor#
+    #====			======	=====	=====	======	======
+    MMU_GET_NONPRIV_SEARCH	0x4	0x80	0x104	1	0
+    MMU_SET_NONPRIV_SEARCH	0x4	0x80	0x105	1	0
+    MMU_GET_PRIV_SEARCH		0x4	0x80	0x106	1	0
+    MMU_SET_PRIV_SEARCH		0x4	0x80	0x107	1	0
+
+
+    4.1.2.3.
+	trap: FAST_TRAP
+	function: MMU_GET_NONPRIV_SEARCH
+	arg0: searchlist
+	arg1: flags
+	ret0: status
+
+	The flags argument indicates whether to get the search order
+	for instruction or data accesses.  Only one type of access
+	can be gotten with a single call.
+
+	Fill in the provided search list with the current search list
+	for the calling virtual CPU, as set by the
+	MMU_SET_NONPRIV_SEARCH call.
+
+	Errors:
+	EINVAL      flags is 0, or indicates both I- and D- accesses.
+	ENORADDR    The search list is not a valid real address.
+
+    4.1.2.4.
+	trap: FAST_TRAP
+	function: MMU_SET_NONPRIV_SEARCH
+	arg0: searchlist
+	arg1: flags
+	ret0: status
+
+	The flags argument indicates whether the search order applies
+	to instruction or data accesses, or both.  The encoding is the
+	same as for other MMU calls, such as MMU_MAP_ADDR.  If the value
+	of mmu-non-priv-search-unified is 1, the flags parameter must
+	specify both I- and D- searches together.
+
+	Set the calling virtual CPU's non-privileged search list.  This
+	search list will be used for both instruction and data lookups
+	performed in non-privileged mode, or when using any of the
+	"AS_IF_USER" ASIs in privileged mode.
+
+	(N.B. the search list applies to non-privileged TLB lookups,
+	regardless of the context to be searched.  This is different
+	from TSB lookup, which searches based on the context number).
+
+	Errors:
+	EINVAL      flags is 0
+	EINVAL      mmu-non-priv-search-unified is 1, and flags does not
+		    specify both I- and D- accesses.
+	EINVAL	    A page size in the search list isn't valid.
+	EINVAL	    A context register number in the search list isn't
+		    valid.
+	ENORADDR    The search list is not a valid real address.
+
+    4.1.2.5.
+	trap: FAST_TRAP
+	function: MMU_GET_PRIV_SEARCH
+	arg0: searchlist
+	arg1: flags
+	ret0: status
+
+	The flags argument indicates whether to get the search order
+	for instruction or data accesses.  Only one type of access
+	can be gotten with a single call.
+
+	Fill in the provided search list with the calling virtual CPU's
+	current search list for privileged translations, as set by the
+	MMU_SET_PRIV_SEARCH call.
+
+	Errors:
+	EINVAL      flags is 0, or indicates both I- and D- accesses.
+	ENORADDR    The search list is not a valid real address.
+
+    4.1.2.6.
+	trap: FAST_TRAP
+	function: MMU_SET_PRIV_SEARCH
+	arg0: searchlist
+	arg1: flags
+	ret0: status
+
+	The flags argument indicates whether the search order applies
+	to instruction or data accesses, or both.  The encoding is the
+	same as for other MMU calls, such as MMU_MAP_ADDR.  If the value
+	of mmu-priv-search-unified is 1, the flags parameter must
+	specify both I- and D- searches together.
+
+	Set the calling virtual CPU's search list for privileged
+	translations.
+
+	Errors:
+	EINVAL      flags is 0
+	EINVAL      mmu-priv-search-unified is 1, and flags does not
+		    specify both I- and D- accesses.
+	EINVAL	    A page size in sizelist isn't valid.
+	EINVAL	    A Context field in sizelist is not 0.
+	ENORADDR    The search list is not a valid real address.
+
+    4.2. Bug/RFE Number(s):
+	N/A
+
+    4.3. In Scope:
+	N/A
+
+    4.4. Out of Scope:
+	N/A
+
+    4.5. Interfaces:
+    4.5.1. Imported Interfaces:
+    Interface			Classification	Comments
+    ====================================================================
+    Machine Description (MD)	Sun Private	Defined by FWARC/2005/115
+    data structures
+
+    sun4v core API		Sun Private	Core APIs defined by
+						FWARC/2005/116
+
+    4.5.2. Exported Interfaces:
+    Interface			Classification	Comments
+    ====================================================================
+    mmu-search-#size-bits	Committed	MD property
+    mmu-search-#context-bits	Committed	MD property
+    mmu-search-page-size-list	Committed	MD property
+    mmu-max-search-order	Committed	MD property
+    mmu-non-priv-search-unified	Committed	MD property
+    mmu-priv-search-unified	Committed	MD property
+    MMU_EXT			Committed	API group 0x4, v1.0
+    MMU_GET_NONPRIV_SEARCH	Committed	API call
+    MMU_SET_NONPRIV_SEARCH	Committed	API call
+    MMU_GET_PRIV_SEARCH		Committed	API call
+    MMU_SET_PRIV_SEARCH		Committed	API call
+
+    4.6. Doc Impact:
+	The UltraSPARC Virtual Machine Specification must be updated to
+	reflect this addition.
+
+    4.7. Admin/Config Impact:
+	No impact.
+
+    4.8. HA Impact:
+	No impact.
+
+    4.9. I18N/L10N Impact:
+	No impact.
+
+    4.10. Packaging & Delivery:
+	No impact.
+
+    4.11. Security Impact:
+	No impact.
+
+    4.12. Dependencies:
+	This interface depends on underlying hardware that provides
+	the capability.  The API and associated properties will not be
+	present on platforms that don't support the capability.
+
+5. Reference Documents:
+	UltraSPARC Architecture 2007 Specification
+	http://opensparc-t2.sunsource.net/specs/UA2007-current-draft-HP-EXT.pdf
+
+	UltraSPARC Virtual Machine Specification
+	http://opensparc-t1.sunsource.net/specs/Hypervisor-api-current-draft.pdf
+
+--Boundary_(ID_+e9wYWqKUxBoT6c3l8GG+g)--
+
+From sacadmin Fri Sep 12 15:53:13 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8CMrCR3011018
+	for <fwarc@sac.sfbay.sun.com>; Fri, 12 Sep 2008 15:53:12 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m8CMr84G017178
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 12 Sep 2008 23:53:11 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K7300901U8L3300@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 12 Sep 2008 15:53:09 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K73003GCU8LQ530@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 12 Sep 2008 15:53:09 -0700 (PDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m8CMr95d011998	for
+ <fwarc@sun.com>; Fri, 12 Sep 2008 15:53:09 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K7300B01U6FPH00@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 12 Sep 2008 15:53:09 -0700 (PDT)
+Received: from [129.150.32.24] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K7300ADCU8J4R80@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 12 Sep 2008 15:53:09 -0700 (PDT)
+Date: Fri, 12 Sep 2008 15:53:07 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: Converting to Fast-track : 2008/401 - MMU TLB page search
+ Hypervisor API
+In-reply-to: <48C21A6A.10007@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: Shesha Sreenivasamurthy <Shesha.Sreenivasamurthy@Sun.COM>,
+        Prashanth Sreenivasa <pks@Sun.COM>,
+        Charles Kunzman <Charles.Kunzman@Sun.COM>,
+        James Barnette Jr <Richard.Barnette@Sun.COM>
+Message-id: <48CAF2D3.2080703@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <48C21A6A.10007@sun.com>
+User-Agent: Thunderbird 2.0.0.16 (Windows/20080708)
+Status: RO
+Content-Length: 897
+
+Hitendra Zhangada wrote:
+> I am converting this case to fast-track case for Charles Kunzman.
+> This case adds new, optional hypervisor API calls and associated
+> MD properties for sun4v platforms.  API group MMU_EXT (0x4) is
+> created for the APIs defined by this case. See details in the
+> attached specification (only updated sections 4 and 5 of the
+> one-pager are included as the specification).
+>
+> This case will be approved for minor/micro/patch OS binding
+> and minor/micro binding for the firmware.
+>
+> The case timer is set to expire on September 12, 2008.
+
+This case has timed out and is now approved.
+
+I am update IAM file and HV registry later.
+
+
+Thanks.
+
+>
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Wed Sep 17 13:27:29 2008
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8HKRTV2006120
+	for <fwarc@sac.sfbay.sun.com>; Wed, 17 Sep 2008 13:27:29 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m8HKRRYN018379;
+	Wed, 17 Sep 2008 13:27:29 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K7C00701WTSGS00@brm-avmta-1.central.sun.com>; Wed,
+ 17 Sep 2008 14:27:28 -0600 (MDT)
+Received: from unknown.sfbay.sun.com ([10.6.92.101])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K7C003ANWTR6T40@brm-avmta-1.central.sun.com>; Wed,
+ 17 Sep 2008 14:27:28 -0600 (MDT)
+Received: from noho.sfbay.sun.com (localhost [127.0.0.1])
+	by unknown.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id m8HKRRnI021334;
+ Wed, 17 Sep 2008 13:27:27 -0700 (PDT)
+Received: (from dmk@localhost)	by noho.sfbay.sun.com (8.13.7+Sun/8.13.7/Submit)
+ id m8HKRRJi021333; Wed, 17 Sep 2008 13:27:27 -0700 (PDT)
+Date: Wed, 17 Sep 2008 13:27:27 -0700 (PDT)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Subject: Re: Converting to Fast-track : 2008/401 - MMU TLB page search
+ Hypervisor API
+To: Hitendra.Zhangada@sun.com, fwarc@sun.com
+Cc: Charles.Kunzman@sun.com, Richard.Barnette@sun.com,
+        Shesha.Sreenivasamurthy@sun.com, pks@sun.com
+Message-id: <200809172027.m8HKRRJi021333@noho.sfbay.sun.com>
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 261
+
+>This case has timed out and is now approved.
+
+Hitendra, there's still offline discussion going
+on regarding this case and not all issues have been
+resolved.
+
+Please revert the status back to waiting need spec
+until all the issues are resolved.
+
+Thanks,
+David
+
+
+From sacadmin Wed Sep 17 13:54:24 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8HKqMAq006543
+	for <fwarc@sac.sfbay.Sun.COM>; Wed, 17 Sep 2008 13:53:24 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m8HKqLWn015373
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 18 Sep 2008 04:52:21 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K7C00901XZ89H00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 17 Sep 2008 14:52:20 -0600 (MDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K7C003Z2XZ76T60@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 17 Sep 2008 14:52:19 -0600 (MDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m8HKqEon017842	for
+ <fwarc@sun.com>; Wed, 17 Sep 2008 13:52:14 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K7C00901XKC2I00@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 17 Sep 2008 13:52:14 -0700 (PDT)
+Received: from [129.153.85.16] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K7C00JGAXYJL7E0@fe-sfbay-09.sun.com>; Wed,
+ 17 Sep 2008 13:51:57 -0700 (PDT)
+Date: Wed, 17 Sep 2008 13:51:54 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: Converting to Fast-track : 2008/401 - MMU TLB page search
+ Hypervisor API
+In-reply-to: <200809172027.m8HKRRJi021333@noho.sfbay.sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: David Kahn <dmk@noho.sfbay.sun.com>
+Cc: fwarc@Sun.COM, Charles.Kunzman@Sun.COM, Richard.Barnette@Sun.COM,
+        Shesha.Sreenivasamurthy@Sun.COM, pks@Sun.COM
+Message-id: <48D16DEA.6040908@Sun.COM>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_2Gbe4eCtOxY+TRBhXo1FpA)"
+X-PMX-Version: 5.4.1.325704
+References: <200809172027.m8HKRRJi021333@noho.sfbay.sun.com>
+User-Agent: Thunderbird 2.0.0.14 (X11/20080505)
+Status: RO
+Content-Length: 3887
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_2Gbe4eCtOxY+TRBhXo1FpA)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+On 09/17/08 13:27, David Kahn wrote:
+>> This case has timed out and is now approved.
+>>     
+>
+> Hitendra, there's still offline discussion going
+> on regarding this case and not all issues have been
+> resolved.
+>
+> Please revert the status back to waiting need spec
+> until all the issues are resolved.
+>   
+
+Wait, the case timed out last Friday.  The discussions are happening
+this week and so I am not sure we can stop project team from moving
+forward.  They had Solaris C-team commitment to get the ARC case
+approved and API code integrated into Solaris.  It won't be fair to
+the project team to undo an ARC approval action.  ARC had whole
+week to review the material and this case had no discussions in
+that one week window.
+
+I am not saying that these discussions should not happen but
+the changes to the ARC approved specifications can be dealt
+with a new case to amend what has been approved.
+
+I want to make sure we are doing the right thing by revering
+the case status to "waiting need spec" for a closed approved
+case and also want to make sure what this means to the
+project team. 
+
+Lets discuss this before we take an action on this case.
+
+
+Thanks.
+
+
+> Thanks,
+> David
+>
+>   
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_2Gbe4eCtOxY+TRBhXo1FpA)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+On 09/17/08 13:27, David Kahn wrote:
+<blockquote cite="mid:200809172027.m8HKRRJi021333@noho.sfbay.sun.com"
+ type="cite">
+  <blockquote type="cite">
+    <pre wrap="">This case has timed out and is now approved.
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+Hitendra, there's still offline discussion going
+on regarding this case and not all issues have been
+resolved.
+
+Please revert the status back to waiting need spec
+until all the issues are resolved.
+  </pre>
+</blockquote>
+<br>
+Wait, the case timed out last Friday.&nbsp; The discussions are happening<br>
+this week and so I am not sure we can stop project team from moving<br>
+forward.&nbsp; They had Solaris C-team commitment to get the ARC case<br>
+approved and API code integrated into Solaris.&nbsp; It won't be fair to<br>
+the project team to undo an ARC approval action.&nbsp; ARC had whole<br>
+week to review the material and this case had no discussions in<br>
+that one week window.<br>
+<br>
+I am not saying that these discussions should not happen but<br>
+the changes to the ARC approved specifications can be dealt<br>
+with a new case to amend what has been approved.<br>
+<br>
+I want to make sure we are doing the right thing by revering<br>
+the case status to "waiting need spec" for a closed approved<br>
+case and also want to make sure what this means to the<br>
+project team.&nbsp; <br>
+<br>
+Lets discuss this before we take an action on this case.<br>
+<br>
+<br>
+Thanks.<br>
+<br>
+<br>
+<blockquote cite="mid:200809172027.m8HKRRJi021333@noho.sfbay.sun.com"
+ type="cite">
+  <pre wrap="">
+Thanks,
+David
+
+  </pre>
+</blockquote>
+<br>
+<br>
+<pre class="moz-signature" cols="72">-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_2Gbe4eCtOxY+TRBhXo1FpA)--
+
+From sacadmin Wed Sep 17 15:56:52 2008
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8HMuqxU011901
+	for <fwarc@sac.sfbay.sun.com>; Wed, 17 Sep 2008 15:56:52 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m8HMuqKs004199;
+	Wed, 17 Sep 2008 15:56:52 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K7D00I013QRRK00@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 17 Sep 2008 15:56:51 -0700 (PDT)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K7D00I0Q3QRG410@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 17 Sep 2008 15:56:51 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id m8HMuopU024563; Wed, 17 Sep 2008 15:56:50 -0700 (PDT)
+Received: from [192.168.0.9] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id m8HMunBH020143; Wed,
+ 17 Sep 2008 15:56:49 -0700 (PDT)
+Date: Wed, 17 Sep 2008 15:56:49 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: Converting to Fast-track : 2008/401 - MMU TLB page search
+ Hypervisor API
+In-reply-to: <48D16DEA.6040908@Sun.COM>
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: David Kahn <dmk@noho.sfbay.sun.com>, fwarc@sun.com,
+        Charles.Kunzman@sun.com, Richard.Barnette@sun.com,
+        Shesha.Sreenivasamurthy@sun.com, pks@sun.com
+Message-id: <48D18B31.10302@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200809172027.m8HKRRJi021333@noho.sfbay.sun.com>
+ <48D16DEA.6040908@Sun.COM>
+User-Agent: Thunderbird 2.0.0.16 (Windows/20080708)
+Status: RO
+Content-Length: 451
+
+
+
+Hitendra Zhangada wrote:
+> On 09/17/08 13:27, David Kahn wrote:
+>>> This case has timed out and is now approved.
+>>>     
+>>
+>> Hitendra, there's still offline discussion going
+>> on regarding this case and not all issues have been
+>> resolved.
+>>
+>> Please revert the status back to waiting need spec
+>> until all the issues are resolved.
+>>   
+> 
+> Wait, the case timed out last Friday.
+
+With unresolved issues. The timeout was incorrect.
+
+-David
+
+From sacadmin Wed Sep 17 16:12:07 2008
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8HNC6f6012190
+	for <fwarc@sac.sfbay.sun.com>; Wed, 17 Sep 2008 16:12:06 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m8HNC4xQ043490
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 17 Sep 2008 17:12:06 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K7D00J0F4G6RW00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 17 Sep 2008 17:12:06 -0600 (MDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K7D00IRQ4G5S600@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 17 Sep 2008 17:12:05 -0600 (MDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m8HNC5d4014218	for
+ <fwarc@sun.com>; Wed, 17 Sep 2008 16:12:05 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K7D00L014D1AS00@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 17 Sep 2008 16:12:05 -0700 (PDT)
+Received: from [129.153.85.16] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K7D00DUO4FYJ090@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 17 Sep 2008 16:11:58 -0700 (PDT)
+Date: Wed, 17 Sep 2008 16:11:57 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Converting to Fast-track : 2008/401 - MMU TLB page search
+ Hypervisor API
+In-reply-to: <48D18B31.10302@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: fwarc@sun.com
+Cc: Charles.Kunzman@sun.com, Richard.Barnette@sun.com,
+        Shesha.Sreenivasamurthy@sun.com, pks@sun.com
+Message-id: <48D18EBD.5010904@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <200809172027.m8HKRRJi021333@noho.sfbay.sun.com>
+ <48D16DEA.6040908@Sun.COM> <48D18B31.10302@sun.com>
+User-Agent: Thunderbird 2.0.0.14 (X11/20080505)
+Status: RO
+Content-Length: 1934
+
+On 09/17/08 15:56, David Kahn wrote:
+>
+>
+> Hitendra Zhangada wrote:
+>> On 09/17/08 13:27, David Kahn wrote:
+>>>> This case has timed out and is now approved.
+>>>>     
+>>>
+>>> Hitendra, there's still offline discussion going
+>>> on regarding this case and not all issues have been
+>>> resolved.
+>>>
+>>> Please revert the status back to waiting need spec
+>>> until all the issues are resolved.
+>>>   
+>>
+>> Wait, the case timed out last Friday.
+>
+> With unresolved issues. The timeout was incorrect.
+
+FYI.  There were ZERO discussion on this case once it was submitted
+as fast-track till it timed out. 
+
+The mail thread that is going on was started by me BEFORE the case
+was converted to fast-track.  I decided to go ahead with case submission
+after some discussions with few developers.  Everyone on the mail thread
+also received the fast-track notice.   The mail thread got resurrected
+this week when Richard sent reply to my original mail.  The mail
+thread itself is/was not part of the FWARC review process.
+
+I just want to know above facts. 
+
+
+My suggestion is to have a offline meeting to talk about the issues
+and come to a common understanding of the issues, resolve them if
+possible and determine the next course of action.
+
+Note that re-opening this case may result into delaying of SN putback
+to Solaris.  I don't agree that they should suffer from this because
+of lack of review/discussions after case was submitted for review.
+
+So, yes I am not agreeing with you on re-opening this case unless
+we have an offline meeting to discuss the issues first.  As per ARC
+process, the timer has expired and so case has been approved.
+
+
+Can we have that meeting?   I am ready to organize it.
+
+
+
+Thanks.
+
+
+
+>
+> -David
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Wed Sep 17 16:28:43 2008
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8HNShOo012336
+	for <fwarc@sac.sfbay.sun.com>; Wed, 17 Sep 2008 16:28:43 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m8HNSgXC012563;
+	Wed, 17 Sep 2008 16:28:43 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K7D0030F57UWR00@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 17 Sep 2008 16:28:42 -0700 (PDT)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K7D0033M57JUE00@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 17 Sep 2008 16:28:31 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id m8HNSRhD045383; Wed, 17 Sep 2008 16:28:27 -0700 (PDT)
+Received: from [192.168.0.9] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id m8HNSQMA022617; Wed,
+ 17 Sep 2008 16:28:26 -0700 (PDT)
+Date: Wed, 17 Sep 2008 16:28:25 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: Converting to Fast-track : 2008/401 - MMU TLB page search
+ Hypervisor API
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: fwarc@sun.com, Charles.Kunzman@sun.com, Richard.Barnette@sun.com,
+        Shesha.Sreenivasamurthy@sun.com, pks@sun.com
+Message-id: <48D19299.5020906@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.16 (Windows/20080708)
+Status: RO
+Content-Length: 623
+
+
+
+Hitendra Zhangada wrote:
+
+> The mail thread that is going on was started by me BEFORE the case
+> was converted to fast-track.  I decided to go ahead with case submission
+> after some discussions with few developers.
+
+As sponsor of the case and owner of the case, we knew
+there was at least one unresolved issue before the submission.
+
+That issue should not have been ignored no matter where it
+was raised.
+
+Now there are additional issues being raised. Had the
+initial approval been delayed until those unresolved
+issues were resolved, then these new issues may have
+been discussed before the incorrect time-out.
+
+-David
+
+From sacadmin Wed Sep 17 16:48:43 2008
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8HNmhQ6012558
+	for <fwarc@sac.sfbay.sun.com>; Wed, 17 Sep 2008 16:48:43 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m8HNmZxr017517
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 17 Sep 2008 16:48:37 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K7D00M09650H000@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 17 Sep 2008 17:48:36 -0600 (MDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K7D00IQ264ZS620@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 17 Sep 2008 17:48:36 -0600 (MDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m8HNmZIo001402	for
+ <fwarc@sun.com>; Wed, 17 Sep 2008 16:48:35 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K7D00D015QRSP00@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 17 Sep 2008 16:48:35 -0700 (PDT)
+Received: from [129.153.85.16] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K7D00CER64DBH70@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 17 Sep 2008 16:48:15 -0700 (PDT)
+Date: Wed, 17 Sep 2008 16:48:13 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Converting to Fast-track : 2008/401 - MMU TLB page search
+ Hypervisor API
+In-reply-to: <48D19299.5020906@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: fwarc@sun.com
+Cc: Charles.Kunzman@sun.com, Richard.Barnette@sun.com,
+        Shesha.Sreenivasamurthy@sun.com, pks@sun.com
+Message-id: <48D1973D.8030602@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <48D19299.5020906@sun.com>
+User-Agent: Thunderbird 2.0.0.14 (X11/20080505)
+Status: RO
+Content-Length: 1920
+
+On 09/17/08 16:28, David Kahn wrote:
+>
+>
+> Hitendra Zhangada wrote:
+>
+>> The mail thread that is going on was started by me BEFORE the case
+>> was converted to fast-track.  I decided to go ahead with case submission
+>> after some discussions with few developers.
+>
+> As sponsor of the case and owner of the case, we knew
+> there was at least one unresolved issue before the submission.
+
+I took Greg's comments as his opinion.  He expressed it to
+me in IM and via e-mail but he did not argue about it.
+I am not sure if that was a real issue since when I asked
+to chime in on FWARC alias he did not send mail which
+I interpreted as he is fine with it and there are no concerns
+from him about the proposed change (this happened
+2 days after the submission on Sunday - Sept. 7th).
+
+>
+> That issue should not have been ignored no matter where it
+> was raised.
+
+If I had interpreted as an issue then it would not have been ignored.
+
+>
+> Now there are additional issues being raised. Had the
+> initial approval been delayed until those unresolved
+> issues were resolved, then these new issues may have
+> been discussed before the incorrect time-out.
+
+Whatever might have happed here, because of my lack
+of getting this as an issue form Greg, or new issues uncovered
+from the mail thread, but fact is that between the time-out
+window there were no discussions at ARC level.  You can
+look at the mail file to confirm that.
+
+As I said before, better way to handle this would be to
+talk about it. IMO, e-mail is not the best way to discuss
+the issues.
+
+I am not willing to re-open the case.  If you feel strongly
+about it then please own the case from me and do what
+you thing is appropriate.
+
+
+Sorry.
+
+
+>
+> -David
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Wed Sep 17 18:48:34 2008
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8I1mYtV024836
+	for <fwarc@sac.sfbay.sun.com>; Wed, 17 Sep 2008 18:48:34 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m8I1mWja016081
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 17 Sep 2008 19:48:33 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K7D00F03BOW2C00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 17 Sep 2008 18:48:32 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K7D00AN2BOW5O50@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 17 Sep 2008 18:48:32 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m8I1mVgi017769	for
+ <fwarc@sun.com>; Thu, 18 Sep 2008 01:48:32 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K7D00101BHUXA00@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 17 Sep 2008 19:48:31 -0600 (MDT)
+Received: from [192.168.100.100]
+ (c-24-62-231-112.hsd1.nh.comcast.net [24.62.231.112])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0K7D00AVABOUY170@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 17 Sep 2008 19:48:31 -0600 (MDT)
+Date: Wed, 17 Sep 2008 21:48:28 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: Converting to Fast-track : 2008/401 - MMU TLB page search
+ Hypervisor API
+In-reply-to: <48D1973D.8030602@Sun.COM>
+Sender: Eric.Sharakan@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: fwarc@sun.com, Charles.Kunzman@sun.com, Richard.Barnette@sun.com,
+        Shesha.Sreenivasamurthy@sun.com, pks@sun.com
+Message-id: <42265C4D-5D2F-413A-8BFD-985094E2E596@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.929.2)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ micalg=sha1; boundary=Apple-Mail-19-729656871
+X-PMX-Version: 5.4.1.325704
+References: <48D19299.5020906@sun.com> <48D1973D.8030602@Sun.COM>
+Status: RO
+Content-Length: 6140
+
+
+--Apple-Mail-19-729656871
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed;
+	delsp=yes
+Content-Transfer-Encoding: 7bit
+
+FWIW, the emails from Greg & myself both started out with the caveat  
+that we're asking about implementation issues, not architectural  
+ones.  Also that email thread (purposely IMHO) excluded the fwarc  
+alias for exactly this reason.
+
+If those are the issues at contention here, I don't believe they  
+should hold up the case.
+
+This is just my opinion.  If this winds up coming to a vote, as a  
+FWARC intern, I would have no voting rights...
+
+-Eric
+
+On Sep 17, 2008, at 7:48 PM, Hitendra Zhangada wrote:
+
+> On 09/17/08 16:28, David Kahn wrote:
+>>
+>>
+>> Hitendra Zhangada wrote:
+>>
+>>> The mail thread that is going on was started by me BEFORE the case
+>>> was converted to fast-track.  I decided to go ahead with case  
+>>> submission
+>>> after some discussions with few developers.
+>>
+>> As sponsor of the case and owner of the case, we knew
+>> there was at least one unresolved issue before the submission.
+>
+> I took Greg's comments as his opinion.  He expressed it to
+> me in IM and via e-mail but he did not argue about it.
+> I am not sure if that was a real issue since when I asked
+> to chime in on FWARC alias he did not send mail which
+> I interpreted as he is fine with it and there are no concerns
+> from him about the proposed change (this happened
+> 2 days after the submission on Sunday - Sept. 7th).
+>
+>>
+>> That issue should not have been ignored no matter where it
+>> was raised.
+>
+> If I had interpreted as an issue then it would not have been ignored.
+>
+>>
+>> Now there are additional issues being raised. Had the
+>> initial approval been delayed until those unresolved
+>> issues were resolved, then these new issues may have
+>> been discussed before the incorrect time-out.
+>
+> Whatever might have happed here, because of my lack
+> of getting this as an issue form Greg, or new issues uncovered
+> from the mail thread, but fact is that between the time-out
+> window there were no discussions at ARC level.  You can
+> look at the mail file to confirm that.
+>
+> As I said before, better way to handle this would be to
+> talk about it. IMO, e-mail is not the best way to discuss
+> the issues.
+>
+> I am not willing to re-open the case.  If you feel strongly
+> about it then please own the case from me and do what
+> you thing is appropriate.
+>
+>
+> Sorry.
+>
+>
+>>
+>> -David
+>
+>
+> -- 
+> Hitendra Zhangada
+> ====================================
+> SPS Common SW Features Engineering
+> Software Group, Sun Microsystems, Inc.
+> Sun Ph# (858) 625 3757, Sun Ext. x53757
+> Internal homepage http://esp.west/~hitu
+>
+
+
+--Apple-Mail-19-729656871
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGKzCCAuQw
+ggJNoAMCAQICEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA3MTAxODAzMjAxOFoXDTA4MTAxNzAzMjAx
+OFowRzEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEkMCIGCSqGSIb3DQEJARYVRXJp
+Yy5TaGFyYWthbkBTdW4uQ09NMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyOpo1o9G
+kC4zvPQvyj/wBYNQR3zjkMYMxkWmL184ofuULXo7qmNtiCDanb/U9CmkH/ZXm3itLKVtRIUo/Fr7
+oi4CRxDUkF8LarMoiGbsuQ0hF0QIwJXdGv9GtNwagdzOtsqzZ0pV0II3WB7+NaIQ8qJ2KIwseULZ
+aXX0BzdlINGBYufa5xG38/piJfwb5n7JE/O2pocT1kO+IM9yLm3840a7FKwcYV6/tpXYABKlpgfK
+ZUp56DDLXf/5qW8jHPGhd6yrOVf53QtXypHNXPJDR+NFWo5Os2drH5V2rxzCildmoxOmhZkVaG03
+anU0qE4nWSRH1CKvtvigQDGJg0++sQIDAQABozIwMDAgBgNVHREEGTAXgRVFcmljLlNoYXJha2Fu
+QFN1bi5DT00wDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQUFAAOBgQCAxj+ZJX9XVIa4NeiRkfeL
+WaXXlKRONtx3QP3K7B9/T983wXc26sacqER608AoRMz9GyECwpIHtkvcRoCRPoWLyoWBf7zwh8ha
+0CPkTAmFxl1ENtpq/43Di0DUSHrcCeGvigN4esQpYJtQAmCUm5i5tXbu70d192lfniLVgHPvYzCC
+Az8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJBgNVBAYTAlpBMRUwEwYDVQQIEwxX
+ZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEaMBgGA1UEChMRVGhhd3RlIENvbnN1bHRp
+bmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2VydmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTErMCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1h
+aWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcwMDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYT
+AlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3
+dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAxKY8VXNV+065yplaHmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkV
+cI7dyfArhVqqP3FWy688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUP
+SAR/p7bRPGEEQB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8
+MDowOKA2oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0Eu
+Y3JsMAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYfqi2f
+Ni/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9lX5Xa9/eH
+1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggMQMIIDDAIBATB2MGIxCzAJBgNV
+BAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNU
+aGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQQtJ8t0o3bhp1zVjZgObu9jAJBgUr
+DgMCGgUAoIIBbzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0wODA5
+MTgwMTQ4MjlaMCMGCSqGSIb3DQEJBDEWBBRFXSZ6pVHVZ5Jjeyw0jx4J5i2ViTCBhQYJKwYBBAGC
+NxAEMXgwdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkg
+THRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdK
+N24adc1Y2YDm7vYwgYcGCyqGSIb3DQEJEAILMXigdjBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMc
+VGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZy
+ZWVtYWlsIElzc3VpbmcgQ0ECEELSfLdKN24adc1Y2YDm7vYwDQYJKoZIhvcNAQEBBQAEggEAnqK9
+VfTK0+7Fv2VuWYChT64URqwK55jb09VcZCEJQCfdLkS2AIw6z84Uufolu4oi7yUQmMIEwojVTd+g
+3gPkbBGOh9cTqTQTB9+d28AmkotK99UOlNpspBCHb22c3o/BzpWK7EhPmPmteXppgDutiVKh1PbR
+dsaXF039DBkNxJKEXzh5tuAxnTAIuLySEzPNowc4Po1E4GBnFxtp5ct/88/5S6RQBa4aWeOhBv4m
+iFtL8gclQefCQ07la3jsiNzuRng8S0rTTcGQMnaSQJodF2CI4PpgWcBAZmsJgfktkJ2SR1l0mSrf
+4mEfPoYTP/WG7wwS+tZ9ryN3jFW/KhYKVgAAAAAAAA==
+
+--Apple-Mail-19-729656871--
+

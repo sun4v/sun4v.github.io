@@ -1,0 +1,136 @@
+-------------------------------------------------------
+Issue 1 Closed
+
+Hitendra 02/12/2007
+     Section, 4.1.1, "interrupt-map-mask" property.  I believe the
+     format of this property is derived from some other ARC case. Please
+     add a reference and add it to imported interfaces.
+
+Steve 02/12/2007
+I've added the document that describes this information as item [6] in the references. I've also added a reference to it where the property is defined in the MD.
+
+Hitendra 02/26/2007 need to import those interfaces as the generic 1275 stuff.
+
+Steve 02/26/2007 Added line to imported interfaces.
+
+-------------------------------------------------------
+Issue 2 closed
+
+Hitendra 02/12/2007
+  Section, 4.1.1, "slot-present?", I think this is an optional property
+     and hence not required property.  The "required" column should say "no".
+
+Steve 02/12/2007
+I've made this property optional, and removed the question mark. Instead of looking at the boolean value, we will interpret it's presence as the slot presence
+
+-------------------------------------------------------
+Issue 3 closed
+
+Hitendra 02/12/2007
+  Section, 4.1.1, "mac-addresses", I have a question on this property.
+     Currently, the addresses are fixed based on the device paths.  What
+     would happen if one of the device path is disabled or has failed?
+     How to make sure the MAC address assigned to each network device
+     does not change from one boot to another?
+
+Stephen 02/12/2007
+After explanation at the inception review, this issue is closed
+
+-------------------------------------------------------
+Issue 4 Closed
+
+Hitendra 02/12/2007
+  Section, 4.1.2, "child-unit-address", by definition it seems like
+     this is one--integer value but the example shows three integers.
+     Please define format of this property or add reference to a case
+     which defines it.
+
+Steve 02/12/2007
+Added text to the property description to specify how many integers are in this array
+-------------------------------------------------------
+Issue 5 Closed
+
+Hitendra 02/12/2007
+  Section, 4.1.2, "parent-device-path", the comments about deleting
+     the child node are not clear.  Lets discuss at the meeting.
+
+Steve 02/12/2007
+I will mention about probing the nexus fully before applying the interrupt maps. Then OpenBoot will have to trim nodes if their interrupt-parent property does not exist. I will update the onepager with this description.
+
+Steve 02/15/2007
+I've added a paragraph to section 4.1.2 explaining how OpenBoot will use these interrupt mapping properties
+
+-------------------------------------------------------
+Issue 6 Closed
+
+Hitendra 02/12/2007
+    Since the "interrupt-map-entry" is an optional property, what does
+     it mean when it is missing?  How shall OpenBoot deal with that?
+
+Steve  02/12/2007 No interrupt-map-entry node, no need for an interrupt-map
+
+-------------------------------------------------------
+Issue 7 Closed
+Sunit 02/12/2007
+Dynamic reconfiguration issues Supernova: chasis manager creates PRI. How will this work? 
+
+Ash: they need to sync with EricS, too.
+
+Steve 02/12/2007 Sunit will talk to the Supernova team and make sure they are okay with the proposal. This issue will remain open until we get confirmation.
+
+-------------------------------------------------------
+Issue 8 Closed
+Ash 02/12/2007 pci-pcix to pci-pci bridge
+Ash: Need to have two device-types: pci-pcix and pci-pcie. Otherwise, the LDOMs manager will not know which devices can be partitioned or not.
+
+Steve 02-20-2007: I'll update the onepager to represent this. I've modified the case to define the following device_types:
+         - pcie-switch-upstream
+         - pcie-switch-downstream
+         - pcie-pcix-bridge
+         - pcix-pcix-bridge
+         - pci-network
+         - pci-scsi
+         - pci-generic
+
+-------------------------------------------------------
+Issue 9 Closed
+Sunit 02/12/2007
+SASWWID? pci-scsi iodevice
+
+Steve 02/12/2007
+I will add saswwid and fix the function number in pci-generic example. I will add a pci-scsi device with a SAS WWID property
+
+Steve 02/20/2007
+I've added 'pci-scsi'.
+
+-------------------------------------------------------
+Issue 10 Closed
+Steve 02/12/2007
+Root nexus nodes need to be defined. I will add them to the onepager since they are not defined anywhere yet.
+
+Steve 02/20/2007
+I've added the device_type 'pciex' which represents a root complex PCI device (Fire, N2, etc).
+
+-------------------------------------------------------
+Issue 11 Closed
+Sunit 02/12/2007
+If a device is disabled in ASR database, would the iodevice node for that device be present in the MD?
+
+Steve 02/12/2007: I'll think about it and come back with a proposal. Leaving the issue open for now.
+
+Steve 02/20/2007: No, I don't think it's a good idea to combine the ASR database and the iodevice MD node definition. One describes what hardware is available to the guest, the other describes what hardware is functional to the guest.
+
+-------------------------------------------------------
+Issue 12 Closed
+Hitendra 02/26/2007
+
+H: SAS WWID: What if a device allocates a WWID from it's own FCode (as in from a SEEPROM)? How does it determine it's WWID? Does OBP override the MD?
+
+S: this is not a required node, it's up to the platform to determine how it's assigned. VBSC (MD config) will have to be smart enough to know to update this dynamically. For example, instead of creating a pci-scsi node, we will create a pci-generic node or just not include the sas-wwid property.
+
+H: Is this a configurable resource?
+
+S: No, MD config will have to do it on the fly with no user interaction.
+
+
+

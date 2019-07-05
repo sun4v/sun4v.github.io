@@ -1,0 +1,364 @@
+From sacadmin Fri Jan 11 07:47:20 2008
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m0BFlKPg029219
+	for <fwarc@sac.sfbay.sun.com>; Fri, 11 Jan 2008 07:47:20 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m0BFlJdA007806
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 11 Jan 2008 07:47:20 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JUH0060JL6UGM00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Fri, 11 Jan 2008 07:47:18 -0800 (PST)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JUH00EIBL6RFS80@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Fri, 11 Jan 2008 07:47:15 -0800 (PST)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m0BFlEia010581	for
+ <fwarc@Sun.COM>; Fri, 11 Jan 2008 15:47:14 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JUH00G01KWI4500@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Fri, 11 Jan 2008 08:47:14 -0700 (MST)
+Received: from dhcp-ubur03-180-180.East.Sun.COM ([129.148.180.180])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JUH00IQJL6L7YA0@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Fri, 11 Jan 2008 08:47:10 -0700 (MST)
+Date: Fri, 11 Jan 2008 10:47:10 -0500
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Self-Review: 2008/016 -  VIO vNet/vSwitch MD node updates
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>
+Message-id: <207B487A-2723-42A3-BA14-0EA85B87E2AF@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.915)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+Status: RO
+Content-Length: 1488
+
+I am sponsoring this self-review case for myself.  This case
+amends the VIO MD nodes as defined in FWARC/2006/072, FWARC/2006/122,
+and FWARC/2007/363.
+
+This case will be approved for minor/micro/patch OS binding and
+minor/micro binding for the firmware.
+
+All of the changes are highlighted in the updated document which
+can be found at,
+
+http://sac.sfbay.sun.com/arc/FWARC/2008/016/materials/vio-md-nodes-v5.pdf
+
+The brief description of the changes are,
+
+
+1. Section 1.1.3, Device class specific properties table
+
+   Add following property:
+
+   Name                  Tag       Required   Description
+
+   priority-ether-types  PROP_DATA no         An array of  64-bit  
+integers
+                                              where the lower 16-bits of
+                                              each element holds a high
+                                              priority ethernet type.   
+The
+                                              upper 48-bits of each  
+element
+                                              must be zero.
+
+                                              The virtual network and  
+switch
+                                              device should prioritize
+                                              frames with these types  
+over
+                                              other frames, and ensure  
+that
+                                              these frames are not  
+dropped,
+                                              under congestion.
+
+
+From sacadmin Fri Jan 11 09:29:18 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m0BHTHMw001242
+	for <fwarc@sac.sfbay.sun.com>; Fri, 11 Jan 2008 09:29:18 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m0BHTGTn029419
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 11 Jan 2008 17:29:16 GMT
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JUH00F1LPWPQA00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 11 Jan 2008 09:29:13 -0800 (PST)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JUH00E9GPWNFWE0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 11 Jan 2008 09:29:11 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id m0BHTBcg026681; Fri, 11 Jan 2008 09:29:11 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m0BHTACf048665; Fri,
+ 11 Jan 2008 09:29:10 -0800 (PST)
+Date: Fri, 11 Jan 2008 09:29:10 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: Self-Review: 2008/016 -  VIO vNet/vSwitch MD node updates
+To: Narayan Venkat <Narayan.Venkat@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>
+Message-id: <4787A766.5040308@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0.0.9 (Windows/20071031)
+Status: RO
+Content-Length: 1746
+
+
+This needs more work. I think you need to define
+"priority-ether-types" (values and definitions of
+the 16-bit values).
+
+Also, please specify the commitment level and
+release binding.
+
+-David
+
+
+Narayan Venkat wrote:
+> I am sponsoring this self-review case for myself.  This case
+> amends the VIO MD nodes as defined in FWARC/2006/072, FWARC/2006/122,
+> and FWARC/2007/363.
+> 
+> This case will be approved for minor/micro/patch OS binding and
+> minor/micro binding for the firmware.
+> 
+> All of the changes are highlighted in the updated document which
+> can be found at,
+> 
+> http://sac.sfbay.sun.com/arc/FWARC/2008/016/materials/vio-md-nodes-v5.pdf
+> 
+> The brief description of the changes are,
+> 
+> 
+> 1. Section 1.1.3, Device class specific properties table
+> 
+>   Add following property:
+> 
+>   Name                  Tag       Required   Description
+> 
+>   priority-ether-types  PROP_DATA no         An array of  64-bit integers
+>                                              where the lower 16-bits of
+>                                              each element holds a high
+>                                              priority ethernet type.  The
+>                                              upper 48-bits of each element
+>                                              must be zero.
+> 
+>                                              The virtual network and switch
+>                                              device should prioritize
+>                                              frames with these types over
+>                                              other frames, and ensure that
+>                                              these frames are not dropped,
+>                                              under congestion.
+> 
+
+From sacadmin Fri Jan 11 10:32:25 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m0BIWOf5002416
+	for <fwarc@sac.sfbay.Sun.COM>; Fri, 11 Jan 2008 10:32:25 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m0BIWKX4024036
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Sat, 12 Jan 2008 02:32:24 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JUH00401STX4U00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 11 Jan 2008 11:32:21 -0700 (MST)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JUH000CISTW7440@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 11 Jan 2008 11:32:21 -0700 (MST)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m0BIWKkf015213	for
+ <fwarc@sun.com>; Fri, 11 Jan 2008 18:32:20 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JUH00301QZSB500@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 11 Jan 2008 11:32:20 -0700 (MST)
+Received: from dhcp-ubur03-180-180.East.Sun.COM ([129.148.180.180])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JUH004B9STP0S40@mail-amer.sun.com>; Fri,
+ 11 Jan 2008 11:32:14 -0700 (MST)
+Date: Fri, 11 Jan 2008 13:32:13 -0500
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: Self-Review: 2008/016 -  VIO vNet/vSwitch MD node updates
+In-reply-to: <4787A766.5040308@sun.com>
+Sender: Narayan.Venkat@sun.com
+To: David Kahn <David.Kahn@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>, Firmware Arch <fwarc@sun.com>
+Message-id: <795A6C08-7339-4738-98A4-B7D0C5648930@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.915)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <4787A766.5040308@sun.com>
+Status: RO
+Content-Length: 2445
+
+
+On Jan 11, 2008, at 12:29 PM, David Kahn wrote:
+
+>
+> This needs more work. I think you need to define
+> "priority-ether-types" (values and definitions of
+> the 16-bit values).
+
+This corresponds to the EtherType field defined as part of
+the Ethernet Version 2 header. There is no specific list
+of values except for the ones used by various protocols.
+I will still update the document with a clarification of
+what the type corresponds to.
+
+> Also, please specify the commitment level and
+> release binding.
+
+The commitment level is still 'Sun Private' as it was already
+defined by the original VIO MD case - FWARC/2006/072. That does
+not change with the addition of this node property. Also my
+email said that this case is approved for minor/micro/patch OS
+binding and minor/micro binding for the firmware. Am I missing
+something else ?
+
+Thanks
+-Narayan
+
+
+
+>
+>
+> -David
+>
+>
+> Narayan Venkat wrote:
+>> I am sponsoring this self-review case for myself.  This case
+>> amends the VIO MD nodes as defined in FWARC/2006/072, FWARC/2006/122,
+>> and FWARC/2007/363.
+>> This case will be approved for minor/micro/patch OS binding and
+>> minor/micro binding for the firmware.
+>> All of the changes are highlighted in the updated document which
+>> can be found at,
+>> http://sac.sfbay.sun.com/arc/FWARC/2008/016/materials/vio-md-nodes-v5.pdf
+>> The brief description of the changes are,
+>> 1. Section 1.1.3, Device class specific properties table
+>>  Add following property:
+>>  Name                  Tag       Required   Description
+>>  priority-ether-types  PROP_DATA no         An array of  64-bit  
+>> integers
+>>                                             where the lower 16-bits  
+>> of
+>>                                             each element holds a high
+>>                                             priority ethernet  
+>> type.  The
+>>                                             upper 48-bits of each  
+>> element
+>>                                             must be zero.
+>>                                             The virtual network and  
+>> switch
+>>                                             device should prioritize
+>>                                             frames with these types  
+>> over
+>>                                             other frames, and  
+>> ensure that
+>>                                             these frames are not  
+>> dropped,
+>>                                             under congestion.
+
+
+From sacadmin Fri Jan 11 10:40:20 2008
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m0BIeKp1002484
+	for <fwarc@sac.sfbay.sun.com>; Fri, 11 Jan 2008 10:40:20 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m0BIeIYs011401
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 11 Jan 2008 10:40:20 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JUH0040VT77P400@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 11 Jan 2008 11:40:19 -0700 (MST)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JUH000ZQT757440@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 11 Jan 2008 11:40:17 -0700 (MST)
+Received: from dtmail.sfbay.sun.com (dt101-150.SFBay.Sun.COM [10.6.101.150])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id m0BIeHaB003746; Fri, 11 Jan 2008 10:40:17 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m0BIeGRe051222; Fri,
+ 11 Jan 2008 10:40:16 -0800 (PST)
+Date: Fri, 11 Jan 2008 10:40:16 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: Self-Review: 2008/016 -  VIO vNet/vSwitch MD node updates
+In-reply-to: <795A6C08-7339-4738-98A4-B7D0C5648930@Sun.COM>
+To: Narayan Venkat <Narayan.Venkat@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>
+Message-id: <4787B810.6020200@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <4787A766.5040308@sun.com>
+ <795A6C08-7339-4738-98A4-B7D0C5648930@Sun.COM>
+User-Agent: Thunderbird 2.0.0.9 (Windows/20071031)
+Status: RO
+Content-Length: 913
+
+
+
+Narayan Venkat wrote:
+> 
+> On Jan 11, 2008, at 12:29 PM, David Kahn wrote:
+> 
+>>
+>> This needs more work. I think you need to define
+>> "priority-ether-types" (values and definitions of
+>> the 16-bit values).
+> 
+> This corresponds to the EtherType field defined as part of
+> the Ethernet Version 2 header. There is no specific list
+> of values except for the ones used by various protocols.
+> I will still update the document with a clarification of
+> what the type corresponds to.
+
+ok.
+
+> 
+>> Also, please specify the commitment level and
+>> release binding.
+> 
+> The commitment level is still 'Sun Private' as it was already
+> defined by the original VIO MD case - FWARC/2006/072. That does
+> not change with the addition of this node property.
+
+I see you did specify the release binding.
+
+
+Just the clarification of the ether type field values.
+I read the pdf file and didn't understand what it was.
+
+-David
+

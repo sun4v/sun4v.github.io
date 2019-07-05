@@ -1,0 +1,369 @@
+From sac-owner Mon Jan 30 18:35:24 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k0V2ZMIQ025789
+	for <one-pager@sac.eng.Sun.COM>; Mon, 30 Jan 2006 18:35:24 -0800 (PST)
+Received: (from noaccess@localhost)
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) id k0V2ZMZ12030
+	for one-pager-not-2b-used-directly; Mon, 30 Jan 2006 19:35:22 -0700 (MST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k0V2ZLc12020
+	for <@sunmail1brm.central.sun.com:one-pager@sun.com>; Mon, 30 Jan 2006 19:35:21 -0700 (MST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0ITX00C01R6X5I00@brm-avmta-1.central.sun.com> for one-pager@sun.com
+ (ORCPT one-pager@sun.com); Mon, 30 Jan 2006 19:35:21 -0700 (MST)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0ITX00ADUR6X8640@brm-avmta-1.central.sun.com> for
+ one-pager@sun.com (ORCPT one-pager@sun.com); Mon,
+ 30 Jan 2006 19:35:21 -0700 (MST)
+Received: from fe-amer-04.sun.com ([192.18.108.178])
+	by brmea-mail-3.sun.com (8.12.10/8.12.9) with ESMTP id k0V2ZKQj003873	for
+ <one-pager@sun.com>; Mon, 30 Jan 2006 19:35:21 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0ITX00B01QS6X300@mail-amer.sun.com>
+ (original mail from Eric.Sharakan@Sun.COM)
+ for one-pager@sun.com (ORCPT one-pager@sun.com); Mon,
+ 30 Jan 2006 19:35:20 -0700 (MST)
+Received: from [192.168.100.166] ([129.150.65.129])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep  9
+ 2005)) with ESMTPSA id <0ITX005TVR6UHF10@mail-amer.sun.com> for
+ one-pager@sun.com (ORCPT one-pager@sun.com); Mon,
+ 30 Jan 2006 19:35:20 -0700 (MST)
+Date: Mon, 30 Jan 2006 21:35:17 -0500
+From: Eric Sharakan <Eric.Sharakan@Sun.COM>
+Subject: [/]Domain Services one-pager
+Sender: Eric.Sharakan@Sun.COM
+To: one-pager@Sun.COM
+Message-id: <A6135A04-6F91-4214-AA19-89BC204B01D9@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.746.2)
+Content-type: multipart/signed; protocol="application/pkcs7-signature";
+ boundary=Apple-Mail-5--693555842; micalg=sha1
+X-PMX-Version: 5.1.2.240295
+Status: RO
+Content-Length: 9219
+
+
+--Apple-Mail-5--693555842
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=US-ASCII;
+	delsp=yes;
+	format=flowed
+
+Template Version: @(#)onepager.txt 1.29 04/11/15 SMI
+
+1. Introduction
+
+    1.1. Project/Component Working Name:
+
+	"Domain Services interfaces for LDoms components"
+
+    1.2. Name of Document Author/Supplier:
+
+	Eric Sharakan
+	
+    1.3. Date of This Document:
+
+	01/27/06
+
+    1.4. Name of Major Document Customer(s)/Consumer(s):
+
+	1.4.1. The PAC or CPT you expect to review your project:
+
+		HS PAC
+
+	1.4.2. The ARC(s) you expect to review your project:
+
+		FWARC
+
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+
+		Tony.Barreca@Sun.COM
+
+	1.4.4. The name of your business unit:
+
+		SPS Niagara/ROCK Software Engineering
+
+    1.5. Email Aliases:
+
+     	1.5.1. Responsible Manager:	david.banman@sun.com
+     	1.5.2. Responsible Engineer:	eric.sharakan@Sun.COM
+     	1.5.3. Marketing Manager:
+	1.5.4. Interest List:		ldoms-internal@sun.com
+
+2. Project Summary
+
+    2.1. Project Description:
+
+	This case is a part of the Logical Domains umbrella case FWARC/2005/633
+
+	Domain Services provides the low-level communications and naming  
+infrastructure for various higher-level LDom services.  It leverages  
+the sun4v channels (FWARC/2005/739) communication substrate being  
+delivered with LDoms, and allows multiple services to communicate  
+over a single such channel, providing naming, versioning,  
+registration, deregistration and service-specific callback  
+functionality.
+
+	The producers & consumers of these higher level services exist on  
+any the following:
+
+	- OBP
+	- Service Processor (vbsc)
+	- LDom Manager
+	- Solaris
+
+	The higher level services themselves are not discussed herein; the  
+plan is to submit each such service as a separate case.
+
+     2.2. Risks and Assumptions:
+
+	  See FWARC/2005/633.
+
+
+3. Business Summary
+
+    3.1. Problem Area:
+
+	Various services that are needed to implement LDoms functionality  
+each need access to communication facilities, whether between the  
+LDom itself (i.e. OBP or Solaris) & the LDom Manager, between the  
+LDom Manager and the SP, or between an LDom & the SP.  sun4v channels  
+provide a low-level communications mechanism between all these  
+components, but does not provide the necessary multiplexing or higher  
+level functions such as naming & registration these services require.
+
+    3.2. Market/Requester:
+
+	See FWARC/2005/633.
+	
+    3.3. Business Justification:
+
+	See FWARC/2005/633.
+
+    3.4. Competitive Analysis:
+
+	See FWARC/2005/633.
+
+    3.5. Opportunity Window/Exposure:
+
+	See FWARC/2005/633.
+	
+    3.6. How will you know when you are done?:
+
+	The work will be completed when the prototype is implemented and
+final code changes are integrated into the four consolidations'  
+source gates.
+
+
+4. Technical Description:
+
+     4.1 An overview
+
+	Platforms that support the Logical Domain (LDom) feature are managed  
+in part by the LDom Manager.  As part of executing normal LDom  
+operations,  the LDom manager communicates with various different  
+pieces of software, both in the guest and in the service processor.   
+In addition, communucations directly between the guest and the  
+service processor are also necessary.
+
+In cases where multiple entities need to communicate between the same  
+two components, rather than using multiple sun4v channels, a single  
+channel is established. The Domain Services protocol ensures that  
+messages sent to different subsystems over this shared channel get  
+routed correctly.
+
+     4.1.1 Detailed information
+
+	The detailed information are available in the Domain Services  
+specification
+which will be made available to FWARC in advance prior to review.
+
+
+     4.2. Bug/RFE Number(s):
+
+	 N/A
+
+     4.3. In Scope:
+
+	This project is only intended to support services needed for LDom  
+operations, and that would otherwise communicate directly over a  
+private sun4v channel.
+	
+     4.4. Out of Scope:
+
+	N/A
+
+     4.5. Interfaces:
+
+
+     4.5.1 Imported Interfaces:
+
+
+	Interface	Classification		Comments
+	=================================================================
+
+	sun4v channels	Sun Private		FWARC/2005/739
+
+
+     4.5.2 Exported Interfaces:
+
+	Interface			Classification		Comments
+	=================================================================
+
+	uint_t ds_register()		Evolving		Register a service &
+								callback fcn
+	uint_t ds_unregister()		Evolving		Deregister a service
+	uint_t ds_send()		Evolving		Send a message
+								targeted to a
+								service
+
+
+
+     4.6. Doc Impact:
+
+	None.
+
+     4.7. Admin/Config Impact:
+
+	None.
+
+     4.8. HA Impact:
+
+	None.
+
+     4.9. I18N/L10N Impact:
+
+	None.
+
+     4.10. Packaging & Delivery:
+
+	None.
+
+     4.11. Security Impact:
+
+       None.
+
+     4.12. Dependencies:
+
+	sun4v channels
+
+5. Reference Documents:
+
+	Sun4v Channels Specification:
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/739/ 
+commitment.materials/api-25-v3-LDC.pdf
+
+6. Resources and Schedule:
+    6.1. Projected Availability:
+
+	Q3FY06
+
+    6.2. Cost of Effort:
+
+	See FWARC/2005/633.	
+
+    6.3. Cost of Capital Resources:
+
+	See FWARC 2005/633.
+
+    6.4. Product Approval Committee requested information:
+    	6.4.1. Consolidation or Component Name:
+	
+		ON
+
+	6.4.3. Type of CPT Review and Approval expected:
+
+		Standard
+
+         6.4.4. Project Boundary Conditions:
+
+	6.4.5. Is this a necessary project for OEM agreements:
+
+		No.
+
+	6.4.6. Notes:
+
+	6.4.7. Target RTI Date/Release:
+
+		Q3FY06
+
+	6.4.8. Target Code Design Review Date:
+
+		02/2006
+
+	6.4.9. Update approval addition:
+
+		N/A
+
+    6.5. ARC review type:
+
+		Standard
+
+7. Prototype Availability:
+    7.1. Prototype Availability:
+
+	Now.
+
+    7.2. Prototype Cost:
+
+	2 person months.
+
+
+--Apple-Mail-5--693555842
+Content-Transfer-Encoding: base64
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Disposition: attachment;
+	filename=smime.p7s
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGHjCCAtcw
+ggJAoAMCAQICAw/TQzANBgkqhkiG9w0BAQQFADBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhh
+d3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVt
+YWlsIElzc3VpbmcgQ0EwHhcNMDUxMTA5MTkwMDQzWhcNMDYxMTA5MTkwMDQzWjBHMR8wHQYDVQQD
+ExZUaGF3dGUgRnJlZW1haWwgTWVtYmVyMSQwIgYJKoZIhvcNAQkBFhVFcmljLlNoYXJha2FuQFN1
+bi5DT00wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDba3lxeBujsCl4O0ZN5yX9mAFc
+yYvW614QY6+qk1CzUYswsSb67a8NgqErQHGUFZ5OBwF2eyUQ3e9Y38dg/eN4goeU6I30zwXkyZ0P
+x/spuKASos2jpwhWuT60WocCW+nfnXR277sxQqQ6bACQ/9AmXgAP7VjR28s8Grk8E+nPvvW+f1Ey
+mlfIgionohSCdSv+gZTLZ6eoSWvswEb+KskFdBU+Uqb5x0J8F9RCKAMpZ34W1C9BICh9y4M9dPQ/
+3+FyBCwykQCTcm35u29YDA7sCWVa7SudI9/a39UJaGB1qAItWW8ZSq0ctZnR0aGcrajW1mSUsx7i
+DsHRvFuER5pPAgMBAAGjMjAwMCAGA1UdEQQZMBeBFUVyaWMuU2hhcmFrYW5AU3VuLkNPTTAMBgNV
+HRMBAf8EAjAAMA0GCSqGSIb3DQEBBAUAA4GBADnc8ZTwcfHsUDsI6x6jBUXtsAJyI8sAF1q/updX
+6HNG7nlNUetlQniC7kRWQFV2055llklmh095Mte0jI1uOKOC87S1tneWRvzbfdJwZlPOeU6zg9ee
+amA874LY/hW+6kAdCU3NMI/nnEIO6AR+zscz+giysoITuJVR7qaFi5hFMIIDPzCCAqigAwIBAgIB
+DTANBgkqhkiG9w0BAQUFADCB0TELMAkGA1UEBhMCWkExFTATBgNVBAgTDFdlc3Rlcm4gQ2FwZTES
+MBAGA1UEBxMJQ2FwZSBUb3duMRowGAYDVQQKExFUaGF3dGUgQ29uc3VsdGluZzEoMCYGA1UECxMf
+Q2VydGlmaWNhdGlvbiBTZXJ2aWNlcyBEaXZpc2lvbjEkMCIGA1UEAxMbVGhhd3RlIFBlcnNvbmFs
+IEZyZWVtYWlsIENBMSswKQYJKoZIhvcNAQkBFhxwZXJzb25hbC1mcmVlbWFpbEB0aGF3dGUuY29t
+MB4XDTAzMDcxNzAwMDAwMFoXDTEzMDcxNjIzNTk1OVowYjELMAkGA1UEBhMCWkExJTAjBgNVBAoT
+HFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQZXJzb25hbCBG
+cmVlbWFpbCBJc3N1aW5nIENBMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDEpjxVc1X7TrnK
+mVoeaMB1BHCd3+n/ox7svc31W/Iadr1/DDph8r9RzgHU5VAKMNcCY1osiRVwjt3J8CuFWqo/cVbL
+rzwLB+fxH5E2JCoTzyvV84J3PQO+K/67GD4Hv0CAAmTXp6a7n2XRxSpUhQ9IBH+nttE8YQRAHmQZ
+cmC3+wIDAQABo4GUMIGRMBIGA1UdEwEB/wQIMAYBAf8CAQAwQwYDVR0fBDwwOjA4oDagNIYyaHR0
+cDovL2NybC50aGF3dGUuY29tL1RoYXd0ZVBlcnNvbmFsRnJlZW1haWxDQS5jcmwwCwYDVR0PBAQD
+AgEGMCkGA1UdEQQiMCCkHjAcMRowGAYDVQQDExFQcml2YXRlTGFiZWwyLTEzODANBgkqhkiG9w0B
+AQUFAAOBgQBIjNFQg+oLLswNo2asZw9/r6y+whehQ5aUnX9MIbj4Nh+qLZ82L8D0HFAgk3A8/a3h
+YWLD2ToZfoSxmRsAxRoLgnSeJVCUYsfbJ3FXJY3dqZw5jowgT2Vfldr394fWxghOrvbqNOUQGls1
+TXfjViF4gtwhGTXeJLHTHUb/XV9lTzGCAucwggLjAgEBMGkwYjELMAkGA1UEBhMCWkExJTAjBgNV
+BAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQZXJzb25h
+bCBGcmVlbWFpbCBJc3N1aW5nIENBAgMP00MwCQYFKw4DAhoFAKCCAVMwGAYJKoZIhvcNAQkDMQsG
+CSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMDYwMTMxMDIzNTE3WjAjBgkqhkiG9w0BCQQxFgQU
+uGlI5n6DMsYKnwlhNS+XtdPPangweAYJKwYBBAGCNxAEMWswaTBiMQswCQYDVQQGEwJaQTElMCMG
+A1UEChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNv
+bmFsIEZyZWVtYWlsIElzc3VpbmcgQ0ECAw/TQzB6BgsqhkiG9w0BCRACCzFroGkwYjELMAkGA1UE
+BhMCWkExJTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1Ro
+YXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBAgMP00MwDQYJKoZIhvcNAQEBBQAEggEA
+cLqoBFPRsD0h+59DxL3wl7Z+VKEz36WD9Xag0hUlrZgn5rzDmAbhYyVNOX7HnaklrqXQNjeYvq0I
+0QpB8lsbgO9VXU+37h9mMIvARetohbsJ0Zgtq9LXbQNGVFZC4eX2v5qxtRMtmyfKb60AcL2SCHrj
+DGMFFkCcDb4lAX7pTrsecVaU+WBGTXRdY8JgI/lXHO3DaLU1GJIv7MfLMIiWAHkpwgVzSNg313sB
+p42ODF2b3c8kXqzykgRs82vi9fN7ayCphwapkbLr4ZXL5diiPm24B2ed5pWBDxhN501m91ceJWnT
+fgR3VxFTf47tiz8POqZpDqebdDROlID3x0FWjwAAAAAAAA==
+
+--Apple-Mail-5--693555842--
+

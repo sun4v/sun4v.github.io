@@ -1,0 +1,172 @@
+From sacadmin Mon Jul 21 19:04:00 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m6M23x3f008752
+	for <fwarc@sac.sfbay.Sun.COM>; Mon, 21 Jul 2008 19:03:59 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m6M23sWb014883
+	for <@sunmail2sca.sfbay.sun.com:FWARC@sun.com>; Tue, 22 Jul 2008 10:03:58 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K4D00E09XQLCN00@nwk-avmta-2.sfbay.sun.com> for FWARC@sun.com
+ (ORCPT FWARC@sun.com); Mon, 21 Jul 2008 19:03:57 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K4D006RAXQL1660@nwk-avmta-2.sfbay.sun.com> for FWARC@sun.com
+ (ORCPT FWARC@sun.com); Mon, 21 Jul 2008 19:03:57 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m6M23vx2010953	for
+ <FWARC@sun.com>; Mon, 21 Jul 2008 19:03:57 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K4D00601XKHPC00@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for FWARC@sun.com (ORCPT FWARC@sun.com); Mon, 21 Jul 2008 19:03:57 -0700 (PDT)
+Received: from [129.153.85.8] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K4D003A8XQF1GC0@fe-sfbay-09.sun.com> for FWARC@sun.com
+ (ORCPT FWARC@sun.com); Mon, 21 Jul 2008 19:03:57 -0700 (PDT)
+Date: Mon, 21 Jul 2008 19:03:50 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Self-Review : 2008/467 - PRI Specification modification
+Sender: Hitendra.Zhangada@sun.com
+To: FWARC@sun.com
+Cc: Scott Davenport <Scott.Davenport@sun.com>
+Message-id: <48854006.4030906@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.12 (X11/20080228)
+Status: RO
+Content-Length: 1633
+
+I am sponsoring this self-review case for Scott Davenport.
+This modifies the PRI specification which was previously
+revised by FWARC/2008/300.  The modifications are very minor.
+The delta between the current specification (version 1.3)
+and the new specification (version 1.4) are as follows,
+
+
+2c2
+< Version 1.3
+< Date : 05/22/2008
+---
+ > Version 1.4
+ > Date : 07/21/2008
+17a18
+ > 1.4 Change to suggested topologies for use with FMA PI.
+214,216c215,217
+< provided in the components node: memory-buffer/bank/dimm. No intervening
+< nodes are allowed. Node hierarchy above memory-buffer is arbitrary per
+< platform.
+---
+ > provided in the components node: chip/memory-buffer *OR*
+ > memory-controller/memory-buffer. No intervening nodes are allowed. Node
+ > hierarchy above or below is arbitrary per platform.
+
+
+
+Here are the differences,
+
+1. The topology is simplified and so the 'bank' is not necessary.
+   Removed "bank/dimm".
+
+2. Replaced "memory-buffer/bank/dimm" with "chip/memory-buffer *OR*
+   memory-controller/memory-buffer".
+
+Diffs are copied in the case directory at,
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2008/467/materials/13-to-14.diff.txt
+
+The updated version 1.4 specification is available at,
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2008/467/materials/PRI_Specification_14.txt
+
+
+This case is approved for minor/micro/patch OS binding and
+minor/micro binding for the firmware.
+
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+From sacadmin Tue Jul 22 12:16:31 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m6MJGU1a019170
+	for <fwarc@sac.sfbay.Sun.COM>; Tue, 22 Jul 2008 12:16:31 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m6MJGQkS026185
+	for <@sunmail2sca.sfbay.sun.com:FWARC@sun.com>; Wed, 23 Jul 2008 03:16:29 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K4F00C4J9JFJU00@nwk-avmta-1.sfbay.Sun.COM> for FWARC@sun.com
+ (ORCPT FWARC@sun.com); Tue, 22 Jul 2008 12:16:27 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K4F00M3J9JEX8F0@nwk-avmta-1.sfbay.Sun.COM> for FWARC@sun.com
+ (ORCPT FWARC@sun.com); Tue, 22 Jul 2008 12:16:26 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m6MJGQrt009487	for
+ <FWARC@sun.com>; Tue, 22 Jul 2008 12:16:26 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K4F00C019G03600@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for FWARC@sun.com (ORCPT FWARC@sun.com); Tue, 22 Jul 2008 12:16:26 -0700 (PDT)
+Received: from [129.153.85.8] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K4F001FZ9IZET70@fe-sfbay-09.sun.com> for FWARC@sun.com
+ (ORCPT FWARC@sun.com); Tue, 22 Jul 2008 12:16:12 -0700 (PDT)
+Date: Tue, 22 Jul 2008 12:16:10 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: Self-Review : 2008/467 - PRI Specification modification
+In-reply-to: <4885ED32.9000808@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Cc: FWARC@Sun.COM
+Message-id: <488631FA.5030407@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <48854006.4030906@Sun.COM> <4885ED32.9000808@sun.com>
+User-Agent: Thunderbird 2.0.0.12 (X11/20080228)
+Status: RO
+Content-Length: 850
+
+Stephen Ehring wrote:
+> Can you place the specification here:
+>
+> http://sac.eng.sun.com/arc/FWARC/Specifications/
+>
+> and link to it on the main FWARC page? That way we always know where 
+> the most recent copy is and don't have to know what the last case to 
+> modify the spec was in order to find the most recent version. I'm 
+> going to start doing that for all of the specifications from the cases 
+> I handle from now on, too.
+
+Done.   Created a link to the latest spec.  If PRI spec changes then all we
+have to do is refresh the link.
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/Specifications/PRI_Specification.txt
+
+
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+

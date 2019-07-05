@@ -1,0 +1,209 @@
+From sacadmin Fri Sep  5 11:21:13 2008
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m85ILDAM021389
+	for <fwarc@sac.sfbay.sun.com>; Fri, 5 Sep 2008 11:21:13 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m85ILCOC028255
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 5 Sep 2008 11:21:12 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K6Q00L01IZC1200@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 05 Sep 2008 12:21:12 -0600 (MDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K6Q0046MIZB11F0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 05 Sep 2008 12:21:11 -0600 (MDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m85ILBkE018015	for
+ <fwarc@sun.com>; Fri, 05 Sep 2008 11:21:11 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K6Q00301IRIPR00@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 05 Sep 2008 11:21:11 -0700 (PDT)
+Received: from [129.150.36.231] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K6Q00DDBIYY3W60@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 05 Sep 2008 11:21:04 -0700 (PDT)
+Date: Fri, 05 Sep 2008 11:20:58 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Converting to Fast-track : 2008/398 - Hypervisor API for Transactional
+ Memory Configuration
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: Shesha Sreenivasamurthy <Shesha.Sreenivasamurthy@Sun.COM>,
+        Prashanth Sreenivasa <pks@Sun.COM>
+Message-id: <48C1788A.2040705@sun.com>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_DsMCXBST/vB3JvbS0t2dzQ)"
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.16 (Windows/20080708)
+Status: RO
+Content-Length: 3113
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_DsMCXBST/vB3JvbS0t2dzQ)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+I am converting this case to fast-track case for Shesha Sreenivasamurthy.
+This case defines a Hypervisor API function to provide a way the guest
+can use Transactional Memory (TM).  See details in the attached
+specification.
+
+This case will be approved for minor/micro/patch OS binding
+and minor/micro binding for the firmware.
+
+The case timer is set to expire on September 12, 2008.
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_DsMCXBST/vB3JvbS0t2dzQ)
+Content-type: text/plain; name=tm.spec
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=tm.spec
+
+1. Introduction
+This document specifies a Hypervisor API function to provide a way the guest
+can use Transactional Memory (TM). This specification provides description for
+a single function that the guest can use to change the way memory transactions
+are handled.
+
+2. Transactional Memory description:
+	TM is a way of providing concurrency control on a system. It serves
+	as an alternative to legacy locking mechanisms. This is implemented
+	as an extension of multi-processor cache coherency protocol. Using
+	this function guest can control when memory transactions need to be
+	executed based on architectural specifications and when to fail them
+	unconditionally. Modification is on a per virtual cpu basis. To alter
+	the way all the virtual cpus in a system handle memory transactions,
+	guest need to call this function once per virtual cpu. TM is enabled
+	by default. This API is called once during boot.
+
+3.  rk_tm_enable:
+	Trap#:		FAST_TRAP
+	Group#:		API_GROUP_TM (0x80)
+		Major#:	1
+		Minor#:	0
+	Function#:	TM_ENABLE (0x180)
+	arg0:		Zero or Non-Zero Value
+	ret0:		EOK:	Success
+			EINVAL:	Failure
+
+	This function is implemented only on processors that supports TM.
+	Therefore it is a part of CPU group. When enabled, memory
+	transactions fail or succeed based on architectural specification.
+	When disabled, all TM instructions are treated a legal instructions
+	but the memory transactions are failed unconditionally. To disable
+	a zero is passed and to enable a Non-zero value is passed in arg0.
+
+4. Interfaces:
+    4.1 Imported Interfaces:
+
+      Interface                 Classification	      Comments
+      ==============================================================
+      HV APIs                      Committed       FWARC/2005/116
+
+    4.2 Exported Interfaces:
+
+      Interface                   Classification	   Comments
+      ===================================================================
+      TM_ENABLE API function        Committed      Function 0x180, group
+                                              	    0x80 as defined in
+                                                    section 3
+
+
+--Boundary_(ID_DsMCXBST/vB3JvbS0t2dzQ)--
+
+From sacadmin Fri Sep 12 15:52:37 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8CMqa2r010971
+	for <fwarc@sac.sfbay.sun.com>; Fri, 12 Sep 2008 15:52:37 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m8CMqSDE016978
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 12 Sep 2008 23:52:35 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K7300501U7NRY00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 12 Sep 2008 15:52:35 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K7300LHRU7MS790@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 12 Sep 2008 15:52:34 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m8CMqYCQ011935	for
+ <fwarc@sun.com>; Fri, 12 Sep 2008 15:52:34 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K7300201TYKKH00@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 12 Sep 2008 15:52:34 -0700 (PDT)
+Received: from [129.150.32.24] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K73005ZXU7LQ680@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 12 Sep 2008 15:52:34 -0700 (PDT)
+Date: Fri, 12 Sep 2008 15:52:33 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Converting to Fast-track : 2008/398 - Hypervisor API for
+ Transactional Memory Configuration
+In-reply-to: <48C1788A.2040705@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: Shesha Sreenivasamurthy <Shesha.Sreenivasamurthy@sun.com>,
+        Prashanth Sreenivasa <pks@sun.com>
+Message-id: <48CAF2B1.1060107@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <48C1788A.2040705@sun.com>
+User-Agent: Thunderbird 2.0.0.16 (Windows/20080708)
+Status: RO
+Content-Length: 754
+
+Hitendra Zhangada wrote:
+> I am converting this case to fast-track case for Shesha Sreenivasamurthy.
+> This case defines a Hypervisor API function to provide a way the guest
+> can use Transactional Memory (TM).  See details in the attached
+> specification.
+>
+> This case will be approved for minor/micro/patch OS binding
+> and minor/micro binding for the firmware.
+>
+> The case timer is set to expire on September 12, 2008.
+>
+
+This case has timed out and is now approved.
+
+I am update IAM file and HV registry later.
+
+
+Thanks.
+
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+

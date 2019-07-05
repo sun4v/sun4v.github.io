@@ -1,0 +1,146 @@
+From sac-owner Wed Nov 25 10:20:16 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id nAPIKGwT016462
+	for <one-pager@sac.eng.sun.com>; Wed, 25 Nov 2009 10:20:16 -0800 (PST)
+Received: from sunmail2sca.sfbay.sun.com (localhost [127.0.0.1])
+	by sunmail2sca.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nAPIKFph023107
+	for <one-pager-not-2b-used-directly@sunmail2sca.sfbay.sun.com>; Wed, 25 Nov 2009 10:20:15 -0800 (PST)
+Received: (from noaccess@localhost)
+	by sunmail2sca.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit) id nAPIKFKM023106
+	for one-pager-not-2b-used-directly; Wed, 25 Nov 2009 10:20:15 -0800 (PST)
+X-Authentication-Warning: sunmail2sca.sfbay.sun.com: noaccess set sender to one-pager-request@sun.com using -f
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail2sca.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id nAPIKFjP023098
+	for <@sunmail2sca.sfbay.sun.com:one-pager@sun.com>; Wed, 25 Nov 2009 10:20:15 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KTO00H01G9RQ500@nwk-avmta-2.sfbay.sun.com> for one-pager@sun.com
+ (ORCPT one-pager@sun.com); Wed, 25 Nov 2009 10:20:15 -0800 (PST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KTO00FZPG9Q1120@nwk-avmta-2.sfbay.sun.com> for
+ one-pager@sun.com (ORCPT one-pager@sun.com); Wed,
+ 25 Nov 2009 10:20:15 -0800 (PST)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id nAPIKEBP019155	for
+ <one-pager@sun.com>; Wed, 25 Nov 2009 18:20:14 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KTO00K00G0WBR00@mail-amer.sun.com> for one-pager@sun.com
+ (ORCPT one-pager@sun.com); Wed, 25 Nov 2009 11:20:14 -0700 (MST)
+Received: from [129.148.9.82] ([unknown] [129.148.9.82])
+ by mail-amer.sun.com (Sun Java(tm) System Messaging Server 7u2-7.04 64bit
+ (built Jul  2 2009)) with ESMTPSA id <0KTO005Y7G9NVV60@mail-amer.sun.com> for
+ one-pager@sun.com (ORCPT one-pager@sun.com); Wed,
+ 25 Nov 2009 11:20:11 -0700 (MST)
+Date: Wed, 25 Nov 2009 13:20:10 -0500
+From: Tarl Neustaedter <Tarl.Neustaedter@sun.com>
+Subject: [2009/644]Updates to PRI for Static Direct IO (PCI-E Virtualization)
+Sender: Tarl.Neustaedter@sun.com
+To: one-pager@sun.com
+Message-id: <4B0D755A.7070105@sun.com>
+Organization: Sun Microsystems, Scalable Systems Group
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.24pre (X11/20091028)
+Status: RO
+Content-Length: 2230
+
+Template Version: @(#)onepager.txt 1.35 07/11/07 SMI
+Copyright 2009 Sun Microsystems
+
+1. Introduction
+   1.1. Project/Component Working Name:
+
+          Updates to PRI for Static Direct IO (PCI-E Virtualization)
+
+   1.2. Name of Document Author/Supplier:
+
+       Tarl Neustaedter
+
+   1.3. Date of This Document:
+
+       25-Nov-2009
+    
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+    1.4.1. The PAC or CPT you expect to review your project:
+
+    1.4.2. The ARC(s) you expect to review your project:
+
+           FWARC
+
+    1.4.3. The Director/VP who is "Sponsoring" this project:
+
+           Mike Sanfrantello
+
+    1.4.4. The name of your business unit:
+
+           SSG
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: chad.solomon@sun.com
+        1.5.2. Responsible Engineer: Tarl.Neustaedter@sun.com
+        1.5.3. Marketing Manager: Charlie.Ellison@sun.com
+    1.5.4. Interest List: iov_sdio@sun.com
+
+2. Project Summary
+   2.1. Project Description:
+
+       Several properties added to nodes in the PRI to support SDIO.
+
+4. Technical Description:
+    4.1. Details:
+
+         The property "assignable-path" is added to component nodes to 
+provide
+     the exact physical path of the assignable component. This path may
+     differ from the "path" property in the same node, due to differences
+     between information needed for FMA vs. information needed for the LDOMS
+     manager.
+
+     The property "rcid" is added to root-complex nodes to provide a unique
+     identifier for each root complex.
+
+     The property directio-capability is added to the firmware node to
+     indicate that this platform and firmware are capable of supporting
+     PCI-E virtualization.
+
+5. Reference Documents:
+
+         FWARC 2009/535 SDIO Loaned Device Node specification
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+
+       25-nov-2009
+
+   6.2. Cost of Effort:
+
+       N/A    
+
+   6.3. Cost of Capital Resources:
+
+       N/A
+
+   6.4. Product Approval Committee requested information:
+       6.4.1. Consolidation or Component Name:
+
+           Sysfw
+
+    6.4.7. Target RTI Date/Release:
+
+           SysFW 7.2 15-Jan-2010
+
+   6.5. ARC review type:
+
+        FastTrack
+
+   6.6. ARC Exposure:
+
+        open
+
+

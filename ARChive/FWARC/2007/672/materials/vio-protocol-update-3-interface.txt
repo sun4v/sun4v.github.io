@@ -1,0 +1,19 @@
+   Interface name                   Classification        Comments
+   -----------------------          --------------        --------
+
+   VIO protocol,                    Sun Private           FWARC/2006/195
+   Data structures,                                       FWARC/2006/583
+   and values						  FWARC/2007/602
+
+
+   Exported Interfaces
+   -------------------
+
+   Interface name                   Classification        Comments
+   -----------------------          --------------        --------
+
+   Virtual Disk req_id values:
+     VD_OP_RESET                    Sun Private           Section 1.1.5.18
+     VD_OP_GET_ACCESS               Sun Private           Section 1.1.5.19
+     VD_OP_SET_ACCESS               Sun Private           Section 1.1.5.20
+

@@ -1,0 +1,2304 @@
+From sacadmin Mon May  4 11:08:06 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n44I85kd021347
+	for <fwarc@sac.sfbay.sun.com>; Mon, 4 May 2009 11:08:05 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n44I83xa018110
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 4 May 2009 19:08:04 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KJ400I1DT1G4I00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 04 May 2009 11:08:04 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KJ400DUUT1FFZA0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 04 May 2009 11:08:03 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n44I82iA019503	for
+ <fwarc@sun.com>; Mon, 04 May 2009 18:08:02 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KJ400A00SJJNH00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 04 May 2009 12:08:02 -0600 (MDT)
+Received: from [192.168.100.100]
+ (c-24-62-104-201.hsd1.ma.comcast.net [24.62.104.201])
+ by mail-amer.sun.com (Sun Java(tm) System Messaging Server 7.0-5.01 64bit
+ (built Feb 19 2009)) with ESMTPSA id <0KJ400GKPT1BHH80@mail-amer.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Mon, 04 May 2009 12:08:00 -0600 (MDT)
+Date: Mon, 04 May 2009 14:07:56 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: FWARC/2009/281:  PRI clarifications for hostbridge id & PCI-E root
+ complex node
+Sender: Eric.Sharakan@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Message-id: <83B54329-A96E-462C-8ACD-D23CDCFE01CC@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.930.3)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 4665
+
+I'm sponsoring this fast track case for myself.  It clarifies two  
+interface additions made to the PRI in FWARC/2008/300.  First, the  
+meaning of the id property in the root complex component node is  
+augmented to include a binding to a root complex identifier (RCID)  
+which can be passed to Hypervisor for unambiguous identification of  
+each root complex by its platform-specific ID.
+
+Second, this case removes discrepancies introduced in FWARC/2008/300  
+with respect to incorrect usage of the topo-hc-name property values of  
+"hostbridge" vs. "pciexrc".
+
+A one pager, updated PRI specification (to version 1.8), and diffs  
+between version 1.7 and 1.8 of the specification are all available in  
+the case materials at:
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2009/281/materials/
+
+The one pager is also attached to the end of this message.
+
+Requested binding is for a minor/micro firmware release and minor/ 
+micro/patch OS release.
+
+This case times out on Monday 5/11/08.
+
+Thanks.
+
+-Eric
+
+1. Introduction
+    1.1. Project/Component Working Name:
+         PRI clarifications for hostbridge id & PCI-E root complex node
+
+    1.2. Name of Document Author/Supplier:
+         Eric Sharakan
+
+    1.3. Date of This Document:
+         5/4/2009
+
+    1.4. Name of Major Document Customer(s)/Consumer(s):
+         1.4.1. The PAC or CPT you expect to review your project:
+                 None.
+
+         1.4.2. The ARC(s) you expect to review your project:
+                 FWARC.
+
+         1.4.3. The Director/VP who is "Sponsoring" this project:
+                 Jerri-Ann Meyer
+
+         1.4.4. The name of your business unit:
+                 Software Group (SG)
+                         (Sparc Platform Software)
+
+    1.5. Email Aliases:
+         1.5.1. Responsible Manager: john.falkenthal@sun.com
+         1.5.2. Responsible Engineer: eric.sharakan@sun.com
+         1.5.3. Marketing Manager: duncan.hardie@sun.com
+         1.5.4. Interest List: ldoms-internal@sun.com
+
+2. Project Summary
+
+    2.1. Project Description:
+
+	This case provides additional constraints around the definition of
+	the "id" property in the hostbridge component node (i.e. the node whose
+	"topo-hc-name" property is "hostbridge") as defined in FWARC/2008/300.
+
+	In addition, this case removes discrepancies between the specification
+	of the "hostbridge" and "pciexrc" topo-hc-name values and their actual
+	use.
+
+    2.2. Risks and Assumptions:
+
+	It is assumed the new rules for the "id" property as defined in this
+	case will be in force for all PRIs conforming to FWARC/2008/300.
+
+
+3. Business Summary
+    3.1. Problem Area:
+
+    	Software needs to be able to interpret & intelligently act upon  
+the PRI
+	as it is enhanced & updated.
+
+    3.2. Market/Requester:
+         Supernova/RF platforms, to provide the necessary  
+infrastructure to
+	allow the LDom Manager to produce proper "rcid" property values to
+	Hypervisor.  Also, the specification needs to match the actual
+	implementation.
+
+    3.3. Business Justification:
+
+
+    3.4. Competitive Analysis:
+
+
+    3.5. Opportunity Window/Exposure:
+         Supernova Firmware.
+
+    3.6. How will you know when you are done?:
+         When the changes are integrated into the vBSC gates.
+
+4. Technical Description:
+
+    See updated PRI specification and diffs files including with the  
+case
+    materials.
+
+5. Reference Documents:
+   [1] Physical Resource Inventory (PRI) FWARC case
+	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/700/
+   [2] Updates to PRI structures
+	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2007/138/
+   [3] Sun4v FMA Platform Independent FMA Topology Enumeration
+	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2008/300
+   [4] Physical Resource Inventory (PRI) Specification
+   	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/Specifications/PRI_Specification.txt
+
+6. Resources and Schedule:
+    6.1. Projected Availability:	Q1FY10
+
+    6.2. Cost of Effort: 1 person month
+
+    6.3. Cost of Capital Resources: N/A
+
+    6.4. Product Approval Committee requested information:
+    	6.4.1. Consolidation or Component Name: vBSC, Solaris
+	6.4.3. Type of CPT Review and Approval expected: N/A
+         6.4.4. Project Boundary Conditions: N/A
+	6.4.5. Is this a necessary project for OEM agreements: No.
+	6.4.6. Notes: None
+	6.4.7. Target RTI Date/Release: TBD
+	6.4.8. Target Code Design Review Date: TBD
+	6.4.9. Update approval addition: N/A		
+
+    6.5. ARC review type: N/A
+		
+7. Prototype Availability:
+    7.1. Prototype Availability:
+	Q4FY09
+
+    7.2. Prototype Cost:
+       1 person month
+
+
+From sacadmin Mon May  4 16:37:05 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n44Nb4Mj028445
+	for <fwarc@sac.sfbay.sun.com>; Mon, 4 May 2009 16:37:05 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n44Nb3gn026116
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 5 May 2009 00:37:03 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KJ50010N89P7Z00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 04 May 2009 16:37:01 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KJ500H9G89OG5D0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 04 May 2009 16:37:00 -0700 (PDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n44NaxuP001537	for
+ <fwarc@sun.com>; Mon, 04 May 2009 16:36:59 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KJ5006007Z7GX00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 04 May 2009 16:36:59 -0700 (PDT)
+Received: from [129.153.85.39] ([unknown] [129.153.85.39])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ with ESMTPSA id <0KJ5001FP893BX50@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 04 May 2009 16:36:40 -0700 (PDT)
+Date: Mon, 04 May 2009 16:36:39 -0700
+From: Dave Isaman <Dave.Isaman@Sun.COM>
+Subject: Re: FWARC/2009/281:  PRI clarifications for hostbridge id & PCI-E root
+ complex node
+In-reply-to: <83B54329-A96E-462C-8ACD-D23CDCFE01CC@Sun.COM>
+Sender: Dave.Isaman@Sun.COM
+To: Eric Sharakan <Eric.Sharakan@Sun.COM>
+Cc: Firmware ARC <fwarc@Sun.COM>
+Reply-to: Dave.Isaman@Sun.COM
+Message-id: <49FF7C07.5050506@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <83B54329-A96E-462C-8ACD-D23CDCFE01CC@Sun.COM>
+User-Agent: Thunderbird 2.0.0.16 (X11/20080807)
+Status: RO
+Content-Length: 5253
+
+
+The new spec seems to say that:
+
+The "path" property is required on the "hostbridge" node.
+
+The "cfg-handle" property is required on every other iodevice node.
+
+Are these requirements reversed from what they should be?
+
+Dave
+
+
+On 05/04/09 11:07, Eric Sharakan wrote:
+> I'm sponsoring this fast track case for myself.  It clarifies two 
+> interface additions made to the PRI in FWARC/2008/300.  First, the 
+> meaning of the id property in the root complex component node is 
+> augmented to include a binding to a root complex identifier (RCID) which 
+> can be passed to Hypervisor for unambiguous identification of each root 
+> complex by its platform-specific ID.
+> 
+> Second, this case removes discrepancies introduced in FWARC/2008/300 
+> with respect to incorrect usage of the topo-hc-name property values of 
+> "hostbridge" vs. "pciexrc".
+> 
+> A one pager, updated PRI specification (to version 1.8), and diffs 
+> between version 1.7 and 1.8 of the specification are all available in 
+> the case materials at:
+> 
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/281/materials/
+> 
+> The one pager is also attached to the end of this message.
+> 
+> Requested binding is for a minor/micro firmware release and 
+> minor/micro/patch OS release.
+> 
+> This case times out on Monday 5/11/08.
+> 
+> Thanks.
+> 
+> -Eric
+> 
+> 1. Introduction
+>    1.1. Project/Component Working Name:
+>         PRI clarifications for hostbridge id & PCI-E root complex node
+> 
+>    1.2. Name of Document Author/Supplier:
+>         Eric Sharakan
+> 
+>    1.3. Date of This Document:
+>         5/4/2009
+> 
+>    1.4. Name of Major Document Customer(s)/Consumer(s):
+>         1.4.1. The PAC or CPT you expect to review your project:
+>                 None.
+> 
+>         1.4.2. The ARC(s) you expect to review your project:
+>                 FWARC.
+> 
+>         1.4.3. The Director/VP who is "Sponsoring" this project:
+>                 Jerri-Ann Meyer
+> 
+>         1.4.4. The name of your business unit:
+>                 Software Group (SG)
+>                         (Sparc Platform Software)
+> 
+>    1.5. Email Aliases:
+>         1.5.1. Responsible Manager: john.falkenthal@sun.com
+>         1.5.2. Responsible Engineer: eric.sharakan@sun.com
+>         1.5.3. Marketing Manager: duncan.hardie@sun.com
+>         1.5.4. Interest List: ldoms-internal@sun.com
+> 
+> 2. Project Summary
+> 
+>    2.1. Project Description:
+> 
+>     This case provides additional constraints around the definition of
+>     the "id" property in the hostbridge component node (i.e. the node whose
+>     "topo-hc-name" property is "hostbridge") as defined in FWARC/2008/300.
+> 
+>     In addition, this case removes discrepancies between the specification
+>     of the "hostbridge" and "pciexrc" topo-hc-name values and their actual
+>     use.
+> 
+>    2.2. Risks and Assumptions:
+> 
+>     It is assumed the new rules for the "id" property as defined in this
+>     case will be in force for all PRIs conforming to FWARC/2008/300.
+> 
+> 
+> 3. Business Summary
+>    3.1. Problem Area:
+> 
+>        Software needs to be able to interpret & intelligently act upon 
+> the PRI
+>     as it is enhanced & updated.
+> 
+>    3.2. Market/Requester:
+>         Supernova/RF platforms, to provide the necessary infrastructure to
+>     allow the LDom Manager to produce proper "rcid" property values to
+>     Hypervisor.  Also, the specification needs to match the actual
+>     implementation.
+> 
+>    3.3. Business Justification:
+> 
+> 
+>    3.4. Competitive Analysis:
+> 
+> 
+>    3.5. Opportunity Window/Exposure:
+>         Supernova Firmware.
+> 
+>    3.6. How will you know when you are done?:
+>         When the changes are integrated into the vBSC gates.
+> 
+> 4. Technical Description:
+> 
+>    See updated PRI specification and diffs files including with the case
+>    materials.
+> 
+> 5. Reference Documents:
+>   [1] Physical Resource Inventory (PRI) FWARC case
+>     http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/700/
+>   [2] Updates to PRI structures
+>     http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2007/138/
+>   [3] Sun4v FMA Platform Independent FMA Topology Enumeration
+>     http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2008/300
+>   [4] Physical Resource Inventory (PRI) Specification
+>       
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/Specifications/PRI_Specification.txt 
+> 
+> 
+> 6. Resources and Schedule:
+>    6.1. Projected Availability:    Q1FY10
+> 
+>    6.2. Cost of Effort: 1 person month
+> 
+>    6.3. Cost of Capital Resources: N/A
+> 
+>    6.4. Product Approval Committee requested information:
+>        6.4.1. Consolidation or Component Name: vBSC, Solaris
+>     6.4.3. Type of CPT Review and Approval expected: N/A
+>         6.4.4. Project Boundary Conditions: N/A
+>     6.4.5. Is this a necessary project for OEM agreements: No.
+>     6.4.6. Notes: None
+>     6.4.7. Target RTI Date/Release: TBD
+>     6.4.8. Target Code Design Review Date: TBD
+>     6.4.9. Update approval addition: N/A       
+> 
+>    6.5. ARC review type: N/A
+>        
+> 7. Prototype Availability:
+>    7.1. Prototype Availability:
+>     Q4FY09
+> 
+>    7.2. Prototype Cost:
+>       1 person month
+> 
+
+From sacadmin Tue May  5 06:29:12 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n45DTCGR003294
+	for <fwarc@sac.sfbay.sun.com>; Tue, 5 May 2009 06:29:12 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n45DTC6D013335
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 5 May 2009 06:29:12 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KJ600J01ASOY900@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 06:29:12 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KJ600EAWASNI970@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 06:29:11 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n45DTBVn002939	for
+ <fwarc@sun.com>; Tue, 05 May 2009 13:29:11 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KJ600J00AS9AM00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 07:29:11 -0600 (MDT)
+Received: from [192.168.100.100]
+ (c-24-62-104-201.hsd1.ma.comcast.net [24.62.104.201])
+ by mail-amer.sun.com (Sun Java(tm) System Messaging Server 7.0-5.01 64bit
+ (built Feb 19 2009)) with ESMTPSA id <0KJ600BZSASIHO40@mail-amer.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 05 May 2009 07:29:08 -0600 (MDT)
+Date: Tue, 05 May 2009 09:29:06 -0400
+From: Eric Sharakan <Eric.Sharakan@Sun.COM>
+Subject: Re: FWARC/2009/281:  PRI clarifications for hostbridge id & PCI-E root
+ complex node
+In-reply-to: <49FF7C07.5050506@Sun.COM>
+Sender: Eric.Sharakan@Sun.COM
+To: David Isaman <Dave.Isaman@Sun.COM>,
+        Scott Davenport <Scott.Davenport@Sun.COM>
+Cc: Firmware ARC <fwarc@Sun.COM>
+Message-id: <030E70DE-A430-4729-B3AE-9372A06274A5@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.930.3)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <83B54329-A96E-462C-8ACD-D23CDCFE01CC@Sun.COM>
+ <49FF7C07.5050506@Sun.COM>
+Status: RO
+Content-Length: 5611
+
+Dave, this is exactly what the spec said previously; the only  
+difference is that it had incorrectly named the hostbridge node  
+"pciexrc".  Still, it would be best to get confirmation that there  
+isn't something else that needs correction.  Scott, can you confirm  
+that the path & cfg-handle requirements are described correctly?
+
+Thanks.
+
+-Eric
+
+On May 4, 2009, at 7:36 PM, Dave Isaman wrote:
+
+>
+> The new spec seems to say that:
+>
+> The "path" property is required on the "hostbridge" node.
+>
+> The "cfg-handle" property is required on every other iodevice node.
+>
+> Are these requirements reversed from what they should be?
+>
+> Dave
+>
+>
+> On 05/04/09 11:07, Eric Sharakan wrote:
+>> I'm sponsoring this fast track case for myself.  It clarifies two  
+>> interface additions made to the PRI in FWARC/2008/300.  First, the  
+>> meaning of the id property in the root complex component node is  
+>> augmented to include a binding to a root complex identifier (RCID)  
+>> which can be passed to Hypervisor for unambiguous identification of  
+>> each root complex by its platform-specific ID.
+>> Second, this case removes discrepancies introduced in FWARC/ 
+>> 2008/300 with respect to incorrect usage of the topo-hc-name  
+>> property values of "hostbridge" vs. "pciexrc".
+>> A one pager, updated PRI specification (to version 1.8), and diffs  
+>> between version 1.7 and 1.8 of the specification are all available  
+>> in the case materials at:
+>> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/281/materials/
+>> The one pager is also attached to the end of this message.
+>> Requested binding is for a minor/micro firmware release and minor/ 
+>> micro/patch OS release.
+>> This case times out on Monday 5/11/08.
+>> Thanks.
+>> -Eric
+>> 1. Introduction
+>>   1.1. Project/Component Working Name:
+>>        PRI clarifications for hostbridge id & PCI-E root complex node
+>>   1.2. Name of Document Author/Supplier:
+>>        Eric Sharakan
+>>   1.3. Date of This Document:
+>>        5/4/2009
+>>   1.4. Name of Major Document Customer(s)/Consumer(s):
+>>        1.4.1. The PAC or CPT you expect to review your project:
+>>                None.
+>>        1.4.2. The ARC(s) you expect to review your project:
+>>                FWARC.
+>>        1.4.3. The Director/VP who is "Sponsoring" this project:
+>>                Jerri-Ann Meyer
+>>        1.4.4. The name of your business unit:
+>>                Software Group (SG)
+>>                        (Sparc Platform Software)
+>>   1.5. Email Aliases:
+>>        1.5.1. Responsible Manager: john.falkenthal@sun.com
+>>        1.5.2. Responsible Engineer: eric.sharakan@sun.com
+>>        1.5.3. Marketing Manager: duncan.hardie@sun.com
+>>        1.5.4. Interest List: ldoms-internal@sun.com
+>> 2. Project Summary
+>>   2.1. Project Description:
+>>    This case provides additional constraints around the definition of
+>>    the "id" property in the hostbridge component node (i.e. the  
+>> node whose
+>>    "topo-hc-name" property is "hostbridge") as defined in FWARC/ 
+>> 2008/300.
+>>    In addition, this case removes discrepancies between the  
+>> specification
+>>    of the "hostbridge" and "pciexrc" topo-hc-name values and their  
+>> actual
+>>    use.
+>>   2.2. Risks and Assumptions:
+>>    It is assumed the new rules for the "id" property as defined in  
+>> this
+>>    case will be in force for all PRIs conforming to FWARC/2008/300.
+>> 3. Business Summary
+>>   3.1. Problem Area:
+>>       Software needs to be able to interpret & intelligently act  
+>> upon the PRI
+>>    as it is enhanced & updated.
+>>   3.2. Market/Requester:
+>>        Supernova/RF platforms, to provide the necessary  
+>> infrastructure to
+>>    allow the LDom Manager to produce proper "rcid" property values to
+>>    Hypervisor.  Also, the specification needs to match the actual
+>>    implementation.
+>>   3.3. Business Justification:
+>>   3.4. Competitive Analysis:
+>>   3.5. Opportunity Window/Exposure:
+>>        Supernova Firmware.
+>>   3.6. How will you know when you are done?:
+>>        When the changes are integrated into the vBSC gates.
+>> 4. Technical Description:
+>>   See updated PRI specification and diffs files including with the  
+>> case
+>>   materials.
+>> 5. Reference Documents:
+>>  [1] Physical Resource Inventory (PRI) FWARC case
+>>    http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/700/
+>>  [2] Updates to PRI structures
+>>    http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2007/138/
+>>  [3] Sun4v FMA Platform Independent FMA Topology Enumeration
+>>    http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2008/300
+>>  [4] Physical Resource Inventory (PRI) Specification
+>>      http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/Specifications/PRI_Specification.txt 
+>>  6. Resources and Schedule:
+>>   6.1. Projected Availability:    Q1FY10
+>>   6.2. Cost of Effort: 1 person month
+>>   6.3. Cost of Capital Resources: N/A
+>>   6.4. Product Approval Committee requested information:
+>>       6.4.1. Consolidation or Component Name: vBSC, Solaris
+>>    6.4.3. Type of CPT Review and Approval expected: N/A
+>>        6.4.4. Project Boundary Conditions: N/A
+>>    6.4.5. Is this a necessary project for OEM agreements: No.
+>>    6.4.6. Notes: None
+>>    6.4.7. Target RTI Date/Release: TBD
+>>    6.4.8. Target Code Design Review Date: TBD
+>>    6.4.9. Update approval addition: N/A          6.5. ARC review  
+>> type: N/A
+>>       7. Prototype Availability:
+>>   7.1. Prototype Availability:
+>>    Q4FY09
+>>   7.2. Prototype Cost:
+>>      1 person month
+
+
+From sacadmin Tue May  5 09:08:27 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n45G8QUl006271
+	for <fwarc@sac.sfbay.sun.com>; Tue, 5 May 2009 09:08:26 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n45G8H80010074
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 5 May 2009 09:08:26 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KJ600H2II61GB00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 10:08:25 -0600 (MDT)
+Received: from dm-sfbay-02.sfbay.sun.com ([129.146.11.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KJ600342I5W6CC0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 10:08:20 -0600 (MDT)
+Received: from cronopios.sfbay.sun.com
+ (cronopios.SFBay.Sun.COM [129.146.96.110])	by dm-sfbay-02.sfbay.sun.com
+ (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n45G8JD9001676; Tue,
+ 05 May 2009 09:08:19 -0700 (PDT)
+Received: from cronopios.sfbay.sun.com (localhost [127.0.0.1])
+	by cronopios.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n45G0cwN018821;
+ Tue, 05 May 2009 09:00:38 -0700 (PDT)
+Received: (from rath@localhost)	by cronopios.sfbay.sun.com
+ (8.13.8+Sun/8.13.8/Submit) id n45G0cnY018820; Tue,
+ 05 May 2009 09:00:38 -0700 (PDT)
+Date: Tue, 05 May 2009 09:00:38 -0700
+From: Kevin Rathbun <Kevin.Rathbun@sun.com>
+Subject: Re: FWARC/2009/281:  PRI clarifications for hostbridge id & PCI-E	root
+ complex node
+In-reply-to: <030E70DE-A430-4729-B3AE-9372A06274A5@Sun.COM>
+To: Eric Sharakan <Eric.Sharakan@sun.com>
+Cc: David Isaman <Dave.Isaman@sun.com>,
+        Scott Davenport <Scott.Davenport@sun.com>,
+        Firmware ARC <fwarc@sun.com>
+Reply-to: Kevin Rathbun <Kevin.Rathbun@sun.com>
+Message-id: <20090505160038.GL7946@frylock>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+Content-disposition: inline
+X-PMX-Version: 5.4.1.325704
+References: <83B54329-A96E-462C-8ACD-D23CDCFE01CC@Sun.COM>
+ <49FF7C07.5050506@Sun.COM> <030E70DE-A430-4729-B3AE-9372A06274A5@Sun.COM>
+X-Authentication-warning: cronopios.sfbay.sun.com: rath set sender to
+ Kevin.Rathbun@Sun.COM using -f
+User-Agent: Mutt/1.5.17 (2008-01-17)
+Status: RO
+Content-Length: 6085
+
+On Tue, May 05, 2009 at 09:29:06AM -0400, Eric Sharakan wrote:
+> Dave, this is exactly what the spec said previously; the only difference 
+> is that it had incorrectly named the hostbridge node "pciexrc".  Still, 
+> it would be best to get confirmation that there isn't something else that 
+> needs correction.  Scott, can you confirm that the path & cfg-handle 
+> requirements are described correctly?
+
+The path prop is in the components tree consumed by fma/picl and can be
+optional/required on a node type basis. The cfg-handle prop is in the
+iodevices tree consumed by obp and is required on all nodes since that
+is how obp builds device tree. This is all proper.
+
+kvn
+
+>
+> Thanks.
+>
+> -Eric
+>
+> On May 4, 2009, at 7:36 PM, Dave Isaman wrote:
+>
+>>
+>> The new spec seems to say that:
+>>
+>> The "path" property is required on the "hostbridge" node.
+>>
+>> The "cfg-handle" property is required on every other iodevice node.
+>>
+>> Are these requirements reversed from what they should be?
+>>
+>> Dave
+>>
+>>
+>> On 05/04/09 11:07, Eric Sharakan wrote:
+>>> I'm sponsoring this fast track case for myself.  It clarifies two  
+>>> interface additions made to the PRI in FWARC/2008/300.  First, the  
+>>> meaning of the id property in the root complex component node is  
+>>> augmented to include a binding to a root complex identifier (RCID)  
+>>> which can be passed to Hypervisor for unambiguous identification of  
+>>> each root complex by its platform-specific ID.
+>>> Second, this case removes discrepancies introduced in FWARC/2008/300 
+>>> with respect to incorrect usage of the topo-hc-name property values 
+>>> of "hostbridge" vs. "pciexrc".
+>>> A one pager, updated PRI specification (to version 1.8), and diffs  
+>>> between version 1.7 and 1.8 of the specification are all available  
+>>> in the case materials at:
+>>> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/281/materials/
+>>> The one pager is also attached to the end of this message.
+>>> Requested binding is for a minor/micro firmware release and minor/ 
+>>> micro/patch OS release.
+>>> This case times out on Monday 5/11/08.
+>>> Thanks.
+>>> -Eric
+>>> 1. Introduction
+>>>   1.1. Project/Component Working Name:
+>>>        PRI clarifications for hostbridge id & PCI-E root complex node
+>>>   1.2. Name of Document Author/Supplier:
+>>>        Eric Sharakan
+>>>   1.3. Date of This Document:
+>>>        5/4/2009
+>>>   1.4. Name of Major Document Customer(s)/Consumer(s):
+>>>        1.4.1. The PAC or CPT you expect to review your project:
+>>>                None.
+>>>        1.4.2. The ARC(s) you expect to review your project:
+>>>                FWARC.
+>>>        1.4.3. The Director/VP who is "Sponsoring" this project:
+>>>                Jerri-Ann Meyer
+>>>        1.4.4. The name of your business unit:
+>>>                Software Group (SG)
+>>>                        (Sparc Platform Software)
+>>>   1.5. Email Aliases:
+>>>        1.5.1. Responsible Manager: john.falkenthal@sun.com
+>>>        1.5.2. Responsible Engineer: eric.sharakan@sun.com
+>>>        1.5.3. Marketing Manager: duncan.hardie@sun.com
+>>>        1.5.4. Interest List: ldoms-internal@sun.com
+>>> 2. Project Summary
+>>>   2.1. Project Description:
+>>>    This case provides additional constraints around the definition of
+>>>    the "id" property in the hostbridge component node (i.e. the node 
+>>> whose
+>>>    "topo-hc-name" property is "hostbridge") as defined in FWARC/ 
+>>> 2008/300.
+>>>    In addition, this case removes discrepancies between the  
+>>> specification
+>>>    of the "hostbridge" and "pciexrc" topo-hc-name values and their  
+>>> actual
+>>>    use.
+>>>   2.2. Risks and Assumptions:
+>>>    It is assumed the new rules for the "id" property as defined in  
+>>> this
+>>>    case will be in force for all PRIs conforming to FWARC/2008/300.
+>>> 3. Business Summary
+>>>   3.1. Problem Area:
+>>>       Software needs to be able to interpret & intelligently act  
+>>> upon the PRI
+>>>    as it is enhanced & updated.
+>>>   3.2. Market/Requester:
+>>>        Supernova/RF platforms, to provide the necessary  
+>>> infrastructure to
+>>>    allow the LDom Manager to produce proper "rcid" property values to
+>>>    Hypervisor.  Also, the specification needs to match the actual
+>>>    implementation.
+>>>   3.3. Business Justification:
+>>>   3.4. Competitive Analysis:
+>>>   3.5. Opportunity Window/Exposure:
+>>>        Supernova Firmware.
+>>>   3.6. How will you know when you are done?:
+>>>        When the changes are integrated into the vBSC gates.
+>>> 4. Technical Description:
+>>>   See updated PRI specification and diffs files including with the  
+>>> case
+>>>   materials.
+>>> 5. Reference Documents:
+>>>  [1] Physical Resource Inventory (PRI) FWARC case
+>>>    http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/700/
+>>>  [2] Updates to PRI structures
+>>>    http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2007/138/
+>>>  [3] Sun4v FMA Platform Independent FMA Topology Enumeration
+>>>    http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2008/300
+>>>  [4] Physical Resource Inventory (PRI) Specification
+>>>      
+>>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/Specifications/PRI_Specification.txt 
+>>>  6. Resources and Schedule:
+>>>   6.1. Projected Availability:    Q1FY10
+>>>   6.2. Cost of Effort: 1 person month
+>>>   6.3. Cost of Capital Resources: N/A
+>>>   6.4. Product Approval Committee requested information:
+>>>       6.4.1. Consolidation or Component Name: vBSC, Solaris
+>>>    6.4.3. Type of CPT Review and Approval expected: N/A
+>>>        6.4.4. Project Boundary Conditions: N/A
+>>>    6.4.5. Is this a necessary project for OEM agreements: No.
+>>>    6.4.6. Notes: None
+>>>    6.4.7. Target RTI Date/Release: TBD
+>>>    6.4.8. Target Code Design Review Date: TBD
+>>>    6.4.9. Update approval addition: N/A          6.5. ARC review  
+>>> type: N/A
+>>>       7. Prototype Availability:
+>>>   7.1. Prototype Availability:
+>>>    Q4FY09
+>>>   7.2. Prototype Cost:
+>>>      1 person month
+>
+
+From sacadmin Tue May  5 09:43:55 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n45GhspY007204
+	for <fwarc@sac.sfbay.sun.com>; Tue, 5 May 2009 09:43:54 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n45Ghg0v001031
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 5 May 2009 09:43:53 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KJ600L1PJT51H00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 10:43:53 -0600 (MDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KJ60034VJT46HE0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 10:43:53 -0600 (MDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n45GhqAY011352	for
+ <fwarc@sun.com>; Tue, 05 May 2009 09:43:52 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KJ600J00GW3WA00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 09:43:52 -0700 (PDT)
+Received: from [10.40.20.6] ([unknown] [76.212.145.98])
+ by fe-sfbay-10.sun.com (Sun Java(tm) System Messaging Server 7.0-5.01 64bit
+ (built Feb 19 2009)) with ESMTPSA id <0KJ6007NGJSY4440@fe-sfbay-10.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 05 May 2009 09:43:47 -0700 (PDT)
+Date: Tue, 05 May 2009 09:43:36 -0700
+From: Scott Davenport <Scott.Davenport@sun.com>
+Subject: Re: FWARC/2009/281:  PRI clarifications for hostbridge id & PCI-E root
+ complex node
+In-reply-to: <030E70DE-A430-4729-B3AE-9372A06274A5@Sun.COM>
+Sender: Scott.Davenport@sun.com
+To: Eric Sharakan <Eric.Sharakan@sun.com>
+Cc: David Isaman <Dave.Isaman@sun.com>, Firmware ARC <fwarc@sun.com>,
+        Tom.Pothier@sun.com
+Reply-to: Scott.Davenport@sun.com
+Message-id: <1241541816.1317.19.camel@prax>
+Organization: Sun Microsystems
+MIME-version: 1.0
+X-Mailer: Evolution 2.24.2
+Content-type: text/plain; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <83B54329-A96E-462C-8ACD-D23CDCFE01CC@Sun.COM>
+ <49FF7C07.5050506@Sun.COM> <030E70DE-A430-4729-B3AE-9372A06274A5@Sun.COM>
+Status: RO
+Content-Length: 9433
+
+
+On Tue, 2009-05-05 at 09:29 -0400, Eric Sharakan wrote:
+> Dave, this is exactly what the spec said previously; the only  
+> difference is that it had incorrectly named the hostbridge node  
+> "pciexrc".  Still, it would be best to get confirmation that there  
+> isn't something else that needs correction.  Scott, can you confirm  
+> that the path & cfg-handle requirements are described correctly?
+
+[cc'ing Tom Pothier as a 2nd pair of eyes]
+
+I'm looking at:
+ http://sac.eng/arc/FWARC/2009/281/materials/PRI_Specification_1.8.txt
+
+Including excerpts below, my comments prefixed with SD>. There's a 
+little cleanup to be done.
+
+Thanks,
+-scott
+
+1.1.3.1  Type-specific property requirements
+...
+Any type of node may have an id property. The id property must be unique within
+a set of nodes with the same topo-hc-name value. In addition, for root complex
+IO nodes (i.e. nodes whose topo-hc-name value is "hostbridge"), the id property
+is further constrained to have whatever platform-specific binding is
+required for this value to denote a unique and persistent root complex
+ID. This property is required for nodes that do *not* set the topo-skip
+property. Grandfather clause: 'id' is *always* required for strand, mem-board,
+and cpu-board nodes.
+...
+	SD> Since this case is cleaning up wording, the 'id' property
+	SD> must be both unique within a set of nodes sharing a
+	SD> 'topo-hc-name' value *and* immutable across system resets.
+	SD> That latter part is missing presently. Please add it.
+...
+Nodes representing a root complex must use a topo-hc-name of "hostbridge" and
+set the path property. Previous requirements for setting the cfg-handle
+property for a node representing a root complex is now deprecated.
+
+Nodes representing a root port must use a topo-hc-name of "pciexrc".  This
+apparent misnomer is intentional, as it follows the convention established on
+the x64 platforms.
+...
+	SD> This is accurate.
+...
+1.3.9  path Property
+
+Name            Tag             Required
+----            ---             --------
+path            PROP_STR        yes
+
+Description
+-----------
+This property contains the canonical path of an io device, composed of its
+full device path with device names removed. It is required on nodes where
+the topo-hc-name property is set to "hostbridge".
+...
+	SD> This is acccurate.
+...
+1.12.1 Sun4v to PCI Express root nexus device
+
+Name            Tag             Required
+----            ---             --------
+cfg-handle	PROP_VAL	Yes
+
+Description
+-----------
+A 64 bit value that is unique to this device on the sun4v bus.
+
+This property is required except for nodes where topo-hc-name="hostbridge"....
+...
+	SD> This doesn't make sense. 1.12.1 is talking about the
+	SD> IO Device node, not the components node. So topo-hc-name
+	SD> has no context in the IO Device node. I believe the
+	SD> wording from "except for..." onward can be stricken.
+...
+Name            Tag             Required
+----            ---             --------
+cfg-handle	PROP_VAL	Yes
+
+Description
+-----------
+A 64 bit value that is unique to this device on the sun4v bus.
+
+This property is required except for nodes where topo-hc-name="hostbridge".
+...
+	SD> The property is always required, so the "This property..." sentence
+	SD> is contradictory. And, this section of the spec is talking about
+	SD> the IO Device node - topo-hc-name has no context. Delete 2nd sentence.
+...
+Name            Tag             Required
+----            ---             --------
+path		PROP_STR	Yes
+
+Description
+-----------
+A string which contains the address of, and is unique to, this device on the
+sun4v bus.
+
+This property is required for nodes where topo-hc-name="hostbridge", otherwise
+it is not required.
+...
+	SD> The property is always required, so the "This property..." sentence
+	SD> is contradictory. And, this section of the spec is talking about
+	SD> the IO Device node - topo-hc-name has no context. Delete 2nd sentence.
+...
+
+
+
+
+> 
+> On May 4, 2009, at 7:36 PM, Dave Isaman wrote:
+> 
+> >
+> > The new spec seems to say that:
+> >
+> > The "path" property is required on the "hostbridge" node.
+> >
+> > The "cfg-handle" property is required on every other iodevice node.
+> >
+> > Are these requirements reversed from what they should be?
+> >
+> > Dave
+> >
+> >
+> > On 05/04/09 11:07, Eric Sharakan wrote:
+> >> I'm sponsoring this fast track case for myself.  It clarifies two  
+> >> interface additions made to the PRI in FWARC/2008/300.  First, the  
+> >> meaning of the id property in the root complex component node is  
+> >> augmented to include a binding to a root complex identifier (RCID)  
+> >> which can be passed to Hypervisor for unambiguous identification of  
+> >> each root complex by its platform-specific ID.
+> >> Second, this case removes discrepancies introduced in FWARC/ 
+> >> 2008/300 with respect to incorrect usage of the topo-hc-name  
+> >> property values of "hostbridge" vs. "pciexrc".
+> >> A one pager, updated PRI specification (to version 1.8), and diffs  
+> >> between version 1.7 and 1.8 of the specification are all available  
+> >> in the case materials at:
+> >> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/281/materials/
+> >> The one pager is also attached to the end of this message.
+> >> Requested binding is for a minor/micro firmware release and minor/ 
+> >> micro/patch OS release.
+> >> This case times out on Monday 5/11/08.
+> >> Thanks.
+> >> -Eric
+> >> 1. Introduction
+> >>   1.1. Project/Component Working Name:
+> >>        PRI clarifications for hostbridge id & PCI-E root complex node
+> >>   1.2. Name of Document Author/Supplier:
+> >>        Eric Sharakan
+> >>   1.3. Date of This Document:
+> >>        5/4/2009
+> >>   1.4. Name of Major Document Customer(s)/Consumer(s):
+> >>        1.4.1. The PAC or CPT you expect to review your project:
+> >>                None.
+> >>        1.4.2. The ARC(s) you expect to review your project:
+> >>                FWARC.
+> >>        1.4.3. The Director/VP who is "Sponsoring" this project:
+> >>                Jerri-Ann Meyer
+> >>        1.4.4. The name of your business unit:
+> >>                Software Group (SG)
+> >>                        (Sparc Platform Software)
+> >>   1.5. Email Aliases:
+> >>        1.5.1. Responsible Manager: john.falkenthal@sun.com
+> >>        1.5.2. Responsible Engineer: eric.sharakan@sun.com
+> >>        1.5.3. Marketing Manager: duncan.hardie@sun.com
+> >>        1.5.4. Interest List: ldoms-internal@sun.com
+> >> 2. Project Summary
+> >>   2.1. Project Description:
+> >>    This case provides additional constraints around the definition of
+> >>    the "id" property in the hostbridge component node (i.e. the  
+> >> node whose
+> >>    "topo-hc-name" property is "hostbridge") as defined in FWARC/ 
+> >> 2008/300.
+> >>    In addition, this case removes discrepancies between the  
+> >> specification
+> >>    of the "hostbridge" and "pciexrc" topo-hc-name values and their  
+> >> actual
+> >>    use.
+> >>   2.2. Risks and Assumptions:
+> >>    It is assumed the new rules for the "id" property as defined in  
+> >> this
+> >>    case will be in force for all PRIs conforming to FWARC/2008/300.
+> >> 3. Business Summary
+> >>   3.1. Problem Area:
+> >>       Software needs to be able to interpret & intelligently act  
+> >> upon the PRI
+> >>    as it is enhanced & updated.
+> >>   3.2. Market/Requester:
+> >>        Supernova/RF platforms, to provide the necessary  
+> >> infrastructure to
+> >>    allow the LDom Manager to produce proper "rcid" property values to
+> >>    Hypervisor.  Also, the specification needs to match the actual
+> >>    implementation.
+> >>   3.3. Business Justification:
+> >>   3.4. Competitive Analysis:
+> >>   3.5. Opportunity Window/Exposure:
+> >>        Supernova Firmware.
+> >>   3.6. How will you know when you are done?:
+> >>        When the changes are integrated into the vBSC gates.
+> >> 4. Technical Description:
+> >>   See updated PRI specification and diffs files including with the  
+> >> case
+> >>   materials.
+> >> 5. Reference Documents:
+> >>  [1] Physical Resource Inventory (PRI) FWARC case
+> >>    http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/700/
+> >>  [2] Updates to PRI structures
+> >>    http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2007/138/
+> >>  [3] Sun4v FMA Platform Independent FMA Topology Enumeration
+> >>    http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2008/300
+> >>  [4] Physical Resource Inventory (PRI) Specification
+> >>      http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/Specifications/PRI_Specification.txt 
+> >>  6. Resources and Schedule:
+> >>   6.1. Projected Availability:    Q1FY10
+> >>   6.2. Cost of Effort: 1 person month
+> >>   6.3. Cost of Capital Resources: N/A
+> >>   6.4. Product Approval Committee requested information:
+> >>       6.4.1. Consolidation or Component Name: vBSC, Solaris
+> >>    6.4.3. Type of CPT Review and Approval expected: N/A
+> >>        6.4.4. Project Boundary Conditions: N/A
+> >>    6.4.5. Is this a necessary project for OEM agreements: No.
+> >>    6.4.6. Notes: None
+> >>    6.4.7. Target RTI Date/Release: TBD
+> >>    6.4.8. Target Code Design Review Date: TBD
+> >>    6.4.9. Update approval addition: N/A          6.5. ARC review  
+> >> type: N/A
+> >>       7. Prototype Availability:
+> >>   7.1. Prototype Availability:
+> >>    Q4FY09
+> >>   7.2. Prototype Cost:
+> >>      1 person month
+> 
+
+
+From sacadmin Tue May  5 11:44:43 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n45IigmO011450
+	for <fwarc@sac.sfbay.sun.com>; Tue, 5 May 2009 11:44:42 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n45IiXDe027186
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 5 May 2009 19:44:41 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KJ600E0PPEH1W00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 11:44:41 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KJ60047WPEFOBF0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 11:44:40 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n45Iideq024350	for
+ <fwarc@sun.com>; Tue, 05 May 2009 18:44:39 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KJ600600PDWA000@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 12:44:39 -0600 (MDT)
+Received: from dhcp-ubur03-180-17.East.Sun.COM ([unknown] [129.148.180.17])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ with ESMTPSA id <0KJ600E1OPDTAAB0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 12:44:19 -0600 (MDT)
+Date: Tue, 05 May 2009 14:44:15 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: FWARC/2009/281:  PRI clarifications for hostbridge id & PCI-E root
+ complex node
+In-reply-to: <1241541816.1317.19.camel@prax>
+Sender: Eric.Sharakan@sun.com
+To: Scott.Davenport@sun.com
+Cc: David Isaman <Dave.Isaman@sun.com>, Firmware ARC <fwarc@sun.com>,
+        Tom.Pothier@sun.com
+Message-id: <24B5CD44-3B3C-4C08-AF92-43C61047E655@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.930.3)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <83B54329-A96E-462C-8ACD-D23CDCFE01CC@Sun.COM>
+ <49FF7C07.5050506@Sun.COM> <030E70DE-A430-4729-B3AE-9372A06274A5@Sun.COM>
+ <1241541816.1317.19.camel@prax>
+Status: RO
+Content-Length: 1043
+
+On May 5, 2009, at 12:43 PM, Scott Davenport wrote:
+
+>
+> On Tue, 2009-05-05 at 09:29 -0400, Eric Sharakan wrote:
+>> Dave, this is exactly what the spec said previously; the only
+>> difference is that it had incorrectly named the hostbridge node
+>> "pciexrc".  Still, it would be best to get confirmation that there
+>> isn't something else that needs correction.  Scott, can you confirm
+>> that the path & cfg-handle requirements are described correctly?
+>
+> [cc'ing Tom Pothier as a 2nd pair of eyes]
+>
+> I'm looking at:
+> http://sac.eng/arc/FWARC/2009/281/materials/PRI_Specification_1.8.txt
+>
+> Including excerpts below, my comments prefixed with SD>. There's a
+> little cleanup to be done.
+>
+> Thanks,
+> -scott
+
+Thanks for the clarifications Scott!  I've made the necessary edits to  
+the specification, and also updated the 1-pager & diffs file in the  
+case materials directory.  Also, materials are now under SCCS version  
+control.
+
+Since these are relatively minor clarifications, I am keeping the  
+timer set to 5/11.
+
+Thanks.
+
+-Eric
+
+From sacadmin Tue May  5 12:16:47 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n45JGlvM008975
+	for <fwarc@sac.sfbay.sun.com>; Tue, 5 May 2009 12:16:47 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n45JGj4R024643
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 5 May 2009 12:16:47 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KJ600C0TQVYUQ00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 13:16:46 -0600 (MDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KJ600M98QVYT590@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 13:16:46 -0600 (MDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n45JGk2M028635	for
+ <fwarc@sun.com>; Tue, 05 May 2009 19:16:46 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KJ600J00QLRHA00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 13:16:45 -0600 (MDT)
+Received: from [129.148.9.177] ([unknown] [129.148.9.177])
+ by mail-amer.sun.com (Sun Java(tm) System Messaging Server 7.0-5.01 64bit
+ (built Feb 19 2009)) with ESMTPSA id <0KJ600I2AQVOV4E0@mail-amer.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 05 May 2009 13:16:38 -0600 (MDT)
+Date: Tue, 05 May 2009 15:16:36 -0400
+From: Tom Pothier <Tom.Pothier@sun.com>
+Subject: Re: FWARC/2009/281:  PRI clarifications for hostbridge id & PCI-E root
+ complex node
+In-reply-to: <1241541816.1317.19.camel@prax>
+Sender: Tom.Pothier@sun.com
+To: Scott.Davenport@sun.com
+Cc: Eric Sharakan <Eric.Sharakan@sun.com>, David Isaman <Dave.Isaman@sun.com>,
+        Firmware ARC <fwarc@sun.com>
+Message-id: <4A009094.1090502@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_MuXukVMAK8OKdcaajI1DBw)"
+X-PMX-Version: 5.4.1.325704
+References: <83B54329-A96E-462C-8ACD-D23CDCFE01CC@Sun.COM>
+ <49FF7C07.5050506@Sun.COM> <030E70DE-A430-4729-B3AE-9372A06274A5@Sun.COM>
+ <1241541816.1317.19.camel@prax>
+User-Agent: Thunderbird 2.0.0.19 (X11/20090110)
+Status: RO
+Content-Length: 21163
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_MuXukVMAK8OKdcaajI1DBw)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+On 05/05/09 12:43, Scott Davenport wrote:
+> On Tue, 2009-05-05 at 09:29 -0400, Eric Sharakan wrote:
+>   
+>> Dave, this is exactly what the spec said previously; the only  
+>> difference is that it had incorrectly named the hostbridge node  
+>> "pciexrc".  Still, it would be best to get confirmation that there  
+>> isn't something else that needs correction.  Scott, can you confirm  
+>> that the path & cfg-handle requirements are described correctly?
+>>     
+>
+> [cc'ing Tom Pothier as a 2nd pair of eyes]
+>
+> I'm looking at:
+>  http://sac.eng/arc/FWARC/2009/281/materials/PRI_Specification_1.8.txt
+>
+> Including excerpts below, my comments prefixed with SD>. There's a 
+> little cleanup to be done.
+>
+> Thanks,
+> -scott
+>
+> 1.1.3.1  Type-specific property requirements
+> ...
+> Any type of node may have an id property. The id property must be unique within
+> a set of nodes with the same topo-hc-name value. In addition, for root complex
+> IO nodes (i.e. nodes whose topo-hc-name value is "hostbridge"), the id property
+> is further constrained to have whatever platform-specific binding is
+> required for this value to denote a unique and persistent root complex
+> ID. This property is required for nodes that do *not* set the topo-skip
+> property. Grandfather clause: 'id' is *always* required for strand, mem-board,
+> and cpu-board nodes.
+> ...
+> 	SD> Since this case is cleaning up wording, the 'id' property
+> 	SD> must be both unique within a set of nodes sharing a
+> 	SD> 'topo-hc-name' value *and* immutable across system resets.
+> 	SD> That latter part is missing presently. Please add it.
+> ...
+> Nodes representing a root complex must use a topo-hc-name of "hostbridge" and
+> set the path property. Previous requirements for setting the cfg-handle
+> property for a node representing a root complex is now deprecated.
+>
+> Nodes representing a root port must use a topo-hc-name of "pciexrc".  This
+> apparent misnomer is intentional, as it follows the convention established on
+> the x64 platforms.
+> ...
+> 	SD> This is accurate.
+>   
+
+What happens if the root complex and root port are the same device?
+> ...
+> 1.3.9  path Property
+>
+> Name            Tag             Required
+> ----            ---             --------
+> path            PROP_STR        yes
+>
+> Description
+> -----------
+> This property contains the canonical path of an io device, composed of its
+> full device path with device names removed. It is required on nodes where
+> the topo-hc-name property is set to "hostbridge".
+> ...
+> 	SD> This is acccurate.
+>   
+
+Shouldn't path be required for "hostbridge" and "pciexrc"?
+
+-t
+> ...
+> 1.12.1 Sun4v to PCI Express root nexus device
+>
+> Name            Tag             Required
+> ----            ---             --------
+> cfg-handle	PROP_VAL	Yes
+>
+> Description
+> -----------
+> A 64 bit value that is unique to this device on the sun4v bus.
+>
+> This property is required except for nodes where topo-hc-name="hostbridge"....
+> ...
+> 	SD> This doesn't make sense. 1.12.1 is talking about the
+> 	SD> IO Device node, not the components node. So topo-hc-name
+> 	SD> has no context in the IO Device node. I believe the
+> 	SD> wording from "except for..." onward can be stricken.
+> ...
+> Name            Tag             Required
+> ----            ---             --------
+> cfg-handle	PROP_VAL	Yes
+>
+> Description
+> -----------
+> A 64 bit value that is unique to this device on the sun4v bus.
+>
+> This property is required except for nodes where topo-hc-name="hostbridge".
+> ...
+> 	SD> The property is always required, so the "This property..." sentence
+> 	SD> is contradictory. And, this section of the spec is talking about
+> 	SD> the IO Device node - topo-hc-name has no context. Delete 2nd sentence.
+> ...
+> Name            Tag             Required
+> ----            ---             --------
+> path		PROP_STR	Yes
+>
+> Description
+> -----------
+> A string which contains the address of, and is unique to, this device on the
+> sun4v bus.
+>
+> This property is required for nodes where topo-hc-name="hostbridge", otherwise
+> it is not required.
+> ...
+> 	SD> The property is always required, so the "This property..." sentence
+> 	SD> is contradictory. And, this section of the spec is talking about
+> 	SD> the IO Device node - topo-hc-name has no context. Delete 2nd sentence.
+> ...
+>
+>
+>
+>
+>   
+>> On May 4, 2009, at 7:36 PM, Dave Isaman wrote:
+>>
+>>     
+>>> The new spec seems to say that:
+>>>
+>>> The "path" property is required on the "hostbridge" node.
+>>>
+>>> The "cfg-handle" property is required on every other iodevice node.
+>>>
+>>> Are these requirements reversed from what they should be?
+>>>
+>>> Dave
+>>>
+>>>
+>>> On 05/04/09 11:07, Eric Sharakan wrote:
+>>>       
+>>>> I'm sponsoring this fast track case for myself.  It clarifies two  
+>>>> interface additions made to the PRI in FWARC/2008/300.  First, the  
+>>>> meaning of the id property in the root complex component node is  
+>>>> augmented to include a binding to a root complex identifier (RCID)  
+>>>> which can be passed to Hypervisor for unambiguous identification of  
+>>>> each root complex by its platform-specific ID.
+>>>> Second, this case removes discrepancies introduced in FWARC/ 
+>>>> 2008/300 with respect to incorrect usage of the topo-hc-name  
+>>>> property values of "hostbridge" vs. "pciexrc".
+>>>> A one pager, updated PRI specification (to version 1.8), and diffs  
+>>>> between version 1.7 and 1.8 of the specification are all available  
+>>>> in the case materials at:
+>>>> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/281/materials/
+>>>> The one pager is also attached to the end of this message.
+>>>> Requested binding is for a minor/micro firmware release and minor/ 
+>>>> micro/patch OS release.
+>>>> This case times out on Monday 5/11/08.
+>>>> Thanks.
+>>>> -Eric
+>>>> 1. Introduction
+>>>>   1.1. Project/Component Working Name:
+>>>>        PRI clarifications for hostbridge id & PCI-E root complex node
+>>>>   1.2. Name of Document Author/Supplier:
+>>>>        Eric Sharakan
+>>>>   1.3. Date of This Document:
+>>>>        5/4/2009
+>>>>   1.4. Name of Major Document Customer(s)/Consumer(s):
+>>>>        1.4.1. The PAC or CPT you expect to review your project:
+>>>>                None.
+>>>>        1.4.2. The ARC(s) you expect to review your project:
+>>>>                FWARC.
+>>>>        1.4.3. The Director/VP who is "Sponsoring" this project:
+>>>>                Jerri-Ann Meyer
+>>>>        1.4.4. The name of your business unit:
+>>>>                Software Group (SG)
+>>>>                        (Sparc Platform Software)
+>>>>   1.5. Email Aliases:
+>>>>        1.5.1. Responsible Manager: john.falkenthal@sun.com
+>>>>        1.5.2. Responsible Engineer: eric.sharakan@sun.com
+>>>>        1.5.3. Marketing Manager: duncan.hardie@sun.com
+>>>>        1.5.4. Interest List: ldoms-internal@sun.com
+>>>> 2. Project Summary
+>>>>   2.1. Project Description:
+>>>>    This case provides additional constraints around the definition of
+>>>>    the "id" property in the hostbridge component node (i.e. the  
+>>>> node whose
+>>>>    "topo-hc-name" property is "hostbridge") as defined in FWARC/ 
+>>>> 2008/300.
+>>>>    In addition, this case removes discrepancies between the  
+>>>> specification
+>>>>    of the "hostbridge" and "pciexrc" topo-hc-name values and their  
+>>>> actual
+>>>>    use.
+>>>>   2.2. Risks and Assumptions:
+>>>>    It is assumed the new rules for the "id" property as defined in  
+>>>> this
+>>>>    case will be in force for all PRIs conforming to FWARC/2008/300.
+>>>> 3. Business Summary
+>>>>   3.1. Problem Area:
+>>>>       Software needs to be able to interpret & intelligently act  
+>>>> upon the PRI
+>>>>    as it is enhanced & updated.
+>>>>   3.2. Market/Requester:
+>>>>        Supernova/RF platforms, to provide the necessary  
+>>>> infrastructure to
+>>>>    allow the LDom Manager to produce proper "rcid" property values to
+>>>>    Hypervisor.  Also, the specification needs to match the actual
+>>>>    implementation.
+>>>>   3.3. Business Justification:
+>>>>   3.4. Competitive Analysis:
+>>>>   3.5. Opportunity Window/Exposure:
+>>>>        Supernova Firmware.
+>>>>   3.6. How will you know when you are done?:
+>>>>        When the changes are integrated into the vBSC gates.
+>>>> 4. Technical Description:
+>>>>   See updated PRI specification and diffs files including with the  
+>>>> case
+>>>>   materials.
+>>>> 5. Reference Documents:
+>>>>  [1] Physical Resource Inventory (PRI) FWARC case
+>>>>    http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/700/
+>>>>  [2] Updates to PRI structures
+>>>>    http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2007/138/
+>>>>  [3] Sun4v FMA Platform Independent FMA Topology Enumeration
+>>>>    http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2008/300
+>>>>  [4] Physical Resource Inventory (PRI) Specification
+>>>>      http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/Specifications/PRI_Specification.txt 
+>>>>  6. Resources and Schedule:
+>>>>   6.1. Projected Availability:    Q1FY10
+>>>>   6.2. Cost of Effort: 1 person month
+>>>>   6.3. Cost of Capital Resources: N/A
+>>>>   6.4. Product Approval Committee requested information:
+>>>>       6.4.1. Consolidation or Component Name: vBSC, Solaris
+>>>>    6.4.3. Type of CPT Review and Approval expected: N/A
+>>>>        6.4.4. Project Boundary Conditions: N/A
+>>>>    6.4.5. Is this a necessary project for OEM agreements: No.
+>>>>    6.4.6. Notes: None
+>>>>    6.4.7. Target RTI Date/Release: TBD
+>>>>    6.4.8. Target Code Design Review Date: TBD
+>>>>    6.4.9. Update approval addition: N/A          6.5. ARC review  
+>>>> type: N/A
+>>>>       7. Prototype Availability:
+>>>>   7.1. Prototype Availability:
+>>>>    Q4FY09
+>>>>   7.2. Prototype Cost:
+>>>>      1 person month
+>>>>         
+>
+>   
+
+--Boundary_(ID_MuXukVMAK8OKdcaajI1DBw)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+On 05/05/09 12:43, Scott Davenport wrote:
+<blockquote cite="mid:1241541816.1317.19.camel@prax" type="cite">
+  <pre wrap="">On Tue, 2009-05-05 at 09:29 -0400, Eric Sharakan wrote:
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">Dave, this is exactly what the spec said previously; the only  
+difference is that it had incorrectly named the hostbridge node  
+"pciexrc".  Still, it would be best to get confirmation that there  
+isn't something else that needs correction.  Scott, can you confirm  
+that the path &amp; cfg-handle requirements are described correctly?
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+[cc'ing Tom Pothier as a 2nd pair of eyes]
+
+I'm looking at:
+ <a class="moz-txt-link-freetext" href="http://sac.eng/arc/FWARC/2009/281/materials/PRI_Specification_1.8.txt">http://sac.eng/arc/FWARC/2009/281/materials/PRI_Specification_1.8.txt</a>
+
+Including excerpts below, my comments prefixed with SD&gt;. There's a 
+little cleanup to be done.
+
+Thanks,
+-scott
+
+1.1.3.1  Type-specific property requirements
+...
+Any type of node may have an id property. The id property must be unique within
+a set of nodes with the same topo-hc-name value. In addition, for root complex
+IO nodes (i.e. nodes whose topo-hc-name value is "hostbridge"), the id property
+is further constrained to have whatever platform-specific binding is
+required for this value to denote a unique and persistent root complex
+ID. This property is required for nodes that do *not* set the topo-skip
+property. Grandfather clause: 'id' is *always* required for strand, mem-board,
+and cpu-board nodes.
+...
+	SD&gt; Since this case is cleaning up wording, the 'id' property
+	SD&gt; must be both unique within a set of nodes sharing a
+	SD&gt; 'topo-hc-name' value *and* immutable across system resets.
+	SD&gt; That latter part is missing presently. Please add it.
+...
+Nodes representing a root complex must use a topo-hc-name of "hostbridge" and
+set the path property. Previous requirements for setting the cfg-handle
+property for a node representing a root complex is now deprecated.
+
+Nodes representing a root port must use a topo-hc-name of "pciexrc".  This
+apparent misnomer is intentional, as it follows the convention established on
+the x64 platforms.
+...
+	SD&gt; This is accurate.
+  </pre>
+</blockquote>
+<br>
+What happens if the root complex and root port are the same device?<br>
+<blockquote cite="mid:1241541816.1317.19.camel@prax" type="cite">
+  <pre wrap="">...
+1.3.9  path Property
+
+Name            Tag             Required
+----            ---             --------
+path            PROP_STR        yes
+
+Description
+-----------
+This property contains the canonical path of an io device, composed of its
+full device path with device names removed. It is required on nodes where
+the topo-hc-name property is set to "hostbridge".
+...
+	SD&gt; This is acccurate.
+  </pre>
+</blockquote>
+<br>
+Shouldn't path be required for "hostbridge" and "pciexrc"?<br>
+<br>
+-t<br>
+<blockquote cite="mid:1241541816.1317.19.camel@prax" type="cite">
+  <pre wrap="">...
+1.12.1 Sun4v to PCI Express root nexus device
+
+Name            Tag             Required
+----            ---             --------
+cfg-handle	PROP_VAL	Yes
+
+Description
+-----------
+A 64 bit value that is unique to this device on the sun4v bus.
+
+This property is required except for nodes where topo-hc-name="hostbridge"....
+...
+	SD&gt; This doesn't make sense. 1.12.1 is talking about the
+	SD&gt; IO Device node, not the components node. So topo-hc-name
+	SD&gt; has no context in the IO Device node. I believe the
+	SD&gt; wording from "except for..." onward can be stricken.
+...
+Name            Tag             Required
+----            ---             --------
+cfg-handle	PROP_VAL	Yes
+
+Description
+-----------
+A 64 bit value that is unique to this device on the sun4v bus.
+
+This property is required except for nodes where topo-hc-name="hostbridge".
+...
+	SD&gt; The property is always required, so the "This property..." sentence
+	SD&gt; is contradictory. And, this section of the spec is talking about
+	SD&gt; the IO Device node - topo-hc-name has no context. Delete 2nd sentence.
+...
+Name            Tag             Required
+----            ---             --------
+path		PROP_STR	Yes
+
+Description
+-----------
+A string which contains the address of, and is unique to, this device on the
+sun4v bus.
+
+This property is required for nodes where topo-hc-name="hostbridge", otherwise
+it is not required.
+...
+	SD&gt; The property is always required, so the "This property..." sentence
+	SD&gt; is contradictory. And, this section of the spec is talking about
+	SD&gt; the IO Device node - topo-hc-name has no context. Delete 2nd sentence.
+...
+
+
+
+
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">On May 4, 2009, at 7:36 PM, Dave Isaman wrote:
+
+    </pre>
+    <blockquote type="cite">
+      <pre wrap="">The new spec seems to say that:
+
+The "path" property is required on the "hostbridge" node.
+
+The "cfg-handle" property is required on every other iodevice node.
+
+Are these requirements reversed from what they should be?
+
+Dave
+
+
+On 05/04/09 11:07, Eric Sharakan wrote:
+      </pre>
+      <blockquote type="cite">
+        <pre wrap="">I'm sponsoring this fast track case for myself.  It clarifies two  
+interface additions made to the PRI in FWARC/2008/300.  First, the  
+meaning of the id property in the root complex component node is  
+augmented to include a binding to a root complex identifier (RCID)  
+which can be passed to Hypervisor for unambiguous identification of  
+each root complex by its platform-specific ID.
+Second, this case removes discrepancies introduced in FWARC/ 
+2008/300 with respect to incorrect usage of the topo-hc-name  
+property values of "hostbridge" vs. "pciexrc".
+A one pager, updated PRI specification (to version 1.8), and diffs  
+between version 1.7 and 1.8 of the specification are all available  
+in the case materials at:
+<a class="moz-txt-link-freetext" href="http://sac.eng/Archives/CaseLog/arc/FWARC/2009/281/materials/">http://sac.eng/Archives/CaseLog/arc/FWARC/2009/281/materials/</a>
+The one pager is also attached to the end of this message.
+Requested binding is for a minor/micro firmware release and minor/ 
+micro/patch OS release.
+This case times out on Monday 5/11/08.
+Thanks.
+-Eric
+1. Introduction
+  1.1. Project/Component Working Name:
+       PRI clarifications for hostbridge id &amp; PCI-E root complex node
+  1.2. Name of Document Author/Supplier:
+       Eric Sharakan
+  1.3. Date of This Document:
+       5/4/2009
+  1.4. Name of Major Document Customer(s)/Consumer(s):
+       1.4.1. The PAC or CPT you expect to review your project:
+               None.
+       1.4.2. The ARC(s) you expect to review your project:
+               FWARC.
+       1.4.3. The Director/VP who is "Sponsoring" this project:
+               Jerri-Ann Meyer
+       1.4.4. The name of your business unit:
+               Software Group (SG)
+                       (Sparc Platform Software)
+  1.5. Email Aliases:
+       1.5.1. Responsible Manager: <a class="moz-txt-link-abbreviated" href="mailto:john.falkenthal@sun.com">john.falkenthal@sun.com</a>
+       1.5.2. Responsible Engineer: <a class="moz-txt-link-abbreviated" href="mailto:eric.sharakan@sun.com">eric.sharakan@sun.com</a>
+       1.5.3. Marketing Manager: <a class="moz-txt-link-abbreviated" href="mailto:duncan.hardie@sun.com">duncan.hardie@sun.com</a>
+       1.5.4. Interest List: <a class="moz-txt-link-abbreviated" href="mailto:ldoms-internal@sun.com">ldoms-internal@sun.com</a>
+2. Project Summary
+  2.1. Project Description:
+   This case provides additional constraints around the definition of
+   the "id" property in the hostbridge component node (i.e. the  
+node whose
+   "topo-hc-name" property is "hostbridge") as defined in FWARC/ 
+2008/300.
+   In addition, this case removes discrepancies between the  
+specification
+   of the "hostbridge" and "pciexrc" topo-hc-name values and their  
+actual
+   use.
+  2.2. Risks and Assumptions:
+   It is assumed the new rules for the "id" property as defined in  
+this
+   case will be in force for all PRIs conforming to FWARC/2008/300.
+3. Business Summary
+  3.1. Problem Area:
+      Software needs to be able to interpret &amp; intelligently act  
+upon the PRI
+   as it is enhanced &amp; updated.
+  3.2. Market/Requester:
+       Supernova/RF platforms, to provide the necessary  
+infrastructure to
+   allow the LDom Manager to produce proper "rcid" property values to
+   Hypervisor.  Also, the specification needs to match the actual
+   implementation.
+  3.3. Business Justification:
+  3.4. Competitive Analysis:
+  3.5. Opportunity Window/Exposure:
+       Supernova Firmware.
+  3.6. How will you know when you are done?:
+       When the changes are integrated into the vBSC gates.
+4. Technical Description:
+  See updated PRI specification and diffs files including with the  
+case
+  materials.
+5. Reference Documents:
+ [1] Physical Resource Inventory (PRI) FWARC case
+   <a class="moz-txt-link-freetext" href="http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/700/">http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/700/</a>
+ [2] Updates to PRI structures
+   <a class="moz-txt-link-freetext" href="http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2007/138/">http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2007/138/</a>
+ [3] Sun4v FMA Platform Independent FMA Topology Enumeration
+   <a class="moz-txt-link-freetext" href="http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2008/300">http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2008/300</a>
+ [4] Physical Resource Inventory (PRI) Specification
+     <a class="moz-txt-link-freetext" href="http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/Specifications/PRI_Specification.txt">http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/Specifications/PRI_Specification.txt</a> 
+ 6. Resources and Schedule:
+  6.1. Projected Availability:    Q1FY10
+  6.2. Cost of Effort: 1 person month
+  6.3. Cost of Capital Resources: N/A
+  6.4. Product Approval Committee requested information:
+      6.4.1. Consolidation or Component Name: vBSC, Solaris
+   6.4.3. Type of CPT Review and Approval expected: N/A
+       6.4.4. Project Boundary Conditions: N/A
+   6.4.5. Is this a necessary project for OEM agreements: No.
+   6.4.6. Notes: None
+   6.4.7. Target RTI Date/Release: TBD
+   6.4.8. Target Code Design Review Date: TBD
+   6.4.9. Update approval addition: N/A          6.5. ARC review  
+type: N/A
+      7. Prototype Availability:
+  7.1. Prototype Availability:
+   Q4FY09
+  7.2. Prototype Cost:
+     1 person month
+        </pre>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+  <pre wrap=""><!---->
+  </pre>
+</blockquote>
+</body>
+</html>
+
+--Boundary_(ID_MuXukVMAK8OKdcaajI1DBw)--
+
+From sacadmin Tue May  5 12:43:15 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n45JhDMm009675
+	for <fwarc@sac.sfbay.sun.com>; Tue, 5 May 2009 12:43:13 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n45Jh21b026005
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 5 May 2009 12:43:13 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KJ600F3DS3ZHX00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 13:43:11 -0600 (MDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KJ600MLTS3YT0A0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 13:43:10 -0600 (MDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n45JhABe014209	for
+ <fwarc@sun.com>; Tue, 05 May 2009 12:43:10 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KJ600A00RW0BU00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 12:43:10 -0700 (PDT)
+Received: from [10.40.20.6] ([unknown] [76.212.145.98])
+ by fe-sfbay-10.sun.com (Sun Java(tm) System Messaging Server 7.0-5.01 64bit
+ (built Feb 19 2009)) with ESMTPSA id <0KJ600FMYS3WBYE0@fe-sfbay-10.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 05 May 2009 12:43:08 -0700 (PDT)
+Date: Tue, 05 May 2009 12:42:58 -0700
+From: Scott Davenport <Scott.Davenport@sun.com>
+Subject: Re: FWARC/2009/281:  PRI clarifications for hostbridge id & PCI-E root
+ complex node
+In-reply-to: <4A009094.1090502@sun.com>
+Sender: Scott.Davenport@sun.com
+To: Tom Pothier <Tom.Pothier@sun.com>
+Cc: Eric Sharakan <Eric.Sharakan@sun.com>, David Isaman <Dave.Isaman@sun.com>,
+        Firmware ARC <fwarc@sun.com>
+Reply-to: Scott.Davenport@sun.com
+Message-id: <1241552578.1317.114.camel@prax>
+Organization: Sun Microsystems
+MIME-version: 1.0
+X-Mailer: Evolution 2.24.2
+Content-type: text/plain; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <83B54329-A96E-462C-8ACD-D23CDCFE01CC@Sun.COM>
+ <49FF7C07.5050506@Sun.COM> <030E70DE-A430-4729-B3AE-9372A06274A5@Sun.COM>
+ <1241541816.1317.19.camel@prax> <4A009094.1090502@sun.com>
+Status: RO
+Content-Length: 11159
+
+
+On Tue, 2009-05-05 at 15:16 -0400, Tom Pothier wrote:
+> On 05/05/09 12:43, Scott Davenport wrote: 
+> > On Tue, 2009-05-05 at 09:29 -0400, Eric Sharakan wrote:
+> >   
+> > > Dave, this is exactly what the spec said previously; the only  
+> > > difference is that it had incorrectly named the hostbridge node  
+> > > "pciexrc".  Still, it would be best to get confirmation that there  
+> > > isn't something else that needs correction.  Scott, can you confirm  
+> > > that the path & cfg-handle requirements are described correctly?
+> > >     
+> > 
+> > [cc'ing Tom Pothier as a 2nd pair of eyes]
+> > 
+> > I'm looking at:
+> >  http://sac.eng/arc/FWARC/2009/281/materials/PRI_Specification_1.8.txt
+> > 
+> > Including excerpts below, my comments prefixed with SD>. There's a 
+> > little cleanup to be done.
+> > 
+> > Thanks,
+> > -scott
+> > 
+> > 1.1.3.1  Type-specific property requirements
+> > ...
+> > Any type of node may have an id property. The id property must be unique within
+> > a set of nodes with the same topo-hc-name value. In addition, for root complex
+> > IO nodes (i.e. nodes whose topo-hc-name value is "hostbridge"), the id property
+> > is further constrained to have whatever platform-specific binding is
+> > required for this value to denote a unique and persistent root complex
+> > ID. This property is required for nodes that do *not* set the topo-skip
+> > property. Grandfather clause: 'id' is *always* required for strand, mem-board,
+> > and cpu-board nodes.
+> > ...
+> > 	SD> Since this case is cleaning up wording, the 'id' property
+> > 	SD> must be both unique within a set of nodes sharing a
+> > 	SD> 'topo-hc-name' value *and* immutable across system resets.
+> > 	SD> That latter part is missing presently. Please add it.
+> > ...
+> > Nodes representing a root complex must use a topo-hc-name of "hostbridge" and
+> > set the path property. Previous requirements for setting the cfg-handle
+> > property for a node representing a root complex is now deprecated.
+> > 
+> > Nodes representing a root port must use a topo-hc-name of "pciexrc".  This
+> > apparent misnomer is intentional, as it follows the convention established on
+> > the x64 platforms.
+> > ...
+> > 	SD> This is accurate.
+> >   
+> 
+> What happens if the root complex and root port are the same device?
+
+If they are the same dev, the 'hostbridge' component is really a 
+placeholder. Still needed so that the hostbridge/pciexrc hierarchy
+expected by the rules in Solaris is maintained. And in this case,
+the 'path' property can be the same for both devices.
+
+> > ...
+> > 1.3.9  path Property
+> > 
+> > Name            Tag             Required
+> > ----            ---             --------
+> > path            PROP_STR        yes
+> > 
+> > Description
+> > -----------
+> > This property contains the canonical path of an io device, composed of its
+> > full device path with device names removed. It is required on nodes where
+> > the topo-hc-name property is set to "hostbridge".
+> > ...
+> > 	SD> This is acccurate.
+> >   
+> 
+> Shouldn't path be required for "hostbridge" and "pciexrc"?
+
+Yes, you're right. Thanks Tom.
+
+Eric - Please append "or "pciexrc"" to the description.
+
+Thanks,
+-scott
+
+> -t
+> > ...
+> > 1.12.1 Sun4v to PCI Express root nexus device
+> > 
+> > Name            Tag             Required
+> > ----            ---             --------
+> > cfg-handle	PROP_VAL	Yes
+> > 
+> > Description
+> > -----------
+> > A 64 bit value that is unique to this device on the sun4v bus.
+> > 
+> > This property is required except for nodes where topo-hc-name="hostbridge"....
+> > ...
+> > 	SD> This doesn't make sense. 1.12.1 is talking about the
+> > 	SD> IO Device node, not the components node. So topo-hc-name
+> > 	SD> has no context in the IO Device node. I believe the
+> > 	SD> wording from "except for..." onward can be stricken.
+> > ...
+> > Name            Tag             Required
+> > ----            ---             --------
+> > cfg-handle	PROP_VAL	Yes
+> > 
+> > Description
+> > -----------
+> > A 64 bit value that is unique to this device on the sun4v bus.
+> > 
+> > This property is required except for nodes where topo-hc-name="hostbridge".
+> > ...
+> > 	SD> The property is always required, so the "This property..." sentence
+> > 	SD> is contradictory. And, this section of the spec is talking about
+> > 	SD> the IO Device node - topo-hc-name has no context. Delete 2nd sentence.
+> > ...
+> > Name            Tag             Required
+> > ----            ---             --------
+> > path		PROP_STR	Yes
+> > 
+> > Description
+> > -----------
+> > A string which contains the address of, and is unique to, this device on the
+> > sun4v bus.
+> > 
+> > This property is required for nodes where topo-hc-name="hostbridge", otherwise
+> > it is not required.
+> > ...
+> > 	SD> The property is always required, so the "This property..." sentence
+> > 	SD> is contradictory. And, this section of the spec is talking about
+> > 	SD> the IO Device node - topo-hc-name has no context. Delete 2nd sentence.
+> > ...
+> > 
+> > 
+> > 
+> > 
+> >   
+> > > On May 4, 2009, at 7:36 PM, Dave Isaman wrote:
+> > > 
+> > >     
+> > > > The new spec seems to say that:
+> > > > 
+> > > > The "path" property is required on the "hostbridge" node.
+> > > > 
+> > > > The "cfg-handle" property is required on every other iodevice node.
+> > > > 
+> > > > Are these requirements reversed from what they should be?
+> > > > 
+> > > > Dave
+> > > > 
+> > > > 
+> > > > On 05/04/09 11:07, Eric Sharakan wrote:
+> > > >       
+> > > > > I'm sponsoring this fast track case for myself.  It clarifies two  
+> > > > > interface additions made to the PRI in FWARC/2008/300.  First, the  
+> > > > > meaning of the id property in the root complex component node is  
+> > > > > augmented to include a binding to a root complex identifier (RCID)  
+> > > > > which can be passed to Hypervisor for unambiguous identification of  
+> > > > > each root complex by its platform-specific ID.
+> > > > > Second, this case removes discrepancies introduced in FWARC/ 
+> > > > > 2008/300 with respect to incorrect usage of the topo-hc-name  
+> > > > > property values of "hostbridge" vs. "pciexrc".
+> > > > > A one pager, updated PRI specification (to version 1.8), and diffs  
+> > > > > between version 1.7 and 1.8 of the specification are all available  
+> > > > > in the case materials at:
+> > > > > http://sac.eng/Archives/CaseLog/arc/FWARC/2009/281/materials/
+> > > > > The one pager is also attached to the end of this message.
+> > > > > Requested binding is for a minor/micro firmware release and minor/ 
+> > > > > micro/patch OS release.
+> > > > > This case times out on Monday 5/11/08.
+> > > > > Thanks.
+> > > > > -Eric
+> > > > > 1. Introduction
+> > > > >   1.1. Project/Component Working Name:
+> > > > >        PRI clarifications for hostbridge id & PCI-E root complex node
+> > > > >   1.2. Name of Document Author/Supplier:
+> > > > >        Eric Sharakan
+> > > > >   1.3. Date of This Document:
+> > > > >        5/4/2009
+> > > > >   1.4. Name of Major Document Customer(s)/Consumer(s):
+> > > > >        1.4.1. The PAC or CPT you expect to review your project:
+> > > > >                None.
+> > > > >        1.4.2. The ARC(s) you expect to review your project:
+> > > > >                FWARC.
+> > > > >        1.4.3. The Director/VP who is "Sponsoring" this project:
+> > > > >                Jerri-Ann Meyer
+> > > > >        1.4.4. The name of your business unit:
+> > > > >                Software Group (SG)
+> > > > >                        (Sparc Platform Software)
+> > > > >   1.5. Email Aliases:
+> > > > >        1.5.1. Responsible Manager: john.falkenthal@sun.com
+> > > > >        1.5.2. Responsible Engineer: eric.sharakan@sun.com
+> > > > >        1.5.3. Marketing Manager: duncan.hardie@sun.com
+> > > > >        1.5.4. Interest List: ldoms-internal@sun.com
+> > > > > 2. Project Summary
+> > > > >   2.1. Project Description:
+> > > > >    This case provides additional constraints around the definition of
+> > > > >    the "id" property in the hostbridge component node (i.e. the  
+> > > > > node whose
+> > > > >    "topo-hc-name" property is "hostbridge") as defined in FWARC/ 
+> > > > > 2008/300.
+> > > > >    In addition, this case removes discrepancies between the  
+> > > > > specification
+> > > > >    of the "hostbridge" and "pciexrc" topo-hc-name values and their  
+> > > > > actual
+> > > > >    use.
+> > > > >   2.2. Risks and Assumptions:
+> > > > >    It is assumed the new rules for the "id" property as defined in  
+> > > > > this
+> > > > >    case will be in force for all PRIs conforming to FWARC/2008/300.
+> > > > > 3. Business Summary
+> > > > >   3.1. Problem Area:
+> > > > >       Software needs to be able to interpret & intelligently act  
+> > > > > upon the PRI
+> > > > >    as it is enhanced & updated.
+> > > > >   3.2. Market/Requester:
+> > > > >        Supernova/RF platforms, to provide the necessary  
+> > > > > infrastructure to
+> > > > >    allow the LDom Manager to produce proper "rcid" property values to
+> > > > >    Hypervisor.  Also, the specification needs to match the actual
+> > > > >    implementation.
+> > > > >   3.3. Business Justification:
+> > > > >   3.4. Competitive Analysis:
+> > > > >   3.5. Opportunity Window/Exposure:
+> > > > >        Supernova Firmware.
+> > > > >   3.6. How will you know when you are done?:
+> > > > >        When the changes are integrated into the vBSC gates.
+> > > > > 4. Technical Description:
+> > > > >   See updated PRI specification and diffs files including with the  
+> > > > > case
+> > > > >   materials.
+> > > > > 5. Reference Documents:
+> > > > >  [1] Physical Resource Inventory (PRI) FWARC case
+> > > > >    http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/700/
+> > > > >  [2] Updates to PRI structures
+> > > > >    http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2007/138/
+> > > > >  [3] Sun4v FMA Platform Independent FMA Topology Enumeration
+> > > > >    http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2008/300
+> > > > >  [4] Physical Resource Inventory (PRI) Specification
+> > > > >      http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/Specifications/PRI_Specification.txt 
+> > > > >  6. Resources and Schedule:
+> > > > >   6.1. Projected Availability:    Q1FY10
+> > > > >   6.2. Cost of Effort: 1 person month
+> > > > >   6.3. Cost of Capital Resources: N/A
+> > > > >   6.4. Product Approval Committee requested information:
+> > > > >       6.4.1. Consolidation or Component Name: vBSC, Solaris
+> > > > >    6.4.3. Type of CPT Review and Approval expected: N/A
+> > > > >        6.4.4. Project Boundary Conditions: N/A
+> > > > >    6.4.5. Is this a necessary project for OEM agreements: No.
+> > > > >    6.4.6. Notes: None
+> > > > >    6.4.7. Target RTI Date/Release: TBD
+> > > > >    6.4.8. Target Code Design Review Date: TBD
+> > > > >    6.4.9. Update approval addition: N/A          6.5. ARC review  
+> > > > > type: N/A
+> > > > >       7. Prototype Availability:
+> > > > >   7.1. Prototype Availability:
+> > > > >    Q4FY09
+> > > > >   7.2. Prototype Cost:
+> > > > >      1 person month
+> > > > >         
+> > 
+> >   
+
+
+From sacadmin Tue May  5 13:00:10 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n45K094Z010315
+	for <fwarc@sac.sfbay.sun.com>; Tue, 5 May 2009 13:00:10 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n45Jxu0I023586
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 6 May 2009 04:00:08 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KJ600K05SW5SN00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 13:00:05 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KJ600HCZSW4SK60@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 13:00:05 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n45K04Ku022231	for
+ <fwarc@sun.com>; Tue, 05 May 2009 20:00:04 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KJ600M00SLZEP00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 14:00:04 -0600 (MDT)
+Received: from dhcp-ubur03-180-17.East.Sun.COM ([unknown] [129.148.180.17])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ with ESMTPSA id <0KJ600KCTSW1AF10@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 05 May 2009 14:00:02 -0600 (MDT)
+Date: Tue, 05 May 2009 15:59:59 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: FWARC/2009/281:  PRI clarifications for hostbridge id & PCI-E root
+ complex node
+In-reply-to: <1241552578.1317.114.camel@prax>
+Sender: Eric.Sharakan@sun.com
+To: Scott.Davenport@sun.com
+Cc: Tom Pothier <Tom.Pothier@sun.com>, David Isaman <Dave.Isaman@sun.com>,
+        Firmware ARC <fwarc@sun.com>
+Message-id: <6BFF5EDF-EDA5-4C4C-9DF7-4955BC6942D5@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.930.3)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <83B54329-A96E-462C-8ACD-D23CDCFE01CC@Sun.COM>
+ <49FF7C07.5050506@Sun.COM> <030E70DE-A430-4729-B3AE-9372A06274A5@Sun.COM>
+ <1241541816.1317.19.camel@prax> <4A009094.1090502@sun.com>
+ <1241552578.1317.114.camel@prax>
+Status: RO
+Content-Length: 325
+
+On May 5, 2009, at 3:42 PM, Scott Davenport wrote:
+
+>> Shouldn't path be required for "hostbridge" and "pciexrc"?
+>
+> Yes, you're right. Thanks Tom.
+>
+> Eric - Please append "or "pciexrc"" to the description.
+>
+> Thanks,
+> -scott
+
+Done; the specification & diffs file have been updated.  Timer remains  
+set for 5/11.
+
+-Eric
+
+From sacadmin Tue May 12 09:53:15 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n4CGnSgq003971
+	for <fwarc@sac.sfbay.sun.com>; Tue, 12 May 2009 09:53:13 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n4CGnDt2028241
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 13 May 2009 00:49:28 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KJJ00A09IQBMS00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 12 May 2009 09:49:23 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KJJ009NEIQAIY20@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 12 May 2009 09:49:23 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n4CGnMwx008502	for
+ <fwarc@sun.com>; Tue, 12 May 2009 16:49:22 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.02 64bit (built Apr 16 2009))
+ id <0KJJ00J00IJC6Y00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 12 May 2009 10:49:22 -0600 (MDT)
+Received: from dhcp-ubur03-180-32.East.Sun.COM ([unknown] [129.148.180.32])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.02 64bit (built Apr 16 2009))
+ with ESMTPSA id <0KJJ00A66IPTMJ80@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 12 May 2009 10:49:05 -0600 (MDT)
+Date: Tue, 12 May 2009 12:49:04 -0400
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: FWARC/2009/281:  PRI clarifications for hostbridge id & PCI-E root
+ complex node
+In-reply-to: <83B54329-A96E-462C-8ACD-D23CDCFE01CC@Sun.COM>
+Sender: Eric.Sharakan@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: Scott Davenport <Scott.Davenport@sun.com>
+Message-id: <49FD8EBF-42A7-49C1-82BB-4BF2DE249F4E@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.930.3)
+Content-type: text/plain; CHARSET=US-ASCII; delsp=yes; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <83B54329-A96E-462C-8ACD-D23CDCFE01CC@Sun.COM>
+Status: RO
+Content-Length: 4973
+
+This case has timed out and is now approved.  IAM file has been updated.
+
+Thanks.
+
+-Eric
+
+On May 4, 2009, at 2:07 PM, Eric Sharakan wrote:
+
+> I'm sponsoring this fast track case for myself.  It clarifies two  
+> interface additions made to the PRI in FWARC/2008/300.  First, the  
+> meaning of the id property in the root complex component node is  
+> augmented to include a binding to a root complex identifier (RCID)  
+> which can be passed to Hypervisor for unambiguous identification of  
+> each root complex by its platform-specific ID.
+>
+> Second, this case removes discrepancies introduced in FWARC/2008/300  
+> with respect to incorrect usage of the topo-hc-name property values  
+> of "hostbridge" vs. "pciexrc".
+>
+> A one pager, updated PRI specification (to version 1.8), and diffs  
+> between version 1.7 and 1.8 of the specification are all available  
+> in the case materials at:
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/281/materials/
+>
+> The one pager is also attached to the end of this message.
+>
+> Requested binding is for a minor/micro firmware release and minor/ 
+> micro/patch OS release.
+>
+> This case times out on Monday 5/11/08.
+>
+> Thanks.
+>
+> -Eric
+>
+> Copyright 2009 Sun Microsystems, Inc.
+>
+> 1. Introduction
+>   1.1. Project/Component Working Name:
+>        PRI clarifications for hostbridge id & PCI-E root complex node
+>
+>   1.2. Name of Document Author/Supplier:
+>        Eric Sharakan
+>
+>   1.3. Date of This Document:
+>        5/4/2009
+>
+>   1.4. Name of Major Document Customer(s)/Consumer(s):
+>        1.4.1. The PAC or CPT you expect to review your project:
+>                None.
+>
+>        1.4.2. The ARC(s) you expect to review your project:
+>                FWARC.
+>
+>        1.4.3. The Director/VP who is "Sponsoring" this project:
+>                Jerri-Ann Meyer
+>
+>        1.4.4. The name of your business unit:
+>                Software Group (SG)
+>                        (Sparc Platform Software)
+>
+>   1.5. Email Aliases:
+>        1.5.1. Responsible Manager: john.falkenthal@sun.com
+>        1.5.2. Responsible Engineer: eric.sharakan@sun.com
+>        1.5.3. Marketing Manager: duncan.hardie@sun.com
+>        1.5.4. Interest List: ldoms-internal@sun.com
+>
+> 2. Project Summary
+>
+>   2.1. Project Description:
+>
+> 	This case provides additional constraints around the definition of
+> 	the "id" property in the hostbridge component node (i.e. the node  
+> whose
+> 	"topo-hc-name" property is "hostbridge") as defined in FWARC/ 
+> 2008/300.
+>
+> 	In addition, this case removes discrepancies between the  
+> specification
+> 	of the "hostbridge" and "pciexrc" topo-hc-name values and their  
+> actual
+> 	use.
+>
+>   2.2. Risks and Assumptions:
+>
+> 	It is assumed the new rules for the "id" property as defined in this
+> 	case will be in force for all PRIs conforming to FWARC/2008/300.
+>
+>
+> 3. Business Summary
+>   3.1. Problem Area:
+>
+>   	Software needs to be able to interpret & intelligently act upon  
+> the PRI
+> 	as it is enhanced & updated.
+>
+>   3.2. Market/Requester:
+>        Supernova/RF platforms, to provide the necessary  
+> infrastructure to
+> 	allow the LDom Manager to produce proper "rcid" property values to
+> 	Hypervisor.  Also, the specification needs to match the actual
+> 	implementation.
+>
+>   3.3. Business Justification:
+>
+>
+>   3.4. Competitive Analysis:
+>
+>
+>   3.5. Opportunity Window/Exposure:
+>        Supernova Firmware.
+>
+>   3.6. How will you know when you are done?:
+>        When the changes are integrated into the vBSC gates.
+>
+> 4. Technical Description:
+>
+>   See updated PRI specification and diffs files including with the  
+> case
+>   materials.
+>
+> 5. Reference Documents:
+>  [1] Physical Resource Inventory (PRI) FWARC case
+> 	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/700/
+>  [2] Updates to PRI structures
+> 	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2007/138/
+>  [3] Sun4v FMA Platform Independent FMA Topology Enumeration
+> 	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2008/300
+>  [4] Physical Resource Inventory (PRI) Specification
+>  	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/Specifications/PRI_Specification.txt
+>
+> 6. Resources and Schedule:
+>   6.1. Projected Availability:	Q1FY10
+>
+>   6.2. Cost of Effort: 1 person month
+>
+>   6.3. Cost of Capital Resources: N/A
+>
+>   6.4. Product Approval Committee requested information:
+>   	6.4.1. Consolidation or Component Name: vBSC, Solaris
+> 	6.4.3. Type of CPT Review and Approval expected: N/A
+>        6.4.4. Project Boundary Conditions: N/A
+> 	6.4.5. Is this a necessary project for OEM agreements: No.
+> 	6.4.6. Notes: None
+> 	6.4.7. Target RTI Date/Release: TBD
+> 	6.4.8. Target Code Design Review Date: TBD
+> 	6.4.9. Update approval addition: N/A		
+>
+>   6.5. ARC review type: N/A
+> 		
+> 7. Prototype Availability:
+>   7.1. Prototype Availability:
+> 	Q4FY09
+>
+>   7.2. Prototype Cost:
+>      1 person month
+>
+
+

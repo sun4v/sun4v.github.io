@@ -1,0 +1,453 @@
+From <IMAP4.psuedo.sims> Wed Mar  9 14:00:40 2005
+Date: Wed, 9 Mar 2005 14:00:40 -0800 (PST)
+From: Postmaster
+Subject: Message from mail server       
+Content-Length: 96
+Mime-Version: 1.0
+Status: RO
+X-IMAP: 1110405640 4
+
+Delete.
+This is a system message.                                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--END+PSEUDO--
+
+From sacadmin Fri Feb 25 15:01:45 2005
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j1PN1jSp002410
+	for <FWARC@sac.sfbay.sun.com>; Fri, 25 Feb 2005 15:01:45 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.91.150])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j1PN0RAH006127;
+	Fri, 25 Feb 2005 15:00:27 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j1PN0QvZ012750;
+	Fri, 25 Feb 2005 15:00:27 -0800 (PST)
+Message-ID: <421FAE0A.8080003@sun.com>
+Date: Fri, 25 Feb 2005 15:00:26 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Landy Kweh <Landyana.Kweh@sun.com>
+CC: FWARC@sac.sfbay.sun.com, sun4v-iteam@sun.com
+Subject: FWARC 2005/112 - sun4v io-api -- materials available
+References: <421FAD96.3030905@sun.com>
+In-Reply-To: <421FAD96.3030905@sun.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Length: 197
+Status: RO
+X-Status: $$$$
+X-UID: 0000000001
+
+
+Materials are available for this case in the inception.materials
+subdir of the case directory.
+
+io-api.txt - the spec
+interface-table.txt - interface table
+18q.txt - FWARC's questionaire
+
+-David
+
+
+From sacadmin Sun Mar  6 18:19:16 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j272JGSp002870
+	for <fwarc@sac.eng.sun.com>; Sun, 6 Mar 2005 18:19:16 -0800 (PST)
+Received: from westmail1mpk.West.Sun.COM (westmail1mpk.West.Sun.COM [129.153.100.33])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j272HpT21962
+	for <fwarc@sun.com>; Sun, 6 Mar 2005 18:17:51 -0800 (PST)
+Received: from phys-san-2 (phys-san-2.West.Sun.COM [129.153.85.71])
+	by westmail1mpk.West.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j272Hp38026182
+	for <fwarc@sun.com>; Sun, 6 Mar 2005 18:17:51 -0800 (PST)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0ICY00401L2RQ1@san-mail1.west.sun.com>
+ (original mail from hitendra.zhangada@sun.com) for fwarc@sun.com; Sun,
+ 06 Mar 2005 18:17:51 -0800 (PST)
+Received: from [129.150.33.51]
+ (vpn-129-150-33-51.Central.Sun.COM [129.150.33.51]) by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0ICY00N6LMDQ1U@san-mail1.west.sun.com> for fwarc@sun.com; Sun,
+ 06 Mar 2005 18:17:50 -0800 (PST)
+Date: Sun, 06 Mar 2005 18:17:49 -0800
+From: Hitendra Zhangada <hitendra.zhangada@sun.com>
+Subject: 2005/112 - IO API - issues
+To: Firmware Arch <fwarc@sun.com>
+Reply-to: hitendra.zhangada@sun.com
+Message-id: <422BB9CD.3060801@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.2)
+ Gecko/20040804 Netscape/7.2 (ax)
+Content-Length: 1393
+Status: RO
+X-Status: $$$$
+X-UID: 0000000002
+
+Issues/comments for this case.  We can discuss at the meeting.
+
+1.  18Q, Q# 15, last bullet refers to "some measurable effect.."
+     Have measure the boot time effects?  Similar question for
+     the core API case (2005/116) states that there are no measurable
+     boot time effects.  So, is this true that IO APIs have boot
+     time effects but the core APIs don't?
+
+     Further, for the same answer, it states that the systems that
+     implement sun4v tend to be larger systems.  I don't think this
+     is true.  Sun4v is implemented on Ontario and Niagara-2 based
+     smaller systems.
+
+Following comments/issues are for IO API specification version 1.29.
+
+2.  Section 1, middle of third paragraph seems to have a typo.
+     "Results 0 - 5 are returned in %o0 - %o4" seems to be incorrect.
+     I think the correct sentence is "Results 0 - 4 are ..."/
+
+3.  Section 5.1, we may want to have registry for MSI function
+     numbers.  Is there a reason why we skipped 0xcf?
+
+4.  Section 5.3.13, typo, the last word should be "msiqid".
+
+5.  Section 5.3.13.1, typo, "msium" should be "msinum".
+
+6.  Section 5.3.17, typo, the last word should be "msiqid".
+
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Mon Mar  7 12:57:28 2005
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j27KvRSp007885
+	for <FWARC@sac.sfbay.sun.com>; Mon, 7 Mar 2005 12:57:27 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j27Ku3jg027899;
+	Mon, 7 Mar 2005 12:56:03 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j27Ku1Kw086503;
+	Mon, 7 Mar 2005 12:56:02 -0800 (PST)
+Message-ID: <422CBFE1.9000806@sun.com>
+Date: Mon, 07 Mar 2005 12:56:01 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Hitendra Zhangada <hitendra.zhangada@sun.com>
+CC: FWARC@sac.sfbay.sun.com, John Johnson <John.Johnson@sun.com>,
+   Ashley Saulsbury <ashley.saulsbury@sun.com>
+Subject: Re: 2005/112 - IO API - issues
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Length: 1547
+Status: RO
+X-Status: $$$$
+X-UID: 0000000003
+
+
+Hitu,
+
+Updates have been made to the final.materials directory.
+
+18qs: Deleted all text in q15, and added reference
+to the umbrella case.
+
+io-api.txt: Accepted all editorial comments.
+
+Note that we agreed that the registry being created
+by FWARC/2005/116 will include the APIs
+from this case.
+
+Thanks,
+-David
+
+
+Hitendra Zhangada wrote:
+> Issues/comments for this case.  We can discuss at the meeting.
+> 
+> 1.  18Q, Q# 15, last bullet refers to "some measurable effect.."
+>     Have measure the boot time effects?  Similar question for
+>     the core API case (2005/116) states that there are no measurable
+>     boot time effects.  So, is this true that IO APIs have boot
+>     time effects but the core APIs don't?
+> 
+>     Further, for the same answer, it states that the systems that
+>     implement sun4v tend to be larger systems.  I don't think this
+>     is true.  Sun4v is implemented on Ontario and Niagara-2 based
+>     smaller systems.
+> 
+> Following comments/issues are for IO API specification version 1.29.
+> 
+> 2.  Section 1, middle of third paragraph seems to have a typo.
+>     "Results 0 - 5 are returned in %o0 - %o4" seems to be incorrect.
+>     I think the correct sentence is "Results 0 - 4 are ..."/
+> 
+> 3.  Section 5.1, we may want to have registry for MSI function
+>     numbers.  Is there a reason why we skipped 0xcf?
+> 
+> 4.  Section 5.3.13, typo, the last word should be "msiqid".
+> 
+> 5.  Section 5.3.13.1, typo, "msium" should be "msinum".
+> 
+> 6.  Section 5.3.17, typo, the last word should be "msiqid".
+> 
+> 
+> 
+
+From sacadmin Mon Mar  7 18:27:25 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j282RPSp002278
+	for <fwarc@sac.eng.sun.com>; Mon, 7 Mar 2005 18:27:25 -0800 (PST)
+Received: from westmail2san.west.sun.com (westmail2san.West.Sun.COM [129.153.85.6])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j282Q0m05413
+	for <fwarc@sun.com>; Mon, 7 Mar 2005 18:26:00 -0800 (PST)
+Received: from phys-san-2 (phys-san-2.West.Sun.COM [129.153.85.71])
+	by westmail2san.west.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j282Q069008755
+	for <fwarc@sun.com>; Mon, 7 Mar 2005 18:26:00 -0800 (PST)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0ID000201H45AJ@san-mail1.west.sun.com>
+ (original mail from hitendra.zhangada@sun.com) for fwarc@sun.com; Mon,
+ 07 Mar 2005 18:26:00 -0800 (PST)
+Received: from [129.153.85.35] (sr1-usan-05.West.Sun.COM [129.153.85.35])
+ by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0ID0001X2HFBDH@san-mail1.west.sun.com> for fwarc@sun.com; Mon,
+ 07 Mar 2005 18:26:00 -0800 (PST)
+Date: Mon, 07 Mar 2005 18:25:59 -0800
+From: Hitendra Zhangada <hitendra.zhangada@sun.com>
+Subject: closed approved  fast-track: 2005/112 - IO API
+To: Firmware Arch <fwarc@sun.com>
+Reply-to: hitendra.zhangada@sun.com
+Message-id: <422D0D37.6060002@sun.com>
+Organization: Sun Microsystems Inc.
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7.5) Gecko/20041229
+Content-Length: 863
+Status: RO
+X-Status: $$$$
+X-UID: 0000000004
+
+We reviewed this case today at the FWARC meeting.  All of
+the issues raised have been addressed by David Kahn.  At the
+meeting we took vote on converting and approving this case
+as a fast-track.  This case is now approved.
+
+The final specification, interface table and 18Q are available at,
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/112/final.materials/
+
+
+Please note that even though this case is approved it can not be
+delivered into a consolidation until after the case this case
+depends upon is approved FWARC.  The dependency includes following
+FWARC case,
+
+FWARC/2005/116 - sunv4 core API
+
+
+IAM file has been updated.
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+From sacadmin Thu Mar 10 12:18:37 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2AKIaSr007995
+	for <psarc-members@sac.eng.sun.com>; Thu, 10 Mar 2005 12:18:36 -0800 (PST)
+Received: from jurassic.eng.sun.com (jurassic.SFBay.Sun.COM [129.146.82.37])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2AKH9m02183;
+	Thu, 10 Mar 2005 12:17:09 -0800 (PST)
+Received: from Sun.COM (sr1-umpk-03.SFBay.Sun.COM [129.146.11.157])
+	by jurassic.eng.sun.com (8.13.3+Sun/8.13.3) with ESMTP id j2AKH8fD303804;
+	Thu, 10 Mar 2005 12:17:08 -0800 (PST)
+Message-ID: <4230AB44.6020008@Sun.COM>
+Date: Thu, 10 Mar 2005 12:17:08 -0800
+From: Landy Burnett <Landyana.Burnett@Sun.COM>
+Reply-To: Landyana.Burnett@Sun.COM
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: fwarc-members@Sun.COM, Ashley Saulsbury <ashley.saulsbury@Sun.COM>,
+   John Johnson <John.Johnson@Sun.COM>,
+   James Barnette Jr <Richard.Barnette@Sun.COM>, Tom@jurassic.eng.sun.com,
+   Caren@Sun.COM, Chris Chen <Chris.Chen@Sun.COM>,
+   Minh Nguyen <Minh.Nguyen@Sun.COM>, Holly Yang <Huizhong.Yang@Sun.COM>,
+   sun4v-iteam@Sun.COM, psarc-members@Sun.COM
+Subject: FWARC Meeting Minutes 03/07/2005 Inception: 2005/112 2005/116 
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 916
+
+Minutes from FWARC 03/07/2005 meeting have been posted.
+
+They are available at:
+
+(1) http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050307.arcbiz
+
+Audio:
+======
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050307.arcbiz.mp3
+
+(2) http://sac.eng/arc/FWARC/2005/112/20050307.2005.112.inception
+
+Audio:
+======
+http://sac.eng/arc/FWARC/2005/112/20050307.2005.112.inception.mp3
+
+(3) http://sac.eng/arc/FWARC/2005/116/20050307.2005.116.inception
+
+Audio:
+=====
+http://sac.eng/arc/FWARC/2005/116/20050307.2005.116.inception.mp3
+
+Sum-up is available at:
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050307.html
+
+If you have any feedback or correction, feel free to let me know.
+
+thanks
+-Landy
+x83664
+
+
+-- 
+Landyana Burnett				landyana.burnett@sun.com
+Program Manager, System Architecture		650.786.3664
+Sun Microsystems, Inc.
+=======================================================================
+
+
+From sacadmin Thu Mar 10 12:18:36 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2AKIaSp007995
+	for <fwarc-members@sac.eng.sun.com>; Thu, 10 Mar 2005 12:18:36 -0800 (PST)
+Received: from jurassic.eng.sun.com (jurassic.SFBay.Sun.COM [129.146.82.37])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2AKH9m02183;
+	Thu, 10 Mar 2005 12:17:09 -0800 (PST)
+Received: from Sun.COM (sr1-umpk-03.SFBay.Sun.COM [129.146.11.157])
+	by jurassic.eng.sun.com (8.13.3+Sun/8.13.3) with ESMTP id j2AKH8fD303804;
+	Thu, 10 Mar 2005 12:17:08 -0800 (PST)
+Message-ID: <4230AB44.6020008@Sun.COM>
+Date: Thu, 10 Mar 2005 12:17:08 -0800
+From: Landy Burnett <Landyana.Burnett@Sun.COM>
+Reply-To: Landyana.Burnett@Sun.COM
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: fwarc-members@Sun.COM, Ashley Saulsbury <ashley.saulsbury@Sun.COM>,
+   John Johnson <John.Johnson@Sun.COM>,
+   James Barnette Jr <Richard.Barnette@Sun.COM>, Tom@jurassic.eng.sun.com,
+   Caren@Sun.COM, Chris Chen <Chris.Chen@Sun.COM>,
+   Minh Nguyen <Minh.Nguyen@Sun.COM>, Holly Yang <Huizhong.Yang@Sun.COM>,
+   sun4v-iteam@Sun.COM, psarc-members@Sun.COM
+Subject: FWARC Meeting Minutes 03/07/2005 Inception: 2005/112 2005/116 
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 916
+
+Minutes from FWARC 03/07/2005 meeting have been posted.
+
+They are available at:
+
+(1) http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050307.arcbiz
+
+Audio:
+======
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050307.arcbiz.mp3
+
+(2) http://sac.eng/arc/FWARC/2005/112/20050307.2005.112.inception
+
+Audio:
+======
+http://sac.eng/arc/FWARC/2005/112/20050307.2005.112.inception.mp3
+
+(3) http://sac.eng/arc/FWARC/2005/116/20050307.2005.116.inception
+
+Audio:
+=====
+http://sac.eng/arc/FWARC/2005/116/20050307.2005.116.inception.mp3
+
+Sum-up is available at:
+http://sac.sfbay.sun.com/Archives/Minutes/FWARC/2005/20050307.html
+
+If you have any feedback or correction, feel free to let me know.
+
+thanks
+-Landy
+x83664
+
+
+-- 
+Landyana Burnett				landyana.burnett@sun.com
+Program Manager, System Architecture		650.786.3664
+Sun Microsystems, Inc.
+=======================================================================
+
+
+From sacadmin Fri Mar 25 14:52:01 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2PMq1Sp012642
+	for <fwarc-record@sac.eng.sun.com>; Fri, 25 Mar 2005 14:52:01 -0800 (PST)
+Received: from noho.SFBay.Sun.COM (noho.SFBay.Sun.COM [10.6.92.101])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2PMoPw19263
+	for <fwarc-record@sun.com>; Fri, 25 Mar 2005 14:50:25 -0800 (PST)
+Received: from noho.SFBay.Sun.COM (localhost [127.0.0.1])
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0) with ESMTP id j2PMoOOj011397
+	for <fwarc-record@sun.com>; Fri, 25 Mar 2005 14:50:24 -0800 (PST)
+Received: (from dmk@localhost)
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0/Submit) id j2PMoO0q011396
+	for fwarc-record@sun.com; Fri, 25 Mar 2005 14:50:24 -0800 (PST)
+Date: Fri, 25 Mar 2005 14:50:24 -0800 (PST)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Message-Id: <200503252250.j2PMoO0q011396@noho.SFBay.Sun.COM>
+To: fwarc-record@sun.com
+Subject: Re: closed approved  fast-track: 2005/112 - IO API
+Status: RO
+Content-Length: 115
+
+
+Note that this case is approved for a minor
+release of the firmware and a micro/patch
+release of the OS.
+
+-David
+
+

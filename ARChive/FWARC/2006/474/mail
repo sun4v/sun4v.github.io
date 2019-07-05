@@ -1,0 +1,639 @@
+From sacadmin Wed Aug  9 20:57:28 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7A3vSkC022944
+	for <FWARC@sac.sfbay.sun.com>; Wed, 9 Aug 2006 20:57:28 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k7A3vSdh025204;
+	Wed, 9 Aug 2006 20:57:28 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7A3vRxX025381;
+	Wed, 9 Aug 2006 20:57:27 -0700 (PDT)
+Message-ID: <44DAAEA6.6030606@sun.com>
+Date: Wed, 09 Aug 2006 20:57:26 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 1.5.0.5 (Windows/20060719)
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+CC: Tayfun Kocaoglu <tayfun.kocaoglu@sun.com>,
+        Govinda Tatti <Govinda.Tatti@sun.com>
+Subject: FWARC/2006/474 - pci iov hv iommu attributes update - fast track
+ timeout Aug 16 2006
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 1092
+
+
+I'm sponsoring this fast track for Tayfun.
+This fast-track times out on Aug 16 2006.
+
+The case updates the HV PCI IO API spec, originally
+defined in 2005/112.
+
+Specifically, this case updates the iotte attributes
+to support requestor-id based key validation
+in iommu mappings and the ability to request the
+relaxed ordering attribute in the iotte, available on Niagara 2,
+so the update affects pci_iommu_map and pci_iommu_getmap APIs.
+(Only the attributes argument and return in these 2 APIs
+change.)
+
+The attribute additions are upwards compatible with the
+previous spec.
+
+This case will update the API versions of these
+interfaces to v1.1 in the PCI IO API group,
+0x100. The registry entries will be updated
+upon approval.
+
+The completely updated spec is in the file
+materials/io-api.txt
+
+The entire SCCS file is in the materials
+dir, so you can easily see the differences
+between versions.
+
+Commitment levels remain Sun Private and
+the case seeks a minor or micro binding for
+firmware changes and minor/micro or patch binding
+for any OS changes using the new attributes bits.
+
+-David
+
+
+
+
+
+From sacadmin Mon Aug 14 20:58:04 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7F3w4VJ008577
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Aug 2006 20:58:04 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com (nwkes-gis-mail-2.SFBay.Sun.COM [10.4.134.6])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k7F3w4TJ021411
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Aug 2006 20:58:04 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7F3vxel028942
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Aug 2006 20:57:59 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4000A01TOGF500@d1-sfbay-09.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM) for FWARC@sac.sfbay.sun.com; Mon,
+ 14 Aug 2006 20:57:58 -0700 (PDT)
+Received: from sun.com ([129.150.20.192])
+ by d1-sfbay-09.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0J40001S1TOH3WB0@d1-sfbay-09.sun.com>; Mon,
+ 14 Aug 2006 20:57:58 -0700 (PDT)
+Date: Mon, 14 Aug 2006 20:57:57 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: FWARC/2006/474 - pci iov hv iommu attributes update - fast track
+ timeout Aug 16 2006
+In-reply-to: <44DAAEA6.6030606@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: FWARC@sac.sfbay.sun.com, Tayfun Kocaoglu <tayfun.kocaoglu@Sun.COM>,
+        Govinda Tatti <Govinda.Tatti@Sun.COM>
+Message-id: <44E14645.3020906@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <44DAAEA6.6030606@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 1806
+
+David Kahn wrote:
+
+> 
+> I'm sponsoring this fast track for Tayfun.
+> This fast-track times out on Aug 16 2006.
+> 
+> The case updates the HV PCI IO API spec, originally
+> defined in 2005/112.
+> 
+> Specifically, this case updates the iotte attributes
+> to support requestor-id based key validation
+> in iommu mappings and the ability to request the
+> relaxed ordering attribute in the iotte, available on Niagara 2,
+> so the update affects pci_iommu_map and pci_iommu_getmap APIs.
+> (Only the attributes argument and return in these 2 APIs
+> change.)
+>
+> The attribute additions are upwards compatible with the
+> previous spec.
+
+Regarding the new 'phantom function' bits, is encoding 0 (zero) of
+these bits equivalent to the behavior in version 1.0 of the
+API (since there is no 'enable phantom function' bit)?
+
+The new spec is unclear about bits 15:6 and 3 of the attributes:
+"Bits 63:2 are unused" got replaced by "Bits 63:32 are unused",
+leaving some bits unaccounted for.
+
+I have two minor nits with the new spec text:
+
+The descriptions of the bit fields are not in the same order as
+they are in the bit diagram.
+
+In the description of the 'L' bit, the text refers to the bit by a
+different name: "is permitted to ignore the RO bit"
+
+Tony.
+
+> This case will update the API versions of these
+> interfaces to v1.1 in the PCI IO API group,
+> 0x100. The registry entries will be updated
+> upon approval.
+> 
+> The completely updated spec is in the file
+> materials/io-api.txt
+> 
+> The entire SCCS file is in the materials
+> dir, so you can easily see the differences
+> between versions.
+> 
+> Commitment levels remain Sun Private and
+> the case seeks a minor or micro binding for
+> firmware changes and minor/micro or patch binding
+> for any OS changes using the new attributes bits.
+> 
+> -David
+> 
+> 
+> 
+> 
+
+
+
+From sacadmin Mon Aug 14 21:30:26 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7F4UPFa008967
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Aug 2006 21:30:25 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k7F4UPsu029105;
+	Mon, 14 Aug 2006 21:30:25 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7F4UOH8012568;
+	Mon, 14 Aug 2006 21:30:24 -0700 (PDT)
+Message-ID: <44E14DE0.3070803@sun.com>
+Date: Mon, 14 Aug 2006 21:30:24 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 1.5.0.5 (Windows/20060719)
+MIME-Version: 1.0
+To: Tony Sumpter <Tony.Sumpter@sun.com>,
+        Tayfun Kocaoglu <tayfun.kocaoglu@sun.com>
+CC: FWARC@sac.sfbay.sun.com, Govinda Tatti <Govinda.Tatti@sun.com>
+Subject: Re: FWARC/2006/474 - pci iov hv iommu attributes update - fast track
+ timeout Aug 16 2006
+References: <44DAAEA6.6030606@sun.com> <44E14645.3020906@sun.com>
+In-Reply-To: <44E14645.3020906@sun.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 623
+
+
+
+Tony Sumpter wrote:
+
+>> The attribute additions are upwards compatible with the
+>> previous spec.
+> 
+> Regarding the new 'phantom function' bits, is encoding 0 (zero) of
+> these bits equivalent to the behavior in version 1.0 of the
+> API (since there is no 'enable phantom function' bit)?
+
+Yes.
+
+00b means no function number bits are used for phantom functions.
+
+> I have two minor nits with the new spec text:
+> 
+> The descriptions of the bit fields are not in the same order as
+> they are in the bit diagram.
+
+Do they have to be in the same order?
+
+The project team will need to respond to your other 2 issues.
+
+-David
+
+From sacadmin Mon Aug 14 22:14:48 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7F5EmsA009840
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Aug 2006 22:14:48 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com (nwkes-gis-mail-2.SFBay.Sun.COM [10.4.134.6])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k7F5ElOh028266
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Aug 2006 22:14:47 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7F5Eg9w000988
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Aug 2006 22:14:42 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4000F01X38SW00@d1-sfbay-09.sun.com>
+ (original mail from Govinda.Tatti@Sun.COM) for FWARC@sac.sfbay.sun.com; Mon,
+ 14 Aug 2006 22:14:42 -0700 (PDT)
+Received: from [129.150.20.173] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J4000FO3X8I19T9@d1-sfbay-09.sun.com>; Mon,
+ 14 Aug 2006 22:14:42 -0700 (PDT)
+Date: Mon, 14 Aug 2006 22:14:41 -0700
+From: Govinda Tatti <Govinda.Tatti@Sun.COM>
+Subject: Re: FWARC/2006/474 - pci iov hv iommu attributes update - fast track
+ timeout Aug 16 2006
+In-reply-to: <44E14645.3020906@sun.com>
+Sender: Govinda.Tatti@Sun.COM
+To: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Cc: David Kahn <David.Kahn@Sun.COM>, FWARC@sac.sfbay.sun.com,
+        Tayfun Kocaoglu <tayfun.kocaoglu@Sun.COM>, pci-core@Sun.COM
+Message-id: <44E15841.3040501@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+References: <44DAAEA6.6030606@sun.com> <44E14645.3020906@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.0.4)
+ Gecko/20060516 SeaMonkey/1.0.2
+Status: RO
+Content-Length: 1532
+
+
+Tony, thanks for these comments. See my inline comments.
+> David Kahn wrote:
+>
+>>
+>> I'm sponsoring this fast track for Tayfun.
+>> This fast-track times out on Aug 16 2006.
+>>
+>> The case updates the HV PCI IO API spec, originally
+>> defined in 2005/112.
+>>
+>> Specifically, this case updates the iotte attributes
+>> to support requestor-id based key validation
+>> in iommu mappings and the ability to request the
+>> relaxed ordering attribute in the iotte, available on Niagara 2,
+>> so the update affects pci_iommu_map and pci_iommu_getmap APIs.
+>> (Only the attributes argument and return in these 2 APIs
+>> change.)
+>>
+>> The attribute additions are upwards compatible with the
+>> previous spec.
+>
+> Regarding the new 'phantom function' bits, is encoding 0 (zero) of
+> these bits equivalent to the behavior in version 1.0 of the
+> API (since there is no 'enable phantom function' bit)?
+>
+> The new spec is unclear about bits 15:6 and 3 of the attributes:
+> "Bits 63:2 are unused" got replaced by "Bits 63:32 are unused",
+> leaving some bits unaccounted for.
+yes, even bit 4, 7-14 are unused
+>
+> I have two minor nits with the new spec text:
+>
+> The descriptions of the bit fields are not in the same order as
+> they are in the bit diagram.
+>
+We can fix this issue too.
+
+> In the description of the 'L' bit, the text refers to the bit by a
+> different name: "is permitted to ignore the RO bit"
+
+We should replace "RO" with "L".
+
+Either Tayfun or myself will update the spec with these changes and let 
+you know.
+
+Cheers
+GOVINDA
+
+From sacadmin Mon Aug 14 22:25:47 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7F5Pk4W009883
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Aug 2006 22:25:46 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com (nwkes-gis-mail-2.SFBay.Sun.COM [10.4.134.6])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k7F5PkKB009546
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Aug 2006 22:25:46 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7F5PfB0001293
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Aug 2006 22:25:41 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4000K01XLJ7400@d1-sfbay-09.sun.com>
+ (original mail from Govinda.Tatti@Sun.COM) for FWARC@sac.sfbay.sun.com; Mon,
+ 14 Aug 2006 22:25:41 -0700 (PDT)
+Received: from [129.150.20.173] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J4000FXGXQT11U8@d1-sfbay-09.sun.com>; Mon,
+ 14 Aug 2006 22:25:41 -0700 (PDT)
+Date: Mon, 14 Aug 2006 22:25:40 -0700
+From: Govinda Tatti <Govinda.Tatti@Sun.COM>
+Subject: Re: FWARC/2006/474 - pci iov hv iommu attributes update - fast track
+ timeout Aug 16 2006
+In-reply-to: <44E15841.3040501@sun.com>
+Sender: Govinda.Tatti@Sun.COM
+To: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Cc: Govinda Tatti <Govinda.Tatti@Sun.COM>, David Kahn <David.Kahn@Sun.COM>,
+        FWARC@sac.sfbay.sun.com, Tayfun Kocaoglu <tayfun.kocaoglu@Sun.COM>,
+        pci-core@Sun.COM
+Message-id: <44E15AD4.7040108@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+References: <44DAAEA6.6030606@sun.com> <44E14645.3020906@sun.com>
+ <44E15841.3040501@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.0.4)
+ Gecko/20060516 SeaMonkey/1.0.2
+Status: RO
+Content-Length: 273
+
+
+>>
+>> The new spec is unclear about bits 15:6 and 3 of the attributes:
+>> "Bits 63:2 are unused" got replaced by "Bits 63:32 are unused",
+>> leaving some bits unaccounted for.
+> yes, even bit 4, 7-14 are unused
+sorry, unused bits are 3, 15:6 and 63:32.
+
+Cheers
+GOVINDA
+
+ 
+
+From sacadmin Mon Aug 14 22:31:37 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7F5VbJN009929
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Aug 2006 22:31:37 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com (nwkes-gis-mail-2.SFBay.Sun.COM [10.4.134.6])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k7F5VaBk010426
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Aug 2006 22:31:37 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7F5VVwv001429
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Aug 2006 22:31:31 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4000001XZ6LS00@d1-sfbay-09.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM) for FWARC@sac.sfbay.sun.com; Mon,
+ 14 Aug 2006 22:31:31 -0700 (PDT)
+Received: from sun.com ([129.150.21.145])
+ by d1-sfbay-09.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0J4000L5WY0IA400@d1-sfbay-09.sun.com>; Mon,
+ 14 Aug 2006 22:31:31 -0700 (PDT)
+Date: Mon, 14 Aug 2006 22:31:34 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: FWARC/2006/474 - pci iov hv iommu attributes update - fast track
+ timeout Aug 16 2006
+In-reply-to: <44E14DE0.3070803@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: Tayfun Kocaoglu <tayfun.kocaoglu@Sun.COM>, FWARC@sac.sfbay.sun.com,
+        Govinda Tatti <Govinda.Tatti@Sun.COM>
+Message-id: <44E15C36.4060109@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <44DAAEA6.6030606@sun.com> <44E14645.3020906@sun.com>
+ <44E14DE0.3070803@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 802
+
+David Kahn wrote:
+
+> 
+> 
+> Tony Sumpter wrote:
+> 
+>>> The attribute additions are upwards compatible with the
+>>> previous spec.
+>>
+>>
+>> Regarding the new 'phantom function' bits, is encoding 0 (zero) of
+>> these bits equivalent to the behavior in version 1.0 of the
+>> API (since there is no 'enable phantom function' bit)?
+> 
+> 
+> Yes.
+> 
+> 00b means no function number bits are used for phantom functions.
+
+Thanks.
+
+>> I have two minor nits with the new spec text:
+>>
+>> The descriptions of the bit fields are not in the same order as
+>> they are in the bit diagram.
+> 
+> 
+> Do they have to be in the same order?
+
+No - just that having the bits in the same order tends to confirm
+the correctness of the layout.
+
+Tony.
+
+
+> The project team will need to respond to your other 2 issues.
+> 
+> -David
+
+
+
+From sacadmin Mon Aug 14 22:38:29 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7F5cTBG009967
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Aug 2006 22:38:29 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k7F5cSdM002642;
+	Mon, 14 Aug 2006 22:38:28 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7F5cR3A014069;
+	Mon, 14 Aug 2006 22:38:27 -0700 (PDT)
+Message-ID: <44E15DD2.1010102@sun.com>
+Date: Mon, 14 Aug 2006 22:38:26 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 1.5.0.5 (Windows/20060719)
+MIME-Version: 1.0
+To: Govinda Tatti <Govinda.Tatti@sun.com>
+CC: Tony Sumpter <Tony.Sumpter@sun.com>, FWARC@sac.sfbay.sun.com,
+        Tayfun Kocaoglu <tayfun.kocaoglu@sun.com>, pci-core@sun.com
+Subject: Re: FWARC/2006/474 - pci iov hv iommu attributes update - fast track
+ timeout Aug 16 2006
+References: <44DAAEA6.6030606@sun.com> <44E14645.3020906@sun.com> <44E15841.3040501@sun.com> <44E15AD4.7040108@sun.com>
+In-Reply-To: <44E15AD4.7040108@sun.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 192
+
+
+Govinda Tatti wrote:
+
+ > I modified io-api.txt with these changes. See enclosed file.
+
+I checked the changes into the sccs file in the
+materials directory.
+
+updated version is v1.32
+
+-David
+
+
+From sacadmin Mon Aug 14 23:07:04 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7F6748O010714
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Aug 2006 23:07:04 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com (nwkes-gis-mail-2.SFBay.Sun.COM [10.4.134.6])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k7F673gc020685
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Aug 2006 23:07:03 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7F66wG6007222
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Aug 2006 23:06:58 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4000D01ZLS1A00@d1-sfbay-09.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM) for FWARC@sac.sfbay.sun.com; Mon,
+ 14 Aug 2006 23:06:58 -0700 (PDT)
+Received: from sun.com ([129.150.21.145])
+ by d1-sfbay-09.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0J4000L71ZNL9X00@d1-sfbay-09.sun.com>; Mon,
+ 14 Aug 2006 23:06:58 -0700 (PDT)
+Date: Mon, 14 Aug 2006 23:07:01 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: FWARC/2006/474 - pci iov hv iommu attributes update - fast track
+ timeout Aug 16 2006
+In-reply-to: <44E15DD2.1010102@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: Govinda Tatti <Govinda.Tatti@Sun.COM>, FWARC@sac.sfbay.sun.com,
+        Tayfun Kocaoglu <tayfun.kocaoglu@Sun.COM>, pci-core@Sun.COM
+Message-id: <44E16485.5030809@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <44DAAEA6.6030606@sun.com> <44E14645.3020906@sun.com>
+ <44E15841.3040501@sun.com> <44E15AD4.7040108@sun.com>
+ <44E15DD2.1010102@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 269
+
+David Kahn wrote:
+
+> 
+> Govinda Tatti wrote:
+> 
+>  > I modified io-api.txt with these changes. See enclosed file.
+> 
+> I checked the changes into the sccs file in the
+> materials directory.
+> 
+> updated version is v1.32
+
+All my issues are answered. Thank you.
+
+Tony.
+
+
+
+From sacadmin Fri Aug 18 15:30:55 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7IMUtVf015425
+	for <FWARC@sac.sfbay.sun.com>; Fri, 18 Aug 2006 15:30:55 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k7IMUsiZ013358;
+	Fri, 18 Aug 2006 15:30:54 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7IMUrr3089589;
+	Fri, 18 Aug 2006 15:30:53 -0700 (PDT)
+Message-ID: <44E63F9D.2070204@sun.com>
+Date: Fri, 18 Aug 2006 15:30:53 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 1.5.0.5 (Windows/20060719)
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+CC: Govinda Tatti <Govinda.Tatti@sun.com>,
+        Tayfun Kocaoglu <tayfun.kocaoglu@sun.com>,
+        Sue Young <Sue.Young@sun.com>
+Subject: Re: [Fwd:  FWARC/2006/474 - pci iov hv iommu attributes update -
+ fast track timeout Aug 16 2006]
+References: <44E63DA9.1000501@sun.com>
+In-Reply-To: <44E63DA9.1000501@sun.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 70
+
+
+This case is approved.
+
+(Thanks for the reminder, Govinda.)
+
+-David
+
+
+From sacadmin Fri Aug 18 16:39:53 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7INdrsi016270
+	for <FWARC@sac.sfbay.sun.com>; Fri, 18 Aug 2006 16:39:53 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com (nwkes-gis-mail-2.SFBay.Sun.COM [10.4.134.6])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k7INdrQp014132
+	for <FWARC@sac.sfbay.sun.com>; Fri, 18 Aug 2006 16:39:53 -0700 (PDT)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7INdZE0010862
+	for <FWARC@sac.sfbay.sun.com>; Fri, 18 Aug 2006 16:39:35 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4700L01WAJJL00@d1-sfbay-10.sun.com>
+ (original mail from Sue.Young@Sun.COM) for FWARC@sac.sfbay.sun.com; Fri,
+ 18 Aug 2006 16:39:35 -0700 (PDT)
+Received: from [129.146.11.181] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J47001CFWDWX7LH@d1-sfbay-10.sun.com>; Fri,
+ 18 Aug 2006 16:39:33 -0700 (PDT)
+Date: Fri, 18 Aug 2006 16:39:32 -0700
+From: Sue Young <Sue.Young@Sun.COM>
+Subject: Re: [Fwd:  FWARC/2006/474 - pci iov hv iommu attributes update - fast
+ track timeout Aug 16 2006]
+In-reply-to: <44E63F9D.2070204@sun.com>
+Sender: Sue.Young@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: FWARC@sac.sfbay.sun.com, Govinda Tatti <Govinda.Tatti@Sun.COM>,
+        Tayfun Kocaoglu <tayfun.kocaoglu@Sun.COM>
+Message-id: <44E64FB4.7080905@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <44E63DA9.1000501@sun.com> <44E63F9D.2070204@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 298
+
+
+Great!
+Thanks to everyone!
+
+Sue
+
+David Kahn wrote On 08/18/06 15:30,:
+
+>
+> This case is approved.
+>
+> (Thanks for the reminder, Govinda.)
+>
+> -David
+>
+
+-- 
+
+Software Program Manager			+1.650.352.4152
+Scalable Systems Group - NRSE			sue.young@sun.com
+Sun Microsystems, Inc.				Menlo Park, CA USA
+
+
+

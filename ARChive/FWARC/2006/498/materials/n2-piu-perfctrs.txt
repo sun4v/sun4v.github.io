@@ -1,0 +1,129 @@
+
+	Version: $Id: n2-piu-perfctrs.txt,v 1.2 2006/08/18 05:51:46 exodus Exp $
+
+Niagara 2 PIU Performance Counters - Hypervisor API
+
+    Introduction
+
+	This case defines the Niagara 2 PIU-specific performance counters API
+	for sun4v.
+
+    API Versioning
+
+	This interface will abide by FWARC/2006/052 with respect
+	to versioning.  The interface presented here represents
+	version 1.0.
+
+	See the section on Exported Interfaces below for specific API
+	group-number.
+
+    References
+
+	FWARC/2004/510 sun4v umbrella case
+	FWARC/2005/112 sun4v io-api
+	FWARC/2006/002 Fire Performance Counter API
+	FWARC/2006/052 sun4v version API update
+	Niagara-2 PRM, v1.2 (Mar 3, 2006), Chp 16 PCI Express Interface Unit (PIU)
+	- https://systemsweb.sfbay.sun.com/n2/team/specs/specs.html
+
+    Function Number
+
+	The following function numbers define the primary N2 PIU
+	performance counter entrypoints per the Sun4v Hypervisor API:
+
+		N2PIU_GET_PERFREG 0x140
+		N2PIU_SET_PERFREG 0x141
+
+    N2PIU Performance Counter API Definitions
+
+	1.	General
+
+	The argument "pci device handle" is a "devhandle" as defined in
+	FWARC/2005/112 section 3.1
+
+	The argument "Performance register ID" refers to the registers as
+	defined in Niagara 2 Programmer's Reference Manual sections as
+	indicated below. Values read and written as defined by Niagara 2
+	PRM.
+
+	Performance		Description			N2
+	register ID						PRM
+	-----------	--------------------------------------  --------
+           0            DMU IMU Performance Counter Select      16.4.3.36
+	   1            DMU IMU Performance Counter Zero        16.4.3.37
+	   2            DMU IMU Performance Counter One         16.4.3.38
+
+	   3            DMU MMU Performance Counter Select      16.4.3.53
+           4		DMU MMU Performance Counter Zero        16.4.3.54
+           5		DMU MMU Performance Counter One         16.4.3.55
+
+	   6		PEU Performance Counter Select		16.4.3.95
+	   7	        PEU Performance Counter Zero		16.4.3.96
+	   8	        PEU Performance Counter One		16.4.3.97
+	   9	        PEU Performance Counter Two		16.4.3.98
+
+	   10	        PEU Bit Error Counter I			16.4.3.140
+	   11	        PEU Bit Error Counter I			16.4.3.141
+
+
+	2.1 n2piu_get_perf_reg
+
+	    Entry:
+		trap#		FAST_TRAP
+		function#	N2PIU_GET_PERFREG
+		arg0		pci device handle
+		arg1		Performance register ID
+
+	    Exit:
+		ret0		status (success or error code)
+		ret1		Performance register value
+
+	This call reads the value of the N2 PIU performance register
+	specified by the argument "Performance register ID" of the pci
+	leaf specified by the argument "pci device handle".
+
+	Upon successful completion, it returns EOK status and performance
+	register value. Otherwise, it returns one of the following errors:
+
+	EINVAL			Invalid performance register number
+	ENOACCESS		No access allowed to performance registers
+
+
+	2.2 n2piu_set_perf_reg
+
+	    Entry:
+		trap#		FAST_TRAP
+		function#	N2PIU_SET_PERFREG
+		arg0		pci device handle
+		arg1		Performance register ID
+		arg2		Performance register value
+
+	    Exit:
+		ret0		status (success or error code)
+
+	This call sets the value of the N2 PIU performance register as
+	specified by the argument "Performance register ID" of the pci
+	leaf specified by the argument "pci device handle" to the
+	value specified by the argument "Performance register value".
+
+	Upon successful completion, it updates the specified
+	performance register value and returns EOK status. Otherwise,
+	it returns one of the following errors:
+
+	EINVAL			Invalid performance register number
+	ENOACCESS		No access allowed to performance registers
+
+
+========================================================================
+Exported Interfaces
+
+HV Fast Trap:
+
+	0x140		Sun Private	N2PIU_GET_PERFREG	API v1.0
+	0x141		Sun Private	N2PIU_SET_PERFREG	API v1.0
+
+N2PIU API Group Number:
+
+	0x0203		Sun Private	Niagara 2 PIU Performance Counters
+
+

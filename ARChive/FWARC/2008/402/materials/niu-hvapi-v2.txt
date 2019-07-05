@@ -1,0 +1,240 @@
+Niagara-2 Network Interface Unit (NIU) Hypervisor API Extensions
+
+1.0 Introduction
+
+    This document describes extensions to the Niagara2 Network Interface
+    Unit (NIU) Hypervisor API currently available on Niagara2 based
+    platforms.
+
+    The new NIU HV APIs extend a domain's capability by allowing
+    management of multiple NIU interfaces in a single domain.
+
+    The new interfaces will abide by FWARC/2006/052 with respect
+    to versioning. The new APIs presented here will be available
+    as part of version 2.0 of the NIU API group.
+
+2.0 References
+
+    FWARC/2008/248 - Niagara2 NIU Hypervisor API Extensions
+
+    FWARC/2006/052 - sun4v version API update
+
+2.1 Definitions
+
+    See References
+
+2.2 Overview
+    In UltraSPARC T2, only one NIU is available to the system.  In KT
+      products, multiple NIUs can be available in a single domain. This
+      means all NIU capabilities that access the device directly (without
+      using a cookie) will need to uniquely identify the NIU.
+
+3.0 Description
+
+    The current set of NIU APIs allow a domain that owns the device
+    to configure, manage and send/receive data through the NIU device, or
+    to assign HW resources to another logical domain.
+
+    The new set of HV APIs proposed in this document extend these APIs
+    to reference a specific NIU on the system.  The NIU will be identified
+    using a 'devhandle' - a unique identifier that can be obtained by reading
+    the cfg-handle property specified in the NIU device node in the
+    guest MD.
+
+    The list of APIs being modified to support this functionality are:
+
+    HV Fast Trap:
+
+         N2NIU_RX_LP_SET		0x142
+         N2NIU_RX_LP_GET		0x143
+         N2NIU_TX_LP_SET		0x144
+         N2NIU_TX_LP_GET		0x145
+         N2NIU_VR_ASSIGN		0x146
+
+    The following list of exisiting APIs will continue to be available unchanged
+    in the 2.0 API:
+
+    HV Fast Trap:
+
+         N2NIU_VR_UNASSIGN		0x147
+         N2NIU_VR_GETINFO		0x148
+
+         N2NIU_VR_RX_DMA_ASSIGN		0x149
+         N2NIU_VR_RX_DMA_UNASSIGN	0x14a
+         N2NIU_VR_TX_DMA_ASSIGN		0x14b
+         N2NIU_VR_TX_DMA_UNASSIGN	0x14c
+
+         N2NIU_VR_GET_RX_MAP		0x14d
+         N2NIU_VR_GET_TX_MAP		0x14e
+
+         N2NIU_VRRX_SET_INO		0x150
+         N2NIU_VRTX_SET_INO		0x151
+
+         N2NIU_VRRX_GET_INFO		0x152
+         N2NIU_VRTX_GET_INFO		0x153
+
+         N2NIU_VRRX_LP_SET		0x154
+         N2NIU_VRRX_LP_GET		0x155
+         N2NIU_VRTX_LP_SET		0x156
+         N2NIU_VRTX_LP_GET		0x157
+
+         N2NIU_VRRX_PARAM_GET		0x158
+         N2NIU_VRRX_PARAM_SET		0x159
+         N2NIU_VRTX_PARAM_GET		0x15a
+         N2NIU_VRTX_PARAM_SET		0x15b
+
+
+3.1 NIU Logical Page Specific APIs for 2.0:
+
+3.1.1 Configure logical page for a RX/TX channel:
+
+     trap         #FAST_TRAP
+     function#    N2NIU_CFGH_RX_LP_SET
+     arg0         devhandle
+     arg1         ch_idx
+     arg2         pgidx
+     arg3         raddr
+     arg4         size
+
+     ret0         status
+
+     trap         #FAST_TRAP
+     function#    N2NIU_TX_LP_SET
+     arg0         devhandle
+     arg1         ch_idx
+     arg2         pgidx
+     arg3         raddr
+     arg4         size
+
+     ret0         status
+
+     ARGUMENTS:
+       devhandle   An id that uniquely describes the NIU to use
+       vch_idx     The DMA channel index number.
+       pgidx       Logical page index number (0-1)
+       raddr       LP Real address (size aligned)
+       size        LP Size 
+ 
+     Configure a mapping described by arguments raddr and size in the NIU
+     DMA engine address translation (logical page) register
+     indicated by ch_idx and pgidx.
+
+     If there is already a valid mapping for the page specified by pgidx, 
+     that mapping is overwritten.
+
+     The specified mapping is un-configured if the size is 0. In this case, 
+     raddr is ignored.
+
+     devhandle is unique 64 bit NIU device identifier
+
+     chidx must be between 0 and 15.
+
+     pgidx must be 0 or 1.
+
+     raddr must be size aligned.
+
+     size must be a power-of-2.
+
+     This interface is identical to the NIU 1.0 interfaces except for
+     the presence of a devhandle.
+
+     ERRORS:
+       ENOACCESS   devhandle not associated with this domain
+       EINVAL      Invalid Channel index / Invalid Page index
+       EBADALIGN   Improper RA alignment
+
+
+3.1.2 Logical page information for a RX/TX channel:
+
+     trap         #FAST_TRAP
+     function#    N2NIU_RX_LP_GET
+     arg0         devhandle
+     arg1         ch_idx
+     arg2         pgidx
+
+     ret0         status
+     ret1         raddr
+     ret2         size
+
+     trap         #FAST_TRAP
+     function#    N2NIU_TX_LP_GET
+     arg0         devhandle
+     arg1         ch_idx
+     arg2         pgidx
+
+     ret0         status
+     ret1         raddr
+     ret2         size
+
+     ARGUMENTS:
+       devhandle   An id that uniquely describes the NIU to use
+       ch_idx     The virtual DMA channel index number.
+       pgidx       Logical page index number
+
+     RETURNS:
+       raddr       LP Real address
+       size        LP Size
+
+      Return the current mapping in the NIU DMA engine address
+      translation (logical page) register indicated by ch_idx and pgidx.  The
+      real address and size are returned in ret1 and ret2.
+
+      devhandle is unique 64 bit NIU device identifier
+
+      ch_idx must be between 0 and 15.
+
+      pgidx must be 0 or 1.
+
+      If there is no current mapping for the given chidx and pgidx, then the 
+      return values raddr and size will both be 0.
+
+     This interface is identical to the NIU 1.0 interfaces except for
+     the presence of a devhandle.
+
+     ERRORS:
+       ENOACCESS   devhandle not associated with this domain
+       EINVAL      Invalid Channel index / Invalid Page index
+
+
+3.2  Virtualization APIs
+
+3.1.1 Assign a VR to a Guest Domain:
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VR_ASSIGN
+     arg0	  devhandle
+     arg1         vr_idx
+     arg2         ldc_id
+     
+     ret0         status
+     ret1         vr_cookie
+
+     ARGUMENTS:
+       devhandle  An id that uniquely describes the NIU to use
+
+       vr_idx     Virtualization Region index number (0-7)
+                  The NIU has 2 Functions, each Function has 2
+		  Virtualization regions, each region can be split
+		  into 2 access protected pages. 
+
+       ldc_id     LDC endpoint in the domain that owns the NIU device and the
+                  channel that runs between and the domain to which the
+                  virtual region is being assigned.
+     RETURNS:
+       vr_cookie  A 32 bit unique id returned by HV. This cookie represents
+                  a specific NIU and a specific Virtual Region(VR) in it.
+     
+     Assigns the specified virtual region to a domain identified by the
+     endpoint ID of the channel to the target domain. The returned 
+     vr_cookie can be used by a domain to obtain access to the virtual
+     region.
+
+     This API is identical to the one defined in the 1.1 API except for
+       the presence of a devhandle.
+
+     ERRORS:
+       ENOACCESS    Domain does not own the NIU / Invalid devhandle
+       ECHANNEL     Invalid Channel (LDC ID)
+       EINVAL       Invalid VR idx / VR already assigned
+
+

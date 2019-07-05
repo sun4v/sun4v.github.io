@@ -1,0 +1,20 @@
+#pragma ident	"%Z%%M%	%I%	%E% SMI"
+
+			Interface table
+			===============
+
+Interfaces Exported
+		
+Interface Name			Classification   	Comment
+                                      	 
+------------------------------------------------------------------------
+
+Machine Desc. Transport		Sun Private	Raw (transport) data format
+
+Node Types			Sun Private	Node/Data/etc encoding
+
+Node Names			Sun Private	Node names, etc.
+
+Property names and		Sun Private	Generic names/values and
+values						Ontario specific names/values
+

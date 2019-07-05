@@ -1,0 +1,167 @@
+
+------- io-api.txt -------
+*** /tmp/sccs.3laatN	Tue Apr 28 16:28:56 2009
+--- io-api.txt	Tue Apr 28 16:26:47 2009
+***************
+*** 1,74 ****
+! #pragma ident	"@(#)io-api.txt	1.34	09/03/09 SMI"
+! 
+! Changes in this version:
+! 
+! - Clarified to which API versions the IOTTE attribute extension apply
+! 
+! - Clarified reliability of io_attributes in pci_iommu_map and pci_iommu_getmap
+! 
+! - Changed io_sync_direction->io_sync_attributes for API version 1.2
+! 
+! Changes in previous versions:
+! 
+! - IOTTE attribute extensions
+! 
+! - Editorial changes for FWARC approved version.
+! 
+! - Delete notes about changes to (old) core API.
+! 
+! - intr_* functions deleted (moving to core API)
+! 
+! - For consistency, renamed PCI_MSISTATE_PENDING
+!   to PCI_MSISTATE_DELIVERED.
+! 
+! - Noticing that config reads cannot pass writes on PCI,
+!   simplify pci_poke.
+! 
+! - Added msitype arg to pci_msi_setmsiq
+!   HV needs the info to create the MSI data record.
+! 
+! - Rename pci_msiq_init to pci_msiq_conf + added nentries arg.
+!   Added pci_msiq_info (resulting in function# changes)
+!   qconf and qinfo are now aligned with the CPU API.
+! 
+! - Deleted INTR_PENDING, replace with INTR_RECEIVED & INTR_DELIVERED
+! 
+! - Align message formats with "futures".
+!   Expanded Type field, added Version number field.
+!   Some fields got moved around for alignment with "futures".
+! 
+! - msiqhead and msiqtail should be offsets, not indeces.
+!   Align interfaces with cpu head/tail interfaces.
+! 
+! - pci_poke: Allow readback size of zero (no readback).
+!   Allow caller to specify memory/config space for r_addr2.
+! 
+! - Added interfaces to support PCIe messages.
+! - pci_iommu_getmap - returns ENOMAP if no mapping found
+! 
+! - Specify size based byte swapping for pci_config_get/put
+!   and pci_peek/poke
+! 
+! - Added descriptions for pci_msiq_[gs]et_valid
+! 
+! - Did a bit of work on intr/msiq/msi states.
+! 
+! - pci_dev_init - deleted
+! 
+! - pci_dma_sync - modified to take size and return #synced
+! 
+! - pci_iommu_map - multiple page support
+! 
+! - pci_iommu_demap - multiple page support
+! 
+! - Combine tsbnum/tsbindex into a single tsbid argument
+! 
+! - Added read-back size to pci_poke
+! 
+! - Clarified that unused bits in io_attributes must be set to zero
+!   for future compatibility.
+! 
+! 
+  
+  1	Introduction.
+  
+--- 1,4 ----
+! #pragma ident	"@(#)io-api.txt	1.36	09/04/28 SMI"
+  
+  1	Introduction.
+  
+***************
+*** 195,201 ****
+  
+  		Note: For compatibility with future versions of this
+  		specification, the caller must set all unused bits to
+! 		zero. The implementation shall ignore these bits.
+  
+  	r_addr - 64-bit Real Address.
+  
+--- 125,145 ----
+  
+  		Note: For compatibility with future versions of this
+  		specification, the caller must set all unused bits to
+! 		zero.
+! 
+! 		Note: For compatibility with existing hardware and guest
+! 		behavior, the "R" bit is implied in all valid mappings.
+! 		Future versions of this specification may change this behavior
+! 		by requiring the "R" bit to be Set for any mapping intended to
+! 		be Readable by the device.
+! 
+! 		Note: Some hw implementations do not implement an "R" bit
+! 		in the hardware. In this case, the "R" attribute is implied
+! 		by any valid iommu mapping, and it is not possible to create
+! 		a write-only mapping. In this case, and for legacy guest
+! 		support, pci_iommu_getmap may return the "R" io_attribute Set
+! 		even if it wasn't Set when pci_iommu_map was called to create
+! 		that mapping.
+  
+  	r_addr - 64-bit Real Address.
+  
+***************
+*** 369,375 ****
+  
+  	Returns the actual number of ttes demapped in the return value
+  	#ttes_demapped, which may be less than or equal to the argument
+! 	#ttes. If #ttes_dempapped is less than #ttes, the caller may
+  	continue to call this function with updated tsbid and #ttes
+  	arguments until all pages are demapped.
+  
+--- 313,319 ----
+  
+  	Returns the actual number of ttes demapped in the return value
+  	#ttes_demapped, which may be less than or equal to the argument
+! 	#ttes. If #ttes_demapped is less than #ttes, the caller may
+  	continue to call this function with updated tsbid and #ttes
+  	arguments until all pages are demapped.
+  
+***************
+*** 424,430 ****
+  
+  4.3.1.1	Errors
+  
+! 	EINVAL		Invalid devhandle/tsbnum/attributes
+  	ENORADDR	Invalid real Address
+  	ENOTSUPPORTED	Function not supported in this implementation.
+  
+--- 368,374 ----
+  
+  4.3.1.1	Errors
+  
+! 	EINVAL		Invalid devhandle/attributes
+  	ENORADDR	Invalid real Address
+  	ENOTSUPPORTED	Function not supported in this implementation.
+  
+***************
+*** 1204,1210 ****
+  	trap#		FAST_TRAP
+  	function#	PCI_MSG_SETMSIQ
+  	arg0		devhandle
+! 	arg1		msg
+  	arg2		msiqid
+  
+  	Set the target msiq of the msg defined by the arguments
+--- 1148,1154 ----
+  	trap#		FAST_TRAP
+  	function#	PCI_MSG_SETMSIQ
+  	arg0		devhandle
+! 	arg1		msgtype
+  	arg2		msiqid
+  
+  	Set the target msiq of the msg defined by the arguments

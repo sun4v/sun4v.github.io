@@ -1,0 +1,143 @@
+From sacadmin Mon Mar 31 20:08:15 2008
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m3138Fl6023150
+	for <fwarc@sac.sfbay.sun.com>; Mon, 31 Mar 2008 20:08:15 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m3138E2x020278
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 31 Mar 2008 20:08:15 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JYM0041JM1O9R00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Mon, 31 Mar 2008 20:08:12 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JYM00BFXM1NDCD0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Mon, 31 Mar 2008 20:08:11 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m3138AiB013544	for
+ <fwarc@Sun.COM>; Tue, 01 Apr 2008 03:08:10 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JYM00F01LUURD00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Mon, 31 Mar 2008 21:08:10 -0600 (MDT)
+Received: from [192.168.1.103] ([72.70.120.252])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0JYM00B0DM1EI0B0@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Mon, 31 Mar 2008 21:08:04 -0600 (MDT)
+Date: Mon, 31 Mar 2008 23:08:01 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: FWARC/2008/229 - VIO DR Domain Service - fast-track timeout April 7,
+ 2008
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>,
+        Jim Marks - Sun Microsystems <James.Marks@sun.com>,
+        Liam Merwick <Liam.Merwick@sun.com>, Ryan Maeda <Ryan.Maeda@sun.com>,
+        Eric Sharakan <Eric.Sharakan@sun.com>
+Message-id: <F29506AB-D815-4EC3-8597-EB4E9097F8F4@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.919.2)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 616
+
+I am sponsoring this fast-track case for Jim marks. This case
+defines the Virtual IO DR (Dynamic Reconfiguration) domain
+service. The core Domain Services specification was approved
+under FWARC/2006/055.
+
+This case will be approved for minor/micro/patch OS binding and
+minor/micro binding for the firmware.
+
+Case timer is set to expire on April 7, 2008.
+
+All of the changes are highlighted in the 1-pager and the
+VIO DR Messages document in the materials directory at:
+
+http://sac.sfbay/arc/FWARC/2008/229/materials/vio_dr.1pager.txt
+http://sac.sfbay/arc/FWARC/2008/229/materials/vio_dr_messages_specification.txt
+
+
+
+From sacadmin Mon Apr  7 20:43:22 2008
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m383hMYr012469
+	for <fwarc@sac.sfbay.sun.com>; Mon, 7 Apr 2008 20:43:22 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m383hMeh018409
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 7 Apr 2008 20:43:22 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JYZ00K0HMC7FK00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Mon, 07 Apr 2008 20:43:19 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JYZ00J6XMC60Y10@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Mon, 07 Apr 2008 20:43:18 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m383hIVD025896	for
+ <fwarc@Sun.COM>; Tue, 08 Apr 2008 03:43:18 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JYZ00H01MAF5D00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Mon, 07 Apr 2008 21:43:18 -0600 (MDT)
+Received: from [192.168.1.103] ([72.93.34.177])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0JYZ0000BMC5N4E0@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Mon, 07 Apr 2008 21:43:18 -0600 (MDT)
+Date: Mon, 07 Apr 2008 23:43:12 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: FWARC/2008/229 - VIO DR Domain Service - fast-track timeout April
+ 7, 2008
+In-reply-to: <F29506AB-D815-4EC3-8597-EB4E9097F8F4@Sun.COM>
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Jim Marks - Sun Microsystems <James.Marks@sun.com>,
+        Liam Merwick <Liam.Merwick@sun.com>, Ryan Maeda <Ryan.Maeda@sun.com>,
+        Eric Sharakan <Eric.Sharakan@sun.com>
+Message-id: <228A1329-ABCC-44B5-AC38-36FE1DAA62B6@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.919.2)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <F29506AB-D815-4EC3-8597-EB4E9097F8F4@Sun.COM>
+Status: RO
+Content-Length: 800
+
+This fast-track case has timed out and is now approved.
+
+IAM file has been updated.
+
+Thanks
+-Narayan
+
+On Mar 31, 2008, at 11:08 PM, Narayan Venkat wrote:
+
+> I am sponsoring this fast-track case for Jim marks. This case
+> defines the Virtual IO DR (Dynamic Reconfiguration) domain
+> service. The core Domain Services specification was approved
+> under FWARC/2006/055.
+>
+> This case will be approved for minor/micro/patch OS binding and
+> minor/micro binding for the firmware.
+>
+> Case timer is set to expire on April 7, 2008.
+>
+> All of the changes are highlighted in the 1-pager and the
+> VIO DR Messages document in the materials directory at:
+>
+> http://sac.sfbay/arc/FWARC/2008/229/materials/vio_dr.1pager.txt
+> http://sac.sfbay/arc/FWARC/2008/229/materials/vio_dr_messages_specification.txt
+>
+>
+
+

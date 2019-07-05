@@ -1,0 +1,184 @@
+#ident	"@(#)vf_perf_api.txt 1.7	07/04/25 SMI"
+
+1.0 Introduction
+
+This document describes the Victoria Falls hardware performance monitoring
+features and the sun4v API used for guest access to those features.
+
+Section 2.0 summarizes the performance instrumentation
+support provided by the Victoria Falls processor.
+
+Section 3.0 describes the sun4v API used to access
+Victoria Falls performance registers.
+
+
+2.0 Victoria Falls Performance Instrumentation
+
+The Victoria Falls processor provides the following categories of
+performance instrumentation:
+
+	- SPARC performance instrumentation
+	- DRAM performance instrumentation
+	- CLC performance instrumentation
+
+Victoria Falls platforms may contain up to four Victoria Falls nodes. Each 
+node has an instance of the DRAM performance instrumention.
+
+2.1 SPARC Performance Instrumentation
+
+Each hardware strand has a pair of registers to control and capture
+CPU-specific performance information:
+
+	Description					Access
+	-------------------------------------		--------
+	SPARC Performance Control Register		ASR=0x10
+	SPARC Performance Instrumentation counter	ASR=0x11
+
+These registers are directly accessible by the privileged code. The HT
+bit in SPARC PCR controls the counting of hyperprivileged events and may
+be set only in hyperprivileged mode.
+
+2.2 DRAM Performance Instrumentation
+
+Each DRAM channel in Victoria Falls node has a pair of performance counters
+packed into a single register and a register to control what is counted.
+The following table summarizes the location of these counters:
+
+	Description			Location
+	--------------------------	------------------
+	DRAM Perf Control Register	0x84.0000.n400
+	DRAM Perf Counter Register	0x84.0000.n408
+
+where 'n' is 0 through 1 for a total of two different DRAM channels.  These
+registers are only accessible from hyperprivileged mode.
+
+2.3 L2 Control Register
+
+The L2 Control Register adds address interleave ceiling mask and nodeid fileds. The
+PERF_CONFIG bits are the only bits that are exposed with this interface. The  perf
+control bits in the L2 Control Register are 37:36 which are bits 1:0 in the
+virtualized L2 Control Register.
+
+	Description			Location
+	--------------------------	------------------
+	L2 Control Register		0xA9.0000.0000
+
+
+3.0 sun4v API for SPARC and DRAM Performance Registers
+
+These sun4v APIs provide an interface to read and write the DRAM 
+performance registers as they are not accessible by the privileged
+software.
+
+The privileged software can use this interface to write the HT bit
+in the SPARC performance control register as well. The access to write
+to the HT bit can be denied, in which case the sun4v API returns
+ENOACCESS. The code using these interfaces must handle such a failure
+gracefully.
+
+The SPARC performance registers are used to get CLC performance counters
+by setting the PERF_CONFIG bits in L2_CONTROL_REG. In default mode all L2
+misses are counted. The PERF_CONFIG bits in L2 control register can be
+programmed to count misses serviced from local memory, misses serviced
+from remote memory or misses serviced by cache-to-cache transfers. As
+most of the L2_CONTROL_REG is not accessable by the privilege code,
+a virtualized generic register is used to program PERF_CONFIG bits in
+all L2_CONTROL_REG.
+
+
+3.1 Definitions
+
+The SPARC PCR, the virtualized L2_CONTROL_REG and the DRAM performance
+registers are assigned unique performance register numbers (PerfReg#) 
+which uniquely identifies each performance register.
+
+The table below describes the SPARC PCR, the virtualized L2_CONTROL_REG
+and the DRAM performance registers:
+
+PerfReg# Node DRAM  Description     Local address   Global address
+-------- ---- ----  -----------     -------------   --------------
+   0     local  -   SPARC PCR		-		-
+
+   1	 local	all L2 Bank CRs		-		-
+   
+   2       0    0   NODE0_MCU0_PCR  0x84.0000.0400  0xD0.0000.0400
+   3       0    0   NODE0_MCU0_PIC  0x84.0000.0408  0xD0.0000.0408
+   4       0    1   NODE0_MCU1_PCR  0x84.0000.1400  0xD0.0000.1400
+   5       0    1   NODE0_MCU1_PIC  0x84.0000.1408  0xD0.0000.1408
+
+   6       1    0   NODE1_MCU0_PCR  0x84.0000.0400  0xD4.0000.0400
+   7       1    0   NODE1_MCU0_PIC  0x84.0000.0408  0xD4.0000.0408
+   8       1    1   NODE1_MCU1_PCR  0x84.0000.1400  0xD4.0000.1400
+   9       1    1   NODE1_MCU1_PIC  0x84.0000.1408  0xD4.0000.1408
+
+  10       2    0   NODE2_MCU0_PCR  0x84.0000.0400  0xD8.0000.0400
+  11       2    0   NODE2_MCU0_PIC  0x84.0000.0408  0xD8.0000.0408
+  12       2    1   NODE2_MCU1_PCR  0x84.0000.1400  0xD8.0000.1400
+  13       2    1   NODE2_MCU1_PIC  0x84.0000.1408  0xD8.0000.1408
+
+  14       3    0   NODE3_MCU0_PCR  0x84.0000.0400  0xDC.0000.0400
+  15       3    0   NODE3_MCU0_PIC  0x84.0000.0408  0xDC.0000.0408
+  16       3    1   NODE3_MCU1_PCR  0x84.0000.1400  0xDC.0000.1400
+  17       3    1   NODE3_MCU1_PIC  0x84.0000.1408  0xDC.0000.1408
+
+The interface for accessing the SPARC Performance Control Register
+operates on the entire register and always on the current hardware
+strand.
+
+3.2 API calls
+
+The following function numbers are applicable when accessing the
+Victoria Falls SPARC and DRAM controller performance registers:
+
+	VFALLS_GET_PERFREG		0x106
+	VFALLS_SET_PERFREG		0x107
+
+These API calls are part of the following API group:
+
+	Group#		Description
+	-----		------------
+	0x205		Victoria Falls Performance Counters
+
+The document describes API version 1.0 of the Victoria Falls Performance
+Counters API group.
+
+3.2.1 vfalls_get_perfreg
+
+	    Entry:
+		trap#		FAST_TRAP
+		function#	VFALLS_GET_PERFREG
+		arg0		PerfReg#
+
+	    Exit:
+		ret0		status (success or error code)
+		ret1		Performance register value
+
+This call reads the value of the SPARC, virtualized L2_CONTROL_REG or
+DRAM performance register as specified by the "PerfReg#" argument.
+
+On success, the call returns a status of EOK and the value of
+the requested PerfReg.  Otherwise, it returns one of the following errors:
+
+	EINVAL			Invalid performance register number
+	ENOACCESS		No access allowed to the performance register
+
+3.2.2 vfalls_set_perfreg
+	    Entry:
+		trap#		FAST_TRAP
+		function#	VFALLS_SET_PERFREG
+		arg0		PerfReg#
+		arg1		PerfReg value
+
+	    Exit:
+		ret0		status (success or error code)
+
+This calls sets the SPARC, virtualized L2_CONTROL_REG or DRAM
+performance register as specified by the "PerfReg#" argument to the value
+as specified by the "PerfReg value" argument.
+
+On success the call returns a status of EOK.  Otherwise, it returns one
+of the following errors:
+
+	EINVAL			Invalid performance register number
+	ENOACCESS		No access allowed to the performance register
+

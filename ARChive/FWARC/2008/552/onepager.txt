@@ -1,0 +1,83 @@
+Copyright 2007 Sun Microsystems
+
+1. Introduction
+   1.1. New Max Frame Size Property For NIU Hybrid IO
+
+   1.2. Name of Document Author/Supplier: Michael Speer
+
+   1.3. Date of This Document: 08/26/2008
+
+   1.4. Email Aliases:
+    	1.5.2. Responsible Engineer: Michael.Speer@Sun.COM, 
+	1.5.3. Interest List: Raghuram.Kothakota@Sun.COM, Sriharsha.Basavapatna@Sun.COM
+
+2. Project Summary
+   2.1. Project Description:
+	This project updates the NIU device binding and MD properties to add a new
+        property which will allow a guest domain hybyrid NIU (nxge) device to enable
+        jumbo frame operation.
+
+3. Technical Description:
+
+    3.1. Details:
+
+	3.1.1 Introduction:
+        The hybrid mode nxge device can be dynamically assigned to a guest
+        domain.  It consists of a Virtual Region and a set of RX and TX channels.
+        It is plugged directly into the vnet device that is operating in the
+        hybrid I/O mode. The traditional interfaces GLDv3 layer to configure,
+        operate and move data between the vnet and the hybrid nxge device are
+        not utilized.  Instead, the interface in [1] is utilized.  To configure,
+        the hybrid NIU device properly for jumbo frames, it must be done at
+        driver attach time. Additionally, when the hybrid NIU's device is created
+        and graphted onto the Solaris device tree, the vnet's DDS[2] service knows
+        whether to add to the device node the property to configure jummbo frame
+        operation or not.
+        
+        3.1.2 Problem Statement:
+        The nxge driver configures operational parameters such as jumbo frames
+        today as a device property from the device's .conf file or via the
+        Brussels m_setop/m_getop interface.  In the guest domain none of these
+        interfaces are available to the guest domain Hybrid NIU (nxge) device
+        driver.  Hence, a solution is needed to enable proper jumbo frame
+        operation that does not require large changes and is portable to Solaris
+        10 Update as well (some interfaces e.g. Brussels is not available in
+        Solaris 10 Update).
+        
+        3.1.3 Proposal:
+        In order to support jumbo frames in the guest domain via the Hybrid mode
+        nxge device, the device needs the information about the maxframesize that
+        is currently programmed in the MAC.  To provide this information to the
+        hybrid mode nxge device node, we are proposing an optional property named
+        max-frame-size that reflects the currently programmed value.  At the time
+        the vnet's DDS creates the device node for nxge before it is attached
+        in the guest domain, it will add this property to the device node.  Then,
+        the driver will attach and configure properly.
+
+    
+    3.2. Interfaces:
+
+	3.2.2 Exported Interfaces:
+
+	Interface	 Classification		Comment
+	=====================================================================
+
+	"max-frame-size" Uncommitted		Optional encoded integer
+                                                property of the NIU device
+
+
+
+5. Reference Documents:
+
+        [1] PSARC 2008/247 and associated materials
+
+        [2] FWARC 2008/246 and associated materials
+
+        [3] NIU Device Tree Bindings and Machine Description Definition
+
+            niu-binding.txt
+
+        [2] Initial N2 NIU binding case
+
+            http://sac.eng/Archives/CaseLog/arc/FWARC/2006/556/materials/
+

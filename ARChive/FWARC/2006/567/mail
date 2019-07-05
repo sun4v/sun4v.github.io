@@ -1,0 +1,1833 @@
+From sacadmin Thu Oct  5 19:54:05 2006
+Received: from noho.SFBay.Sun.COM (noho.SFBay.Sun.COM [10.6.92.101])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k962s56r014448;
+	Thu, 5 Oct 2006 19:54:05 -0700 (PDT)
+Received: from noho.SFBay.Sun.COM (localhost [127.0.0.1])
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0) with ESMTP id k962s5xC003824;
+	Thu, 5 Oct 2006 19:54:05 -0700 (PDT)
+Received: (from dmk@localhost)
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0/Submit) id k962s5Vb003821;
+	Thu, 5 Oct 2006 19:54:05 -0700 (PDT)
+Date: Thu, 5 Oct 2006 19:54:05 -0700 (PDT)
+From: David Kahn <dmk@noho.SFBay.Sun.COM>
+Message-Id: <200610060254.k962s5Vb003821@noho.SFBay.Sun.COM>
+To: FWARC@sac.sfbay.sun.com
+Cc: Eric.Pilmore@noho.SFBay.Sun.COM
+Subject: Niagara Crypto & RNG compatible property update [FWARC/2006/567 Timeout:  10/13/2006]
+Status: RO
+Content-Length: 8983
+
+Subject: FWARC FastTrack [10/13/2006]: Niagara Crypto & RNG compatible property update
+
+I'm sponsoring this fastrack case for Eric Pilmore.
+The case augments the NCP and RNG compatible properties
+due to workarounds required for different implementations
+of the NCP and RNG embedded hardware on different processors.
+
+Requested committment level: Sun Private
+Release binding: minor/micro/patch.
+
+-David
+
+Template Version: @(#)sac_nextcase %I% %G% SMI
+1. Introduction
+    1.1. Project/Component Working Name:
+	 Niagara Crypto & RNG compatible property update
+    1.2. Name of Document Author/Supplier:
+	 Author:  Eric Pilmore
+    1.3  Date of This Document:
+	05 October, 2006
+4. Technical Description
+
+	Version: "@(#)crypto-rng-binding.txt 1.2     06/10/05 SMI"
+
+Niagara Crypto & RNG compatibility property update
+
+    Background
+
+	In the course of porting the Niagara Crypto Provider (NCP)
+	driver to Niagara-2 we found that the interface to the 
+	cryptographic unit, specifically the Modular Arithmetic
+	Unit (MAU), of the Niagara chip changes slightly between
+	Niagara-1 and Niagara-2 (applies to Victoria Falls also).
+	This change only affects about dozen lines of code
+	in the NCP driver.  In order to maintain the same binary
+	driver between Niagara-1 (N1) and Niagara-2 (N2) based
+	platforms we would like to introduce a mechanism that allows
+	the driver to determine the platform type that it is bound to.
+
+	This case introduces new driver "bindings" for NCP which
+	will be applicable to Niagara-2 (Huron) and Victoria Falls
+	(Maramba) platforms.  Note that Victoria Falls (VF) is the
+	follow-on derivative processor for Niagara-2 (effectively
+	a Niagara-2 without the Network Interface Unit).
+
+	The case also introduces new driver bindings for N2CP
+	and N2RNG as a proactive measure for issues going from N2
+	to VF for those respective drivers.
+
+	Existing:
+		Driver Name	Binding		CPU
+		-----------	-------		---
+		ncp		SUNW,sun4v-ncp	N1
+		n2cp		SUNW,n2-cwq	N2
+		n2rng		SUNW,n2-rng	N2
+
+	Proposal:
+		Driver Name	Binding		CPU
+		-----------	-------		---
+		ncp		SUNW,sun4v-ncp	N1
+		ncp		SUNW,n2-mau	N2	<- new
+		ncp		SUNW,vf-mau	VF	<- new
+		n2cp		SUNW,n2-cwq	N2
+		n2cp		SUNW,vf-cwq	VF	<- new
+		n2rng		SUNW,n2-rng	N2
+		n2rng		SUNW,vf-rng	VF	<- new
+
+    References
+
+	PSARC/2005/125 Niagara Crypto Provider
+	FWARC/2006/174 NCS HV API update
+	FWARC/2006/425 NCS HV API update #2
+	FWARC/2006/481 Niagara-2 Random Number Generator HV API
+	Niagara PRM, v1.8 (Oct 28, 2005), Chp 20 Modular Arithmetic
+	Niagara-2 PRM, v1.2 (Mar 3, 2006), Chp 15 Stream Processing Unit
+	Bugid 6475000 Asymmetric (RSA) Operation fails the known answer test
+
+    API Definitions
+
+	1.	Machine Description: NCP/N2CP/N2RNG virtual-device node
+
+		Ref:	FWARC/2005/173	(ino)
+			FWARC/2006/072	(name, device-type, cfg-handle, compatible)
+
+		This will be a change to ONLY the "compatible" field of the
+		respective virtual-device MD nodes.  Note that these MD nodes exist
+		in the source base on a per-platform basis.
+
+	1.1	NCP virtual-device compatible property
+
+		Name		Tag		Req	Description
+		----		---		---	-----------
+		compatible	PROP_DATA	Y	An array of string names
+							for this node.  Value to
+							be defined as one of:
+							"SUNW,sun4v-ncp",
+							"SUNW,n2-mau",
+							"SUNW,vf-mau".
+
+	1.2	N2CP virtual-device compatible property
+
+		Name		Tag		Req	Description
+		----		---		---	-----------
+		compatible	PROP_DATA	Y	An array of string names
+							for this node.  Value to
+							be defined as one of:
+							"SUNW,n2-cwq",
+							"SUNW,vf-cwq".
+
+	1.3	N2RNG virtual-device compatible property
+
+		Name		Tag		Req	Description
+		----		---		---	-----------
+		compatible	PROP_DATA	Y	An array of string names
+							for this node.  Value to
+							be defined as one of:
+							"SUNW,n2-rng",
+							"SUNW,vf-rng".
+
+		See Exported Interface below for the specific instances
+		of the full node that will exist for Niagara-1, Niagara-2,
+		and Victoria Falls.
+
+	2.	Virtual Crypto Device Node
+
+		This will be a change to ONLY the "compatible" property of
+		the respective OBP device nodes.  Only that property is highlighted
+		here as the remaining properties will remain unchanged.
+
+	2.1	NCP Properties
+
+		"compatible"			S
+			Type:		Prop-encoded-array of prop-encoded-strings
+			Contents:	Standard property name, defined devices
+					with which this device is compatible.
+			Value:		"SUNW,sun4v-ncp", "SUNW,n2-mau", "SUNW,vf-mau".
+
+	2.2	N2CP Properties
+
+		"compatible"			S
+			Type:		Prop-encoded-array of prop-encoded-strings
+			Contents:	Standard property name, defined devices
+					with which this device is compatible.
+			Value:		"SUNW,n2-cwq", "SUNW,vf-cwq".
+
+	2.3	N2RNG Properties
+
+		"compatible"			S
+			Type:		Prop-encoded-array of prop-encoded-strings
+			Contents:	Standard property name, defined devices
+					with which this device is compatible.
+			Value:		"SUNW,n2-rng", "SUNW,vf-rng".
+
+	2.4	Open Firmware-defined Methods for Device Nodes
+
+		None.
+
+========================================================================
+Exported Interfaces
+
+Specific propvals for ncp virtual device node across the possible processors:
+
+   Niagara-1:
+
+	name		evolving	value: "ncp"
+	device_type	evolving	value: "crypto"
+	interrupts	evolving	value: chip dependent list of device
+						relative interrupts, 1 per core.
+	compatible	evolving	value: "SUNW,sun4v-ncp"
+	reg		evolving	value: unique virtual device register
+						address.
+
+   Niagara-2:
+
+	name		evolving	value: "ncp"
+	device_type	evolving	value: "crypto"
+	interrupts	evolving	value: chip dependent list of device
+						relative interrupts, 1 per core.
+	compatible	evolving	value: "SUNW,n2-mau"
+	reg		evolving	value: unique virtual device register
+						address.
+
+	name		evolving	value: "crypto"
+	device_type	evolving	value: "crypto"
+	interrupts	evolving	value: chip dependent list of device
+						relative interrupts, 1 per core.
+	compatible	evolving	value: "SUNW,n2-cwq"
+	reg		evolving	value: unique virtual device register
+						address.
+
+	name		evolving	value: "random-number-generator"
+	compatible	evolving	value: "SUNW,n2-rng"
+	reg		evolving	value: unique virtual device register
+						address.
+
+   Victoria Falls:
+
+	name		evolving	value: "ncp"
+	device_type	evolving	value: "crypto"
+	interrupts	evolving	value: chip dependent list of device
+						relative interrupts, 1 per core.
+	compatible	evolving	value: "SUNW,vf-mau"
+	reg		evolving	value: unique virtual device register
+						address.
+
+	name		evolving	value: "crypto"
+	device_type	evolving	value: "crypto"
+	interrupts	evolving	value: chip dependent list of device
+						relative interrupts, 1 per core.
+	compatible	evolving	value: "SUNW,vf-cwq"
+	reg		evolving	value: unique virtual device register
+						address.
+
+	name		evolving	value: "random-number-generator"
+	compatible	evolving	value: "SUNW,vf-rng"
+	reg		evolving	value: unique virtual device register
+						address.
+
+NCS MD propvals for ncp/n2cp/n2rng virtual device metadata node across
+the possible processors:
+
+   Niagara-1:
+
+	name		evolving	value: "ncp"
+	device-type	evolving	value: "crypto"
+	intr		evolving	value: list of device relative
+						interrupt numbers.
+	ino		evolving	value: list of parent devinos.
+	cfg-handle	evolving	value: devhandle for device
+	compatible	evolving	value: "SUNW,sun4v-ncp"
+
+   Niagara-2:
+
+	name		evolving	value: "ncp"
+	device-type	evolving	value: "crypto"
+	intr		evolving	value: list of device relative
+						interrupt numbers.
+	ino		evolving	value: list of parent devinos.
+	cfg-handle	evolving	value: devhandle for device
+	compatible	evolving	value: "SUNW,n2-mau"
+
+	name		evolving	value: "crypto"
+	device-type	evolving	value: "crypto"
+	intr		evolving	value: list of device relative
+						interrupt numbers.
+	ino		evolving	value: list of parent devinos.
+	cfg-handle	evolving	value: devhandle for device
+	compatible	evolving	value: "SUNW,n2-cwq"
+
+	name		evolving	value: "random-number-generator"
+	cfg-handle	evolving	value: devhandle for device
+	compatible	evolving	value: "SUNW,n2-rng"
+
+   Victoria Falls:
+
+	name		evolving	value: "ncp"
+	device-type	evolving	value: "crypto"
+	intr		evolving	value: list of device relative
+						interrupt numbers.
+	ino		evolving	value: list of parent devinos.
+	cfg-handle	evolving	value: devhandle for device
+	compatible	evolving	value: "SUNW,vf-mau"
+
+	name		evolving	value: "crypto"
+	device-type	evolving	value: "crypto"
+	intr		evolving	value: list of device relative
+						interrupt numbers.
+	ino		evolving	value: list of parent devinos.
+	cfg-handle	evolving	value: devhandle for device
+	compatible	evolving	value: "SUNW,vf-cwq"
+
+	name		evolving	value: "random-number-generator"
+	cfg-handle	evolving	value: devhandle for device
+	compatible	evolving	value: "SUNW,vf-rng"
+
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		sysfw
+    6.5. ARC review type: FastTrack
+
+From sacadmin Sun Oct  8 18:31:22 2006
+Received: from kerouac.sfbay.sun.com (kerouac.SFBay.Sun.COM [129.146.96.111])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k991VLlv002055
+	for <FWARC@sac.sfbay.sun.com>; Sun, 8 Oct 2006 18:31:21 -0700 (PDT)
+Received: from kerouac.sfbay.sun.com (localhost [127.0.0.1])
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k991YrUN003678;
+	Sun, 8 Oct 2006 18:34:53 -0700 (PDT)
+Received: (from rath@localhost)
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10/Submit) id k991YrAN003677;
+	Sun, 8 Oct 2006 18:34:53 -0700 (PDT)
+Date: Sun, 8 Oct 2006 18:34:53 -0700
+From: Kevin Rathbun <Kevin.Rathbun@sun.com>
+To: David Kahn <dmk@noho.sfbay.sun.com>
+Cc: FWARC@sac.sfbay.sun.com, Eric.Pilmore@noho.sfbay.sun.com
+Subject: Re: Niagara Crypto & RNG compatible property update [FWARC/2006/567 Timeout:  10/13/2006]
+Message-ID: <20061009013453.GO28372@kerouac>
+Reply-To: Kevin Rathbun <Kevin.Rathbun@sun.com>
+References: <200610060254.k962s5Vb003821@noho.SFBay.Sun.COM>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <200610060254.k962s5Vb003821@noho.SFBay.Sun.COM>
+User-Agent: Mutt/1.4.2.1i
+Status: RO
+Content-Length: 9789
+
+I noticed that in describing the MD propvals, the 'intr' property
+is listed. I didn't think OBP was using this property any longer.
+Do the solaris crypto drivers use it?
+
+kvn
+
+On Thu, Oct 05, 2006 at 07:54:05PM -0700, David Kahn wrote:
+> Subject: FWARC FastTrack [10/13/2006]: Niagara Crypto & RNG compatible property update
+> 
+> I'm sponsoring this fastrack case for Eric Pilmore.
+> The case augments the NCP and RNG compatible properties
+> due to workarounds required for different implementations
+> of the NCP and RNG embedded hardware on different processors.
+> 
+> Requested committment level: Sun Private
+> Release binding: minor/micro/patch.
+> 
+> -David
+> 
+> Template Version: @(#)sac_nextcase %I% %G% SMI
+> 1. Introduction
+>     1.1. Project/Component Working Name:
+> 	 Niagara Crypto & RNG compatible property update
+>     1.2. Name of Document Author/Supplier:
+> 	 Author:  Eric Pilmore
+>     1.3  Date of This Document:
+> 	05 October, 2006
+> 4. Technical Description
+> 
+> 	Version: "@(#)crypto-rng-binding.txt 1.2     06/10/05 SMI"
+> 
+> Niagara Crypto & RNG compatibility property update
+> 
+>     Background
+> 
+> 	In the course of porting the Niagara Crypto Provider (NCP)
+> 	driver to Niagara-2 we found that the interface to the 
+> 	cryptographic unit, specifically the Modular Arithmetic
+> 	Unit (MAU), of the Niagara chip changes slightly between
+> 	Niagara-1 and Niagara-2 (applies to Victoria Falls also).
+> 	This change only affects about dozen lines of code
+> 	in the NCP driver.  In order to maintain the same binary
+> 	driver between Niagara-1 (N1) and Niagara-2 (N2) based
+> 	platforms we would like to introduce a mechanism that allows
+> 	the driver to determine the platform type that it is bound to.
+> 
+> 	This case introduces new driver "bindings" for NCP which
+> 	will be applicable to Niagara-2 (Huron) and Victoria Falls
+> 	(Maramba) platforms.  Note that Victoria Falls (VF) is the
+> 	follow-on derivative processor for Niagara-2 (effectively
+> 	a Niagara-2 without the Network Interface Unit).
+> 
+> 	The case also introduces new driver bindings for N2CP
+> 	and N2RNG as a proactive measure for issues going from N2
+> 	to VF for those respective drivers.
+> 
+> 	Existing:
+> 		Driver Name	Binding		CPU
+> 		-----------	-------		---
+> 		ncp		SUNW,sun4v-ncp	N1
+> 		n2cp		SUNW,n2-cwq	N2
+> 		n2rng		SUNW,n2-rng	N2
+> 
+> 	Proposal:
+> 		Driver Name	Binding		CPU
+> 		-----------	-------		---
+> 		ncp		SUNW,sun4v-ncp	N1
+> 		ncp		SUNW,n2-mau	N2	<- new
+> 		ncp		SUNW,vf-mau	VF	<- new
+> 		n2cp		SUNW,n2-cwq	N2
+> 		n2cp		SUNW,vf-cwq	VF	<- new
+> 		n2rng		SUNW,n2-rng	N2
+> 		n2rng		SUNW,vf-rng	VF	<- new
+> 
+>     References
+> 
+> 	PSARC/2005/125 Niagara Crypto Provider
+> 	FWARC/2006/174 NCS HV API update
+> 	FWARC/2006/425 NCS HV API update #2
+> 	FWARC/2006/481 Niagara-2 Random Number Generator HV API
+> 	Niagara PRM, v1.8 (Oct 28, 2005), Chp 20 Modular Arithmetic
+> 	Niagara-2 PRM, v1.2 (Mar 3, 2006), Chp 15 Stream Processing Unit
+> 	Bugid 6475000 Asymmetric (RSA) Operation fails the known answer test
+> 
+>     API Definitions
+> 
+> 	1.	Machine Description: NCP/N2CP/N2RNG virtual-device node
+> 
+> 		Ref:	FWARC/2005/173	(ino)
+> 			FWARC/2006/072	(name, device-type, cfg-handle, compatible)
+> 
+> 		This will be a change to ONLY the "compatible" field of the
+> 		respective virtual-device MD nodes.  Note that these MD nodes exist
+> 		in the source base on a per-platform basis.
+> 
+> 	1.1	NCP virtual-device compatible property
+> 
+> 		Name		Tag		Req	Description
+> 		----		---		---	-----------
+> 		compatible	PROP_DATA	Y	An array of string names
+> 							for this node.  Value to
+> 							be defined as one of:
+> 							"SUNW,sun4v-ncp",
+> 							"SUNW,n2-mau",
+> 							"SUNW,vf-mau".
+> 
+> 	1.2	N2CP virtual-device compatible property
+> 
+> 		Name		Tag		Req	Description
+> 		----		---		---	-----------
+> 		compatible	PROP_DATA	Y	An array of string names
+> 							for this node.  Value to
+> 							be defined as one of:
+> 							"SUNW,n2-cwq",
+> 							"SUNW,vf-cwq".
+> 
+> 	1.3	N2RNG virtual-device compatible property
+> 
+> 		Name		Tag		Req	Description
+> 		----		---		---	-----------
+> 		compatible	PROP_DATA	Y	An array of string names
+> 							for this node.  Value to
+> 							be defined as one of:
+> 							"SUNW,n2-rng",
+> 							"SUNW,vf-rng".
+> 
+> 		See Exported Interface below for the specific instances
+> 		of the full node that will exist for Niagara-1, Niagara-2,
+> 		and Victoria Falls.
+> 
+> 	2.	Virtual Crypto Device Node
+> 
+> 		This will be a change to ONLY the "compatible" property of
+> 		the respective OBP device nodes.  Only that property is highlighted
+> 		here as the remaining properties will remain unchanged.
+> 
+> 	2.1	NCP Properties
+> 
+> 		"compatible"			S
+> 			Type:		Prop-encoded-array of prop-encoded-strings
+> 			Contents:	Standard property name, defined devices
+> 					with which this device is compatible.
+> 			Value:		"SUNW,sun4v-ncp", "SUNW,n2-mau", "SUNW,vf-mau".
+> 
+> 	2.2	N2CP Properties
+> 
+> 		"compatible"			S
+> 			Type:		Prop-encoded-array of prop-encoded-strings
+> 			Contents:	Standard property name, defined devices
+> 					with which this device is compatible.
+> 			Value:		"SUNW,n2-cwq", "SUNW,vf-cwq".
+> 
+> 	2.3	N2RNG Properties
+> 
+> 		"compatible"			S
+> 			Type:		Prop-encoded-array of prop-encoded-strings
+> 			Contents:	Standard property name, defined devices
+> 					with which this device is compatible.
+> 			Value:		"SUNW,n2-rng", "SUNW,vf-rng".
+> 
+> 	2.4	Open Firmware-defined Methods for Device Nodes
+> 
+> 		None.
+> 
+> ========================================================================
+> Exported Interfaces
+> 
+> Specific propvals for ncp virtual device node across the possible processors:
+> 
+>    Niagara-1:
+> 
+> 	name		evolving	value: "ncp"
+> 	device_type	evolving	value: "crypto"
+> 	interrupts	evolving	value: chip dependent list of device
+> 						relative interrupts, 1 per core.
+> 	compatible	evolving	value: "SUNW,sun4v-ncp"
+> 	reg		evolving	value: unique virtual device register
+> 						address.
+> 
+>    Niagara-2:
+> 
+> 	name		evolving	value: "ncp"
+> 	device_type	evolving	value: "crypto"
+> 	interrupts	evolving	value: chip dependent list of device
+> 						relative interrupts, 1 per core.
+> 	compatible	evolving	value: "SUNW,n2-mau"
+> 	reg		evolving	value: unique virtual device register
+> 						address.
+> 
+> 	name		evolving	value: "crypto"
+> 	device_type	evolving	value: "crypto"
+> 	interrupts	evolving	value: chip dependent list of device
+> 						relative interrupts, 1 per core.
+> 	compatible	evolving	value: "SUNW,n2-cwq"
+> 	reg		evolving	value: unique virtual device register
+> 						address.
+> 
+> 	name		evolving	value: "random-number-generator"
+> 	compatible	evolving	value: "SUNW,n2-rng"
+> 	reg		evolving	value: unique virtual device register
+> 						address.
+> 
+>    Victoria Falls:
+> 
+> 	name		evolving	value: "ncp"
+> 	device_type	evolving	value: "crypto"
+> 	interrupts	evolving	value: chip dependent list of device
+> 						relative interrupts, 1 per core.
+> 	compatible	evolving	value: "SUNW,vf-mau"
+> 	reg		evolving	value: unique virtual device register
+> 						address.
+> 
+> 	name		evolving	value: "crypto"
+> 	device_type	evolving	value: "crypto"
+> 	interrupts	evolving	value: chip dependent list of device
+> 						relative interrupts, 1 per core.
+> 	compatible	evolving	value: "SUNW,vf-cwq"
+> 	reg		evolving	value: unique virtual device register
+> 						address.
+> 
+> 	name		evolving	value: "random-number-generator"
+> 	compatible	evolving	value: "SUNW,vf-rng"
+> 	reg		evolving	value: unique virtual device register
+> 						address.
+> 
+> NCS MD propvals for ncp/n2cp/n2rng virtual device metadata node across
+> the possible processors:
+> 
+>    Niagara-1:
+> 
+> 	name		evolving	value: "ncp"
+> 	device-type	evolving	value: "crypto"
+> 	intr		evolving	value: list of device relative
+> 						interrupt numbers.
+> 	ino		evolving	value: list of parent devinos.
+> 	cfg-handle	evolving	value: devhandle for device
+> 	compatible	evolving	value: "SUNW,sun4v-ncp"
+> 
+>    Niagara-2:
+> 
+> 	name		evolving	value: "ncp"
+> 	device-type	evolving	value: "crypto"
+> 	intr		evolving	value: list of device relative
+> 						interrupt numbers.
+> 	ino		evolving	value: list of parent devinos.
+> 	cfg-handle	evolving	value: devhandle for device
+> 	compatible	evolving	value: "SUNW,n2-mau"
+> 
+> 	name		evolving	value: "crypto"
+> 	device-type	evolving	value: "crypto"
+> 	intr		evolving	value: list of device relative
+> 						interrupt numbers.
+> 	ino		evolving	value: list of parent devinos.
+> 	cfg-handle	evolving	value: devhandle for device
+> 	compatible	evolving	value: "SUNW,n2-cwq"
+> 
+> 	name		evolving	value: "random-number-generator"
+> 	cfg-handle	evolving	value: devhandle for device
+> 	compatible	evolving	value: "SUNW,n2-rng"
+> 
+>    Victoria Falls:
+> 
+> 	name		evolving	value: "ncp"
+> 	device-type	evolving	value: "crypto"
+> 	intr		evolving	value: list of device relative
+> 						interrupt numbers.
+> 	ino		evolving	value: list of parent devinos.
+> 	cfg-handle	evolving	value: devhandle for device
+> 	compatible	evolving	value: "SUNW,vf-mau"
+> 
+> 	name		evolving	value: "crypto"
+> 	device-type	evolving	value: "crypto"
+> 	intr		evolving	value: list of device relative
+> 						interrupt numbers.
+> 	ino		evolving	value: list of parent devinos.
+> 	cfg-handle	evolving	value: devhandle for device
+> 	compatible	evolving	value: "SUNW,vf-cwq"
+> 
+> 	name		evolving	value: "random-number-generator"
+> 	cfg-handle	evolving	value: devhandle for device
+> 	compatible	evolving	value: "SUNW,vf-rng"
+> 
+> 
+> 6. Resources and Schedule
+>     6.4. Steering Committee requested information
+>    	6.4.1. Consolidation C-team Name:
+> 		sysfw
+>     6.5. ARC review type: FastTrack
+
+From sacadmin Sun Oct  8 18:59:01 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k991x1HR002555
+	for <FWARC@sac.SFBay.Sun.COM>; Sun, 8 Oct 2006 18:59:01 -0700 (PDT)
+Received: from nwk-ea-fw-1.sun.com (nwkes-gis-mail-1.SFBay.Sun.COM [10.4.134.5])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k991x18v021538
+	for <FWARC@sac.SFBay.Sun.COM>; Sun, 8 Oct 2006 18:59:01 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k991wulY007178
+	for <FWARC@sac.SFBay.Sun.COM>; Sun, 8 Oct 2006 18:58:56 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J6U00G01IRMM200@d1-sfbay-09.sun.com>
+ (original mail from Eric.Pilmore@Sun.COM) for FWARC@sac.SFBay.Sun.COM; Sun,
+ 08 Oct 2006 18:58:56 -0700 (PDT)
+Received: from [192.168.1.100] ([24.152.187.215])
+ by d1-sfbay-09.sun.com (Sun Java System Messaging Server 6.2-6.01 (built Apr 3
+ 2006)) with ESMTPSA id <0J6U00DFMIU7VTS5@d1-sfbay-09.sun.com>; Sun,
+ 08 Oct 2006 18:58:56 -0700 (PDT)
+Date: Sun, 08 Oct 2006 19:06:18 -0700
+From: Eric Pilmore <Eric.Pilmore@Sun.COM>
+Subject: Re: Niagara Crypto & RNG compatible property update [FWARC/2006/567
+ Timeout:  10/13/2006]
+In-reply-to: <20061009013453.GO28372@kerouac>
+Sender: Eric.Pilmore@Sun.COM
+To: Kevin Rathbun <Kevin.Rathbun@Sun.COM>
+Cc: David Kahn <dmk@noho.SFBay.Sun.COM>, FWARC@sac.sfbay.sun.com,
+        Eric.Pilmore@noho.SFBay.Sun.COM
+Message-id: <4529AE9A.2090801@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <200610060254.k962s5Vb003821@noho.SFBay.Sun.COM>
+ <20061009013453.GO28372@kerouac>
+User-Agent: Mozilla Thunderbird 1.0.7 (Macintosh/20050923)
+Status: RO
+Content-Length: 10507
+
+
+
+Kevin Rathbun wrote:
+> I noticed that in describing the MD propvals, the 'intr' property
+> is listed. I didn't think OBP was using this property any longer.
+> Do the solaris crypto drivers use it?
+
+
+I don't know if OBP no longer uses that field.  I would have to
+defer to an OBP expert to answer that.  The drivers do not directly
+access that field from the MD.  I think the assumption is that
+field eventually translates into the "interrupts" property of
+the respective device node.  Perhaps OBP uses some other method
+to calculate the values that eventually end up "interrupts"?  I
+seem to recall there was some discussion about it.
+
+Note that the "intr" field is defined by other subsystems
+for their respective MD nodes besides crypto.  In addition, this
+case only addresses the "compatible" property.
+
+Was there a FWARC case to remove that field from all MD nodes?
+
+Eric
+
+
+> kvn
+> 
+> On Thu, Oct 05, 2006 at 07:54:05PM -0700, David Kahn wrote:
+> 
+>>Subject: FWARC FastTrack [10/13/2006]: Niagara Crypto & RNG compatible property update
+>>
+>>I'm sponsoring this fastrack case for Eric Pilmore.
+>>The case augments the NCP and RNG compatible properties
+>>due to workarounds required for different implementations
+>>of the NCP and RNG embedded hardware on different processors.
+>>
+>>Requested committment level: Sun Private
+>>Release binding: minor/micro/patch.
+>>
+>>-David
+>>
+>>Template Version: @(#)sac_nextcase %I% %G% SMI
+>>1. Introduction
+>>    1.1. Project/Component Working Name:
+>>	 Niagara Crypto & RNG compatible property update
+>>    1.2. Name of Document Author/Supplier:
+>>	 Author:  Eric Pilmore
+>>    1.3  Date of This Document:
+>>	05 October, 2006
+>>4. Technical Description
+>>
+>>	Version: "@(#)crypto-rng-binding.txt 1.2     06/10/05 SMI"
+>>
+>>Niagara Crypto & RNG compatibility property update
+>>
+>>    Background
+>>
+>>	In the course of porting the Niagara Crypto Provider (NCP)
+>>	driver to Niagara-2 we found that the interface to the 
+>>	cryptographic unit, specifically the Modular Arithmetic
+>>	Unit (MAU), of the Niagara chip changes slightly between
+>>	Niagara-1 and Niagara-2 (applies to Victoria Falls also).
+>>	This change only affects about dozen lines of code
+>>	in the NCP driver.  In order to maintain the same binary
+>>	driver between Niagara-1 (N1) and Niagara-2 (N2) based
+>>	platforms we would like to introduce a mechanism that allows
+>>	the driver to determine the platform type that it is bound to.
+>>
+>>	This case introduces new driver "bindings" for NCP which
+>>	will be applicable to Niagara-2 (Huron) and Victoria Falls
+>>	(Maramba) platforms.  Note that Victoria Falls (VF) is the
+>>	follow-on derivative processor for Niagara-2 (effectively
+>>	a Niagara-2 without the Network Interface Unit).
+>>
+>>	The case also introduces new driver bindings for N2CP
+>>	and N2RNG as a proactive measure for issues going from N2
+>>	to VF for those respective drivers.
+>>
+>>	Existing:
+>>		Driver Name	Binding		CPU
+>>		-----------	-------		---
+>>		ncp		SUNW,sun4v-ncp	N1
+>>		n2cp		SUNW,n2-cwq	N2
+>>		n2rng		SUNW,n2-rng	N2
+>>
+>>	Proposal:
+>>		Driver Name	Binding		CPU
+>>		-----------	-------		---
+>>		ncp		SUNW,sun4v-ncp	N1
+>>		ncp		SUNW,n2-mau	N2	<- new
+>>		ncp		SUNW,vf-mau	VF	<- new
+>>		n2cp		SUNW,n2-cwq	N2
+>>		n2cp		SUNW,vf-cwq	VF	<- new
+>>		n2rng		SUNW,n2-rng	N2
+>>		n2rng		SUNW,vf-rng	VF	<- new
+>>
+>>    References
+>>
+>>	PSARC/2005/125 Niagara Crypto Provider
+>>	FWARC/2006/174 NCS HV API update
+>>	FWARC/2006/425 NCS HV API update #2
+>>	FWARC/2006/481 Niagara-2 Random Number Generator HV API
+>>	Niagara PRM, v1.8 (Oct 28, 2005), Chp 20 Modular Arithmetic
+>>	Niagara-2 PRM, v1.2 (Mar 3, 2006), Chp 15 Stream Processing Unit
+>>	Bugid 6475000 Asymmetric (RSA) Operation fails the known answer test
+>>
+>>    API Definitions
+>>
+>>	1.	Machine Description: NCP/N2CP/N2RNG virtual-device node
+>>
+>>		Ref:	FWARC/2005/173	(ino)
+>>			FWARC/2006/072	(name, device-type, cfg-handle, compatible)
+>>
+>>		This will be a change to ONLY the "compatible" field of the
+>>		respective virtual-device MD nodes.  Note that these MD nodes exist
+>>		in the source base on a per-platform basis.
+>>
+>>	1.1	NCP virtual-device compatible property
+>>
+>>		Name		Tag		Req	Description
+>>		----		---		---	-----------
+>>		compatible	PROP_DATA	Y	An array of string names
+>>							for this node.  Value to
+>>							be defined as one of:
+>>							"SUNW,sun4v-ncp",
+>>							"SUNW,n2-mau",
+>>							"SUNW,vf-mau".
+>>
+>>	1.2	N2CP virtual-device compatible property
+>>
+>>		Name		Tag		Req	Description
+>>		----		---		---	-----------
+>>		compatible	PROP_DATA	Y	An array of string names
+>>							for this node.  Value to
+>>							be defined as one of:
+>>							"SUNW,n2-cwq",
+>>							"SUNW,vf-cwq".
+>>
+>>	1.3	N2RNG virtual-device compatible property
+>>
+>>		Name		Tag		Req	Description
+>>		----		---		---	-----------
+>>		compatible	PROP_DATA	Y	An array of string names
+>>							for this node.  Value to
+>>							be defined as one of:
+>>							"SUNW,n2-rng",
+>>							"SUNW,vf-rng".
+>>
+>>		See Exported Interface below for the specific instances
+>>		of the full node that will exist for Niagara-1, Niagara-2,
+>>		and Victoria Falls.
+>>
+>>	2.	Virtual Crypto Device Node
+>>
+>>		This will be a change to ONLY the "compatible" property of
+>>		the respective OBP device nodes.  Only that property is highlighted
+>>		here as the remaining properties will remain unchanged.
+>>
+>>	2.1	NCP Properties
+>>
+>>		"compatible"			S
+>>			Type:		Prop-encoded-array of prop-encoded-strings
+>>			Contents:	Standard property name, defined devices
+>>					with which this device is compatible.
+>>			Value:		"SUNW,sun4v-ncp", "SUNW,n2-mau", "SUNW,vf-mau".
+>>
+>>	2.2	N2CP Properties
+>>
+>>		"compatible"			S
+>>			Type:		Prop-encoded-array of prop-encoded-strings
+>>			Contents:	Standard property name, defined devices
+>>					with which this device is compatible.
+>>			Value:		"SUNW,n2-cwq", "SUNW,vf-cwq".
+>>
+>>	2.3	N2RNG Properties
+>>
+>>		"compatible"			S
+>>			Type:		Prop-encoded-array of prop-encoded-strings
+>>			Contents:	Standard property name, defined devices
+>>					with which this device is compatible.
+>>			Value:		"SUNW,n2-rng", "SUNW,vf-rng".
+>>
+>>	2.4	Open Firmware-defined Methods for Device Nodes
+>>
+>>		None.
+>>
+>>========================================================================
+>>Exported Interfaces
+>>
+>>Specific propvals for ncp virtual device node across the possible processors:
+>>
+>>   Niagara-1:
+>>
+>>	name		evolving	value: "ncp"
+>>	device_type	evolving	value: "crypto"
+>>	interrupts	evolving	value: chip dependent list of device
+>>						relative interrupts, 1 per core.
+>>	compatible	evolving	value: "SUNW,sun4v-ncp"
+>>	reg		evolving	value: unique virtual device register
+>>						address.
+>>
+>>   Niagara-2:
+>>
+>>	name		evolving	value: "ncp"
+>>	device_type	evolving	value: "crypto"
+>>	interrupts	evolving	value: chip dependent list of device
+>>						relative interrupts, 1 per core.
+>>	compatible	evolving	value: "SUNW,n2-mau"
+>>	reg		evolving	value: unique virtual device register
+>>						address.
+>>
+>>	name		evolving	value: "crypto"
+>>	device_type	evolving	value: "crypto"
+>>	interrupts	evolving	value: chip dependent list of device
+>>						relative interrupts, 1 per core.
+>>	compatible	evolving	value: "SUNW,n2-cwq"
+>>	reg		evolving	value: unique virtual device register
+>>						address.
+>>
+>>	name		evolving	value: "random-number-generator"
+>>	compatible	evolving	value: "SUNW,n2-rng"
+>>	reg		evolving	value: unique virtual device register
+>>						address.
+>>
+>>   Victoria Falls:
+>>
+>>	name		evolving	value: "ncp"
+>>	device_type	evolving	value: "crypto"
+>>	interrupts	evolving	value: chip dependent list of device
+>>						relative interrupts, 1 per core.
+>>	compatible	evolving	value: "SUNW,vf-mau"
+>>	reg		evolving	value: unique virtual device register
+>>						address.
+>>
+>>	name		evolving	value: "crypto"
+>>	device_type	evolving	value: "crypto"
+>>	interrupts	evolving	value: chip dependent list of device
+>>						relative interrupts, 1 per core.
+>>	compatible	evolving	value: "SUNW,vf-cwq"
+>>	reg		evolving	value: unique virtual device register
+>>						address.
+>>
+>>	name		evolving	value: "random-number-generator"
+>>	compatible	evolving	value: "SUNW,vf-rng"
+>>	reg		evolving	value: unique virtual device register
+>>						address.
+>>
+>>NCS MD propvals for ncp/n2cp/n2rng virtual device metadata node across
+>>the possible processors:
+>>
+>>   Niagara-1:
+>>
+>>	name		evolving	value: "ncp"
+>>	device-type	evolving	value: "crypto"
+>>	intr		evolving	value: list of device relative
+>>						interrupt numbers.
+>>	ino		evolving	value: list of parent devinos.
+>>	cfg-handle	evolving	value: devhandle for device
+>>	compatible	evolving	value: "SUNW,sun4v-ncp"
+>>
+>>   Niagara-2:
+>>
+>>	name		evolving	value: "ncp"
+>>	device-type	evolving	value: "crypto"
+>>	intr		evolving	value: list of device relative
+>>						interrupt numbers.
+>>	ino		evolving	value: list of parent devinos.
+>>	cfg-handle	evolving	value: devhandle for device
+>>	compatible	evolving	value: "SUNW,n2-mau"
+>>
+>>	name		evolving	value: "crypto"
+>>	device-type	evolving	value: "crypto"
+>>	intr		evolving	value: list of device relative
+>>						interrupt numbers.
+>>	ino		evolving	value: list of parent devinos.
+>>	cfg-handle	evolving	value: devhandle for device
+>>	compatible	evolving	value: "SUNW,n2-cwq"
+>>
+>>	name		evolving	value: "random-number-generator"
+>>	cfg-handle	evolving	value: devhandle for device
+>>	compatible	evolving	value: "SUNW,n2-rng"
+>>
+>>   Victoria Falls:
+>>
+>>	name		evolving	value: "ncp"
+>>	device-type	evolving	value: "crypto"
+>>	intr		evolving	value: list of device relative
+>>						interrupt numbers.
+>>	ino		evolving	value: list of parent devinos.
+>>	cfg-handle	evolving	value: devhandle for device
+>>	compatible	evolving	value: "SUNW,vf-mau"
+>>
+>>	name		evolving	value: "crypto"
+>>	device-type	evolving	value: "crypto"
+>>	intr		evolving	value: list of device relative
+>>						interrupt numbers.
+>>	ino		evolving	value: list of parent devinos.
+>>	cfg-handle	evolving	value: devhandle for device
+>>	compatible	evolving	value: "SUNW,vf-cwq"
+>>
+>>	name		evolving	value: "random-number-generator"
+>>	cfg-handle	evolving	value: devhandle for device
+>>	compatible	evolving	value: "SUNW,vf-rng"
+>>
+>>
+>>6. Resources and Schedule
+>>    6.4. Steering Committee requested information
+>>   	6.4.1. Consolidation C-team Name:
+>>		sysfw
+>>    6.5. ARC review type: FastTrack
+
+From sacadmin Mon Oct  9 02:21:57 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k999LuJZ009218
+	for <FWARC@sac.sfbay.sun.com>; Mon, 9 Oct 2006 02:21:56 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k999LulB012303;
+	Mon, 9 Oct 2006 02:21:56 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k999LskF089844;
+	Mon, 9 Oct 2006 02:21:55 -0700 (PDT)
+Message-ID: <452A14C5.6090009@sun.com>
+Date: Mon, 09 Oct 2006 02:22:13 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 1.5.0.7 (Windows/20060909)
+MIME-Version: 1.0
+To: Kevin Rathbun <Kevin.Rathbun@sun.com>
+CC: Eric Pilmore <Eric.Pilmore@sun.com>, David Kahn <dmk@noho.sfbay.sun.com>,
+        FWARC@sac.sfbay.sun.com, Eric.Pilmore@noho.sfbay.sun.com
+Subject: Re: Niagara Crypto & RNG compatible property update [FWARC/2006/567
+ Timeout:  10/13/2006]
+References: <200610060254.k962s5Vb003821@noho.SFBay.Sun.COM> <20061009013453.GO28372@kerouac> <4529AE9A.2090801@sun.com>
+In-Reply-To: <4529AE9A.2090801@sun.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 2154
+
+
+
+Eric Pilmore wrote:
+> 
+> 
+> Kevin Rathbun wrote:
+>> I noticed that in describing the MD propvals, the 'intr' property
+>> is listed. I didn't think OBP was using this property any longer.
+>> Do the solaris crypto drivers use it?
+> 
+> 
+> I don't know if OBP no longer uses that field.  I would have to
+> defer to an OBP expert to answer that.  The drivers do not directly
+> access that field from the MD.  I think the assumption is that
+> field eventually translates into the "interrupts" property of
+> the respective device node.  Perhaps OBP uses some other method
+> to calculate the values that eventually end up "interrupts"?  I
+> seem to recall there was some discussion about it.
+> 
+> Note that the "intr" field is defined by other subsystems
+> for their respective MD nodes besides crypto.  In addition, this
+> case only addresses the "compatible" property.
+> 
+> Was there a FWARC case to remove that field from all MD nodes?
+
+I think what's missing from the sun4v "bus" binding is a
+section on probing that describes the interfaces that OBP
+uses from the MD when creating nodes and properties.
+
+Note that the sun4v bus binding also includes the virtual-devices
+"bus" binding and both probably need a section on probing.
+
+Specifically, the bindings between MD nodes and properties and
+OBP device nodes and properties is not well-defined anywhere as
+far as I can tell. (Maybe it is, and I just don't know about it.)
+But it seems to be rather ad-hoc to me. At least I was confused
+about it in another recent case where I asked you about it, Kev.
+
+I asked Hitendra if he could look into writing a "probing" section
+for one of them, but they both really need it. And if we need something
+similar to augment the standard pci bus bindings, that should
+be done as well.
+
+At any rate, Kevin, if you think there's a bug in the crypto MD
+node properties, you can file a bug report, I guess.
+
+I don't think you're objecting to this case, you're just pointing
+out something that you think might be an error and maybe needs a
+clarification, right? If we need to augment the earlier case for
+this, it can probably be done with a quick self-review case.
+
+-David
+
+From sacadmin Mon Oct  9 09:56:53 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k99GuqDc023070
+	for <FWARC@sac.sfbay.sun.com>; Mon, 9 Oct 2006 09:56:52 -0700 (PDT)
+Received: from nwk-ea-fw-1.sun.com (nwkes-gis-mail-1.SFBay.Sun.COM [10.4.134.5])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k99GuqpF019334
+	for <FWARC@sac.sfbay.sun.com>; Mon, 9 Oct 2006 09:56:52 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k99Gulk4012433
+	for <FWARC@sac.sfbay.sun.com>; Mon, 9 Oct 2006 09:56:47 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J6V00601OBSXM00@d1-sfbay-09.sun.com>
+ (original mail from Stephen.Kelly@Sun.COM) for FWARC@sac.sfbay.sun.com; Mon,
+ 09 Oct 2006 09:56:47 -0700 (PDT)
+Received: from [129.146.96.71] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J6V00D90OENVOYH@d1-sfbay-09.sun.com>; Mon,
+ 09 Oct 2006 09:56:47 -0700 (PDT)
+Date: Mon, 09 Oct 2006 09:53:39 -0700
+From: Stephen Kelly <Stephen.Kelly@Sun.COM>
+Subject: Re: Niagara Crypto & RNG compatible property update [FWARC/2006/567
+ Timeout:  10/13/2006]
+In-reply-to: <4529AE9A.2090801@sun.com>
+Sender: Stephen.Kelly@Sun.COM
+To: Eric Pilmore <Eric.Pilmore@Sun.COM>
+Cc: Kevin Rathbun <Kevin.Rathbun@Sun.COM>, David Kahn <dmk@noho.SFBay.Sun.COM>,
+        FWARC@sac.sfbay.sun.com, Eric.Pilmore@noho.SFBay.Sun.COM
+Message-id: <452A7E93.3060806@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+References: <200610060254.k962s5Vb003821@noho.SFBay.Sun.COM>
+ <20061009013453.GO28372@kerouac> <4529AE9A.2090801@sun.com>
+User-Agent: Thunderbird 2.0b1pre (X11/20061009)
+Status: RO
+Content-Length: 13432
+
+Eric Pilmore wrote:
+>
+>
+> Kevin Rathbun wrote:
+>> I noticed that in describing the MD propvals, the 'intr' property
+>> is listed. I didn't think OBP was using this property any longer.
+>> Do the solaris crypto drivers use it?
+>
+>
+> I don't know if OBP no longer uses that field.  I would have to
+> defer to an OBP expert to answer that.  The drivers do not directly
+> access that field from the MD.  I think the assumption is that
+> field eventually translates into the "interrupts" property of
+> the respective device node.  Perhaps OBP uses some other method
+> to calculate the values that eventually end up "interrupts"?  I
+> seem to recall there was some discussion about it.
+
+OBP doesn't use the intr property when creating device nodes.  The 
+interrupts property is created as a vector of integers from 1->n.  Where 
+n is the number of entries in the ino property.
+
+-Steve
+
+>
+> Note that the "intr" field is defined by other subsystems
+> for their respective MD nodes besides crypto.  In addition, this
+> case only addresses the "compatible" property.
+>
+> Was there a FWARC case to remove that field from all MD nodes?
+>
+> Eric
+>
+>
+>> kvn
+>>
+>> On Thu, Oct 05, 2006 at 07:54:05PM -0700, David Kahn wrote:
+>>
+>>> Subject: FWARC FastTrack [10/13/2006]: Niagara Crypto & RNG 
+>>> compatible property update
+>>>
+>>> I'm sponsoring this fastrack case for Eric Pilmore.
+>>> The case augments the NCP and RNG compatible properties
+>>> due to workarounds required for different implementations
+>>> of the NCP and RNG embedded hardware on different processors.
+>>>
+>>> Requested committment level: Sun Private
+>>> Release binding: minor/micro/patch.
+>>>
+>>> -David
+>>>
+>>> Template Version: @(#)sac_nextcase %I% %G% SMI
+>>> 1. Introduction
+>>>    1.1. Project/Component Working Name:
+>>>      Niagara Crypto & RNG compatible property update
+>>>    1.2. Name of Document Author/Supplier:
+>>>      Author:  Eric Pilmore
+>>>    1.3  Date of This Document:
+>>>     05 October, 2006
+>>> 4. Technical Description
+>>>
+>>>     Version: "@(#)crypto-rng-binding.txt 1.2     06/10/05 SMI"
+>>>
+>>> Niagara Crypto & RNG compatibility property update
+>>>
+>>>    Background
+>>>
+>>>     In the course of porting the Niagara Crypto Provider (NCP)
+>>>     driver to Niagara-2 we found that the interface to the 
+>>>     cryptographic unit, specifically the Modular Arithmetic
+>>>     Unit (MAU), of the Niagara chip changes slightly between
+>>>     Niagara-1 and Niagara-2 (applies to Victoria Falls also).
+>>>     This change only affects about dozen lines of code
+>>>     in the NCP driver.  In order to maintain the same binary
+>>>     driver between Niagara-1 (N1) and Niagara-2 (N2) based
+>>>     platforms we would like to introduce a mechanism that allows
+>>>     the driver to determine the platform type that it is bound to.
+>>>
+>>>     This case introduces new driver "bindings" for NCP which
+>>>     will be applicable to Niagara-2 (Huron) and Victoria Falls
+>>>     (Maramba) platforms.  Note that Victoria Falls (VF) is the
+>>>     follow-on derivative processor for Niagara-2 (effectively
+>>>     a Niagara-2 without the Network Interface Unit).
+>>>
+>>>     The case also introduces new driver bindings for N2CP
+>>>     and N2RNG as a proactive measure for issues going from N2
+>>>     to VF for those respective drivers.
+>>>
+>>>     Existing:
+>>>         Driver Name    Binding        CPU
+>>>         -----------    -------        ---
+>>>         ncp        SUNW,sun4v-ncp    N1
+>>>         n2cp        SUNW,n2-cwq    N2
+>>>         n2rng        SUNW,n2-rng    N2
+>>>
+>>>     Proposal:
+>>>         Driver Name    Binding        CPU
+>>>         -----------    -------        ---
+>>>         ncp        SUNW,sun4v-ncp    N1
+>>>         ncp        SUNW,n2-mau    N2    <- new
+>>>         ncp        SUNW,vf-mau    VF    <- new
+>>>         n2cp        SUNW,n2-cwq    N2
+>>>         n2cp        SUNW,vf-cwq    VF    <- new
+>>>         n2rng        SUNW,n2-rng    N2
+>>>         n2rng        SUNW,vf-rng    VF    <- new
+>>>
+>>>    References
+>>>
+>>>     PSARC/2005/125 Niagara Crypto Provider
+>>>     FWARC/2006/174 NCS HV API update
+>>>     FWARC/2006/425 NCS HV API update #2
+>>>     FWARC/2006/481 Niagara-2 Random Number Generator HV API
+>>>     Niagara PRM, v1.8 (Oct 28, 2005), Chp 20 Modular Arithmetic
+>>>     Niagara-2 PRM, v1.2 (Mar 3, 2006), Chp 15 Stream Processing Unit
+>>>     Bugid 6475000 Asymmetric (RSA) Operation fails the known answer 
+>>> test
+>>>
+>>>    API Definitions
+>>>
+>>>     1.    Machine Description: NCP/N2CP/N2RNG virtual-device node
+>>>
+>>>         Ref:    FWARC/2005/173    (ino)
+>>>             FWARC/2006/072    (name, device-type, cfg-handle, 
+>>> compatible)
+>>>
+>>>         This will be a change to ONLY the "compatible" field of the
+>>>         respective virtual-device MD nodes.  Note that these MD 
+>>> nodes exist
+>>>         in the source base on a per-platform basis.
+>>>
+>>>     1.1    NCP virtual-device compatible property
+>>>
+>>>         Name        Tag        Req    Description
+>>>         ----        ---        ---    -----------
+>>>         compatible    PROP_DATA    Y    An array of string names
+>>>                             for this node.  Value to
+>>>                             be defined as one of:
+>>>                             "SUNW,sun4v-ncp",
+>>>                             "SUNW,n2-mau",
+>>>                             "SUNW,vf-mau".
+>>>
+>>>     1.2    N2CP virtual-device compatible property
+>>>
+>>>         Name        Tag        Req    Description
+>>>         ----        ---        ---    -----------
+>>>         compatible    PROP_DATA    Y    An array of string names
+>>>                             for this node.  Value to
+>>>                             be defined as one of:
+>>>                             "SUNW,n2-cwq",
+>>>                             "SUNW,vf-cwq".
+>>>
+>>>     1.3    N2RNG virtual-device compatible property
+>>>
+>>>         Name        Tag        Req    Description
+>>>         ----        ---        ---    -----------
+>>>         compatible    PROP_DATA    Y    An array of string names
+>>>                             for this node.  Value to
+>>>                             be defined as one of:
+>>>                             "SUNW,n2-rng",
+>>>                             "SUNW,vf-rng".
+>>>
+>>>         See Exported Interface below for the specific instances
+>>>         of the full node that will exist for Niagara-1, Niagara-2,
+>>>         and Victoria Falls.
+>>>
+>>>     2.    Virtual Crypto Device Node
+>>>
+>>>         This will be a change to ONLY the "compatible" property of
+>>>         the respective OBP device nodes.  Only that property is 
+>>> highlighted
+>>>         here as the remaining properties will remain unchanged.
+>>>
+>>>     2.1    NCP Properties
+>>>
+>>>         "compatible"            S
+>>>             Type:        Prop-encoded-array of prop-encoded-strings
+>>>             Contents:    Standard property name, defined devices
+>>>                     with which this device is compatible.
+>>>             Value:        "SUNW,sun4v-ncp", "SUNW,n2-mau", 
+>>> "SUNW,vf-mau".
+>>>
+>>>     2.2    N2CP Properties
+>>>
+>>>         "compatible"            S
+>>>             Type:        Prop-encoded-array of prop-encoded-strings
+>>>             Contents:    Standard property name, defined devices
+>>>                     with which this device is compatible.
+>>>             Value:        "SUNW,n2-cwq", "SUNW,vf-cwq".
+>>>
+>>>     2.3    N2RNG Properties
+>>>
+>>>         "compatible"            S
+>>>             Type:        Prop-encoded-array of prop-encoded-strings
+>>>             Contents:    Standard property name, defined devices
+>>>                     with which this device is compatible.
+>>>             Value:        "SUNW,n2-rng", "SUNW,vf-rng".
+>>>
+>>>     2.4    Open Firmware-defined Methods for Device Nodes
+>>>
+>>>         None.
+>>>
+>>> ======================================================================== 
+>>>
+>>> Exported Interfaces
+>>>
+>>> Specific propvals for ncp virtual device node across the possible 
+>>> processors:
+>>>
+>>>   Niagara-1:
+>>>
+>>>     name        evolving    value: "ncp"
+>>>     device_type    evolving    value: "crypto"
+>>>     interrupts    evolving    value: chip dependent list of device
+>>>                         relative interrupts, 1 per core.
+>>>     compatible    evolving    value: "SUNW,sun4v-ncp"
+>>>     reg        evolving    value: unique virtual device register
+>>>                         address.
+>>>
+>>>   Niagara-2:
+>>>
+>>>     name        evolving    value: "ncp"
+>>>     device_type    evolving    value: "crypto"
+>>>     interrupts    evolving    value: chip dependent list of device
+>>>                         relative interrupts, 1 per core.
+>>>     compatible    evolving    value: "SUNW,n2-mau"
+>>>     reg        evolving    value: unique virtual device register
+>>>                         address.
+>>>
+>>>     name        evolving    value: "crypto"
+>>>     device_type    evolving    value: "crypto"
+>>>     interrupts    evolving    value: chip dependent list of device
+>>>                         relative interrupts, 1 per core.
+>>>     compatible    evolving    value: "SUNW,n2-cwq"
+>>>     reg        evolving    value: unique virtual device register
+>>>                         address.
+>>>
+>>>     name        evolving    value: "random-number-generator"
+>>>     compatible    evolving    value: "SUNW,n2-rng"
+>>>     reg        evolving    value: unique virtual device register
+>>>                         address.
+>>>
+>>>   Victoria Falls:
+>>>
+>>>     name        evolving    value: "ncp"
+>>>     device_type    evolving    value: "crypto"
+>>>     interrupts    evolving    value: chip dependent list of device
+>>>                         relative interrupts, 1 per core.
+>>>     compatible    evolving    value: "SUNW,vf-mau"
+>>>     reg        evolving    value: unique virtual device register
+>>>                         address.
+>>>
+>>>     name        evolving    value: "crypto"
+>>>     device_type    evolving    value: "crypto"
+>>>     interrupts    evolving    value: chip dependent list of device
+>>>                         relative interrupts, 1 per core.
+>>>     compatible    evolving    value: "SUNW,vf-cwq"
+>>>     reg        evolving    value: unique virtual device register
+>>>                         address.
+>>>
+>>>     name        evolving    value: "random-number-generator"
+>>>     compatible    evolving    value: "SUNW,vf-rng"
+>>>     reg        evolving    value: unique virtual device register
+>>>                         address.
+>>>
+>>> NCS MD propvals for ncp/n2cp/n2rng virtual device metadata node across
+>>> the possible processors:
+>>>
+>>>   Niagara-1:
+>>>
+>>>     name        evolving    value: "ncp"
+>>>     device-type    evolving    value: "crypto"
+>>>     intr        evolving    value: list of device relative
+>>>                         interrupt numbers.
+>>>     ino        evolving    value: list of parent devinos.
+>>>     cfg-handle    evolving    value: devhandle for device
+>>>     compatible    evolving    value: "SUNW,sun4v-ncp"
+>>>
+>>>   Niagara-2:
+>>>
+>>>     name        evolving    value: "ncp"
+>>>     device-type    evolving    value: "crypto"
+>>>     intr        evolving    value: list of device relative
+>>>                         interrupt numbers.
+>>>     ino        evolving    value: list of parent devinos.
+>>>     cfg-handle    evolving    value: devhandle for device
+>>>     compatible    evolving    value: "SUNW,n2-mau"
+>>>
+>>>     name        evolving    value: "crypto"
+>>>     device-type    evolving    value: "crypto"
+>>>     intr        evolving    value: list of device relative
+>>>                         interrupt numbers.
+>>>     ino        evolving    value: list of parent devinos.
+>>>     cfg-handle    evolving    value: devhandle for device
+>>>     compatible    evolving    value: "SUNW,n2-cwq"
+>>>
+>>>     name        evolving    value: "random-number-generator"
+>>>     cfg-handle    evolving    value: devhandle for device
+>>>     compatible    evolving    value: "SUNW,n2-rng"
+>>>
+>>>   Victoria Falls:
+>>>
+>>>     name        evolving    value: "ncp"
+>>>     device-type    evolving    value: "crypto"
+>>>     intr        evolving    value: list of device relative
+>>>                         interrupt numbers.
+>>>     ino        evolving    value: list of parent devinos.
+>>>     cfg-handle    evolving    value: devhandle for device
+>>>     compatible    evolving    value: "SUNW,vf-mau"
+>>>
+>>>     name        evolving    value: "crypto"
+>>>     device-type    evolving    value: "crypto"
+>>>     intr        evolving    value: list of device relative
+>>>                         interrupt numbers.
+>>>     ino        evolving    value: list of parent devinos.
+>>>     cfg-handle    evolving    value: devhandle for device
+>>>     compatible    evolving    value: "SUNW,vf-cwq"
+>>>
+>>>     name        evolving    value: "random-number-generator"
+>>>     cfg-handle    evolving    value: devhandle for device
+>>>     compatible    evolving    value: "SUNW,vf-rng"
+>>>
+>>>
+>>> 6. Resources and Schedule
+>>>    6.4. Steering Committee requested information
+>>>       6.4.1. Consolidation C-team Name:
+>>>         sysfw
+>>>    6.5. ARC review type: FastTrack
+
+
+From sacadmin Mon Oct  9 10:10:40 2006
+Received: from kerouac.sfbay.sun.com (kerouac.SFBay.Sun.COM [129.146.96.111])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k99HAeCq023283
+	for <FWARC@sac.sfbay.sun.com>; Mon, 9 Oct 2006 10:10:40 -0700 (PDT)
+Received: from kerouac.sfbay.sun.com (localhost [127.0.0.1])
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k99HEDUN006511;
+	Mon, 9 Oct 2006 10:14:13 -0700 (PDT)
+Received: (from rath@localhost)
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10/Submit) id k99HECPW006510;
+	Mon, 9 Oct 2006 10:14:12 -0700 (PDT)
+Date: Mon, 9 Oct 2006 10:14:12 -0700
+From: Kevin Rathbun <Kevin.Rathbun@sun.com>
+To: David Kahn <David.Kahn@sun.com>
+Cc: Kevin Rathbun <Kevin.Rathbun@sun.com>, Eric Pilmore <Eric.Pilmore@sun.com>,
+        David Kahn <dmk@noho.sfbay.sun.com>, FWARC@sac.sfbay.sun.com,
+        Eric.Pilmore@noho.sfbay.sun.com
+Subject: Re: Niagara Crypto & RNG compatible property update [FWARC/2006/567 Timeout:  10/13/2006]
+Message-ID: <20061009171412.GU28372@kerouac>
+Reply-To: Kevin Rathbun <Kevin.Rathbun@sun.com>
+References: <200610060254.k962s5Vb003821@noho.SFBay.Sun.COM> <20061009013453.GO28372@kerouac> <4529AE9A.2090801@sun.com> <452A14C5.6090009@sun.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <452A14C5.6090009@sun.com>
+User-Agent: Mutt/1.4.2.1i
+Status: RO
+Content-Length: 482
+
+On Mon, Oct 09, 2006 at 02:22:13AM -0700, David Kahn wrote:
+> I don't think you're objecting to this case, you're just pointing
+> out something that you think might be an error and maybe needs a
+> clarification, right? If we need to augment the earlier case for
+> this, it can probably be done with a quick self-review case.
+
+I'm not objecting. I plan on deleting all the 'intr' props from the 
+MDs in a forthcoming putback and wanted to know if crypto needed it.
+
+kvn
+
+> 
+> -David
+
+From sacadmin Mon Oct  9 10:21:05 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k99HL5Mm023523
+	for <FWARC@sac.SFBay.Sun.COM>; Mon, 9 Oct 2006 10:21:05 -0700 (PDT)
+Received: from nwk-ea-fw-1.sun.com (nwkes-gis-mail-1.SFBay.Sun.COM [10.4.134.5])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k99HL4RQ025113
+	for <FWARC@sac.SFBay.Sun.COM>; Mon, 9 Oct 2006 10:21:05 -0700 (PDT)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k99HKx9M015982
+	for <FWARC@sac.SFBay.Sun.COM>; Mon, 9 Oct 2006 10:20:59 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J6V00301PIXZ100@d1-sfbay-10.sun.com>
+ (original mail from Eric.Pilmore@Sun.COM) for FWARC@sac.SFBay.Sun.COM; Mon,
+ 09 Oct 2006 10:20:59 -0700 (PDT)
+Received: from [129.153.85.46] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J6V00D22PIZCBKH@d1-sfbay-10.sun.com>; Mon,
+ 09 Oct 2006 10:20:59 -0700 (PDT)
+Date: Mon, 09 Oct 2006 10:20:58 -0700
+From: Eric Pilmore <Eric.Pilmore@Sun.COM>
+Subject: Re: Niagara Crypto & RNG compatible property update [FWARC/2006/567
+ Timeout:  10/13/2006]
+In-reply-to: <20061009171412.GU28372@kerouac>
+Sender: Eric.Pilmore@Sun.COM
+To: Kevin Rathbun <Kevin.Rathbun@Sun.COM>
+Cc: David Kahn <David.Kahn@Sun.COM>, David Kahn <dmk@noho.SFBay.Sun.COM>,
+        FWARC@sac.sfbay.sun.com, Eric.Pilmore@noho.SFBay.Sun.COM
+Message-id: <452A84FA.4010707@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <200610060254.k962s5Vb003821@noho.SFBay.Sun.COM>
+ <20061009013453.GO28372@kerouac> <4529AE9A.2090801@sun.com>
+ <452A14C5.6090009@sun.com> <20061009171412.GU28372@kerouac>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 571
+
+Kevin Rathbun wrote On 10/09/06 10:14,:
+> On Mon, Oct 09, 2006 at 02:22:13AM -0700, David Kahn wrote:
+> 
+>>I don't think you're objecting to this case, you're just pointing
+>>out something that you think might be an error and maybe needs a
+>>clarification, right? If we need to augment the earlier case for
+>>this, it can probably be done with a quick self-review case.
+> 
+> 
+> I'm not objecting. I plan on deleting all the 'intr' props from the 
+> MDs in a forthcoming putback and wanted to know if crypto needed it.
+
+
+Sounds like it does.
+
+Eric
+
+
+> kvn
+> 
+> 
+>>-David
+
+
+From sacadmin Mon Oct  9 10:26:54 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k99HQsWt023730
+	for <FWARC@sac.sfbay.sun.com>; Mon, 9 Oct 2006 10:26:54 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k99HQsCZ028106;
+	Mon, 9 Oct 2006 10:26:54 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k99HQq8R000940;
+	Mon, 9 Oct 2006 10:26:53 -0700 (PDT)
+Message-ID: <452A864E.7070501@sun.com>
+Date: Mon, 09 Oct 2006 10:26:38 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 1.5.0.7 (Windows/20060909)
+MIME-Version: 1.0
+To: Eric Pilmore <eric.pilmore@sun.com>
+CC: Kevin Rathbun <Kevin.Rathbun@sun.com>, David Kahn <dmk@noho.sfbay.sun.com>,
+        FWARC@sac.sfbay.sun.com, Eric.Pilmore@noho.sfbay.sun.com
+Subject: Re: Niagara Crypto & RNG compatible property update [FWARC/2006/567
+ Timeout:  10/13/2006]
+References: <200610060254.k962s5Vb003821@noho.SFBay.Sun.COM> <20061009013453.GO28372@kerouac> <4529AE9A.2090801@sun.com> <452A14C5.6090009@sun.com> <20061009171412.GU28372@kerouac> <452A84FA.4010707@sun.com>
+In-Reply-To: <452A84FA.4010707@sun.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 881
+
+
+
+Eric Pilmore wrote:
+> Kevin Rathbun wrote On 10/09/06 10:14,:
+>> On Mon, Oct 09, 2006 at 02:22:13AM -0700, David Kahn wrote:
+>>
+>>> I don't think you're objecting to this case, you're just pointing
+>>> out something that you think might be an error and maybe needs a
+>>> clarification, right? If we need to augment the earlier case for
+>>> this, it can probably be done with a quick self-review case.
+>>
+>>
+>> I'm not objecting. I plan on deleting all the 'intr' props from the 
+>> MDs in a forthcoming putback and wanted to know if crypto needed it.
+> 
+> 
+> Sounds like it does.
+
+Based on what? It needs "interrupts" if it's done properly.
+
+In the case materials for this case, you should "interrupts"
+in the ncp virtual device node, which seems correct, but in
+the next section for ncp/n2cp and n2rng you show "intr" and
+"ino" properties. How can they both be correct?
+
+-David
+
+From sacadmin Mon Oct  9 10:27:09 2006
+Received: from kerouac.sfbay.sun.com (kerouac.SFBay.Sun.COM [129.146.96.111])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k99HR9ZW023747
+	for <FWARC@sac.sfbay.sun.com>; Mon, 9 Oct 2006 10:27:09 -0700 (PDT)
+Received: from kerouac.sfbay.sun.com (localhost [127.0.0.1])
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k99HUgUN006607;
+	Mon, 9 Oct 2006 10:30:42 -0700 (PDT)
+Received: (from rath@localhost)
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10/Submit) id k99HUgGH006606;
+	Mon, 9 Oct 2006 10:30:42 -0700 (PDT)
+Date: Mon, 9 Oct 2006 10:30:42 -0700
+From: Kevin Rathbun <Kevin.Rathbun@sun.com>
+To: Eric Pilmore <Eric.Pilmore@sun.com>
+Cc: Kevin Rathbun <Kevin.Rathbun@sun.com>, David Kahn <David.Kahn@sun.com>,
+        David Kahn <dmk@noho.sfbay.sun.com>, FWARC@sac.sfbay.sun.com,
+        Eric.Pilmore@noho.sfbay.sun.com
+Subject: Re: Niagara Crypto & RNG compatible property update [FWARC/2006/567 Timeout:  10/13/2006]
+Message-ID: <20061009173042.GX28372@kerouac>
+Reply-To: Kevin Rathbun <Kevin.Rathbun@sun.com>
+References: <200610060254.k962s5Vb003821@noho.SFBay.Sun.COM> <20061009013453.GO28372@kerouac> <4529AE9A.2090801@sun.com> <452A14C5.6090009@sun.com> <20061009171412.GU28372@kerouac> <452A84FA.4010707@sun.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <452A84FA.4010707@sun.com>
+User-Agent: Mutt/1.4.2.1i
+Status: RO
+Content-Length: 714
+
+On Mon, Oct 09, 2006 at 10:20:58AM -0700, Eric Pilmore wrote:
+> Kevin Rathbun wrote On 10/09/06 10:14,:
+> >On Mon, Oct 09, 2006 at 02:22:13AM -0700, David Kahn wrote:
+> >
+> >>I don't think you're objecting to this case, you're just pointing
+> >>out something that you think might be an error and maybe needs a
+> >>clarification, right? If we need to augment the earlier case for
+> >>this, it can probably be done with a quick self-review case.
+> >
+> >
+> >I'm not objecting. I plan on deleting all the 'intr' props from the 
+> >MDs in a forthcoming putback and wanted to know if crypto needed it.
+> 
+> Sounds like it does.
+
+I thought it sounded like it doesn't :)
+
+kvn
+
+> 
+> Eric
+> 
+> 
+> >kvn
+> >
+> >
+> >>-David
+> 
+
+From sacadmin Mon Oct  9 10:32:53 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k99HWrJN024024
+	for <FWARC@sac.sfbay.sun.com>; Mon, 9 Oct 2006 10:32:53 -0700 (PDT)
+Received: from nwk-ea-fw-1.sun.com (nwkes-gis-mail-2.SFBay.Sun.COM [10.4.134.6])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k99HWqKb001810
+	for <FWARC@sac.sfbay.sun.com>; Mon, 9 Oct 2006 10:32:52 -0700 (PDT)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k99HWlQv013327
+	for <FWARC@sac.sfbay.sun.com>; Mon, 9 Oct 2006 10:32:47 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J6V00C01PZPLG00@d1-sfbay-10.sun.com>
+ (original mail from Eric.Pilmore@Sun.COM) for FWARC@sac.sfbay.sun.com; Mon,
+ 09 Oct 2006 10:32:47 -0700 (PDT)
+Received: from [129.153.85.46] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J6V00DN6Q2KCBNH@d1-sfbay-10.sun.com>; Mon,
+ 09 Oct 2006 10:32:45 -0700 (PDT)
+Date: Mon, 09 Oct 2006 10:32:44 -0700
+From: Eric Pilmore <Eric.Pilmore@Sun.COM>
+Subject: Re: Niagara Crypto & RNG compatible property update [FWARC/2006/567
+ Timeout:  10/13/2006]
+In-reply-to: <452A864E.7070501@sun.com>
+Sender: Eric.Pilmore@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: Kevin Rathbun <Kevin.Rathbun@Sun.COM>, David Kahn <dmk@noho.sfbay.sun.com>,
+        FWARC@sac.sfbay.sun.com, Eric.Pilmore@noho.sfbay.sun.com
+Message-id: <452A87BC.3060804@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <200610060254.k962s5Vb003821@noho.SFBay.Sun.COM>
+ <20061009013453.GO28372@kerouac> <4529AE9A.2090801@sun.com>
+ <452A14C5.6090009@sun.com> <20061009171412.GU28372@kerouac>
+ <452A84FA.4010707@sun.com> <452A864E.7070501@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 1395
+
+David Kahn wrote On 10/09/06 10:26,:
+> 
+> 
+> Eric Pilmore wrote:
+> 
+>> Kevin Rathbun wrote On 10/09/06 10:14,:
+>>
+>>> On Mon, Oct 09, 2006 at 02:22:13AM -0700, David Kahn wrote:
+>>>
+>>>> I don't think you're objecting to this case, you're just pointing
+>>>> out something that you think might be an error and maybe needs a
+>>>> clarification, right? If we need to augment the earlier case for
+>>>> this, it can probably be done with a quick self-review case.
+>>>
+>>>
+>>>
+>>> I'm not objecting. I plan on deleting all the 'intr' props from the 
+>>> MDs in a forthcoming putback and wanted to know if crypto needed it.
+>>
+>>
+>>
+>> Sounds like it does.
+> 
+> 
+> Based on what? It needs "interrupts" if it's done properly.
+> 
+> In the case materials for this case, you should "interrupts"
+> in the ncp virtual device node, which seems correct, but in
+> the next section for ncp/n2cp and n2rng you show "intr" and
+> "ino" properties. How can they both be correct?
+
+I'm not sure I'm following.  One definition is for the OBP node
+and the other is for the MD node.  Per Steve Kelley's comment
+OBP no longer depends on the 'intr' field to generate the
+'interrupts' property.  So, it sounds like Kevin's plan to
+remove the MD 'intr' field is okay with respect to crypto.
+The 'interrupts' property will still be generated based on
+the existence of the MD 'ino' field (only) instead.
+
+Eric
+
+
+
+> -David
+
+  c
+
+From sacadmin Mon Oct  9 10:34:32 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k99HYWwa024044
+	for <FWARC@sac.sfbay.sun.com>; Mon, 9 Oct 2006 10:34:32 -0700 (PDT)
+Received: from nwk-ea-fw-1.sun.com (nwkes-gis-mail-2.SFBay.Sun.COM [10.4.134.6])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k99HYWNF008260
+	for <FWARC@sac.sfbay.sun.com>; Mon, 9 Oct 2006 10:34:32 -0700 (PDT)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k99HYRiD013593
+	for <FWARC@sac.sfbay.sun.com>; Mon, 9 Oct 2006 10:34:27 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J6V00E01Q45UP00@d1-sfbay-10.sun.com>
+ (original mail from Eric.Pilmore@Sun.COM) for FWARC@sac.sfbay.sun.com; Mon,
+ 09 Oct 2006 10:34:27 -0700 (PDT)
+Received: from [129.153.85.46] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J6V00D7GQ5ECBOH@d1-sfbay-10.sun.com>; Mon,
+ 09 Oct 2006 10:34:26 -0700 (PDT)
+Date: Mon, 09 Oct 2006 10:34:26 -0700
+From: Eric Pilmore <Eric.Pilmore@Sun.COM>
+Subject: Re: Niagara Crypto & RNG compatible property update [FWARC/2006/567
+ Timeout:  10/13/2006]
+In-reply-to: <20061009173042.GX28372@kerouac>
+Sender: Eric.Pilmore@Sun.COM
+To: Kevin Rathbun <Kevin.Rathbun@Sun.COM>
+Cc: David Kahn <David.Kahn@Sun.COM>, David Kahn <dmk@noho.sfbay.sun.com>,
+        FWARC@sac.sfbay.sun.com, Eric.Pilmore@noho.sfbay.sun.com
+Message-id: <452A8822.70705@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <200610060254.k962s5Vb003821@noho.SFBay.Sun.COM>
+ <20061009013453.GO28372@kerouac> <4529AE9A.2090801@sun.com>
+ <452A14C5.6090009@sun.com> <20061009171412.GU28372@kerouac>
+ <452A84FA.4010707@sun.com> <20061009173042.GX28372@kerouac>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 861
+
+Kevin Rathbun wrote On 10/09/06 10:30,:
+> On Mon, Oct 09, 2006 at 10:20:58AM -0700, Eric Pilmore wrote:
+> 
+>>Kevin Rathbun wrote On 10/09/06 10:14,:
+>>
+>>>On Mon, Oct 09, 2006 at 02:22:13AM -0700, David Kahn wrote:
+>>>
+>>>
+>>>>I don't think you're objecting to this case, you're just pointing
+>>>>out something that you think might be an error and maybe needs a
+>>>>clarification, right? If we need to augment the earlier case for
+>>>>this, it can probably be done with a quick self-review case.
+>>>
+>>>
+>>>I'm not objecting. I plan on deleting all the 'intr' props from the 
+>>>MDs in a forthcoming putback and wanted to know if crypto needed it.
+>>
+>>Sounds like it does.
+> 
+> 
+> I thought it sounded like it doesn't :)
+
+Sorry, that's what I meant.  "It does" need to be removed also :-)
+
+Eric
+
+
+
+> kvn
+> 
+> 
+>>Eric
+>>
+>>
+>>
+>>>kvn
+>>>
+>>>
+>>>
+>>>>-David
+>>
+
+
+From sacadmin Thu Oct 19 13:30:11 2006
+Received: from noho.SFBay.Sun.COM (noho.SFBay.Sun.COM [10.6.92.101])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k9JKUBcK019526
+	for <FWARC@sac.SFBay.Sun.COM>; Thu, 19 Oct 2006 13:30:11 -0700 (PDT)
+Received: from noho.SFBay.Sun.COM (localhost [127.0.0.1])
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0) with ESMTP id k9JKUAjs003659;
+	Thu, 19 Oct 2006 13:30:10 -0700 (PDT)
+Received: (from dmk@localhost)
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0/Submit) id k9JKUAOn003658;
+	Thu, 19 Oct 2006 13:30:10 -0700 (PDT)
+Date: Thu, 19 Oct 2006 13:30:10 -0700 (PDT)
+From: David Kahn <dmk@noho.SFBay.Sun.COM>
+Message-Id: <200610192030.k9JKUAOn003658@noho.SFBay.Sun.COM>
+To: FWARC@sac.sfbay.sun.com
+Subject: Re: Niagara Crypto & RNG compatible property update [FWARC/2006/567 Timeout:  10/13/2006]
+Cc: Eric.Pilmore@noho.SFBay.Sun.COM
+Status: RO
+Content-Length: 381
+
+>I'm sponsoring this fastrack case for Eric Pilmore.
+>The case augments the NCP and RNG compatible properties
+>due to workarounds required for different implementations
+>of the NCP and RNG embedded hardware on different processors.
+>
+>Requested committment level: Sun Private
+>Release binding: minor/micro/patch.
+
+This fast-track case timed out on Oct 13 and is approved.
+
+-David
+
+

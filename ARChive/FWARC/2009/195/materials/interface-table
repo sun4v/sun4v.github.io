@@ -1,0 +1,29 @@
+Imported Interfaces :
+
+  Interface                   Classification    Comments
+  ====================================================================
+
+  sun4v Machine               Sun Private       MD nodes definitions as
+  Description nodes                             defined by FWARC/2005/115
+
+  sun4v Virtual Devices       Sun Private       Virtual IO MD node definitions
+  Machine Description nodes                     defined in FWARC/2006/072
+
+  Virtual IO data transfer    Sun Private       Virtual IO data transfer
+  protocol                                      defined in FWARC/2006/195 
+
+
+Exported Interfaces:
+
+  Interface                   Classification    Comments
+  ====================================================================
+
+  Virtual devices and         Sun Private       MD node describing 
+  Virtual device port                           virtual devices and
+  Nodes                                         virtual device port nodes
+                                                defined by this case
+
+  Virtual IO data transfer    Sun Private       Extended VIO protocol (v1.5)
+  protocol                                      for vNet/vSwitch devices 
+                                                to support physical link      
+                                                status information

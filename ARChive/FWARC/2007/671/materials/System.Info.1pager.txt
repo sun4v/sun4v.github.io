@@ -1,0 +1,180 @@
+
+1. Introduction
+   1.1. Project/Component Working Name:
+	System Information Domain Services 1.0
+
+   1.2. Name of Document Author/Supplier:
+	Michael Christensen
+
+   1.3. Date of This Document:
+	11/28/07
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		HS PAC
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Mike Sanfratello
+	1.4.4. The name of your business unit:
+		OPG
+
+   1.5. Email Aliases:
+    	1.5.1. Responsible Manager: jay.jayachandra@sun.com
+    	1.5.2. Responsible Engineer: michael.christensen@sun.com
+    	1.5.3. Marketing Manager: hanglin.su@sun.com
+	1.5.4. Interest List: ldoms-internal@sun.com
+
+2. Project Summary
+   2.1. Project Description:
+	This project implements a domain service to provide system
+	specific information. In particular, various POSIX uname
+	values for use by the ldoms manager.
+
+   2.2. Risks and Assumptions:
+	See FWARC 2006/55
+
+3. Business Summary
+   3.1. Problem Area:
+	Ability to identify guest domain software from the control
+	domain.
+
+   3.2. Market/Requester:
+	OPG
+
+   3.3. Business Justification:
+
+   3.4. Competitive Analysis:
+
+   3.5. Opportunity Window/Exposure:
+
+   3.6. How will you know when you are done?:
+
+4. Technical Description
+
+4.1 Overview - System Information domain service 1.0
+
+The System Information capability provides for the ability to query
+various system information, such as POSIX utsname strings.  It is
+anticipated that this service may be expanded as needed in the future
+to support such areas as, for example, Solaris sysinfo and Solaris kstat's.
+
+4.1.1 Service IDs
+
+There is one service ID defined to support System Information queries.
+
+	Service ID		Description
+	----------		-----------
+	"system-info"		Guest system system information queries
+
+4.1.2 Message Header
+
+	Offset	Size	Field name	Description
+	------	----	----------	-----------
+	0	4	cmd		Command
+
+4.1.3 Message types
+
+The following constants are defined for System Information domain service
+command identifier values:
+
+	Type			Value	Definition
+	----			-----	----------
+	SYS_INFO_GET_REQ	0x0	Request getting system information.
+	SYS_INFO_GET_RESP	0x1	Response to a get information request.
+
+4.1.4 Get Information Payload
+
+The Get Information header is followed by a variable number of NUL
+terminated strings.  Each string represents a specific piece of system
+information to return.  The following are the supported strings:
+
+	System Info Datum Name	Description
+	----------------------	-----------
+	"uts-sysname"		utsname.sysname
+	"uts-nodename"		utsname.nodename
+	"uts-release"		utsname.release
+	"uts-version"		utsname.version
+	"uts-machine"		utsname.machine
+
+Note that the string values returned should be identical to what is
+provided by the POSIX uname user command.  Non-POSIX compliant guest
+systems may choose to support any of these items if they are appropriate.
+
+4.1.5 Get Information Response Payload
+
+Response to the Get Information request is a message with the Get Information
+header followed by the following response payload.  In the event that no
+Datum Names were identified, the result field will be SYS_INFO_INVALID_NAME
+and the num_pairs field will be zero.  If multiple Datum names were provided
+and not all of them were matched, the result field will be SYS_INFO_SUCCESS
+and the number of Datum names matched will be in the num_pairs field and their
+corresponding name/value pairs will be in the name/value fields.  Each datum
+name and datum value will be a NUL terminated string.
+
+	Offset	Size	Field Name	Description
+	------	----	----------	-----------
+	0	4	result		Result of Operation
+	4       4	num_pairs	Number of name/value pairs returned.
+	8	Var	name1		Name of first datum
+	Var	Var	value1		Value of first datum
+	Var	Var	name2		Name of second datum
+	Var	Var	value2		Value of second datum
+	...
+
+4.1.6 Response Result Codes
+
+The result field in the response payload details the results of the requested
+operation.  The result codes are defined as follows:
+
+	Name			Value	Definition
+	----			-----	----------
+	SYS_INFO_SUCCESS	0x0	Operation succeeded
+	SYS_INFO_INVALID_NAME	0x1	No valid datum name supplied
+
+
+4.2 Imported Interfaces:
+
+	Interface		Classification	Comments
+	---------		-------------	--------
+	Domain Services		Sun Private	Defined by FWARC/2006/55
+	Specification
+
+	uname(1)		Standard	Solaris user command
+
+4.3 Exported Interfaces:
+
+	Interface		Classification	Comments
+	---------		--------------	--------
+	System Information
+	domain service 1.0
+
+	    Service IDs
+		"system-info"	Sun Private	System Information
+
+	    System Information	Sun Private
+	    message header
+
+	    Message Types:
+		SYS_INFO_GET_REQ  Sun Private	Request Get Information.
+		SYS_INFO_GET_RESP Sun Private	Response to a Get Information request.
+
+	    Get Information	Sun Private	Defined in 4.1.4
+	    Payload 
+	    Response Payload	Sun Private	Defined in 4.1.5
+	    Response Result	Sun Private	Defined in 4.1.6
+	    Codes
+
+5. Reference Documents:
+	FWARC 2006/55 - Domain Services Specification
+	CR 6506767 - Add a domain service to support OS identification
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+	S10U5
+
+   6.2. Cost of Effort:
+	1 staff month
+
+   6.3. Cost of Capital Resources:
+	N/A

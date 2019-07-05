@@ -1,0 +1,28 @@
+   Imported Interfaces 
+   -------------------
+
+   Interface name                   Classification        Comments
+   -----------------------          --------------        --------
+
+   VIO protocol,                    Sun Private           FWARC/2006/195
+   Data structures,                                       FWARC/2006/583
+   and values
+   
+
+   Exported Interfaces
+   -------------------
+
+   Interface name                   Classification        Comments
+   -----------------------          --------------        --------
+   
+   Virtual Disk specific            Sun Private           Section 1.1.5.1
+   attribute structure
+
+   Virtual Disk Types :
+     VD_DISK_TYPE_SLICE             Sun Private           Section 1.1.5.1
+     VD_DISK_TYPE_DISK              Sun Private           Section 1.1.5.1
+
+   Virtual Disk req_id values:
+     VD_OP_GET_DEVID                Sun Private           Section 1.1.5.2
+     VD_OP_GET_EFI                  Sun Private           Section 1.1.5.2
+     VD_OP_SET_EFI                  Sun Private           Section 1.1.5.2

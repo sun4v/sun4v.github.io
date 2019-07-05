@@ -1,0 +1,453 @@
+Copyright 2007 Sun Microsystems
+
+1. Introduction
+   1.1. Project/Component Working Name:
+
+        Machine Description Latency Node Definitions
+
+   1.2. Name of Document Author/Supplier:
+   
+        Steve Sistare
+	Ashley Saulsbury
+
+   1.3. Date of This Document:
+   
+        05/08/2007
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+            HS PAC
+	1.4.2. The ARC(s) you expect to review your project:
+            FWARC
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+            Tony Barreca
+	1.4.4. The name of your business unit:
+            Systems Group
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: chad.solomon@sun.com
+        1.5.2. Responsible Engineer: kanth.ghatraju@sun.com
+        1.5.3. Marketing Manager: N/A
+        1.5.4. Interest List: mpo-maramba-core@sun.com
+
+2. Project Summary
+   2.1. Project Description:
+   
+        This project defines MD nodes that describe to the Solaris
+	guest the latency between various components of a system 
+	including CPUs, memory, and I/O devices.  These latencies can
+	vary depending on the physical location of the initiator and
+	the target, and exposing them allows the guest to co-locate its
+	resources to achieve minimum latencies and improve domain
+	application performance.  For example, Solaris Memory Placement 
+	Optimization (MPO) can be enabled, in which a thread's memory 
+	is allocated close to the CPU that runs the thread.
+	
+   2.2. Risks and Assumptions:
+
+	Assumption: The Solaris changes to enable MPO will be delivered
+	by a separate project.
+
+3. Business Summary
+   3.1. Problem Area:
+
+	Larger servers may exhibit NUMA characteristics which hurt 
+	application performance if ignored.  Solaris minimizes latency 
+	by considering the physical topology when mapping threads and 
+	data to CPUs and memory.  In the sun4v architecture, resources
+	are virtualized, and the guest has no visibility into physical
+	topology, so the latency relationships must be explicitly 
+	represented in the guest MD.
+
+   3.2. Market/Requester:
+   
+	The Maramba platform team, Systems Group. Maramba, based on
+	the Victoria Falls processor, is the first sun4v platform
+	with NUMA characteristics.  However, the latency node
+	specification is general enough to support future sun4v NUMA
+	platforms.
+
+   3.3. Business Justification:
+   
+	Allows multi-processor sun4v systems to be performance
+	competitive by effectively reducing their NUMA characteristic.
+	These changes plus the necessary Solaris changes will boost 
+	performance on some strategic benchmarks to be published for 
+	Maramba RR by an estimated 5% - 10%.
+
+   3.4. Competitive Analysis:
+        N/A
+
+   3.5. Opportunity Window/Exposure:
+
+	Must be available for Maramba RR for maximum sales impact.
+
+   3.6. How will you know when you are done?:
+      
+        1. Code has been integrated into released system firmware image, and
+	2. Nodes defined in this specification are visible in the guest MD,
+		which can be verified by examining the machine description
+		provided to a guest operating system, and
+	3. Solaris MPO framework implements and shows correct lgroups, and
+	4. The measured lmbench latency approaches the minimum hardware
+	   memory latency.
+	
+	Note that 3 and 4 are not part of this project, but are the 
+	ultimate check of its correctness.
+
+4. Technical Description:
+    4.1. Overview:
+
+	The basis for this project is a type of MD node called
+	the latency group, or lg for short, which links together a
+	group of resources which can be accessed with a specified
+	latency.  Existing nodes including cpu, mblock, and iodevice
+	either point to a latency group via fwd arcs, or are pointed 
+	to by the latency group.
+	
+	To map portions of an mblock to a locality group, the guest 
+	must examine lower order bits of the PA.  To enable the guest 
+	to recover lower order PA bits from an RA, while still hiding the
+	higher order PA bits, a mblock property addr-congruence-offset 
+	is defined.
+
+	Latency group and congruence information is optional in the
+	MD.  It may be added, changed, or removed during reconfiguration 
+	of virtual resources. Furthermore, it may be inaccurate during
+	transitional periods.  For these reasons, latency group information
+	should only be used for performance optimizations, thus inaccuracies
+	may result in sub-optimal performance, but not incorrect behavior.
+
+    4.1.1 Latency Group Nodes
+
+	The latency group nodes are shown below.  Properties
+	are shown in the next section.
+
+                                       Required        Optional
+	Name              Category   subordinates    subordinates
+	------------------------------------------------------------------
+	mem-lg            optional    mblock              -
+
+	Defines the load and store latency between virtual CPU(s) and 
+	memory; specifically between superior cpu nodes and subordinate
+	mblock nodes.
+	Topology: cpu -> mem-lg -> mblock
+
+	------------------------------------------------------------------
+	dma-lg            optional    mblock              -
+
+	Defines the latency of DMA operations between I/O device(s) and
+	memory; specifically between superior iodevice nodes plus 
+	descendants, and subordinate mblock nodes.
+	Topology: iodevice -> dma-lg -> mblock
+
+	------------------------------------------------------------------
+	pio-lg            optional    iodevice              -
+
+	Defines the latency of load and store operations (aka programmed 
+	I/O) between virtual CPU(s) and I/O device(s); specifically
+	between superior cpu nodes and subordinate iodevice nodes plus
+	descendants.
+	Topology: cpu -> pio-lg -> iodevice
+
+	------------------------------------------------------------------
+	irq-lg            optional       -                -
+
+	Defines interrupt delivery latency between I/O device(s) and 
+	virtual CPU(s); specifically between superior iodevice nodes plus
+	descendants, and superior cpu nodes.
+	Topology: iodevice -> irq-lg <- cpu
+
+	------------------------------------------------------------------
+	latency-groups    optional       -               mem-lg, dma-lg
+						         pio-lg, irq-lg
+
+	This collective node leads to all latency group nodes.
+	Topology:
+					   -> mem-lg
+		platform -> latency-groups -> dma-lg
+					   -> pio-lg
+					   -> irq-lg
+
+	------------------------------------------------------------------
+	group             optional       -               any
+
+	The group node is a nexus for incoming and outgoing arcs 
+	and serves no other purpose.  This avoids a combinatorial
+	explosion of arcs when defining many-to-many relationships.
+	The group node is a pass-through node for MD traversals.
+	Topology:
+                     any ->       -> any
+                     any -> group -> any
+                     any ->       -> any
+	------------------------------------------------------------------
+
+    4.1.2 Latency Group Properties
+
+	The properties of the latency nodes are defined below:
+
+	Name              Tag        Req'd?
+	------------------------------------------------------------------
+	latency         PROP_VAL     Yes
+
+	A 64-bit unsigned integer giving the approximate latency of 
+	access in picoseconds.  Defined for mem-lg, dma-lg, pio-lg, 
+	and irq-lg nodes.
+
+	------------------------------------------------------------------
+	addr-mask       PROP_VAL     No
+	addr-match      PROP_VAL     No
+
+	These are 64-bit unsigned integers that together define a memory
+	stripe.  Memory in subordinate mblock nodes is a member of the
+	latency group if (address & addr-mask) == addr-match.  If these 
+	properties are absent, then all memory described by subordinate 
+	mblock nodes is a member of the latency group.  Defined for
+	mem-lg and dma-lg nodes.
+	
+	The value used in the mask and match equation is 
+	(RA + addr-congruence-offset) as described in section 4.1.4 below. 
+	
+	------------------------------------------------------------------
+
+
+    4.1.3 Subordinates
+
+	The following nodes are augmented to allow subordinates.
+
+                           Optional
+	Name             subordinates
+	------------------------------------------
+	cpu               mem-lg, pio-lg, irq-lg
+	iodevice          irq-lg, dma-lg
+	platform          latency-groups
+	------------------------------------------
+
+    4.1.4 RA and PA Congruence
+
+	The real address space used within a virtual machine is a
+	remapping of portions of a system's underlying physical memory.
+	A guest running within a virtual machine is not provided
+	the physical addresses of its memory blocks. This abstraction of
+	memory addresses enables guests to be moved in memory without
+	changing their real address space layout.
+
+	However, to support NUMA and page-coloring algorithms for a
+	guest operating system further information is required that
+	describes the congruency relationship between a real address and
+	the underlying physical address to which it is mapped.
+	
+	To do this, this case adds the following optional property to an
+	mblock node;
+
+	    Node name: mblock
+	    ------------------------------------------------------------------
+	    addr-congruence-offset    PROP_VAL     No
+
+	    A 64-bit unsigned integer.
+	    addr-congruence-offset = (PA_base - RA_base) mod M.
+
+	    M is a power of 2 strictly greater than all values of addr-mask 
+	    and index-mask (see section 4.1.5) in the MD.
+	    The guest is guaranteed that
+	    (RA + addr-congruence-offset) = PA (mod M)
+	    where "=" means "is congruent to".  In other words, the guest
+	    may recover the lower order PA bits in positions less than M.
+
+	    If this property is not present in the mblock, then its value
+	    must be assumed 0.
+
+	    Programming note:
+
+		This property is typically provided when the congruency between
+		the real and underlying physical address of a mblock
+		is less than the size needed for lgroup or page color masking.
+
+		For example; Consider a NUMA machine where memory is
+		striped on 1GB boundaries between 4 different memory
+		controllers. Each cpu may see different access latencies
+		to each of the memory controllers - each latency is
+		represented by a lgroup node described above.
+
+		Now consider a 1GB memory segment that starts at real address
+		0x400000000 and is bound to physical address 0x10000000.
+
+		To identify 4 different memory controllers with a 1GB stripe
+		the addr-mask property of one of the lgroups might have the
+		value 0xc0000000.
+	
+		In this legitimate scenario to correctly apply the lgroup
+		information, the guest OS needs enough correctly congruent
+		bits from the actual physical address to be able to
+		meaningfully apply the lgroup address mask.
+
+		So for our example, real address 0x400000000 corresponds to
+		physical address 0x10000000, and real address 0x430000000
+		corresponds to physical address 0x40000000.
+
+		If we apply the lgroup mask to 0x10000000 we get 0x0.
+		If we apply the lgroup mask to 0x40000000 we get 0x40000000
+		as the result. Therefore we see that these different
+		address pages reside on different memory controllers
+		with different access latencies.
+
+		(Note: if we had applied the lgroup mask to the corresponding
+		real addresses the result is always 0x0 implying the same
+		memory controller - which would be incorrect).
+
+		Thus a means to recover the relevant bits
+		of the physical address are required so that the address
+		mask can be correctly applied.
+
+		The addr-congruence-offset property in an mblock provides
+		this information. As described above the property is derived
+		from the difference between real and their corresponding
+		physical addresses for a mblock. However, to retain ambiguity
+		for actual physical address bindings, this property is not
+		the actual difference, but simply enough bits from the
+		RA/PA difference that an addr mask can be correctly applied.
+
+		Thus the value provided for addr-congruence-offset is
+		sufficient that the equality:
+
+			(ra + addr-congruence-offset) & addr-mask == addr-match
+
+		holds correctly for all the provided addr-mask and addr-match
+		values within the MD in order to correctly match lgroups.
+		
+		If the addr-mask 0xc0000000 is the largest mask provided,
+		then the addr-congruence-offset for example above would be:
+
+                	(0x10000000 - 0x400000000) & 0xffffffff = 0x10000000 
+                
+                The address matches for the real addresses above will be,
+
+                        (0x400000000 + 0x10000000) & 0xc0000000 = 0x0
+
+                        (0x430000000 + 0x10000000) & 0xc0000000 = 0x40000000 
+
+		As defined above the addr-congruence-offset is an optional
+		property in an mblock node.  If not present, a value of 0 can 
+		be assumed, thus the equality for matching lgroups reduces to:
+
+			ra & addr-mask == addr-match
+
+	    ------------------------------------------------------------------
+
+    4.1.5 Page coloring
+
+	Page coloring for large caches exhibits a similar set of problems
+	to identifying lgroups.
+
+	To assist, a cache node is extended with an optional property
+	to compute a matching set within the corresponding cache.
+	
+	    Node name: cache
+	    Property:
+	    Name                      Tag        Req'd?
+	    ------------------------------------------------------------------
+	    index-mask                PROP_VAL     No
+
+	    A 64-bit unsigned integer.  A bit in index-mask is set if that 
+	    bit in a PA influences the cache index at which a memory location 
+	    is stored when cache resident.
+
+	    Programming note:
+
+		The actual cache index employed by hardware is a
+		function of multiple bits from the physical address
+		of the memory reference. To compute a page coloring value
+		the index-mask field identifies the relevant bits from
+		a physical address. Thus the index-bits for page coloring
+		can be derived as:
+
+		index-bits = (ra + addr-congruence-offset) & index-mask
+
+		Where the addr-congruence-offset is the property from the
+		mblock (corresponding to the given ra) as defined in section
+		4.1.4 above.
+
+		Similarly to lgroup matching, if the addr-congruence-offset
+		property is not provided for a mblock its value can be
+		assumed as zero reducing the equation to:
+
+		index = ra & index-mask
+
+	    ------------------------------------------------------------------
+
+    4.1.6 Example
+
+	The file sample-lg.pdf shows an abstracted MD containing mem-lg,
+	irq-lg, and pio-lg nodes for a theoretical system with 2
+	physical processors, each of which contains 2 virtual CPUs
+	and one PCI-E host adapter.  The latency-groups container
+	node and the dma-lg nodes are omitted for clarity.
+
+    4.2. Bug/RFE Number(s):
+
+	6540324 represent memory locality and RA vs PA congruence in the MD
+	6539799 represent I/O locality in the MD
+	6540315 RA versus PA congruence property
+	6539930 MPO for sun4v platforms
+   
+    4.3. In Scope:
+   
+        MD node definitions and properties.
+
+    4.4. Out of Scope:
+
+        Changes in the Solaris guest.
+   
+    4.5. Interfaces:
+
+    4.5.1 Imported Interfaces
+
+        Name                    Classification  Description
+        -----------------       --------------- -------------------
+        sun4v Machine           Sun Private     MD nodes definitions as
+        Description nodes                       defined by FWARC/2005/115
+
+        "iodevice" MD node      Committed       MD node name and properties as 
+                                                described in FWARC/2007/070
+
+    4.5.2 Exported Interfaces
+
+	All interfaces are specified in Section 4.1 of this document.
+
+        Name                    Classification  Description
+        ----------------------  --------------  -------------------
+	"latency-groups" node	 Committed	MD node name and properties
+	"mem-lg" node		 Committed	MD node name and properties
+	"pio-lg" node		 Committed	MD node name and properties
+	"dma-lg" node		 Committed	MD node name and properties
+	"irq-lg" node		 Committed	MD node name and properties
+	"group"  node		 Committed	MD node name and properties
+	"index-mask"             Committed	MD property of "cache" node
+	"addr-congruence-offset" Committed	MD property of "mblock" node
+
+
+5. Reference Documents:
+
+        [1] Sample latency-group MD graph 
+            sample-lg.pdf
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+	Must be available in firmware release supporting Maramba RR.
+
+   6.2. Cost of Effort:
+        2-4 person weeks
+
+   6.3. Cost of Capital Resources:
+        None
+
+   6.4. ARC review type:
+	Fasttrack
+
+7. Prototype Availability:
+   7.1. Prototype Availability:
+        Working prototype is available.
+
+   7.2. Prototype Cost:
+        N/A
+

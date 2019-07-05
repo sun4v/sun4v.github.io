@@ -1,0 +1,165 @@
+                               FWARC Questions
+
+
+1. What specifically is the proposal that we are reviewing?
+
+	This is the sun4v bus binding  component of the sun4v/projectQ case.
+	(FWARC/2004/510)
+
+	This case describes address formats, properties and methods
+	specific to the "sun4v" bus.
+
+
+2. What is the motivation for it?
+
+	Provides a generic abstraction of a root level bus for
+	platforms compliant with this specification.
+
+3. What is its plan?
+
+     	dev-complete, ships with the Ontario Platform
+
+4. Are there related projects in Sun?
+
+	This is part of the sun4v/ProjectQ umbrella case (2004/510)
+
+	sun4v umbrella 			FWARC/2004/510
+	sun4v core API			FWARC/2005/116	20050222_john.johnson.3
+	sun4v io-api			FWARC/2005/112	20050222_david.kahn.2
+	sun4v bus bindings		FWARC/2005/111	20050222_david.kahn
+	sun4v machine description	FWARC/2005/115	20050222_john.johnson.2
+	sun4v Ontario Interfaces	FWARC/2005/117	20050222_john.johnson.4
+	sun4v vBSC			FWARC/2005/081	20050208_jack.hayward
+	sun4v vendor-specific FCodes	FWARC/2005/114	20050222_john.johnson
+	sun4v "pci" device binding	TBD - fast-track
+
+5. What is the technical content of the project?
+
+	A list of address formats (numeric and textual), properties
+	and methods as a template for the "sun4v" root level bus.
+
+6. How is the project delivered into the system?
+
+	These interfaces are implemented and exported by OpenBoot
+	which is delivered as part of the platform firmware, and included
+	in the firmware consolidation.
+
+7. What are the project's hardware platform dependencies? Is it expected to
+work on all systems (Desktop thru servers)?
+
+	The processor must implement the sun4v sun-sparc extensions
+	described in the sun4v Architecture Specification.
+
+8. What is its FW operational environment:
+
+	Same as any other Open Firmware bus binding.
+
+9. What is its user interface (tty, graphical, leds, sound, etc.)?
+
+	Open Firmware user interface (standard)
+
+10. What are your project's other external interfaces (exported and
+imported)?
+
+	Device nodes and properties that are created as compliant
+	with this specification.
+
+11. What are its other significant internal interfaces (inter-subsystem and
+inter-invocation)?
+
+	None.
+
+12. Is the interface extensible? How is the interface expected to evolve?
+
+   * How is versioning handled?
+
+	Standard OF versioning.
+
+   * What was the commitment level of the previous version? Can this version
+     co-exist with existing standards and with earlier and later versions or
+     with alternative implementations (perhaps by other vendors)?
+
+	N/A. This is the first version.
+
+   * What are the clients over which a change should be managed? How is
+     transition to a new version to be accomplished? What are the
+     consequences to ISV's and their customers?
+
+	The clients are any OS that ports to sun4v.
+
+   * Does this scale from low-end Desktops to high-end Servers? What, if
+     any, trade-offs are involved?
+
+	Yes it scales. No known tradeoffs.
+
+13. How do the interfaces adapt to a changing world?
+
+   * What is its relationship with (or difficulties with) System Service
+     Processors?
+
+	There is no direct relationship with the service processor
+	for the Sun4v Bus Binding
+
+   * What security issues do you address in your project?
+
+	None.
+
+14. What internationalization issues are involved? N/A
+
+     None.
+
+15. How will the project contribute (positively or negatively) to "system
+load" and "perceived performance":
+
+   * What are the performance goals of the project? How were they evaluated?
+     On what type of test platform?
+
+	N/A
+
+   * Does the application pause for significant amounts of time? Can the
+     user interact with the application while it is performing long-duration
+     tasks?
+
+	No.
+
+   * Does memory usage or heap space tend to grow with time/load? What
+     mechanisms does the user have to use to control this? What happens to
+     performance/system load?
+
+	N/A.
+
+   * What are the project's effects on boot time requirements?
+
+	N/A. (for this component)
+
+16. How does the project deal with failure and recovery?
+
+   * How will it respond to failures? (Does it ever require reset? Use of
+     stop key? Can it lock up?)
+
+	Standard OF.
+
+   * Does it attempt to isolate and contain the failure to allow for
+     automatic recovery?
+
+	Standard OF.
+
+   * How does it communicate a fault event? Does it depend on a working
+     console device?
+
+	N/A (hypervisor function)
+
+17. Issues? Please identify the issues which you would like the ARC to
+address.
+
+	None.
+
+18. Appendices:
+
+	See case materials.
+
+19. Security
+
+	Standard OF.
+
+	#pragma ident	"@(#)fwarc-18Q.txt	1.3	03/08/21 SMI"

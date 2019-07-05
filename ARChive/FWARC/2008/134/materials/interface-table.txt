@@ -1,0 +1,41 @@
+#pragma ident	"%Z%%M%	%I%	%E% SMI"
+
+			Interface table
+			===============
+
+Imported Interfaces
+===================
+		
+Interface Name 			Classification   	Comment
+                                      	 
+------------------------------------------------------------------------
+
+Hypervisor Error		Sun Private	FWARC/2005/116
+Code Values
+
+Hypervisor Calling		Sun Private	FWARC/2005/116
+Conventions
+
+Hypervisor Data			Sun Private	FWARC/2005/116
+Definitions
+
+Machine Desc. Transport,	Sun Private	FWARC/2005/115
+Node Types and Names
+
+
+
+Interfaces Exported
+===================
+
+Interface Name			Classification   	Comment
+                                      	 
+------------------------------------------------------------------------
+
+MACH_SET_WATCHDOG		Sun Private	Trap 0x80 function number 0x05.
+						Originally defined by
+						FWARC/2005/367, modified by
+						FWARC/2006/093 and then by
+						FWARC/2006/199. See spec. for
+						changes proposed by this case.
+
+

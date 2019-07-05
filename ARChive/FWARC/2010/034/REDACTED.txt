@@ -1,0 +1,10 @@
+The following files and directories have been redacted:
+
+    SCCS - ignored directory
+    sc - ignored directory
+    uirb - ignored directory
+    20100128_sunit.jain - Sun Proprietary
+    issues - case redacted
+    mail - case redacted
+
+See http://hub.opensolaris.org/bin/view/Community+Group+arc/arc-publish-historical-checklist for further information

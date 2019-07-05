@@ -1,0 +1,1013 @@
+From sacadmin Wed Apr  1 15:00:48 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n31M0lI0002318
+	for <fwarc@sac.sfbay.sun.com>; Wed, 1 Apr 2009 15:00:48 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n31M0cuc003102
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 2 Apr 2009 06:00:47 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KHF00D0LZT8GQ00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Apr 2009 15:00:44 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KHF00CFXZT58C20@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Apr 2009 15:00:41 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n31M0fQV006891	for
+ <fwarc@sun.com>; Wed, 01 Apr 2009 15:00:41 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KHF00800YFQ1M00@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Apr 2009 15:00:41 -0700 (PDT)
+Received: from [129.153.85.16] ([unknown] [129.153.85.16])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ with ESMTPSA id <0KHF005KTZSOXOA0@fe-sfbay-09.sun.com>; Wed,
+ 01 Apr 2009 15:00:25 -0700 (PDT)
+Date: Wed, 01 Apr 2009 15:00:23 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Fast-track : 2009/213 - dma-sync-options property under PCI Express
+ Root Complex nodes
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: "Lee, Pingchun" <Pingchun.Lee@sun.com>,
+        Alan Adamson <Alan.Adamson@sun.com>
+Message-id: <49D3E3F7.5030604@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.16 (X11/20080807)
+Status: RO
+Content-Length: 827
+
+I am sponsoring this fast-track case for Ping Lee.  This case adds
+"dma-sync-options" property to PCIE bindings.  See details at,
+
+http://sac.eng/FWARC/2009/213/Materials/dma-sync-options-property.txt
+
+Interface table is part of above document as well.
+
+
+Updated PCIE Bindings is also copied to the case directory, available at,
+
+http://sac.eng/FWARC/2009/213/Materials/pcie_bindings112.txt
+
+
+The timer is set to time-out on April 8, 2009.
+
+This case will be approved for a minor/micro/patch OS binding
+and a minor/micro binding for the firmware.
+
+
+I would like to see at least one LGTM for this case.
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Wed Apr  1 21:53:55 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n324rtKr005371
+	for <fwarc@sac.sfbay.sun.com>; Wed, 1 Apr 2009 21:53:55 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n324rnTJ056495
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 1 Apr 2009 22:53:55 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KHG00C01IXUDF00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Apr 2009 21:53:54 -0700 (PDT)
+Received: from dm-sfbay-02.sfbay.sun.com ([129.146.11.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KHG007ABIXUM8D0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Apr 2009 21:53:54 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-02.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id n324rrMH033925; Wed, 01 Apr 2009 21:53:53 -0700 (PDT)
+Received: from [127.0.0.1] (x-files.SFBay.Sun.COM [10.6.90.227])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n324rrRw021013; Wed,
+ 01 Apr 2009 21:53:53 -0700 (PDT)
+Date: Wed, 01 Apr 2009 21:53:52 -0700
+From: Greg Onufer <greg.onufer@sun.com>
+Subject: Re: Fast-track : 2009/213 - dma-sync-options property under PCI
+ Express Root Complex nodes
+In-reply-to: <49D3E3F7.5030604@Sun.COM>
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, "Lee, Pingchun" <Pingchun.Lee@sun.com>,
+        Alan Adamson <Alan.Adamson@sun.com>
+Message-id: <FB08D2A4-564C-47F5-9DF7-59BC01CECA05@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.930.3)
+Content-type: multipart/signed; boundary=Apple-Mail-1-495311851; micalg=sha1;
+ protocol="application/pkcs7-signature"
+X-PMX-Version: 5.4.1.325704
+References: <49D3E3F7.5030604@Sun.COM>
+Status: RO
+Content-Length: 4979
+
+
+--Apple-Mail-1-495311851
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed;
+	delsp=yes
+Content-Transfer-Encoding: 7bit
+
+On Apr 1, 2009, at 3:00 PM, Hitendra Zhangada wrote:
+> http://sac.eng/FWARC/2009/213/Materials/dma-sync-options-property.txt
+
+This case is not backwards compatible with existing sun4v requirements.
+
+"while the absence of the property indicates all synchronization can  
+be treated as a no-op (as on Fire and N2/VF PIU platforms)."
+It's a *new* property, it did not exist before.  Existing code is  
+required to invoke the dma-sync hcalls in order to be sun4v- 
+compliant.  To remain backwards compatible it needs to be specified  
+that if the property does not exist then a guest may not assume any  
+optimizations and must always invoke the dma-sync hcalls.  If it  
+exists with a value of 0x0 then no synchronization is necessary.
+In addition, to be pedantic: this property is describing  
+characteristics of both the PCIe host bridge and characteristics of  
+other devices on the "system bus"... whether or not the host bridge  
+requires its own synchronization is independent of whether or not  
+another device on the system bus needs synchronization (eg, a  
+processor's caches) before the host bridge may begin or finish a DMA  
+transaction.  So this property describes both the host bridge device  
+and the sum of all other "system bus" devices even though it exists in  
+the host bridge device node.  I'll assume that's okay but wanted to  
+point it out.
+Cheers!greg
+
+
+--Apple-Mail-1-495311851
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGJzCCAuAw
+ggJJoAMCAQICEFPn6uqYx5tz+jQXzCq9z10wDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA4MDgyMDE4MTIwNFoXDTA5MDgyMDE4MTIw
+NFowRTEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEiMCAGCSqGSIb3DQEJARYTZ3Jl
+Zy5vbnVmZXJAc3VuLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKaNeXNnj0WP
+URnajZ3CHQrnyzJb7azzNXRuN5S5DVXA4dksxdQ21KFwDyYn1yhvAu1CQdSDp5Yeymkg604TB94H
+reiaNngKS3Y6QP1G5VEBEc8Y9oASfPf89Pxj6F3KvbF1/YPEjIsOnGdCOSFculC5eac3HnR94bCe
+2sSFt/0fooX16vzCRqy7yopORwvWqcLHlvyCH2XzUGRAyB0NKcc43hr2x/aql9cuPSm5zPCWWxJ0
+phTq6Ii5hp1X7djZzBkHFTzOVh3/PwopK3CNZ8GyhOlHXR8upZLx/mb0fRMbv/1G3lxNgYVDT6o3
+MCpnoNF7akzc8k/XNXXNAtuKClMCAwEAAaMwMC4wHgYDVR0RBBcwFYETZ3JlZy5vbnVmZXJAc3Vu
+LmNvbTAMBgNVHRMBAf8EAjAAMA0GCSqGSIb3DQEBBQUAA4GBAMEwJb3sPF3QA9jFrwV6v4RBWIXp
+rg9iV+nVmJ4N8vW/BHXIBXmIcQXsXHfEjYNihUwea4aEWvmm6PPT2ThZ5rs7sjAhUWiLPAaP5fEI
++SXg3YFcYBev/fNyWXQpMA5kQflDs6EkWnvciV3Yz9EJNRsgH5yNNGLBh3nA1gNI75OpMIIDPzCC
+AqigAwIBAgIBDTANBgkqhkiG9w0BAQUFADCB0TELMAkGA1UEBhMCWkExFTATBgNVBAgTDFdlc3Rl
+cm4gQ2FwZTESMBAGA1UEBxMJQ2FwZSBUb3duMRowGAYDVQQKExFUaGF3dGUgQ29uc3VsdGluZzEo
+MCYGA1UECxMfQ2VydGlmaWNhdGlvbiBTZXJ2aWNlcyBEaXZpc2lvbjEkMCIGA1UEAxMbVGhhd3Rl
+IFBlcnNvbmFsIEZyZWVtYWlsIENBMSswKQYJKoZIhvcNAQkBFhxwZXJzb25hbC1mcmVlbWFpbEB0
+aGF3dGUuY29tMB4XDTAzMDcxNzAwMDAwMFoXDTEzMDcxNjIzNTk1OVowYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDE
+pjxVc1X7TrnKmVoeaMB1BHCd3+n/ox7svc31W/Iadr1/DDph8r9RzgHU5VAKMNcCY1osiRVwjt3J
+8CuFWqo/cVbLrzwLB+fxH5E2JCoTzyvV84J3PQO+K/67GD4Hv0CAAmTXp6a7n2XRxSpUhQ9IBH+n
+ttE8YQRAHmQZcmC3+wIDAQABo4GUMIGRMBIGA1UdEwEB/wQIMAYBAf8CAQAwQwYDVR0fBDwwOjA4
+oDagNIYyaHR0cDovL2NybC50aGF3dGUuY29tL1RoYXd0ZVBlcnNvbmFsRnJlZW1haWxDQS5jcmww
+CwYDVR0PBAQDAgEGMCkGA1UdEQQiMCCkHjAcMRowGAYDVQQDExFQcml2YXRlTGFiZWwyLTEzODAN
+BgkqhkiG9w0BAQUFAAOBgQBIjNFQg+oLLswNo2asZw9/r6y+whehQ5aUnX9MIbj4Nh+qLZ82L8D0
+HFAgk3A8/a3hYWLD2ToZfoSxmRsAxRoLgnSeJVCUYsfbJ3FXJY3dqZw5jowgT2Vfldr394fWxghO
+rvbqNOUQGls1TXfjViF4gtwhGTXeJLHTHUb/XV9lTzGCAxAwggMMAgEBMHYwYjELMAkGA1UEBhMC
+WkExJTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0
+ZSBQZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBAhBT5+rqmMebc/o0F8wqvc9dMAkGBSsOAwIa
+BQCgggFvMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTA5MDQwMjA0
+NTM1M1owIwYJKoZIhvcNAQkEMRYEFE7mDcCeUMKi4Dqr879CjoHHaMT7MIGFBgkrBgEEAYI3EAQx
+eDB2MGIxCzAJBgNVBAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQu
+MSwwKgYDVQQDEyNUaGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQU+fq6pjHm3P6
+NBfMKr3PXTCBhwYLKoZIhvcNAQkQAgsxeKB2MGIxCzAJBgNVBAYTAlpBMSUwIwYDVQQKExxUaGF3
+dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3dGUgUGVyc29uYWwgRnJlZW1h
+aWwgSXNzdWluZyBDQQIQU+fq6pjHm3P6NBfMKr3PXTANBgkqhkiG9w0BAQEFAASCAQBr6S/Axb50
+ejcjFWT6Ck6P8wpqa/8nqH2O5W3PktHg5QVdOea85qbqi7qjevZsi7Ff7tf6KxyMxXB1M9gDF9Iy
+fe1oTT3vISN9TCOpvJejsrNFfuicyqpxoGjA0z9JpRXHUFxuUeM/iQobS/Ss0WSZSLr82MI9GeTc
+lcQBIQSt91T3BVWjfRgl3V1vpBavnZ42boicn/9CnQHgb0ztcbPpIm0TcaolZCLw0b3dLHqM0Ni1
+wO8A4A5iJf3c33QTxx869YmKnRw1mIncWGRkg4+AIQ71o9hGQdvW0CKEm2lw1UF/4+TXe/n16Mea
+HSiz1Zs3Kx5iCCK+P3Z0E30TZ476AAAAAAAA
+
+--Apple-Mail-1-495311851--
+
+From sacadmin Thu Apr  2 01:34:30 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n328YUjE014533
+	for <fwarc@sac.sfbay.sun.com>; Thu, 2 Apr 2009 01:34:30 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n328YAP8010982
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 2 Apr 2009 01:34:30 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KHG00601T5ET900@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 01:34:26 -0700 (PDT)
+Received: from dm-sfbay-02.sfbay.sun.com ([129.146.11.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KHG005Y7T5EQU10@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 01:34:26 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-02.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id n328YQOw061565; Thu, 02 Apr 2009 01:34:26 -0700 (PDT)
+Received: from [127.0.0.1] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n328YMh2018871; Thu,
+ 02 Apr 2009 01:34:23 -0700 (PDT)
+Date: Thu, 02 Apr 2009 01:34:22 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: Fast-track : 2009/213 - dma-sync-options property under PCI
+ Express Root Complex nodes
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, "Lee, Pingchun" <Pingchun.Lee@sun.com>,
+        Alan Adamson <Alan.Adamson@sun.com>
+Message-id: <49D4788E.4040705@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.21 (Windows/20090302)
+Status: RO
+Content-Length: 863
+
+is it true that the px driver just decided not to
+call the HV IO APIs for dma sync, thus making it
+non-compliant with the sun4v io api?
+
+>         If the nexus driver knows a sync is not necessary it can
+>         treat the ddi_dma_sync() call as a no-op.  This is the case for
+>         current generation of PCI Express platforms (Fire and N2/VF PIU). The
+>         px nexus driver sets the DMA memory object's flags with DMP_NOSYNC
+>         which results in all calls to ddi_dma_sync to immediately return
+>         back to the caller.
+
+
+I'm not sure this is the right fix for that problem. The APIs
+should be lightweight on platforms that don't need to do anything.
+
+I want more information on this. Hitendra, I'm going to derail
+this for further discussion. I don't want this case to time out
+with approval until the proper discussion has happened.
+
+-David
+
+From sacadmin Thu Apr  2 01:44:14 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n328iEJY015498
+	for <fwarc@sac.sfbay.sun.com>; Thu, 2 Apr 2009 01:44:14 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n328i2ab017269
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 2 Apr 2009 01:44:14 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KHG00703TLMB800@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 01:44:10 -0700 (PDT)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KHG005PITLMQV20@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 01:44:10 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id n328iAag032390; Thu, 02 Apr 2009 01:44:10 -0700 (PDT)
+Received: from [127.0.0.1] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n328i7pX021910; Thu,
+ 02 Apr 2009 01:44:08 -0700 (PDT)
+Date: Thu, 02 Apr 2009 01:44:07 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: Fast-track : 2009/213 - dma-sync-options property under PCI
+ Express Root Complex nodes
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, "Lee, Pingchun" <Pingchun.Lee@sun.com>,
+        Alan Adamson <Alan.Adamson@sun.com>
+Message-id: <49D47AD7.6060908@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.21 (Windows/20090302)
+Status: RO
+Content-Length: 633
+
+another (minor)problem with the materials for me, is that
+there's an assumption about what dma read and dma
+write means. At least that needs to be clarified.
+
+I'm assuming that dma read means that the host
+is reading data from the device. In other words, the
+device is issuing mem write transactions and modifying
+system memory. The host is doing a dma read. The device
+is doing a dma write.
+
+Otherwise it doesn't make sense, unless I'm missing something.
+
+But the way it's written, it's subject to interpretation.
+
+At least this is relatively easy to fix. Define the terms
+so it's not subject to the readers interpretation.
+
+-David
+
+From sacadmin Thu Apr  2 01:54:59 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n328sxaG017161
+	for <fwarc@sac.sfbay.sun.com>; Thu, 2 Apr 2009 01:54:59 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n328sdOf027584
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 2 Apr 2009 09:54:58 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KHG0070BU3HV600@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 01:54:53 -0700 (PDT)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KHG005ZFU3GQQ20@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 01:54:52 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id n328sqwi037054; Thu, 02 Apr 2009 01:54:52 -0700 (PDT)
+Received: from [127.0.0.1] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n328snfi024420; Thu,
+ 02 Apr 2009 01:54:50 -0700 (PDT)
+Date: Thu, 02 Apr 2009 01:54:48 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: Fast-track : 2009/213 - dma-sync-options property under PCI
+ Express Root Complex nodes
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, "Lee, Pingchun" <Pingchun.Lee@sun.com>,
+        Alan Adamson <Alan.Adamson@sun.com>
+Message-id: <49D47D58.7060003@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.21 (Windows/20090302)
+Status: RO
+Content-Length: 493
+
+
+Also, are the pci-e bindings the right place for this?
+I don't think so, because this has nothing to do with the
+pcie standard, and the bindings implement the pcie standard
+on any system with pcie, including x64, etc. But, if the
+team wants to do that, shouldn't they be required to update
+the binding, like other cases have done?
+
+Also, is there yet another case for the companion md
+property?
+
+ok, derail for now. Too many open issues for me. Including
+the one that Greg raised.
+
+-David
+
+
+
+
+From sacadmin Thu Apr  2 11:56:50 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n32Iunc2009409
+	for <fwarc@sac.sfbay.sun.com>; Thu, 2 Apr 2009 11:56:50 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n32IuiWg015324
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 3 Apr 2009 02:56:48 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KHH00005LYMZF00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 11:56:46 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KHH008M4LYLG480@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 11:56:45 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n32Iuj2c003058	for
+ <fwarc@sun.com>; Thu, 02 Apr 2009 11:56:45 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KHH00M00JH03W00@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 11:56:45 -0700 (PDT)
+Received: from [129.150.33.212] ([unknown] [129.150.33.212])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ with ESMTPSA id <0KHH0087ZLY3MO40@fe-sfbay-09.sun.com>; Thu,
+ 02 Apr 2009 11:56:28 -0700 (PDT)
+Date: Thu, 02 Apr 2009 11:56:27 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Fast-track : 2009/213 - dma-sync-options property under PCI
+ Express Root Complex nodes
+In-reply-to: <49D47D58.7060003@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: "Lee, Pingchun" <Pingchun.Lee@sun.com>,
+        Alan Adamson <Alan.Adamson@sun.com>, Wesley Shao <Wesley.Shao@sun.com>
+Message-id: <49D50A5B.5040004@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <49D47D58.7060003@sun.com>
+User-Agent: Thunderbird 2.0.0.21 (Windows/20090302)
+Status: RO
+Content-Length: 1428
+
+David Kahn wrote:
+>
+> Also, are the pci-e bindings the right place for this?
+
+That could be my fault.  I asked them to update the PCIE bindings.
+I assumed that this sort of change can be added to the bindings
+document.  We can take it out of the bindings and let it stand by
+itself or part of some other bindings/descriptions.
+
+> I don't think so, because this has nothing to do with the
+> pcie standard, and the bindings implement the pcie standard
+> on any system with pcie, including x64, etc. But, if the
+> team wants to do that, shouldn't they be required to update
+> the binding, like other cases have done?
+
+Not sure what you you mean by updating the bindings.  Ping
+did provided updated bindings document with a section added
+to describe the new property.
+
+>
+> Also, is there yet another case for the companion md
+> property?
+
+Yes, that is going to be in part of another case describing MD
+properties.
+
+>
+> ok, derail for now. Too many open issues for me. Including
+> the one that Greg raised.
+
+Ok, I will suspend the timer and will work with Ping and Alan to
+provide more information and answers to questions raised.
+I will move case to "waiting need spec" for now.
+
+
+Thanks.
+
+>
+> -David
+>
+>
+>
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Thu Apr  2 13:11:27 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n32KBRvh011744
+	for <fwarc@sac.sfbay.sun.com>; Thu, 2 Apr 2009 13:11:27 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n32KBQev006136
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 2 Apr 2009 13:11:27 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KHH00409PF2N300@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 14:11:26 -0600 (MDT)
+Received: from dm-sfbay-02.sfbay.sun.com ([129.146.11.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KHH00KZHPF2BH40@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 14:11:26 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-02.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id n32KBQ0T051035; Thu, 02 Apr 2009 13:11:26 -0700 (PDT)
+Received: from [129.146.96.89] (tayfun.SFBay.Sun.COM [129.146.96.89])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n32KBPfi023248; Thu,
+ 02 Apr 2009 13:11:26 -0700 (PDT)
+Date: Thu, 02 Apr 2009 13:11:25 -0700
+From: Tayfun Kocaoglu <tayfun.kocaoglu@sun.com>
+Subject: Re: Fast-track : 2009/213 - dma-sync-options property under PCI
+ Express Root Complex nodes
+In-reply-to: <49D47AD7.6060908@sun.com>
+To: David Kahn <David.Kahn@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware Arch <fwarc@sun.com>, "Lee, Pingchun" <Pingchun.Lee@sun.com>,
+        Alan Adamson <Alan.Adamson@sun.com>
+Message-id: <49D51BED.6080002@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <49D47AD7.6060908@sun.com>
+User-Agent: Thunderbird 2.0.0.22pre (X11/20090304)
+Status: RO
+Content-Length: 816
+
+David Kahn wrote:
+> another (minor)problem with the materials for me, is that
+> there's an assumption about what dma read and dma
+> write means. At least that needs to be clarified.
+>
+> I'm assuming that dma read means that the host
+> is reading data from the device. In other words, the
+> device is issuing mem write transactions and modifying
+> system memory. The host is doing a dma read. The device
+> is doing a dma write.
+>
+Don't you have it backwards? DMA read means system memory is the source 
+DMA write means system memory is the target isn't it ?
+> Otherwise it doesn't make sense, unless I'm missing something.
+>
+> But the way it's written, it's subject to interpretation.
+>
+> At least this is relatively easy to fix. Define the terms
+> so it's not subject to the readers interpretation.
+>
+> -David
+-tek
+
+
+From sacadmin Thu Apr  2 13:32:22 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n32KWMfO015302
+	for <fwarc@sac.sfbay.sun.com>; Thu, 2 Apr 2009 13:32:22 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n32KWF62001285
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 2 Apr 2009 13:32:22 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KHH00631QDWLK00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 14:32:20 -0600 (MDT)
+Received: from dm-sfbay-02.sfbay.sun.com ([129.146.11.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KHH00KZ2QDWB950@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 14:32:20 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-02.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id n32KWJTm064969; Thu, 02 Apr 2009 13:32:19 -0700 (PDT)
+Received: from [10.6.92.101] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n32KWJrC029147; Thu,
+ 02 Apr 2009 13:32:19 -0700 (PDT)
+Date: Thu, 02 Apr 2009 13:32:19 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: Fast-track : 2009/213 - dma-sync-options property under PCI
+ Express Root Complex nodes
+In-reply-to: <49D51BED.6080002@sun.com>
+To: Tayfun Kocaoglu <tayfun.kocaoglu@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware Arch <fwarc@sun.com>, "Lee, Pingchun" <Pingchun.Lee@sun.com>,
+        Alan Adamson <Alan.Adamson@sun.com>
+Message-id: <49D520D3.4090507@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <49D47AD7.6060908@sun.com> <49D51BED.6080002@sun.com>
+User-Agent: Thunderbird 2.0.0.22pre (X11/20090304)
+Status: RO
+Content-Length: 953
+
+
+
+Tayfun Kocaoglu wrote:
+
+> Don't you have it backwards?
+
+No, not me :) I read it the same you did at first ...
+
+> DMA read means system memory is the source 
+> DMA write means system memory is the target isn't it ?
+
+>                 DMASYNC_POSTREAD (0x00000008) Synchronization after there's a
+>                 DMA transfer from the device to host memory is required.
+
+I guess they are defining it in the case materials, but it's
+the opposite of what you and I think dma read and write means.
+
+We are using the definition from the point of view of the device,
+which is the entity that issues the memory transactions.
+
+A device read turns into a memory (dma) write, and a device write
+turns into a memory (dma) read, from the device perspective.
+
+They might want to call the directions "to device" and "from device"
+or something like that, so the name problem goes away. Even with
+the terms defined there, the names themselves are confusing.
+
+-David
+
+From sacadmin Thu Apr  2 14:07:07 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n32L77eb020411
+	for <fwarc@sac.sfbay.sun.com>; Thu, 2 Apr 2009 14:07:07 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n32L6xpY001007
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 2 Apr 2009 14:07:07 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KHH00923RZUYH00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 15:07:06 -0600 (MDT)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KHH00KWQRZTBC80@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 15:07:05 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id n32L75Ln063390; Thu, 02 Apr 2009 14:07:05 -0700 (PDT)
+Received: from [129.146.96.89] (tayfun.SFBay.Sun.COM [129.146.96.89])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n32L746B008219; Thu,
+ 02 Apr 2009 14:07:04 -0700 (PDT)
+Date: Thu, 02 Apr 2009 14:07:04 -0700
+From: Tayfun Kocaoglu <tayfun.kocaoglu@sun.com>
+Subject: Re: Fast-track : 2009/213 - dma-sync-options property under PCI
+ Express Root Complex nodes
+In-reply-to: <49D520D3.4090507@sun.com>
+To: David Kahn <David.Kahn@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware Arch <fwarc@sun.com>, "Lee, Pingchun" <Pingchun.Lee@sun.com>,
+        Alan Adamson <Alan.Adamson@sun.com>
+Message-id: <49D528F8.9020400@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <49D47AD7.6060908@sun.com> <49D51BED.6080002@sun.com>
+ <49D520D3.4090507@sun.com>
+User-Agent: Thunderbird 2.0.0.22pre (X11/20090304)
+Status: RO
+Content-Length: 2533
+
+David Kahn wrote:
+>
+>
+> Tayfun Kocaoglu wrote:
+>
+>> Don't you have it backwards?
+>
+> No, not me :) I read it the same you did at first ...
+>
+>> DMA read means system memory is the source DMA write means system 
+>> memory is the target isn't it ?
+>
+>>                 DMASYNC_POSTREAD (0x00000008) Synchronization after 
+>> there's a
+>>                 DMA transfer from the device to host memory is required.
+>
+> I guess they are defining it in the case materials, but it's
+> the opposite of what you and I think dma read and write means.
+>
+> We are using the definition from the point of view of the device,
+> which is the entity that issues the memory transactions.
+>
+> A device read turns into a memory (dma) write, and a device write
+> turns into a memory (dma) read, from the device perspective.
+>
+> They might want to call the directions "to device" and "from device"
+> or something like that, so the name problem goes away. Even with
+> the terms defined there, the names themselves are confusing.
+>
+There can  only be one way of talking about DMA reads and writes 
+otherwise, it is guaranteed to be confusing and wrong.
+
+DMA  <"What is happening to the main memory?">
+
+DMA read (Someone is reading from memory).
+DMA write (Someone is writing to memory).
+
+DMA read is "to device" DMA write is "from device".
+
+Having 4 bits (incorrectly defined no less) does not make any sense to 
+me.  There are only two cases to worry about.
+
+1. CPU owns the memory and wants to give it to a device so that it can 
+do it's DMA. Do we have to do something before that ?
+
+2. Device just done accesing the memory and cpu wants/needs to access 
+that memory now. Do we have to do something before that?
+
+
+hcall_dma_sync()  defines flushes in terms of "ownership" of the memory 
+being transfered to an entity "device" or "cpu".
+
+Before a device can do a DMA (read or write), the ownership of the 
+memory in question needs to be transferred to the device by a call to 
+hcall_dma_sync()  with the appropriate flag.
+
+After the DMA by the device is done, and before the cpu can access the 
+data, ownership of the memory in question needs to be transferred to the 
+cpu by a call to hcall_dma_sync() with the appropriate flag.
+
+One or both of these can be skipped on a particular system, we should be 
+specifying  which one(s) must be done.
+
+if ((<sync direction>  AND dma-sync-options) != 0)  
+hcall_dma_sync((<sync direction>  AND dma-sync-options))
+
+If the property does not exist, the default value of it must be to sync 
+for both directions.
+
+-tek
+
+
+From sacadmin Thu Apr  2 14:21:22 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n32LLL16021807
+	for <fwarc@sac.sfbay.sun.com>; Thu, 2 Apr 2009 14:21:21 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n32LLKpE006408
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 2 Apr 2009 15:21:21 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KHH00B0LSNKFT00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 15:21:20 -0600 (MDT)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KHH00KD5SNKBN90@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 15:21:20 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id n32LLJ2T006775; Thu, 02 Apr 2009 14:21:19 -0700 (PDT)
+Received: from [10.6.92.101] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n32LLJRv012049; Thu,
+ 02 Apr 2009 14:21:19 -0700 (PDT)
+Date: Thu, 02 Apr 2009 14:21:19 -0700
+From: David Kahn <David.Kahn@Sun.COM>
+Subject: Re: Fast-track : 2009/213 - dma-sync-options property under PCI
+ Express Root Complex nodes
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, "Lee, Pingchun" <Pingchun.Lee@Sun.COM>,
+        Alan Adamson <Alan.Adamson@Sun.COM>, Wesley Shao <Wesley.Shao@Sun.COM>
+Message-id: <49D52C4F.2000805@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.22pre (X11/20090304)
+Status: RO
+Content-Length: 626
+
+
+
+Hitendra Zhangada wrote:
+>
+> Not sure what you you mean by updating the bindings.  Ping
+> did provided updated bindings document with a section added
+> to describe the new property.
+
+yeah, I see that now in the Materials directory.
+
+
+Well, I was thinking about where it belongs, if we actually
+do the property thing. It should probably go in the thing
+we used to call the "vpci" bindings. That's the binding that
+defines the sun4v virtual pci root complex. It's effectively
+a device binding for that.
+
+I'm not sure where that stuff ended up. It's somewhere,
+because we did define the compatible propval for it, etc.
+
+-David
+
+From sacadmin Thu Apr  2 14:34:51 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n32LYpW8023427
+	for <fwarc@sac.sfbay.sun.com>; Thu, 2 Apr 2009 14:34:51 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n32LYngQ013562
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 2 Apr 2009 15:34:51 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KHH00K0ZTA2L000@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 14:34:50 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KHH00CSCTA07X50@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 14:34:48 -0700 (PDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n32LYmC0024494	for
+ <fwarc@sun.com>; Thu, 02 Apr 2009 14:34:48 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KHH00F00T03EM00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 02 Apr 2009 14:34:48 -0700 (PDT)
+Received: from [129.150.33.124] ([unknown] [129.150.33.124])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ with ESMTPSA id <0KHH008CST9ZP740@fe-sfbay-10.sun.com>; Thu,
+ 02 Apr 2009 14:34:48 -0700 (PDT)
+Date: Thu, 02 Apr 2009 14:34:48 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: Fast-track : 2009/213 - dma-sync-options property under PCI
+ Express Root Complex nodes
+In-reply-to: <49D52C4F.2000805@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: "Lee, Pingchun" <Pingchun.Lee@Sun.COM>,
+        Alan Adamson <Alan.Adamson@Sun.COM>, Wesley Shao <Wesley.Shao@Sun.COM>
+Message-id: <49D52F78.5080703@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <49D52C4F.2000805@sun.com>
+User-Agent: Thunderbird 2.0.0.21 (Windows/20090302)
+Status: RO
+Content-Length: 1044
+
+David Kahn wrote:
+>
+>
+> Hitendra Zhangada wrote:
+>>
+>> Not sure what you you mean by updating the bindings.  Ping
+>> did provided updated bindings document with a section added
+>> to describe the new property.
+>
+> yeah, I see that now in the Materials directory.
+>
+>
+> Well, I was thinking about where it belongs, if we actually
+> do the property thing. It should probably go in the thing
+> we used to call the "vpci" bindings. That's the binding that
+> defines the sun4v virtual pci root complex. It's effectively
+> a device binding for that.
+>
+> I'm not sure where that stuff ended up. It's somewhere,
+> because we did define the compatible propval for it, etc.
+
+Thanks.  A proper place to add this property is being discussed.
+It will end up in one or more bindings (not in PCI-E bindings).
+Stay tuned.
+
+
+>
+> -David
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Fri Apr 17 14:05:13 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n3HL5CmB014653
+	for <fwarc@sac.sfbay.sun.com>; Fri, 17 Apr 2009 14:05:12 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n3HL5CX0009664
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 17 Apr 2009 14:05:12 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KI90060RJWOQA00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 17 Apr 2009 15:05:12 -0600 (MDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KI9007RMJWNTUC0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 17 Apr 2009 15:05:11 -0600 (MDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n3HL5B0h011499	for
+ <fwarc@sun.com>; Fri, 17 Apr 2009 21:05:11 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ id <0KI900H00I92VT00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 17 Apr 2009 15:05:11 -0600 (MDT)
+Received: from [129.150.17.107] ([unknown] [129.150.17.107])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-5.01 64bit (built Feb 19 2009))
+ with ESMTPSA id <0KI900FKKJVWDH20@mail-amer.sun.com>; Fri,
+ 17 Apr 2009 15:04:45 -0600 (MDT)
+Date: Fri, 17 Apr 2009 14:04:46 -0700
+From: Sunit Jain <S.Jain@Sun.COM>
+Subject: Re: Fast-track : 2009/213 - dma-sync-options property under PCI
+ Express Root Complex nodes
+In-reply-to: <49DFD982.5020108@sun.com>
+Sender: S.Jain@Sun.COM
+Cc: Firmware Arch <fwarc@Sun.COM>, "Lee, Pingchun" <Pingchun.Lee@Sun.COM>,
+        Alan Adamson <Alan.Adamson@Sun.COM>, Wesley Shao <Wesley.Shao@Sun.COM>
+Reply-to: S.Jain@Sun.COM
+Message-id: <49E8EEEE.5010207@Sun.Com>
+Organization: Sun Microsystems, Inc.
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_BYKUn8d9Bj/R81zGWOlO+A)"
+X-PMX-Version: 5.4.1.325704
+References: <49DFD982.5020108@sun.com>
+User-Agent: Thunderbird 2.0.0.12pre (Windows/20080123)
+Status: RO
+Content-Length: 1857
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_BYKUn8d9Bj/R81zGWOlO+A)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+Case timer expired yesterday, this case is now closed approved.
+IAM* file has been updated.
+
+IO Device node specification & Sun4v Bindings updated by this case
+have been copied under FWARC/Specifications section.
+
+Regards,
+Sunit
+
+
+
+David Kahn wrote:
+>
+>
+> Hitendra Zhangada wrote:
+>
+>> Done.  See updated specification,
+>>
+>> http://sac.eng/Archives/CaseLog/arc/FWARC/2009/213/Materials/dma-sync-options-property.txt 
+>
+>
+> LGTM.
+>
+> Thanks,
+> -David
+
+--Boundary_(ID_BYKUn8d9Bj/R81zGWOlO+A)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<font size="-1"><font face="Arial">Case timer expired yesterday, this
+case is now closed approved.<br>
+IAM* file has been updated.<br>
+<br>
+IO Device node specification &amp; Sun4v Bindings updated by this case<br>
+have been copied under FWARC/Specifications section.<br>
+<br>
+Regards,<br>
+Sunit<br>
+<br>
+<br>
+</font></font><br>
+David Kahn wrote:
+<blockquote cite="mid:49DFD982.5020108@sun.com" type="cite"><br>
+  <br>
+Hitendra Zhangada wrote:
+  <br>
+  <br>
+  <blockquote type="cite">Done.&nbsp; See updated specification,
+    <br>
+    <br>
+<a class="moz-txt-link-freetext" href="http://sac.eng/Archives/CaseLog/arc/FWARC/2009/213/Materials/dma-sync-options-property.txt">http://sac.eng/Archives/CaseLog/arc/FWARC/2009/213/Materials/dma-sync-options-property.txt</a>
+  </blockquote>
+  <br>
+LGTM.
+  <br>
+  <br>
+Thanks,
+  <br>
+-David
+  <br>
+</blockquote>
+</body>
+</html>
+
+--Boundary_(ID_BYKUn8d9Bj/R81zGWOlO+A)--
+

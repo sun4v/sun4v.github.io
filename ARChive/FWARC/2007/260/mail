@@ -1,0 +1,2110 @@
+From sacadmin Tue May  8 17:17:30 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l490HSmw009492
+	for <fwarc@sac.eng.Sun.COM>; Tue, 8 May 2007 17:17:29 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l490GJGL018285;
+	Wed, 9 May 2007 08:16:23 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JHQ00601ZF9LL00@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 08 May 2007 17:16:21 -0700 (PDT)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.6]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JHQ00MBDZF9J990@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 08 May 2007 17:16:21 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l490GLm6003976; Tue,
+ 08 May 2007 17:16:21 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JHQ00E01ZF6Y000@d1-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Tue,
+ 08 May 2007 17:16:21 -0700 (PDT)
+Received: from [129.153.85.31] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JHQ0042GZF8JMWZ@d1-sfbay-09.sun.com>; Tue,
+ 08 May 2007 17:16:20 -0700 (PDT)
+Date: Tue, 08 May 2007 17:16:20 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Fast-track: FWARC/2007/260 - Machine Description Latency Node
+ Descriptions
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+        Steven Sistare <Steve.Sistare@sun.com>
+Message-id: <464112D4.8010404@Sun.COM>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_GgZ46bb+HwLPylisckNccg)"
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20060120
+Status: RO
+Content-Length: 17947
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_GgZ46bb+HwLPylisckNccg)
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+I am sponsoring this case for Ashley Saulsbury and Steve Sistare.
+This case defines MD nodes and properties that describe to the Solaris
+guest the latency between various components of a system including CPUs,
+memory, and I/O devices.
+
+This case times out on May 15, 2007.
+
+
+One-pager along with the specification can be found at (also attached),
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2007/260/materials/lgroups_onepager.txt
+
+A sample MD node illustration available at,
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2007/260/materials/sample-lg.pdf
+
+
+Release Binding:
+	firmware: minor/micro firmware release
+	OS: minor/micro/patch OS release.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+--Boundary_(ID_GgZ46bb+HwLPylisckNccg)
+Content-type: text/plain; name=lgroups_onepager.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=lgroups_onepager.txt
+
+Copyright 2007 Sun Microsystems
+
+1. Introduction
+   1.1. Project/Component Working Name:
+
+        Machine Description Latency Node Definitions
+
+   1.2. Name of Document Author/Supplier:
+   
+        Steve Sistare
+	Ashley Saulsbury
+
+   1.3. Date of This Document:
+   
+        05/08/2007
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+            HS PAC
+	1.4.2. The ARC(s) you expect to review your project:
+            FWARC
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+            Tony Barreca
+	1.4.4. The name of your business unit:
+            Systems Group
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: chad.solomon@sun.com
+        1.5.2. Responsible Engineer: kanth.ghatraju@sun.com
+        1.5.3. Marketing Manager: N/A
+        1.5.4. Interest List: mpo-maramba-core@sun.com
+
+2. Project Summary
+   2.1. Project Description:
+   
+        This project defines MD nodes that describe to the Solaris
+	guest the latency between various components of a system 
+	including CPUs, memory, and I/O devices.  These latencies can
+	vary depending on the physical location of the initiator and
+	the target, and exposing them allows the guest to co-locate its
+	resources to achieve minimum latencies and improve domain
+	application performance.  For example, Solaris Memory Placement 
+	Optimization (MPO) can be enabled, in which a thread's memory 
+	is allocated close to the CPU that runs the thread.
+	
+   2.2. Risks and Assumptions:
+
+	Assumption: The Solaris changes to enable MPO will be delivered
+	by a separate project.
+
+3. Business Summary
+   3.1. Problem Area:
+
+	Larger servers may exhibit NUMA characteristics which hurt 
+	application performance if ignored.  Solaris minimizes latency 
+	by considering the physical topology when mapping threads and 
+	data to CPUs and memory.  In the sun4v architecture, resources
+	are virtualized, and the guest has no visibility into physical
+	topology, so the latency relationships must be explicitly 
+	represented in the guest MD.
+
+   3.2. Market/Requester:
+   
+	The Maramba platform team, Systems Group. Maramba, based on
+	the Victoria Falls processor, is the first sun4v platform
+	with NUMA characteristics.  However, the latency node
+	specification is general enough to support future sun4v NUMA
+	platforms.
+
+   3.3. Business Justification:
+   
+	Allows multi-processor sun4v systems to be performance
+	competitive by effectively reducing their NUMA characteristic.
+	These changes plus the necessary Solaris changes will boost 
+	performance on some strategic benchmarks to be published for 
+	Maramba RR by an estimated 5% - 10%.
+
+   3.4. Competitive Analysis:
+        N/A
+
+   3.5. Opportunity Window/Exposure:
+
+	Must be available for Maramba RR for maximum sales impact.
+
+   3.6. How will you know when you are done?:
+      
+        1. Code has been integrated into released system firmware image, and
+	2. Nodes defined in this specification are visible in the guest MD,
+		which can be verified by examining the machine description
+		provided to a guest operating system, and
+	3. Solaris MPO framework implements and shows correct lgroups, and
+	4. The measured lmbench latency approaches the minimum hardware
+	   memory latency.
+	
+	Note that 3 and 4 are not part of this project, but are the 
+	ultimate check of its correctness.
+
+4. Technical Description:
+    4.1. Overview:
+
+	The basis for this project is a type of MD node called
+	the latency group, or lg for short, which links together a
+	group of resources which can be accessed with a specified
+	latency.  Existing nodes including cpu, mblock, and iodevice
+	either point to a latency group via fwd arcs, or are pointed 
+	to by the latency group.
+	
+	To map portions of an mblock to a locality group, the guest 
+	must examine lower order bits of the PA.  To enable the guest 
+	to recover lower order PA bits from an RA, while still hiding the
+	higher order PA bits, a mblock property addr-congruence-offset 
+	is defined.
+
+	Latency group and congruence information is optional in the
+	MD.  It may be added, changed, or removed during reconfiguration 
+	of virtual resources. Furthermore, it may be inaccurate during
+	transitional periods.  For these reasons, latency group information
+	should only be used for performance optimizations, thus inaccuracies
+	may result in sub-optimal performance, but not incorrect behavior.
+
+    4.1.1 Latency Group Nodes
+
+	The latency group nodes are shown below.  Properties
+	are shown in the next section.
+
+                                       Required        Optional
+	Name              Category   subordinates    subordinates
+	------------------------------------------------------------------
+	mem-lg            optional    mblock              -
+
+	Defines the load and store latency between virtual CPU(s) and 
+	memory; specifically between superior cpu nodes and subordinate
+	mblock nodes.
+	Topology: cpu -> mem-lg -> mblock
+
+	------------------------------------------------------------------
+	dma-lg            optional    mblock              -
+
+	Defines the latency of DMA operations between I/O device(s) and
+	memory; specifically between superior iodevice nodes plus 
+	descendants, and subordinate mblock nodes.
+	Topology: iodevice -> dma-lg -> mblock
+
+	------------------------------------------------------------------
+	pio-lg            optional    iodevice              -
+
+	Defines the latency of load and store operations (aka programmed 
+	I/O) between virtual CPU(s) and I/O device(s); specifically
+	between superior cpu nodes and subordinate iodevice nodes plus
+	descendants.
+	Topology: cpu -> pio-lg -> iodevice
+
+	------------------------------------------------------------------
+	irq-lg            optional       -                -
+
+	Defines interrupt delivery latency between I/O device(s) and 
+	virtual CPU(s); specifically between superior iodevice nodes plus
+	descendants, and superior cpu nodes.
+	Topology: iodevice -> irq-lg <- cpu
+
+	------------------------------------------------------------------
+	latency-groups    optional       -               mem-lg, dma-lg
+						         pio-lg, irq-lg
+
+	This collective node leads to all latency group nodes.
+	Topology:
+					   -> mem-lg
+		platform -> latency-groups -> dma-lg
+					   -> pio-lg
+					   -> irq-lg
+
+	------------------------------------------------------------------
+	group             optional       -               any
+
+	The group node is a nexus for incoming and outgoing arcs 
+	and serves no other purpose.  This avoids a combinatorial
+	explosion of arcs when defining many-to-many relationships.
+	The group node is a pass-through node for MD traversals.
+	Topology:
+                     any ->       -> any
+                     any -> group -> any
+                     any ->       -> any
+	------------------------------------------------------------------
+
+    4.1.2 Latency Group Properties
+
+	The properties of the latency nodes are defined below:
+
+	Name              Tag        Req'd?
+	------------------------------------------------------------------
+	latency         PROP_VAL     Yes
+
+	A 64-bit unsigned integer giving the approximate latency of 
+	access in picoseconds.  Defined for mem-lg, dma-lg, pio-lg, 
+	and irq-lg nodes.
+
+	------------------------------------------------------------------
+	addr-mask       PROP_VAL     No
+	addr-match      PROP_VAL     No
+
+	These are 64-bit unsigned integers that together define a memory
+	stripe.  Memory in subordinate mblock nodes is a member of the
+	latency group if (address & addr-mask) == addr-match.  If these 
+	properties are absent, then all memory described by subordinate 
+	mblock nodes is a member of the latency group.  Defined for
+	mem-lg and dma-lg nodes.
+	
+	The value used in the mask and match equation is 
+	(RA + addr-congruence-offset) as described in section 4.1.4 below. 
+	
+	------------------------------------------------------------------
+
+
+    4.1.3 Subordinates
+
+	The following nodes are augmented to allow subordinates.
+
+                           Optional
+	Name             subordinates
+	------------------------------------------
+	cpu               mem-lg, pio-lg, irq-lg
+	iodevice          irq-lg, dma-lg
+	platform          latency-groups
+	------------------------------------------
+
+    4.1.4 RA and PA Congruence
+
+	The real address space used within a virtual machine is a
+	remapping of portions of a system's underlying physical memory.
+	A guest running within a virtual machine is not provided
+	the physical addresses of its memory blocks. This abstraction of
+	memory addresses enables guests to be moved in memory without
+	changing their real address space layout.
+
+	However, to support NUMA and page-coloring algorithms for a
+	guest operating system further information is required that
+	describes the congruency relationship between a real address and
+	the underlying physical address to which it is mapped.
+	
+	To do this, this case adds the following optional property to an
+	mblock node;
+
+	    Node name: mblock
+	    ------------------------------------------------------------------
+	    addr-congruence-offset    PROP_VAL     No
+
+	    A 64-bit unsigned integer.
+	    addr-congruence-offset = (PA_base - RA_base) mod M.
+
+	    M is a power of 2 strictly greater than all values of addr-mask 
+	    and index-mask (see section 4.1.5) in the MD.
+	    The guest is guaranteed that
+	    (RA + addr-congruence-offset) = PA (mod M)
+	    where "=" means "is congruent to".  In other words, the guest
+	    may recover the lower order PA bits in positions less than M.
+
+	    If this property is not present in the mblock, then its value
+	    must be assumed 0.
+
+	    Programming note:
+
+		This property is typically provided when the congruency between
+		the real and underlying physical address of a mblock
+		is less than the size needed for lgroup or page color masking.
+
+		For example; Consider a NUMA machine where memory is
+		striped on 1GB boundaries between 4 different memory
+		controllers. Each cpu may see different access latencies
+		to each of the memory controllers - each latency is
+		represented by a lgroup node described above.
+
+		Now consider a 1GB memory segment that starts at real address
+		0x400000000 and is bound to physical address 0x10000000.
+
+		To identify 4 different memory controllers with a 1GB stripe
+		the addr-mask property of one of the lgroups might have the
+		value 0xc0000000.
+	
+		In this legitimate scenario to correctly apply the lgroup
+		information, the guest OS needs enough correctly congruent
+		bits from the actual physical address to be able to
+		meaningfully apply the lgroup address mask.
+
+		So for our example, real address 0x400000000 corresponds to
+		physical address 0x10000000, and real address 0x430000000
+		corresponds to physical address 0x40000000.
+
+		If we apply the lgroup mask to 0x10000000 we get 0x0.
+		If we apply the lgroup mask to 0x40000000 we get 0x40000000
+		as the result. Therefore we see that these different
+		address pages reside on different memory controllers
+		with different access latencies.
+
+		(Note: if we had applied the lgroup mask to the corresponding
+		real addresses the result is always 0x0 implying the same
+		memory controller - which would be incorrect).
+
+		Thus a means to recover the relevant bits
+		of the physical address are required so that the address
+		mask can be correctly applied.
+
+		The addr-congruence-offset property in an mblock provides
+		this information. As described above the property is derived
+		from the difference between real and their corresponding
+		physical addresses for a mblock. However, to retain ambiguity
+		for actual physical address bindings, this property is not
+		the actual difference, but simply enough bits from the
+		RA/PA difference that an addr mask can be correctly applied.
+
+		Thus the value provided for addr-congruence-offset is
+		sufficient that the equality:
+
+			(ra + addr-congruence-offset) & addr-mask == addr-match
+
+		holds correctly for all the provided addr-mask and addr-match
+		values within the MD in order to correctly match lgroups.
+		
+		If the addr-mask 0xc0000000 is the largest mask provided,
+		then the addr-congruence-offset for example above would be:
+
+                        (0x10000000 - 0x400000000) & 0xffffffff = 0x10000000 
+                
+                The address matches for the real addresses above will be,
+
+                        (0x400000000 + 0x10000000) & 0xc0000000 = 0x0
+
+                        (0x430000000 + 0x10000000) & 0xc0000000 = 0x40000000 
+
+		As defined above the addr-congruence-offset is an optional
+		property in an mblock node.  If not present, a value of 0 can 
+		be assumed, thus the equality for matching lgroups reduces to:
+
+			ra & addr-mask == addr-match
+
+	    ------------------------------------------------------------------
+
+    4.1.5 Page coloring
+
+	Page coloring for large caches exhibits a similar set of problems
+	to identifying lgroups.
+
+	To assist, a cache node is extended with an optional property
+	to compute a matching set within the corresponding cache.
+	
+	    Node name: cache
+	    Property:
+	    Name                      Tag        Req'd?
+	    ------------------------------------------------------------------
+	    index-mask                PROP_VAL     No
+
+	    A 64-bit unsigned integer.  A bit in index-mask is set if that 
+	    bit in a PA influences the cache index at which a memory location 
+	    is stored when cache resident.
+
+	    Programming note:
+
+		The actual cache index employed by hardware is a
+		function of multiple bits from the physical address
+		of the memory reference. To compute a page coloring value
+		the index-mask field identifies the relevant bits from
+		a physical address. Thus the index-bits for page coloring
+		can be derived as:
+
+		index-bits = (ra + addr-congruence-offset) & index-mask
+
+		Where the addr-congruence-offset is the property from the
+		mblock (corresponding to the given ra) as defined in section
+		4.1.4 above.
+
+		Similarly to lgroup matching, if the addr-congruence-offset
+		property is not provided for a mblock its value can be
+		assumed as zero reducing the equation to:
+
+		index = ra & index-mask
+
+	    ------------------------------------------------------------------
+
+    4.1.6 Example
+
+	The file sample-lg.pdf shows an abstracted MD containing mem-lg,
+	irq-lg, and pio-lg nodes for a theoretical system with 2
+	physical processors, each of which contains 2 virtual CPUs
+	and one PCI-E host adapter.  The latency-groups container
+	node and the dma-lg nodes are omitted for clarity.
+
+    4.2. Bug/RFE Number(s):
+
+	6540324 represent memory locality and RA vs PA congruence in the MD
+	6539799 represent I/O locality in the MD
+	6540315 RA versus PA congruence property
+	6539930 MPO for sun4v platforms
+   
+    4.3. In Scope:
+   
+        MD node definitions and properties.
+
+    4.4. Out of Scope:
+
+        Changes in the Solaris guest.
+   
+    4.5. Interfaces:
+
+    4.5.1 Imported Interfaces
+
+        Name                    Classification  Description
+        -----------------       --------------- -------------------
+        sun4v Machine           Sun Private     MD nodes definitions as
+        Description nodes                       defined by FWARC/2005/115
+
+        "iodevice" MD node      Committed       MD node name and properties as 
+                                                described in FWARC/2007/070
+
+    4.5.2 Exported Interfaces
+
+	All interfaces are specified in Section 4.1 of this document.
+
+        Name                    Classification  Description
+        ----------------------  --------------  -------------------
+	"latency-groups" node	 Committed	MD node name and properties
+	"mem-lg" node		 Committed	MD node name and properties
+	"pio-lg" node		 Committed	MD node name and properties
+	"dma-lg" node		 Committed	MD node name and properties
+	"irq-lg" node		 Committed	MD node name and properties
+	"group"  node		 Committed	MD node name and properties
+	"index-mask"             Committed	MD property of "cache" node
+	"addr-congruence-offset" Committed	MD property of "mblock" node
+
+
+5. Reference Documents:
+
+        [1] Sample latency-group MD graph 
+            sample-lg.pdf
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+	Must be available in firmware release supporting Maramba RR.
+
+   6.2. Cost of Effort:
+        2-4 person weeks
+
+   6.3. Cost of Capital Resources:
+        None
+
+   6.4. ARC review type:
+	Fasttrack
+
+7. Prototype Availability:
+   7.1. Prototype Availability:
+        Working prototype is available.
+
+   7.2. Prototype Cost:
+        N/A
+
+
+--Boundary_(ID_GgZ46bb+HwLPylisckNccg)--
+
+From sacadmin Wed May  9 16:54:41 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l49Nseat009536
+	for <fwarc@sac.eng.Sun.COM>; Wed, 9 May 2007 16:54:41 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l49NrCBv007180
+	for <@newsunmail1brm.central.sun.com:fwarc@sun.com>; Thu, 10 May 2007 07:53:36 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JHS00307T19EY00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 09 May 2007 17:53:33 -0600 (MDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JHS00EVAT17QF60@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 09 May 2007 17:53:31 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id l49NrUwr011095; Wed, 09 May 2007 16:53:30 -0700 (PDT)
+Received: from [127.0.0.1] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l49NrSCe011126; Wed,
+ 09 May 2007 16:53:29 -0700 (PDT)
+Date: Wed, 09 May 2007 16:53:29 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: Fast-track: FWARC/2007/260 - Machine Description Latency Node
+ Descriptions
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Ashley Saulsbury <Ashley.Saulsbury@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Steven Sistare <Steve.Sistare@sun.com>
+Message-id: <46425EF9.9030302@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0.0.0 (Windows/20070326)
+Status: RO
+Content-Length: 550
+
+
+Ash, Hitendra,
+
+Is there any reason why we're abbreviating things like
+addr, lg, and irq when they could easily be spelled out
+as english words? (lg -> latency-group, addr->address,
+irq -> interrupt and addr-xxx -> address-xxx)
+
+I think the normative text in addr-congruence-mask
+needs a bit of work. When I read the normative text,
+it doesn't explain how to calculate or derive M,
+but the example (which I assume is informative) does,
+at least for the given example. There needs to be
+something normative that pulls it all together, IMO.
+
+-David
+
+
+
+From sacadmin Thu May 10 08:02:42 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l4AF2ff1009562
+	for <fwarc@sac.eng.sun.com>; Thu, 10 May 2007 08:02:41 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l4AF1LOd006965;
+	Thu, 10 May 2007 16:01:33 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JHT00209Z2ILJ00@brm-avmta-1.central.sun.com>; Thu,
+ 10 May 2007 09:01:30 -0600 (MDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JHT00E0GZ2I24E0@brm-avmta-1.central.sun.com>; Thu,
+ 10 May 2007 09:01:30 -0600 (MDT)
+Received: from fe-amer-01.sun.com ([192.18.108.175])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l4AF1Uf1010043; Thu,
+ 10 May 2007 15:01:30 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JHT00101YHJ2D00@mail-amer.sun.com>
+ (original mail from Steve.Sistare@Sun.COM); Thu,
+ 10 May 2007 09:01:30 -0600 (MDT)
+Received: from [129.148.180.120] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JHT006VOZ2FT140@mail-amer.sun.com>; Thu,
+ 10 May 2007 09:01:29 -0600 (MDT)
+Date: Thu, 10 May 2007 11:01:27 -0400
+From: Steve Sistare <Steve.Sistare@sun.com>
+Subject: Re: Fast-track: FWARC/2007/260 - Machine Description Latency Node
+ Descriptions
+In-reply-to: <46425EF9.9030302@sun.com>
+Sender: Steve.Sistare@sun.com
+To: David Kahn <David.Kahn@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+        Firmware Arch <fwarc@sun.com>
+Message-id: <464333C7.5050806@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <46425EF9.9030302@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20051122
+Status: RO
+Content-Length: 3955
+
+Hi David,
+   Responses below:
+
+David Kahn wrote On 05/09/07 19:53,:
+> 
+> Ash, Hitendra,
+> 
+> Is there any reason why we're abbreviating things like
+> addr, lg, and irq when they could easily be spelled out
+> as english words? (lg -> latency-group, addr->address,
+> irq -> interrupt and addr-xxx -> address-xxx)
+> 
+
+The abbreviations shorten identifiers which would be long and
+cumbersome to use in documentation, both for the writer and the
+reader, but I agree a few of them could be spelled fully.  These
+changes make sense:
+   addr-mask  --> address-mask
+   addr-match --> address-match
+   addr-congruence-offset  --> address-congruence-offset
+      (this was already long anyway)
+
+The node names have a pleasing symmetry when the abbreviations
+mem and irq are used:
+   dma-lg
+   pio-lg
+   irq-lg
+   mem-lg
+but I agree "irq" is x86-ish, and mem could be spelled out.  I'll
+change them if that's the consensus.
+
+Expanding "lg" to latency-group makes the normally concise node names
+rather long, eg:
+   dma-latency-group
+   pio-latency-group
+   interrupt-latency-group
+   memory-latency-group
+but again I'll change them if that's the consensus.
+
+> I think the normative text in addr-congruence-mask
+> needs a bit of work. When I read the normative text,
+> it doesn't explain how to calculate or derive M,
+> but the example (which I assume is informative) does,
+> at least for the given example. There needs to be
+> something normative that pulls it all together, IMO.
+> 
+> -David
+
+Agreed, it could be clearer.
+
+To compute addr-congruence-mask, the PRI provider must know the value M,
+and it is already explicitly defined in the normative text:
+   "addr-congruence-offset = (PA_base - RA_base) mod M.
+    M is a power of 2 strictly greater than all values of addr-mask
+    and index-mask (see section 4.1.5) in the MD."
+
+However, the guest does not need to know M per se, the guest only needs
+to know the value of addr-mask or index-mask, so this normative text is
+confusing:
+   "The guest is guaranteed that
+    (RA + addr-congruence-offset) = PA (mod M)
+    where "=" means "is congruent to".  In other words, the guest
+    may recover the lower order PA bits in positions less than M."
+That text makes a statement about modulo arithmetic that explains
+why the properties work as defined, but is not directly relevant for
+the PRI provider or the guest.
+
+Here's my suggested fix:
+
+   * Strike the above and replace with:
+       "The guest adds addr-congruence-offset to an RA before applying
+       masks based on the PA, such as addr-mask and index-mask.
+       See 4.1.2 and 4.1.5 for details."
+
+   * In 4.1.2, introduce addr-congruence-offset explicitly, replacing the
+     normative text with this:
+
+         ------------------------------------------------------------------
+         addr-mask       PROP_VAL     No
+         addr-match      PROP_VAL     No
+
+         These are 64-bit unsigned integers that together define a memory
+         stripe.  Memory in subordinate mblock nodes is a member of the
+         latency group if
+
+             ((RA + addr-congruence-offset) & addr-mask) == addr-match
+
+         addr-mask and addr-match are defined in PA space.
+         addr-congruence-offset is a property of the mblock in
+         which the RA lies, and transforms the RA bits into PA space
+         for all bits covered by addr-mask (see 4.1.4).
+
+         If these properties are absent, then all memory described by
+         subordinate mblock nodes is a member of the latency group.
+         Defined for mem-lg and dma-lg nodes.
+
+         ------------------------------------------------------------------
+
+   * In 4.1.5, make the entire programming note normative.
+
+   * In 4.1.5, fix a bug I just noticed:
+       index = ra & index-mask
+       -->
+       index-bits = ra & index-mask
+
+The result has more forward and backward references than I
+normally like, but it is explicit and clear. If folks agree, I will
+make these changes.
+
+- Steve
+
+
+From sacadmin Thu May 10 13:29:12 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l4AKTBEl021573
+	for <fwarc@sac.eng.sun.com>; Thu, 10 May 2007 13:29:11 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l4AKRLo5022801
+	for <@newsunmail1brm.central.sun.com:fwarc@sun.com>; Thu, 10 May 2007 21:28:07 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JHU00A03E6TUG00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 10 May 2007 14:28:05 -0600 (MDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JHU00KBWE6TNJ60@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 10 May 2007 14:28:05 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id l4AKS4OG025536; Thu, 10 May 2007 13:28:04 -0700 (PDT)
+Received: from [127.0.0.1] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l4AKS1M1064923; Thu,
+ 10 May 2007 13:28:02 -0700 (PDT)
+Date: Thu, 10 May 2007 13:28:02 -0700
+From: David Kahn <David.Kahn@Sun.COM>
+Subject: Re: Fast-track: FWARC/2007/260 - Machine Description Latency Node
+ Descriptions
+In-reply-to: <464333C7.5050806@Sun.COM>
+To: Steve Sistare <Steve.Sistare@Sun.COM>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+        Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>,
+        Firmware Arch <fwarc@Sun.COM>
+Message-id: <46438052.7040300@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <46425EF9.9030302@sun.com> <464333C7.5050806@Sun.COM>
+User-Agent: Thunderbird 2.0.0.0 (Windows/20070326)
+Status: RO
+Content-Length: 4212
+
+
+
+Steve Sistare wrote:
+
+> The abbreviations shorten identifiers which would be long and
+> cumbersome to use in documentation, both for the writer and the
+> reader, but I agree a few of them could be spelled fully.
+
+The property/node name namespace was derived from Open Firmware,
+and in that space, we always frown upon use of non-obvious
+acronyms since the namespace can always be self-defining.
+
+I certainly don't agree that self-defining identifiers are
+cumbersome in documentation to the reader, and it's not
+that bad on the writer either.
+
+For example, if I see an identifier named xxx-lg, I have
+to guess at what -lg means if I'm not familiar with that
+code or that part of the MD definition. But if the identifier in
+the code or header file is named xxx-latency-group,
+that's much more obvious what the name means at least
+at some generic level where -lg might be meaningless.
+
+Is it that big a deal? Yes and no, I guess. Our direction
+to projects continues to be "please use descriptive
+names for property and node names where possible"
+and "please follow existing practice where possible."
+So, that's why I raised that issue.
+
+>> I think the normative text in addr-congruence-mask
+>> needs a bit of work. When I read the normative text,
+>> it doesn't explain how to calculate or derive M,
+>> but the example (which I assume is informative) does,
+>> at least for the given example. There needs to be
+>> something normative that pulls it all together, IMO.
+>>
+>> -David
+> 
+> Agreed, it could be clearer.
+> 
+> To compute addr-congruence-mask, the PRI provider must know the value M,
+> and it is already explicitly defined in the normative text:
+>   "addr-congruence-offset = (PA_base - RA_base) mod M.
+>    M is a power of 2 strictly greater than all values of addr-mask
+>    and index-mask (see section 4.1.5) in the MD."
+> 
+> However, the guest does not need to know M per se, the guest only needs
+> to know the value of addr-mask or index-mask, so this normative text is
+> confusing:
+>   "The guest is guaranteed that
+>    (RA + addr-congruence-offset) = PA (mod M)
+>    where "=" means "is congruent to".  In other words, the guest
+>    may recover the lower order PA bits in positions less than M."
+> That text makes a statement about modulo arithmetic that explains
+> why the properties work as defined, but is not directly relevant for
+> the PRI provider or the guest.
+> 
+> Here's my suggested fix:
+> 
+>   * Strike the above and replace with:
+>       "The guest adds addr-congruence-offset to an RA before applying
+>       masks based on the PA, such as addr-mask and index-mask.
+>       See 4.1.2 and 4.1.5 for details."
+> 
+>   * In 4.1.2, introduce addr-congruence-offset explicitly, replacing the
+>     normative text with this:
+> 
+>         ------------------------------------------------------------------
+>         addr-mask       PROP_VAL     No
+>         addr-match      PROP_VAL     No
+> 
+>         These are 64-bit unsigned integers that together define a memory
+>         stripe.  Memory in subordinate mblock nodes is a member of the
+>         latency group if
+> 
+>             ((RA + addr-congruence-offset) & addr-mask) == addr-match
+> 
+>         addr-mask and addr-match are defined in PA space.
+>         addr-congruence-offset is a property of the mblock in
+>         which the RA lies, and transforms the RA bits into PA space
+>         for all bits covered by addr-mask (see 4.1.4).
+> 
+>         If these properties are absent, then all memory described by
+>         subordinate mblock nodes is a member of the latency group.
+>         Defined for mem-lg and dma-lg nodes.
+> 
+>         ------------------------------------------------------------------
+> 
+>   * In 4.1.5, make the entire programming note normative.
+> 
+>   * In 4.1.5, fix a bug I just noticed:
+>       index = ra & index-mask
+>       -->
+>       index-bits = ra & index-mask
+> 
+> The result has more forward and backward references than I
+> normally like, but it is explicit and clear. If folks agree, I will
+> make these changes.
+
+Thanks, I think that's much better at first skim.
+I promise to re-read in detail later and post additional
+questions then, if I have any.
+
+I appreciate the effort on this.
+
+-David
+
+From sacadmin Thu May 10 17:08:11 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l4B08A2s002957
+	for <fwarc@sac.eng.Sun.COM>; Thu, 10 May 2007 17:08:11 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l4B074Wv002972;
+	Fri, 11 May 2007 08:07:04 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JHU00K0HOBO4C00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 10 May 2007 17:07:00 -0700 (PDT)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.6]) by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JHU00A4AOBNSD40@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 10 May 2007 17:06:59 -0700 (PDT)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l4B06xK8007796; Thu,
+ 10 May 2007 17:06:59 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JHU00201OAWDL00@d1-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Thu,
+ 10 May 2007 17:06:59 -0700 (PDT)
+Received: from [129.153.85.31] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JHU00NDFOBM5A9J@d1-sfbay-10.sun.com>; Thu,
+ 10 May 2007 17:06:59 -0700 (PDT)
+Date: Thu, 10 May 2007 17:06:58 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: Fast-track: FWARC/2007/260 - Machine Description Latency Node
+ Descriptions
+In-reply-to: <464333C7.5050806@Sun.COM>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Steve Sistare <Steve.Sistare@Sun.COM>
+Cc: Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>, Firmware Arch <fwarc@Sun.COM>
+Message-id: <4643B3A2.5000207@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <46425EF9.9030302@sun.com> <464333C7.5050806@Sun.COM>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20060120
+Status: RO
+Content-Length: 4910
+
+Steve Sistare wrote On 05/10/07 08:01,:
+> Hi David,
+>    Responses below:
+> 
+> David Kahn wrote On 05/09/07 19:53,:
+> 
+>>
+>> Ash, Hitendra,
+>>
+>> Is there any reason why we're abbreviating things like
+>> addr, lg, and irq when they could easily be spelled out
+>> as english words? (lg -> latency-group, addr->address,
+>> irq -> interrupt and addr-xxx -> address-xxx)
+>>
+> 
+> The abbreviations shorten identifiers which would be long and
+> cumbersome to use in documentation, both for the writer and the
+> reader, but I agree a few of them could be spelled fully.  These
+> changes make sense:
+>    addr-mask  --> address-mask
+>    addr-match --> address-match
+>    addr-congruence-offset  --> address-congruence-offset
+>       (this was already long anyway)
+> 
+> The node names have a pleasing symmetry when the abbreviations
+> mem and irq are used:
+>    dma-lg
+>    pio-lg
+>    irq-lg
+>    mem-lg
+> but I agree "irq" is x86-ish, and mem could be spelled out.  I'll
+> change them if that's the consensus.
+> 
+> Expanding "lg" to latency-group makes the normally concise node names
+> rather long, eg:
+>    dma-latency-group
+>    pio-latency-group
+>    interrupt-latency-group
+>    memory-latency-group
+> but again I'll change them if that's the consensus.
+
+I suggest we make this change to spell out "latency-group".
+
+Unless there are any more comments from David or others
+I suggest you update the section 4 of the one-pager with
+this and other changes you proposed below.  Just send me
+section 4 and I will copy it in the case directory as an
+updated specification.
+
+Since none of these actually changes the proposal the timer
+for this case won't be extended (there are no substantial
+changes other then expanding names etc.).
+
+
+Thanks.
+
+> 
+>> I think the normative text in addr-congruence-mask
+>> needs a bit of work. When I read the normative text,
+>> it doesn't explain how to calculate or derive M,
+>> but the example (which I assume is informative) does,
+>> at least for the given example. There needs to be
+>> something normative that pulls it all together, IMO.
+>>
+>> -David
+> 
+> 
+> Agreed, it could be clearer.
+> 
+> To compute addr-congruence-mask, the PRI provider must know the value M,
+> and it is already explicitly defined in the normative text:
+>    "addr-congruence-offset = (PA_base - RA_base) mod M.
+>     M is a power of 2 strictly greater than all values of addr-mask
+>     and index-mask (see section 4.1.5) in the MD."
+> 
+> However, the guest does not need to know M per se, the guest only needs
+> to know the value of addr-mask or index-mask, so this normative text is
+> confusing:
+>    "The guest is guaranteed that
+>     (RA + addr-congruence-offset) = PA (mod M)
+>     where "=" means "is congruent to".  In other words, the guest
+>     may recover the lower order PA bits in positions less than M."
+> That text makes a statement about modulo arithmetic that explains
+> why the properties work as defined, but is not directly relevant for
+> the PRI provider or the guest.
+> 
+> Here's my suggested fix:
+> 
+>    * Strike the above and replace with:
+>        "The guest adds addr-congruence-offset to an RA before applying
+>        masks based on the PA, such as addr-mask and index-mask.
+>        See 4.1.2 and 4.1.5 for details."
+> 
+>    * In 4.1.2, introduce addr-congruence-offset explicitly, replacing the
+>      normative text with this:
+> 
+>          ------------------------------------------------------------------
+>          addr-mask       PROP_VAL     No
+>          addr-match      PROP_VAL     No
+> 
+>          These are 64-bit unsigned integers that together define a memory
+>          stripe.  Memory in subordinate mblock nodes is a member of the
+>          latency group if
+> 
+>              ((RA + addr-congruence-offset) & addr-mask) == addr-match
+> 
+>          addr-mask and addr-match are defined in PA space.
+>          addr-congruence-offset is a property of the mblock in
+>          which the RA lies, and transforms the RA bits into PA space
+>          for all bits covered by addr-mask (see 4.1.4).
+> 
+>          If these properties are absent, then all memory described by
+>          subordinate mblock nodes is a member of the latency group.
+>          Defined for mem-lg and dma-lg nodes.
+> 
+>          ------------------------------------------------------------------
+> 
+>    * In 4.1.5, make the entire programming note normative.
+> 
+>    * In 4.1.5, fix a bug I just noticed:
+>        index = ra & index-mask
+>        -->
+>        index-bits = ra & index-mask
+> 
+> The result has more forward and backward references than I
+> normally like, but it is explicit and clear. If folks agree, I will
+> make these changes.
+> 
+> - Steve
+> 
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Thu May 10 17:11:31 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l4B0BUvG003028
+	for <fwarc@sac.eng.Sun.COM>; Thu, 10 May 2007 17:11:31 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l4B0AJhg003758;
+	Fri, 11 May 2007 08:10:20 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JHU00K09OH6GC00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 10 May 2007 17:10:18 -0700 (PDT)
+Received: from paranoia.sfbay ([129.146.96.132]) by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JHU00A3WOH6SP40@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 10 May 2007 17:10:18 -0700 (PDT)
+Received: from [129.146.96.132] (paranoia [129.146.96.132])
+	by paranoia.sfbay (8.13.8+Sun/8.13.8) with ESMTP id l4B09FpS027374; Thu,
+ 10 May 2007 17:09:16 -0700 (PDT)
+Date: Thu, 10 May 2007 17:09:15 -0700
+From: Ashley Saulsbury <ashley.saulsbury@sun.com>
+Subject: Re: Fast-track: FWARC/2007/260 - Machine Description Latency Node
+ Descriptions
+In-reply-to: <4643B3A2.5000207@Sun.COM>
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Steve Sistare <Steve.Sistare@sun.com>, Firmware Arch <fwarc@sun.com>
+Message-id: <4643B42B.8070906@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <46425EF9.9030302@sun.com> <464333C7.5050806@Sun.COM>
+ <4643B3A2.5000207@Sun.COM>
+User-Agent: Mozilla Thunderbird 1.0.7 (X11/20050930)
+Status: RO
+Content-Length: 5011
+
+Hitendra Zhangada wrote:
+> Steve Sistare wrote On 05/10/07 08:01,:
+> 
+>> Hi David,
+>>    Responses below:
+>>
+>> David Kahn wrote On 05/09/07 19:53,:
+>>
+>>>
+>>> Ash, Hitendra,
+>>>
+>>> Is there any reason why we're abbreviating things like
+>>> addr, lg, and irq when they could easily be spelled out
+>>> as english words? (lg -> latency-group, addr->address,
+>>> irq -> interrupt and addr-xxx -> address-xxx)
+>>>
+>>
+>> The abbreviations shorten identifiers which would be long and
+>> cumbersome to use in documentation, both for the writer and the
+>> reader, but I agree a few of them could be spelled fully.  These
+>> changes make sense:
+>>    addr-mask  --> address-mask
+>>    addr-match --> address-match
+>>    addr-congruence-offset  --> address-congruence-offset
+>>       (this was already long anyway)
+>>
+>> The node names have a pleasing symmetry when the abbreviations
+>> mem and irq are used:
+>>    dma-lg
+>>    pio-lg
+>>    irq-lg
+>>    mem-lg
+>> but I agree "irq" is x86-ish, and mem could be spelled out.  I'll
+>> change them if that's the consensus.
+>>
+>> Expanding "lg" to latency-group makes the normally concise node names
+>> rather long, eg:
+>>    dma-latency-group
+>>    pio-latency-group
+>>    interrupt-latency-group
+>>    memory-latency-group
+>> but again I'll change them if that's the consensus.
+> 
+> 
+> I suggest we make this change to spell out "latency-group".
+> 
+
+By all means - if the concensus is that the more complete property name 
+makes it easier for people to digest and code I'm all for it !
+
+cheers,
+
+ash.
+
+
+
+> Unless there are any more comments from David or others
+> I suggest you update the section 4 of the one-pager with
+> this and other changes you proposed below.  Just send me
+> section 4 and I will copy it in the case directory as an
+> updated specification.
+> 
+> Since none of these actually changes the proposal the timer
+> for this case won't be extended (there are no substantial
+> changes other then expanding names etc.).
+> 
+> 
+> Thanks.
+> 
+>>
+>>> I think the normative text in addr-congruence-mask
+>>> needs a bit of work. When I read the normative text,
+>>> it doesn't explain how to calculate or derive M,
+>>> but the example (which I assume is informative) does,
+>>> at least for the given example. There needs to be
+>>> something normative that pulls it all together, IMO.
+>>>
+>>> -David
+>>
+>>
+>>
+>> Agreed, it could be clearer.
+>>
+>> To compute addr-congruence-mask, the PRI provider must know the value M,
+>> and it is already explicitly defined in the normative text:
+>>    "addr-congruence-offset = (PA_base - RA_base) mod M.
+>>     M is a power of 2 strictly greater than all values of addr-mask
+>>     and index-mask (see section 4.1.5) in the MD."
+>>
+>> However, the guest does not need to know M per se, the guest only needs
+>> to know the value of addr-mask or index-mask, so this normative text is
+>> confusing:
+>>    "The guest is guaranteed that
+>>     (RA + addr-congruence-offset) = PA (mod M)
+>>     where "=" means "is congruent to".  In other words, the guest
+>>     may recover the lower order PA bits in positions less than M."
+>> That text makes a statement about modulo arithmetic that explains
+>> why the properties work as defined, but is not directly relevant for
+>> the PRI provider or the guest.
+>>
+>> Here's my suggested fix:
+>>
+>>    * Strike the above and replace with:
+>>        "The guest adds addr-congruence-offset to an RA before applying
+>>        masks based on the PA, such as addr-mask and index-mask.
+>>        See 4.1.2 and 4.1.5 for details."
+>>
+>>    * In 4.1.2, introduce addr-congruence-offset explicitly, replacing the
+>>      normative text with this:
+>>
+>>          
+>> ------------------------------------------------------------------
+>>          addr-mask       PROP_VAL     No
+>>          addr-match      PROP_VAL     No
+>>
+>>          These are 64-bit unsigned integers that together define a memory
+>>          stripe.  Memory in subordinate mblock nodes is a member of the
+>>          latency group if
+>>
+>>              ((RA + addr-congruence-offset) & addr-mask) == addr-match
+>>
+>>          addr-mask and addr-match are defined in PA space.
+>>          addr-congruence-offset is a property of the mblock in
+>>          which the RA lies, and transforms the RA bits into PA space
+>>          for all bits covered by addr-mask (see 4.1.4).
+>>
+>>          If these properties are absent, then all memory described by
+>>          subordinate mblock nodes is a member of the latency group.
+>>          Defined for mem-lg and dma-lg nodes.
+>>
+>>          
+>> ------------------------------------------------------------------
+>>
+>>    * In 4.1.5, make the entire programming note normative.
+>>
+>>    * In 4.1.5, fix a bug I just noticed:
+>>        index = ra & index-mask
+>>        -->
+>>        index-bits = ra & index-mask
+>>
+>> The result has more forward and backward references than I
+>> normally like, but it is explicit and clear. If folks agree, I will
+>> make these changes.
+>>
+>> - Steve
+>>
+> 
+
+
+From sacadmin Fri May 11 06:26:23 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l4BDQMRi029032
+	for <fwarc@sac.eng.Sun.COM>; Fri, 11 May 2007 06:26:23 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l4BDP9X5026232;
+	Fri, 11 May 2007 21:25:15 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JHV00919PA07400@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 11 May 2007 06:25:12 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JHV0091QP9X2Z00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 11 May 2007 06:25:09 -0700 (PDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l4BDP9KP025710; Fri,
+ 11 May 2007 13:25:09 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JHV00201P85OY00@mail-amer.sun.com>
+ (original mail from Steve.Sistare@Sun.COM); Fri,
+ 11 May 2007 07:25:09 -0600 (MDT)
+Received: from [129.148.180.120] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JHV00LX9P9VGEM3@mail-amer.sun.com>; Fri,
+ 11 May 2007 07:25:08 -0600 (MDT)
+Date: Fri, 11 May 2007 09:25:07 -0400
+From: Steve Sistare <Steve.Sistare@sun.com>
+Subject: Re: Fast-track: FWARC/2007/260 - Machine Description Latency Node
+ Descriptions
+In-reply-to: <4643B3A2.5000207@Sun.COM>
+Sender: Steve.Sistare@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Ashley Saulsbury <Ashley.Saulsbury@sun.com>, Firmware Arch <fwarc@sun.com>
+Message-id: <46446EB3.2050903@Sun.COM>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_JxboeXfbhup0If4hbTCvhA)"
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <46425EF9.9030302@sun.com> <464333C7.5050806@Sun.COM>
+ <4643B3A2.5000207@Sun.COM>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20051122
+Status: RO
+Content-Length: 22800
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_JxboeXfbhup0If4hbTCvhA)
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+I have incorporated the changes as described, and the updated
+1-pager is attached.  The changes are confined to section 4.
+
+- Steve
+
+Hitendra Zhangada wrote On 05/10/07 20:06,:
+> Steve Sistare wrote On 05/10/07 08:01,:
+> 
+>> Hi David,
+>>    Responses below:
+>>
+>> David Kahn wrote On 05/09/07 19:53,:
+>>
+>>>
+>>> Ash, Hitendra,
+>>>
+>>> Is there any reason why we're abbreviating things like
+>>> addr, lg, and irq when they could easily be spelled out
+>>> as english words? (lg -> latency-group, addr->address,
+>>> irq -> interrupt and addr-xxx -> address-xxx)
+>>>
+>>
+>> The abbreviations shorten identifiers which would be long and
+>> cumbersome to use in documentation, both for the writer and the
+>> reader, but I agree a few of them could be spelled fully.  These
+>> changes make sense:
+>>    addr-mask  --> address-mask
+>>    addr-match --> address-match
+>>    addr-congruence-offset  --> address-congruence-offset
+>>       (this was already long anyway)
+>>
+>> The node names have a pleasing symmetry when the abbreviations
+>> mem and irq are used:
+>>    dma-lg
+>>    pio-lg
+>>    irq-lg
+>>    mem-lg
+>> but I agree "irq" is x86-ish, and mem could be spelled out.  I'll
+>> change them if that's the consensus.
+>>
+>> Expanding "lg" to latency-group makes the normally concise node names
+>> rather long, eg:
+>>    dma-latency-group
+>>    pio-latency-group
+>>    interrupt-latency-group
+>>    memory-latency-group
+>> but again I'll change them if that's the consensus.
+> 
+> 
+> I suggest we make this change to spell out "latency-group".
+> 
+> Unless there are any more comments from David or others
+> I suggest you update the section 4 of the one-pager with
+> this and other changes you proposed below.  Just send me
+> section 4 and I will copy it in the case directory as an
+> updated specification.
+> 
+> Since none of these actually changes the proposal the timer
+> for this case won't be extended (there are no substantial
+> changes other then expanding names etc.).
+> 
+> 
+> Thanks.
+> 
+>>
+>>> I think the normative text in addr-congruence-mask
+>>> needs a bit of work. When I read the normative text,
+>>> it doesn't explain how to calculate or derive M,
+>>> but the example (which I assume is informative) does,
+>>> at least for the given example. There needs to be
+>>> something normative that pulls it all together, IMO.
+>>>
+>>> -David
+>>
+>>
+>>
+>> Agreed, it could be clearer.
+>>
+>> To compute addr-congruence-mask, the PRI provider must know the value M,
+>> and it is already explicitly defined in the normative text:
+>>    "addr-congruence-offset = (PA_base - RA_base) mod M.
+>>     M is a power of 2 strictly greater than all values of addr-mask
+>>     and index-mask (see section 4.1.5) in the MD."
+>>
+>> However, the guest does not need to know M per se, the guest only needs
+>> to know the value of addr-mask or index-mask, so this normative text is
+>> confusing:
+>>    "The guest is guaranteed that
+>>     (RA + addr-congruence-offset) = PA (mod M)
+>>     where "=" means "is congruent to".  In other words, the guest
+>>     may recover the lower order PA bits in positions less than M."
+>> That text makes a statement about modulo arithmetic that explains
+>> why the properties work as defined, but is not directly relevant for
+>> the PRI provider or the guest.
+>>
+>> Here's my suggested fix:
+>>
+>>    * Strike the above and replace with:
+>>        "The guest adds addr-congruence-offset to an RA before applying
+>>        masks based on the PA, such as addr-mask and index-mask.
+>>        See 4.1.2 and 4.1.5 for details."
+>>
+>>    * In 4.1.2, introduce addr-congruence-offset explicitly, replacing the
+>>      normative text with this:
+>>
+>>          
+>> ------------------------------------------------------------------
+>>          addr-mask       PROP_VAL     No
+>>          addr-match      PROP_VAL     No
+>>
+>>          These are 64-bit unsigned integers that together define a memory
+>>          stripe.  Memory in subordinate mblock nodes is a member of the
+>>          latency group if
+>>
+>>              ((RA + addr-congruence-offset) & addr-mask) == addr-match
+>>
+>>          addr-mask and addr-match are defined in PA space.
+>>          addr-congruence-offset is a property of the mblock in
+>>          which the RA lies, and transforms the RA bits into PA space
+>>          for all bits covered by addr-mask (see 4.1.4).
+>>
+>>          If these properties are absent, then all memory described by
+>>          subordinate mblock nodes is a member of the latency group.
+>>          Defined for mem-lg and dma-lg nodes.
+>>
+>>          
+>> ------------------------------------------------------------------
+>>
+>>    * In 4.1.5, make the entire programming note normative.
+>>
+>>    * In 4.1.5, fix a bug I just noticed:
+>>        index = ra & index-mask
+>>        -->
+>>        index-bits = ra & index-mask
+>>
+>> The result has more forward and backward references than I
+>> normally like, but it is explicit and clear. If folks agree, I will
+>> make these changes.
+>>
+>> - Steve
+>>
+> 
+
+--Boundary_(ID_JxboeXfbhup0If4hbTCvhA)
+Content-type: text/plain; name=FWARC-2007-260-1pager.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=FWARC-2007-260-1pager.txt
+
+Copyright 2007 Sun Microsystems
+
+1. Introduction
+   1.1. Project/Component Working Name:
+
+        Machine Description Latency Node Definitions
+
+   1.2. Name of Document Author/Supplier:
+   
+        Steve Sistare
+	Ashley Saulsbury
+
+   1.3. Date of This Document:
+   
+        05/08/2007
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+            HS PAC
+	1.4.2. The ARC(s) you expect to review your project:
+            FWARC
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+            Tony Barreca
+	1.4.4. The name of your business unit:
+            Systems Group
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: chad.solomon@sun.com
+        1.5.2. Responsible Engineer: kanth.ghatraju@sun.com
+        1.5.3. Marketing Manager: N/A
+        1.5.4. Interest List: mpo-maramba-core@sun.com
+
+2. Project Summary
+   2.1. Project Description:
+   
+        This project defines MD nodes that describe to the Solaris
+	guest the latency between various components of a system 
+	including CPUs, memory, and I/O devices.  These latencies can
+	vary depending on the physical location of the initiator and
+	the target, and exposing them allows the guest to co-locate its
+	resources to achieve minimum latencies and improve domain
+	application performance.  For example, Solaris Memory Placement 
+	Optimization (MPO) can be enabled, in which a thread's memory 
+	is allocated close to the CPU that runs the thread.
+	
+   2.2. Risks and Assumptions:
+
+	Assumption: The Solaris changes to enable MPO will be delivered
+	by a separate project.
+
+3. Business Summary
+   3.1. Problem Area:
+
+	Larger servers may exhibit NUMA characteristics which hurt 
+	application performance if ignored.  Solaris minimizes latency 
+	by considering the physical topology when mapping threads and 
+	data to CPUs and memory.  In the sun4v architecture, resources
+	are virtualized, and the guest has no visibility into physical
+	topology, so the latency relationships must be explicitly 
+	represented in the guest MD.
+
+   3.2. Market/Requester:
+   
+	The Maramba platform team, Systems Group. Maramba, based on
+	the Victoria Falls processor, is the first sun4v platform
+	with NUMA characteristics.  However, the latency node
+	specification is general enough to support future sun4v NUMA
+	platforms.
+
+   3.3. Business Justification:
+   
+	Allows multi-processor sun4v systems to be performance
+	competitive by effectively reducing their NUMA characteristic.
+	These changes plus the necessary Solaris changes will boost 
+	performance on some strategic benchmarks to be published for 
+	Maramba RR by an estimated 5% - 10%.
+
+   3.4. Competitive Analysis:
+        N/A
+
+   3.5. Opportunity Window/Exposure:
+
+	Must be available for Maramba RR for maximum sales impact.
+
+   3.6. How will you know when you are done?:
+      
+        1. Code has been integrated into released system firmware image, and
+	2. Nodes defined in this specification are visible in the guest MD,
+		which can be verified by examining the machine description
+		provided to a guest operating system, and
+	3. Solaris MPO framework implements and shows correct lgroups, and
+	4. The measured lmbench latency approaches the minimum hardware
+	   memory latency.
+	
+	Note that 3 and 4 are not part of this project, but are the 
+	ultimate check of its correctness.
+
+4. Technical Description:
+    4.1. Overview:
+
+	The basis for this project is a type of MD node called
+	the latency group, or lg for short, which links together a
+	group of resources which can be accessed with a specified
+	latency.  Existing nodes including cpu, mblock, and iodevice
+	either point to a latency group via fwd arcs, or are pointed 
+	to by the latency group.
+	
+	To map portions of an mblock to a locality group, the guest 
+	must examine lower order bits of the PA.  To enable the guest 
+	to recover lower order PA bits from an RA, while still hiding the
+	higher order PA bits, a mblock property address-congruence-offset 
+	is defined.
+
+	Latency group and congruence information is optional in the
+	MD.  It may be added, changed, or removed during reconfiguration 
+	of virtual resources. Furthermore, it may be inaccurate during
+	transitional periods.  For these reasons, latency group information
+	should only be used for performance optimizations, thus inaccuracies
+	may result in sub-optimal performance, but not incorrect behavior.
+
+    4.1.1 Latency Group Nodes
+
+	The latency group nodes are shown below.  Properties
+	are shown in the next section.
+
+                                               Required        Optional
+	Name                      Category   subordinates    subordinates
+	------------------------------------------------------------------
+	memory-latency-group      optional    mblock              -
+
+	Defines the load and store latency between virtual CPU(s) and 
+	memory; specifically between superior cpu nodes and subordinate
+	mblock nodes.
+	Topology: cpu -> memory-latency-group -> mblock
+
+	------------------------------------------------------------------
+	dma-latency-group         optional    mblock              -
+
+	Defines the latency of DMA operations between I/O device(s) and
+	memory; specifically between superior iodevice nodes plus 
+	descendants, and subordinate mblock nodes.
+	Topology: iodevice -> dma-latency-group -> mblock
+
+	------------------------------------------------------------------
+	pio-latency-group         optional    iodevice            -
+
+	Defines the latency of load and store operations (aka programmed 
+	I/O) between virtual CPU(s) and I/O device(s); specifically
+	between superior cpu nodes and subordinate iodevice nodes plus
+	descendants.
+	Topology: cpu -> pio-latency-group -> iodevice
+
+	------------------------------------------------------------------
+	interrupt-latency-group   optional       -                -
+
+	Defines interrupt delivery latency between I/O device(s) and 
+	virtual CPU(s); specifically between superior iodevice nodes plus
+	descendants, and superior cpu nodes.
+	Topology: iodevice -> interrupt-latency-group <- cpu
+
+	------------------------------------------------------------------
+	latency-groups            optional       -       memory-latency-group
+							 dma-latency-group
+						         pio-latency-group
+							 interrupt-latency-group
+
+	This collective node leads to all latency group nodes.
+	Topology:
+					   -> memory-latency-group
+		platform -> latency-groups -> dma-latency-group
+					   -> pio-latency-group
+					   -> interrupt-latency-group
+
+	------------------------------------------------------------------
+	group                     optional       -       any
+
+	The group node is a nexus for incoming and outgoing arcs 
+	and serves no other purpose.  This avoids a combinatorial
+	explosion of arcs when defining many-to-many relationships.
+	The group node is a pass-through node for MD traversals.
+	Topology:
+                     any ->       -> any
+                     any -> group -> any
+                     any ->       -> any
+	------------------------------------------------------------------
+
+    4.1.2 Latency Group Properties
+
+	The properties of the latency nodes are defined below:
+
+	Name                 Tag        Req'd?
+	------------------------------------------------------------------
+	latency            PROP_VAL     Yes
+
+	A 64-bit unsigned integer giving the approximate latency of 
+	access in picoseconds.  Defined for memory-latency-group, 
+	dma-latency-group, pio-latency-group, and interrupt-latency-group 
+	nodes.
+
+	------------------------------------------------------------------
+	address-mask       PROP_VAL     No
+	address-match      PROP_VAL     No
+
+	These are 64-bit unsigned integers that together define a memory
+	stripe.  Memory in subordinate mblock nodes is a member of the
+	latency group if
+
+	    ((RA + address-congruence-offset) & address-mask) == address-match
+
+	address-mask and address-match are defined in PA space.
+	address-congruence-offset is a property of the mblock in
+	which the RA lies, and transforms the RA bits into PA space
+	for all bits covered by address-mask (see 4.1.4).
+
+	If these properties are absent, then all memory described by
+	subordinate mblock nodes is a member of the latency group.
+	Defined for memory-latency-group and dma-latency-group nodes.
+	------------------------------------------------------------------
+
+
+    4.1.3 Subordinates
+
+	The following nodes are augmented to allow subordinates.
+
+                               Optional
+	Name                 subordinates
+	------------------------------------------
+	cpu               memory-latency-group
+			  pio-latency-group
+			  interrupt-latency-group
+
+	iodevice          interrupt-latency-group
+			  dma-latency-group
+
+	platform          latency-groups
+	------------------------------------------
+
+    4.1.4 RA and PA Congruence
+
+	The real address space used within a virtual machine is a
+	remapping of portions of a system's underlying physical memory.
+	A guest running within a virtual machine is not provided
+	the physical addresses of its memory blocks. This abstraction of
+	memory addresses enables guests to be moved in memory without
+	changing their real address space layout.
+
+	However, to support NUMA and page-coloring algorithms for a
+	guest operating system further information is required that
+	describes the congruency relationship between a real address and
+	the underlying physical address to which it is mapped.
+	
+	To do this, this case adds the following optional property to an
+	mblock node;
+
+	    Node name: mblock
+	    ------------------------------------------------------------------
+	    address-congruence-offset       PROP_VAL     No
+
+	    A 64-bit unsigned integer.
+	    address-congruence-offset = (PA_base - RA_base) mod M.
+
+	    M is a power of 2 strictly greater than all values of address-mask 
+	    and index-mask (see section 4.1.5) in the MD.
+
+	    The guest adds address-congruence-offset to an RA before applying
+	    masks based on the PA, such as address-mask and index-mask.
+	    See 4.1.2 and 4.1.5 for details.
+
+	    If this property is not present in the mblock, then its value
+	    must be assumed 0.
+
+	    Programming note:
+
+		This property is typically provided when the congruency between
+		the real and underlying physical address of a mblock
+		is less than the size needed for lgroup or page color masking.
+
+		For example; Consider a NUMA machine where memory is
+		striped on 1GB boundaries between 4 different memory
+		controllers. Each cpu may see different access latencies
+		to each of the memory controllers - each latency is
+		represented by a lgroup node described above.
+
+		Now consider a 1GB memory segment that starts at real address
+		0x400000000 and is bound to physical address 0x10000000.
+
+		To identify 4 different memory controllers with a 1GB stripe
+		the address-mask property of one of the lgroups might have the
+		value 0xc0000000.
+	
+		In this legitimate scenario to correctly apply the lgroup
+		information, the guest OS needs enough correctly congruent
+		bits from the actual physical address to be able to
+		meaningfully apply the lgroup address mask.
+
+		So for our example, real address 0x400000000 corresponds to
+		physical address 0x10000000, and real address 0x430000000
+		corresponds to physical address 0x40000000.
+
+		If we apply the lgroup mask to 0x10000000 we get 0x0.
+		If we apply the lgroup mask to 0x40000000 we get 0x40000000
+		as the result. Therefore we see that these different
+		address pages reside on different memory controllers
+		with different access latencies.
+
+		(Note: if we had applied the lgroup mask to the corresponding
+		real addresses the result is always 0x0 implying the same
+		memory controller - which would be incorrect).
+
+		Thus a means to recover the relevant bits
+		of the physical address are required so that the address
+		mask can be correctly applied.
+
+		The address-congruence-offset property in an mblock provides
+		this information. As described above the property is derived
+		from the difference between real and their corresponding
+		physical addresses for a mblock. However, to retain ambiguity
+		for actual physical address bindings, this property is not
+		the actual difference, but simply enough bits from the
+		RA/PA difference that an addr mask can be correctly applied.
+
+		Thus the value provided for address-congruence-offset is
+		sufficient that the equality:
+
+			(RA + address-congruence-offset) & address-mask 
+			    == address-match
+
+		holds correctly for all the provided address-mask and 
+		address-match values within the MD in order to correctly 
+		match lgroups.
+		
+		If the address-mask 0xc0000000 is the largest mask provided,
+		then the address-congruence-offset for example above would be:
+
+                	(0x10000000 - 0x400000000) & 0xffffffff = 0x10000000 
+                
+                The address matches for the real addresses above will be,
+
+                        (0x400000000 + 0x10000000) & 0xc0000000 = 0x0
+
+                        (0x430000000 + 0x10000000) & 0xc0000000 = 0x40000000 
+
+		As defined above the address-congruence-offset is an optional
+		property in an mblock node.  If not present, a value of 0 can 
+		be assumed, thus the equality for matching lgroups reduces to:
+
+			RA & address-mask == address-match
+
+	    ------------------------------------------------------------------
+
+    4.1.5 Page coloring
+
+	Page coloring for large caches exhibits a similar set of problems
+	to identifying lgroups.
+
+	To assist, a cache node is extended with an optional property
+	to compute a matching set within the corresponding cache.
+	
+	    Node name: cache
+	    Property:
+	    Name                      Tag        Req'd?
+	    ------------------------------------------------------------------
+	    index-mask                PROP_VAL     No
+
+	    A 64-bit unsigned integer.  A bit in index-mask is set if that 
+	    bit in a PA influences the cache index at which a memory location 
+	    is stored when cache resident.
+
+	    The actual cache index employed by hardware is a
+	    function of multiple bits from the physical address
+	    of the memory reference. To compute a page coloring value
+	    the index-mask field identifies the relevant bits from
+	    a physical address. Thus the index-bits for page coloring
+	    can be derived as:
+
+	        index-bits = (RA + address-congruence-offset) & index-mask
+
+	    Where the address-congruence-offset is the property from the
+	    mblock (corresponding to the given RA) as defined in section
+	    4.1.4 above.
+
+	    Similarly to lgroup matching, if the address-congruence-offset
+	    property is not provided for a mblock its value can be
+	    assumed as zero reducing the equation to:
+
+	        index-bits = RA & index-mask
+
+	    ------------------------------------------------------------------
+
+    4.1.6 Example
+
+	The file sample-lg.pdf shows an abstracted MD containing 
+	memory-latency-group, interrupt-latency-group, and pio-latency-group 
+	nodes for a theoretical system with 2 physical processors, each of 
+	which contains 2 virtual CPUs and one PCI-E host adapter.  The 
+	latency-groups container node and the dma-latency-group nodes are 
+	omitted for clarity.
+
+    4.2. Bug/RFE Number(s):
+
+	6540324 represent memory locality and RA vs PA congruence in the MD
+	6539799 represent I/O locality in the MD
+	6540315 RA versus PA congruence property
+	6539930 MPO for sun4v platforms
+   
+    4.3. In Scope:
+   
+        MD node definitions and properties.
+
+    4.4. Out of Scope:
+
+        Changes in the Solaris guest.
+   
+    4.5. Interfaces:
+
+    4.5.1 Imported Interfaces
+
+        Name                    Classification  Description
+        -----------------       --------------- -------------------
+        sun4v Machine           Sun Private     MD nodes definitions as
+        Description nodes                       defined by FWARC/2005/115
+
+        "iodevice" MD node      Committed       MD node name and properties as 
+                                                described in FWARC/2007/070
+
+    4.5.2 Exported Interfaces
+
+	All interfaces are specified in Section 4.1 of this document.
+
+        Name                    Classification   Description
+        ----------------------  --------------   -------------------
+	"latency-groups"            Committed	 MD node name and properties
+	"memory-latency-group"      Committed	 MD node name and properties
+	"pio-latency-group"         Committed	 MD node name and properties
+	"dma-latency-group"         Committed	 MD node name and properties
+	"interrupt-latency-group"   Committed	 MD node name and properties
+	"group"  		    Committed	 MD node name and properties
+	"index-mask"                Committed	 MD property of "cache" node
+	"address-congruence-offset" Committed	 MD property of "mblock" node
+
+
+5. Reference Documents:
+
+        [1] Sample latency-group MD graph 
+            sample-lg.pdf
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+	Must be available in firmware release supporting Maramba RR.
+
+   6.2. Cost of Effort:
+        2-4 person weeks
+
+   6.3. Cost of Capital Resources:
+        None
+
+   6.4. ARC review type:
+	Fasttrack
+
+7. Prototype Availability:
+   7.1. Prototype Availability:
+        Working prototype is available.
+
+   7.2. Prototype Cost:
+        N/A
+
+
+--Boundary_(ID_JxboeXfbhup0If4hbTCvhA)--
+
+From sacadmin Fri May 11 15:02:14 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l4BM2DFC018704
+	for <fwarc@sac.eng.sun.com>; Fri, 11 May 2007 15:02:14 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l4BM12ZN014559;
+	Fri, 11 May 2007 23:01:06 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JHW00L0BD5UGR00@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 11 May 2007 15:01:06 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JHW00EA5D5TTP80@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 11 May 2007 15:01:05 -0700 (PDT)
+Received: from fe-amer-01.sun.com ([192.18.108.175])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l4BM15hv001305; Fri,
+ 11 May 2007 22:01:05 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JHW00101D1SRP00@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Fri,
+ 11 May 2007 16:01:05 -0600 (MDT)
+Received: from [129.150.33.54] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JHW00IQND5RT700@mail-amer.sun.com>; Fri,
+ 11 May 2007 16:01:05 -0600 (MDT)
+Date: Fri, 11 May 2007 15:02:12 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Fast-track: FWARC/2007/260 - Machine Description Latency Node
+ Descriptions
+In-reply-to: <46446EB3.2050903@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Steve Sistare <Steve.Sistare@sun.com>,
+        Ashley Saulsbury <ashley.saulsbury@sun.com>
+Message-id: <4644E7E4.6080100@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <46425EF9.9030302@sun.com> <464333C7.5050806@Sun.COM>
+ <4643B3A2.5000207@Sun.COM> <46446EB3.2050903@Sun.COM>
+User-Agent: Thunderbird 2.0.0.0 (Windows/20070326)
+Status: RO
+Content-Length: 632
+
+Steve Sistare wrote:
+> I have incorporated the changes as described, and the updated
+> 1-pager is attached.  The changes are confined to section 4.
+
+I have copied section 4 from the updated one-pager as a new spec
+in the materials directory.
+
+http://sac.eng.sun.com/arc/FWARC/2007/260/materials/Updated_lgroups_MD_Spec.txt
+
+The timer remains the same.  This case will time-out on COB May 15, 2007.
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Tue May 15 17:23:08 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l4G0N7Ll027413
+	for <fwarc@sac.eng.sun.com>; Tue, 15 May 2007 17:23:08 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l4G0Ltih018108;
+	Wed, 16 May 2007 01:21:56 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JI300N09YCI3T00@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 15 May 2007 17:21:54 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JI300BX1YCHXF90@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 15 May 2007 17:21:54 -0700 (PDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l4G0Lrq7027236; Wed,
+ 16 May 2007 00:21:53 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JI300701XGGTV00@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Tue,
+ 15 May 2007 18:21:53 -0600 (MDT)
+Received: from [129.150.35.208] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JI3006U5YCG5YB0@mail-amer.sun.com>; Tue,
+ 15 May 2007 18:21:53 -0600 (MDT)
+Date: Tue, 15 May 2007 17:23:01 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: Fast-track: FWARC/2007/260 - Machine Description Latency Node
+ Descriptions
+In-reply-to: <4644E7E4.6080100@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Steve Sistare <Steve.Sistare@Sun.COM>,
+        Ashley Saulsbury <ashley.saulsbury@Sun.COM>
+Message-id: <464A4EE5.8080309@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <46425EF9.9030302@sun.com> <464333C7.5050806@Sun.COM>
+ <4643B3A2.5000207@Sun.COM> <46446EB3.2050903@Sun.COM>
+ <4644E7E4.6080100@sun.com>
+User-Agent: Thunderbird 2.0.0.0 (Windows/20070326)
+Status: RO
+Content-Length: 874
+
+Hitendra Zhangada wrote:
+> Steve Sistare wrote:
+>> I have incorporated the changes as described, and the updated
+>> 1-pager is attached.  The changes are confined to section 4.
+> 
+> I have copied section 4 from the updated one-pager as a new spec
+> in the materials directory.
+> 
+> http://sac.eng.sun.com/arc/FWARC/2007/260/materials/Updated_lgroups_MD_Spec.txt 
+> 
+> 
+> The timer remains the same.  This case will time-out on COB May 15, 2007.
+
+This case has timed-out today and is now approved.
+
+The case is approved for,
+
+Release Binding:
+     firmware: minor/micro firmware release
+     OS: minor/micro/patch OS release.
+
+
+Thanks for the review.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+

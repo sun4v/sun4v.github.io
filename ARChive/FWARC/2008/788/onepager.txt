@@ -1,0 +1,161 @@
+
+1. Introduction
+   1.1. Project/Component Working Name:
+	FW Progress State Domain Service
+
+   1.2. Name of Document Author/Supplier:
+	yu.kong@sun.com
+
+   1.3. Date of This Document:
+    	December 22, 2008
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		HS PAC
+
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Jesse Lawrendra
+
+	1.4.4. The name of your business unit:
+		Systems Group
+		    Sparc Platform Software
+
+   1.5. Email Aliases:
+	1.5.1. Responsible Manager: chad.solomon@sun.com
+	1.5.2. Responsible Engineer: yu.kong@sun.com
+
+2. Project Summary
+
+   2.1. Project Description:
+
+	This case defines a new domain service to pass various
+	host states to vbsc while the host is coming up.
+
+3. Business Summary
+   3.1. Problem Area
+
+        IPMI v1.5 specification defines a new sensor called 
+        'System Firmware Progress'. The purpose of this sensor  
+        is to model the firmware running on the payload and provide  
+        various states to the external management software(e.g ShMM)  
+        using standard IPMI event mechanism. The firmware states  
+        of interest includes 'Progress', 'Hang' and 'Error' with  
+        various sub-states as defined in the specification. 
+
+        In order for the host to communicate this information to 
+        vbsc, a new domain service is reqired, which this case 
+        attempts to define.
+
+4. Technical Description:
+
+    4.1 Overview
+
+	OpenBoot is required to send progress indicator states to vBSC. VBSC needs 
+	these states for Firmware Progress Sensor implementation. 
+  
+    4.2 Firmware Progress State domain service
+
+	FW Progress State domain will pass progress state from Openboot to vBSC.
+	
+    
+    4.2.1 Service ID
+	The service ID for Firmware Progress State domain service is: 
+
+         Service ID                     Description
+         ----------                     -----------
+         "fw-progress-state"            Primary FW progress state service
+
+    4.2.2 Message Header
+
+         Offset Size Field name Description
+         ------ ---- ---------- -----------
+           0     4      cmd      Command
+
+    4.2.3 Message types
+
+         The following constants are defined for the Firmware Progress state
+         domain service command identifier values:
+
+                Type                    Value      Definition
+          --------------------------    -----  ------------------------         
+          FWPS_DS_STATE_UPDATE           0x0   FW Progress state update
+
+                                                
+         
+    4.3    FW Progress State update Message 
+   
+    4.3.1  FW Progress State Update Payload
+
+         The message header is followed by the following payload:
+
+         Offset Size Field name           Description
+         ------ ---- ---------- ------------------------------
+          0      4    state               Firmware Progress states
+
+
+    4.3.1.1  Firmware Progress State definitions
+    
+    
+         Progress State          Value
+         ------------------------------------------------    
+         Pre OS boot               1
+         Boot start                2
+    
+    
+    
+        Pre OS boot state indicates that OpenBoot is done with initialization
+        and is ready to do Operating system boot.
+
+
+	 Boot Start state indicates that Operating System booting has started.
+	 
+	 
+	 Note : For Firmware progression sensor design, Pre OS boot state will 
+	        be used to signify that OpenBoot has sucessfully finished
+	        initialization process and is ready to boot or drop to OK prompt.
+	        This will further indicate that there have been no hang during
+	        OpenBoot initialization.
+	        
+	        
+    
+
+    4.4 Imported Interfaces :
+                
+         Interface              Classification          Comments
+         ====================================================================
+
+         Domain Services         Sun Private        Defined by FWARC/2006/055
+         Specification
+
+
+    4.5 Exported Interfaces:
+
+
+         Interface               Classification         Comments
+         ====================================================================
+
+ 
+        "fw-progress-state" Domain Service:
+
+         Message Types:
+            FWPS_DS_STATE_UPDATE   Sun Private      FW Progress state update
+            
+            
+         FW Progress State definitions:
+         
+         Pre OS boot               Sun Private      OpenBoot initialization done
+         Boot start                Sun Private      Boot has started
+
+5. Reference Documents
+
+   [1] FWARC 2006/055 Domain Services
+
+   [2] FWARC 2006/473 sun4v guest state API update
+
+   [3] System Firmware Progress Sensor for CP3260 Specificiation
+
+       fps3260v1.2-diff.pdf
+

@@ -1,0 +1,211 @@
+4. Technical Description:
+
+    4.1 Overview
+
+    PRI structures are updated to include memory-segments, related and amendments 
+    to the component node definitions.  
+
+
+    4.1.1  Memory Segments and related nodes
+
+    ===========================================================================
+    Memory-Segments Node
+    ===========================================================================
+    Name            Category        Required subordinates   Optional subordinates
+    ----            --------        ---------------------   ---------------------
+    memory-segments resource        memory-segment
+                    required
+
+    Description
+    -----------
+    Child of the root node with fwd arcs to the memory-segment nodes.
+
+    ===========================================================================
+    Memory-Segment Node
+    ===========================================================================
+    Name            Category        Required subordinates   Optional subordinates
+    ----            --------        ---------------------   ---------------------
+    memory-segment  resource        memory-bank
+                    required
+
+    Description
+    -----------
+    Describes a contiguous memory address range. Its properties define that
+    address range and they link to child nodes that specify criteria for locating
+    a physical address in the memory segment to a set of one or more dimms that 
+    constitute a memory-bank.
+
+    A memory-segment node has the following properties.
+
+    ===========================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    base            PROP_VAL        yes
+
+    Description
+    -----------
+    The base physical address of the range represented by this memory segment.
+
+
+    ===========================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    size            PROP_VAL        yes
+
+    Description
+    -----------
+    The size of the address range represented by this memory segment.
+
+    ===========================================================================
+    Memory-Bank Node
+    ===========================================================================
+    Name            Category        Required subordinates   Optional subordinates
+    ----            --------        ---------------------   ---------------------
+    memory-bank     resource        component
+                    required
+
+    Description
+    -----------
+    Contains properties that describe the constraints for determining if a physical
+    address is located on the set of one or more dimms that comprise this memory 
+    bank.
+
+    The memory-bank node has fwd arcs to component nodes with dimm type properties.
+    The dimm type component nodes contain nac properties used to identify the dimm.
+    If an address belongs to this memory bank, it is located on one of the dimm
+    type component nodes that are linked to by this node.
+
+    ===========================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    size            PROP_VAL        yes
+
+    Description
+    -----------
+    The size of this memory bank.
+
+    ===============================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    mask            PROP_VAL        yes
+
+    Description
+    -----------
+    The value of the mask register is logically and'd with a physical address and
+    the result is compared with the value in the match register to determine if the
+    physical address is in this memory-bank.
+
+    ===========================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    match           PROP_VAL        yes
+
+    Description
+    -----------
+    After the value of the mask property is and'd with a physical address, if the
+    resultant value is equal to the value of the match property, the address is on 
+    one of the dimms in this memory bank.
+    
+    4.1.2  Updated to component node.
+
+    The component node is specified in FWARC case 2006/700. It lists acceptable
+    values that the type property of a component node may take to represent 
+    physical components in the system.
+
+    This case extends the acceptable values for the type property to include io 
+    components required for picl to represent them in /platform. 
+
+    A new path property is added and the restrictions on the nac property are
+    removed so that picl may represent fru-parent relationships between /platform 
+    components and their fru in the /physical-platform.
+
+    A new label property is added for dimm type component nodes, to support an
+    FMA requirement to retrieve the J number label silk-screened next to a dimm
+    slot.
+
+    The restriction on the nac property has also been removed so that a system 
+    board component node may contain one to satisfy an FMA requirement.
+
+    The component node description is copied here for context from case 2006/700.
+    It has been revised to describe the new io node type for picl.
+
+    ===========================================================================
+    Component Node
+    ===========================================================================
+    Name            Category        Required subordinates   Optional subordinates
+    ----            --------        ---------------------   ---------------------
+    component       resource                                component
+                    required
+
+    Description
+    -----------
+    Represents physical entities in the system in order to provide component
+    information and system topology to the domain.
+
+    ===============================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    type            PROP_STR        yes
+
+    Description
+    -----------
+    This property contains the type of the component. Only types that have
+    been submitted with an ARC case should be present.
+
+    An acceptable value for the type property will includes,
+
+    io      An io device such as a switch, bridge, slot or leaf device.
+
+
+    Type-specific property requirements
+    -----------------------------------
+    The following requirements hold for component nodes of these types:
+
+    Any type of node may have a nac property.
+
+    An io type node may have a path property, as described below.
+
+    ===========================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    nac             PROP_STR        no
+
+    Description
+    -----------
+    This property contains the NAC for the component, as described in the
+    system nomenclature document for the system. It may appear in an type of
+    component node.
+
+    ===========================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    fru             PROP_VAL        no
+
+    Description
+    -----------
+    This property is present and has a value of 1 if the component is a FRU.
+
+    ===========================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    path            PROP_STR        no
+
+    Description
+    -----------
+    This property contains the canonical path of an io device, composed of its
+    full device path with device names removed.
+
+    It is possible to find the FRU parent of an io device by doing a search
+    beginning with its parent and continuing through its ancestry until reaching
+    a component node with a fru property with value of 1.
+
+    ===========================================================================
+    Name            Tag             Required
+    ----            ---             --------
+    label           PROP_STR        no
+
+    Description
+    -----------
+    This property is currently only defined to appear in dimm type component nodes.
+    It will contain the J number that is silk-screened on the board next to the
+    dimm slot.

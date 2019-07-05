@@ -1,0 +1,637 @@
+From sacadmin Mon Aug 14 17:12:01 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7F0C0vX004893
+	for <fwarc@sac.eng.Sun.COM>; Mon, 14 Aug 2006 17:12:01 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k7F0BufG026677;
+	Tue, 15 Aug 2006 08:11:59 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J4000201J7Z1Q00@brm-avmta-1.central.sun.com>; Mon,
+ 14 Aug 2006 18:11:59 -0600 (MDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.5])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J4000B7CJ7YB9E0@brm-avmta-1.central.sun.com>; Mon,
+ 14 Aug 2006 18:11:58 -0600 (MDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7F0BwlE017562; Mon,
+ 14 Aug 2006 17:11:58 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4000001J4IRQ00@d1-sfbay-09.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Mon,
+ 14 Aug 2006 17:11:58 -0700 (PDT)
+Received: from sun.com ([129.150.21.117])
+ by d1-sfbay-09.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0J40001CYJ7X3WA0@d1-sfbay-09.sun.com>; Mon,
+ 14 Aug 2006 17:11:58 -0700 (PDT)
+Date: Mon, 14 Aug 2006 17:12:01 -0700
+From: Tony Sumpter <Tony.Sumpter@sun.com>
+Subject: 2006/473 sun4v guest state update
+Sender: Tony.Sumpter@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: pq-arch@sun.com
+Message-id: <44E11151.2050909@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 711
+
+I'm sponsoring this case as a fast-track for Ashley Saulsbury.
+The fast-track timeout is August 22, 2006.
+
+The materials are in the case directory under 'materials':
+http://sac.eng/arc/FWARC/2006/473/
+The normative text is in sis-api.pdf.
+The interface table is in interface-table.txt.
+The trap registry entry is in trap-registry-entry.txt.
+
+The case defines two new API codes SOFT_STATE_SET and
+SOFT_STATE_GET in a new group (0x3). This case obsoletes the
+previous codes MACH_SET_SOFT_STATE and MACH_GET_SOFT_STATE
+introduced by FWARC/2005/419.
+
+The requested binding is for a minor release of the firmware and
+a micro/patch release of the OS, the committment level of the interfaces
+is Sun Private.
+
+Tony. 
+
+
+
+From sacadmin Tue Aug 15 06:15:23 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7FDFNfA015953
+	for <fwarc@sac.eng.sun.com>; Tue, 15 Aug 2006 06:15:23 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k7FDFNc24505;
+	Tue, 15 Aug 2006 06:15:23 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J4100I1JJHBBL00@brm-avmta-1.central.sun.com>; Tue,
+ 15 Aug 2006 07:15:11 -0600 (MDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J4100D87JH5CZ40@brm-avmta-1.central.sun.com>; Tue,
+ 15 Aug 2006 07:15:06 -0600 (MDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7FDF5qD013424; Tue,
+ 15 Aug 2006 07:15:05 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4100B01IJG1X00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM); Tue,
+ 15 Aug 2006 07:15:05 -0600 (MDT)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J4100LH2JH4STG3@mail-amer.sun.com>; Tue,
+ 15 Aug 2006 07:15:05 -0600 (MDT)
+Date: Tue, 15 Aug 2006 09:13:35 -0400
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: Re: 2006/473 sun4v guest state update
+In-reply-to: <44E11151.2050909@sun.com>
+Sender: Stephen.Ehring@Sun.COM
+To: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, pq-arch@Sun.COM
+Reply-to: Stephen.Ehring@Sun.COM
+Message-id: <44E1C87F.1080007@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <44E11151.2050909@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.2 (X11/20050322)
+Status: RO
+Content-Length: 205
+
+Where are the Sun Indicator Standard values defined? Is that an imported interface? I was 
+going to look for them as a reference in the onepager, but I didn't see a onepager in the 
+case directory.
+
+Steve
+
+From sacadmin Tue Aug 15 13:19:20 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7FKJJPA025997
+	for <fwarc@sac.eng.sun.com>; Tue, 15 Aug 2006 13:19:20 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k7FKJFip025586;
+	Tue, 15 Aug 2006 21:19:18 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J4200A0T344SJ00@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 15 Aug 2006 13:19:16 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.6]) by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J4200I2F3433IE0@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 15 Aug 2006 13:19:15 -0700 (PDT)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7FKJEuw029909; Tue,
+ 15 Aug 2006 13:19:14 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J420060131MHG00@d1-sfbay-10.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Tue,
+ 15 Aug 2006 13:19:14 -0700 (PDT)
+Received: from sun.com ([129.149.205.9])
+ by d1-sfbay-10.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0J42008R0342GC30@d1-sfbay-10.sun.com>; Tue,
+ 15 Aug 2006 13:19:14 -0700 (PDT)
+Date: Tue, 15 Aug 2006 13:19:18 -0700
+From: Tony Sumpter <Tony.Sumpter@sun.com>
+Subject: Re: 2006/473 sun4v guest state update
+In-reply-to: <44E1C87F.1080007@Sun.COM>
+Sender: Tony.Sumpter@sun.com
+To: Stephen.Ehring@sun.com
+Cc: Firmware Arch <fwarc@sun.com>, pq-arch@sun.com
+Message-id: <44E22C46.9020102@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <44E11151.2050909@sun.com> <44E1C87F.1080007@Sun.COM>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 395
+
+Stephen Ehring wrote:
+
+> Where are the Sun Indicator Standard values defined? Is that an imported 
+> interface? I was going to look for them as a reference in the onepager, 
+> but I didn't see a onepager in the case directory.
+
+http://hf.sfbay/guidelines/sis/
+
+I referenced this in the previous case (see mail archive in
+http://sac.eng/arc/FWARC/2005/419/ ) but forgot for this update.
+
+Tony.
+
+
+
+From sacadmin Wed Aug 23 13:54:52 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7NKsqt3025371
+	for <fwarc@sac.eng.Sun.COM>; Wed, 23 Aug 2006 13:54:52 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k7NKspH10160;
+	Wed, 23 Aug 2006 14:54:51 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J4G00M05Y3F3C00@brm-avmta-1.central.sun.com>; Wed,
+ 23 Aug 2006 14:54:51 -0600 (MDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J4G00H7YY3EZ3C0@brm-avmta-1.central.sun.com>; Wed,
+ 23 Aug 2006 14:54:50 -0600 (MDT)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7NKsoPB029784; Wed,
+ 23 Aug 2006 14:54:50 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4G00601XJ89600@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Wed,
+ 23 Aug 2006 14:54:50 -0600 (MDT)
+Received: from [129.150.32.234] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J4G00AC1Y3DIH64@mail-amer.sun.com>; Wed,
+ 23 Aug 2006 14:54:50 -0600 (MDT)
+Date: Wed, 23 Aug 2006 13:54:49 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/473 sun4v guest state update
+In-reply-to: <44E11151.2050909@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: pq-arch@Sun.COM
+Message-id: <44ECC099.1000301@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <44E11151.2050909@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 1290
+
+Tony Sumpter wrote:
+
+> I'm sponsoring this case as a fast-track for Ashley Saulsbury.
+> The fast-track timeout is August 22, 2006.
+>
+> The materials are in the case directory under 'materials':
+> http://sac.eng/arc/FWARC/2006/473/
+> The normative text is in sis-api.pdf.
+> The interface table is in interface-table.txt.
+> The trap registry entry is in trap-registry-entry.txt.
+>
+> The case defines two new API codes SOFT_STATE_SET and
+> SOFT_STATE_GET in a new group (0x3). This case obsoletes the
+> previous codes MACH_SET_SOFT_STATE and MACH_GET_SOFT_STATE
+> introduced by FWARC/2005/419.
+
+What are the differences between what was defined by 2005/419
+and what is proposed here?  The APIs seems to do the same thing.
+I do not have any issue with what is proposed but curious to
+know why are we obsoleting MACH_SET_SOFT_STATE and MACH_GET_SOFT_STATE
+APIs and introduce new ones.
+
+
+Thanks.
+
+>
+> The requested binding is for a minor release of the firmware and
+> a micro/patch release of the OS, the committment level of the interfaces
+> is Sun Private.
+>
+> Tony.
+>
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Thu Aug 31 17:02:07 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k810261I007879
+	for <fwarc@sac.eng.sun.com>; Thu, 31 Aug 2006 17:02:06 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k8101p0o016101;
+	Fri, 1 Sep 2006 01:02:04 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J4W0037503CIX00@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 31 Aug 2006 17:02:00 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J4V00MEBZYUZGE0@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 31 Aug 2006 16:59:19 -0700 (PDT)
+Received: from fe-amer-04.sun.com ([192.18.108.178])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7VNxIuL009261; Thu,
+ 31 Aug 2006 17:59:18 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4V00701ZEEST00@mail-amer.sun.com>
+ (original mail from Sai.Dasari@Sun.COM); Thu, 31 Aug 2006 17:59:18 -0600 (MDT)
+Received: from [129.149.2.132] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J4V0010MZYTG0I6@mail-amer.sun.com>; Thu,
+ 31 Aug 2006 17:59:18 -0600 (MDT)
+Date: Thu, 31 Aug 2006 16:59:17 -0700
+From: Sai Dasari <Sai.Dasari@sun.com>
+Subject: Re: 2006/473 sun4v guest state update
+In-reply-to: <44E11151.2050909@sun.com>
+Sender: Sai.Dasari@sun.com
+To: Tony Sumpter <Tony.Sumpter@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, pq-arch@sun.com
+Reply-to: Sai.Dasari@sun.com
+Message-id: <44F777D5.2090502@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <44E11151.2050909@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 1285
+
+Hi Tony/Ash,
+
+I am following this case closely as we are planning to use this feature 
+for our Netra platforms based on sun4v.
+
+I have couple of questions related to the scope of these 'guest soft 
+states' maintained by Hypervisor.
+
+- Are these guest softstates visible outside that particular guest LDOM?
+- Does Service LDOM has access to guest states of all LDOMs running on a 
+system?
+- Does Service Processor(ALOM/vBSC) has access to guest states of all 
+LDOMs running on a system?
+
+Thanks,
+Sai.
+
+Tony Sumpter wrote On 08/14/06 17:12,:
+
+> I'm sponsoring this case as a fast-track for Ashley Saulsbury.
+> The fast-track timeout is August 22, 2006.
+>
+> The materials are in the case directory under 'materials':
+> http://sac.eng/arc/FWARC/2006/473/
+> The normative text is in sis-api.pdf.
+> The interface table is in interface-table.txt.
+> The trap registry entry is in trap-registry-entry.txt.
+>
+> The case defines two new API codes SOFT_STATE_SET and
+> SOFT_STATE_GET in a new group (0x3). This case obsoletes the
+> previous codes MACH_SET_SOFT_STATE and MACH_GET_SOFT_STATE
+> introduced by FWARC/2005/419.
+>
+> The requested binding is for a minor release of the firmware and
+> a micro/patch release of the OS, the committment level of the interfaces
+> is Sun Private.
+>
+> Tony.
+>
+
+From sacadmin Fri Sep  1 21:24:34 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k824OWJd025134
+	for <fwarc@sac.eng.Sun.COM>; Fri, 1 Sep 2006 21:24:33 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k824OVaZ007359;
+	Sat, 2 Sep 2006 12:24:32 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J4Y003016WV3N00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 01 Sep 2006 21:24:31 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.5]) by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J4Y008AM6WUFX80@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 01 Sep 2006 21:24:30 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k824OUF5021946; Fri,
+ 01 Sep 2006 21:24:30 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4Y00B016T7MY00@d1-sfbay-09.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Fri,
+ 01 Sep 2006 21:24:30 -0700 (PDT)
+Received: from sun.com ([129.150.20.247])
+ by d1-sfbay-09.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0J4Y00BDK6WTP9C0@d1-sfbay-09.sun.com>; Fri,
+ 01 Sep 2006 21:24:30 -0700 (PDT)
+Date: Fri, 01 Sep 2006 21:24:32 -0700
+From: Tony Sumpter <Tony.Sumpter@sun.com>
+Subject: Re: 2006/473 sun4v guest state update
+In-reply-to: <44ECC099.1000301@sun.com>
+Sender: Tony.Sumpter@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, pq-arch@sun.com
+Message-id: <44F90780.1060309@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <44E11151.2050909@sun.com> <44ECC099.1000301@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 1607
+
+Hitendra Zhangada wrote:
+
+> Tony Sumpter wrote:
+> 
+>> I'm sponsoring this case as a fast-track for Ashley Saulsbury.
+>> The fast-track timeout is August 22, 2006.
+>>
+>> The materials are in the case directory under 'materials':
+>> http://sac.eng/arc/FWARC/2006/473/
+>> The normative text is in sis-api.pdf.
+>> The interface table is in interface-table.txt.
+>> The trap registry entry is in trap-registry-entry.txt.
+>>
+>> The case defines two new API codes SOFT_STATE_SET and
+>> SOFT_STATE_GET in a new group (0x3). This case obsoletes the
+>> previous codes MACH_SET_SOFT_STATE and MACH_GET_SOFT_STATE
+>> introduced by FWARC/2005/419.
+> 
+> 
+> What are the differences between what was defined by 2005/419
+> and what is proposed here?  The APIs seems to do the same thing.
+> I do not have any issue with what is proposed but curious to
+> know why are we obsoleting MACH_SET_SOFT_STATE and MACH_GET_SOFT_STATE
+> APIs and introduce new ones.
+
+The guest state is not essential to the core operation of the
+virtual machine and - as is evidenced by the recent discussions -
+is part of an evolving management picture. For this reason, it
+is better for this API to have its own group so as not to be
+disruptive to the Core group.
+
+The APIs are essentially the same, but the semantics have been
+further clarified. The removal of EWOULDBLOCK as a possible error
+code further simplified the semantics of the interface.
+
+Tony.
+
+> 
+>>
+>> The requested binding is for a minor release of the firmware and
+>> a micro/patch release of the OS, the committment level of the interfaces
+>> is Sun Private.
+>>
+>> Tony.
+>>
+> 
+> 
+
+
+
+From sacadmin Fri Sep  1 21:28:13 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k824SCTA025299
+	for <fwarc@sac.eng.Sun.COM>; Fri, 1 Sep 2006 21:28:13 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k824S62A008122;
+	Sat, 2 Sep 2006 12:28:11 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J4Y00D0372YC700@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 01 Sep 2006 21:28:10 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.5]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J4Y00H1Z72YQ560@nwk-avmta-2.sfbay.sun.com>; Fri,
+ 01 Sep 2006 21:28:10 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k824SANH021990; Fri,
+ 01 Sep 2006 21:28:10 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4Y00C0170MZ200@d1-sfbay-09.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Fri,
+ 01 Sep 2006 21:28:10 -0700 (PDT)
+Received: from sun.com ([129.150.20.247])
+ by d1-sfbay-09.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0J4Y00BDX72XP9C0@d1-sfbay-09.sun.com>; Fri,
+ 01 Sep 2006 21:28:10 -0700 (PDT)
+Date: Fri, 01 Sep 2006 21:28:11 -0700
+From: Tony Sumpter <Tony.Sumpter@sun.com>
+Subject: Re: 2006/473 sun4v guest state update
+In-reply-to: <44E11151.2050909@sun.com>
+Sender: Tony.Sumpter@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: pq-arch@sun.com
+Message-id: <44F9085B.7010808@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <44E11151.2050909@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 885
+
+The timeout has now expired - this case is approved.
+
+The API information will be added to the registry.
+
+Tony.
+
+Tony Sumpter wrote:
+
+> I'm sponsoring this case as a fast-track for Ashley Saulsbury.
+> The fast-track timeout is August 22, 2006.
+> 
+> The materials are in the case directory under 'materials':
+> http://sac.eng/arc/FWARC/2006/473/
+> The normative text is in sis-api.pdf.
+> The interface table is in interface-table.txt.
+> The trap registry entry is in trap-registry-entry.txt.
+> 
+> The case defines two new API codes SOFT_STATE_SET and
+> SOFT_STATE_GET in a new group (0x3). This case obsoletes the
+> previous codes MACH_SET_SOFT_STATE and MACH_GET_SOFT_STATE
+> introduced by FWARC/2005/419.
+> 
+> The requested binding is for a minor release of the firmware and
+> a micro/patch release of the OS, the committment level of the interfaces
+> is Sun Private.
+> 
+> Tony.
+> 
+
+
+
+From sacadmin Sat Sep  2 22:51:56 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k835ptA6020865
+	for <fwarc@sac.eng.sun.com>; Sat, 2 Sep 2006 22:51:56 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k835prlj020447;
+	Sun, 3 Sep 2006 06:51:54 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J5000E075MH1G00@nwk-avmta-1.sfbay.Sun.COM>; Sat,
+ 02 Sep 2006 22:51:53 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J5000HIW5M8RT70@nwk-avmta-1.sfbay.Sun.COM>; Sat,
+ 02 Sep 2006 22:51:44 -0700 (PDT)
+Received: from kerouac.sfbay.sun.com (kerouac.SFBay.Sun.COM [129.146.96.111])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k835phOh029159; Sat, 02 Sep 2006 22:51:43 -0700 (PDT)
+Received: from kerouac.sfbay.sun.com (localhost [127.0.0.1])
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k835rgUN000391;
+ Sat, 02 Sep 2006 22:53:42 -0700 (PDT)
+Received: (from rath@localhost)
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10/Submit) id k835rgO8000390; Sat,
+ 02 Sep 2006 22:53:42 -0700 (PDT)
+Date: Sat, 02 Sep 2006 22:53:41 -0700
+From: Kevin Rathbun <Kevin.Rathbun@sun.com>
+Subject: Re: 2006/473 sun4v guest state update
+In-reply-to: <44F777D5.2090502@Sun.COM>
+To: Sai Dasari <Sai.Dasari@sun.com>
+Cc: Tony Sumpter <Tony.Sumpter@sun.com>, Firmware Arch <fwarc@sun.com>,
+        pq-arch@sun.com
+Reply-to: Kevin Rathbun <Kevin.Rathbun@sun.com>
+Message-id: <20060903055341.GR22415@kerouac>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+Content-disposition: inline
+X-PMX-Version: 5.2.0.264296
+References: <44E11151.2050909@sun.com> <44F777D5.2090502@Sun.COM>
+User-Agent: Mutt/1.4.2.1i
+Status: RO
+Content-Length: 1632
+
+On Thu, Aug 31, 2006 at 04:59:17PM -0700, Sai Dasari wrote:
+> Hi Tony/Ash,
+
+I didn't see a reply yet...
+
+> 
+> I am following this case closely as we are planning to use this feature 
+> for our Netra platforms based on sun4v.
+> 
+> I have couple of questions related to the scope of these 'guest soft 
+> states' maintained by Hypervisor.
+> 
+> - Are these guest softstates visible outside that particular guest LDOM?
+
+I believe they are going to be visible to the ldom manager running in the 
+control domain.
+
+> - Does Service LDOM has access to guest states of all LDOMs running on a 
+> system?
+
+Only if the service ldom is also the control domain.
+
+> - Does Service Processor(ALOM/vBSC) has access to guest states of all 
+> LDOMs running on a system?
+
+Only to the control domain guest state.
+
+kvn
+> 
+> Thanks,
+> Sai.
+> 
+> Tony Sumpter wrote On 08/14/06 17:12,:
+> 
+> >I'm sponsoring this case as a fast-track for Ashley Saulsbury.
+> >The fast-track timeout is August 22, 2006.
+> >
+> >The materials are in the case directory under 'materials':
+> >http://sac.eng/arc/FWARC/2006/473/
+> >The normative text is in sis-api.pdf.
+> >The interface table is in interface-table.txt.
+> >The trap registry entry is in trap-registry-entry.txt.
+> >
+> >The case defines two new API codes SOFT_STATE_SET and
+> >SOFT_STATE_GET in a new group (0x3). This case obsoletes the
+> >previous codes MACH_SET_SOFT_STATE and MACH_GET_SOFT_STATE
+> >introduced by FWARC/2005/419.
+> >
+> >The requested binding is for a minor release of the firmware and
+> >a micro/patch release of the OS, the committment level of the interfaces
+> >is Sun Private.
+> >
+> >Tony.
+> >
+

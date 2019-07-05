@@ -1,0 +1,219 @@
+From sacadmin Tue May 12 07:58:28 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n4CEsh94002962
+	for <fwarc@sac.sfbay.sun.com>; Tue, 12 May 2009 07:58:27 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n4CEshM1017123;
+	Tue, 12 May 2009 07:54:43 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KJJ0011RDF7WD00@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 12 May 2009 07:54:43 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KJJ001SKDF54P10@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 12 May 2009 07:54:41 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n4CEsfx6023228;
+ Tue, 12 May 2009 07:54:41 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.02 64bit (built Apr 16 2009))
+ id <0KJJ00F00C62V900@fe-sfbay-09.sun.com>; Tue,
+ 12 May 2009 07:54:41 -0700 (PDT)
+Received: from [129.145.154.106] ([unknown] [129.145.154.106])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.02 64bit (built Apr 16 2009))
+ with ESMTPSA id <0KJJ003K6DEMD2D0@fe-sfbay-09.sun.com>; Tue,
+ 12 May 2009 07:54:27 -0700 (PDT)
+Date: Tue, 12 May 2009 07:54:22 -0700
+From: Ryan Maeda <Ryan.Maeda@sun.com>
+Subject: Fast-track: FWARC/2009/300 - CPU MD node property for real address bits
+Sender: Ryan.Maeda@sun.com
+To: fwarc@sun.com
+Cc: Bijan Mottahedeh <Bijan.Mottahedeh@sun.com>, ldoms-memory-dr-iteam@sun.com
+Reply-to: Ryan.Maeda@sun.com
+Message-id: <4A098D9E.3030704@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.22pre (X11/20090422)
+Status: RO
+Content-Length: 1191
+
+I am sponsoring this fast-track case for Bijan Mottahedeh.
+
+This case adds an optional property to the 'cpu' node of the
+guest MD that specifies the number of supported real address
+bits, briefly described below:
+
+  Name          Tag        Req'd?  Description
+  ------------------------------------------------------------------
+  mmu-#ra-bits  PROP_VAL   No      A 64-bit unsigned integer giving
+                                   the number of real address bits
+                                   supported by this virtual CPU. If
+                                   not present, no default value is
+                                   assumed and the max RA value can
+                                   be inferred from the 'mblock' nodes.
+
+This property will initially be used to determine the maximum
+RA value for the purposes of implementing Memory DR. Further
+details, including the interface table, can be found in the
+one pager included in the materials directory:
+
+  http://sac.sfbay/FWARC/2009/300/materials/onepager.txt
+
+This case will be approved for a minor/micro/patch OS binding
+and a minor/micro binding for the firmware.
+
+Case timer is set to expire on May 20, 2009.
+
+-Ryan
+
+From sacadmin Thu May 14 11:20:52 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n4EIKq7J008705
+	for <fwarc@sac.sfbay.sun.com>; Thu, 14 May 2009 11:20:52 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n4EIK6Hp012573;
+	Thu, 14 May 2009 12:20:51 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KJN00109CAECI00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 14 May 2009 11:20:38 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KJN00H5MCAERD40@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 14 May 2009 11:20:38 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n4EIKYtI003331;
+ Thu, 14 May 2009 11:20:37 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.02 64bit (built Apr 16 2009))
+ id <0KJN00L00AW7QN00@fe-sfbay-09.sun.com>; Thu,
+ 14 May 2009 11:20:31 -0700 (PDT)
+Received: from [129.150.36.174] ([unknown] [129.150.36.174])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.02 64bit (built Apr 16 2009))
+ with ESMTPSA id <0KJN00J59C9WTW20@fe-sfbay-09.sun.com>; Thu,
+ 14 May 2009 11:20:21 -0700 (PDT)
+Date: Thu, 14 May 2009 11:20:20 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: Fast-track: FWARC/2009/300 - CPU MD node property for real address
+ bits
+In-reply-to: <4A098D9E.3030704@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Ryan.Maeda@sun.com
+Cc: fwarc@sun.com, Bijan Mottahedeh <Bijan.Mottahedeh@sun.com>,
+        ldoms-memory-dr-iteam@sun.com
+Message-id: <4A0C60E4.9070204@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4A098D9E.3030704@Sun.COM>
+User-Agent: Thunderbird 2.0.0.21 (Windows/20090302)
+Status: RO
+Content-Length: 1499
+
+Ryan Maeda wrote:
+> I am sponsoring this fast-track case for Bijan Mottahedeh.
+>
+> This case adds an optional property to the 'cpu' node of the
+> guest MD that specifies the number of supported real address
+> bits, briefly described below:
+>
+>   Name          Tag        Req'd?  Description
+>   ------------------------------------------------------------------
+>   mmu-#ra-bits  PROP_VAL   No      A 64-bit unsigned integer giving
+>                                    the number of real address bits
+>                                    supported by this virtual CPU. If
+>                                    not present, no default value is
+>                                    assumed and the max RA value can
+>                                    be inferred from the 'mblock' nodes.
+>
+> This property will initially be used to determine the maximum
+> RA value for the purposes of implementing Memory DR. Further
+> details, including the interface table, can be found in the
+> one pager included in the materials directory:
+>
+>   http://sac.sfbay/FWARC/2009/300/materials/onepager.txt
+>   
+
+LGTM.
+
+> This case will be approved for a minor/micro/patch OS binding
+> and a minor/micro binding for the firmware.
+>
+> Case timer is set to expire on May 20, 2009.
+>
+> -Ryan
+>   
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Fri May 22 21:16:51 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n4N4GoVj006605
+	for <fwarc@sac.sfbay.sun.com>; Fri, 22 May 2009 21:16:50 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n4N4GmsB054089;
+	Fri, 22 May 2009 22:16:50 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KK200G1XX81M700@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 22 May 2009 21:16:49 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KK200B16X807H10@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 22 May 2009 21:16:48 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n4N4GmLk006040;
+ Fri, 22 May 2009 21:16:48 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.02 64bit (built Apr 16 2009))
+ id <0KK200A00X4WHY00@fe-sfbay-09.sun.com>; Fri,
+ 22 May 2009 21:16:48 -0700 (PDT)
+Received: from [129.145.154.106] ([unknown] [129.145.154.106])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.02 64bit (built Apr 16 2009))
+ with ESMTPSA id <0KK200G7JX7SKN70@fe-sfbay-09.sun.com>; Fri,
+ 22 May 2009 21:16:41 -0700 (PDT)
+Date: Fri, 22 May 2009 21:16:40 -0700
+From: Ryan Maeda <Ryan.Maeda@sun.com>
+Subject: Re: Fast-track: FWARC/2009/300 - CPU MD node property for real address
+ bits
+In-reply-to: <4A098D9E.3030704@Sun.COM>
+Sender: Ryan.Maeda@sun.com
+To: fwarc@sun.com
+Cc: Bijan Mottahedeh <Bijan.Mottahedeh@sun.com>, ldoms-memory-dr-iteam@sun.com
+Reply-to: Ryan.Maeda@sun.com
+Message-id: <4A1778A8.1090905@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4A098D9E.3030704@Sun.COM>
+User-Agent: Thunderbird 2.0.0.22pre (X11/20090422)
+Status: RO
+Content-Length: 107
+
+This fast-track case has timed out. The case is now approved
+and closed. IAM file has been updated.
+
+-Ryan
+

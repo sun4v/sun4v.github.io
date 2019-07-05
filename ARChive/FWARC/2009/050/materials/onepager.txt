@@ -1,0 +1,185 @@
+Copyright 2009 Sun Microsystems
+
+1. Introduction
+   1.1. Project/Component Working Name:
+	Hypervisor API Improvements for VPCI DMA Sync
+
+   1.2. Name of Document Author/Supplier:
+	Charles Kunzman (Charles.Kunzman@sun.com)
+
+   1.3. Date of This Document:
+	01/31/09
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		N/A
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Ravi Subbarao (Ravi.Subbaro@sun.com)
+	1.4.4. The name of your business unit:
+		Systems - Enterprise Software
+
+   1.5. Email Aliases:
+    	1.5.1. Responsible Manager:
+	    Umesh.Sharma@sun.com
+    	1.5.2. Responsible Engineer:
+	    Charles.Kunzman@sun.com
+    	1.5.3. Marketing Manager:
+	    N/A
+	1.5.4. Interest List:
+	    hvrock-dev@sun.com
+
+2. Project Summary
+   2.1. Project Description:
+	This project adds a new flag to the existing VPCI DMA sync interface to support optimized cache flushing.
+
+   2.2. Risks and Assumptions:
+	None.
+
+3. Business Summary
+   3.1. Problem Area:
+
+	Most data loaded through DMA I/O is not intended for execution by the guest Operating System. Flushing the instruction cache for most DMA operations is therefore an unnecessary hit on the cache efficiency. The PCI DMA sync interface needs to be updated to allow for optimized exclusion of instruction cache flushing.
+
+   3.2. Market/Requester:
+	Enterprise Systems
+
+   3.3. Business Justification:
+	This new API function is required in order to provide the
+	best possible system performance on upcoming UltraSPARC
+	based system products.
+
+   3.4. Competitive Analysis:
+	N/A.
+
+   3.5. Opportunity Window/Exposure:
+	N/A.
+
+   3.6. How will you know when you are done?:
+	The project is complete when the API is implemented and
+	tested according to the spec in this document on hardware
+	supporting the underlying capability.
+
+4. Technical Description:
+    4.1. Details:
+	The sun4v PCI hypercall interfaces include a function that is required to be called after the completion of any DMA access to memory before the data there can be safely used. The purpose of this interface is to allow sun4v processors with non-coherent caches the opportunity to flush any required caches prior to accessing the data.
+	Since most data loaded via DMA is not intended to be executed, it is inefficient to flush the instruction cache for every DMA transaction. However, since only the guest has knowledge of which regions are intended to contain executable data, the pci_dma_sync interface must be updated to allow the guest to indicate this to the hypervisor.
+
+    4.1.1. API specification:
+    	The project proposes to change the io_sync_direction argument of the pci_dma_sync hypercall to a io_sync_attributes argument. The io_sync_attributes argument includes the following single bit flag values:
+
+	0x01 - For device (device read from memory)
+  	0x02 - For cpu (device write to memory)
+	0x04 - No executable data in the memory region
+
+	The change will be implemented as a new minor version to the PCI function group. The new minor version number must be negotiated by the guest to use the new flags assignments.
+
+    4.1.2. API function call summary:
+
+    #Name			Group#	Trap#	Func#	Major#	Minor#
+    #====			======	=====	=====	======	======
+    PCI_DMA_SYNC		0x100	0x80	0xb8	1	2
+
+    4.1.3.
+	trap: FAST_TRAP
+	function: PCI_DMA_SYNC
+	arg0: devhandle
+	arg1: r_adddr
+	arg2: size
+	arg3: io_sync_attributes
+	ret0: status
+
+	Synchronize a memory region described by the arguments r_addr, size for the device defined by the argument devhandle using the direction(s) defined by the argument io_sync_attributes. The argument size is the size of the memory region in bytes.
+	If the region does not contain data which will be executed, the call must include the flag indicating this fact. Using this flag and later executing instructions from the region has undefined results.
+	Return the actual number of bytes synchronized in the return value #synced, which may be less than or equal to the argument size. If the return value #synced is less than size, the caller must continue to call this function with updated r_addr and size arguments until the entire memory region is synchronized. 
+
+	Errors:
+	EINVAL 		invalid devhandle
+	ENORADDR 	bad r_addr 
+
+
+    4.2. Bug/RFE Number(s):
+	N/A
+
+    4.3. In Scope:
+	N/A
+
+    4.4. Out of Scope:
+	N/A
+
+    4.5. Interfaces:
+    4.5.1. Imported Interfaces:
+    Interface			Classification	Comments
+    ====================================================================
+    sun4v I/O API		Sun Private	I/O APIs defined by
+						FWARC/2005/112 and
+						FWARC/2006/474
+
+    4.5.2. Exported Interfaces:
+    Interface			Classification	Comments
+    ====================================================================
+    PCI_DMA_SYNC		Sun Private	API call
+
+    4.6. Doc Impact:
+	The UltraSPARC Virtual Machine Specification must be updated to
+	reflect this addition.
+
+    4.7. Admin/Config Impact:
+	No impact.
+
+    4.8. HA Impact:
+	No impact.
+
+    4.9. I18N/L10N Impact:
+	No impact.
+
+    4.10. Packaging & Delivery:
+	No impact.
+
+    4.11. Security Impact:
+	No impact.
+
+    4.12. Dependencies:
+	No benefit will be seen on platforms which do not have non-coherent instruction cache or which do not have a separate instruction cache.
+
+5. Reference Documents:
+	UltraSPARC Architecture 2007 Specification
+	http://opensparc-t2.sunsource.net/specs/UA2007-current-draft-HP-EXT.pdf
+
+	UltraSPARC Virtual Machine Specification
+	http://opensparc-t1.sunsource.net/specs/Hypervisor-api-current-draft.pdf
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+	(Proprietary material)
+
+   6.2. Cost of Effort:
+	(Proprietary material)
+
+   6.3. Cost of Capital Resources:
+	(Proprietary material)
+
+   6.4. Product Approval Committee requested information:
+	N/A.
+   	6.4.1. Consolidation or Component Name:
+	6.4.3. Type of CPT Review and Approval expected:
+	6.4.4. Project Boundary Conditions:
+	6.4.5. Is this a necessary project for OEM agreements:
+	6.4.6. Notes:
+	6.4.7. Target RTI Date/Release:
+	6.4.8. Target Code Design Review Date:
+	6.4.9. Update approval addition:
+
+   6.5. ARC review type:
+		FastTrack
+   6.6. ARC Exposure:
+		open
+       6.6.1. Rationale:
+
+7. Prototype Availability:
+   7.1. Prototype Availability:
+	The changes have been prototyped and tested in the bringup lab releases for Solaris and HV.
+
+   7.2. Prototype Cost:
+	N/A. Prototype is already completed.

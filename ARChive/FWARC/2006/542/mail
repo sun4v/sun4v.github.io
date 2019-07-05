@@ -1,0 +1,2398 @@
+From sacadmin Thu Sep 14 09:29:36 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8EGTaXs005514
+	for <FWARC@sac.sfbay.sun.com>; Thu, 14 Sep 2006 09:29:36 -0700 (PDT)
+Received: from brmea-mail-3.sun.com (brmea-mail-3.Sun.COM [192.18.98.34])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k8EGTZ7s025069
+	for <FWARC@sac.sfbay.sun.com>; Thu, 14 Sep 2006 09:29:35 -0700 (PDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8EGTZDI022435
+	for <FWARC@sac.sfbay.sun.com>; Thu, 14 Sep 2006 10:29:35 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J5L00601C40S300@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM) for FWARC@sac.sfbay.sun.com; Thu,
+ 14 Sep 2006 10:29:35 -0600 (MDT)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J5L00BTZCHAAOC2@mail-amer.sun.com> for
+ FWARC@sac.sfbay.sun.com; Thu, 14 Sep 2006 10:29:35 -0600 (MDT)
+Date: Thu, 14 Sep 2006 12:27:49 -0400
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: FWARC 2006/542: Guest State Supported CIF
+Sender: Stephen.Ehring@Sun.COM
+To: FWARC@sac.sfbay.sun.com
+Message-id: <45098305.7030502@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+User-Agent: Mail/News 1.5.0.5 (X11/20060813)
+Status: RO
+Content-Length: 542
+
+I am sponsoring this case for Eric Blanchard. The timer is set to expire 
+on 9/21/2006.
+
+http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2006/542/materials/onepager.txt
+
+The case defines a new CIF which allows a guest to inform OBP that the 
+guest supports the guest state features described by FWARC 2006/473. It 
+is required to support legacy guests (older versions of Solaris, etc.) 
+since those guests will not know to update the guest state. In these 
+cases, OBP will have to update the state before handing off the trap table.
+
+Steve
+
+From sacadmin Thu Sep 14 14:03:20 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8EL3KkZ011461
+	for <FWARC@sac.sfbay.sun.com>; Thu, 14 Sep 2006 14:03:20 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k8EL3KaW003869;
+	Thu, 14 Sep 2006 14:03:20 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k8EL3Jo2011039;
+	Thu, 14 Sep 2006 14:03:19 -0700 (PDT)
+Message-ID: <4509C395.4010109@sun.com>
+Date: Thu, 14 Sep 2006 14:03:17 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 1.5.0.5 (Windows/20060719)
+MIME-Version: 1.0
+To: Eric.Blanchard@sun.com
+CC: FWARC@sac.sfbay.sun.com
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 927
+
+
+
+Stephen Ehring wrote:
+> I am sponsoring this case for Eric Blanchard. The timer is set to expire 
+> on 9/21/2006.
+> 
+> http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2006/542/materials/onepager.txt 
+> 
+> 
+> The case defines a new CIF which allows a guest to inform OBP that the 
+> guest supports the guest state features described by FWARC 2006/473. It 
+> is required to support legacy guests (older versions of Solaris, etc.) 
+> since those guests will not know to update the guest state. In these 
+> cases, OBP will have to update the state before handing off the trap table.
+
+I'm confused.
+
+Isn't the fact that the guest doesn't support guest state
+update interesting to whomever consumes guest state?
+Maybe there should be a state that indicates that OBP
+has started the guest and the guest is running (ie, taken
+over the trap table) and that any further updates (if the
+OS supports it) will come from the OS?
+
+-David
+
+From sacadmin Thu Sep 14 15:34:20 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8EMYKvn013627
+	for <FWARC@sac.sfbay.sun.com>; Thu, 14 Sep 2006 15:34:20 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com (nwkes-gis-mail-1.SFBay.Sun.COM [10.4.134.5])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k8EMYKdH011961
+	for <FWARC@sac.sfbay.sun.com>; Thu, 14 Sep 2006 15:34:20 -0700 (PDT)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8EMYEBQ015885
+	for <FWARC@sac.sfbay.sun.com>; Thu, 14 Sep 2006 15:34:14 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J5L00801TBCWL00@d1-sfbay-10.sun.com>
+ (original mail from Eric.Blanchard@Sun.COM) for FWARC@sac.sfbay.sun.com; Thu,
+ 14 Sep 2006 15:34:14 -0700 (PDT)
+Received: from [129.148.9.87] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J5L0011ATD1X7X4@d1-sfbay-10.sun.com>; Thu,
+ 14 Sep 2006 15:34:14 -0700 (PDT)
+Date: Thu, 14 Sep 2006 18:34:13 -0400
+From: Eric Blanchard <Eric.Blanchard@Sun.COM>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <4509C395.4010109@sun.com>
+Sender: Eric.Blanchard@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: FWARC@sac.sfbay.sun.com
+Reply-to: Eric.Blanchard@Sun.COM
+Message-id: <4509D8E5.6040401@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <4509C395.4010109@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 1697
+
+
+
+David Kahn wrote On 09/14/06 17:03,:
+
+>
+>
+> Stephen Ehring wrote:
+>
+>> I am sponsoring this case for Eric Blanchard. The timer is set to 
+>> expire on 9/21/2006.
+>>
+>> http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2006/542/materials/onepager.txt 
+>>
+>>
+>> The case defines a new CIF which allows a guest to inform OBP that 
+>> the guest supports the guest state features described by FWARC 
+>> 2006/473. It is required to support legacy guests (older versions of 
+>> Solaris, etc.) since those guests will not know to update the guest 
+>> state. In these cases, OBP will have to update the state before 
+>> handing off the trap table.
+>
+>
+> I'm confused.
+>
+> Isn't the fact that the guest doesn't support guest state
+> update interesting to whomever consumes guest state?
+
+
+Yes this is interesting for whomever consumes the guest state.
+
+> Maybe there should be a state that indicates that OBP
+> has started the guest and the guest is running (ie, taken
+> over the trap table) and that any further updates (if the
+> OS supports it) will come from the OS?
+
+
+I think it is best to explicitly note that a guest does not support 
+guest state. With out explicitly stating that the guest does not support 
+guest state, an OS that does not support guest state will look the same 
+as one that has hung after it receives the trap table.
+
+IMO, when Openboot encounters a guest that does not support guest state 
+it should change the software state from SIS_TRANSITION to SIS_NORMAL. 
+This is to indicate that the guest is running. I think the software 
+description can be used to indicate that the guest does not support 
+guest state and that there will be no guest state updates from the OS.
+
+-Eric
+
+
+From sacadmin Fri Sep 15 16:05:37 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8FN5blu005172
+	for <FWARC@sac.sfbay.sun.com>; Fri, 15 Sep 2006 16:05:37 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com (nwkes-gis-mail-1.SFBay.Sun.COM [10.4.134.5])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k8FN5aa7024120
+	for <FWARC@sac.sfbay.sun.com>; Fri, 15 Sep 2006 16:05:36 -0700 (PDT)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8FN5V5e020095
+	for <FWARC@sac.sfbay.sun.com>; Fri, 15 Sep 2006 16:05:31 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J5N00001PGGJH00@d1-sfbay-10.sun.com>
+ (original mail from Girish.Goyal@Sun.COM) for FWARC@sac.sfbay.sun.com; Fri,
+ 15 Sep 2006 16:05:31 -0700 (PDT)
+Received: from Sun.COM ([129.146.96.105])
+ by d1-sfbay-10.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0J5N0055XPH7N950@d1-sfbay-10.sun.com> for
+ FWARC@sac.sfbay.sun.com; Fri, 15 Sep 2006 16:05:31 -0700 (PDT)
+Date: Fri, 15 Sep 2006 16:02:42 -0700
+From: Girish Goyal <Girish.Goyal@Sun.COM>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <45098305.7030502@sun.com>
+Sender: Girish.Goyal@Sun.COM
+To: Stephen Ehring <Stephen.Ehring@Sun.COM>, Eric.Blanchard@Sun.COM
+Cc: FWARC@sac.sfbay.sun.com
+Message-id: <450B3112.2060707@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <45098305.7030502@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 1340
+
+On 09/14/06 09:27, Stephen Ehring wrote:
+
+>I am sponsoring this case for Eric Blanchard. The timer is set to expire 
+>on 9/21/2006.
+>
+>http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2006/542/materials/onepager.txt
+>
+>The case defines a new CIF which allows a guest to inform OBP that the 
+>guest supports the guest state features described by FWARC 2006/473. It 
+>is required to support legacy guests (older versions of Solaris, etc.) 
+>since those guests will not know to update the guest state. In these 
+>cases, OBP will have to update the state before handing off the trap table.
+>
+>Steve
+>  
+>
+I have the following comments on this case:
+
+  1. Section 3.1 problem area:
+
+    IMO, this section is misleading/wrong.
+
+    When booting a legacy OS, which is unaware of this interface,
+    guest state aware Openboot is expected to set the guest state
+    to SIS_NORMAL when OS takes over the trap table. This should
+    be spelled out here.
+
+    This ARC case is addressing the issue of guest state being
+    marked SIS_NORMAL too early when guest state aware OS is booted.
+
+  2. Section 4.1 Details:
+
+    Openboot sets guest state to SIS_NORMAL (not SIS_TRANSITIONAL)
+    when OS takes over the trap table and has not informed Openboot
+    via SUNW,soft-state-supported that it supports guest state. This
+    should be fixed.
+
+Girish
+
+
+From sacadmin Tue Sep 19 11:12:25 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8JICPwY027482
+	for <FWARC@sac.sfbay.sun.com>; Tue, 19 Sep 2006 11:12:25 -0700 (PDT)
+Received: from brmea-mail-3.sun.com (brmea-mail-3.Sun.COM [192.18.98.34])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k8JICP1h011507
+	for <FWARC@sac.sfbay.sun.com>; Tue, 19 Sep 2006 11:12:25 -0700 (PDT)
+Received: from fe-amer-01.sun.com ([192.18.108.175])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8JICOmY029030
+	for <FWARC@sac.sfbay.sun.com>; Tue, 19 Sep 2006 12:12:24 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5U00D01QKJMU00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM) for FWARC@sac.sfbay.sun.com; Tue,
+ 19 Sep 2006 12:12:24 -0600 (MDT)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J5U00GF5QKM8S80@mail-amer.sun.com> for
+ FWARC@sac.sfbay.sun.com; Tue, 19 Sep 2006 12:12:24 -0600 (MDT)
+Date: Tue, 19 Sep 2006 14:10:34 -0400
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <450B3112.2060707@Sun.COM>
+Sender: Stephen.Ehring@Sun.COM
+To: Girish Goyal <Girish.Goyal@Sun.COM>
+Cc: Eric.Blanchard@Sun.COM, FWARC@sac.sfbay.sun.com
+Message-id: <4510329A.4060004@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=UTF-8
+Content-transfer-encoding: 7BIT
+References: <45098305.7030502@sun.com> <450B3112.2060707@Sun.COM>
+User-Agent: Mail/News 1.5.0.5 (X11/20060813)
+Status: RO
+Content-Length: 1554
+
+Girish Goyal wrote:
+> I have the following comments on this case:
+> 
+>   1. Section 3.1 problem area:
+> 
+>     IMO, this section is misleading/wrong.
+> 
+>     When booting a legacy OS, which is unaware of this interface,
+>     guest state aware Openboot is expected to set the guest state
+>     to SIS_NORMAL when OS takes over the trap table. This should
+>     be spelled out here.
+> 
+>     This ARC case is addressing the issue of guest state being
+>     marked SIS_NORMAL too early when guest state aware OS is booted.
+> 
+
+Project team has updated Section 3.3 to state:
+
+This CIF is needed to support legacy versions of Solaris and other 
+guests that do not support the guest state feature. To function 
+properly, guest state needs to be updated when a guest takes control of 
+the trap table. Legacy versions of Solaris do not support the new Guest 
+State feature and cannot update the guest state after they have taken 
+control of the domain from Openboot. The SUNW,support-soft-state CIF 
+allows versions of guests that support guest state to differentiate
+themselves from guests that do not support guest state.
+
+
+>   2. Section 4.1 Details:
+> 
+>     Openboot sets guest state to SIS_NORMAL (not SIS_TRANSITIONAL)
+>     when OS takes over the trap table and has not informed Openboot
+>     via SUNW,soft-state-supported that it supports guest state. This
+>     should be fixed.
+> 
+
+Fixed. See new onepager here:
+
+http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2006/542/materials/onepager.txt
+
+Old spec is also in the materials directory.
+
+Steve
+
+From sacadmin Tue Sep 19 14:02:07 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8JL27QL024598
+	for <FWARC@sac.sfbay.sun.com>; Tue, 19 Sep 2006 14:02:07 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k8JL26HB001388;
+	Tue, 19 Sep 2006 14:02:06 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k8JL256H010915;
+	Tue, 19 Sep 2006 14:02:05 -0700 (PDT)
+Message-ID: <45105ACD.2080407@sun.com>
+Date: Tue, 19 Sep 2006 14:02:05 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 1.5.0.7 (Windows/20060909)
+MIME-Version: 1.0
+To: Stephen Ehring <Stephen.Ehring@sun.com>
+CC: Girish Goyal <Girish.Goyal@sun.com>, Eric.Blanchard@sun.com,
+        FWARC@sac.sfbay.sun.com, Greg Onufer <greg.onufer@sun.com>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 1191
+
+
+I still don't think that another cif is needed
+to accomplish the same thing. Unless I'm missing
+something here.
+
+For example, we can state the rules for OBP and
+clients of OBP as to how they update guest state
+similar to what we do for resource management.
+
+1. Prior to making the cif call to take over the
+    trap table, OBP owns guest state updates. The
+    OS should not do any guest state updates until
+    after the it takes over the trap table. (It can
+    do guest state updates, I suppose, but OBP won't
+    know about them and can also do guest state
+    updates which may over-write the OS guest state
+    updates.)
+
+2. OBP updates guest state to some state (tbd)
+    when the client does the 'take over trap table'
+    cif call. This state indicates that the guest
+    took over the trap table and is running at that
+    point. That's all it means. (We may need a new
+    state definition for this state.)
+
+3. Guests that support guest state, do another
+    guest state update to some other state after
+    they call the cif function to take over the
+    trap table. Guests that don't support guest
+    state do nothing.
+
+What am I missing here? Why is the cif needed?
+
+-David
+
+
+From sacadmin Tue Sep 19 14:24:52 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8JLOq0x024917
+	for <FWARC@sac.sfbay.sun.com>; Tue, 19 Sep 2006 14:24:52 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k8JLOpID006116;
+	Tue, 19 Sep 2006 14:24:51 -0700 (PDT)
+Received: from [129.146.96.102] (x-files [129.146.96.102])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k8JLOnNm011741;
+	Tue, 19 Sep 2006 14:24:51 -0700 (PDT)
+Message-ID: <45106021.6050102@sun.com>
+Date: Tue, 19 Sep 2006 14:24:49 -0700
+From: Greg Onufer <greg.onufer@sun.com>
+User-Agent: Thunderbird 2.0b1pre (X11/20060918)
+MIME-Version: 1.0
+To: David Kahn <David.Kahn@sun.com>
+CC: Stephen Ehring <Stephen.Ehring@sun.com>,
+        Girish Goyal <Girish.Goyal@sun.com>, Eric.Blanchard@sun.com,
+        FWARC@sac.sfbay.sun.com
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+References: <45105ACD.2080407@sun.com>
+In-Reply-To: <45105ACD.2080407@sun.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 508
+
+David Kahn wrote:
+> > I still don't think that another cif is needed
+> to accomplish the same thing. Unless I'm missing
+> something here.
+
+You are absolutely correct-- technically it is not needed.  But the
+project team agreed that it was better to make it explicit than to
+overload existing CIF interfaces with new, magic side-effects.  In that
+way it is self-documenting in the source code, the new CIF call
+explicitly indicates the intended behavior in the guests that support
+guest state.
+
+Cheers!greg
+
+
+
+From sacadmin Tue Sep 19 14:28:06 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8JLS6nQ029205
+	for <FWARC@sac.sfbay.sun.com>; Tue, 19 Sep 2006 14:28:06 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k8JLS5qq014461;
+	Tue, 19 Sep 2006 14:28:05 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k8JLS4Yo011938;
+	Tue, 19 Sep 2006 14:28:05 -0700 (PDT)
+Message-ID: <451060E4.7090600@sun.com>
+Date: Tue, 19 Sep 2006 14:28:04 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 1.5.0.7 (Windows/20060909)
+MIME-Version: 1.0
+To: Greg Onufer <greg.onufer@sun.com>
+CC: Stephen Ehring <Stephen.Ehring@sun.com>,
+        Girish Goyal <Girish.Goyal@sun.com>, Eric.Blanchard@sun.com,
+        FWARC@sac.sfbay.sun.com
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+References: <45105ACD.2080407@sun.com> <45106021.6050102@sun.com>
+In-Reply-To: <45106021.6050102@sun.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 599
+
+
+
+Greg Onufer wrote:
+> David Kahn wrote:
+>> > I still don't think that another cif is needed
+>> to accomplish the same thing. Unless I'm missing
+>> something here.
+> 
+> You are absolutely correct-- technically it is not needed.  But the
+> project team agreed that it was better to make it explicit than to
+> overload existing CIF interfaces with new, magic side-effects.  In that
+> way it is self-documenting in the source code, the new CIF call
+> explicitly indicates the intended behavior in the guests that support
+> guest state.
+
+That's a reasonable explanation and makes sense.
+
+Thanks,
+-David
+
+From sacadmin Tue Sep 19 16:03:16 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8JN3GKv002293
+	for <FWARC@sac.sfbay.sun.com>; Tue, 19 Sep 2006 16:03:16 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com (nwkes-gis-mail-2.SFBay.Sun.COM [10.4.134.6])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k8JN3GCt001476
+	for <FWARC@sac.sfbay.sun.com>; Tue, 19 Sep 2006 16:03:16 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8JN3AVI013602
+	for <FWARC@sac.sfbay.sun.com>; Tue, 19 Sep 2006 16:03:10 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5V00B0130N2C00@d1-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM) for FWARC@sac.sfbay.sun.com;
+ Tue, 19 Sep 2006 16:03:10 -0700 (PDT)
+Received: from [129.153.85.35] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J5V00D5B412VR06@d1-sfbay-09.sun.com> for
+ FWARC@sac.sfbay.sun.com; Tue, 19 Sep 2006 16:03:03 -0700 (PDT)
+Date: Tue, 19 Sep 2006 16:03:02 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <4510329A.4060004@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: FWARC@sac.sfbay.sun.com
+Cc: Girish Goyal <Girish.Goyal@Sun.COM>, Eric.Blanchard@Sun.COM
+Message-id: <45107726.3010300@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <45098305.7030502@sun.com> <450B3112.2060707@Sun.COM>
+ <4510329A.4060004@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 2975
+
+Stephen Ehring wrote On 09/19/06 11:10,:
+> Girish Goyal wrote:
+> 
+>> I have the following comments on this case:
+>>
+>>   1. Section 3.1 problem area:
+>>
+>>     IMO, this section is misleading/wrong.
+>>
+>>     When booting a legacy OS, which is unaware of this interface,
+>>     guest state aware Openboot is expected to set the guest state
+>>     to SIS_NORMAL when OS takes over the trap table. This should
+>>     be spelled out here.
+>>
+>>     This ARC case is addressing the issue of guest state being
+>>     marked SIS_NORMAL too early when guest state aware OS is booted.
+>>
+> 
+> Project team has updated Section 3.3 to state:
+> 
+> This CIF is needed to support legacy versions of Solaris and other 
+> guests that do not support the guest state feature. To function 
+> properly, guest state needs to be updated when a guest takes control of 
+> the trap table. Legacy versions of Solaris do not support the new Guest 
+> State feature and cannot update the guest state after they have taken 
+> control of the domain from Openboot. The SUNW,support-soft-state CIF 
+> allows versions of guests that support guest state to differentiate
+> themselves from guests that do not support guest state.
+
+If OpenBoot is changing the guest state from SIS_TRANSITIONAL to
+SIS_NORMAL then that is not the correct guest state.  The guest is
+not in "Normal" state until it has been completely booted.  Guest is
+still in "Transition" at the time TBA is taken over.  I don't think
+we should support false positive in this case.  It seems to avoid
+false negative we are changing it to false positive.  I am not in
+agreement on this.
+
+Instead of making OpenBoot update the state to Normal when guest
+is actually not in NORMAL state why not have CIF which positively
+supports guest state updates for clients which does not support
+these APIs.  For the Solaris image which does not support guest-state
+API (legacy Solaris) it can call OpenBoot CIF which updates the state
+to NORMAL.  This can happen at the tail end of Solaris initialization
+sequence.
+
+Further, the guest state API allows for description strings.  These
+string can be used to indicate states such as "OpenBoot booting",
+"OS booting".  I suggest when TBA is taken over the string to say
+something like "Trap Table owned by Client program".
+
+> 
+> 
+>>   2. Section 4.1 Details:
+>>
+>>     Openboot sets guest state to SIS_NORMAL (not SIS_TRANSITIONAL)
+>>     when OS takes over the trap table and has not informed Openboot
+>>     via SUNW,soft-state-supported that it supports guest state. This
+>>     should be fixed.
+>>
+> 
+> Fixed. See new onepager here:
+> 
+> http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2006/542/materials/onepager.txt 
+> 
+> 
+> Old spec is also in the materials directory.
+> 
+> Steve
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Wed Sep 20 08:23:19 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8KFNJj8001172
+	for <FWARC@sac.sfbay.sun.com>; Wed, 20 Sep 2006 08:23:19 -0700 (PDT)
+Received: from brmea-mail-4.sun.com (brmea-mail-4.Sun.COM [192.18.98.36])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k8KFNI2o006507
+	for <FWARC@sac.sfbay.sun.com>; Wed, 20 Sep 2006 08:23:18 -0700 (PDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8KFNICA025033
+	for <FWARC@sac.sfbay.sun.com>; Wed, 20 Sep 2006 09:23:18 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5W00H01D01RZ00@mail-amer.sun.com>
+ (original mail from Ilya.Tatar@Sun.COM) for FWARC@sac.sfbay.sun.com; Wed,
+ 20 Sep 2006 09:23:18 -0600 (MDT)
+Received: from [129.148.9.80] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J5W00LC4DEPE9I1@mail-amer.sun.com> for
+ FWARC@sac.sfbay.sun.com; Wed, 20 Sep 2006 09:23:18 -0600 (MDT)
+Date: Wed, 20 Sep 2006 11:23:13 -0400
+From: Ilya Tatar <Ilya.Tatar@Sun.COM>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <45107726.3010300@Sun.COM>
+Sender: Ilya.Tatar@Sun.COM
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: FWARC@sac.sfbay.sun.com, Girish Goyal <Girish.Goyal@Sun.COM>,
+        Eric.Blanchard@Sun.COM
+Reply-to: Ilya.Tatar@Sun.COM
+Message-id: <45115CE1.80804@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+References: <45098305.7030502@sun.com> <450B3112.2060707@Sun.COM>
+ <4510329A.4060004@sun.com> <45107726.3010300@Sun.COM>
+User-Agent: Mail/News 1.5.0.5 (X11/20060813)
+Status: RO
+Content-Length: 3006
+
+Hitendra Zhangada wrote:
+> Stephen Ehring wrote On 09/19/06 11:10,:
+>> Girish Goyal wrote:
+>>
+>>> I have the following comments on this case:
+>>>
+>>>   1. Section 3.1 problem area:
+>>>
+>>>     IMO, this section is misleading/wrong.
+>>>
+>>>     When booting a legacy OS, which is unaware of this interface,
+>>>     guest state aware Openboot is expected to set the guest state
+>>>     to SIS_NORMAL when OS takes over the trap table. This should
+>>>     be spelled out here.
+>>>
+>>>     This ARC case is addressing the issue of guest state being
+>>>     marked SIS_NORMAL too early when guest state aware OS is booted.
+>>>
+>>
+>> Project team has updated Section 3.3 to state:
+>>
+>> This CIF is needed to support legacy versions of Solaris and other 
+>> guests that do not support the guest state feature. To function 
+>> properly, guest state needs to be updated when a guest takes control 
+>> of the trap table. Legacy versions of Solaris do not support the new 
+>> Guest State feature and cannot update the guest state after they have 
+>> taken control of the domain from Openboot. The SUNW,support-soft-state 
+>> CIF allows versions of guests that support guest state to differentiate
+>> themselves from guests that do not support guest state.
+> 
+> If OpenBoot is changing the guest state from SIS_TRANSITIONAL to
+> SIS_NORMAL then that is not the correct guest state.  The guest is
+> not in "Normal" state until it has been completely booted.  Guest is
+> still in "Transition" at the time TBA is taken over.  I don't think
+> we should support false positive in this case.  It seems to avoid
+> false negative we are changing it to false positive.  I am not in
+> agreement on this.
+> 
+> Instead of making OpenBoot update the state to Normal when guest
+> is actually not in NORMAL state why not have CIF which positively
+> supports guest state updates for clients which does not support
+> these APIs.  For the Solaris image which does not support guest-state
+> API (legacy Solaris) it can call OpenBoot CIF which updates the state
+> to NORMAL.  This can happen at the tail end of Solaris initialization
+> sequence.
+
+
+Hitendra,
+I do not understand how a legacy version Solaris that does not support 
+the new APIs will support the new CIF call?
+
+Thanks,
+Ilya
+
+
+> 
+> Further, the guest state API allows for description strings.  These
+> string can be used to indicate states such as "OpenBoot booting",
+> "OS booting".  I suggest when TBA is taken over the string to say
+> something like "Trap Table owned by Client program".
+> 
+>>
+>>
+>>>   2. Section 4.1 Details:
+>>>
+>>>     Openboot sets guest state to SIS_NORMAL (not SIS_TRANSITIONAL)
+>>>     when OS takes over the trap table and has not informed Openboot
+>>>     via SUNW,soft-state-supported that it supports guest state. This
+>>>     should be fixed.
+>>>
+>>
+>> Fixed. See new onepager here:
+>>
+>> http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2006/542/materials/onepager.txt 
+>>
+>>
+>> Old spec is also in the materials directory.
+>>
+>> Steve
+> 
+
+
+From sacadmin Wed Sep 20 10:51:07 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8KHp7qH015001
+	for <FWARC@sac.sfbay.sun.com>; Wed, 20 Sep 2006 10:51:07 -0700 (PDT)
+Received: from brmea-mail-2.sun.com (brmea-mail-2.Sun.COM [192.18.98.43])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k8KHp6n3021387
+	for <FWARC@sac.sfbay.sun.com>; Wed, 20 Sep 2006 10:51:07 -0700 (PDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8KHp6M5005023
+	for <FWARC@sac.sfbay.sun.com>; Wed, 20 Sep 2006 11:51:06 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5W00001K49LA00@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM) for FWARC@sac.sfbay.sun.com;
+ Wed, 20 Sep 2006 11:51:06 -0600 (MDT)
+Received: from [129.150.33.81] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J5W00LITK95E9P1@mail-amer.sun.com> for
+ FWARC@sac.sfbay.sun.com; Wed, 20 Sep 2006 11:51:06 -0600 (MDT)
+Date: Wed, 20 Sep 2006 10:51:10 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <45115CE1.80804@Sun.COM>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Ilya.Tatar@Sun.COM, FWARC@sac.sfbay.sun.com
+Cc: Girish Goyal <Girish.Goyal@Sun.COM>, Eric.Blanchard@Sun.COM
+Message-id: <45117F8E.2070102@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <45098305.7030502@sun.com> <450B3112.2060707@Sun.COM>
+ <4510329A.4060004@sun.com> <45107726.3010300@Sun.COM> <45115CE1.80804@Sun.COM>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 3276
+
+Ilya Tatar wrote:
+
+> Hitendra Zhangada wrote:
+>
+>> Stephen Ehring wrote On 09/19/06 11:10,:
+>>
+>>> Girish Goyal wrote:
+>>>
+>>>> I have the following comments on this case:
+>>>>
+>>>>   1. Section 3.1 problem area:
+>>>>
+>>>>     IMO, this section is misleading/wrong.
+>>>>
+>>>>     When booting a legacy OS, which is unaware of this interface,
+>>>>     guest state aware Openboot is expected to set the guest state
+>>>>     to SIS_NORMAL when OS takes over the trap table. This should
+>>>>     be spelled out here.
+>>>>
+>>>>     This ARC case is addressing the issue of guest state being
+>>>>     marked SIS_NORMAL too early when guest state aware OS is booted.
+>>>>
+>>>
+>>> Project team has updated Section 3.3 to state:
+>>>
+>>> This CIF is needed to support legacy versions of Solaris and other 
+>>> guests that do not support the guest state feature. To function 
+>>> properly, guest state needs to be updated when a guest takes control 
+>>> of the trap table. Legacy versions of Solaris do not support the new 
+>>> Guest State feature and cannot update the guest state after they 
+>>> have taken control of the domain from Openboot. The 
+>>> SUNW,support-soft-state CIF allows versions of guests that support 
+>>> guest state to differentiate
+>>> themselves from guests that do not support guest state.
+>>
+>>
+>> If OpenBoot is changing the guest state from SIS_TRANSITIONAL to
+>> SIS_NORMAL then that is not the correct guest state.  The guest is
+>> not in "Normal" state until it has been completely booted.  Guest is
+>> still in "Transition" at the time TBA is taken over.  I don't think
+>> we should support false positive in this case.  It seems to avoid
+>> false negative we are changing it to false positive.  I am not in
+>> agreement on this.
+>>
+>> Instead of making OpenBoot update the state to Normal when guest
+>> is actually not in NORMAL state why not have CIF which positively
+>> supports guest state updates for clients which does not support
+>> these APIs.  For the Solaris image which does not support guest-state
+>> API (legacy Solaris) it can call OpenBoot CIF which updates the state
+>> to NORMAL.  This can happen at the tail end of Solaris initialization
+>> sequence.
+>
+>
+>
+> Hitendra,
+> I do not understand how a legacy version Solaris that does not support 
+> the new APIs will support the new CIF call?
+
+I re-read what is proposal.  I understand it now.  What is being asked is
+that when Solaris which does support the API, should make the call and
+OpenBoot by default, set the state to NORMAL unless the new CIF is called.
+
+What I was suggesting won't work.  But the problem of false positive still
+remains.  To this end, I would like to understand the consumers of the
+guest states.  From the consumer of these states, is it better to reflect
+false positive or false negative?  Since new CIF is proposed, I am assuming
+that the former but would like more detail on that.  What are the downside
+of leaving the state in TRANSITION?  What are the down side of changing it
+to NORMAL for a hung or guest Solaris PANIC?
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Wed Sep 20 11:29:33 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8KITX2D007635
+	for <FWARC@sac.sfbay.sun.com>; Wed, 20 Sep 2006 11:29:33 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com (nwkes-gis-mail-1.SFBay.Sun.COM [10.4.134.5])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k8KITXBa011759
+	for <FWARC@sac.sfbay.sun.com>; Wed, 20 Sep 2006 11:29:33 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8KITSJr017901
+	for <FWARC@sac.sfbay.sun.com>; Wed, 20 Sep 2006 11:29:28 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5W00K01LW5IM00@d1-sfbay-09.sun.com>
+ (original mail from Jack.Hayward@Sun.COM) for FWARC@sac.sfbay.sun.com; Wed,
+ 20 Sep 2006 11:29:28 -0700 (PDT)
+Received: from [129.146.11.181] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J5W00D0BM0TW178@d1-sfbay-09.sun.com> for
+ FWARC@sac.sfbay.sun.com; Wed, 20 Sep 2006 11:29:26 -0700 (PDT)
+Date: Wed, 20 Sep 2006 11:29:15 -0700
+From: John Hayward Jr <Jack.Hayward@Sun.COM>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <45117F8E.2070102@sun.com>
+Sender: Jack.Hayward@Sun.COM
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Ilya.Tatar@Sun.COM, FWARC@sac.sfbay.sun.com,
+        Girish Goyal <Girish.Goyal@Sun.COM>, Eric.Blanchard@Sun.COM
+Reply-to: Jack.Hayward@Sun.COM
+Message-id: <4511887B.7030400@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <45098305.7030502@sun.com> <450B3112.2060707@Sun.COM>
+ <4510329A.4060004@sun.com> <45107726.3010300@Sun.COM> <45115CE1.80804@Sun.COM>
+ <45117F8E.2070102@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 3715
+
+Hitendra Zhangada wrote On 09/20/06 10:51,:
+
+> Ilya Tatar wrote:
+>
+>> Hitendra Zhangada wrote:
+>>
+>>> Stephen Ehring wrote On 09/19/06 11:10,:
+>>>
+>>>> Girish Goyal wrote:
+>>>>
+>>>>> I have the following comments on this case:
+>>>>>
+>>>>>   1. Section 3.1 problem area:
+>>>>>
+>>>>>     IMO, this section is misleading/wrong.
+>>>>>
+>>>>>     When booting a legacy OS, which is unaware of this interface,
+>>>>>     guest state aware Openboot is expected to set the guest state
+>>>>>     to SIS_NORMAL when OS takes over the trap table. This should
+>>>>>     be spelled out here.
+>>>>>
+>>>>>     This ARC case is addressing the issue of guest state being
+>>>>>     marked SIS_NORMAL too early when guest state aware OS is booted.
+>>>>>
+>>>>
+>>>> Project team has updated Section 3.3 to state:
+>>>>
+>>>> This CIF is needed to support legacy versions of Solaris and other 
+>>>> guests that do not support the guest state feature. To function 
+>>>> properly, guest state needs to be updated when a guest takes 
+>>>> control of the trap table. Legacy versions of Solaris do not 
+>>>> support the new Guest State feature and cannot update the guest 
+>>>> state after they have taken control of the domain from Openboot. 
+>>>> The SUNW,support-soft-state CIF allows versions of guests that 
+>>>> support guest state to differentiate
+>>>> themselves from guests that do not support guest state.
+>>>
+>>>
+>>>
+>>> If OpenBoot is changing the guest state from SIS_TRANSITIONAL to
+>>> SIS_NORMAL then that is not the correct guest state.  The guest is
+>>> not in "Normal" state until it has been completely booted.  Guest is
+>>> still in "Transition" at the time TBA is taken over.  I don't think
+>>> we should support false positive in this case.  It seems to avoid
+>>> false negative we are changing it to false positive.  I am not in
+>>> agreement on this.
+>>>
+>>> Instead of making OpenBoot update the state to Normal when guest
+>>> is actually not in NORMAL state why not have CIF which positively
+>>> supports guest state updates for clients which does not support
+>>> these APIs.  For the Solaris image which does not support guest-state
+>>> API (legacy Solaris) it can call OpenBoot CIF which updates the state
+>>> to NORMAL.  This can happen at the tail end of Solaris initialization
+>>> sequence.
+>>
+>>
+>>
+>>
+>> Hitendra,
+>> I do not understand how a legacy version Solaris that does not 
+>> support the new APIs will support the new CIF call?
+>
+>
+> I re-read what is proposal.  I understand it now.  What is being asked is
+> that when Solaris which does support the API, should make the call and
+> OpenBoot by default, set the state to NORMAL unless the new CIF is 
+> called.
+>
+> What I was suggesting won't work.  But the problem of false positive 
+> still
+> remains.  To this end, I would like to understand the consumers of the
+> guest states.  From the consumer of these states, is it better to reflect
+> false positive or false negative?  Since new CIF is proposed, I am 
+> assuming
+> that the former but would like more detail on that.  What are the 
+> downside
+> of leaving the state in TRANSITION?  What are the down side of 
+> changing it
+> to NORMAL for a hung or guest Solaris PANIC?
+>
+>
+
+I think there was a third alternative proposed:
+Add a new state -> "OBP is handing over trap table to a legacy OS".
+
+The result is not much different than having OBP set the state to NORMAL 
+for legacy OS's.
+
+Keep in mind that for legacy OS, you will never be able to avoid the 
+fact that you may miss an (OS boot time) hang that would be caught on 
+systems that support guest state. So yes, you could say that with a 
+legacy OS, there can be "false positives", but this is unaviodable, and 
+is not a regression.
+
+
+
+
+
+
+
+From sacadmin Thu Sep 21 10:20:09 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8LHK8bW024559
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 10:20:09 -0700 (PDT)
+Received: from brmea-mail-1.sun.com (brmea-mail-1.Sun.COM [192.18.98.31])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k8LHK81s002430
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 10:20:08 -0700 (PDT)
+Received: from fe-amer-02.sun.com ([192.18.108.176])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8LHK7Ji021563
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 11:20:08 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5Y00A01DGX0C00@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM) for FWARC@sac.sfbay.sun.com;
+ Thu, 21 Sep 2006 11:20:07 -0600 (MDT)
+Received: from [129.150.34.16] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J5Y00E62DHHDA61@mail-amer.sun.com> for
+ FWARC@sac.sfbay.sun.com; Thu, 21 Sep 2006 11:20:07 -0600 (MDT)
+Date: Thu, 21 Sep 2006 10:20:05 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <4511887B.7030400@Sun.COM>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Jack.Hayward@Sun.COM
+Cc: Ilya.Tatar@Sun.COM, FWARC@sac.sfbay.sun.com,
+        Girish Goyal <Girish.Goyal@Sun.COM>, Eric.Blanchard@Sun.COM
+Message-id: <4512C9C5.7020803@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <45098305.7030502@sun.com> <450B3112.2060707@Sun.COM>
+ <4510329A.4060004@sun.com> <45107726.3010300@Sun.COM> <45115CE1.80804@Sun.COM>
+ <45117F8E.2070102@sun.com> <4511887B.7030400@Sun.COM>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 2650
+
+John Hayward Jr wrote:
+
+>>>
+>>>
+>>> Hitendra,
+>>> I do not understand how a legacy version Solaris that does not 
+>>> support the new APIs will support the new CIF call?
+>>
+>>
+>>
+>> I re-read what is proposal.  I understand it now.  What is being 
+>> asked is
+>> that when Solaris which does support the API, should make the call and
+>> OpenBoot by default, set the state to NORMAL unless the new CIF is 
+>> called.
+>>
+>> What I was suggesting won't work.  But the problem of false positive 
+>> still
+>> remains.  To this end, I would like to understand the consumers of the
+>> guest states.  From the consumer of these states, is it better to 
+>> reflect
+>> false positive or false negative?  Since new CIF is proposed, I am 
+>> assuming
+>> that the former but would like more detail on that.  What are the 
+>> downside
+>> of leaving the state in TRANSITION?  What are the down side of 
+>> changing it
+>> to NORMAL for a hung or guest Solaris PANIC?
+>>
+>>
+>
+> I think there was a third alternative proposed:
+> Add a new state -> "OBP is handing over trap table to a legacy OS".
+>
+> The result is not much different than having OBP set the state to 
+> NORMAL for legacy OS's.
+>
+> Keep in mind that for legacy OS, you will never be able to avoid the 
+> fact that you may miss an (OS boot time) hang that would be caught on 
+> systems that support guest state. So yes, you could say that with a 
+> legacy OS, there can be "false positives", but this is unaviodable, 
+> and is not a regression.
+
+I not sure if I agree with "this is not a regression" comment but what
+I want to know is the consumers of the guest states.  Where and how is
+it used?  This will help me understand the reasons for making the change.
+
+Can we do following instead of the new CIF?
+
+  OpenBoot change the state to TRANSITION (do not change it to NORMAL
+  by default) and use the descriptive string with "OpenBoot handed over
+  trap handling to client program".
+
+What above will mean for the legacy OS based platforms is that,
+
+  state = TRANSITION
+  description = "OpenBoot handed over trap handling to client program"
+
+For newer OS which does support the APIs,
+
+  state = TRANSITION while OS is being booted and also,
+  description = "OpenBoot handed over trap handling to client program"
+
+  When OS completely boots,
+
+  state = NORMAL
+  description = "Solaris booted successfully" or a blank description string.
+
+
+Will above suggestion work?
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Thu Sep 21 10:34:18 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8LHYImQ018726
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 10:34:18 -0700 (PDT)
+Received: from brmea-mail-3.sun.com (brmea-mail-3.Sun.COM [192.18.98.34])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k8LHYIe7010169
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 10:34:18 -0700 (PDT)
+Received: from fe-amer-02.sun.com ([192.18.108.176])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8LHYIqa001156
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 11:34:18 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5Y00B01DX2Q600@mail-amer.sun.com>
+ (original mail from Ilya.Tatar@Sun.COM) for FWARC@sac.sfbay.sun.com; Thu,
+ 21 Sep 2006 11:34:18 -0600 (MDT)
+Received: from [129.148.9.80] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J5Y00EUHE4ZDA61@mail-amer.sun.com> for
+ FWARC@sac.sfbay.sun.com; Thu, 21 Sep 2006 11:34:18 -0600 (MDT)
+Date: Thu, 21 Sep 2006 13:34:11 -0400
+From: Ilya Tatar <Ilya.Tatar@Sun.COM>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <4512C9C5.7020803@sun.com>
+Sender: Ilya.Tatar@Sun.COM
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Jack.Hayward@Sun.COM, FWARC@sac.sfbay.sun.com,
+        Girish Goyal <Girish.Goyal@Sun.COM>, Eric.Blanchard@Sun.COM
+Reply-to: Ilya.Tatar@Sun.COM
+Message-id: <4512CD13.8040208@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+References: <45098305.7030502@sun.com> <450B3112.2060707@Sun.COM>
+ <4510329A.4060004@sun.com> <45107726.3010300@Sun.COM> <45115CE1.80804@Sun.COM>
+ <45117F8E.2070102@sun.com> <4511887B.7030400@Sun.COM>
+ <4512C9C5.7020803@sun.com>
+User-Agent: Mail/News 1.5.0.5 (X11/20060813)
+Status: RO
+Content-Length: 3003
+
+Hitendra Zhangada wrote:
+> John Hayward Jr wrote:
+> 
+>>>>
+>>>>
+>>>> Hitendra,
+>>>> I do not understand how a legacy version Solaris that does not 
+>>>> support the new APIs will support the new CIF call?
+>>>
+>>>
+>>>
+>>> I re-read what is proposal.  I understand it now.  What is being 
+>>> asked is
+>>> that when Solaris which does support the API, should make the call and
+>>> OpenBoot by default, set the state to NORMAL unless the new CIF is 
+>>> called.
+>>>
+>>> What I was suggesting won't work.  But the problem of false positive 
+>>> still
+>>> remains.  To this end, I would like to understand the consumers of the
+>>> guest states.  From the consumer of these states, is it better to 
+>>> reflect
+>>> false positive or false negative?  Since new CIF is proposed, I am 
+>>> assuming
+>>> that the former but would like more detail on that.  What are the 
+>>> downside
+>>> of leaving the state in TRANSITION?  What are the down side of 
+>>> changing it
+>>> to NORMAL for a hung or guest Solaris PANIC?
+>>>
+>>>
+>>
+>> I think there was a third alternative proposed:
+>> Add a new state -> "OBP is handing over trap table to a legacy OS".
+>>
+>> The result is not much different than having OBP set the state to 
+>> NORMAL for legacy OS's.
+>>
+>> Keep in mind that for legacy OS, you will never be able to avoid the 
+>> fact that you may miss an (OS boot time) hang that would be caught on 
+>> systems that support guest state. So yes, you could say that with a 
+>> legacy OS, there can be "false positives", but this is unaviodable, 
+>> and is not a regression.
+> 
+> I not sure if I agree with "this is not a regression" comment but what
+> I want to know is the consumers of the guest states.  Where and how is
+> it used?  This will help me understand the reasons for making the change.
+> 
+> Can we do following instead of the new CIF?
+> 
+>  OpenBoot change the state to TRANSITION (do not change it to NORMAL
+>  by default) and use the descriptive string with "OpenBoot handed over
+>  trap handling to client program".
+> 
+> What above will mean for the legacy OS based platforms is that,
+> 
+>  state = TRANSITION
+>  description = "OpenBoot handed over trap handling to client program"
+> 
+> For newer OS which does support the APIs,
+> 
+>  state = TRANSITION while OS is being booted and also,
+>  description = "OpenBoot handed over trap handling to client program"
+> 
+>  When OS completely boots,
+> 
+>  state = NORMAL
+>  description = "Solaris booted successfully" or a blank description string.
+> 
+> 
+> Will above suggestion work?
+> 
+> 
+> Thanks.
+> 
+
+One problem with the above suggestion is that ALOM, a consumer of Guest 
+State, will not be able to tell the difference between the two 
+scenarios. This is because a consumer is allowed to programatically act 
+only on the *state* variable (normal/transition) while the *description* 
+variable is only used for logging/printing for human users. Therefor 
+with a legacy OS, ALOM won't know that OS has booted and will not 
+control LEDs correctly.
+
+-Ilya
+
+From sacadmin Thu Sep 21 10:52:31 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8LHqVGX009903
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 10:52:31 -0700 (PDT)
+Received: from brmea-mail-3.sun.com (brmea-mail-3.Sun.COM [192.18.98.34])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k8LHqUbN010020
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 10:52:30 -0700 (PDT)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8LHqULl018003
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 11:52:30 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5Y00H01EZEZE00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM) for FWARC@sac.sfbay.sun.com; Thu,
+ 21 Sep 2006 11:52:30 -0600 (MDT)
+Received: from Sun.COM ([129.148.131.34])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-6.01 (built Apr  3
+ 2006)) with ESMTPSA id <0J5Y001Y6EZGY500@mail-amer.sun.com> for
+ FWARC@sac.sfbay.sun.com; Thu, 21 Sep 2006 11:52:30 -0600 (MDT)
+Date: Thu, 21 Sep 2006 13:52:28 -0400
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <4512C9C5.7020803@sun.com>
+Sender: Stephen.Ehring@Sun.COM
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Jack.Hayward@Sun.COM, Ilya.Tatar@Sun.COM, FWARC@sac.sfbay.sun.com,
+        Girish Goyal <Girish.Goyal@Sun.COM>, Eric.Blanchard@Sun.COM
+Reply-to: Stephen.Ehring@Sun.COM
+Message-id: <4512D15C.1070409@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <45098305.7030502@sun.com> <450B3112.2060707@Sun.COM>
+ <4510329A.4060004@sun.com> <45107726.3010300@Sun.COM> <45115CE1.80804@Sun.COM>
+ <45117F8E.2070102@sun.com> <4511887B.7030400@Sun.COM>
+ <4512C9C5.7020803@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 3273
+
+
+
+Hitendra Zhangada wrote On 09/21/06 13:20,:
+> John Hayward Jr wrote:
+> 
+> 
+>>>>
+>>>>Hitendra,
+>>>>I do not understand how a legacy version Solaris that does not 
+>>>>support the new APIs will support the new CIF call?
+>>>
+>>>
+>>>
+>>>I re-read what is proposal.  I understand it now.  What is being 
+>>>asked is
+>>>that when Solaris which does support the API, should make the call and
+>>>OpenBoot by default, set the state to NORMAL unless the new CIF is 
+>>>called.
+>>>
+>>>What I was suggesting won't work.  But the problem of false positive 
+>>>still
+>>>remains.  To this end, I would like to understand the consumers of the
+>>>guest states.  From the consumer of these states, is it better to 
+>>>reflect
+>>>false positive or false negative?  Since new CIF is proposed, I am 
+>>>assuming
+>>>that the former but would like more detail on that.  What are the 
+>>>downside
+>>>of leaving the state in TRANSITION?  What are the down side of 
+>>>changing it
+>>>to NORMAL for a hung or guest Solaris PANIC?
+>>>
+>>>
+>>
+>>I think there was a third alternative proposed:
+>>Add a new state -> "OBP is handing over trap table to a legacy OS".
+>>
+>>The result is not much different than having OBP set the state to 
+>>NORMAL for legacy OS's.
+>>
+>>Keep in mind that for legacy OS, you will never be able to avoid the 
+>>fact that you may miss an (OS boot time) hang that would be caught on 
+>>systems that support guest state. So yes, you could say that with a 
+>>legacy OS, there can be "false positives", but this is unaviodable, 
+>>and is not a regression.
+> 
+> 
+> I not sure if I agree with "this is not a regression" comment but what
+> I want to know is the consumers of the guest states.  Where and how is
+> it used?  This will help me understand the reasons for making the change.
+> 
+> Can we do following instead of the new CIF?
+> 
+>   OpenBoot change the state to TRANSITION (do not change it to NORMAL
+>   by default) and use the descriptive string with "OpenBoot handed over
+>   trap handling to client program".
+
+I don't think we want to require specific strings for the
+software_description_ptr argument of this API.
+
+If you take a look at the API definitions, you'll see that the spec
+specifically discourages the use of this string in this fashion:
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2006/473/materials/sis-if.pdf
+
+Besides, we're limited to 31 characters, so the above string won't work
+(but that's besides the point).
+
+Also looking at that spec, the state is NORMAL if the API is not
+negotiated by the guest, so this CIF essentially reverts the state to
+it's default value, so I don't see why this is not sufficient for legacy
+guests.
+
+Steve
+
+> 
+> What above will mean for the legacy OS based platforms is that,
+> 
+>   state = TRANSITION
+>   description = "OpenBoot handed over trap handling to client program"
+> 
+> For newer OS which does support the APIs,
+> 
+>   state = TRANSITION while OS is being booted and also,
+>   description = "OpenBoot handed over trap handling to client program"
+> 
+>   When OS completely boots,
+> 
+>   state = NORMAL
+>   description = "Solaris booted successfully" or a blank description string.
+> 
+> 
+> Will above suggestion work?
+> 
+> 
+> Thanks.
+> 
+
+-- 
+Stephen Ehring
+Sun Microsystems
+(781)-442-2479
+stephen.ehring@sun.com
+
+
+
+From sacadmin Thu Sep 21 11:17:25 2006
+Received: from kerouac.sfbay.sun.com (kerouac.SFBay.Sun.COM [129.146.96.111])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8LIHP7W006337
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 11:17:25 -0700 (PDT)
+Received: from kerouac.sfbay.sun.com (localhost [127.0.0.1])
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k8LIKCUN013267;
+	Thu, 21 Sep 2006 11:20:12 -0700 (PDT)
+Received: (from rath@localhost)
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10/Submit) id k8LIKBOn013266;
+	Thu, 21 Sep 2006 11:20:11 -0700 (PDT)
+Date: Thu, 21 Sep 2006 11:20:11 -0700
+From: Kevin Rathbun <Kevin.Rathbun@sun.com>
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Jack.Hayward@sun.com, Ilya.Tatar@sun.com, FWARC@sac.sfbay.sun.com,
+        Girish Goyal <Girish.Goyal@sun.com>, Eric.Blanchard@sun.com
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+Message-ID: <20060921182011.GO6856@kerouac>
+Reply-To: Kevin Rathbun <Kevin.Rathbun@sun.com>
+References: <45098305.7030502@sun.com> <450B3112.2060707@Sun.COM> <4510329A.4060004@sun.com> <45107726.3010300@Sun.COM> <45115CE1.80804@Sun.COM> <45117F8E.2070102@sun.com> <4511887B.7030400@Sun.COM> <4512C9C5.7020803@sun.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <4512C9C5.7020803@sun.com>
+User-Agent: Mutt/1.4.2.1i
+Status: RO
+Content-Length: 1381
+
+On Thu, Sep 21, 2006 at 10:20:05AM -0700, Hitendra Zhangada wrote:
+> Can we do following instead of the new CIF?
+> 
+>  OpenBoot change the state to TRANSITION (do not change it to NORMAL
+>  by default) and use the descriptive string with "OpenBoot handed over
+>  trap handling to client program".
+> 
+> What above will mean for the legacy OS based platforms is that,
+> 
+>  state = TRANSITION
+>  description = "OpenBoot handed over trap handling to client program"
+
+This doesn't work because the led is lit based on the state value, not
+parsing the string. The current legacy behavior is that the led is lit
+when hv sends the sp notification that the guest is started (entering
+obp). The current proposal moves that point forward to when the os is
+started for a legacy os.
+
+kvn
+
+> 
+> For newer OS which does support the APIs,
+> 
+>  state = TRANSITION while OS is being booted and also,
+>  description = "OpenBoot handed over trap handling to client program"
+> 
+>  When OS completely boots,
+> 
+>  state = NORMAL
+>  description = "Solaris booted successfully" or a blank description string.
+> 
+> 
+> Will above suggestion work?
+> 
+> 
+> Thanks.
+> 
+> -- 
+> Hitendra Zhangada
+> =============================================
+> SPS Common SW Features Engineering
+> Systems Group, Sun Microsystems, Inc.
+> Work Ph# (858) 625 3757, Ext. x53757
+> SUN Internal homepage http://esp.west/~hitu
+> 
+
+From sacadmin Thu Sep 21 12:25:51 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8LJPpGh016746
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 12:25:51 -0700 (PDT)
+Received: from brmea-mail-2.sun.com (brmea-mail-2.Sun.COM [192.18.98.43])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k8LJPoIi026484
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 12:25:50 -0700 (PDT)
+Received: from fe-amer-01.sun.com ([192.18.108.175])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8LJPo19021784
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 13:25:50 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5Y00301IYZ7300@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM) for FWARC@sac.sfbay.sun.com;
+ Thu, 21 Sep 2006 13:25:50 -0600 (MDT)
+Received: from [129.150.34.16] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J5Y00C0SJB05KC1@mail-amer.sun.com> for
+ FWARC@sac.sfbay.sun.com; Thu, 21 Sep 2006 13:25:50 -0600 (MDT)
+Date: Thu, 21 Sep 2006 12:25:48 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <20060921182011.GO6856@kerouac>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Kevin Rathbun <Kevin.Rathbun@Sun.COM>
+Cc: Jack.Hayward@Sun.COM, Ilya.Tatar@Sun.COM, FWARC@sac.sfbay.sun.com,
+        Girish Goyal <Girish.Goyal@Sun.COM>, Eric.Blanchard@Sun.COM
+Message-id: <4512E73C.6050501@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_NGOLcg/b1zhkboELivIccg)"
+X-Accept-Language: en-us, en
+References: <45098305.7030502@sun.com> <450B3112.2060707@Sun.COM>
+ <4510329A.4060004@sun.com> <45107726.3010300@Sun.COM> <45115CE1.80804@Sun.COM>
+ <45117F8E.2070102@sun.com> <4511887B.7030400@Sun.COM>
+ <4512C9C5.7020803@sun.com> <20060921182011.GO6856@kerouac>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 5252
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_NGOLcg/b1zhkboELivIccg)
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+Kevin Rathbun wrote:
+
+>On Thu, Sep 21, 2006 at 10:20:05AM -0700, Hitendra Zhangada wrote:
+>  
+>
+>>Can we do following instead of the new CIF?
+>>
+>> OpenBoot change the state to TRANSITION (do not change it to NORMAL
+>> by default) and use the descriptive string with "OpenBoot handed over
+>> trap handling to client program".
+>>
+>>What above will mean for the legacy OS based platforms is that,
+>>
+>> state = TRANSITION
+>> description = "OpenBoot handed over trap handling to client program"
+>>    
+>>
+>
+>This doesn't work because the led is lit based on the state value, not
+>parsing the string. The current legacy behavior is that the led is lit
+>when hv sends the sp notification that the guest is started (entering
+>obp). The current proposal moves that point forward to when the os is
+>started for a legacy os.
+>  
+>
+
+So, when guest starts (enters OpenBoot) what state does HV report to
+SP?  Does it report TRANSITION or NORMAL (as per the programming note
+in the spec, it states HV will either reports NORMAL or report that
+state is not available) if the guest does not negotiate the API?
+
+If HV reports NORMAL and OpenBoot does not negotiate the API then we
+are covered but if OpenBoot is negotiating the API then state will
+reflect TRANSITION state (that's what I expect OpenBoot will set).
+I think this is the case we are trying to resolve with proposed CIF.
+
+Does OpenBoot plans on negotiating the API sometime soon?
+
+In legacy systems, when does the LED stay lit (or indicate NORMAL state)?
+Is it when HV enters OpenBoot?
+
+I do want to know answers to above questions but I am also ready to
+back down on my objection to the proposed CIF. I do not like it but
+I think it is better to report most probable state which is going to
+be NORMAL in favor of less likely occurrence of systems staying in
+TRANSITION state due to hang/panic etc.
+
+Please answer my questions above before this gets timed-out/approved.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_NGOLcg/b1zhkboELivIccg)
+Content-type: text/html; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+  <title></title>
+</head>
+<body bgcolor="#ffffff" text="#000000">
+Kevin Rathbun wrote:<br>
+<blockquote cite="mid20060921182011.GO6856@kerouac" type="cite">
+  <pre wrap="">On Thu, Sep 21, 2006 at 10:20:05AM -0700, Hitendra Zhangada wrote:
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">Can we do following instead of the new CIF?
+
+ OpenBoot change the state to TRANSITION (do not change it to NORMAL
+ by default) and use the descriptive string with "OpenBoot handed over
+ trap handling to client program".
+
+What above will mean for the legacy OS based platforms is that,
+
+ state = TRANSITION
+ description = "OpenBoot handed over trap handling to client program"
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+This doesn't work because the led is lit based on the state value, not
+parsing the string. The current legacy behavior is that the led is lit
+when hv sends the sp notification that the guest is started (entering
+obp). The current proposal moves that point forward to when the os is
+started for a legacy os.
+  </pre>
+</blockquote>
+<br>
+So, when guest starts (enters OpenBoot) what state does HV report to<br>
+SP?&nbsp; Does it report TRANSITION or NORMAL (as per the programming note<br>
+in the spec, it states HV will either reports NORMAL or report that<br>
+state is not available) if the guest does not negotiate the API?<br>
+<br>
+If HV reports NORMAL and OpenBoot does not negotiate the API then we <br>
+are covered but if OpenBoot is negotiating the API then state will<br>
+reflect TRANSITION state (that's what I expect OpenBoot will set).<br>
+I think this is the case we are trying to resolve with proposed CIF.<br>
+<br>
+Does OpenBoot plans on negotiating the API sometime soon? <br>
+<br>
+In legacy systems, when does the LED stay lit (or indicate NORMAL
+state)?<br>
+Is it when HV enters OpenBoot?<br>
+<br>
+I do want to know answers to above questions but I am also ready to<br>
+back down on my objection to the proposed CIF. I do not like it but<br>
+I think it is better to report most probable state which is going to<br>
+be NORMAL in favor of less likely occurrence of systems staying in<br>
+TRANSITION state due to hang/panic etc.<br>
+<br>
+Please answer my questions above before this gets timed-out/approved.<br>
+<br>
+<br>
+Thanks.<br>
+<br>
+<pre class="moz-signature" cols="76">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_NGOLcg/b1zhkboELivIccg)--
+
+From sacadmin Thu Sep 21 12:41:12 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8LJfCdu019890
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 12:41:12 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k8LJfBU7013932;
+	Thu, 21 Sep 2006 12:41:11 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k8LJfAW0091722;
+	Thu, 21 Sep 2006 12:41:10 -0700 (PDT)
+Message-ID: <4512EAD5.4080705@sun.com>
+Date: Thu, 21 Sep 2006 12:41:09 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 1.5.0.7 (Windows/20060909)
+MIME-Version: 1.0
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+CC: Kevin Rathbun <Kevin.Rathbun@sun.com>, Jack.Hayward@sun.com,
+        Ilya.Tatar@sun.com, FWARC@sac.sfbay.sun.com,
+        Girish Goyal <Girish.Goyal@sun.com>, Eric.Blanchard@sun.com
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 558
+
+
+
+Hitendra Zhangada wrote:
+
+
+> I do want to know answers to above questions but I am also ready to
+> back down on my objection to the proposed CIF. I do not like it but
+> I think it is better to report most probable state which is going to
+> be NORMAL in favor of less likely occurrence of systems staying in
+> TRANSITION state due to hang/panic etc.
+
+To be clear, I don't think you are questioning the interface
+(the cif) itself. You are questioning the correct usage of it.
+Since the materials include how it should be used, I guess it's
+in scope.
+
+-David
+
+From sacadmin Thu Sep 21 12:55:34 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8LJtYsE024659
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 12:55:34 -0700 (PDT)
+Received: from brmea-mail-2.sun.com (brmea-mail-2.Sun.COM [192.18.98.43])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k8LJtYqu008744
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 12:55:34 -0700 (PDT)
+Received: from fe-amer-05.sun.com ([192.18.108.179])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8LJtX2m023508
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 13:55:33 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J5Y00901KLNDV00@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM) for FWARC@sac.sfbay.sun.com;
+ Thu, 21 Sep 2006 13:55:33 -0600 (MDT)
+Received: from [129.150.34.16] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J5Y000GUKOK8DQ0@mail-amer.sun.com> for
+ FWARC@sac.sfbay.sun.com; Thu, 21 Sep 2006 13:55:33 -0600 (MDT)
+Date: Thu, 21 Sep 2006 12:55:31 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <4512EAD5.4080705@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: FWARC@sac.sfbay.sun.com
+Cc: Kevin Rathbun <Kevin.Rathbun@Sun.COM>, Jack.Hayward@Sun.COM,
+        Ilya.Tatar@Sun.COM, Girish Goyal <Girish.Goyal@Sun.COM>,
+        Eric.Blanchard@Sun.COM
+Message-id: <4512EE33.9040407@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <4512EAD5.4080705@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 1348
+
+David Kahn wrote:
+
+>
+>
+> Hitendra Zhangada wrote:
+>
+>
+>> I do want to know answers to above questions but I am also ready to
+>> back down on my objection to the proposed CIF. I do not like it but
+>> I think it is better to report most probable state which is going to
+>> be NORMAL in favor of less likely occurrence of systems staying in
+>> TRANSITION state due to hang/panic etc.
+>
+>
+> To be clear, I don't think you are questioning the interface
+> (the cif) itself. You are questioning the correct usage of it.
+> Since the materials include how it should be used, I guess it's
+> in scope.
+
+I am questioning how it is used. My basic issue is that, it allows
+possibility of misinformation to the consumer of the guest state.
+What I mean is that, the proposed use of the CIF will allow state to
+change to NORMAL state even when the guest state is not NORMAL.  At
+the time TBA is taken over by Solaris, the guest is NOT in NORMAL state.
+It is in NORMAL state when Solaris has booted successfully.  Thus, the
+proposed use of the CIF allows potential for false positive especially
+when there are guest hung or panic conditions.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Thu Sep 21 13:08:55 2006
+Received: from kerouac.sfbay.sun.com (kerouac.SFBay.Sun.COM [129.146.96.111])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8LK8tXD024453
+	for <FWARC@sac.sfbay.sun.com>; Thu, 21 Sep 2006 13:08:55 -0700 (PDT)
+Received: from kerouac.sfbay.sun.com (localhost [127.0.0.1])
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k8LKBgUN013426;
+	Thu, 21 Sep 2006 13:11:42 -0700 (PDT)
+Received: (from rath@localhost)
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10/Submit) id k8LKBf3W013425;
+	Thu, 21 Sep 2006 13:11:41 -0700 (PDT)
+Date: Thu, 21 Sep 2006 13:11:41 -0700
+From: Kevin Rathbun <Kevin.Rathbun@sun.com>
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Kevin Rathbun <Kevin.Rathbun@sun.com>, Jack.Hayward@sun.com,
+        Ilya.Tatar@sun.com, FWARC@sac.sfbay.sun.com,
+        Girish Goyal <Girish.Goyal@sun.com>, Eric.Blanchard@sun.com
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+Message-ID: <20060921201141.GQ6856@kerouac>
+Reply-To: Kevin Rathbun <Kevin.Rathbun@sun.com>
+References: <45098305.7030502@sun.com> <450B3112.2060707@Sun.COM> <4510329A.4060004@sun.com> <45107726.3010300@Sun.COM> <45115CE1.80804@Sun.COM> <45117F8E.2070102@sun.com> <4511887B.7030400@Sun.COM> <4512C9C5.7020803@sun.com> <20060921182011.GO6856@kerouac> <4512E73C.6050501@sun.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <4512E73C.6050501@sun.com>
+User-Agent: Mutt/1.4.2.1i
+Status: RO
+Content-Length: 2563
+
+On Thu, Sep 21, 2006 at 12:25:48PM -0700, Hitendra Zhangada wrote:
+> 
+>    Kevin Rathbun wrote:
+> 
+> On Thu, Sep 21, 2006 at 10:20:05AM -0700, Hitendra Zhangada wrote:
+>   
+> 
+> Can we do following instead of the new CIF?
+> 
+>  OpenBoot change the state to TRANSITION (do not change it to NORMAL
+>  by default) and use the descriptive string with "OpenBoot handed over
+>  trap handling to client program".
+> 
+> What above will mean for the legacy OS based platforms is that,
+> 
+>  state = TRANSITION
+>  description = "OpenBoot handed over trap handling to client program"
+>     
+> 
+> This doesn't work because the led is lit based on the state value, not
+> parsing the string. The current legacy behavior is that the led is lit
+> when hv sends the sp notification that the guest is started (entering
+> obp). The current proposal moves that point forward to when the os is
+> started for a legacy os.
+>   
+> 
+>    So, when guest starts (enters OpenBoot) what state does HV report to
+>    SP?  
+
+It doesn't use the guest state interface since it doesn't exist for existing
+platforms. Effectively, hv just tells vbsc when it jumps into obp that
+the guest started.
+
+kvn
+
+>Does it report TRANSITION or NORMAL (as per the programming note
+>    in the spec, it states HV will either reports NORMAL or report that
+>    state is not available) if the guest does not negotiate the API?
+>    If HV reports NORMAL and OpenBoot does not negotiate the API then we
+>    are covered but if OpenBoot is negotiating the API then state will
+>    reflect TRANSITION state (that's what I expect OpenBoot will set).
+>    I think this is the case we are trying to resolve with proposed CIF.
+>    Does OpenBoot plans on negotiating the API sometime soon?
+>    In legacy systems, when does the LED stay lit (or indicate NORMAL
+>    state)?
+>    Is it when HV enters OpenBoot?
+>    I do want to know answers to above questions but I am also ready to
+>    back down on my objection to the proposed CIF. I do not like it but
+>    I think it is better to report most probable state which is going to
+>    be NORMAL in favor of less likely occurrence of systems staying in
+>    TRANSITION state due to hang/panic etc.
+>    Please answer my questions above before this gets timed-out/approved.
+>    Thanks.
+> -- 
+> Hitendra Zhangada
+> =============================================
+> SPS Common SW Features Engineering
+> Systems Group, Sun Microsystems, Inc.
+> Work Ph# (858) 625 3757, Ext. x53757
+> SUN Internal homepage [1]http://esp.west/~hitu
+> 
+> References
+> 
+>    1. http://esp.west/~hitu
+
+From sacadmin Fri Sep 22 09:27:30 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8MGRU4w011522
+	for <FWARC@sac.sfbay.sun.com>; Fri, 22 Sep 2006 09:27:30 -0700 (PDT)
+Received: from brmea-mail-4.sun.com (brmea-mail-4.Sun.COM [192.18.98.36])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k8MGRTeh026949
+	for <FWARC@sac.sfbay.sun.com>; Fri, 22 Sep 2006 09:27:29 -0700 (PDT)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8MGRTcQ004035
+	for <FWARC@sac.sfbay.sun.com>; Fri, 22 Sep 2006 10:27:29 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J6000F015PQUQ00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM) for FWARC@sac.sfbay.sun.com; Fri,
+ 22 Sep 2006 10:27:29 -0600 (MDT)
+Received: from Sun.COM ([129.148.131.34])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-6.01 (built Apr  3
+ 2006)) with ESMTPSA id <0J600012J5PSY380@mail-amer.sun.com> for
+ FWARC@sac.sfbay.sun.com; Fri, 22 Sep 2006 10:27:29 -0600 (MDT)
+Date: Fri, 22 Sep 2006 12:27:27 -0400
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <4512EE33.9040407@sun.com>
+Sender: Stephen.Ehring@Sun.COM
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: FWARC@sac.sfbay.sun.com, Kevin Rathbun <Kevin.Rathbun@Sun.COM>,
+        Jack.Hayward@Sun.COM, Ilya.Tatar@Sun.COM,
+        Girish Goyal <Girish.Goyal@Sun.COM>, Eric.Blanchard@Sun.COM
+Reply-to: Stephen.Ehring@Sun.COM
+Message-id: <45140EEF.5070705@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <4512EAD5.4080705@sun.com> <4512EE33.9040407@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 1470
+
+
+
+Hitendra Zhangada wrote On 09/21/06 15:55,:
+
+> I am questioning how it is used. My basic issue is that, it allows
+> possibility of misinformation to the consumer of the guest state.
+> What I mean is that, the proposed use of the CIF will allow state to
+> change to NORMAL state even when the guest state is not NORMAL.  At
+> the time TBA is taken over by Solaris, the guest is NOT in NORMAL state.
+> It is in NORMAL state when Solaris has booted successfully.  Thus, the
+> proposed use of the CIF allows potential for false positive especially
+> when there are guest hung or panic conditions.
+> 
+
+I have changed the status of the case to 'waiting need spec' until we
+can resolve Hitendra's issue.
+
+For the record the "NORMAL" and "TRANSITIONAL" values for the guest
+state are part of the Sun Indicator Standard (anyone know where the
+official copy of this is?), and from what Kevin has said it appears a
+LED is lit based on the soft state and currently the state is set to
+normal as soon as HV starts OBP. So we already are in a situation where
+a hung or paniced guest will be in the "NORMAL" state (for all OSes, not
+just legacy ones).
+
+Since a LED is either on or off, I don't see much use in defining a
+third "OBP has handed over the trap table" state, unless there are other
+consumers of this state.
+
+Hitu: do you have any other suggestions for an alternative to what is
+being proposed?
+
+-- 
+Stephen Ehring
+Sun Microsystems
+(781)-442-2479
+stephen.ehring@sun.com
+
+
+
+From sacadmin Fri Sep 22 09:34:35 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8MGYY5s026568
+	for <FWARC@sac.sfbay.sun.com>; Fri, 22 Sep 2006 09:34:35 -0700 (PDT)
+Received: from brmea-mail-1.sun.com (brmea-mail-1.Sun.COM [192.18.98.31])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k8MGYYLM000741
+	for <FWARC@sac.sfbay.sun.com>; Fri, 22 Sep 2006 09:34:34 -0700 (PDT)
+Received: from fe-amer-01.sun.com ([192.18.108.175])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8MGYYET014227
+	for <FWARC@sac.sfbay.sun.com>; Fri, 22 Sep 2006 10:34:34 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J600000161C0600@mail-amer.sun.com> (original mail from eeh@sun.com)
+ for FWARC@sac.sfbay.sun.com; Fri, 22 Sep 2006 10:34:34 -0600 (MDT)
+Received: from [129.149.194.94] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J6000C1C61L5KV1@mail-amer.sun.com> for
+ FWARC@sac.sfbay.sun.com; Fri, 22 Sep 2006 10:34:34 -0600 (MDT)
+Date: Fri, 22 Sep 2006 09:34:33 -0700
+From: Eduardo E Horvath - Sun Microsystems - Newark United States <eeh@sun.com>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <45140EEF.5070705@Sun.COM>
+Sender: Eduardo.Horvath@sun.com
+To: Stephen.Ehring@sun.com
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>, FWARC@sac.sfbay.sun.com,
+        Kevin Rathbun <Kevin.Rathbun@sun.com>, Jack.Hayward@sun.com,
+        Ilya.Tatar@sun.com, Girish Goyal <Girish.Goyal@sun.com>,
+        Eric.Blanchard@sun.com
+Message-id: <45141099.7080201@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+References: <4512EAD5.4080705@sun.com> <4512EE33.9040407@sun.com>
+ <45140EEF.5070705@Sun.COM>
+User-Agent: Thunderbird 2.0b1pre (X11/20060919)
+Status: RO
+Content-Length: 554
+
+Stephen Ehring wrote:
+
+> Since a LED is either on or off, I don't see much use in defining a
+> third "OBP has handed over the trap table" state, unless there are other
+> consumers of this state.
+
+There will probably be the need to provide that state (firmware finished,
+OS started) on Netra machines in the future, if they ever get their act
+together and specify their payload state requirements.  It would be
+easier if the interface provided this information from the start rather
+than having to enhance it at some later date.
+
+-- 
+Eduardo Horvath				
+
+
+From sacadmin Fri Sep 22 11:14:27 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8MIERP4023846
+	for <FWARC@sac.sfbay.sun.com>; Fri, 22 Sep 2006 11:14:27 -0700 (PDT)
+Received: from nwk-ea-fw-1.sun.com (nwkes-gis-mail-2.SFBay.Sun.COM [10.4.134.6])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k8MIERkc018729
+	for <FWARC@sac.sfbay.sun.com>; Fri, 22 Sep 2006 11:14:27 -0700 (PDT)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8MIEMkv021529
+	for <FWARC@sac.sfbay.sun.com>; Fri, 22 Sep 2006 11:14:22 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J6000B01AN2EB00@d1-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM) for FWARC@sac.sfbay.sun.com;
+ Fri, 22 Sep 2006 11:14:22 -0700 (PDT)
+Received: from [129.153.85.35] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J6000H0VANVAKMO@d1-sfbay-10.sun.com> for
+ FWARC@sac.sfbay.sun.com; Fri, 22 Sep 2006 11:14:21 -0700 (PDT)
+Date: Fri, 22 Sep 2006 11:14:19 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <45140EEF.5070705@Sun.COM>
+Sender: Hitendra.Zhangada@Sun.COM
+To: FWARC@sac.sfbay.sun.com
+Cc: Kevin Rathbun <Kevin.Rathbun@Sun.COM>, Jack.Hayward@Sun.COM,
+        Ilya.Tatar@Sun.COM, Girish Goyal <Girish.Goyal@Sun.COM>,
+        Eric.Blanchard@Sun.COM
+Message-id: <451427FB.8010100@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <4512EAD5.4080705@sun.com> <4512EE33.9040407@sun.com>
+ <45140EEF.5070705@Sun.COM>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 2866
+
+Stephen Ehring wrote On 09/22/06 09:27,:
+> 
+> Hitendra Zhangada wrote On 09/21/06 15:55,:
+> 
+> 
+>>I am questioning how it is used. My basic issue is that, it allows
+>>possibility of misinformation to the consumer of the guest state.
+>>What I mean is that, the proposed use of the CIF will allow state to
+>>change to NORMAL state even when the guest state is not NORMAL.  At
+>>the time TBA is taken over by Solaris, the guest is NOT in NORMAL state.
+>>It is in NORMAL state when Solaris has booted successfully.  Thus, the
+>>proposed use of the CIF allows potential for false positive especially
+>>when there are guest hung or panic conditions.
+>>
+> 
+> 
+> I have changed the status of the case to 'waiting need spec' until we
+> can resolve Hitendra's issue.
+> 
+> For the record the "NORMAL" and "TRANSITIONAL" values for the guest
+> state are part of the Sun Indicator Standard (anyone know where the
+> official copy of this is?), and from what Kevin has said it appears a
+> LED is lit based on the soft state and currently the state is set to
+> normal as soon as HV starts OBP. So we already are in a situation where
+> a hung or paniced guest will be in the "NORMAL" state (for all OSes, not
+> just legacy ones).
+
+I agree now that there is no regression when the CIF is used.  As I
+mentioned in my mail, I am ready to back down on my objection.  All
+but one question is unanswered at this time.  Is OpenBoot going to
+negotiate the API and hence it is going to set it to TRANSITION state?
+
+I think answer is YES but please confirm.  If answer is YES then the
+CIF is needed, or else there is no use of it since LED is lit anyway.
+
+This also means that LED will stay lit for brief seconds when the
+conrol is transfered to OpenBoot and then go back to off state (when
+OpenBoot sets it to TRANSITION).  I think we also need other changes
+in NEW FW so that LED is NOT lit until the state is set to NORMAL.
+
+Is above taken cared off?
+
+> 
+> Since a LED is either on or off, I don't see much use in defining a
+> third "OBP has handed over the trap table" state, unless there are other
+> consumers of this state.
+
+Eduardo mention some use of it but that can come in as later enhancement
+unless project team wants to define such a state.  In other words, this
+case does not require such states be defined now since project team does
+not have use for.
+
+> Hitu: do you have any other suggestions for an alternative to what is
+> being proposed?
+
+As I stated above, we also need to change other pieces of SW so that
+the LED is NOT lit unless the state is NORMAL.  Further, OpenBoot
+should set it to TRANSITION state (with an exception of the proposed
+CIF).
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Fri Sep 22 11:25:06 2006
+Received: from kerouac.sfbay.sun.com (kerouac.SFBay.Sun.COM [129.146.96.111])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8MIP6g5014390
+	for <FWARC@sac.sfbay.sun.com>; Fri, 22 Sep 2006 11:25:06 -0700 (PDT)
+Received: from kerouac.sfbay.sun.com (localhost [127.0.0.1])
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k8MIRtUN015291;
+	Fri, 22 Sep 2006 11:27:55 -0700 (PDT)
+Received: (from rath@localhost)
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10/Submit) id k8MIRsd5015290;
+	Fri, 22 Sep 2006 11:27:54 -0700 (PDT)
+Date: Fri, 22 Sep 2006 11:27:54 -0700
+From: Kevin Rathbun <Kevin.Rathbun@sun.com>
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: FWARC@sac.sfbay.sun.com, Kevin Rathbun <Kevin.Rathbun@sun.com>,
+        Jack.Hayward@sun.com, Ilya.Tatar@sun.com,
+        Girish Goyal <Girish.Goyal@sun.com>, Eric.Blanchard@sun.com
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+Message-ID: <20060922182754.GI3922@kerouac>
+Reply-To: Kevin Rathbun <Kevin.Rathbun@sun.com>
+References: <4512EAD5.4080705@sun.com> <4512EE33.9040407@sun.com> <45140EEF.5070705@Sun.COM> <451427FB.8010100@Sun.COM>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <451427FB.8010100@Sun.COM>
+User-Agent: Mutt/1.4.2.1i
+Status: RO
+Content-Length: 3239
+
+On Fri, Sep 22, 2006 at 11:14:19AM -0700, Hitendra Zhangada wrote:
+> Stephen Ehring wrote On 09/22/06 09:27,:
+> >Hitendra Zhangada wrote On 09/21/06 15:55,:
+> >
+> >>I am questioning how it is used. My basic issue is that, it allows
+> >>possibility of misinformation to the consumer of the guest state.
+> >>What I mean is that, the proposed use of the CIF will allow state to
+> >>change to NORMAL state even when the guest state is not NORMAL.  At
+> >>the time TBA is taken over by Solaris, the guest is NOT in NORMAL state.
+> >>It is in NORMAL state when Solaris has booted successfully.  Thus, the
+> >>proposed use of the CIF allows potential for false positive especially
+> >>when there are guest hung or panic conditions.
+> >>
+> >
+> >
+> >I have changed the status of the case to 'waiting need spec' until we
+> >can resolve Hitendra's issue.
+> >
+> >For the record the "NORMAL" and "TRANSITIONAL" values for the guest
+> >state are part of the Sun Indicator Standard (anyone know where the
+> >official copy of this is?), and from what Kevin has said it appears a
+> >LED is lit based on the soft state and currently the state is set to
+> >normal as soon as HV starts OBP. So we already are in a situation where
+> >a hung or paniced guest will be in the "NORMAL" state (for all OSes, not
+> >just legacy ones).
+> 
+> I agree now that there is no regression when the CIF is used.  As I
+> mentioned in my mail, I am ready to back down on my objection.  All
+> but one question is unanswered at this time.  Is OpenBoot going to
+> negotiate the API and hence it is going to set it to TRANSITION state?
+
+That's the plan.
+
+> I think answer is YES but please confirm.  If answer is YES then the
+> CIF is needed, or else there is no use of it since LED is lit anyway.
+> 
+> This also means that LED will stay lit for brief seconds when the
+> conrol is transfered to OpenBoot and then go back to off state (when
+> OpenBoot sets it to TRANSITION).  I think we also need other changes
+> in NEW FW so that LED is NOT lit until the state is set to NORMAL.
+> 
+> Is above taken cared off?
+
+Yes, part of the changes will turn off the current behavior of setting
+state to normal when hv jumps to obp so the led is not lit until obp
+or solaris actively sets it to normal.
+
+kvn
+
+> 
+> >
+> >Since a LED is either on or off, I don't see much use in defining a
+> >third "OBP has handed over the trap table" state, unless there are other
+> >consumers of this state.
+> 
+> Eduardo mention some use of it but that can come in as later enhancement
+> unless project team wants to define such a state.  In other words, this
+> case does not require such states be defined now since project team does
+> not have use for.
+
+> >Hitu: do you have any other suggestions for an alternative to what is
+> >being proposed?
+> 
+> As I stated above, we also need to change other pieces of SW so that
+> the LED is NOT lit unless the state is NORMAL.  Further, OpenBoot
+> should set it to TRANSITION state (with an exception of the proposed
+> CIF).
+> 
+> 
+> -- 
+> Hitendra Zhangada
+> =============================================
+> SPS Common SW Features Engineering
+> Systems Group, Sun Microsystems, Inc.
+> Work Ph# (858) 625 3757, Ext. x53757
+> SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Fri Sep 22 11:27:16 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8MIRGY5018333
+	for <FWARC@sac.sfbay.sun.com>; Fri, 22 Sep 2006 11:27:16 -0700 (PDT)
+Received: from nwk-ea-fw-1.sun.com (nwkes-gis-mail-2.SFBay.Sun.COM [10.4.134.6])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k8MIRG1v025376
+	for <FWARC@sac.sfbay.sun.com>; Fri, 22 Sep 2006 11:27:16 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8MIRBUj023274
+	for <FWARC@sac.sfbay.sun.com>; Fri, 22 Sep 2006 11:27:11 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J6000D01B5EP000@d1-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM) for FWARC@sac.sfbay.sun.com;
+ Fri, 22 Sep 2006 11:27:11 -0700 (PDT)
+Received: from [129.153.85.35] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J6000D3BB91VRZA@d1-sfbay-09.sun.com> for
+ FWARC@sac.sfbay.sun.com; Fri, 22 Sep 2006 11:27:01 -0700 (PDT)
+Date: Fri, 22 Sep 2006 11:27:01 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <20060922182754.GI3922@kerouac>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Kevin Rathbun <Kevin.Rathbun@Sun.COM>
+Cc: FWARC@sac.sfbay.sun.com, Jack.Hayward@Sun.COM, Ilya.Tatar@Sun.COM,
+        Girish Goyal <Girish.Goyal@Sun.COM>, Eric.Blanchard@Sun.COM
+Message-id: <45142AF5.1020003@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <4512EAD5.4080705@sun.com> <4512EE33.9040407@sun.com>
+ <45140EEF.5070705@Sun.COM> <451427FB.8010100@Sun.COM>
+ <20060922182754.GI3922@kerouac>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 2734
+
+Kevin Rathbun wrote On 09/22/06 11:27,:
+> On Fri, Sep 22, 2006 at 11:14:19AM -0700, Hitendra Zhangada wrote:
+> 
+>>Stephen Ehring wrote On 09/22/06 09:27,:
+>>
+>>>Hitendra Zhangada wrote On 09/21/06 15:55,:
+>>>
+>>>
+>>>>I am questioning how it is used. My basic issue is that, it allows
+>>>>possibility of misinformation to the consumer of the guest state.
+>>>>What I mean is that, the proposed use of the CIF will allow state to
+>>>>change to NORMAL state even when the guest state is not NORMAL.  At
+>>>>the time TBA is taken over by Solaris, the guest is NOT in NORMAL state.
+>>>>It is in NORMAL state when Solaris has booted successfully.  Thus, the
+>>>>proposed use of the CIF allows potential for false positive especially
+>>>>when there are guest hung or panic conditions.
+>>>>
+>>>
+>>>
+>>>I have changed the status of the case to 'waiting need spec' until we
+>>>can resolve Hitendra's issue.
+>>>
+>>>For the record the "NORMAL" and "TRANSITIONAL" values for the guest
+>>>state are part of the Sun Indicator Standard (anyone know where the
+>>>official copy of this is?), and from what Kevin has said it appears a
+>>>LED is lit based on the soft state and currently the state is set to
+>>>normal as soon as HV starts OBP. So we already are in a situation where
+>>>a hung or paniced guest will be in the "NORMAL" state (for all OSes, not
+>>>just legacy ones).
+>>
+>>I agree now that there is no regression when the CIF is used.  As I
+>>mentioned in my mail, I am ready to back down on my objection.  All
+>>but one question is unanswered at this time.  Is OpenBoot going to
+>>negotiate the API and hence it is going to set it to TRANSITION state?
+> 
+> 
+> That's the plan.
+> 
+> 
+>>I think answer is YES but please confirm.  If answer is YES then the
+>>CIF is needed, or else there is no use of it since LED is lit anyway.
+>>
+>>This also means that LED will stay lit for brief seconds when the
+>>conrol is transfered to OpenBoot and then go back to off state (when
+>>OpenBoot sets it to TRANSITION).  I think we also need other changes
+>>in NEW FW so that LED is NOT lit until the state is set to NORMAL.
+>>
+>>Is above taken cared off?
+> 
+> 
+> Yes, part of the changes will turn off the current behavior of setting
+> state to normal when hv jumps to obp so the led is not lit until obp
+> or solaris actively sets it to normal.
+> 
+
+Thanks for quick reply.  I do not have any issues with this case
+at this time.  I am fine with the CIF and its usage.  Unless there
+are other issue, this case is clear from my side.
+
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Fri Sep 22 11:37:18 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8MIbIbj006091
+	for <FWARC@sac.sfbay.sun.com>; Fri, 22 Sep 2006 11:37:18 -0700 (PDT)
+Received: from brmea-mail-2.sun.com (brmea-mail-2.Sun.COM [192.18.98.43])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k8MIbIQl000149
+	for <FWARC@sac.sfbay.sun.com>; Fri, 22 Sep 2006 11:37:18 -0700 (PDT)
+Received: from fe-amer-02.sun.com ([192.18.108.176])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8MIbHQs015395
+	for <FWARC@sac.sfbay.sun.com>; Fri, 22 Sep 2006 12:37:17 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J6000501BG4XM00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM) for FWARC@sac.sfbay.sun.com; Fri,
+ 22 Sep 2006 12:37:17 -0600 (MDT)
+Received: from Sun.COM ([129.148.131.34])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-6.01 (built Apr  3
+ 2006)) with ESMTPSA id <0J6000E1NBQ4DAW1@mail-amer.sun.com> for
+ FWARC@sac.sfbay.sun.com; Fri, 22 Sep 2006 12:37:17 -0600 (MDT)
+Date: Fri, 22 Sep 2006 14:37:16 -0400
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <45142AF5.1020003@Sun.COM>
+Sender: Stephen.Ehring@Sun.COM
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Kevin Rathbun <Kevin.Rathbun@Sun.COM>, FWARC@sac.sfbay.sun.com,
+        Jack.Hayward@Sun.COM, Ilya.Tatar@Sun.COM,
+        Girish Goyal <Girish.Goyal@Sun.COM>, Eric.Blanchard@Sun.COM
+Reply-to: Stephen.Ehring@Sun.COM
+Message-id: <45142D5C.1020804@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <4512EAD5.4080705@sun.com> <4512EE33.9040407@sun.com>
+ <45140EEF.5070705@Sun.COM> <451427FB.8010100@Sun.COM>
+ <20060922182754.GI3922@kerouac> <45142AF5.1020003@Sun.COM>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 466
+
+
+
+Hitendra Zhangada wrote On 09/22/06 14:27,:
+
+> Thanks for quick reply.  I do not have any issues with this case
+> at this time.  I am fine with the CIF and its usage.  Unless there
+> are other issue, this case is clear from my side.
+
+Since Hitendra was the only member to raise an issue, I'm going to
+restart the timer for the case (which originally expired yesterday) and
+extend it until Monday to make sure everybody is okay with the
+explanations given.
+
+Steve
+
+
+From sacadmin Mon Sep 25 06:16:58 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k8PDGwg4010207
+	for <FWARC@sac.sfbay.sun.com>; Mon, 25 Sep 2006 06:16:58 -0700 (PDT)
+Received: from brmea-mail-1.sun.com (brmea-mail-1.Sun.COM [192.18.98.31])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k8PDGv4O014932
+	for <FWARC@sac.sfbay.sun.com>; Mon, 25 Sep 2006 06:16:57 -0700 (PDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k8PDGuNP005955
+	for <FWARC@sac.sfbay.sun.com>; Mon, 25 Sep 2006 07:16:57 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0J6500601GNN7500@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM) for FWARC@sac.sfbay.sun.com; Mon,
+ 25 Sep 2006 07:16:56 -0600 (MDT)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0J6500LEOGW7E9Q3@mail-amer.sun.com> for
+ FWARC@sac.sfbay.sun.com; Mon, 25 Sep 2006 07:16:56 -0600 (MDT)
+Date: Mon, 25 Sep 2006 09:15:03 -0400
+From: Stephen Ehring <Stephen.Ehring@Sun.COM>
+Subject: Re: FWARC 2006/542: Guest State Supported CIF
+In-reply-to: <451427FB.8010100@Sun.COM>
+Sender: Stephen.Ehring@Sun.COM
+To: FWARC@sac.sfbay.sun.com
+Cc: Ilya.Tatar@Sun.COM, Girish Goyal <Girish.Goyal@Sun.COM>,
+        Eric.Blanchard@Sun.COM
+Message-id: <4517D657.60102@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=UTF-8
+Content-transfer-encoding: 7BIT
+References: <4512EAD5.4080705@sun.com> <4512EE33.9040407@sun.com>
+ <45140EEF.5070705@Sun.COM> <451427FB.8010100@Sun.COM>
+User-Agent: Mail/News 1.5.0.5 (X11/20060813)
+Status: RO
+Content-Length: 75
+
+The timer on this case has expired. The case is closed as approved.
+
+Steve
+

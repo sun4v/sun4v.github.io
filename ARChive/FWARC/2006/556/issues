@@ -1,0 +1,407 @@
+-----------------------------------------------------------------------
+Issue 1:
+
+DaveK
+   What's being mapped in the SIU node and why
+   do we need an SIU parent node? I don't understand
+   this device tree layout or why it's needed. I might
+   understand a node representing the niu as the parent,
+   if, in fact, there are shared registers representing resources
+   or management controls that apply to both mac nodes,
+   and then a node for each mac as a peer or child of that
+   node. What registers are mapped here? What resources are
+   managed here? If this is artificial, we should get rid of it.
+
+MichaelS
+The SIU node was generically named because conceptually the PIU also 
+uses this "interface" to access the NCU.  From the device tree, though
+only the NIU devices are it's children.  No registers mapped here,
+it's just providing connectivity into the device tree.
+
+DaveK
+Since no registers are mapped, this is unacceptable to have
+an artificial node in the device tree, but I can understand
+from the architecture that there might be a reason to have
+an NIU node as a parent of the mac nodes as I stated in
+the issue, if the sw design is one in which common functions
+are managed by one entity and the physical layer is managed
+by another function. The impression I got from the PRM is
+that the NIU part of it manages how the device is partitioned,
+manages virtual and logical devices and groups and basically does everything
+except the mac physical layer. The two physical mac "functions"
+handle only the physical layer. So things like checksums,
+filtering, dma etc, is all handled in the NIU (shared), and only
+the physical layer is handled by the 2 physical mac functions.
+Maybe you're providing a less flexible but more traditional
+view of it so it appears to software as two fully separate
+and distinct ethernet devices?
+
+There's just no "correct" way to create an artificial
+parent node here, since other things are also below the
+siu, but we don't publish a node for that logical entity
+because, while it represents some of the silicon, it doesn't
+represent anything explicity visible to the software since
+those things are encapsulated elsewhere. 
+
+Issues meeting 10/12/2006
+While DaveK and others still strongly feel that the nexus node is clumsy 
+and unnecessary since the NIU is such a highly integrated device, we realize 
+that pragmatically it is too late to revisit this issue. We are concerned 
+that this sets a poor precedent for creating artificial device nodes. 
+Future cases should be brought to FWARC sooner to allow time to root out 
+architectural concerns such as this, but we are closing this issue as 
+long as the other issues are dealt with. The 'name' of the artificial node 
+will be changed to 'niu' since 'siu' is not even closely representative 
+of the underlying hardware this 'nexus' node is meant to represent.
+
+Status: Closed
+
+-----------------------------------------------------------------------
+Issue 2:
+
+DaveK
+   #interrupt-vectors: Why not use standard interrupts,
+   interrupt-map and interrupt-map-mask properties?
+
+MichaelS
+The "#interrupt-vectors" represents the total number of interrupts
+for the entire NIU. This approach was taken given the flexibility
+that can be taken in configuring the NIU's resources.
+
+DaveK
+Yes, that's the same response I received before I wrote this,
+and if I thought it was resolved, I wouldn't have included
+it again in this list.
+
+The NIU has 64 fixed interrupts (inos) as I read the spec
+with some help from other people familiar with the NIU.
+
+It does not have MSI/X or PCI A-D virtual interrupt wires.
+We need to find a way to represent this in a normal, generic
+manner, if it's even needed at all. If you think the number
+of fixed interrupts changes from n2 -> n3 or vf, andw that we
+might reuse the NIU as implemented in N2 on future processors
+then we might want a different interface to provide this information. It's
+my understanding that on n2, the mapping from logical devices
+to ino is fixed by the hardware. 
+
+Issues meeting 10/12/2006
+Since there is no interrupt translation, the #interrupt-vectors property 
+has been removed from the device binding. Additional text explicitly 
+states that the 'interrupts' property of the network device are actual 
+devinos.
+
+Status: Closed
+
+-----------------------------------------------------------------------
+Issue 3:
+
+DaveK
+   Do the NIU interrupts allow software to set the
+   data sent in the data that gets queued to dev mondo?
+   Either way, what's the format of the data sent to dev mondo
+   and is it consistent with the way we're handling existing
+   interrupts? What are the hv interfaces for NIU interrupts?
+   How are these events dispatched to an interrupt handler?
+
+MichaelS
+The interrupts use the same existing interfaces from VPCI 
+(hvio_intr_xxx).  We don't truly used mondos, but these
+interrupts are handled much like PCI "fixed" interrupts.
+
+DaveK
+Yes it does use mondos. When NIU ino #n is armed and triggered
+(or times out, if you enable that part of the hw interface,
+with some non yet existing hv interface)
+a message is queued to dev mondo, targeting the thread
+programmed into the interrupt table in the PIU.
+
+Since the messages end up on the same dev mondo queues
+as all other interrupts it's imperative that the format
+of the data be compliant with anything else we queue to
+dev mondo. It's my understanding that there are basically
+two choices for the data, the first is a physical format
+defined by hardware and the second allows software to
+set mondo data 0 & 1. Since either one that we use
+creates an interface, that (the data format) must be
+guaranteed to be unique and documented somewhere. 
+
+Issues meeting 10/12/2006
+We need to define this in the binding somewhere. If it is using the sun4v 
+format, then the case need to explicitly state this.
+
+TychoN provided the textual description which has been incorporated into 
+section 2.2.1.4 of the binding.
+
+Status: Closed
+
+-----------------------------------------------------------------------
+Issue 4:
+
+DaveK
+   Why is the name in the siu MD node "iodevice"?
+
+StephenE
+The siu device was designed to be a peer of the PCI-E bus node in
+the phys_io node. There is not requirement  to call this node
+'iodevice',
+so if you think it should be something else we are open to alternatives.
+
+DaveK
+I don't know how we've worked out this interface from the MD
+to OBP drivers and the device nodes, but the name should be
+something related to the NIU in my opinion. I'm not sure
+what the significance of "iodevice" is.
+
+StephenE
+We attach OBP device drivers to children of the phys_io node based on 
+'device-type' property (although we probably should be using 'compatible'). 
+I don't think this ever went to FWARC, as none of the other vpci MD properties 
+underwent FWARC review. The only documentation I found for the 'phys_io' 
+nodes was figure 3A in this document.
+
+http://sac.sfbay/FWARC/2005/115/final.materials/md-info.pdf
+
+I wanted to keep the MD node name generic for io devices, with the device-type 
+and compatible specifying the actual device (much like the exec_unit nodes 
+are all named 'exec_unit' but have the 'mau', 'cwq', etc as the 'type'). 
+
+DaveK
+For this, what's missing (overall, not just for this case)
+is a probing section in the bus bindings for sun4v and
+virtual-devices that describe the interfaces that OBP uses
+to create nodes, including how MD properties map to device
+node properties and how they are created. We have a similar
+probing section in the pci binding, if you want an example.
+It describes how probing is done on pci, what happens if
+there is an FCode driver, what happens when there isn't
+an FCode driver (create a default set of properties per node
+based on stuff in config space, do BAR assignments, etc).
+So I've been viewing the connection between the MD and OBP
+and the properties created in the device nodes as what should
+be documented in the an equivalent section in for sun4v and
+virtual-devices. I think Hitu is looking into doing this
+and for sun4v and virtual-devices, that's not part of this
+case, but if there is an artificial node then you would
+need the probing section for the artificial node.
+
+StephenE 10/13/2006
+Created section 2.5 in binding to describe OBP probing and explicitly 
+state that the 'compatible' property will be used for NIU network node 
+device creation.
+
+Status: Closed
+
+-----------------------------------------------------------------------
+Issue 5:
+
+DaveK
+   What is pio-size and pio-base for? Shouldn't
+   they simply be well-defined entries in the nodes
+   "reg" property? Same issue for vio*-size and base.
+
+StephenE
+These MD properties are used to construct the "reg" property. We think
+that what you are asking is that rather  than have 3 separate pairs of
+MD node entries, we could have a single PROP_DATA, right? What do you
+suggest be the name of this new property? registers? If that is what
+you are asking, let us know and we will update the binding.
+
+DaveK
+What do we do for the pci nodes? If we need a generic mechanism
+here, we should define one.
+
+StephenE
+The PCI MD nodes only have the single zero-length reg line required 
+of all sun4v devices (no addressable registers). Why don't we move 
+all of these properties into a single 'reg' property in the MD? Is 
+that generic enough?
+
+StephenE 10/13/2006
+Removed the pio* and vio* properties from MD node description, and added 
+text to make the 'reg' device tree node property well defined in the binding.
+
+Status: Closed
+
+-----------------------------------------------------------------------
+Issue 6:
+
+DaveK
+   Section 2 does not describe the characteristics
+   of the "siu" bus adequately. Look at other bus
+   bindings or bus binding boilerplate text. (c.f. #1)
+
+StephenE
+Section 2 was based on the bus binding boilerplate text. I can elaborate
+on this section if you'd like.  Updated binding is in case materials
+directory.
+
+DaveK
+Yes, and this was my comment based on the "binding" text that
+Stephen added. It's missing stuff, and I don't think "siu" is
+even appropriate here. 
+
+StephenE
+What is it missing? I based this almost directly on the sun4v bus binding.
+I'm going to hold off on updating this section until 
+we decide on what we want to call the sun4v child node (if we do end up 
+using a nexus node).
+
+DaveK
+Right now you have 1 sentence desribing it as the same as sun4v,
+but it isn't the same as sun4v. Also there's no section describing
+the interrupts stuff. 
+
+Issues Meeting 10/12/2006
+Since the NIU node does not do any interrupt translation (there is a 1:1 
+correspondence), we need to explicitly state this when we describe this 
+artificial nexus. Section 2.2.1.4 added to the binding.
+
+Status: Closed
+
+-----------------------------------------------------------------------
+Issue 7:
+
+DaveK
+   Is there another case for how the network interfaces
+   are allocated to the domains or how they are going to
+   be used by the OS? How will Linux use them?
+
+MichaelS
+In case of virtualization, the network interfaces will be assigned
+to the I/O service domain for the system.  It will then be utilized
+by the LDoms vSwitch of the service domain  to move traffic in/out
+of the system on the behalf of the client domains.  All I/O with
+the NIU is done via this proxied I/O.  In the future, a hybrid I/O
+model will emerge, but this is not ready yet.
+
+DaveK
+When it does emerge, how do we know that existing software
+and will still be able to use the existing interfaces with
+firmware that supports the new stuff?
+
+Issues meeting 10/12/2006
+Virtualization will be handled via extensions to the nemo framework. 
+This will be handled by a separate hybrid IO ARC case.
+
+Status: Closed
+
+-----------------------------------------------------------------------
+Issue 8:
+
+DaveK
+   Where is the architecture document describing the overall
+   NIU software/firmware architecture?
+
+MichaelS
+Here's a brief description of the architecture for what are doing.  It
+largely mimics the model for what we do for PCI and PCI-Express devices
+today. 
+
+In Niagar 2, NIU interfaces are connected to the system not via
+PCI-Express, but the SIU (System Interface Unit).  N2 NIU may be
+viewed logically as a multi-function device.  As with PCI devices it
+is desired to provide similar configuration, probing and
+initialization of the NIU device such that a new framework does
+not need to be invented for this device.
+
+DaveK
+ok, but it's not a pci* device. So we can't do that without
+a lot of hackery to make it work. So, I've been suggesting we
+make the software understand that this is a highly integrated
+device and that it be able to handle it as a highly integrated
+device. DDI compliance might be nice, but it isn't required
+for a highly integrated device, so it could be a goal, but not
+a requirement. It may mean you need an implementation specific
+"library" for building the different versions of the driver, and
+the highly integrated version of that "library" may not be ddi
+compliant, but the pci-express version of the library can be
+ddi compliant. ("library" means code implementing a common
+external interface here, not necesarily a libniu.a file.)
+
+
+MichaelS
+With this in mind, here's the software components of the architecture
+and primary functions of each component:
+
+1) Firmware (OBP):
+	- Provide probing, binding and node creation.
+	- Provide parent nodes with appropriate methods for NIU fcode 
+          driver to use OBP resources.
+
+2) SIU/NCU nexus driver
+	- Implement bus-specific DDI functions to support the NIU leaf
+	  device drivers.
+	- Insultate the NIU leaf driver from Hypervisor such that NIU
+          leaf driver may maintain a goal of being DDI/DKI compliant.
+
+3) NIU Leaf Driver
+	- Provide driver functions to access the NIU devices.
+	- Manage and handle device specific errors generated by the NIU
+	  hardware.
+	- Use DDI/DKI interfaces for interfacing with the operating
+	  system.
+
+4) NIU fcode driver/OBP
+	- Create device specific properties in addition to those
+	  created by OBP.
+		- Device specific configuration based on machine 		  	         
+descriptions
+	- Provide standard Fcode workss for loading/booting over the
+	  network.
+	- Provide register and loopback tests.
+
+5) Hypervisor
+	- Provide interfaces to the SIU/NCU nexus driver for handling
+	  interrupts and errors as a result of the NIU interracting
+	  with the SIU and/or NCU.
+	- Program specific NIU registers that should not be programmed
+	  by the NIU Leaf driver because of system security issues at
+	  system and domaining level.
+
+For more details read the referenced document for any other unaswered
+questions found at the URL below:
+
+http://webhome/stargate/neptune/docs/niu_nexus.pdf
+
+DaveK (responding to 2))
+	- Implement bus-specific DDI functions to support the NIU leaf
+	  device drivers.
+But there is no bus there. :) 
+
+	- Insultate the NIU leaf driver from Hypervisor such that NIU
+          leaf driver may maintain a goal of being DDI/DKI compliant.
+What benefit is there in that goal? I don't see any for a highly
+integrated device that doesn't appear or act like a device on a
+standard bus. (There's other ways to share source code for similar
+standard bus implementations of this device if that's the real goal here.)
+
+Issues meeting 10/12/2006
+The closest thing to an architecture document is at the URL above.
+
+Status: Closed
+
+-----------------------------------------------------------------------
+Issue 9:
+
+DaveK
+Is 7.2.1 the actual format of the data sent to the dev mondo
+queue??? If not, are there mondo data tables for the 64 NIU
+device interrupts so that software can choose the value that's
+put on dev mondo when the interrupt is sent to dev mondo
+by the NCU? I guess I'm confused because it said somewhere that
+software can't choose the values used for NIU interrupts.
+
+MichaelS
+For the NIU, Hypervisor choose the assignment for the NIU's logical
+devices interrupts in dev mondo table.  The mapping maps each of the
+36 logical devices (16 rx, 16 tx, 2 mac, 1 mif, and 1 system err)
+to it own vector in the NCU table.  For the specific format and mapping,
+Tycho can provide the details.
+
+Issues meeting 10/12/2006
+This is a sub issue of the other interrupt issue (3)
+
+Status: Closed
+
+

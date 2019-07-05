@@ -1,0 +1,469 @@
+Memory DR Messages Specification Version 1.0
+
+1 Overview
+
+The Domain Services protocol (FWARC 2006/055) provides the means for
+the LDoms Manager to communicate requests and receive responses from
+existing services which run in domains.  This project defines a new
+Domain Service to allow the LDoms Manager to add and remove memory from
+domains.  On the control domain the ldm command line interface already
+accepts the commands required to add or remove memory to/from a guest
+domain.  Currently, however, these commands result in a delayed
+reconfiguration.  When this project is complete, those same commands
+will result in a dynamic reconfiguration instead.
+
+A unit of memory is referred to as a memory block (mblk) and is
+described by a address,size pair in byte units.
+
+1.1 Service ID
+
+The following service ID should should be added to the Domain Services
+registry for the memory DR capability.
+
+Service ID	Description
+----------	-----------
+"dr-mem"	Dynamic Reconfiguration for memory
+
+Each DR service message consists of a fixed message header and optional
+packet payload described below. The overall payload length is
+determined by subtracting the size of the memory DR message header from
+the entire domain services packet size.
+
+1.2 Memory DR message header
+
+All memory DR messages begin with the same header. The message argument
+in the header and the payload that follows the header depend on the
+message type.
+
+Offset	Size	Field name	Description
+------	----	----------	-----------
+0	4	msg_type	Message type
+4	4	msg_arg		Message argument
+8	8	req_num		Request number
+
+The overall memory DR protocol consists of a command sent to the client
+guest that then responds with a reply indicating the overall success of
+the request.
+
+An error response indicates that the operation was not attempted due to
+an invalid request. An OK response indicates that the requested
+operation was attempted.  An operation may affect multiple memory
+blocks (mblk). The result of an attempted operation details the status
+of each mblk affected by the operation in a separate response record.
+
+The message types identify either a request or a response to a request.
+
+1.3 Message types
+
+The following constants are defined for memory DR domain service command
+identifier values:
+
+Request message types:
+
+Type			Value	ASCII	Definition
+----			-----	-----	----------
+DR_MEM_CONFIGURE	0x4d43	'MC'	Configure (add) memory
+DR_MEM_UNCONFIGURE	0x4d55	'MU'	Unconfigure (delete) memory
+DR_MEM_UNCONF_STATUS	0x4d53	'MS'	Get memory unconfigure status
+DR_MEM_UNCONF_CANCEL	0x4d4E	'MN'	Cancel memory unconfigure
+DR_MEM_QUERY		0x4d51	'MQ'	Query memory info
+
+Response message types:
+
+Type		Value	ASCII	Definition
+----		-----	-----	----------
+DR_MEM_OK	0x6f	'o'	Request completed OK
+DR_MEM_ERROR	0x65	'e'	Request failed (not attempted)
+
+1.3.1 Message argument
+
+The 'msg_arg' field contents depend on the message payload format and
+this is decribed in specfic request sections below.
+
+1.3.2 Request number
+
+The request number in the message header is a monotonically increasing
+number that uniquely identifies each request message.
+
+Responses to requests are expected to use the same request number so
+that they can be paired with their original request.
+
+New requests may be issued without waiting for a response to a
+preceding request.  The underlying transport protocol is responsible to
+ensure reliable, in-order and unduplicated message packets.
+
+Only one MEM_CONFIGURE/MEM_UNCONFIGURE request can be outstanding, see
+details below.
+
+Requests are to be processed in the order received.
+
+1.3.3 MEM_CONFIGURE request
+
+Request header:
+
+Field name	Value
+----------	-----------
+msg_type	DR_MEM_CONFIGURE
+msg_arg		<num_records>
+req_num		<req_num>
+
+Request payload record format:
+
+Offset	Size	Field name	Unit	Description
+------	----	----------	----	-----------
+0	8	addr		bytes	Mblk base RA
+8	8	size		bytes	Mblk size
+
+Note: An implementation may not assume that mblks are arranged in a
+specific order, and may not assume that mblks are not duplicated, but
+may assume that the mblks do not intersect.
+
+This command requests that a guest providing this service attempts to
+add the memory described by a set of mblks that have been dynamically
+configured into the guest's logical domain. The guest will abort the
+request upon the first failure to configure a mblk.  The response to
+this request indicates success or failure for each individual
+mblk specified in the request.
+
+Before a configure request, a mblk must be part of the logical domain
+in the hypervisor and must be present in the guest's Machine
+Description. If either of these conditions is not satisfied, the
+configure response will indicate that the particular mblk is in the
+DR_MEM_STAT_NOT_PRESENT state.
+
+If the guest has registered a MD update service with the LDom manager,
+the guest should be notified of a MD update, prior to sending it a
+memory DR configure request.
+
+After successful completion of a configure operation, a mblk is in the
+configured state, which means it is available for general use by the
+guest.
+
+Only one MEM_CONFIGURE request can be outstanding.  The guest will
+return a a response with a status value of DR_MEM_RES_BLOCKED if it
+receives more than one such request.
+
+1.3.4 MEM_UNCONFIGURE request
+
+Request header:
+
+Field name	Value
+----------	-----------
+msg_type	DR_MEM_UNCONFIGURE
+msg_arg		<num_records>
+req_num		<req_num>
+
+Request payload record format:
+
+Offset	Size	Field name	Unit	Description
+------	----	----------	----	-----------
+0	8	addr		bytes	Mblk base RA
+8	8	size		bytes	Mblk size
+
+Note: An implementation may not assume that mblks are arranged in a
+specific order, and may not assume that mblks are not duplicated, but
+may assume that the mblks do not intersect.
+
+This command requests that a guest providing this service attempt to
+unconfigure the memory described by a set of mblks in the request.  The
+guest will abort the request upon the first failure to unconfigure a
+mblk.  The response to this request indicates success or failure for
+each individual mblk specified in the request.
+
+After a successful unconfigure request, a mblk is in the unconfigured
+state, which means that it is no longer available for general use by
+the guest operating system. The mblk is still part of the logical
+domain and is still present in the guest's Machine Description.
+
+If the guest provides a service for registering a Machine Description
+update, that update notification will be provided only after the
+unconfigured memory has been removed from the guest's Machine Description.
+
+Only one MEM_UNCONFIGURE request can be outstanding.  The guest will
+return a a response with a status value of DR_MEM_RES_BLOCKED if it
+receives more than one such request.
+
+MEM_UNCONFIGURE is a long running operation and may generate a lot of
+I/O activity as modified outgoing pages are flushed to disk.  A guest
+may provide interfaces to track and cancel a MEM_UNCONFIGURE operation,
+see details below.
+
+1.3.5 MEM_UNCONF_STATUS request
+
+Request header:
+
+Field name	Value
+----------	-----------
+msg_type	DR_MEM_UNCONF_STATUS
+msg_arg		0
+req_num		<req_num>
+
+This command requests the status of a DR_MEM_UNCONFIGURE command in
+progress. If there is no outstanding unconfigure operation, a  DR_MEM_RES_OK
+result is returned and <num_records> is set to 0 and no payload follows
+the response. 
+
+1.3.6 MEM_UNCONF_CANCEL request
+
+Request header:
+
+Field name	Value
+----------	-----------
+msg_type	DR_MEM_UNCONF_CANCEL
+msg_arg		0
+req_num		<req_num>
+
+This command requests the guest to cancel an outstanding unconfigure
+operation. Following successful completion of a cancel operation, all
+the memory for the mblock currently processed in the outstanding
+unconfigure request will be reconfigured and available for general use
+by the guest.  Any mblocks already unconfigured will not be affected no
+further mblocks in the request will be processed.  If there is no
+outstanding unconfigure operation, a DR_MEM_RES_OK result is returned.
+If an error is encountered during cancel, a DR_MEM_RES_FAILURE result
+is returned and the cancel request will not affect the outstanding
+unconfigure operation.
+
+1.3.7 MEM_QUERY request
+
+Request header:
+
+Field name	Value
+----------	-----------
+msg_type	DR_MEM_QUERY
+msg_arg		<num_records>
+req_num		<req_num>
+
+Request payload record format:
+
+Offset	Size	Field name	Unit	Description
+------	----	----------	----	-----------
+0	8	addr		bytes	Mblk base RA
+8	8	size		bytes	Mblk size
+
+This command queries the current status of the guest memory layout for
+the memory blocks specified in the request. The request can be used to
+determine the memory range within each mblk that may be unconfigured
+by the guest.
+
+1.4 DR_MEM_OK response
+
+The DR_MEM_OK response uses the following format.  The response header
+may be followed by an array of <num_records> status reports, one for
+each record included in the command request.  Each status report
+provides information on the results of the requested operation.
+
+The data payload length can be computed from the overall packet length
+minus the header length and minus the total size of the num_records
+status report records.
+
+Following the array of status reports for certain requests is a
+variable length data section that may be used to hold additional string
+information specific to a particular mblk. Each status report contains
+an offset into that data section identifying an additional human
+readable NUL terminated ASCII string when relevant. The offset is
+specified as the byte offset relative to the first byte of the overall
+MEM DR packet header.  The domain services header indicates the overall
+memory DR packet length.
+
+1.4.1 DR_MEM_OK result codes
+
+The result code in a DR_MEM_OK response details the affect of the
+attempted operation.
+
+The result codes are defined as follows:
+
+Name				Value	Definition
+---- 				----	----------
+DR_MEM_RES_OK			0x0	Operation succeeded
+DR_MEM_RES_FAILURE		0x1	Operation failed
+DR_MEM_RES_BLOCKED		0x2	Operation blocked
+DR_MEM_RES_CANCELLED		0x3	Operation cancelled
+DR_MEM_RES_NOWORK		0x4	No work to do
+DR_MEM_RES_PERM			0x5	Permanent memory in span
+
+1.4.2 DR_MEM_OK status code
+
+The status field in a DR_MEM_OK response record details the resulting
+status of the specified mblk after the requested operation.
+
+The status codes are defined as follows:
+
+Name				Value	Definition
+----				-----	----------
+DR_MEM_STAT_NOT_PRESENT		0x0	Mblk does not exist in MD
+DR_MEM_STAT_UNCONFIGURED	0x1	Mblk exists in MD, but mblk is not
+				   	configured for use by guest
+DR_MEM_STAT_CONFIGURED		0x2	Mblk is configured for use by the guest
+
+1.4.3 DR_MEM_OK response string
+
+Each response record may optionally include a human readable string so
+that the guest may return a NUL terminated ASCII string relevant to
+each mblk with regard to the requested operation.  If no string is
+provided the string_off field in the response record for a mblk has the
+value of zero.
+
+1.4.4 MEM_CONFIGURE response payload
+
+Response header:
+
+Field name	Value
+----------	-----------
+msg_type	DR_MEM_OK
+msg_arg		<num_records>
+req_num		<req_num>
+
+Response payload record format:
+
+Offset	Size	Field name 	Description
+------	----	----------	-----------
+0	8	addr		Mblk address in bytes
+8	8	size		Mblk size in bytes
+16	4	result		Result of the operation
+20	4	status		Status of the mblk
+24	4	string_off	String offset relative to start
+
+Result codes:
+
+DR_MEM_RES_OK
+DR_MEM_RES_FAILURE
+DR_MEM_RES_BLOCKED
+DR_MEM_RES_NOWORK
+
+Status codes:
+
+DR_MEM_STAT_NOT_PRESENT
+DR_MEM_STAT_CONFIGURED
+DR_MEM_STAT_UNCONFIGURED
+
+1.4.5 MEM_UNCONFIGURE response payload
+
+Response header:
+
+Field name	Value
+----------	-----------
+msg_type	DR_MEM_OK
+msg_arg		<num_records>
+req_num		<req_num>
+
+Response payload record format:
+
+Offset	Size	Field name 	Description
+------	----	----------	-----------
+0	8	addr		Mblk address in bytes
+8	8	size		Mblk size in bytes
+16	4	result		Result of the operation
+20	4	status		Status of the mblk
+24	4	string_off	String offset relative to start
+
+Result codes:
+
+DR_MEM_RES_OK
+DR_MEM_RES_FAILURE
+DR_MEM_RES_BLOCKED
+DR_MEM_RES_CANCELLED
+DR_MEM_RES_NOWORK
+DR_MEM_RES_PERM	
+
+Status codes:
+
+DR_MEM_STAT_CONFIGURED
+DR_MEM_STAT_UNCONFIGURED
+
+1.4.6 MEM_UNCONF_STATUS response payload
+
+Response header:
+
+Field name	Value
+----------	-----------
+msg_type	DR_MEM_OK
+msg_arg		<num_records>
+req_num		<req_num>
+
+Response payload record format:
+
+Offset	Size	Field name	Description
+------	----	----------	-----------
+0	8	total		Total region size
+8	8	collected	Amount of collected memory
+
+Result codes:
+
+Name				Definition
+---- 				----------
+DR_MEM_RES_OK			Operation succeeded
+
+1.4.7 MEM_UNCONF_CANCEL response payload
+
+Response header:
+
+Field name	Value
+----------	-----------
+msg_type	DR_MEM_OK
+msg_arg		<result>
+req_num		<req_num>
+
+Result codes:
+
+Name				Definition
+---- 				----------
+DR_MEM_RES_OK			Operation succeeded
+DR_MEM_RES_FAILURE		Operation failed
+
+1.4.8 MEM_QUERY response payload
+
+Response header:
+
+Field name	Value
+----------	-----------
+msg_type	DR_MEM_OK
+msg_arg		<num_records>
+req_num		<req_num>
+
+Response payload record format:
+
+Offset	Size	Field name	Description
+------	----	----------	-----------
+0	8	addr		Mblk address in bytes
+8	8	size		Mblk size in bytes
+16	8	perm		Amount of permanent memory in mblk
+24	8	first_perm	First permanent RA in mblk
+32	8	last_perm	Last permanent RA in mblk
+
+The 'addr' and 'size' fields equals the values in the corresponding
+request.
+
+The 'perm' field is the size of the permanent memory within the mblk.
+Memory which may not be unconfigured is referred to as permanent memory.
+
+The 'first_perm' field is the lower bound of the permanent memory
+range within the mblk.
+
+The 'last_perm' field is the upper bound of the permanent memory
+range within the mblk.
+
+The memory in the mblk not contained within the lower and upper
+bounds is removable. If the 'perm' size in the response is less
+than difference of 'first_perm' and 'last_perm' addresses, it is
+indicative that there is additional removable (non-permanent)
+memory between the lower and upper bounds. 
+
+Result codes:
+
+Name				Definition
+---- 				----------
+DR_MEM_RES_OK			Operation succeeded
+
+1.5 DR_MEM_ERROR response
+
+The message type DR_MEM_ERROR is returned as a response to a malformed
+request message. No additional payload is provided with this message type.
+
+Response header:
+
+Field name	Value
+----------	-----------
+msg_type	DR_MEM_ERROR
+msg_arg		0
+req_num		<req_num>

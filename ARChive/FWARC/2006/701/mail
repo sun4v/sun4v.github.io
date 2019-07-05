@@ -1,0 +1,1702 @@
+From sacadmin Thu Dec 14 16:49:31 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id kBF0nUrq028114
+	for <fwarc@sac.eng.sun.com>; Thu, 14 Dec 2006 16:49:31 -0800 (PST)
+Received: from nwk-avmta-1.sfbay.sun.com (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id kBF0nOu8025737;
+	Fri, 15 Dec 2006 00:49:26 GMT
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0JAA00C02IADYM00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 14 Dec 2006 16:49:25 -0800 (PST)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.6]) by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0JAA00JWQIACVFD0@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 14 Dec 2006 16:49:24 -0800 (PST)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id kBF0nOsn023552; Thu,
+ 14 Dec 2006 16:49:24 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JAA00801I8SDP00@d1-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Thu,
+ 14 Dec 2006 16:49:24 -0800 (PST)
+Received: from [129.153.85.36] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JAA00D7WIACNI4M@d1-sfbay-10.sun.com>; Thu,
+ 14 Dec 2006 16:49:24 -0800 (PST)
+Date: Thu, 14 Dec 2006 16:49:24 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: fast-track : 2006/701 - PRI Domain Service
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: N2-FRUID_info@sun.com
+Message-id: <4581F114.3000009@Sun.COM>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_rwS80lmuh0OTAsPI+3GpqQ)"
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20060120
+Status: RO
+Content-Length: 10095
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_rwS80lmuh0OTAsPI+3GpqQ)
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+I am sponsoring this fast-track for Kevin Rathbun.  This case
+introduces PRI update domain service.  See details in the attached
+one-pager. The timer for this case is set to December 21, 2006.
+
+One-pager is also available at,
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/701/materials/PRI_DS_one-pager.txt
+
+
+Note that this case uses PRI data structures in the payload which
+are going to be documented via another FWARC case (2006/700). I am
+working on the final set of changes on the PRI case with Kevin.  The
+PRI DS interfaces uses existing domain services protocol to transfer
+PRI data. The PRI data structures are part of the payload for the PRI
+update domain service and hence are imported interfaces.  Changes to
+PRI data structures because of ARC review would not have any affect
+on the PRI DS interfaces itself (except the payload).
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+--Boundary_(ID_rwS80lmuh0OTAsPI+3GpqQ)
+Content-type: text/plain; name=PRI_DS_one-pager.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=PRI_DS_one-pager.txt
+
+1. Introduction
+   1.1. Project/Component Working Name:
+        PRI Domain Service
+
+   1.2. Name of Document Author/Supplier:
+        Kevin Rathbun
+
+   1.3. Date of This Document:
+        12/14/06
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+        1.4.1. The PAC or CPT you expect to review your project:
+                HS PAC
+
+        1.4.2. The ARC(s) you expect to review your project:
+                FWARC
+
+        1.4.3. The Director/VP who is "Sponsoring" this project:
+                Mike Sanfratello
+
+        1.4.4. The name of your business unit:
+                Systems Group (SG)
+                        (Sparc Platform Software)
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: gary.hethcoat@Sun.Com
+        1.5.2. Responsible Engineer: kevin.rathbun@sun.com
+        1.5.3. Marketing Manager: Nancy.Riley@Sun.COM
+        1.5.4. Interest List: N2-FRUID_info@sun.com
+
+2. Project Summary
+
+   2.1. Project Description:
+
+        This case will describe the domain service interface that a client 
+        may use to request Physical Resource Inventory (PRI) information.
+
+   2.2. Risks and Assumptions:
+
+        We need to time the changes such that both SP and Solaris changes are 
+        available and released at the same time.
+
+
+3. Business Summary
+   3.1. Problem Area:
+
+        Having complete identity information will reduce time to diagnose by
+        eliminating extra data gathering steps.  In many cases gathering 
+        this data will involve extra phone calls and/or emails to customer.  
+        We need a way to provide specific FRUID information in FMA events 
+        to SP.
+
+        To address this problem we need a way to transport PRI information to
+        the Control Domain.   
+        
+        This project proposes an interface to update PRI information over
+        a domain service channel.
+
+   3.2. Market/Requester:
+        Huron/Maramba platforms, means to satisfy key requirement for
+        Serviceability (S12Y).
+
+   3.3. Business Justification:
+        Reduces problem remediation time (time spent by service team) 
+        Enables Automatic Radiance Case Creation and Routing (aka ACCR)
+        Estimated cost saving to Sun for Huron/Maramba only: @ $3.89 M 
+
+   3.4. Competitive Analysis:
+        As noted above, an enabler for ACCR, which improves Sun's service
+        call response time and accuracy.	
+
+   3.5. Opportunity Window/Exposure:
+        Solaris s10u4_b3
+
+   3.6. How will you know when you are done?:
+        When the changes are integrated into both Solaris Nevada
+        and S10u4_b3 as well as vBSC gates.
+
+4. Technical Description:
+
+    4.1 Overview
+
+         The PRI is intended to contain various kinds of information about a 
+         system.  Much of this information has previously been contained in
+         the Machine Description (MD).  The PRI domain service will facilitate
+         access to this information from the Control Domain.
+
+         The SC will generate the PRI and send PRI Update Messages containing
+         the PRI to the Control domain  using domain service. The messages 
+         will generally be sent when the initial domain service registration 
+         occurs. They may also be sent asynchronously on a channel when the 
+         PRI is updated by the SC.  Control domain will respond to the PRI
+         update message by sending a PRI update response.  See following
+         sections for the details.
+
+    4.1.1 PRI domain service 1.0
+
+         The version of the domain service describe below is 1.0.
+    
+    4.1.1.1 Service ID
+
+         There is one service IDs defined to support the PRI update 
+         capability.
+
+         The following service ID should be added to the Domain Services
+         registry for the PRI update capability.
+
+         Service ID                Description
+         ----------                ----------------------------------
+         "pri-update"              PRI update domain service
+
+
+    4.1.1.2 PRI Update Message
+    
+         The PRI Update Message header contains a 64-bit message number
+         and a 64-bit size. It is followed by the PRI data.
+
+         Offset Size   Field name    Description
+         ------ ----   ----------    ----------------------------------
+         0       8     pri_msgnum    Message number
+         8       8     pri_size      Size of the PRI data
+         16     Var    pri           PRI data
+
+    4.1.1.3 PRI Update Response
+
+         There will be one PRI update response for each PRI update message.
+         The PRI Update Response has the following format.
+
+         Offset Size Field name     Description
+         ------ ---- ----------     ------------------------------------
+          0      8    pri_msgnum    Message number responding to
+          8      8    status        Status of PRI Update
+
+    4.1.1.4  pri_msgnum
+
+        The pri_msgnum is the message number in the PRI Update header which 
+        is a monotonically increasing number that uniquely identifies each 
+        message.  Responses to messages are expected to use the same message 
+        number so that they can be paired with their original message.
+
+        New messages may be issued without waiting for a response to a
+        preceding message.  The underlying transport protocol is responsible
+        to ensure reliable, in-order and unduplicated message packets.
+
+        Messages are to be processed in the order received.
+
+
+    4.1.1.5 Response Status Codes
+
+         Name                      Value    Definition
+         ---------------------     -----    ---------------------------------
+         PRI_UPDATE_ACK            0x00     PRI Successfully Received and 
+                                            Verified
+         PRI_UPDATE_INVALID_MSG    0x01     Message Payload Invalid
+         PRI_UPDATE_INVALID_PRI    0x02     PRI Format Invalid
+
+
+
+   4.2 Imported Interfaces :
+                
+         Interface              Classification      Comments
+         =================      ================    ======================
+
+         Domain Services        Sun Private         Defined by FWARC/2006/055
+         Specification
+
+         PRI Information        Committed           Defined by FWARC/2006/700
+
+   4.3 Exported Interfaces:
+
+
+       Interface                   Classification   Comments
+       ================            ===============  =====================
+
+       PRI domain service 
+       version 1.0
+    
+         Service ID: "pri-update"   Sun Private     Service id as described
+                                                    in section 4.1.1.1
+
+         PRI update message         Sun Private     PRI update message
+         Payload                                    payload as described
+                                                    in section 4.1.1.2
+
+         PRI update response        Sun Private     PRI update response
+         Payload                                    payload as described
+                                                    in section 4.1.1.3
+         
+         status codes               Sun Private     PRI update response
+                                                    status codes as 
+                                                    described in section
+                                                    4.1.1.5
+
+5. Reference Documents:
+  [1] libpri on sun4v (initial proposal by Ash Saulsbury)
+        http://sunwebcollab.east.sun.com/gm/document-1.9.2221866
+  [2] webrev of prototype libpri and ds_pri driver (tar file)
+        http://sunwebcollab.east.sun.com/gm/document-1.9.2221896
+  [3] sun4v machine description
+        http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/115/
+  [4] Domain Services
+        http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/055/
+
+6. Resources and Schedule:
+   6.1. Projected Availability:	Q3FY07
+
+   6.2. Cost of Effort: 3 person months
+
+   6.3. Cost of Capital Resources: N/A
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation or Component Name: vBSC, Solaris
+	6.4.3. Type of CPT Review and Approval expected: FastTrack
+        6.4.4. Project Boundary Conditions: N/A
+	6.4.5. Is this a necessary project for OEM agreements: No.
+	6.4.6. Notes: None
+	6.4.7. Target RTI Date/Release: S10u4_b3
+	6.4.8. Target Code Design Review Date: 01/05/2007
+	6.4.9. Update approval addition: N/A		
+
+   6.5. ARC review type: FastTrack
+		
+7. Prototype Availability:
+   7.1. Prototype Availability:
+	Q2FY07
+
+   7.2. Prototype Cost:
+      3 person months	
+
+--Boundary_(ID_rwS80lmuh0OTAsPI+3GpqQ)--
+
+From sacadmin Thu Dec 14 16:52:56 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id kBF0qtY4028195
+	for <fwarc@sac.eng.Sun.COM>; Thu, 14 Dec 2006 16:52:56 -0800 (PST)
+Received: from nwk-avmta-1.sfbay.sun.com (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id kBF0qqYv012402;
+	Fri, 15 Dec 2006 08:52:54 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0JAA00D04IG4Q900@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 14 Dec 2006 16:52:52 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0JAA00JXAIG4VYC0@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 14 Dec 2006 16:52:52 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id kBF0qqkD011659; Thu, 14 Dec 2006 16:52:52 -0800 (PST)
+Received: from [192.168.0.9] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id kBF0qpLi000872; Thu,
+ 14 Dec 2006 16:52:51 -0800 (PST)
+Date: Thu, 14 Dec 2006 16:52:50 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: fast-track : 2006/701 - PRI Domain Service
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, N2-FRUID_info@sun.com
+Message-id: <4581F1E2.2010403@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 1.5.0.8 (Windows/20061025)
+Status: RO
+Content-Length: 743
+
+
+
+Hitendra Zhangada wrote:
+
+> Note that this case uses PRI data structures in the payload which
+> are going to be documented via another FWARC case (2006/700). I am
+> working on the final set of changes on the PRI case with Kevin.  The
+> PRI DS interfaces uses existing domain services protocol to transfer
+> PRI data. The PRI data structures are part of the payload for the PRI
+> update domain service and hence are imported interfaces.  Changes to
+> PRI data structures because of ARC review would not have any affect
+> on the PRI DS interfaces itself (except the payload).
+
+Can you implement this service without understanding the
+format of the data structures?
+
+Maybe this should be a single case, and put on hold till it's
+ready?
+
+-David
+
+From sacadmin Thu Dec 14 16:55:51 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id kBF0to7I028584
+	for <fwarc@sac.eng.sun.com>; Thu, 14 Dec 2006 16:55:51 -0800 (PST)
+Received: from nwk-avmta-1.sfbay.sun.com (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id kBF0tmYo027153;
+	Fri, 15 Dec 2006 00:55:50 GMT
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0JAA00E02IL1I600@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 14 Dec 2006 16:55:49 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0JAA00J1SIL1VOE0@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 14 Dec 2006 16:55:49 -0800 (PST)
+Received: from kerouac.sfbay.sun.com (kerouac.SFBay.Sun.COM [129.146.96.111])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id kBF0tmPR012486; Thu, 14 Dec 2006 16:55:48 -0800 (PST)
+Received: from kerouac.sfbay.sun.com (localhost [127.0.0.1])
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id kBF12FUN010826;
+ Thu, 14 Dec 2006 17:02:15 -0800 (PST)
+Received: (from rath@localhost)
+	by kerouac.sfbay.sun.com (8.12.10+Sun/8.12.10/Submit) id kBF12F5L010825; Thu,
+ 14 Dec 2006 17:02:15 -0800 (PST)
+Date: Thu, 14 Dec 2006 17:02:14 -0800
+From: Kevin Rathbun <Kevin.Rathbun@sun.com>
+Subject: Re: fast-track : 2006/701 - PRI Domain Service
+In-reply-to: <4581F1E2.2010403@sun.com>
+To: David Kahn <David.Kahn@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware Arch <fwarc@sun.com>, N2-FRUID_info@sun.com
+Reply-to: Kevin Rathbun <Kevin.Rathbun@sun.com>
+Message-id: <20061215010214.GI6908@kerouac>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+Content-disposition: inline
+X-PMX-Version: 5.2.0.264296
+References: <4581F1E2.2010403@sun.com>
+User-Agent: Mutt/1.4.2.1i
+Status: RO
+Content-Length: 951
+
+On Thu, Dec 14, 2006 at 04:52:50PM -0800, David Kahn wrote:
+> 
+> 
+> Hitendra Zhangada wrote:
+> 
+> >Note that this case uses PRI data structures in the payload which
+> >are going to be documented via another FWARC case (2006/700). I am
+> >working on the final set of changes on the PRI case with Kevin.  The
+> >PRI DS interfaces uses existing domain services protocol to transfer
+> >PRI data. The PRI data structures are part of the payload for the PRI
+> >update domain service and hence are imported interfaces.  Changes to
+> >PRI data structures because of ARC review would not have any affect
+> >on the PRI DS interfaces itself (except the payload).
+> 
+> Can you implement this service without understanding the
+> format of the data structures?
+
+Yes you can.
+
+> 
+> Maybe this should be a single case, and put on hold till it's
+> ready?
+
+Either way. I think its a clean split and follows past case history
+with the domain services.
+
+kvn
+
+> 
+> -David
+
+From sacadmin Thu Dec 14 16:58:07 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id kBF0w65I028600
+	for <fwarc@sac.eng.sun.com>; Thu, 14 Dec 2006 16:58:06 -0800 (PST)
+Received: from nwk-avmta-1.sfbay.sun.com (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id kBF0w3Rf027791;
+	Fri, 15 Dec 2006 00:58:04 GMT
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0JAA00E02IORQE00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 14 Dec 2006 16:58:03 -0800 (PST)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0JAA00J5EIOQVOE0@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 14 Dec 2006 16:58:03 -0800 (PST)
+Received: from fe-amer-02.sun.com ([192.18.108.176])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id kBF0w2rk000055; Thu,
+ 14 Dec 2006 17:58:02 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JAA00101I6X0900@mail-amer.sun.com> (original mail from Foz.Saeed@Sun.COM)
+ ; Thu, 14 Dec 2006 17:58:02 -0700 (MST)
+Received: from sun.com ([129.150.27.31])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-6.01 (built Apr  3
+ 2006)) with ESMTPSA id <0JAA000Z7IOPH500@mail-amer.sun.com>; Thu,
+ 14 Dec 2006 17:58:02 -0700 (MST)
+Date: Thu, 14 Dec 2006 16:57:59 -0800
+From: Fauzia Saeed <Foz.Saeed@Sun.COM>
+Subject: Re: fast-track : 2006/701 - PRI Domain Service
+In-reply-to: <4581F1E2.2010403@sun.com>
+Sender: Foz.Saeed@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>,
+        Firmware Arch <fwarc@Sun.COM>, N2-FRUID_info@Sun.COM
+Reply-to: Foz.Saeed@Sun.COM
+Message-id: <4581F317.1050607@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <4581F1E2.2010403@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.4.1)
+ Gecko/20031008
+Status: RO
+Content-Length: 832
+
+We need this case for the ON putback.
+
+David Kahn wrote:
+
+>
+>
+> Hitendra Zhangada wrote:
+>
+>> Note that this case uses PRI data structures in the payload which
+>> are going to be documented via another FWARC case (2006/700). I am
+>> working on the final set of changes on the PRI case with Kevin.  The
+>> PRI DS interfaces uses existing domain services protocol to transfer
+>> PRI data. The PRI data structures are part of the payload for the PRI
+>> update domain service and hence are imported interfaces.  Changes to
+>> PRI data structures because of ARC review would not have any affect
+>> on the PRI DS interfaces itself (except the payload).
+>
+>
+> Can you implement this service without understanding the
+> format of the data structures?
+>
+> Maybe this should be a single case, and put on hold till it's
+> ready?
+>
+> -David
+
+
+
+
+From sacadmin Thu Dec 14 17:15:29 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id kBF1FSqZ028741
+	for <fwarc@sac.eng.sun.com>; Thu, 14 Dec 2006 17:15:28 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id kBF1FNgk001211;
+	Fri, 15 Dec 2006 01:15:27 GMT
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JAA00309JHPKX00@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 14 Dec 2006 17:15:25 -0800 (PST)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.5]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JAA002S0JHO2I20@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 14 Dec 2006 17:15:24 -0800 (PST)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id kBF1FOpu001393; Thu,
+ 14 Dec 2006 17:15:24 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JAA00101JEV3E00@d1-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Thu,
+ 14 Dec 2006 17:15:24 -0800 (PST)
+Received: from [129.153.85.36] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JAA00F1KJHOP4EG@d1-sfbay-09.sun.com>; Thu,
+ 14 Dec 2006 17:15:24 -0800 (PST)
+Date: Thu, 14 Dec 2006 17:15:24 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: fast-track : 2006/701 - PRI Domain Service
+In-reply-to: <20061215010214.GI6908@kerouac>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: N2-FRUID_info@sun.com
+Message-id: <4581F72C.7020106@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <4581F1E2.2010403@sun.com> <20061215010214.GI6908@kerouac>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20060120
+Status: RO
+Content-Length: 1626
+
+
+
+Kevin Rathbun wrote On 12/14/06 17:02,:
+> On Thu, Dec 14, 2006 at 04:52:50PM -0800, David Kahn wrote:
+> 
+>>
+>>Hitendra Zhangada wrote:
+>>
+>>
+>>>Note that this case uses PRI data structures in the payload which
+>>>are going to be documented via another FWARC case (2006/700). I am
+>>>working on the final set of changes on the PRI case with Kevin.  The
+>>>PRI DS interfaces uses existing domain services protocol to transfer
+>>>PRI data. The PRI data structures are part of the payload for the PRI
+>>>update domain service and hence are imported interfaces.  Changes to
+>>>PRI data structures because of ARC review would not have any affect
+>>>on the PRI DS interfaces itself (except the payload).
+>>
+>>Can you implement this service without understanding the
+>>format of the data structures?
+> 
+> 
+> Yes you can.
+> 
+> 
+>>Maybe this should be a single case, and put on hold till it's
+>>ready?
+> 
+> 
+> Either way. I think its a clean split and follows past case history
+> with the domain services.
+
+I agree.  Instead of waiting for the PRI data approved before this case
+is submitted I would like to review FWARC the PRI DS (this case) interfaces.
+Whatever the PRI format happens to be after that case get approved will
+be used as a payload.
+
+We can either conditionally approve or approve both cases together.
+
+BTW, PRI case is close to submission too.  In a day or two it will
+be submitted.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Thu Dec 14 17:51:02 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id kBF1p12M029398
+	for <fwarc@sac.eng.Sun.COM>; Thu, 14 Dec 2006 17:51:01 -0800 (PST)
+Received: from nwk-avmta-1.sfbay.sun.com (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id kBF1oxHF006930;
+	Fri, 15 Dec 2006 09:51:00 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0JAA00106L4ZW200@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 14 Dec 2006 17:50:59 -0800 (PST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0JAA00JY7L4ZVDE0@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 14 Dec 2006 17:50:59 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id kBF1owM8000750; Thu, 14 Dec 2006 17:50:58 -0800 (PST)
+Received: from [192.168.0.9] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id kBF1ovio004639; Thu,
+ 14 Dec 2006 17:50:58 -0800 (PST)
+Date: Thu, 14 Dec 2006 17:50:57 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: fast-track : 2006/701 - PRI Domain Service
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, N2-FRUID_info@sun.com
+Message-id: <4581FF81.4050407@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 1.5.0.8 (Windows/20061025)
+Status: RO
+Content-Length: 160
+
+
+
+Hitendra Zhangada wrote:
+
+
+> BTW, PRI case is close to submission too.  In a day or two it will
+> be submitted.
+
+I'm ok with doing it as submitted.
+
+-David
+
+
+
+From sacadmin Mon Dec 18 18:34:13 2006
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id kBJ2YDWU022629
+	for <fwarc@sac.eng.sun.com>; Mon, 18 Dec 2006 18:34:13 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id kBJ2YCiQ007593;
+	Mon, 18 Dec 2006 18:34:13 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JAI003071SZSR00@brm-avmta-1.central.sun.com>; Mon,
+ 18 Dec 2006 19:34:11 -0700 (MST)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JAI009971SY13F0@brm-avmta-1.central.sun.com>; Mon,
+ 18 Dec 2006 19:34:10 -0700 (MST)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id kBJ2YAsR015511; Mon,
+ 18 Dec 2006 18:34:10 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JAI00M011RL9N00@d1-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Mon,
+ 18 Dec 2006 18:34:10 -0800 (PST)
+Received: from [129.153.85.36] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JAI00D9H1SXNRLY@d1-sfbay-10.sun.com>; Mon,
+ 18 Dec 2006 18:34:10 -0800 (PST)
+Date: Mon, 18 Dec 2006 18:34:09 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: fast-track : 2006/701 - PRI Domain Service
+In-reply-to: <4581F114.3000009@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: N2-FRUID_info@sun.com, Eric Sharakan <Eric.Sharakan@sun.com>,
+        Ashley Saulsbury <Ashley.Saulsbury@sun.com>
+Message-id: <45874FA1.8070500@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <4581F114.3000009@Sun.COM>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20060120
+Status: RO
+Content-Length: 719
+
+Hitendra Zhangada wrote On 12/14/06 16:49,:
+> I am sponsoring this fast-track for Kevin Rathbun.  This case
+> introduces PRI update domain service.  See details in the attached
+> one-pager. The timer for this case is set to December 21, 2006.
+
+I forgot to mention that this case requests minor/micro/patch OS
+binding and minor/micro binding for the firmware.
+
+> 
+> One-pager is also available at,
+> 
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/701/materials/PRI_DS_one-pager.txt 
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Thu Dec 21 16:17:10 2006
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id kBM0HAGx028450
+	for <fwarc@sac.eng.sun.com>; Thu, 21 Dec 2006 16:17:10 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id kBM0H8FS021665;
+	Thu, 21 Dec 2006 16:17:09 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JAN00K0BFGF0V00@brm-avmta-1.central.sun.com>; Thu,
+ 21 Dec 2006 17:17:03 -0700 (MST)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JAN00I5QFG67U10@brm-avmta-1.central.sun.com>; Thu,
+ 21 Dec 2006 17:16:54 -0700 (MST)
+Received: from fe-amer-05.sun.com ([192.18.108.179])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id kBM0Gsoo018005; Thu,
+ 21 Dec 2006 17:16:54 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JAN00301EQ3RO00@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Thu,
+ 21 Dec 2006 17:16:54 -0700 (MST)
+Received: from [129.150.35.237] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JAN00BPJFG5JJ21@mail-amer.sun.com>; Thu,
+ 21 Dec 2006 17:16:54 -0700 (MST)
+Date: Thu, 21 Dec 2006 16:16:52 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: fast-track : 2006/701 - PRI Domain Service
+In-reply-to: <4581F114.3000009@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: N2-FRUID_info@sun.com, Ashley Saulsbury <Ashley.Saulsbury@sun.com>
+Message-id: <458B23F4.400@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <4581F114.3000009@Sun.COM>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 905
+
+Hitendra Zhangada wrote:
+
+> I am sponsoring this fast-track for Kevin Rathbun.  This case
+> introduces PRI update domain service.  See details in the attached
+> one-pager. The timer for this case is set to December 21, 2006.
+>
+This case would have timed-out today but some last minute findings
+have resulted into changes to the specification.  Project team is
+working on a revised specification.  I am changing the state of
+this case to "waiting need spec".  The case will resume with new
+timer once updated specification is available.
+
+
+Thanks.
+
+> One-pager is also available at,
+>
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/701/materials/PRI_DS_one-pager.txt 
+>
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Thu Dec 21 16:41:42 2006
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id kBM0fgSE029346
+	for <fwarc@sac.eng.sun.com>; Thu, 21 Dec 2006 16:41:42 -0800 (PST)
+Received: from nwk-avmta-1.sfbay.sun.com (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id kBM0fZsv025858;
+	Thu, 21 Dec 2006 16:41:41 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0JAN00D02GLEWF00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 21 Dec 2006 16:41:38 -0800 (PST)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0JAN00MQLGLDSFE0@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 21 Dec 2006 16:41:38 -0800 (PST)
+Received: from fe-amer-05.sun.com ([192.18.108.179])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id kBM0fbdZ022426; Thu,
+ 21 Dec 2006 17:41:37 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JAN00501FOWNS00@mail-amer.sun.com> (original mail from Yu.Kong@Sun.COM)
+ ; Thu, 21 Dec 2006 17:41:37 -0700 (MST)
+Received: from [129.149.2.151] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JAN00B7UGLCJJ31@mail-amer.sun.com>; Thu,
+ 21 Dec 2006 17:41:37 -0700 (MST)
+Date: Thu, 21 Dec 2006 16:41:36 -0800
+From: Yu Kong <Yu.Kong@Sun.COM>
+Subject: Re: fast-track : 2006/701 - PRI Domain Service
+In-reply-to: <458B23F4.400@sun.com>
+Sender: Yu.Kong@Sun.COM
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, N2-FRUID_info@Sun.COM,
+        Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>
+Reply-to: Yu.Kong@Sun.COM
+Message-id: <458B29C0.3040703@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <4581F114.3000009@Sun.COM> <458B23F4.400@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20060120
+Status: RO
+Content-Length: 898
+
+Hitendra,
+
+So that I can update jade code to increase the alarm time for poll-tty 
+to 10 and to see the result, is it ok?
+
+Thanks,
+Yu Kong
+
+
+Hitendra Zhangada wrote On 12/21/06 16:16,:
+
+> Hitendra Zhangada wrote:
+>
+>> I am sponsoring this fast-track for Kevin Rathbun.  This case
+>> introduces PRI update domain service.  See details in the attached
+>> one-pager. The timer for this case is set to December 21, 2006.
+>>
+> This case would have timed-out today but some last minute findings
+> have resulted into changes to the specification.  Project team is
+> working on a revised specification.  I am changing the state of
+> this case to "waiting need spec".  The case will resume with new
+> timer once updated specification is available.
+>
+>
+> Thanks.
+>
+>> One-pager is also available at,
+>>
+>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/701/materials/PRI_DS_one-pager.txt 
+>>
+>
+>
+>
+
+From sacadmin Fri Dec 22 10:05:52 2006
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id kBMI5qdY000786
+	for <fwarc@sac.eng.sun.com>; Fri, 22 Dec 2006 10:05:52 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id kBMI5pCG016052;
+	Fri, 22 Dec 2006 10:05:52 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JAO00M0HSXSU800@brm-avmta-1.central.sun.com>; Fri,
+ 22 Dec 2006 11:05:52 -0700 (MST)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JAO00IEVSXR5K30@brm-avmta-1.central.sun.com>; Fri,
+ 22 Dec 2006 11:05:51 -0700 (MST)
+Received: from fe-amer-05.sun.com ([192.18.108.179])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id kBMI5pGZ005461; Fri,
+ 22 Dec 2006 11:05:51 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JAO00201SONR200@mail-amer.sun.com>
+ (original mail from Tarl.Neustaedter@Sun.COM); Fri,
+ 22 Dec 2006 11:05:51 -0700 (MST)
+Received: from [129.148.184.208] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JAO00BOGSXQJJJ1@mail-amer.sun.com>; Fri,
+ 22 Dec 2006 11:05:51 -0700 (MST)
+Date: Fri, 22 Dec 2006 13:06:05 -0500
+From: Tarl Neustaedter <Tarl.Neustaedter@sun.com>
+Subject: Re: fast-track : 2006/701 - PRI Domain Service
+In-reply-to: <458B29C0.3040703@Sun.COM>
+Sender: Tarl.Neustaedter@sun.com
+To: Yu.Kong@sun.com
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware Arch <fwarc@sun.com>, N2-FRUID_info@sun.com,
+        Ashley Saulsbury <Ashley.Saulsbury@sun.com>
+Message-id: <458C1E8D.7010602@sun.com>
+Organization: Sun Microsystems, Scalable Systems Group
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <4581F114.3000009@Sun.COM> <458B23F4.400@sun.com>
+ <458B29C0.3040703@Sun.COM>
+User-Agent: Thunderbird 2.0b1 (X11/20061212)
+Status: RO
+Content-Length: 281
+
+Yu Kong wrote:
+> Hitendra,
+> 
+> So that I can update jade code to increase the alarm time for poll-tty 
+> to 10 and to see the result, is it ok?
+
+As long as you don't *leave* it at 10ms. If you just want to try it,
+that's one thing, but changing it for everyone else is a problem.
+
+From sacadmin Wed Jan  3 19:58:24 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l043wMCo027375
+	for <fwarc@sac.eng.Sun.COM>; Wed, 3 Jan 2007 19:58:23 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l043wGUd023906;
+	Thu, 4 Jan 2007 11:58:21 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JBB00L0DSD7A200@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 03 Jan 2007 19:58:19 -0800 (PST)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JBB00J2VSD7M7A0@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 03 Jan 2007 19:58:19 -0800 (PST)
+Received: from fe-amer-02.sun.com ([192.18.108.176])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l043wI0s001712; Wed,
+ 03 Jan 2007 20:58:18 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JBB00L01SBBAO00@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Wed,
+ 03 Jan 2007 20:58:18 -0700 (MST)
+Received: from [129.150.32.225] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JBB00LG6SD46WX7@mail-amer.sun.com>; Wed,
+ 03 Jan 2007 20:58:18 -0700 (MST)
+Date: Wed, 03 Jan 2007 19:58:17 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: fast-track : 2006/701 - PRI Domain Service
+In-reply-to: <458B23F4.400@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: N2-FRUID_info@sun.com, Ashley Saulsbury <ashley.saulsbury@sun.com>
+Message-id: <459C7B59.3020500@sun.com>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_cXN9E9A+zj1oo1ix9Opkfw)"
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <4581F114.3000009@Sun.COM> <458B23F4.400@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 11139
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_cXN9E9A+zj1oo1ix9Opkfw)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+Hitendra Zhangada wrote:
+
+> Hitendra Zhangada wrote:
+>
+>> I am sponsoring this fast-track for Kevin Rathbun.  This case
+>> introduces PRI update domain service.  See details in the attached
+>> one-pager. The timer for this case is set to December 21, 2006.
+>>
+> This case would have timed-out today but some last minute findings
+> have resulted into changes to the specification.  Project team is
+> working on a revised specification.  I am changing the state of
+> this case to "waiting need spec".  The case will resume with new
+> timer once updated specification is available.
+
+This case is ready for review again.  I have attached the latest
+one-pager with the specification in section 4.  The link below
+has been updated with the latest one-pager.
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/701/materials/PRI_DS_one-pager.txt
+
+
+I am extending timer for this case to a week from today, to January 10, 
+2007.
+
+This case requests minor/micro/patch OS binding and minor/micro binding
+for the firmware.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_cXN9E9A+zj1oo1ix9Opkfw)
+Content-type: text/plain; name=PRI_DS_one-pager.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=PRI_DS_one-pager.txt
+
+1. Introduction
+   1.1. Project/Component Working Name:
+        PRI Domain Service
+
+   1.2. Name of Document Author/Supplier:
+        Kevin Rathbun
+
+   1.3. Date of This Document:
+        01/03/07
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+        1.4.1. The PAC or CPT you expect to review your project:
+                HS PAC
+
+        1.4.2. The ARC(s) you expect to review your project:
+                FWARC
+
+        1.4.3. The Director/VP who is "Sponsoring" this project:
+                Mike Sanfratello
+
+        1.4.4. The name of your business unit:
+                Systems Group (SG)
+                        (Sparc Platform Software)
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: gary.hethcoat@Sun.Com
+        1.5.2. Responsible Engineer: kevin.rathbun@sun.com
+        1.5.3. Marketing Manager: Nancy.Riley@Sun.COM
+        1.5.4. Interest List: N2-FRUID_info@sun.com
+
+2. Project Summary
+
+   2.1. Project Description:
+
+        This case describes the domain service interface through which a 
+        client obtains the Physical Resource Inventory (PRI).
+
+   2.2. Risks and Assumptions:
+
+        We need to time the changes such that both SP and Solaris changes are 
+        available and released at the same time.
+
+
+3. Business Summary
+   3.1. Problem Area:
+
+        Having complete identity information will reduce time to diagnose by
+        eliminating extra data gathering steps.  In many cases gathering this 
+        data will involve extra phone calls and/or emails to customer.  We 
+        need a way to provide specific FRUID information in FMA events to SP.
+
+        To address this problem we need a way to transport PRI information to
+        the Control Domain.   
+        
+        This project proposes an interface to deliver PRI information over
+        a domain service channel.
+
+   3.2. Market/Requester:
+        Huron/Maramba platforms, means to satisfy key requirement for
+        Serviceability (S12Y).
+
+   3.3. Business Justification:
+        Reduces problem remediation time (time spent by service team) 
+        Enables Automatic Radiance Case Creation and Routing (aka ACCR)
+        Estimated cost saving to Sun for Huron/Maramba only: @ $3.89 M 
+
+   3.4. Competitive Analysis:
+        As noted above, an enabler for ACCR, which improves Sun's service
+        call response time and accuracy.	
+
+   3.5. Opportunity Window/Exposure:
+        Solaris s10u4_b3
+
+   3.6. How will you know when you are done?:
+        When the changes are integrated into both Solaris Nevada
+        and S10u4_b3 as well as vBSC gates.
+
+4. Technical Description:
+
+    4.1 Overview
+
+         The PRI is intended to contain various kinds of information about a 
+         system.  Much of this information has previously been contained in
+         the Machine Description (MD).  The PRI domain service will facilitate
+         access to this information from the Control Domain.
+
+         The SC will generate the PRI and send PRI Update Messages to the
+         Control Domain to indicate that it has changed. The domain may then
+         send a request for the PRI, to which the SC responds by delivering
+         a message containing the PRI.
+
+    4.1.2 PRI domain service 1.0
+
+        The version of the domain service describe below is 1.0.
+    
+    4.1.2.1 Service ID
+
+        The following service ID should be added to the Domain Services
+        registry for the PRI service capabilities.
+
+        Service ID                Description
+        ----------                ----------------------------------
+        "pri"                     PRI domain service
+
+    4.1.2.2 Message Header Formats
+
+        All PRI Messages have the same header format consisting of a
+        Message Number and a Message Type.
+
+        The Message Number is a monotonically increasing number that uniquely 
+        identifies each message. Responses to messages are expected to use 
+        the same message number so that they can be paired with their original 
+        message. The Message Number may also be used to distinguish between
+        multiple instances of the same message type.
+
+        New messages may be issued without waiting for a response to a
+        preceding message.  The underlying transport protocol is responsible
+        to ensure reliable, in-order and unduplicated message packets.
+
+        Messages are to be processed in the order received.
+
+        The Message Type is used to distinguish the different message types.
+
+        Offset Size   Field name
+        ------ ----   ----------
+        0       8     Message Number
+        8       8     Message Type
+
+        Message Type  Value
+        ------------  -----
+        PRI Request   0
+        PRI Data      1
+        PRI Update    2
+
+    4.1.2.3 PRI Request Message
+
+        A PRI Request Message is sent by the client to request that
+        the current PRI be delivered.
+
+        The Message Number value will be used in the PRI Data Message
+        sent in response to this request.
+
+        The Message Type field should indicate a PRI Request Message.
+
+        There is no data payload for this message type.
+
+        Offset Size   Field name
+        ------ ----   ----------
+        0       8     Message Number
+        8       8     Message Type
+
+
+    4.1.2.4 PRI Data Message
+
+        A PRI Data Message is sent to the client in response to a request.
+        Its payload consists of the current version of the PRI.
+
+        The Message Number field contains the value in the request being
+        fulfilled. If the client has subsequently sent a new request the
+        service may choose to ignore a data response with an older number. 
+
+        The Message Type field should indicate a PRI Data Message.
+
+        The PRI field has variable length and corresponds to the complete PRI. 
+
+	The PRI Data follows the PRI Message Header and its size is determined 
+        by the PRI header itself which is specified in the sun4v machine 
+        description case imported by this case.
+
+        Offset Size   Field
+        ------ ----   ----------
+        0       8     Message Number
+        8       8     Message Type
+        16      Var   PRI Data
+
+    4.1.2.5 PRI Update Message
+    
+	The PRI update message is sent by the service asynchronously to the 
+        client indicating that an update to the PRI is available. The client is 
+        responsible for requesting the actual PRI data if and when it requires 
+        it after being notified of an update.
+
+	The service guarantees to send an update message if the PRI is modified 
+        at any time after a PRI data message has been sent.
+
+        A PRI Update Message contains a unique 64-bit number in the
+        Message Number field. Each PRI Update Message should be uniquely
+        identifiable so that the client can determine when to make another
+        PRI Request.
+        
+        The Message Type field should indicate a PRI Update Message.
+
+        There is no data payload for this message type.
+
+        Offset Size   Field name
+        ------ ----   ----------
+        0       8     Message Number
+        8       8     Message Type
+
+
+   4.2 Imported Interfaces :
+                
+        Interface                  Classification      Comments
+        =================          ================    ========================
+
+        Domain Services            Sun Private         Defined by FWARC/2006/055
+        Specification
+
+        PRI                        Sun Private         Defined by FWARC/2006/700
+
+   4.3 Exported Interfaces:
+
+
+        Interface                       Classification   Comments
+        ================                ===============  =====================
+
+        PRI domain service 
+        version 1.0
+    
+        Service ID: "pri"               Sun Private      Section 4.1.2.1
+
+        PRI domain service              Sun Private      Section 4.1.2.2
+        message header
+
+        PRI Request message             Sun Private      Section 4.1.2.3
+        Payload
+
+        PRI Data Message                Sun Private      Section 4.1.2.4
+        Payload
+
+        PRI Update Message              Sun Private      Section 4.1.2.5
+        Payload
+
+5. Reference Documents:
+  [1] libpri on sun4v (initial proposal by Ash Saulsbury)
+        http://sunwebcollab.east.sun.com/gm/document-1.9.2221866
+  [2] webrev of prototype libpri and ds_pri driver (tar file)
+        http://sunwebcollab.east.sun.com/gm/document-1.9.2221896
+  [3] sun4v machine description
+        http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/115/
+  [4] Domain Services
+        http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/055/
+
+6. Resources and Schedule:
+   6.1. Projected Availability:	Q3FY07
+
+   6.2. Cost of Effort: 3 person months
+
+   6.3. Cost of Capital Resources: N/A
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation or Component Name: vBSC, Solaris
+	6.4.3. Type of CPT Review and Approval expected: FastTrack
+        6.4.4. Project Boundary Conditions: N/A
+	6.4.5. Is this a necessary project for OEM agreements: No.
+	6.4.6. Notes: None
+	6.4.7. Target RTI Date/Release: S10u4_b3
+	6.4.8. Target Code Design Review Date: 01/05/2007
+	6.4.9. Update approval addition: N/A		
+
+   6.5. ARC review type: FastTrack
+		
+7. Prototype Availability:
+   7.1. Prototype Availability:
+	Q2FY07
+
+   7.2. Prototype Cost:
+      3 person months	
+
+--Boundary_(ID_cXN9E9A+zj1oo1ix9Opkfw)--
+
+From sacadmin Wed Jan 10 18:37:09 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l0B2b7AX026158
+	for <fwarc@sac.eng.Sun.COM>; Wed, 10 Jan 2007 18:37:08 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l0B2aqqP024980;
+	Thu, 11 Jan 2007 10:37:06 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JBO0020VN9ROA00@brm-avmta-1.central.sun.com>; Wed,
+ 10 Jan 2007 19:37:03 -0700 (MST)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JBO004QFN9RHFC0@brm-avmta-1.central.sun.com>; Wed,
+ 10 Jan 2007 19:37:03 -0700 (MST)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l0B2b2wf013757; Wed,
+ 10 Jan 2007 18:37:02 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JBO00B01N684K00@d1-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Wed,
+ 10 Jan 2007 18:37:02 -0800 (PST)
+Received: from [129.153.85.39] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JBO00M9GN9QBLGW@d1-sfbay-09.sun.com>; Wed,
+ 10 Jan 2007 18:37:02 -0800 (PST)
+Date: Wed, 10 Jan 2007 18:37:02 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: fast-track : 2006/701 - PRI Domain Service
+In-reply-to: <459C7B59.3020500@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: N2-FRUID_info@sun.com, Ashley Saulsbury <ashley.saulsbury@sun.com>
+Message-id: <45A5A2CE.6030708@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <4581F114.3000009@Sun.COM> <458B23F4.400@sun.com>
+ <459C7B59.3020500@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20060120
+Status: RO
+Content-Length: 11607
+
+Hitendra Zhangada wrote On 01/03/07 19:58,:
+> Hitendra Zhangada wrote:
+> 
+>> Hitendra Zhangada wrote:
+>>
+>>> I am sponsoring this fast-track for Kevin Rathbun.  This case
+>>> introduces PRI update domain service.  See details in the attached
+>>> one-pager. The timer for this case is set to December 21, 2006.
+>>>
+>> This case would have timed-out today but some last minute findings
+>> have resulted into changes to the specification.  Project team is
+>> working on a revised specification.  I am changing the state of
+>> this case to "waiting need spec".  The case will resume with new
+>> timer once updated specification is available.
+> 
+> 
+> This case is ready for review again.  I have attached the latest
+> one-pager with the specification in section 4.  The link below
+> has been updated with the latest one-pager.
+> 
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/701/materials/PRI_DS_one-pager.txt 
+> 
+> 
+> 
+> I am extending timer for this case to a week from today, to January 10, 
+> 2007.
+
+This case has timed out and hence now approved for minor/micro/patch OS
+binding and minor/micro binding for the firmware.
+
+
+Thanks for the review.
+
+> 
+> This case requests minor/micro/patch OS binding and minor/micro binding
+> for the firmware.
+> 
+> 
+> Thanks.
+> 
+> 
+> ------------------------------------------------------------------------
+> 
+> 1. Introduction
+>    1.1. Project/Component Working Name:
+>         PRI Domain Service
+> 
+>    1.2. Name of Document Author/Supplier:
+>         Kevin Rathbun
+> 
+>    1.3. Date of This Document:
+>         01/03/07
+> 
+>    1.4. Name of Major Document Customer(s)/Consumer(s):
+>         1.4.1. The PAC or CPT you expect to review your project:
+>                 HS PAC
+> 
+>         1.4.2. The ARC(s) you expect to review your project:
+>                 FWARC
+> 
+>         1.4.3. The Director/VP who is "Sponsoring" this project:
+>                 Mike Sanfratello
+> 
+>         1.4.4. The name of your business unit:
+>                 Systems Group (SG)
+>                         (Sparc Platform Software)
+> 
+>    1.5. Email Aliases:
+>         1.5.1. Responsible Manager: gary.hethcoat@Sun.Com
+>         1.5.2. Responsible Engineer: kevin.rathbun@sun.com
+>         1.5.3. Marketing Manager: Nancy.Riley@Sun.COM
+>         1.5.4. Interest List: N2-FRUID_info@sun.com
+> 
+> 2. Project Summary
+> 
+>    2.1. Project Description:
+> 
+>         This case describes the domain service interface through which a 
+>         client obtains the Physical Resource Inventory (PRI).
+> 
+>    2.2. Risks and Assumptions:
+> 
+>         We need to time the changes such that both SP and Solaris changes are 
+>         available and released at the same time.
+> 
+> 
+> 3. Business Summary
+>    3.1. Problem Area:
+> 
+>         Having complete identity information will reduce time to diagnose by
+>         eliminating extra data gathering steps.  In many cases gathering this 
+>         data will involve extra phone calls and/or emails to customer.  We 
+>         need a way to provide specific FRUID information in FMA events to SP.
+> 
+>         To address this problem we need a way to transport PRI information to
+>         the Control Domain.   
+>         
+>         This project proposes an interface to deliver PRI information over
+>         a domain service channel.
+> 
+>    3.2. Market/Requester:
+>         Huron/Maramba platforms, means to satisfy key requirement for
+>         Serviceability (S12Y).
+> 
+>    3.3. Business Justification:
+>         Reduces problem remediation time (time spent by service team) 
+>         Enables Automatic Radiance Case Creation and Routing (aka ACCR)
+>         Estimated cost saving to Sun for Huron/Maramba only: @ $3.89 M 
+> 
+>    3.4. Competitive Analysis:
+>         As noted above, an enabler for ACCR, which improves Sun's service
+>         call response time and accuracy.	
+> 
+>    3.5. Opportunity Window/Exposure:
+>         Solaris s10u4_b3
+> 
+>    3.6. How will you know when you are done?:
+>         When the changes are integrated into both Solaris Nevada
+>         and S10u4_b3 as well as vBSC gates.
+> 
+> 4. Technical Description:
+> 
+>     4.1 Overview
+> 
+>          The PRI is intended to contain various kinds of information about a 
+>          system.  Much of this information has previously been contained in
+>          the Machine Description (MD).  The PRI domain service will facilitate
+>          access to this information from the Control Domain.
+> 
+>          The SC will generate the PRI and send PRI Update Messages to the
+>          Control Domain to indicate that it has changed. The domain may then
+>          send a request for the PRI, to which the SC responds by delivering
+>          a message containing the PRI.
+> 
+>     4.1.2 PRI domain service 1.0
+> 
+>         The version of the domain service describe below is 1.0.
+>     
+>     4.1.2.1 Service ID
+> 
+>         The following service ID should be added to the Domain Services
+>         registry for the PRI service capabilities.
+> 
+>         Service ID                Description
+>         ----------                ----------------------------------
+>         "pri"                     PRI domain service
+> 
+>     4.1.2.2 Message Header Formats
+> 
+>         All PRI Messages have the same header format consisting of a
+>         Message Number and a Message Type.
+> 
+>         The Message Number is a monotonically increasing number that uniquely 
+>         identifies each message. Responses to messages are expected to use 
+>         the same message number so that they can be paired with their original 
+>         message. The Message Number may also be used to distinguish between
+>         multiple instances of the same message type.
+> 
+>         New messages may be issued without waiting for a response to a
+>         preceding message.  The underlying transport protocol is responsible
+>         to ensure reliable, in-order and unduplicated message packets.
+> 
+>         Messages are to be processed in the order received.
+> 
+>         The Message Type is used to distinguish the different message types.
+> 
+>         Offset Size   Field name
+>         ------ ----   ----------
+>         0       8     Message Number
+>         8       8     Message Type
+> 
+>         Message Type  Value
+>         ------------  -----
+>         PRI Request   0
+>         PRI Data      1
+>         PRI Update    2
+> 
+>     4.1.2.3 PRI Request Message
+> 
+>         A PRI Request Message is sent by the client to request that
+>         the current PRI be delivered.
+> 
+>         The Message Number value will be used in the PRI Data Message
+>         sent in response to this request.
+> 
+>         The Message Type field should indicate a PRI Request Message.
+> 
+>         There is no data payload for this message type.
+> 
+>         Offset Size   Field name
+>         ------ ----   ----------
+>         0       8     Message Number
+>         8       8     Message Type
+> 
+> 
+>     4.1.2.4 PRI Data Message
+> 
+>         A PRI Data Message is sent to the client in response to a request.
+>         Its payload consists of the current version of the PRI.
+> 
+>         The Message Number field contains the value in the request being
+>         fulfilled. If the client has subsequently sent a new request the
+>         service may choose to ignore a data response with an older number. 
+> 
+>         The Message Type field should indicate a PRI Data Message.
+> 
+>         The PRI field has variable length and corresponds to the complete PRI. 
+> 
+> 	The PRI Data follows the PRI Message Header and its size is determined 
+>         by the PRI header itself which is specified in the sun4v machine 
+>         description case imported by this case.
+> 
+>         Offset Size   Field
+>         ------ ----   ----------
+>         0       8     Message Number
+>         8       8     Message Type
+>         16      Var   PRI Data
+> 
+>     4.1.2.5 PRI Update Message
+>     
+> 	The PRI update message is sent by the service asynchronously to the 
+>         client indicating that an update to the PRI is available. The client is 
+>         responsible for requesting the actual PRI data if and when it requires 
+>         it after being notified of an update.
+> 
+> 	The service guarantees to send an update message if the PRI is modified 
+>         at any time after a PRI data message has been sent.
+> 
+>         A PRI Update Message contains a unique 64-bit number in the
+>         Message Number field. Each PRI Update Message should be uniquely
+>         identifiable so that the client can determine when to make another
+>         PRI Request.
+>         
+>         The Message Type field should indicate a PRI Update Message.
+> 
+>         There is no data payload for this message type.
+> 
+>         Offset Size   Field name
+>         ------ ----   ----------
+>         0       8     Message Number
+>         8       8     Message Type
+> 
+> 
+>    4.2 Imported Interfaces :
+>                 
+>         Interface                  Classification      Comments
+>         =================          ================    ========================
+> 
+>         Domain Services            Sun Private         Defined by FWARC/2006/055
+>         Specification
+> 
+>         PRI                        Sun Private         Defined by FWARC/2006/700
+> 
+>    4.3 Exported Interfaces:
+> 
+> 
+>         Interface                       Classification   Comments
+>         ================                ===============  =====================
+> 
+>         PRI domain service 
+>         version 1.0
+>     
+>         Service ID: "pri"               Sun Private      Section 4.1.2.1
+> 
+>         PRI domain service              Sun Private      Section 4.1.2.2
+>         message header
+> 
+>         PRI Request message             Sun Private      Section 4.1.2.3
+>         Payload
+> 
+>         PRI Data Message                Sun Private      Section 4.1.2.4
+>         Payload
+> 
+>         PRI Update Message              Sun Private      Section 4.1.2.5
+>         Payload
+> 
+> 5. Reference Documents:
+>   [1] libpri on sun4v (initial proposal by Ash Saulsbury)
+>         http://sunwebcollab.east.sun.com/gm/document-1.9.2221866
+>   [2] webrev of prototype libpri and ds_pri driver (tar file)
+>         http://sunwebcollab.east.sun.com/gm/document-1.9.2221896
+>   [3] sun4v machine description
+>         http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/115/
+>   [4] Domain Services
+>         http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/055/
+> 
+> 6. Resources and Schedule:
+>    6.1. Projected Availability:	Q3FY07
+> 
+>    6.2. Cost of Effort: 3 person months
+> 
+>    6.3. Cost of Capital Resources: N/A
+> 
+>    6.4. Product Approval Committee requested information:
+>    	6.4.1. Consolidation or Component Name: vBSC, Solaris
+> 	6.4.3. Type of CPT Review and Approval expected: FastTrack
+>         6.4.4. Project Boundary Conditions: N/A
+> 	6.4.5. Is this a necessary project for OEM agreements: No.
+> 	6.4.6. Notes: None
+> 	6.4.7. Target RTI Date/Release: S10u4_b3
+> 	6.4.8. Target Code Design Review Date: 01/05/2007
+> 	6.4.9. Update approval addition: N/A		
+> 
+>    6.5. ARC review type: FastTrack
+> 		
+> 7. Prototype Availability:
+>    7.1. Prototype Availability:
+> 	Q2FY07
+> 
+>    7.2. Prototype Cost:
+>       3 person months	
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+

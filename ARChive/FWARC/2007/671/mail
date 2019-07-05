@@ -1,0 +1,1006 @@
+From sacadmin Wed Nov 28 18:39:15 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id lAT2dElE017485
+	for <fwarc@sac.sfbay.sun.com>; Wed, 28 Nov 2007 18:39:15 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id lAT2d1ob023829;
+	Thu, 29 Nov 2007 02:39:13 GMT
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JS800501Y1DIN00@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 28 Nov 2007 18:39:13 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JS800ES2Y1CBD40@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 28 Nov 2007 18:39:12 -0800 (PST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id lAT2dCgA009647;
+ Wed, 28 Nov 2007 18:39:12 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JS800H01XXMUR00@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Wed,
+ 28 Nov 2007 18:39:12 -0800 (PST)
+Received: from [129.150.33.57] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JS8000YAY1BSI60@fe-sfbay-09.sun.com>; Wed,
+ 28 Nov 2007 18:39:12 -0800 (PST)
+Date: Wed, 28 Nov 2007 18:40:51 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: fast-track : FWARC/2007/671 - System Information Domain Services 1.0
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>
+Message-id: <474E26B3.4080601@sun.com>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_QQSft+OBjDv4AkUCymE1Pg)"
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0.0.9 (Windows/20071031)
+Status: RO
+Content-Length: 7540
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_QQSft+OBjDv4AkUCymE1Pg)
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_FwNrC/8nM5opHtltp+Wy6Q)"
+
+
+--Boundary_(ID_FwNrC/8nM5opHtltp+Wy6Q)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+I am sponsoring this fast-track for Michael Christensen.
+This case times out on December 5th, 2007.
+
+This case introduces System Information Domain Service.
+
+See details in the one-pager in the materials directory at,
+http://sac.eng.sun.com/arc/FWARC/2007/671/materials/System.Info.1pager.txt
+
+or in the attached one-pager.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_FwNrC/8nM5opHtltp+Wy6Q)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<font size="+1">I am sponsoring this fast-track for </font><big>Michael
+Christensen.<br>
+This case times out on December 5th, 2007.<br>
+<br>
+This case introduces<big> </big>System Information Domain Service.<br>
+<br>
+See details in the one-pager in the materials directory at,<br>
+<a class="moz-txt-link-freetext" href="http://sac.eng.sun.com/arc/FWARC/2007/671/materials/System.Info.1pager.txt">http://sac.eng.sun.com/arc/FWARC/2007/671/materials/System.Info.1pager.txt</a><br>
+<br>
+or in the attached one-pager.<br>
+<br>
+</big>
+<pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_FwNrC/8nM5opHtltp+Wy6Q)--
+
+--Boundary_(ID_QQSft+OBjDv4AkUCymE1Pg)
+Content-type: text/plain; name=System.Info.1pager.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=System.Info.1pager.txt
+
+1. Introduction
+   1.1. Project/Component Working Name:
+	System Information Domain Services 1.0
+
+   1.2. Name of Document Author/Supplier:
+	Michael Christensen
+
+   1.3. Date of This Document:
+	11/28/07
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		HS PAC
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Mike Sanfratello
+	1.4.4. The name of your business unit:
+		OPG
+
+   1.5. Email Aliases:
+    	1.5.1. Responsible Manager: jay.jayachandra@sun.com
+    	1.5.2. Responsible Engineer: michael.christensen@sun.com
+    	1.5.3. Marketing Manager: hanglin.su@sun.com
+	1.5.4. Interest List: ldoms-internal@sun.com
+
+2. Project Summary
+   2.1. Project Description:
+	This project implements a domain service to provide system
+	specific information. In particular, various POSIX uname
+	values for use by the ldoms manager.
+
+   2.2. Risks and Assumptions:
+	See FWARC 2006/55
+
+3. Business Summary
+   3.1. Problem Area:
+	Ability to identify guest domain software from the control
+	domain.
+
+   3.2. Market/Requester:
+	OPG
+
+   3.3. Business Justification:
+
+   3.4. Competitive Analysis:
+
+   3.5. Opportunity Window/Exposure:
+
+   3.6. How will you know when you are done?:
+
+4. Technical Description
+
+4.1 Overview - System Information domain service 1.0
+
+The System Information capability provides for the ability to query
+various system information, such as POSIX utsname strings.  It is
+anticipated that this service may be expanded as needed in the future
+to support such areas as, for example, Solaris sysinfo and Solaris kstat's.
+
+4.1.1 Service IDs
+
+There is one service ID defined to support System Information queries.
+
+	Service ID		Description
+	----------		-----------
+	"system-info"		Guest system system information queries
+
+4.1.2 Message Header
+
+	Offset	Size	Field name	Description
+	------	----	----------	-----------
+	0	4	cmd		Command
+
+4.1.3 Message types
+
+The following constants are defined for System Information domain service
+command identifier values:
+
+	Type			Value	Definition
+	----			-----	----------
+	SYS_INFO_GET_REQ	0x0	Request getting system information.
+	SYS_INFO_GET_RESP	0x1	Response to a get information request.
+
+4.1.4 Get Information Payload
+
+The Get Information header is followed by a variable number of NUL
+terminated strings.  Each string represents a specific piece of system
+information to return.  The following are the supported strings:
+
+	System Info Datum Name	Description
+	----------------------	-----------
+	"uts-sysname"		utsname.sysname
+	"uts-nodename"		utsname.nodename
+	"uts-release"		utsname.release
+	"uts-version"		utsname.version
+	"uts-machine"		utsname.machine
+
+Note that the string values returned should be identical to what is
+provided by the POSIX uname user command.  Non-POSIX compliant guest
+systems may choose to support any of these items if they are appropriate.
+
+4.1.5 Get Information Response Payload
+
+Response to the Get Information request is a message with the Get Information
+header followed by the following response payload.  In the event that no
+Datum Names were identifed, the result field will be SYS_INFO_INVALID_NAME
+and the num_pairs field will be zero.  If multiple Datum names were provided
+and not all of them were matched, the result field will be SYS_INFO_SUCCESS
+and the number of Datum names matche will be in the num_pairs field and their
+corresponding name/value pairs will be in the name/value fields.
+
+	Offset	Size	Field Name	Description
+	------	----	----------	-----------
+	0	4	result		Result of Operation
+	4       4	num_pairs	Number of name/value pairs returned.
+	8	Var	name1		Name of first datum
+	Var	Var	value1		Value of first datum
+	Var	Var	name2		Name of second datum
+	Var	Var	value2		Value of second datum
+	...
+
+4.1.6 Response Result Codes
+
+The result field in the response payload details the results of the requested
+operation.  The result codes are defined as follows:
+
+	Name			Value	Definition
+	----			-----	----------
+	SYS_INFO_SUCCESS	0x0	Operation succeeded
+	SYS_INFO_INVALID_NAME	0x1	No valid datum name supplied
+
+
+4.2 Imported Interfaces:
+
+	Interface		Classifcation	Comments
+	---------		-------------	--------
+	Domain Services		Sun Private	Defined by FWARC/2006/55
+	Specification
+
+	uname(1)		Standard	Solaris user command
+
+4.3 Exported Interfaces:
+
+	Interface		Classification	Comments
+	---------		--------------	--------
+	System Information
+	domain service 1.0
+
+	    Service IDs
+		"system-info"	Sun Private	System Information
+
+	    System Infomation	Sun Private
+	    message header
+
+	    Message Types:
+		SYS_INFO_GET_REQ  Sun Private	Request Get Information.
+		SYS_INFO_GET_RESP Sun Private	Response to a Get Information request.
+
+	    Get Information	Sun Private	Defined in 4.1.4
+	    Payload 
+	    Response Payload	Sun Private	Defined in 4.1.5
+	    Response Result	Sun Private	Defined in 4.1.6
+	    Codes
+
+5. Reference Documents:
+	FWARC 2006/55 - Domain Services Specification
+	CR 6506767 - Add a domain service to support OS identification
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+	S10U5
+
+   6.2. Cost of Effort:
+	1 staff month
+
+   6.3. Cost of Capital Resources:
+	N/A
+
+--Boundary_(ID_QQSft+OBjDv4AkUCymE1Pg)--
+
+From sacadmin Wed Nov 28 18:42:07 2007
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id lAT2g7im017894
+	for <fwarc@sac.sfbay.sun.com>; Wed, 28 Nov 2007 18:42:07 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id lAT2g4cq001608;
+	Wed, 28 Nov 2007 18:42:06 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JS800K07Y65CH00@brm-avmta-1.central.sun.com>; Wed,
+ 28 Nov 2007 19:42:05 -0700 (MST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JS800FPKY65HW20@brm-avmta-1.central.sun.com>; Wed,
+ 28 Nov 2007 19:42:05 -0700 (MST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id lAT2g5lc020910;
+ Wed, 28 Nov 2007 18:42:05 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JS800J01Y3QKU00@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Wed,
+ 28 Nov 2007 18:42:05 -0800 (PST)
+Received: from [129.150.33.57] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JS800J6CY63CB40@fe-sfbay-09.sun.com>; Wed,
+ 28 Nov 2007 18:42:04 -0800 (PST)
+Date: Wed, 28 Nov 2007 18:43:43 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: fast-track : FWARC/2007/671 - System Information Domain Services
+ 1.0
+In-reply-to: <474E26B3.4080601@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <474E275F.7040200@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_kTEHdihogr7g7s1isZCsiw)"
+X-PMX-Version: 5.2.0.264296
+References: <474E26B3.4080601@sun.com>
+User-Agent: Thunderbird 2.0.0.9 (Windows/20071031)
+Status: RO
+Content-Length: 2486
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_kTEHdihogr7g7s1isZCsiw)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+Hitendra Zhangada wrote:
+> I am sponsoring this fast-track for Michael Christensen.
+> This case times out on December 5th, 2007.
+>
+> This case introduces System Information Domain Service.
+>
+> See details in the one-pager in the materials directory at,
+> http://sac.eng.sun.com/arc/FWARC/2007/671/materials/System.Info.1pager.txt
+>
+> or in the attached one-pager.
+
+Forgot to mention that,
+
+This case requests a release binding of for minor/micro for any
+firmware changes and minor/micro/patch for any OS changes.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_kTEHdihogr7g7s1isZCsiw)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+Hitendra Zhangada wrote:
+<blockquote cite="mid:474E26B3.4080601@sun.com" type="cite"><font
+ size="+1">I am sponsoring this fast-track for </font><big>Michael
+Christensen.<br>
+This case times out on December 5th, 2007.<br>
+  <br>
+This case introduces<big> </big>System Information Domain Service.<br>
+  <br>
+See details in the one-pager in the materials directory at,<br>
+  <a moz-do-not-send="true" class="moz-txt-link-freetext"
+ href="http://sac.eng.sun.com/arc/FWARC/2007/671/materials/System.Info.1pager.txt">http://sac.eng.sun.com/arc/FWARC/2007/671/materials/System.Info.1pager.txt</a><br>
+  <br>
+or in the attached one-pager.<br>
+  </big></blockquote>
+<br>
+Forgot to mention that,<br>
+<br>
+<pre>This case requests a release binding of for minor/micro for any
+firmware changes and minor/micro/patch for any OS changes.</pre>
+<br>
+Thanks.<br>
+<br>
+<pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_kTEHdihogr7g7s1isZCsiw)--
+
+From sacadmin Thu Nov 29 13:05:33 2007
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id lATL5Wad014046
+	for <fwarc@sac.sfbay.Sun.COM>; Thu, 29 Nov 2007 13:05:32 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id lATL5Sda006871;
+	Fri, 30 Nov 2007 05:05:31 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JSA00905D95FV00@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 29 Nov 2007 13:05:29 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JSA002I5D948SB0@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 29 Nov 2007 13:05:28 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id lATL5Sqc017602;
+ Thu, 29 Nov 2007 13:05:28 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JSA00601D4D8V00@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Thu,
+ 29 Nov 2007 13:05:28 -0800 (PST)
+Received: from [129.153.85.10] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JSA0041ID8YBK50@fe-sfbay-10.sun.com>; Thu,
+ 29 Nov 2007 13:05:22 -0800 (PST)
+Date: Thu, 29 Nov 2007 13:05:22 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: fast-track : FWARC/2007/671 - System Information Domain Services
+ 1.0
+In-reply-to: <474E26B3.4080601@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: LDoms Internal <ldoms-internal@sun.com>
+Message-id: <474F2992.20707@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_wPNzkAcC79U1vQZcM4BZPg)"
+X-PMX-Version: 5.2.0.264296
+References: <474E26B3.4080601@sun.com>
+User-Agent: Thunderbird 2.0.0.10pre (X11/20071125)
+Status: RO
+Content-Length: 5125
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_wPNzkAcC79U1vQZcM4BZPg)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+Hitendra Zhangada wrote:
+> I am sponsoring this fast-track for Michael Christensen.
+> This case times out on December 5th, 2007.
+>
+> This case introduces System Information Domain Service.
+>
+> See details in the one-pager in the materials directory at,
+> http://sac.eng.sun.com/arc/FWARC/2007/671/materials/System.Info.1pager.txt
+>
+> or in the attached one-pager.
+
+I have updated one-pager with typo/spelling corrections and a 
+clarification that
+the response payload name/value pairs are NULL terminated strings.  
+Section 4.1.5
+is updated with this clarification.  Other sections changed as a result 
+of spelling
+corrections.  The diffs are as follows.  Since these are not significant 
+changes
+I have replaced the original one pager with the new one in the materials 
+directory.
+
+
+
+------- System.Info.1pager.txt -------
+109c109
+< Datum Names were identifed, the result field will be 
+SYS_INFO_INVALID_NAME
+---
+ > Datum Names were identified, the result field will be 
+SYS_INFO_INVALID_NAME
+112,113c112,114
+< and the number of Datum names matche will be in the num_pairs field 
+and their
+< corresponding name/value pairs will be in the name/value fields.
+---
+ > and the number of Datum names matched will be in the num_pairs field 
+and their
+ > corresponding name/value pairs will be in the name/value fields. Each 
+datum
+ > name and datum value will be a NUL terminated string.
+138c139
+<       Interface               Classifcation   Comments
+---
+ >       Interface               Classification  Comments
+155c156
+<           System Infomation   Sun Private
+---
+ >           System Information  Sun Private
+
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_wPNzkAcC79U1vQZcM4BZPg)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+Hitendra Zhangada wrote:
+<blockquote cite="mid:474E26B3.4080601@sun.com" type="cite"><font
+ size="+1">I am sponsoring this fast-track for </font><big>Michael
+Christensen.<br>
+This case times out on December 5th, 2007.<br>
+  <br>
+This case introduces<big> </big>System Information Domain Service.<br>
+  <br>
+See details in the one-pager in the materials directory at,<br>
+  <a moz-do-not-send="true" class="moz-txt-link-freetext"
+ href="http://sac.eng.sun.com/arc/FWARC/2007/671/materials/System.Info.1pager.txt">http://sac.eng.sun.com/arc/FWARC/2007/671/materials/System.Info.1pager.txt</a><br>
+  <br>
+or in the attached one-pager.<br>
+  </big></blockquote>
+<br>
+I have updated one-pager with typo/spelling corrections and a
+clarification that<br>
+the response payload name/value pairs are NULL terminated strings.&nbsp;
+Section 4.1.5<br>
+is updated with this clarification.&nbsp; Other sections changed as a result
+of spelling<br>
+corrections.&nbsp; The diffs are as follows.&nbsp; Since these are not
+significant changes<br>
+I have replaced the original one pager with the new one in the
+materials directory.<br>
+<br>
+<br>
+<br>
+------- System.Info.1pager.txt -------
+<br>
+109c109
+<br>
+&lt; Datum Names were identifed, the result field will be
+SYS_INFO_INVALID_NAME
+<br>
+---
+<br>
+&gt; Datum Names were identified, the result field will be
+SYS_INFO_INVALID_NAME
+<br>
+112,113c112,114
+<br>
+&lt; and the number of Datum names matche will be in the num_pairs
+field and their
+<br>
+&lt; corresponding name/value pairs will be in the name/value fields.
+<br>
+---
+<br>
+&gt; and the number of Datum names matched will be in the num_pairs
+field and their
+<br>
+&gt; corresponding name/value pairs will be in the name/value fields.
+Each datum
+<br>
+&gt; name and datum value will be a NUL terminated string.
+<br>
+138c139
+<br>
+&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Interface&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Classifcation&nbsp;&nbsp; Comments
+<br>
+---
+<br>
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Interface&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Classification&nbsp; Comments
+<br>
+155c156
+<br>
+&lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System Infomation&nbsp;&nbsp; Sun Private
+<br>
+---
+<br>
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System Information&nbsp; Sun Private
+<br>
+<br>
+<br>
+<br>
+<pre class="moz-signature" cols="76">-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_wPNzkAcC79U1vQZcM4BZPg)--
+
+From sacadmin Wed Dec  5 18:10:42 2007
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id lB62AggF020184
+	for <fwarc@sac.sfbay.sun.com>; Wed, 5 Dec 2007 18:10:42 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id lB62Afer033611;
+	Wed, 5 Dec 2007 19:10:42 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JSL00A05VDTXD00@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 05 Dec 2007 18:10:41 -0800 (PST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JSL00967VDFJL20@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 05 Dec 2007 18:10:27 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id lB62ARdZ018723;
+ Wed, 05 Dec 2007 18:10:27 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JSL00A01VBG3U00@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Wed,
+ 05 Dec 2007 18:10:27 -0800 (PST)
+Received: from [129.150.38.93] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JSL00LCMVDEP5E0@fe-sfbay-10.sun.com>; Wed,
+ 05 Dec 2007 18:10:27 -0800 (PST)
+Date: Wed, 05 Dec 2007 18:12:07 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: fast-track : FWARC/2007/671 - System Information Domain Services
+ 1.0
+In-reply-to: <474E275F.7040200@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: LDoms Internal <ldoms-internal@sun.com>
+Message-id: <47575A77.4040907@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_2IfM2NtOnJk2+FMNjUP51g)"
+X-PMX-Version: 5.2.0.264296
+References: <474E26B3.4080601@sun.com> <474E275F.7040200@sun.com>
+User-Agent: Thunderbird 2.0.0.9 (Windows/20071031)
+Status: RO
+Content-Length: 3905
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_2IfM2NtOnJk2+FMNjUP51g)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+Hitendra Zhangada wrote:
+> Hitendra Zhangada wrote:
+>> I am sponsoring this fast-track for Michael Christensen.
+>> This case times out on December 5th, 2007.
+>>
+>> This case introduces System Information Domain Service.
+>>
+>> See details in the one-pager in the materials directory at,
+>> http://sac.eng.sun.com/arc/FWARC/2007/671/materials/System.Info.1pager.txt
+>>
+>> or in the attached one-pager.
+>
+> Forgot to mention that,
+>
+> This case requests a release binding of for minor/micro for any
+> firmware changes and minor/micro/patch for any OS changes.
+
+This case has timed out today and is not approved for,
+
+release binding of for minor/micro for any firmware
+changes and minor/micro/patch for any OS changes.
+
+
+Domain service registry has been updated.
+
+Thanks for the review.
+>
+> Thanks.
+>
+> -- 
+> Hitendra Zhangada
+> =============================================
+> SPS Common SW Features Engineering
+> Software Group, Sun Microsystems, Inc.
+> Work Ph# (858) 625 3757, Ext. x53757
+> SUN Internal homepage http://esp.west/~hitu
+>   
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_2IfM2NtOnJk2+FMNjUP51g)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+Hitendra Zhangada wrote:
+<blockquote cite="mid:474E275F.7040200@sun.com" type="cite">
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+Hitendra Zhangada wrote:
+  <blockquote cite="mid:474E26B3.4080601@sun.com" type="cite"><font
+ size="+1">I am sponsoring this fast-track for </font><big>Michael
+Christensen.<br>
+This case times out on December 5th, 2007.<br>
+    <br>
+This case introduces<big> </big>System Information Domain Service.<br>
+    <br>
+See details in the one-pager in the materials directory at,<br>
+    <a moz-do-not-send="true" class="moz-txt-link-freetext"
+ href="http://sac.eng.sun.com/arc/FWARC/2007/671/materials/System.Info.1pager.txt">http://sac.eng.sun.com/arc/FWARC/2007/671/materials/System.Info.1pager.txt</a><br>
+    <br>
+or in the attached one-pager.<br>
+    </big></blockquote>
+  <br>
+Forgot to mention that,<br>
+  <br>
+  <pre>This case requests a release binding of for minor/micro for any
+firmware changes and minor/micro/patch for any OS changes.</pre>
+</blockquote>
+<br>
+This case has timed out today and is not approved for,<br>
+<pre>release binding of for minor/micro for any firmware
+changes and minor/micro/patch for any OS changes.</pre>
+<br>
+Domain service registry has been updated.<br>
+<br>
+Thanks for the review.<br>
+<blockquote cite="mid:474E275F.7040200@sun.com" type="cite"><br>
+Thanks.<br>
+  <br>
+  <pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a moz-do-not-send="true"
+ class="moz-txt-link-freetext" href="http://esp.west/%7Ehitu">http://esp.west/~hitu</a>
+  </pre>
+</blockquote>
+<br>
+<br>
+<pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_2IfM2NtOnJk2+FMNjUP51g)--
+
+From sacadmin Wed Dec  5 20:41:25 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id lB64fP29023108
+	for <fwarc@sac.sfbay.sun.com>; Wed, 5 Dec 2007 20:41:25 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id lB64fNK9022889;
+	Thu, 6 Dec 2007 04:41:23 GMT
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JSM008012CZ3200@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 05 Dec 2007 20:41:23 -0800 (PST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JSM001R32CYJB50@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 05 Dec 2007 20:41:22 -0800 (PST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id lB64fMXn024446;
+ Wed, 05 Dec 2007 20:41:22 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JSM0040125ZBE00@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Wed,
+ 05 Dec 2007 20:41:22 -0800 (PST)
+Received: from [192.168.2.5] ([71.136.38.84])
+ by fe-sfbay-09.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb
+ 28 2007)) with ESMTPSA id <0JSM00AS02CXZ070@fe-sfbay-09.sun.com>; Wed,
+ 05 Dec 2007 20:41:22 -0800 (PST)
+Date: Wed, 05 Dec 2007 20:43:03 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: fast-track : FWARC/2007/671 - System Information Domain Services
+ 1.0
+In-reply-to: <47575A77.4040907@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware ARC <fwarc@Sun.COM>
+Cc: LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <47577DD7.9030603@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_+oy9ssLkRGRhSU4ku9sGtQ)"
+X-PMX-Version: 5.2.0.264296
+References: <474E26B3.4080601@sun.com> <474E275F.7040200@sun.com>
+ <47575A77.4040907@sun.com>
+User-Agent: Thunderbird 2.0.0.9 (Windows/20071031)
+Status: RO
+Content-Length: 5051
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_+oy9ssLkRGRhSU4ku9sGtQ)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+Hitendra Zhangada wrote:
+> Hitendra Zhangada wrote:
+>> Hitendra Zhangada wrote:
+>>> I am sponsoring this fast-track for Michael Christensen.
+>>> This case times out on December 5th, 2007.
+>>>
+>>> This case introduces System Information Domain Service.
+>>>
+>>> See details in the one-pager in the materials directory at,
+>>> http://sac.eng.sun.com/arc/FWARC/2007/671/materials/System.Info.1pager.txt
+>>>
+>>> or in the attached one-pager.
+>>
+>> Forgot to mention that,
+>>
+>> This case requests a release binding of for minor/micro for any
+>> firmware changes and minor/micro/patch for any OS changes.
+>
+> This case has timed out today and is not approved for,
+
+Above should read "now approved" (not "not approved").  Sticky fingers :)
+
+> release binding of for minor/micro for any firmware
+> changes and minor/micro/patch for any OS changes.
+>
+> Domain service registry has been updated.
+>
+> Thanks for the review.
+>>
+>> Thanks.
+>>
+>> -- 
+>> Hitendra Zhangada
+>> =============================================
+>> SPS Common SW Features Engineering
+>> Software Group, Sun Microsystems, Inc.
+>> Work Ph# (858) 625 3757, Ext. x53757
+>> SUN Internal homepage http://esp.west/~hitu
+>>   
+>
+>
+> -- 
+> Hitendra Zhangada
+> =============================================
+> SPS Common SW Features Engineering
+> Software Group, Sun Microsystems, Inc.
+> Work Ph# (858) 625 3757, Ext. x53757
+> SUN Internal homepage http://esp.west/~hitu
+>   
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_+oy9ssLkRGRhSU4ku9sGtQ)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+Hitendra Zhangada wrote:
+<blockquote cite="mid:47575A77.4040907@sun.com" type="cite">
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+Hitendra Zhangada wrote:
+  <blockquote cite="mid:474E275F.7040200@sun.com" type="cite">
+    <meta content="text/html;charset=ISO-8859-1"
+ http-equiv="Content-Type">
+Hitendra Zhangada wrote:
+    <blockquote cite="mid:474E26B3.4080601@sun.com" type="cite"><font
+ size="+1">I am sponsoring this fast-track for </font><big>Michael
+Christensen.<br>
+This case times out on December 5th, 2007.<br>
+      <br>
+This case introduces<big> </big>System Information Domain Service.<br>
+      <br>
+See details in the one-pager in the materials directory at,<br>
+      <a moz-do-not-send="true" class="moz-txt-link-freetext"
+ href="http://sac.eng.sun.com/arc/FWARC/2007/671/materials/System.Info.1pager.txt">http://sac.eng.sun.com/arc/FWARC/2007/671/materials/System.Info.1pager.txt</a><br>
+      <br>
+or in the attached one-pager.<br>
+      </big></blockquote>
+    <br>
+Forgot to mention that,<br>
+    <br>
+    <pre>This case requests a release binding of for minor/micro for any
+firmware changes and minor/micro/patch for any OS changes.</pre>
+  </blockquote>
+  <br>
+This case has timed out today and is not approved for,<br>
+</blockquote>
+<br>
+Above should read "now approved" (not "not approved").&nbsp; Sticky fingers
+:)<br>
+<br>
+<blockquote cite="mid:47575A77.4040907@sun.com" type="cite">
+  <pre>release binding of for minor/micro for any firmware
+changes and minor/micro/patch for any OS changes.</pre>
+  <br>
+Domain service registry has been updated.<br>
+  <br>
+Thanks for the review.<br>
+  <blockquote cite="mid:474E275F.7040200@sun.com" type="cite"><br>
+Thanks.<br>
+    <br>
+    <pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a moz-do-not-send="true"
+ class="moz-txt-link-freetext" href="http://esp.west/%7Ehitu">http://esp.west/~hitu</a>
+  </pre>
+  </blockquote>
+  <br>
+  <br>
+  <pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a moz-do-not-send="true"
+ class="moz-txt-link-freetext" href="http://esp.west/%7Ehitu">http://esp.west/~hitu</a>
+  </pre>
+</blockquote>
+<br>
+<br>
+<pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_+oy9ssLkRGRhSU4ku9sGtQ)--
+

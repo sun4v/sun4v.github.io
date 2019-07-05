@@ -1,0 +1,437 @@
+From sacadmin Mon Jul  7 14:49:27 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m67LnQm6001182
+	for <fwarc@sac.sfbay.sun.com>; Mon, 7 Jul 2008 14:49:27 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m67LnGka026759
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 7 Jul 2008 22:49:21 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K3N0020JOM6TH00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Mon, 07 Jul 2008 14:49:18 -0700 (PDT)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K3N00MUZOM5F290@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Mon, 07 Jul 2008 14:49:17 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m67LnHp3005318	for
+ <fwarc@Sun.COM>; Mon, 07 Jul 2008 21:49:17 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K3N00201NY9LX00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Mon, 07 Jul 2008 15:49:17 -0600 (MDT)
+Received: from dhcp-ubur03-180-160.East.Sun.COM ([129.148.180.160])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K3N00947OLYHL70@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Mon, 07 Jul 2008 15:49:10 -0600 (MDT)
+Date: Mon, 07 Jul 2008 17:49:10 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: FWARC/2008/424 - sun4v channels shared memory update - fast-track
+ timeout 07/14/2008
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>
+Message-id: <7DCAA5E3-5BF7-47D2-90E7-75F1FA5E85C8@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.919.2)
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_bvzjgff2V8MmCrHqt1BQ8w)"
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 9152
+
+
+--Boundary_(ID_bvzjgff2V8MmCrHqt1BQ8w)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+
+I am sponsoring this fast-track case for myself. This case makes changes
+to the API group and version for sun4v channels shared memory APIs that
+was approved under FWARC/2006/184.
+
+The FWARC/2006/184 case defined a set of APIs to shared memory between
+logical domains for copy, and direct map access. The sun4v channel  
+shared
+memory API provides a basic mechanism to guests to share memory segments
+with channel peers.
+
+The API group for sun4v channel shared memory was incorrectly specified
+as 0x103 in the case FWARC/2006/184. This is now corrected and all  
+shared
+memory APIs will be available in the sun4v channel group LDC_GROUP  
+(0x101).
+
+This case will also move the sun4v shared memory APIs for direct mapping
+to version 1.1 of the LDC_GROUP. The APIs for map table setup and  
+copying
+data between channel peers will continue to be available as part of
+version 1.0 of the LDC group.
+
+The list of sun4v channel shared memory APIs in the LDC group are listed
+below with the revised version information:
+
+Function Name		Func No.	Group      Version
+
+LDC_SET_MAP_TABLE       0xea            0x101      1.0
+LDC_GET_MAP_TABLE       0xeb            0x101      1.0
+LDC_COPY                0xec            0x101      1.0
+
+LDC_MAPIN               0xed            0x101      1.1
+LDC_UNMAP               0xee            0x101      1.1
+LDC_REVOKE              0xef            0x101      1.1
+
+In addition, it also makes a minor changes to the error value returned
+by the LDC_MAPIN API call as described in sec 2.4.1.
+
+This case will be approved for minor/micro/patch OS binding and
+minor/micro binding for the firmware.
+
+Case timer is set to expire on July 14, 2008.
+
+All of the changes are highlighted in the API document which can be
+found at:
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2008/424/materials/ldc-shm,v1.1.pdf
+http://sac.eng/Archives/CaseLog/arc/FWARC/2008/424/materials/ldc-shm,v1.1-diffs.pdf
+
+
+
+--Boundary_(ID_bvzjgff2V8MmCrHqt1BQ8w)
+Content-type: text/html; charset=US-ASCII
+Content-transfer-encoding: QUOTED-PRINTABLE
+
+<html><body style=3D"word-wrap: break-word; -webkit-nbsp-mode: space;=
+ -webkit-line-break: after-white-space; "><div><font class=3D"Apple-s=
+tyle-span" face=3D"Courier">I am sponsoring this fast-track case for =
+myself. This case makes changes&nbsp;</font></div><div><font class=
+=3D"Apple-style-span" face=3D"Courier">to the API group and version f=
+or sun4v channels shared memory APIs that&nbsp;</font></div><div><fon=
+t class=3D"Apple-style-span" face=3D"Courier">was&nbsp;approved&nbsp;=
+under FWARC/2006/184.</font></div><div><font class=3D"Apple-style-spa=
+n" face=3D"Courier"><br class=3D"webkit-block-placeholder"></font></d=
+iv><div><font class=3D"Apple-style-span" face=3D"Courier">The FWARC/2=
+006/184 case defined a set of APIs to shared memory between</font></d=
+iv><div><font class=3D"Apple-style-span" face=3D"Courier">logical dom=
+ains for copy, and direct map access. The sun4v channel shared</font>=
+</div><div><font class=3D"Apple-style-span" face=3D"Courier">memory A=
+PI provides a basic mechanism to guests to share memory segments</fon=
+t></div><div><font class=3D"Apple-style-span" face=3D"Courier">with c=
+hannel peers.&nbsp;</font></div><div><font class=3D"Apple-style-span"=
+ face=3D"Courier"><br class=3D"webkit-block-placeholder"></font></div=
+><div><font class=3D"Apple-style-span" face=3D"Courier">The API group=
+ for sun4v channel shared memory was incorrectly specified</font></di=
+v><div><font class=3D"Apple-style-span" face=3D"Courier">as 0x103 in =
+the case&nbsp;FWARC/2006/184. This is now corrected and&nbsp;all shar=
+ed&nbsp;</font></div><div><font class=3D"Apple-style-span" face=3D"Co=
+urier">memory APIs will be available in the sun4v channel group LDC_G=
+ROUP (0x101).</font></div><div><font class=3D"Apple-style-span" face=
+=3D"Courier"><br class=3D"webkit-block-placeholder"></font></div><div=
+><font class=3D"Apple-style-span" face=3D"Courier">This case will als=
+o move the sun4v shared memory APIs for direct mapping&nbsp;</font></=
+div><div><font class=3D"Apple-style-span" face=3D"Courier">to&nbsp;ve=
+rsion 1.1 of the LDC_GROUP. The APIs for map table setup and&nbsp;cop=
+ying&nbsp;</font></div><div><font class=3D"Apple-style-span" face=
+=3D"Courier">data between channel peers will continue to be available=
+ as part of&nbsp;</font></div><div><font class=3D"Apple-style-span" f=
+ace=3D"Courier">version 1.0 of the LDC group.</font></div><div><font =
+class=3D"Apple-style-span" face=3D"Courier"><br class=3D"webkit-block=
+-placeholder"></font></div><div><font class=3D"Apple-style-span" face=
+=3D"Courier">The list of sun4v channel shared memory APIs in the LDC =
+group are listed</font></div><div><font class=3D"Apple-style-span" fa=
+ce=3D"Courier">below with the revised version information:</font></di=
+v><div><font class=3D"Apple-style-span" face=3D"Courier"><br class=
+=3D"webkit-block-placeholder"></font></div><div><font class=3D"Apple-=
+style-span" face=3D"Courier">Function Name</font><span class=3D"Apple=
+-tab-span" style=3D"white-space:pre"><font class=3D"Apple-style-span"=
+ face=3D"Courier">=09=09</font></span><font class=3D"Apple-style-span=
+" face=3D"Courier">Func No.</font><span class=3D"Apple-tab-span" styl=
+e=3D"white-space:pre"><font class=3D"Apple-style-span" face=3D"Courie=
+r">=09Group      </font></span><font class=3D"Apple-style-span" face=
+=3D"Courier">Version</font></div><div><font class=3D"Apple-style-span=
+" face=3D"Courier"><br class=3D"webkit-block-placeholder"></font></di=
+v><div><font class=3D"Apple-style-span" face=3D"Courier">LDC_SET_MAP_=
+TABLE &nbsp; &nbsp; &nbsp; 0xea &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp;0x101 &nbsp; &nbsp; &nbsp;1.0 &nbsp; &nbsp; &nbsp; &nbsp;</font><=
+/div><div><font class=3D"Apple-style-span" face=3D"Courier">LDC_GET_M=
+AP_TABLE &nbsp; &nbsp; &nbsp; 0xeb &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp;0x101 &nbsp; &nbsp; &nbsp;1.0 &nbsp; &nbsp; &nbsp; &nbsp;</fon=
+t></div><div><font class=3D"Apple-style-span" face=3D"Courier">LDC_CO=
+PY &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0xec &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0x101 &nbsp; &nbsp; &nbsp;1.0</fon=
+t></div><div><font class=3D"Apple-style-span" face=3D"Courier"><br cl=
+ass=3D"webkit-block-placeholder"></font></div><div><font class=3D"App=
+le-style-span" face=3D"Courier">LDC_MAPIN &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp; 0xed &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0=
+x101 &nbsp; &nbsp; &nbsp;1.1</font></div><div><font class=3D"Apple-st=
+yle-span" face=3D"Courier">LDC_UNMAP &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp; 0xee &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0x101 =
+&nbsp; &nbsp; &nbsp;1.1</font></div><div><font class=3D"Apple-style-s=
+pan" face=3D"Courier">LDC_REVOKE &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp;0xef &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0x101 &nbsp=
+; &nbsp; &nbsp;1.1</font></div><div><font class=3D"Apple-style-span" =
+face=3D"Courier"><br class=3D"webkit-block-placeholder"></font></div>=
+<div><font class=3D"Apple-style-span" face=3D"Courier">In addition, i=
+t also makes a minor changes to the error value returned</font></div>=
+<div><font class=3D"Apple-style-span" face=3D"Courier">by the LDC_MAP=
+IN API call as described in sec 2.4.1.</font></div><div><font class=
+=3D"Apple-style-span" face=3D"Courier"><br class=3D"webkit-block-plac=
+eholder"></font></div><div><font class=3D"Apple-style-span" face=3D"C=
+ourier">This case will be approved for minor/micro/patch OS binding a=
+nd</font></div><div><font class=3D"Apple-style-span" face=3D"Courier"=
+>minor/micro binding for the firmware.</font></div><div><font class=
+=3D"Apple-style-span" face=3D"Courier"><br class=3D"webkit-block-plac=
+eholder"></font></div><div><font class=3D"Apple-style-span" face=3D"C=
+ourier">Case timer is set to expire on July 14, 2008.<br></font></div=
+><div><font class=3D"Apple-style-span" face=3D"Courier"><br class=
+=3D"webkit-block-placeholder"></font></div><div><font class=3D"Apple-=
+style-span" face=3D"Courier">All of the changes are highlighted in th=
+e API document which can be &nbsp;</font></div><div><font class=3D"Ap=
+ple-style-span" face=3D"Courier">found at:</font></div><div><font cla=
+ss=3D"Apple-style-span" face=3D"Courier"><br class=3D"webkit-block-pl=
+aceholder"></font></div><div><font class=3D"Apple-style-span" face=
+=3D"Courier"><a href=3D"http://sac.eng/Archives/CaseLog/arc/FWARC/200=
+8/424/materials/ldc-shm,v1.1.pdf">http://sac.eng/Archives/CaseLog/arc=
+/FWARC/2008/424/materials/ldc-shm,v1.1.pdf</a></font></div><div><font=
+ class=3D"Apple-style-span" face=3D"Courier"><a href=3D"http://sac.en=
+g/Archives/CaseLog/arc/FWARC/2008/424/materials/ldc-shm,v1.1-diffs.pd=
+f">http://sac.eng/Archives/CaseLog/arc/FWARC/2008/424/materials/ldc-s=
+hm,v1.1-diffs.pdf</a></font></div><div><font class=3D"Apple-style-spa=
+n" face=3D"Courier"><br class=3D"webkit-block-placeholder"></font></d=
+iv><div><br class=3D"webkit-block-placeholder"></div></body></html>
+
+--Boundary_(ID_bvzjgff2V8MmCrHqt1BQ8w)--
+
+From sacadmin Wed Jul 16 20:36:37 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m6H3aaQk021344
+	for <fwarc@sac.sfbay.Sun.COM>; Wed, 16 Jul 2008 20:36:37 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m6H3aDPu027797
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 17 Jul 2008 11:36:35 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K4400003SOXIV00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Wed, 16 Jul 2008 20:36:33 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K4400KQJSOXIA20@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Wed, 16 Jul 2008 20:36:33 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m6H3aXqL024778	for
+ <fwarc@Sun.COM>; Thu, 17 Jul 2008 03:36:33 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K4400F01SGD1B00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Wed, 16 Jul 2008 21:36:32 -0600 (MDT)
+Received: from [192.168.1.103] ([129.150.64.237])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0K44003C8SOOAI40@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Wed, 16 Jul 2008 21:36:26 -0600 (MDT)
+Date: Wed, 16 Jul 2008 23:36:22 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: FWARC/2008/424 - sun4v channels shared memory update - fast-track
+ timeout 07/14/2008
+In-reply-to: <7DCAA5E3-5BF7-47D2-90E7-75F1FA5E85C8@sun.com>
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>
+Message-id: <BC84D393-E7EF-4F4B-9A1F-E838D7EEB13F@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.926)
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_XnhhT30DUeDF1RxdVf7bzg)"
+X-PMX-Version: 5.4.1.325704
+References: <7DCAA5E3-5BF7-47D2-90E7-75F1FA5E85C8@sun.com>
+Status: RO
+Content-Length: 9826
+
+
+--Boundary_(ID_XnhhT30DUeDF1RxdVf7bzg)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+
+This fast-track case has timed out and is now approved.
+
+IAM file has been updated.
+
+Thanks
+-Narayan
+
+On Jul 7, 2008, at 5:49 PM, Narayan Venkat wrote:
+
+> I am sponsoring this fast-track case for myself. This case makes  
+> changes
+> to the API group and version for sun4v channels shared memory APIs  
+> that
+> was approved under FWARC/2006/184.
+>
+> The FWARC/2006/184 case defined a set of APIs to shared memory between
+> logical domains for copy, and direct map access. The sun4v channel  
+> shared
+> memory API provides a basic mechanism to guests to share memory  
+> segments
+> with channel peers.
+>
+> The API group for sun4v channel shared memory was incorrectly  
+> specified
+> as 0x103 in the case FWARC/2006/184. This is now corrected and all  
+> shared
+> memory APIs will be available in the sun4v channel group LDC_GROUP  
+> (0x101).
+>
+> This case will also move the sun4v shared memory APIs for direct  
+> mapping
+> to version 1.1 of the LDC_GROUP. The APIs for map table setup and  
+> copying
+> data between channel peers will continue to be available as part of
+> version 1.0 of the LDC group.
+>
+> The list of sun4v channel shared memory APIs in the LDC group are  
+> listed
+> below with the revised version information:
+>
+> Function Name		Func No.	Group      Version
+>
+> LDC_SET_MAP_TABLE       0xea            0x101      1.0
+> LDC_GET_MAP_TABLE       0xeb            0x101      1.0
+> LDC_COPY                0xec            0x101      1.0
+>
+> LDC_MAPIN               0xed            0x101      1.1
+> LDC_UNMAP               0xee            0x101      1.1
+> LDC_REVOKE              0xef            0x101      1.1
+>
+> In addition, it also makes a minor changes to the error value returned
+> by the LDC_MAPIN API call as described in sec 2.4.1.
+>
+> This case will be approved for minor/micro/patch OS binding and
+> minor/micro binding for the firmware.
+>
+> Case timer is set to expire on July 14, 2008.
+>
+> All of the changes are highlighted in the API document which can be
+> found at:
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2008/424/materials/ldc-shm,v1.1.pdf
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2008/424/materials/ldc-shm,v1.1-diffs.pdf
+>
+>
+
+
+--Boundary_(ID_XnhhT30DUeDF1RxdVf7bzg)
+Content-type: text/html; charset=US-ASCII
+Content-transfer-encoding: QUOTED-PRINTABLE
+
+<html><body style=3D"word-wrap: break-word; -webkit-nbsp-mode: space;=
+ -webkit-line-break: after-white-space; ">This fast-track case has ti=
+med out and is now approved.<br><br>IAM file has been updated.<br><br=
+>Thanks<br>-Narayan<br><div><div><br></div><div>On Jul 7, 2008, at 5:=
+49 PM, Narayan Venkat wrote:</div><br class=3D"Apple-interchange-newl=
+ine"><blockquote type=3D"cite"><div style=3D"word-wrap: break-word; -=
+webkit-nbsp-mode: space; -webkit-line-break: after-white-space; "><di=
+v><font class=3D"Apple-style-span" face=3D"Courier">I am sponsoring t=
+his fast-track case for myself. This case makes changes&nbsp;</font><=
+/div><div><font class=3D"Apple-style-span" face=3D"Courier">to the AP=
+I group and version for sun4v channels shared memory APIs that&nbsp;<=
+/font></div><div><font class=3D"Apple-style-span" face=3D"Courier">wa=
+s&nbsp;approved&nbsp;under FWARC/2006/184.</font></div><div><font cla=
+ss=3D"Apple-style-span" face=3D"Courier"><br class=3D"webkit-block-pl=
+aceholder"></font></div><div><font class=3D"Apple-style-span" face=
+=3D"Courier">The FWARC/2006/184 case defined a set of APIs to shared =
+memory between</font></div><div><font class=3D"Apple-style-span" face=
+=3D"Courier">logical domains for copy, and direct map access. The sun=
+4v channel shared</font></div><div><font class=3D"Apple-style-span" f=
+ace=3D"Courier">memory API provides a basic mechanism to guests to sh=
+are memory segments</font></div><div><font class=3D"Apple-style-span"=
+ face=3D"Courier">with channel peers.&nbsp;</font></div><div><font cl=
+ass=3D"Apple-style-span" face=3D"Courier"><br class=3D"webkit-block-p=
+laceholder"></font></div><div><font class=3D"Apple-style-span" face=
+=3D"Courier">The API group for sun4v channel shared memory was incorr=
+ectly specified</font></div><div><font class=3D"Apple-style-span" fac=
+e=3D"Courier">as 0x103 in the case&nbsp;FWARC/2006/184. This is now c=
+orrected and&nbsp;all shared&nbsp;</font></div><div><font class=3D"Ap=
+ple-style-span" face=3D"Courier">memory APIs will be available in the=
+ sun4v channel group LDC_GROUP (0x101).</font></div><div><font class=
+=3D"Apple-style-span" face=3D"Courier"><br class=3D"webkit-block-plac=
+eholder"></font></div><div><font class=3D"Apple-style-span" face=3D"C=
+ourier">This case will also move the sun4v shared memory APIs for dir=
+ect mapping&nbsp;</font></div><div><font class=3D"Apple-style-span" f=
+ace=3D"Courier">to&nbsp;version 1.1 of the LDC_GROUP. The APIs for ma=
+p table setup and&nbsp;copying&nbsp;</font></div><div><font class=
+=3D"Apple-style-span" face=3D"Courier">data between channel peers wil=
+l continue to be available as part of&nbsp;</font></div><div><font cl=
+ass=3D"Apple-style-span" face=3D"Courier">version 1.0 of the LDC grou=
+p.</font></div><div><font class=3D"Apple-style-span" face=3D"Courier"=
+><br class=3D"webkit-block-placeholder"></font></div><div><font class=
+=3D"Apple-style-span" face=3D"Courier">The list of sun4v channel shar=
+ed memory APIs in the LDC group are listed</font></div><div><font cla=
+ss=3D"Apple-style-span" face=3D"Courier">below with the revised versi=
+on information:</font></div><div><font class=3D"Apple-style-span" fac=
+e=3D"Courier"><br class=3D"webkit-block-placeholder"></font></div><di=
+v><font class=3D"Apple-style-span" face=3D"Courier">Function Name</fo=
+nt><span class=3D"Apple-tab-span" style=3D"white-space:pre"><font cla=
+ss=3D"Apple-style-span" face=3D"Courier">=09=09</font></span><font cl=
+ass=3D"Apple-style-span" face=3D"Courier">Func No.</font><span class=
+=3D"Apple-tab-span" style=3D"white-space:pre"><font class=3D"Apple-st=
+yle-span" face=3D"Courier">=09Group      </font></span><font class=
+=3D"Apple-style-span" face=3D"Courier">Version</font></div><div><font=
+ class=3D"Apple-style-span" face=3D"Courier"><br class=3D"webkit-bloc=
+k-placeholder"></font></div><div><font class=3D"Apple-style-span" fac=
+e=3D"Courier">LDC_SET_MAP_TABLE &nbsp; &nbsp; &nbsp; 0xea &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp;0x101 &nbsp; &nbsp; &nbsp;1.0 &nbsp; &n=
+bsp; &nbsp; &nbsp;</font></div><div><font class=3D"Apple-style-span" =
+face=3D"Courier">LDC_GET_MAP_TABLE &nbsp; &nbsp; &nbsp; 0xeb &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0x101 &nbsp; &nbsp; &nbsp;1.0 &nbsp;=
+ &nbsp; &nbsp; &nbsp;</font></div><div><font class=3D"Apple-style-spa=
+n" face=3D"Courier">LDC_COPY &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp;0xec &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0x101 &n=
+bsp; &nbsp; &nbsp;1.0</font></div><div><font class=3D"Apple-style-spa=
+n" face=3D"Courier"><br class=3D"webkit-block-placeholder"></font></d=
+iv><div><font class=3D"Apple-style-span" face=3D"Courier">LDC_MAPIN &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0xed &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp;0x101 &nbsp; &nbsp; &nbsp;1.1</font></div><d=
+iv><font class=3D"Apple-style-span" face=3D"Courier">LDC_UNMAP &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0xee &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp;0x101 &nbsp; &nbsp; &nbsp;1.1</font></div><div><f=
+ont class=3D"Apple-style-span" face=3D"Courier">LDC_REVOKE &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0xef &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp;0x101 &nbsp; &nbsp; &nbsp;1.1</font></div><div><font c=
+lass=3D"Apple-style-span" face=3D"Courier"><br class=3D"webkit-block-=
+placeholder"></font></div><div><font class=3D"Apple-style-span" face=
+=3D"Courier">In addition, it also makes a minor changes to the error =
+value returned</font></div><div><font class=3D"Apple-style-span" face=
+=3D"Courier">by the LDC_MAPIN API call as described in sec 2.4.1.</fo=
+nt></div><div><font class=3D"Apple-style-span" face=3D"Courier"><br c=
+lass=3D"webkit-block-placeholder"></font></div><div><font class=3D"Ap=
+ple-style-span" face=3D"Courier">This case will be approved for minor=
+/micro/patch OS binding and</font></div><div><font class=3D"Apple-sty=
+le-span" face=3D"Courier">minor/micro binding for the firmware.</font=
+></div><div><font class=3D"Apple-style-span" face=3D"Courier"><br cla=
+ss=3D"webkit-block-placeholder"></font></div><div><font class=3D"Appl=
+e-style-span" face=3D"Courier">Case timer is set to expire on July 14=
+, 2008.<br></font></div><div><font class=3D"Apple-style-span" face=
+=3D"Courier"><br class=3D"webkit-block-placeholder"></font></div><div=
+><font class=3D"Apple-style-span" face=3D"Courier">All of the changes=
+ are highlighted in the API document which can be &nbsp;</font></div>=
+<div><font class=3D"Apple-style-span" face=3D"Courier">found at:</fon=
+t></div><div><font class=3D"Apple-style-span" face=3D"Courier"><br cl=
+ass=3D"webkit-block-placeholder"></font></div><div><font class=3D"App=
+le-style-span" face=3D"Courier"><a href=3D"http://sac.eng/Archives/Ca=
+seLog/arc/FWARC/2008/424/materials/ldc-shm,v1.1.pdf">http://sac.eng/A=
+rchives/CaseLog/arc/FWARC/2008/424/materials/ldc-shm,v1.1.pdf</a></fo=
+nt></div><div><font class=3D"Apple-style-span" face=3D"Courier"><a hr=
+ef=3D"http://sac.eng/Archives/CaseLog/arc/FWARC/2008/424/materials/ld=
+c-shm,v1.1-diffs.pdf">http://sac.eng/Archives/CaseLog/arc/FWARC/2008/=
+424/materials/ldc-shm,v1.1-diffs.pdf</a></font></div><div><font class=
+=3D"Apple-style-span" face=3D"Courier"><br class=3D"webkit-block-plac=
+eholder"></font></div><div><br class=3D"webkit-block-placeholder"></d=
+iv></div></blockquote></div><br></body></html>
+
+--Boundary_(ID_XnhhT30DUeDF1RxdVf7bzg)--
+

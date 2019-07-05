@@ -1,0 +1,155 @@
+1. Introduction
+   1.1. Project/Component Working Name:
+        PRI Changes for Direct Attached Disks
+
+   1.2. Name of Document Author/Supplier:
+        Stephen Kelly
+
+   1.3. Date of This Document:
+        05/17/10
+
+2. Project Summary
+
+        This document describes how the Physical Resource Inventory (PRI) can be
+        used to enumerate disks in systems where multipathing is enabled.
+
+3. Business Summary
+
+        On previous platforms, firmware was able to correctly determine
+        what the future path of a disk would be under Solaris using a
+        combination of the pci path to the hba and the phy number at 
+        which the bay and hba attached.  The FMA disk enumerator in the OS
+        then cross-referenced these paths in order to obtain the nac
+        names of the bays, and later to inform the user of the
+        physical location of disks in the system.  With multipathing
+        enabled the pci-path and phy number are abstracted by Solaris
+        and replaced by the Globally Unique Identifier (GUID) of the
+        disk.  Rather than create a bogus path for Solaris to parse,
+        firmware should provide the same information as it did before, 
+        but in a more generic form.
+
+4. Technical Description:
+    4.1. Details:
+
+       The component nodes that represent directly connected disks and their
+       respective controllers will be updated in the following way.
+
+       Representation of a directly attached disk will require at least two
+       component nodes:
+
+	1) A new component node which represents the Host Bus Adapter (hba) 
+	   controller where topo-hc-name = "hba".
+
+	2) A component node which represents the physical slot (bay) where a
+	   disk would connect to, where topo-hc-name = "bay".
+
+
+	Since disk drives can be hot-swapped, there is no way to
+	deterministically depict any and all possible disk drives; thus the 
+	representation of directly attached disks will terminate at the disk 
+	bay.
+
+     4.1.1 topo-hc-name = "hba"
+
+	A new component node that represents a (SCSI) Host Bus Adapter which
+	contains ports that disk drives can be connected to. Properties required
+	of the hba node include:
+
+	   type = "io";
+	   topo-hc-name = "hba";
+	   id = ID#;
+	   nac = "<NAC STRING>";
+	   path = "<HBA PCI PATH>";
+
+
+     4.1.2 phy_number
+
+       Name		Tag		Required
+        ----		---		--------
+        phy_number	PROP_DATA	no
+
+         Description
+         -----------
+         An array of 8 bit values that specifies how the represented drive bay is
+         physically attached to an hba or set of hbas.  The values are relatively
+         indexed by the id properties in node parents with topo-hc-name="hba".
+
+           phy_number[0] = PHY connection to hba with the lowest id property
+           phy_number[1] = PHY connection to hba with the next lowest id property
+           etc..
+
+         This property is required for topo-hc-name="bay" component nodes
+         directly attached to a controller that may invoke multipathing.
+
+       Example md nodes:
+
+         Bay connected to a single hba:
+         -----------------------------
+
+          +--------+         +-------+
+          |   hba  | phy = 6 |  bay  |
+          | id = 1 |---------|       |            
+          +--------+         +-------+       
+
+
+          node component hba1 {
+	       topo-hc-name = "hba";
+	       id = 1;
+               fwd -> bay
+          }
+
+          node component bay {
+	       back -> hba1;
+	       topo-hc-name = "bay";
+	       phy_number = [ 6 ];
+          }
+
+
+         Bay connected to multiple hbas:
+         ------------------------------
+
+          +--------+
+          |   hba  | phy = 3 +-------+
+          | id = 0 |---------|       |            
+          +--------+         |  bay  |
+                             |       |
+          +--------+ phy = 7 |       |
+          |   hba  |---------|       |
+          | id = 4 |         +-------+  
+          +--------+
+
+          node component hba0 {
+	       topo-hc-name = "hba";
+	       id = 0;
+               fwd -> bay
+          }
+
+          node component hba4 {
+	       topo-hc-name = "hba";
+	       id = 4;
+               fwd -> bay
+          }
+
+          node component bay {
+	       back -> hba0;
+	       back -> hba4;
+	       topo-hc-name = "bay";
+	       phy_number = [ 3 7 ];
+          }
+
+
+    4.2. Exported Interfaces:
+
+        Interface             Classification  	Comments
+        ---------             --------------    ----------------------------
+        topo-hc-name="bay"    Uncommitted       Described in section 4.1
+        phy_number            Uncommitted       Described in section 4.2
+
+ 
+5. Reference Documents:
+  [1] Physical Resource Inventory (PRI) FWARC case
+	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/700/
+
+  [2] Physical Resource Inventory (PRI) Specification
+	http://sac.sfbay.sun.com/arc/FWARC/Specifications/PRI_Specification.txt
+

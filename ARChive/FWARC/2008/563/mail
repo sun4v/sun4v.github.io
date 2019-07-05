@@ -1,0 +1,152 @@
+From sacadmin Thu Sep  4 08:32:09 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m84FW8oW012168
+	for <fwarc@sac.sfbay.Sun.COM>; Thu, 4 Sep 2008 08:32:08 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m84FW4ei016927
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 4 Sep 2008 23:32:07 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K6O00M4LGHHZ000@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Thu, 04 Sep 2008 08:32:05 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K6O00GGTGHGFNB0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Thu, 04 Sep 2008 08:32:04 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m84FW3GZ025339	for
+ <fwarc@Sun.COM>; Thu, 04 Sep 2008 15:32:03 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K6O00H01FZ03200@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Thu, 04 Sep 2008 09:32:03 -0600 (MDT)
+Received: from [192.168.1.103] ([72.74.15.152])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0K6O00BD2GH9X6G0@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Thu, 04 Sep 2008 09:31:58 -0600 (MDT)
+Date: Thu, 04 Sep 2008 11:31:56 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: FWARC/2008/563 - Virtual Domain Service MD nodes and misc. properties
+ - fast-track timeout Sep 11, 2008
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>,
+        Michael Christensen <Michael.Christensen@sun.com>
+Message-id: <27C84A2D-8D46-4B3B-9D02-47CC342898BB@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.926)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 820
+
+I am sponsoring this fast-track for Michael Christensen.
+This case introduces a new virtual-device MD node called
+"virtual-domain-service" and also adds new properties to
+the both the virtual-device and virtual-device-port nodes.
+
+The VIO MD specification was approved under FWARC/2006/072
+and then modified under FWARC/2006/122, FWARC/2007/363,
+FWARC/2008/016, FWARC/2008/228 and FWARC/2008/553.
+
+This case will be approved for minor/micro/patch OS binding
+and minor/micro binding for the firmware.
+
+The case timer is set to expire on Sep 11, 2008.
+
+The one-pager and materials is available in the materials
+directory at:
+
+http://sac.eng/arc/FWARC/2008/563/materials/vlds-1pager.txt
+
+http://sac.eng/arc/FWARC/2008/563/materials/vio-md-nodes-v8-diff.pdf
+
+http://sac.eng/arc/FWARC/2008/563/materials/vio-md-nodes-v8.pdf
+
+
+From sacadmin Mon Sep 15 12:38:25 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8FJcOcq007194
+	for <fwarc@sac.sfbay.sun.com>; Mon, 15 Sep 2008 12:38:25 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m8FJcMPP008339
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 15 Sep 2008 20:38:23 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K790060157YKO00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Mon, 15 Sep 2008 12:38:22 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K7900MPU57YPJ70@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Mon, 15 Sep 2008 12:38:22 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m8FJcLSK024179	for
+ <fwarc@Sun.COM>; Mon, 15 Sep 2008 19:38:21 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K7900J0143SL600@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Mon, 15 Sep 2008 13:38:21 -0600 (MDT)
+Received: from dhcp-ubur03-180-211.East.Sun.COM ([129.148.180.211])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K790008J57WQS80@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Mon, 15 Sep 2008 13:38:21 -0600 (MDT)
+Date: Mon, 15 Sep 2008 15:38:18 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: FWARC/2008/563 - Virtual Domain Service MD nodes and misc.
+ properties - fast-track timeout Sep 11, 2008
+In-reply-to: <27C84A2D-8D46-4B3B-9D02-47CC342898BB@sun.com>
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: michael christensen <Michael.Christensen@sun.com>
+Message-id: <1DE38F26-5F6B-43F8-A127-7D9D0CA57608@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.926)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <27C84A2D-8D46-4B3B-9D02-47CC342898BB@sun.com>
+Status: RO
+Content-Length: 1013
+
+This fast-track case has timed out and is now approved.
+
+IAM file has been updated.
+
+Thanks
+-Narayan
+
+On Sep 4, 2008, at 11:31 AM, Narayan Venkat wrote:
+
+> I am sponsoring this fast-track for Michael Christensen.
+> This case introduces a new virtual-device MD node called
+> "virtual-domain-service" and also adds new properties to
+> the both the virtual-device and virtual-device-port nodes.
+>
+> The VIO MD specification was approved under FWARC/2006/072
+> and then modified under FWARC/2006/122, FWARC/2007/363,
+> FWARC/2008/016, FWARC/2008/228 and FWARC/2008/553.
+>
+> This case will be approved for minor/micro/patch OS binding
+> and minor/micro binding for the firmware.
+>
+> The case timer is set to expire on Sep 11, 2008.
+>
+> The one-pager and materials is available in the materials
+> directory at:
+>
+> http://sac.eng/arc/FWARC/2008/563/materials/vlds-1pager.txt
+>
+> http://sac.eng/arc/FWARC/2008/563/materials/vio-md-nodes-v8-diff.pdf
+>
+> http://sac.eng/arc/FWARC/2008/563/materials/vio-md-nodes-v8.pdf
+>
+
+

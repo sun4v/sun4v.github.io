@@ -1,0 +1,31 @@
+Inception: Domain Services (2006/055)
+Submitter: eric.sharakan@sun.com
+Owner: Hitendra Zhangada
+Intern: Narayan Venkat
+
+====================
+CASE OWNER'S NOTES
+====================
+
+Meeting started with an overview of the case.  Eric gave an overview of the 
+project.  No new issues were raised during the overview.
+
+Yanmin asked about list of ARC cases under LDOM umbrella.  Hitu responded that a 
+list was part of Ash's presentation.
+
+After an overview, Hitu asked Narayan to go through the list of issues.  We went 
+through all of the issue.  Few changes to specification will be needed as a 
+result of this review.  See issues file for details on these issues.
+
+
+Team is asked to come back for another review.  If team submits updated material 
+by end of this week then we may have commitment review for February 27th.
+
+
+Hitu also mentioned that Sunit will bring OPL case (2005/320) for commitment on 
+February 27th.
+
+
+
+
+

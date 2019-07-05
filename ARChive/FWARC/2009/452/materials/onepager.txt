@@ -1,0 +1,245 @@
+1. Introduction
+   1.1. Project/Component Working Name:
+        HV APIs for cooperative guest migration
+
+   1.2. Name of Document Author/Supplier:
+
+        David Finberg
+
+   1.3. Date of This Document:
+        08/17/2009
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+        1.4.1. The PAC or CPT you expect to review your project:
+                HS PAC
+
+        1.4.2. The ARC(s) you expect to review your project:
+                FWARC
+
+        1.4.3. The Director/VP who is "Sponsoring" this project:
+                Mike Sanfratello
+
+        1.4.4. The name of your business unit:
+                Systems Group (SG)
+                (Sparc Platform Software)
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: Jason.Hayes@Sun.Com
+        1.5.2. Responsible Engineer: david.finberg@Sun.COM
+
+2. Project Summary
+
+   2.1. Project Description:
+   
+   This project introduces Hypervisor APIs for support for cooperative
+   guest migrations.  These APIs will be used by sun4v guest domains.
+
+   2.2. Risks and Assumptions:
+   
+   None
+   
+3. Business Summary
+
+   3.1. Problem Area:
+
+   For current domain migrations, the Hypervisor must abide by the 
+   UltraSPARC Architecture specifications.  This document makes no allowance
+   for tick/stick to move backwards.
+
+   In current sun4v implementations, tick/stick is shared across a core.  This
+   means that a core with a running guest may not be able to share the core 
+   with a migrated domain, since the migrated domain may need a different value
+   of tick/stick.  To accomodate this, the domain manager is forced to allocate
+   whole cores to migrated domains, even if they use fewer cpus.
+
+   By providing a set of cooperative migration interfaces, The guest can account
+   for the warping of tick/stick around a suspend operation.  This allows the 
+   domain manager to allow such migrated domains to share cores.
+   
+   3.2. Market/Requester:
+
+   See FWARC 2005/633.
+   
+   3.3. Business Justification:
+
+   See FWARC 2005/633.
+
+   3.6. How will you know when you are done?:
+   
+   When the code changes required for the proposed changes are integrated
+   into respective workspaces.
+
+ 
+4. Technical Description:
+
+   The guest domain will receive a domain service message telling it that
+   it should prepare for migration.  At that point, the domain will ensure that
+   it will be able to handle the suspend/resume process.  When the domain is
+   ready, it will call into the Hypervisor to suspend itself.
+
+   At some later time, the guest will be resumed by the domain manager.  The domain
+   will resume processing after the trap, but must account for tick and stick changes,
+   including possibly moving backwards.  Domains may wish to use the new 
+   APIs to set NPT on both tick and stick to accommodate running processes.  Resources
+   that the guest had available before the suspend will still be available after the resume.
+
+   4.1  Following sections describes the sun4v API used for a domain 
+        to suspend itself
+    
+   4.1.1  sun4v API calls
+
+   The API calls used are major version 1, minor version 2 of the CORE API group
+
+   4.1.1.1 Core API Group 
+   
+   Group# 	Description
+   0x1		API Group Core
+
+   The Core API group version 1.2 adds the following hcalls
+
+   Function# 	Name 	Description
+   0x181 	GUEST_SUSPEND 	Suspend the guest
+   0x182 	CPU_TICK_NPT 	Set/Unset the NPT bit on tick on this cpu
+   0x183 	CPU_STICK_NPT 	Set/Unset the NPT bit on stick on this cpu
+
+  
+  4.1.1.2 GUEST_SUSPEND
+
+  Entry :
+     trap#      FAST_TRAP
+     function# 	GUEST_SUSPEND (0x181)
+  Exit :
+     ret0 	status (success or error code)
+
+   This call suspends the running guest domain, the function will return upon
+   the resume.  A suspended domain can only be resumed by the domain manager.  
+
+   All resources that were available to the domain prior to suspension will
+   still be available after resumption, but additional resources may be 
+   available. After resumption, a suspended domain's tick/stick may have 
+   changed by either a positive or negative offset.
+
+   On success, the call returns a status of EOK. Otherwise, it returns one of 
+   the following errors:
+
+   ENOTSUPPORTED
+    The requested operation can not be performed on this domain
+   EWOULDBLOCK
+    The requested operation can not be performed at this time
+
+   4.1.1.3 CPU_TICK_NPT
+
+   Entry :
+     trap#      FAST_TRAP
+     function#  CPU_TICK_NPT (0x182)
+     arg0       enable/disable
+   Exit :
+     ret0       status (success or error code)
+
+   This call enables (arg0 == 1) or disables (arg0 == 0) the tick.npt 
+   bit on the calling cpu.
+
+   On success, the call returns a status of EOK.  Otherwise, it returns one 
+   of the following errors:
+
+  EINVAL
+    Invalid argument
+
+   4.1.1.4 CPU_STICK_NPT
+
+   Entry :
+     trap#      FAST_TRAP
+     function#  CPU_STICK_NPT (0x183)
+     arg0       enable/disable
+   Exit :
+     ret0       status (success or error code)
+
+   This call enables (arg0 == 1) or disables (arg0 == 0) the stick.npt 
+   bit on the calling cpu.
+
+   On success, the call returns a status of EOK.  Otherwise, it returns one 
+   of the following errors:
+
+  EINVAL
+    Invalid argument
+
+  Implementors note: On some sun4v platforms, tick and stick may be aliases, so
+  that enabling npt on one may affect the other.
+
+   4.2  Interface Table
+                                         
+   4.2.1 Imported Interfaces :
+                
+      Interface        Classification       Comments
+      ======================================================================
+
+      HV APIs             Committed          FWARC/2005/116
+
+
+   4.2.2 Exported Interfaces:
+
+      Interface        Classification       Comments
+      =======================================================================
+
+      GUEST_SUSPEND       Committed          Function 0x181, group 0x1, version 1.2
+                                             as defined in section 4.1.1.2
+                                                
+      CPU_TICK_NPT        Committed          Function 0x182, group 0x1, version 1.2
+                                             as defined in section 4.1.1.3
+                                                
+      CPU_STICK_NPT       Committed          Function 0x183, group 0x1, version 1.2
+                                             as defined in section 4.1.1.4     
+                
+5. Reference Documents:
+
+   None
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+        
+
+   6.2. Cost of Effort:
+
+
+   6.3. Cost of Capital Resources:
+
+
+   6.4. Product Approval Committee requested information:
+        6.4.1. Consolidation Name:
+                System Firmware
+                
+        6.4.2. Contributing OpCo/BU/Division Name:
+                
+               Systems Group
+                
+        6.4.3. Type of PAC Review and Approval expected:
+                N/A
+
+        6.4.4. Project Boundary Conditions:
+                N/A
+
+        6.4.5. Is this a necessary project for OEM agreements:
+                No.
+
+        6.4.6. Notes/Dependencies:
+                N/A
+
+        6.4.7. Target RTI Date/Release:
+                N/A - Not a separate deliverable.
+
+        6.4.8. Target Code Design Review Date:
+                N/A
+
+        6.4.9. Update approval addition:
+                N/A
+
+   6.5. ARC review type:
+                Fast-Track
+
+7. Prototype Availability: 
+   7.1. Prototype Availability:
+        N/A
+
+   7.2. Prototype Cost:
+        Done using existing resources.
+

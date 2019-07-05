@@ -1,0 +1,68 @@
+--- PRI_Specification_111.txt	Wed Nov 25 10:07:16 2009
++++ PRI_Specification_112.txt	Thu Dec 17 16:40:05 2009
+@@ -37,7 +37,9 @@
+       (FWARC/2009/390)
+ 1.11  Added requirements on topo-skip, topo-hc-name, and path properties
+       for io nodes describing XAUI cards or internal hard disks.
++1.12  Added SDIO properties assignable-path, rcid, and directio_capability
+ 
++
+ Physical Resource Inventory (PRI) Specification
+ ===============================================
+ 
+@@ -555,6 +557,19 @@
+ any type of node. This property *is required* and must be a non-zero value
+ for io nodes describing XAUI cards.
+ 
++
++1.3.20 assignable-path
++
++Name		Tag		Required
++----		---		--------
++assignable-path PROP_STR	No
++
++Description
++-----------
++For a PCI-E assignable device (one where ownership can be transferred to a guest
++domain), this defines the path of the assignable unit. This path is similar to 
++but not identical to the path property defined in 1.3.9.
++
+ 1.4  Firmware Node
+ 
+ Name		Category	Required subordinates	Optional subordinates
+@@ -614,6 +629,18 @@
+ (per guest) that the firmware supports.  If not present, should be
+ treated as 0.
+ 
++1.4.5
++
++Name			Tag		Required
++----			---		--------
++directio_capability	PROP_VAL	no
++
++Description
++-----------
++This property indicates that the platform and this version of firmware are
++capable of supporting Static Direct IO PCI-E virtualization.
++
++
+ 1.5  Read_Only_Memory Node
+ 
+ Name		 Category	Required subordinates	Optional subordinates
+@@ -1118,6 +1145,16 @@
+ -----------
+ An MSI property as specified in [7]
+ 
++Name            Tag             Required
++----            ---             --------
++rcid		PROP_VAL	Yes
++
++Description
++-----------
++Root-complex identifier. Monotonically assigned, only requirement is that
++each PCI-E root complex have a unique identifier.
++
++
+ 1.12.2 Generic PCI device properties
+ 
+ The following properties are allowed for device-types that have the values:

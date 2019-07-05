@@ -1,0 +1,294 @@
+From sacadmin Fri Jun 15 15:34:49 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l5FMYl5I010506
+	for <fwarc@sac.eng.Sun.COM>; Fri, 15 Jun 2007 15:34:48 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l5FMX9F5020374;
+	Sat, 16 Jun 2007 06:33:13 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JJP00I077ZA0C00@brm-avmta-1.central.sun.com>; Fri,
+ 15 Jun 2007 16:33:10 -0600 (MDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JJP00KOY7Z922D0@brm-avmta-1.central.sun.com>; Fri,
+ 15 Jun 2007 16:33:10 -0600 (MDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l5FMX9UF016006; Fri,
+ 15 Jun 2007 22:33:09 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JJP00L017UBF700@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Fri,
+ 15 Jun 2007 16:33:09 -0600 (MDT)
+Received: from [129.148.180.235] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JJP00I1B7Z8AVH5@mail-amer.sun.com>; Fri,
+ 15 Jun 2007 16:33:09 -0600 (MDT)
+Date: Fri, 15 Jun 2007 18:33:09 -0400
+From: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Subject: Self-Review: 2007/363 - VIO vDisk MD node updates
+Sender: Narayan.Venkat@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: LDoms Internal <ldoms-internal@Sun.COM>,
+        Alexandre Chartre <Alexandre.Chartre@Sun.COM>
+Message-id: <4C1AE236-3085-423F-A6F8-1E18E672E2C6@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.2)
+Content-type: text/plain; format=flowed; delsp=yes; charset=WINDOWS-1252
+X-PMX-Version: 5.2.0.264296
+Content-Transfer-Encoding: 8bit
+X-MIME-Autoconverted: from QUOTED-PRINTABLE to 8bit by sac.sfbay.sun.com id l5FMYn5J010507
+Status: RO
+Content-Length: 1792
+
+I am sponsoring this self-review case for Alexandre Chartre.  This case
+amends the VIO MD nodes as defined in FWARC/2006/072 and FWARC/2006/122.
+
+This case will be approved for minor/micro/patch OS binding and
+minor/micro binding for the firmware.
+
+All of the changes are highlighted in the updated document which
+can be found at,
+
+http://sac.sfbay.sun.com/arc/FWARC/2007/363/materials/vio-md-nodes- 
+v4.pdf
+
+The brief description of the changes are,
+
+
+1. Section 5.1.4, Device class specific properties table
+
+    Add the following to the description of the vds-block-device-opts
+    property:
+
+    “excl” - The device is opened for use by vds exclusively.
+
+    “shared” - The device can be exported by vds to multiple clients.
+
+
+2. Section 5.1.4, Device class specific properties table
+
+    Add following property:
+
+    Name            Tag       Required   Description
+
+    vdc-timeout     PROP_VAL  no         A 64-bit integer identifying
+                                         a block device's connection  
+timeout.
+                                         The value specified in seconds
+                                         determines the period after  
+which a
+                                         SUNW,sun4v-disk device will  
+timeout
+                                         if it cannot establish a  
+connection
+                                         with the virtual disk server  
+for
+                                         submitting requests. If the  
+property
+                                         is either not specified or  
+set to 0,
+                                         the block device will wait  
+indefinitely
+                                         to establish a connection  
+with the
+                                         virtual disk server.
+
+
+
+From sacadmin Fri Jun 15 15:54:51 2007
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l5FMspHg011182
+	for <fwarc@sac.eng.sun.com>; Fri, 15 Jun 2007 15:54:51 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l5FMrHPt012640;
+	Fri, 15 Jun 2007 15:53:18 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JJP00J078WTN000@brm-avmta-1.central.sun.com>; Fri,
+ 15 Jun 2007 16:53:17 -0600 (MDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JJP00K8V8WT25D0@brm-avmta-1.central.sun.com>; Fri,
+ 15 Jun 2007 16:53:17 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id l5FMrFOg023218; Fri, 15 Jun 2007 15:53:15 -0700 (PDT)
+Received: from [192.168.0.7] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l5FMrEkK029563; Fri,
+ 15 Jun 2007 15:53:14 -0700 (PDT)
+Date: Fri, 15 Jun 2007 15:53:14 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: Self-Review: 2007/363 - VIO vDisk MD node updates
+To: Narayan Venkat <narayan.venkat@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, LDoms Internal <ldoms-internal@sun.com>,
+        Alexandre Chartre <Alexandre.Chartre@sun.com>
+Message-id: <4673185A.3080201@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=windows-1252; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0.0.4 (Windows/20070604)
+Status: RO
+Content-Length: 282
+
+
+
+Narayan Venkat wrote:
+
+> All of the changes are highlighted in the updated document which
+> can be found at,
+> 
+> http://sac.sfbay.sun.com/arc/FWARC/2007/363/materials/vio-md-nodes-v4.pdf
+
+I think you meant the other file in that directory.
+(for the highlighted version).
+
+-David
+
+From sacadmin Sat Jun 16 06:37:39 2007
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l5GDbc65002639
+	for <fwarc@sac.eng.sun.com>; Sat, 16 Jun 2007 06:37:38 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l5GDZYRL054843;
+	Sat, 16 Jun 2007 07:35:35 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JJQ00G03DS3IA00@brm-avmta-1.central.sun.com>; Sat,
+ 16 Jun 2007 07:36:03 -0600 (MDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JJQ001HXDS3E870@brm-avmta-1.central.sun.com>; Sat,
+ 16 Jun 2007 07:36:03 -0600 (MDT)
+Received: from fe-amer-03.sun.com ([192.18.108.177])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l5GDa3ZU021227; Sat,
+ 16 Jun 2007 13:36:03 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JJQ00101DBOKF00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Sat,
+ 16 Jun 2007 07:36:03 -0600 (MDT)
+Received: from [192.168.1.103] ([72.70.120.163])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-6.01 (built Apr  3
+ 2006)) with ESMTPSA id <0JJQ00841DS03UP5@mail-amer.sun.com>; Sat,
+ 16 Jun 2007 07:36:02 -0600 (MDT)
+Date: Sat, 16 Jun 2007 09:36:00 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: Self-Review: 2007/363 - VIO vDisk MD node updates
+In-reply-to: <4673185A.3080201@sun.com>
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>, David Kahn <David.Kahn@sun.com>,
+        LDoms Internal <ldoms-internal@sun.com>,
+        Alexandre Chartre <Alexandre.Chartre@sun.com>
+Message-id: <1571D379-3608-41DA-A0E1-B51EBC35F561@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.2)
+Content-type: text/plain; format=flowed; delsp=yes; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <4673185A.3080201@sun.com>
+Status: RO
+Content-Length: 512
+
+
+On Jun 15, 2007, at 6:53 PM, David Kahn wrote:
+
+>
+>
+> Narayan Venkat wrote:
+>
+>> All of the changes are highlighted in the updated document which
+>> can be found at,
+>> http://sac.sfbay.sun.com/arc/FWARC/2007/363/materials/vio-md-nodes- 
+>> v4.pdf
+>
+> I think you meant the other file in that directory.
+> (for the highlighted version).
+
+Thanks David.
+
+The updated document with the changes highlighted is at
+
+http://sac.sfbay.sun.com/arc/FWARC/2007/363/materials/vio-md-nodes-v4- 
+diffs.pdf
+
+Thanks
+-Narayan
+
+
+
+From sacadmin Thu Jun 21 14:29:27 2007
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l5LLTRne014829
+	for <fwarc@sac.eng.sun.com>; Thu, 21 Jun 2007 14:29:27 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l5LLRFKp051984
+	for <@sunmail3mpk.sfbay.sun.com:fwarc@sun.com>; Thu, 21 Jun 2007 15:27:15 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JK000G018YABH00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Thu, 21 Jun 2007 14:27:46 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JK000ATM8Y9EU80@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Thu, 21 Jun 2007 14:27:45 -0700 (PDT)
+Received: from fe-amer-02.sun.com ([192.18.108.176])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l5LLRjig002745	for
+ <fwarc@Sun.COM>; Thu, 21 Jun 2007 21:27:45 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JK000C018VM5Z00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Thu, 21 Jun 2007 15:27:45 -0600 (MDT)
+Received: from [129.148.180.53] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JK000GHP8Y8F3Z2@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Thu, 21 Jun 2007 15:27:45 -0600 (MDT)
+Date: Thu, 21 Jun 2007 17:27:43 -0400
+From: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Subject: 2007/363 - Revised case materials
+Sender: Narayan.Venkat@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Narayan Venkat <Narayan.Venkat@Sun.COM>,
+        Alexandre CHARTRE - Solaris Sustaining <Alexandre.Chartre@Sun.COM>
+Message-id: <A30E0AF7-177C-4A60-94B6-C524C6B0C88E@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.2)
+Content-type: text/plain; format=flowed; delsp=yes; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+Status: RO
+Content-Length: 645
+
+Hi
+
+It was requested that the wording of the property description for
+the properties being added by this ARC case could be made clearer.
+After working with the case submitter, and requester, changes were
+made to the materials to better describe the node properties.
+The intent for each property is still the same and has not changed
+from what was specified in the original case materials.
+
+I have copied updated documents to the case directory, which can
+be found at:
+
+http://sac.sfbay.sun.com/arc/FWARC/2007/363/materials/vio-md-nodes- 
+v4.pdf
+http://sac.sfbay.sun.com/arc/FWARC/2007/363/materials/vio-md-nodes-v4- 
+diffs.pdf
+
+Thanks
+-Narayan
+
+

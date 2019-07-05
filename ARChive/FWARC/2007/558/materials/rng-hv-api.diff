@@ -1,0 +1,91 @@
+
+------- rng-hv-api.txt -------
+*** /tmp/sccs.8QaGzc	Mon Oct  1 17:56:38 2007
+--- rng-hv-api.txt	Mon Oct  1 17:58:44 2007
+***************
+*** 1,5 ****
+  
+! 	Version: "@(#)rng-hv-api.txt 1.4	07/09/25 SMI"
+  
+  N2/VF Random Number Generator - Hypervisor API
+  
+--- 1,5 ----
+  
+! 	Version: "@(#)rng-hv-api.txt 1.6	07/10/01 SMI"
+  
+  N2/VF Random Number Generator - Hypervisor API
+  
+***************
+*** 11,19 ****
+  
+  	This document describes a new RNG interface which addresses
+  	some deficiencies in the 1.0 API as well as providing support
+! 	for systems with multiple RNGs.  In order to maintain support for
+! 	already released products based on FWARC/2006/481, all of the
+! 	original Hypervisor function numbers will be left intact.
+  
+          This API provides a source of entropy for higher layers
+          of system software.  One major application that uses this
+--- 11,17 ----
+  
+  	This document describes a new RNG interface which addresses
+  	some deficiencies in the 1.0 API as well as providing support
+! 	for systems with multiple RNGs.  
+  
+          This API provides a source of entropy for higher layers
+          of system software.  One major application that uses this
+***************
+*** 68,73 ****
+--- 66,83 ----
+  		The Hypervisor will designate the domain marked by the vBSC
+  		as "primary" to be the trusted domain.
+  
++ 		In the 1.0 API, trusted domains were able to execute the
++ 		RNG_GET_DIAG_CONTROL call, which gave them exclusive access
++ 		to the trusted domain API calls.  In the 2.0 API, this call
++ 		has been dropped and only one domain, as specified by the
++ 		LDOMs manager and the vBSC, is allowed access to the trusted
++ 		domain API calls.
++ 
++ 		In both the 1.0 API and the 2.0 API, RNG_DATA_READ may be
++ 		used in exactly the same way.  A guest attempting to get
++ 		a random number from Hypervisor does not care if the 
++ 		number comes from a pool or an RNG.
++ 
+  		The operations are restricted as follows:
+  
+  		Trusted Domain ONLY		Any Domain
+***************
+*** 418,425 ****
+  		consecutive locations starting at the specified
+  		*buffer address* (arg0).
+  
+! 		Note that the caller must have Diagnostic Control of the RNG in
+! 		order to invoke this operation (see rng_get_diag_control).
+  
+  		The *buffer address* must be a real address, size aligned, and
+  		physically contiguous.  The *buffer size* (arg1) specifies the
+--- 428,434 ----
+  		consecutive locations starting at the specified
+  		*buffer address* (arg0).
+  
+! 		Only the trusted domain is allowed to invoke this operation.
+  
+  		The *buffer address* must be a real address, size aligned, and
+  		physically contiguous.  The *buffer size* (arg1) specifies the
+***************
+*** 596,601 ****
+--- 605,617 ----
+  	0x133		Sun Private	RNG_DATA_READ_DIAG	API v2.0
+  	0x134		Sun Private	RNG_DATA_READ		API v2.0
+  
++ 	0x130		deprecated	RNG_GET_DIAG_CONTROL	API v1.0
++ 	0x131		deprecated	RNG_CTL_READ		API v1.0
++ 	0x132		deprecated	RNG_CTL_WRITE		API v1.0
++ 	0x133		deprecated	RNG_DATA_DIAG_READ	API v1.0
++ 	0x134		deprecated	RNG_DATA_READ		API v1.0
++ 	
++ 
+  RNG API Group Number:
+  
+  	0x0104		Sun Private	Niagara Random Number Generator

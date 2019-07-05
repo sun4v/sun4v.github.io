@@ -1,0 +1,954 @@
+From sacadmin Thu Feb  1 13:25:04 2007
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l11LP4j8017221
+	for <fwarc@sac.eng.sun.com>; Thu, 1 Feb 2007 13:25:04 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l11LP0Sf015245
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 1 Feb 2007 14:25:04 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JCS00B0RZHRA800@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 01 Feb 2007 13:25:03 -0800 (PST)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JCS00K4YZHRHPA0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 01 Feb 2007 13:25:03 -0800 (PST)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l11LP3MH011813	for
+ <fwarc@sun.com>; Thu, 01 Feb 2007 14:25:03 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JCS00I01ZAIIL00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 01 Feb 2007 14:25:03 -0700 (MST)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JCS00GK0ZHQ9JC0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 01 Feb 2007 14:25:02 -0700 (MST)
+Date: Thu, 01 Feb 2007 16:22:36 -0500
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: FWARC 2007/071 Niagara2 Crypto Name Property Update
+Sender: Stephen.Ehring@sun.com
+To: fwarc@sun.com, Gary Morton <Gary.Morton@sun.com>
+Message-id: <45C25A1C.5010803@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 2.0b2pre (X11/20070130)
+Status: RO
+Content-Length: 2227
+
+I'm sponsoring this fast track case for Gary Morton. The case updates the 'name' properties for the n2cp device in the machine description and in the device tree from 'crypto' to 'n2cp'.
+
+The change can be released in a micro/minor version of the firmware.
+
+The timer is set to expire on 2/8/2007.
+
+Steve
+
+http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2007/071/onepager.txt
+
+1. Introduction
+
+    1.1. Project/Component Working Name:
+	 Niagara2 Crypto Name Property Update
+
+    1.2. Name of Document Author/Supplier:
+	 Author: Gary Morton 
+
+    1.3  Date of This Document:
+	 1 February, 2007
+
+2. Project Summary
+   2.1. Project Description:
+
+	FWARC case 2006/567 introduced new bindings for Niagara
+	crypto providers.  There is a conflict between the name
+	chosen for N2CP and the Solaris crypto driver.  This case
+	is intended to amend that mistake and rename the n2cp
+	device name property. The original FWARC materials are
+	still valid with the exception of the changes specified
+	in section 3.
+
+3. Technical Description
+
+
+========================================================================
+Exported Interfaces
+
+Specific propvals for n2cp virtual device node across the possible processors:
+
+
+   Niagara-2:
+
+	name		stable		value: "n2cp"    (was "crypto")
+
+   Victoria Falls:
+
+	name		stable		value: "n2cp"    (was "crypto")
+
+
+NCS MD propvals for n2cp virtual device metadata node across
+the possible processors:
+
+   Niagara-2:
+
+	name		stable		value: "n2cp"    (was "crypto")
+
+   Victoria Falls:
+
+	name		stable		value: "n2cp"    (was "crypto")
+
+
+4.  References
+
+        FWARC/2006/567 Niagara Crypto & RNG compatible property update
+        PSARC/2005/125 Niagara Crypto Provider
+	FWARC/2006/174 NCS HV API update
+	FWARC/2006/425 NCS HV API update #2
+	FWARC/2006/481 Niagara-2 Random Number Generator HV API
+	Niagara PRM, v1.8 (Oct 28, 2005), Chp 20 Modular Arithmetic
+	Niagara-2 PRM, v1.2 (Mar 3, 2006), Chp 15 Stream Processing Unit
+	Bugid 6475000 Asymmetric (RSA) Operation fails the known answer test
+
+5. Resources and Schedule
+
+    6.4. Steering Committee requested information
+
+   	6.4.1. Consolidation C-team Name:
+		sysfw
+
+    6.5. ARC review type: FastTrack
+
+
+From sacadmin Tue Feb  6 15:38:36 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l16NcZsf026459
+	for <fwarc@sac.eng.Sun.COM>; Tue, 6 Feb 2007 15:38:35 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l16NcQuU014250
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Wed, 7 Feb 2007 07:38:34 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JD200L09F071100@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 06 Feb 2007 16:38:31 -0700 (MST)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.5])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JD200KPBF06XG70@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 06 Feb 2007 16:38:30 -0700 (MST)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l16NcUbW004815	for
+ <fwarc@sun.com>; Tue, 06 Feb 2007 15:38:30 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JD200J01EZSXX00@d1-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 06 Feb 2007 15:38:30 -0800 (PST)
+Received: from [129.153.85.31] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JD200M3ZF05BLIB@d1-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 06 Feb 2007 15:38:29 -0800 (PST)
+Date: Tue, 06 Feb 2007 15:38:29 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC 2007/071 Niagara2 Crypto Name Property Update
+In-reply-to: <45C25A1C.5010803@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: fwarc@sun.com
+Cc: Gary Morton <Gary.Morton@sun.com>
+Message-id: <45C91175.4000200@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <45C25A1C.5010803@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20060120
+Status: RO
+Content-Length: 2902
+
+Stephen Ehring wrote On 02/01/07 13:22,:
+> I'm sponsoring this fast track case for Gary Morton. The case updates 
+> the 'name' properties for the n2cp device in the machine description and 
+> in the device tree from 'crypto' to 'n2cp'.
+> 
+> The change can be released in a micro/minor version of the firmware.
+> 
+> The timer is set to expire on 2/8/2007.
+> 
+> Steve
+> 
+> http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2007/071/onepager.txt
+> 
+> 1. Introduction
+> 
+>     1.1. Project/Component Working Name:
+>      Niagara2 Crypto Name Property Update
+> 
+>     1.2. Name of Document Author/Supplier:
+>      Author: Gary Morton
+>     1.3  Date of This Document:
+>      1 February, 2007
+> 
+> 2. Project Summary
+>    2.1. Project Description:
+> 
+>     FWARC case 2006/567 introduced new bindings for Niagara
+>     crypto providers.  There is a conflict between the name
+>     chosen for N2CP and the Solaris crypto driver.  This case
+>     is intended to amend that mistake and rename the n2cp
+>     device name property. The original FWARC materials are
+>     still valid with the exception of the changes specified
+>     in section 3.
+
+Not sure what was the real issue here.  Solaris should bind drivers
+using "compatible" property and not with "name" property.  Why
+there is a conflict because of "name" property?
+
+> 
+> 3. Technical Description
+> 
+> 
+> ========================================================================
+> Exported Interfaces
+> 
+> Specific propvals for n2cp virtual device node across the possible 
+> processors:
+> 
+> 
+>    Niagara-2:
+> 
+>     name        stable        value: "n2cp"    (was "crypto")
+> 
+>    Victoria Falls:
+> 
+>     name        stable        value: "n2cp"    (was "crypto")
+
+The "name" in the 2006/567 was actually "ncp" not "crypto" as stated
+above.  See,
+
+    Niagara-2:
+
+	name		evolving	value: "ncp"
+	device_type	evolving	value: "crypto"
+
+<snip>
+
+
+    Victoria Falls:
+
+	name		evolving	value: "ncp"
+	device_type	evolving	value: "crypto"
+
+
+Why is it significant to have the name to indicate "n2cp"?
+Why "n2" is so important in the "name" property?  Also,
+why don't we have some generic name for the node?
+
+> 
+> 
+> NCS MD propvals for n2cp virtual device metadata node across
+> the possible processors:
+> 
+>    Niagara-2:
+> 
+>     name        stable        value: "n2cp"    (was "crypto")
+> 
+>    Victoria Falls:
+> 
+>     name        stable        value: "n2cp"    (was "crypto")
+
+Same comments as above.
+
+
+The original bindings had interfaces "Evolving" which I think
+translates to "Uncommitted" in the new taxonomy (instead of
+"stable").  Steve, have you verified this?
+
+
+Thanks.
+
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Tue Feb  6 15:54:49 2007
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l16NsneZ027549
+	for <fwarc@sac.eng.sun.com>; Tue, 6 Feb 2007 15:54:49 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l16NsmJ8022318
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Tue, 6 Feb 2007 16:54:48 -0700 (MST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JD200005FRB5N00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 06 Feb 2007 16:54:47 -0700 (MST)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JD200KIUFRBXV80@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 06 Feb 2007 16:54:47 -0700 (MST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id l16NskJE005466; Tue, 06 Feb 2007 15:54:47 -0800 (PST)
+Received: from [192.168.0.9] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l16NsjWY078701; Tue,
+ 06 Feb 2007 15:54:46 -0800 (PST)
+Date: Tue, 06 Feb 2007 15:54:45 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: FWARC 2007/071 Niagara2 Crypto Name Property Update
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: fwarc@sun.com, Gary Morton <Gary.Morton@sun.com>
+Message-id: <45C91545.1010404@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 1.5.0.9 (Windows/20061207)
+Status: RO
+Content-Length: 991
+
+
+
+Hitendra Zhangada wrote:
+
+
+> Not sure what was the real issue here.  Solaris should bind drivers
+> using "compatible" property and not with "name" property.  Why
+> there is a conflict because of "name" property?
+
+I wrote that code a long time ago. The OS tries 'compatible' first
+and then tries the 'name' propval which gave us the most compatibility
+with existing code and driver bindings when it was implemented.
+
+On a system where the n2 crypto drivers aren't installed,
+there's no binding for the compatible strings, so it ends
+up binding to a generic 'crypto' driver, which does exist,
+but is the wrong driver for these nodes.
+
+One could argue that if the 'compatible' property exists,
+the OS might want to ignore the name propval. But that's
+not what it does. That change can be explored separately
+in the future, but it won't help with older releases, etc.
+
+After some discussion, it was agreed that a reasonable
+fix for this was to change the name propval for these nodes.
+
+-David
+
+From sacadmin Tue Feb  6 19:43:06 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l173h5c7003437
+	for <fwarc@sac.eng.Sun.COM>; Tue, 6 Feb 2007 19:43:05 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l173gs2a012841
+	for <@sunmail3mpk.sfbay.sun.com:fwarc@sun.com>; Wed, 7 Feb 2007 11:43:04 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JD200F09QBP2I00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 06 Feb 2007 19:43:01 -0800 (PST)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.6]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JD200AC2QBP5Y80@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 06 Feb 2007 19:43:01 -0800 (PST)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l173h1iA014162	for
+ <fwarc@sun.com>; Tue, 06 Feb 2007 19:43:01 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JD200B01Q6JS200@d1-sfbay-09.sun.com>
+ (original mail from Gary.Morton@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 06 Feb 2007 19:43:01 -0800 (PST)
+Received: from sun.com ([129.150.25.2])
+ by d1-sfbay-09.sun.com (Sun Java System Messaging Server 6.2-6.01 (built Apr 3
+ 2006)) with ESMTPSA id <0JD2001QXQBN2E40@d1-sfbay-09.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 06 Feb 2007 19:43:01 -0800 (PST)
+Date: Tue, 06 Feb 2007 19:44:42 -0800
+From: Gary Morton <Gary.Morton@sun.com>
+Subject: Re: FWARC 2007/071 Niagara2 Crypto Name Property Update
+In-reply-to: <45C91175.4000200@Sun.COM>
+Sender: Gary.Morton@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>, fwarc@sun.com
+Message-id: <45C94B2A.5020406@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <45C25A1C.5010803@sun.com> <45C91175.4000200@Sun.COM>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.4.1)
+ Gecko/20031008
+Status: RO
+Content-Length: 3776
+
+Hitendra Zhangada wrote:
+
+> Stephen Ehring wrote On 02/01/07 13:22,:
+>
+>> I'm sponsoring this fast track case for Gary Morton. The case updates 
+>> the 'name' properties for the n2cp device in the machine description 
+>> and in the device tree from 'crypto' to 'n2cp'.
+>>
+>> The change can be released in a micro/minor version of the firmware.
+>>
+>> The timer is set to expire on 2/8/2007.
+>>
+>> Steve
+>>
+>> http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2007/071/onepager.txt
+>>
+>> 1. Introduction
+>>
+>>     1.1. Project/Component Working Name:
+>>      Niagara2 Crypto Name Property Update
+>>
+>>     1.2. Name of Document Author/Supplier:
+>>      Author: Gary Morton
+>>     1.3  Date of This Document:
+>>      1 February, 2007
+>>
+>> 2. Project Summary
+>>    2.1. Project Description:
+>>
+>>     FWARC case 2006/567 introduced new bindings for Niagara
+>>     crypto providers.  There is a conflict between the name
+>>     chosen for N2CP and the Solaris crypto driver.  This case
+>>     is intended to amend that mistake and rename the n2cp
+>>     device name property. The original FWARC materials are
+>>     still valid with the exception of the changes specified
+>>     in section 3.
+>
+>
+> Not sure what was the real issue here.  Solaris should bind drivers
+> using "compatible" property and not with "name" property.  Why
+> there is a conflict because of "name" property?
+>
+>>
+>> 3. Technical Description
+>>
+>>
+>> ========================================================================
+>> Exported Interfaces
+>>
+>> Specific propvals for n2cp virtual device node across the possible 
+>> processors:
+>>
+>>
+>>    Niagara-2:
+>>
+>>     name        stable        value: "n2cp"    (was "crypto")
+>>
+>>    Victoria Falls:
+>>
+>>     name        stable        value: "n2cp"    (was "crypto")
+>
+>
+> The "name" in the 2006/567 was actually "ncp" not "crypto" as stated
+> above.  See,
+
+
+Actually we're talking about the n2cp or CWQ device - I've copied the 
+original FWARC
+case statement below - as you can see it WAS called crypto...
+
+>name		evolving	value: "crypto"
+>	device_type	evolving	value: "crypto"
+>	interrupts	evolving	value: chip dependent list of device
+>						relative interrupts, 1 per core.
+>	compatible	evolving	value: "SUNW,n2-cwq"
+>	reg		evolving	value: unique virtual device register
+>						address.
+>
+>	name		evolving	value: "random-number-
+>
+
+The n2cp device was named crypto previously - that was what conflicted 
+with the solaris virtual crypto device.  It really does not make any 
+sense to call the CWQ component crypto anyway.  The RNG and MAU are also 
+crypto devices.   Given the possible name conflict issue with Solaris a 
+very specific name seemed safer...
+
+>
+>
+>    Niagara-2:
+>
+>     name        evolving    value: "ncp"
+>     device_type    evolving    value: "crypto"
+>
+> <snip>
+>
+>
+>    Victoria Falls:
+>
+>     name        evolving    value: "ncp"
+>     device_type    evolving    value: "crypto"
+>
+>
+> Why is it significant to have the name to indicate "n2cp"?
+> Why "n2" is so important in the "name" property?  Also,
+> why don't we have some generic name for the node?
+
+Given that NCP and the RNG have device specific names using n2cp
+seemed to be at least consistent with them.. 
+
+>
+>>
+>>
+>> NCS MD propvals for n2cp virtual device metadata node across
+>> the possible processors:
+>>
+>>    Niagara-2:
+>>
+>>     name        stable        value: "n2cp"    (was "crypto")
+>>
+>>    Victoria Falls:
+>>
+>>     name        stable        value: "n2cp"    (was "crypto")
+>
+>
+> Same comments as above.
+>
+>
+> The original bindings had interfaces "Evolving" which I think
+> translates to "Uncommitted" in the new taxonomy (instead of
+> "stable").  Steve, have you verified this?
+>
+>
+> Thanks.
+>
+>
+>
+
+
+
+From sacadmin Tue Feb  6 22:05:30 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l1765TpW006249
+	for <fwarc@sac.eng.sun.com>; Tue, 6 Feb 2007 22:05:29 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l1765OEe015278
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Wed, 7 Feb 2007 06:05:28 GMT
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JD20020BWX1CQ00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 06 Feb 2007 23:05:25 -0700 (MST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JD2008CVWX1NUF0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 06 Feb 2007 23:05:25 -0700 (MST)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l1765Pio029209	for
+ <fwarc@sun.com>; Tue, 06 Feb 2007 23:05:25 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JD200801W1JML00@mail-amer.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 06 Feb 2007 23:05:25 -0700 (MST)
+Received: from [129.150.32.11] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JD2008RSWX0JYC0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 06 Feb 2007 23:05:25 -0700 (MST)
+Date: Tue, 06 Feb 2007 22:05:24 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC 2007/071 Niagara2 Crypto Name Property Update
+In-reply-to: <45C94B2A.5020406@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Gary Morton <Gary.Morton@sun.com>
+Cc: fwarc@sun.com
+Message-id: <45C96C24.5090906@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <45C25A1C.5010803@sun.com> <45C91175.4000200@Sun.COM>
+ <45C94B2A.5020406@sun.com>
+User-Agent: Thunderbird 1.5.0.9 (Windows/20061207)
+Status: RO
+Content-Length: 3182
+
+Gary Morton wrote:
+> Hitendra Zhangada wrote:
+> 
+>> Stephen Ehring wrote On 02/01/07 13:22,:
+>>
+>>> I'm sponsoring this fast track case for Gary Morton. The case updates 
+>>> the 'name' properties for the n2cp device in the machine description 
+>>> and in the device tree from 'crypto' to 'n2cp'.
+>>>
+>>> The change can be released in a micro/minor version of the firmware.
+>>>
+>>> The timer is set to expire on 2/8/2007.
+>>>
+>>> Steve
+>>>
+>>> http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2007/071/onepager.txt
+>>>
+>>> 1. Introduction
+>>>
+>>>     1.1. Project/Component Working Name:
+>>>      Niagara2 Crypto Name Property Update
+>>>
+>>>     1.2. Name of Document Author/Supplier:
+>>>      Author: Gary Morton
+>>>     1.3  Date of This Document:
+>>>      1 February, 2007
+>>>
+>>> 2. Project Summary
+>>>    2.1. Project Description:
+>>>
+>>>     FWARC case 2006/567 introduced new bindings for Niagara
+>>>     crypto providers.  There is a conflict between the name
+>>>     chosen for N2CP and the Solaris crypto driver.  This case
+>>>     is intended to amend that mistake and rename the n2cp
+>>>     device name property. The original FWARC materials are
+>>>     still valid with the exception of the changes specified
+>>>     in section 3.
+>>
+>>
+>> Not sure what was the real issue here.  Solaris should bind drivers
+>> using "compatible" property and not with "name" property.  Why
+>> there is a conflict because of "name" property?
+>>
+>>>
+>>> 3. Technical Description
+>>>
+>>>
+>>> ========================================================================
+>>> Exported Interfaces
+>>>
+>>> Specific propvals for n2cp virtual device node across the possible 
+>>> processors:
+>>>
+>>>
+>>>    Niagara-2:
+>>>
+>>>     name        stable        value: "n2cp"    (was "crypto")
+>>>
+>>>    Victoria Falls:
+>>>
+>>>     name        stable        value: "n2cp"    (was "crypto")
+>>
+>>
+>> The "name" in the 2006/567 was actually "ncp" not "crypto" as stated
+>> above.  See,
+> 
+> 
+> Actually we're talking about the n2cp or CWQ device - I've copied the 
+> original FWARC
+> case statement below - as you can see it WAS called crypto...
+> 
+>> name        evolving    value: "crypto"
+>>     device_type    evolving    value: "crypto"
+>>     interrupts    evolving    value: chip dependent list of device
+>>                         relative interrupts, 1 per core.
+>>     compatible    evolving    value: "SUNW,n2-cwq"
+>>     reg        evolving    value: unique virtual device register
+>>                         address.
+>>
+>>     name        evolving    value: "random-number-
+
+I see that now.  The way the binding is written in 2006/567 is what
+confused me.
+
+I am fine with this case but I do want to make sure the classification
+of the interface is proper.  As per,
+http://sac.eng/cgi-bin/bp.cgi?NAME=interface_taxonomy.bp
+
+"Evolving" for FWARC cases is Uncommitted.  Actually "Stable" is no
+longer used.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Wed Feb  7 08:23:38 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l17GNcst018067
+	for <fwarc@sac.eng.sun.com>; Wed, 7 Feb 2007 08:23:38 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l17GNHBx023149
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Wed, 7 Feb 2007 16:23:33 GMT
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JD30080NPJ4VK00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 07 Feb 2007 09:23:28 -0700 (MST)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JD300LXSPJ3GXA0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 07 Feb 2007 09:23:27 -0700 (MST)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l17GNRos004247	for
+ <fwarc@sun.com>; Wed, 07 Feb 2007 09:23:27 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JD300E01PHALC00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 07 Feb 2007 09:23:27 -0700 (MST)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JD3008BHPJ2JYE0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 07 Feb 2007 09:23:27 -0700 (MST)
+Date: Wed, 07 Feb 2007 11:20:58 -0500
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: Re: FWARC 2007/071 Niagara2 Crypto Name Property Update
+In-reply-to: <45C96C24.5090906@sun.com>
+Sender: Stephen.Ehring@sun.com
+To: fwarc@sun.com
+Cc: Gary Morton <Gary.Morton@sun.com>
+Message-id: <45C9FC6A.8070300@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <45C25A1C.5010803@sun.com> <45C91175.4000200@Sun.COM>
+ <45C94B2A.5020406@sun.com> <45C96C24.5090906@sun.com>
+User-Agent: Thunderbird 2.0pre (X11/20070203)
+Status: RO
+Content-Length: 364
+
+Hitendra Zhangada wrote:
+>
+> I am fine with this case but I do want to make sure the classification
+> of the interface is proper.  As per,
+> http://sac.eng/cgi-bin/bp.cgi?NAME=interface_taxonomy.bp
+>
+> "Evolving" for FWARC cases is Uncommitted.  Actually "Stable" is no
+> longer used.
+I've fixed the classification in the onepager. It is now 'uncommitted'.
+
+Steve
+
+From sacadmin Wed Feb  7 09:05:15 2007
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l17H5E1v019306
+	for <fwarc@sac.eng.sun.com>; Wed, 7 Feb 2007 09:05:14 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l17H5DSg028396
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 7 Feb 2007 09:05:14 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JD300G4JRGPP400@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 07 Feb 2007 09:05:13 -0800 (PST)
+Received: from nwk-ea-fw-1.sun.com ([10.4.134.5]) by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JD3008QQRGN6V30@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 07 Feb 2007 09:05:11 -0800 (PST)
+Received: from d1-sfbay-10.sun.com ([192.18.39.120])
+	by nwk-ea-fw-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l17H5Bb3020048	for
+ <fwarc@sun.com>; Wed, 07 Feb 2007 09:05:11 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-10.sun.com by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JD300801RD6A100@d1-sfbay-10.sun.com>
+ (original mail from Gary.Morton@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 07 Feb 2007 09:05:11 -0800 (PST)
+Received: from [129.147.9.43] by d1-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JD300IYGRGM5U7G@d1-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 07 Feb 2007 09:05:10 -0800 (PST)
+Date: Wed, 07 Feb 2007 10:05:07 -0700
+From: Gary Morton <Gary.Morton@sun.com>
+Subject: Re: FWARC 2007/071 Niagara2 Crypto Name Property Update
+In-reply-to: <45C96C24.5090906@sun.com>
+Sender: Gary.Morton@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: fwarc@sun.com
+Message-id: <45CA06C3.8000407@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <45C25A1C.5010803@sun.com> <45C91175.4000200@Sun.COM>
+ <45C94B2A.5020406@sun.com> <45C96C24.5090906@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4v; en-US; rv:1.7) Gecko/20060120
+Status: RO
+Content-Length: 3215
+
+
+
+Hitendra Zhangada wrote On 02/06/07 23:05,:
+
+> Gary Morton wrote:
+>
+>> Hitendra Zhangada wrote:
+>>
+>>> Stephen Ehring wrote On 02/01/07 13:22,:
+>>>
+>>>> I'm sponsoring this fast track case for Gary Morton. The case 
+>>>> updates the 'name' properties for the n2cp device in the machine 
+>>>> description and in the device tree from 'crypto' to 'n2cp'.
+>>>>
+>>>> The change can be released in a micro/minor version of the firmware.
+>>>>
+>>>> The timer is set to expire on 2/8/2007.
+>>>>
+>>>> Steve
+>>>>
+>>>> http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2007/071/onepager.txt 
+>>>>
+>>>>
+>>>> 1. Introduction
+>>>>
+>>>>     1.1. Project/Component Working Name:
+>>>>      Niagara2 Crypto Name Property Update
+>>>>
+>>>>     1.2. Name of Document Author/Supplier:
+>>>>      Author: Gary Morton
+>>>>     1.3  Date of This Document:
+>>>>      1 February, 2007
+>>>>
+>>>> 2. Project Summary
+>>>>    2.1. Project Description:
+>>>>
+>>>>     FWARC case 2006/567 introduced new bindings for Niagara
+>>>>     crypto providers.  There is a conflict between the name
+>>>>     chosen for N2CP and the Solaris crypto driver.  This case
+>>>>     is intended to amend that mistake and rename the n2cp
+>>>>     device name property. The original FWARC materials are
+>>>>     still valid with the exception of the changes specified
+>>>>     in section 3.
+>>>
+>>>
+>>>
+>>> Not sure what was the real issue here.  Solaris should bind drivers
+>>> using "compatible" property and not with "name" property.  Why
+>>> there is a conflict because of "name" property?
+>>>
+>>>>
+>>>> 3. Technical Description
+>>>>
+>>>>
+>>>> ======================================================================== 
+>>>>
+>>>> Exported Interfaces
+>>>>
+>>>> Specific propvals for n2cp virtual device node across the possible 
+>>>> processors:
+>>>>
+>>>>
+>>>>    Niagara-2:
+>>>>
+>>>>     name        stable        value: "n2cp"    (was "crypto")
+>>>>
+>>>>    Victoria Falls:
+>>>>
+>>>>     name        stable        value: "n2cp"    (was "crypto")
+>>>
+>>>
+>>>
+>>> The "name" in the 2006/567 was actually "ncp" not "crypto" as stated
+>>> above.  See,
+>>
+>>
+>>
+>> Actually we're talking about the n2cp or CWQ device - I've copied the 
+>> original FWARC
+>> case statement below - as you can see it WAS called crypto...
+>>
+>>> name        evolving    value: "crypto"
+>>>     device_type    evolving    value: "crypto"
+>>>     interrupts    evolving    value: chip dependent list of device
+>>>                         relative interrupts, 1 per core.
+>>>     compatible    evolving    value: "SUNW,n2-cwq"
+>>>     reg        evolving    value: unique virtual device register
+>>>                         address.
+>>>
+>>>     name        evolving    value: "random-number-
+>>
+>
+> I see that now.  The way the binding is written in 2006/567 is what
+> confused me.
+>
+> I am fine with this case but I do want to make sure the classification
+> of the interface is proper.  As per,
+> http://sac.eng/cgi-bin/bp.cgi?NAME=interface_taxonomy.bp
+>
+> "Evolving" for FWARC cases is Uncommitted.  Actually "Stable" is no
+> longer used.
+>
+>
+> Thanks.
+>
+
+Ok - the interface stability terminology still confuses me....
+
+thanks,
+
+-gary
+
+From sacadmin Thu Feb  8 08:04:20 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id l18G4JZg000080
+	for <fwarc@sac.eng.sun.com>; Thu, 8 Feb 2007 08:04:20 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l18G4AOj020199
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 8 Feb 2007 16:04:18 GMT
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JD500I0DJB4KZ00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 08 Feb 2007 08:04:16 -0800 (PST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JD500C7IJB3Y230@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 08 Feb 2007 08:04:15 -0800 (PST)
+Received: from fe-amer-05.sun.com ([192.18.108.179])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l18G4EBw022633	for
+ <fwarc@sun.com>; Thu, 08 Feb 2007 09:04:15 -0700 (MST)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JD500201J17GW00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 08 Feb 2007 09:04:14 -0700 (MST)
+Received: from [129.148.184.139] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JD5000ZKJB0SF63@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 08 Feb 2007 09:04:13 -0700 (MST)
+Date: Thu, 08 Feb 2007 11:01:43 -0500
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: Re: FWARC 2007/071 Niagara2 Crypto Name Property Update
+In-reply-to: <45C25A1C.5010803@sun.com>
+Sender: Stephen.Ehring@sun.com
+To: Stephen Ehring <Stephen.Ehring@sun.com>
+Cc: fwarc@sun.com, Gary Morton <Gary.Morton@sun.com>
+Message-id: <45CB4967.5090004@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <45C25A1C.5010803@sun.com>
+User-Agent: Thunderbird 2.0pre (X11/20070203)
+Status: RO
+Content-Length: 106
+
+The timer on this case has expired; it is closed as approved.
+
+Release binding: minor/micro/patch.
+
+Steve
+

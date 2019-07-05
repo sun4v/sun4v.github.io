@@ -1,0 +1,177 @@
++------------------------------------------------------------------------------+
+|                   I N T E R F A C E S   I M P O R T E D                      |
++----------------------------+----------------+--------------------------------+
+| INTERFACES                 | CLASSIFICATION | COMMENTS                       |
++----------------------------+----------------+--------------------------------+
+        "name"                  Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 property)
++----------------------------+----------------+--------------------------------+
+        "compatible"            Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 property)
++----------------------------+----------------+--------------------------------+
+        "device_type"           Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 property)
++----------------------------+----------------+--------------------------------+
+        "reg"                   Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 property)
++----------------------------+----------------+--------------------------------+
+        "ranges"                Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 property)
++----------------------------+----------------+--------------------------------+
+        "#address-cells"        Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 property)
++----------------------------+----------------+--------------------------------+
+        "#size-cells"           Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 property)
++----------------------------+----------------+--------------------------------+
+        "local-mac-address"     Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 property)
++----------------------------+----------------+--------------------------------+
+        "interrupts"            Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 property)
++----------------------------+----------------+--------------------------------+
+        "open"                  Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 method)
++----------------------------+----------------+--------------------------------+
+        "close"                 Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 method)
++----------------------------+----------------+--------------------------------+
+        "encode-unit"           Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 method)
++----------------------------+----------------+--------------------------------+
+        "decode-unit"           Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 method)
++----------------------------+----------------+--------------------------------+
+        "dma-map-in"            Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 method)
++----------------------------+----------------+--------------------------------+
+        "dma-map-out"           Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 method)
++----------------------------+----------------+--------------------------------+
+        "dma-alloc"             Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 method)
++----------------------------+----------------+--------------------------------+
+        "dma-free"              Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 method)
++----------------------------+----------------+--------------------------------+
+        "dma-sync"              Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 method)
++----------------------------+----------------+--------------------------------+
+        "read"                  Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 method)
++----------------------------+----------------+--------------------------------+
+        "write"                 Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 method)
++----------------------------+----------------+--------------------------------+
+        "load"                  Standard        FWARC/1998/392
+                                                (Standard IEEE 1275 method)
++----------------------------+----------------+--------------------------------+
+        sun4v Machine           Sun Private      MD nodes definitions as
+        Description nodes                        defined by FWARC/2005/115
++----------------------------+----------------+--------------------------------+
+
+
+
+
++------------------------------------------------------------------------------+
+|                   I N T E R F A C E S   E X P O R T E D                      |
++----------------------------+----------------+--------------------------------+
+| INTERFACES                 | CLASSIFICATION | COMMENTS                       |
++----------------------------+----------------+--------------------------------+
+   "niu"                        Evolving        "name" property value of NIU 
+                                                device tree node. See binding
+                                                section 2.2
++----------------------------+----------------+--------------------------------+
+   "SUNW,niumx"                 Evolving        "compatible" property value of
+                                                NIU device tree node. See 
+                                                binding section 2.2
++----------------------------+----------------+--------------------------------+
+   "iodevice"                   Evolving        Name of NIU MD node See 
+                                                binding section 2.4
++----------------------------+----------------+--------------------------------+
+   "device-type"                Evolving        Property in NIU MD node. See 
+                                                binding section 2.4
++----------------------------+----------------+--------------------------------+
+   "sun4v"                      Evolving        Value of "device-type" property 
+                                                in NIU MD node. See binding
+                                                section 2.4
++----------------------------+----------------+--------------------------------+
+   "compatible"                 Evolving        Property in NIU MD node. See 
+                                                binding section 2.4
++----------------------------+----------------+--------------------------------+
+   "SUNW,niumx"                 Evolving        Value of "compatible" property 
+                                                in NIU MD node. See binding
+                                                section 2.4
++----------------------------+----------------+--------------------------------+
+   "cfg-handle"                 Evolving        Property in NIU MD node. See 
+                                                binding section 2.4 
++----------------------------+----------------+--------------------------------+
+   "network"                    Evolving        "name" property value of network 
+                                                device tree node. See 
+                                                binding section 3.1
++----------------------------+----------------+--------------------------------+
+   "SUNW,niusl"                 Evolving        "compatible" property value of
+                                                network device tree node. See 
+                                                binding section 3.1
++----------------------------+----------------+--------------------------------+
+   "tx-dma-channels"            Evolving        Property in network device tree 
+                                                node. See binding section 3.1
++----------------------------+----------------+--------------------------------+
+   "rx-dma-channels"            Evolving        Property in network device tree 
+                                                node. See binding section 3.1
++----------------------------+----------------+--------------------------------+
+   "mac-addresses"              Evolving        Property in network device tree 
+                                                node. See binding section 3.1
++----------------------------+----------------+--------------------------------+
+   "phy-type"                   Evolving        Property in network device tree 
+                                                node. See binding section 3.1
++----------------------------+----------------+--------------------------------+
+   "xgf"                        Evolving        Value of "phy-type" property. 
+                                                See binding section 3.1
++----------------------------+----------------+--------------------------------+
+   "xgc"                        Evolving        Value of "phy-type" property. 
+                                                See binding section 3.1
++----------------------------+----------------+--------------------------------+
+   "xaui-mac"                   Evolving        Name of network MD node.  See 
+                                                binding section 3.3
++----------------------------+----------------+--------------------------------+
+   "device-type"                Evolving        Property in network MD node. See 
+                                                binding section 3.3 
++----------------------------+----------------+--------------------------------+
+   "network"                    Evolving        Value of "device-type" property 
+                                                in network MD node. See 
+                                                binding section 3.3
++----------------------------+----------------+--------------------------------+
+   "compatible"                 Evolving        Property in NIU MD node. See 
+                                                binding section 3.3
++----------------------------+----------------+--------------------------------+
+   "SUNW,niusl"                 Evolving        Value of "compatible" property 
+                                                in network MD node. See binding 
+                                                section 3.3
++----------------------------+----------------+--------------------------------+
+   "port"                       Evolving        Property in network MD node. See 
+                                                binding section 3.3
++----------------------------+----------------+--------------------------------+
+   "phy-type"                   Evolving        Property in NIU MD node. See 
+                                                binding section 3.3 
++----------------------------+----------------+--------------------------------+
+   "xgf"                        Evolving        Value of "phy-type" property in 
+                                                network MD node. See binding 
+                                                section 3.3
++----------------------------+----------------+--------------------------------+
+   "xgc"                        Evolving        Value of "phy-type" property in 
+                                                network MD node.  See binding 
+                                                section 3.3
++----------------------------+----------------+--------------------------------+
+   "tx-dma-channels"            Evolving        Property in network MD node. See 
+                                                binding section 3.3 
++----------------------------+----------------+--------------------------------+
+   "rx-dma-channels"            Evolving        Property in network MD node. See 
+                                                binding section 3.3 
++----------------------------+----------------+--------------------------------+
+   "mac-addresses"              Evolving        Property in network MD node. See 
+                                                binding section 3.3 
++----------------------------+----------------+--------------------------------+
+   "interrupts"                 Evolving        Property in network MD node. See 
+                                                binding section 3.3 
++----------------------------+----------------+--------------------------------+

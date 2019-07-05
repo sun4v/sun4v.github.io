@@ -1,0 +1,760 @@
+From sacadmin Tue Aug  9 08:02:46 2005
+Received: from dtmail.sfbay.sun.com (pkg [129.146.90.56])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j79F2kEu002952
+	for <fwarc@sac.sfbay>; Tue, 9 Aug 2005 08:02:46 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j79F2iMh022960;
+	Tue, 9 Aug 2005 08:02:45 -0700 (PDT)
+Message-ID: <42F8C594.9040901@sun.com>
+Date: Tue, 09 Aug 2005 08:02:44 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.6 (Windows/20050716)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: fwarc@sac.sfbay.sun.com
+CC: Tycho Nightingale <Tycho.Nightingale@Sun.COM>
+Subject: 2005/467 - Niagara mmustat HV API - fast track timeout 16 Aug 2005
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 455
+
+
+I'm sponsoring this fast-track case for Tycho.
+The case times out on 16 August 2005
+
+The case adds two Niagara specific fast-trap APIs.
+The fast trap numbers have been added to the registry.
+
+The requested committment level is Sun Private and
+the release levels are minor release of the firmware
+and micro/patch release of the OS.
+
+The spec is in the materials directory of the case
+dir.
+
+http://sac.sfbay/FWARC/2005/467/materials/mmustat.txt
+
+-David
+
+
+
+
+From sacadmin Thu Aug 11 15:45:48 2005
+Received: from phys-san-1 (phys-san-1.West.Sun.COM [129.153.85.70])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j7BMjmEu008181
+	for <fwarc@sac.sfbay.sun.com>; Thu, 11 Aug 2005 15:45:48 -0700 (PDT)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IL200601XO9O0@san-mail1.west.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM) for fwarc@sac.sfbay.sun.com;
+ Thu, 11 Aug 2005 15:45:48 -0700 (PDT)
+Received: from [129.153.85.35] (sr1-usan-05.West.Sun.COM [129.153.85.35])
+ by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IL2004VFXWB09@san-mail1.west.sun.com>; Thu,
+ 11 Aug 2005 15:45:47 -0700 (PDT)
+Date: Thu, 11 Aug 2005 15:45:47 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2005/467 - Niagara mmustat HV API - fast track timeout 16 Aug 2005
+In-reply-to: <42F8C594.9040901@sun.com>
+To: fwarc@sac.sfbay.sun.com
+Cc: Tycho Nightingale <Tycho.Nightingale@Sun.COM>,
+   Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>
+Reply-to: Hitendra.Zhangada@Sun.COM
+Message-id: <42FBD51B.9050604@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7.11) Gecko/20050728
+References: <42F8C594.9040901@sun.com>
+Status: RO
+Content-Length: 2035
+
+David Kahn wrote:
+> 
+> I'm sponsoring this fast-track case for Tycho.
+> The case times out on 16 August 2005
+> 
+> The case adds two Niagara specific fast-trap APIs.
+
+I have a general question.  Since hypervisor hides the CPU
+implementation from its guests, is it possible to make these
+APIs CPU or Niagara neutral?  If this is not possible then
+we will have to add similar APIs for variety of CPUs which we
+will developed in future, e.g., Niagara2, Rock, etc. which
+sounds counter productive and against hiding the real HW under
+hypervisor layer.
+
+> 2.2 niagara_mmustat_info API call
+> 
+>   This function returns the real address of the previously supplied buffer.
+>   
+>   Entry:
+>         trap#           FAST_TRAP
+>         function#       NIAGARA_MMUSTAT_INFO (0x103)
+>   Exit:
+>         ret0            status
+>         ret1            raddr
+> 
+>   Errors:
+>         none defined
+> 
+>   The real address of the current buffer, raddr, or zero if no buffer is
+>   defined is returned in ret1.
+
+In section 2.2, it refers to "previously" supplied buffer.  What
+does "previously" mean?  I think it means the buffer supplied
+by the NIAGARA_MMUSTAT_CONF (0x102) API, right?  If so, please
+clarify that in the description of this API.
+
+Why does client need "real" address?  Again, hypervisor by design
+hides real addresses from clients and hence I am wondering why do
+we need this API. Can you add some verbiage on how the real address
+is used by clients?
+
+> The fast trap numbers have been added to the registry.
+> 
+> The requested committment level is Sun Private and
+> the release levels are minor release of the firmware
+> and micro/patch release of the OS.
+> 
+> The spec is in the materials directory of the case
+> dir.
+> 
+> http://sac.sfbay/FWARC/2005/467/materials/mmustat.txt
+> 
+> -David
+> 
+> 
+> 
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Thu Aug 11 17:18:20 2005
+Received: from phys-san-1 (phys-san-1.West.Sun.COM [129.153.85.70])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j7C0IKEu015209
+	for <fwarc@sac.sfbay.sun.com>; Thu, 11 Aug 2005 17:18:20 -0700 (PDT)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IL3001011WYK4@san-mail1.west.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM) for fwarc@sac.sfbay.sun.com;
+ Thu, 11 Aug 2005 17:18:20 -0700 (PDT)
+Received: from [129.153.85.35] (sr1-usan-05.West.Sun.COM [129.153.85.35])
+ by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IL30048K26J09@san-mail1.west.sun.com>; Thu,
+ 11 Aug 2005 17:18:20 -0700 (PDT)
+Date: Thu, 11 Aug 2005 17:18:19 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2005/467 - Niagara mmustat HV API - fast track timeout 16 Aug 2005
+In-reply-to: <42FBD51B.9050604@Sun.COM>
+To: fwarc@sac.sfbay.sun.com
+Cc: Tycho Nightingale <Tycho.Nightingale@Sun.COM>,
+   Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>
+Reply-to: Hitendra.Zhangada@Sun.COM
+Message-id: <42FBEACB.8020106@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7.11) Gecko/20050728
+References: <42F8C594.9040901@sun.com> <42FBD51B.9050604@Sun.COM>
+Status: RO
+Content-Length: 1616
+
+Hitendra Zhangada wrote:
+
+> 
+>> 2.2 niagara_mmustat_info API call
+>>
+>>   This function returns the real address of the previously supplied 
+>> buffer.
+>>     Entry:
+>>         trap#           FAST_TRAP
+>>         function#       NIAGARA_MMUSTAT_INFO (0x103)
+>>   Exit:
+>>         ret0            status
+>>         ret1            raddr
+>>
+>>   Errors:
+>>         none defined
+>>
+>>   The real address of the current buffer, raddr, or zero if no buffer is
+>>   defined is returned in ret1.
+> 
+> 
+> In section 2.2, it refers to "previously" supplied buffer.  What
+> does "previously" mean?  I think it means the buffer supplied
+> by the NIAGARA_MMUSTAT_CONF (0x102) API, right?  If so, please
+> clarify that in the description of this API.
+> 
+> Why does client need "real" address?  Again, hypervisor by design
+> hides real addresses from clients and hence I am wondering why do
+> we need this API. Can you add some verbiage on how the real address
+> is used by clients?
+
+About my last comment above.  I was confused.  It is physical
+address which is being hide by HV and not the real address.
+Thus, last issue above is not an issue.
+
+Now, my question is why this API is needed.  If this API
+returns the same raddr returned by the NIAGARA_MMUSTAT_CONF
+API then client can save the raddr it got from it.  Probably,
+I am not understanding these APIs properly.  Please clarify.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Thu Aug 11 18:27:23 2005
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j7C1RNEu018639
+	for <fwarc@sac.sfbay.sun.com>; Thu, 11 Aug 2005 18:27:23 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j7C1RLf8002142;
+	Thu, 11 Aug 2005 18:27:21 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j7C1RIkt044591;
+	Thu, 11 Aug 2005 18:27:19 -0700 (PDT)
+Message-ID: <42FBFAF5.6030807@sun.com>
+Date: Thu, 11 Aug 2005 18:27:17 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.6 (Windows/20050716)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+CC: fwarc@sac.sfbay.sun.com, Tycho Nightingale <Tycho.Nightingale@sun.com>,
+   Ashley Saulsbury <Ashley.Saulsbury@sun.com>
+Subject: Re: 2005/467 - Niagara mmustat HV API - fast track timeout 16 Aug
+ 2005
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 1630
+
+
+
+Since Tycho didn't respond ...
+
+Hitendra Zhangada wrote:
+
+>> In section 2.2, it refers to "previously" supplied buffer.  What
+>> does "previously" mean?  I think it means the buffer supplied
+>> by the NIAGARA_MMUSTAT_CONF (0x102) API, right?  If so, please
+>> clarify that in the description of this API.
+
+* 2.0 Hypervisor API for Niagara MMU statistics collection
+
+   On Niagara, hypervisor maintains MMU statistics.  Privileged code
+   provides Hypervisor a buffer wherein these statistics can be collected.
+   After the successful configuration of the buffer, it is continuously
+   updated (hits increased and ticks updated).
+
+> Now, my question is why this API is needed.  If this API
+> returns the same raddr returned by the NIAGARA_MMUSTAT_CONF
+> API then client can save the raddr it got from it.  Probably,
+> I am not understanding these APIs properly.  Please clarify.
+
+"conf" configures the buffer and starts the collection process,
+or unconfigures the buffer and ends the collections process
+if raddr is zero.
+
+"info" returns the current buffer address or zero. (whatever
+it was last set to via "conf", or zero if it was never set.)
+
+I didn't see a real need for the "info" interface either,
+but Tycho said that it mirrored the trap buffer interfaces
+and it was reviewed by the team.
+
+It's not incorrect, so I didn't think it was worth arguing
+about.
+
+If you want any clarifications to the interface/wording,
+please work directly with Tycho. If you need to extend the timeout,
+just do it. (in other words, feel free to work with Tycho,
+update the materials, etc, etc, if that's what you want
+to do.)
+
+Thanks,
+David
+
+
+
+From sacadmin Fri Aug 12 09:49:34 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j7CGnYEu002856
+	for <fwarc@sac.eng.sun.com>; Fri, 12 Aug 2005 09:49:34 -0700 (PDT)
+Received: from westmail2san.west.sun.com (westmail2san.West.Sun.COM [129.153.85.6])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j7CGnWf13780
+	for <fwarc@sun.com>; Fri, 12 Aug 2005 09:49:33 -0700 (PDT)
+Received: from phys-san-1 (phys-san-1.West.Sun.COM [129.153.85.70])
+	by westmail2san.west.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j7CGnWen010658
+	for <fwarc@sun.com>; Fri, 12 Aug 2005 09:49:32 -0700 (PDT)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IL400C01BW9S0@san-mail1.west.sun.com>
+ (original mail from hitendra.zhangada@sun.com) for fwarc@sun.com; Fri,
+ 12 Aug 2005 09:49:32 -0700 (PDT)
+Received: from [129.150.34.84]
+ (vpn-129-150-34-84.Central.Sun.COM [129.150.34.84]) by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IL4005L9C2IC7@san-mail1.west.sun.com>; Fri,
+ 12 Aug 2005 09:49:32 -0700 (PDT)
+Date: Fri, 12 Aug 2005 09:49:31 -0700
+From: Hitendra Zhangada <hitendra.zhangada@sun.com>
+Subject: Re: 2005/467 - Niagara mmustat HV API - fast track timeout 16 Aug 2005
+In-reply-to: <Pine.GSO.4.61.0508120848290.23965@sr1-ubur-04>
+To: Tycho Nightingale <Tycho.Nightingale@sun.com>
+Cc: Firmware ARC <fwarc@sun.com>, Ashley Saulsbury <Ashley.Saulsbury@sun.com>
+Message-id: <42FCD31B.20705@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.2)
+ Gecko/20040804 Netscape/7.2 (ax)
+References: <42FBFAF5.6030807@sun.com>
+ <Pine.GSO.4.61.0508120848290.23965@sr1-ubur-04>
+Status: RO
+Content-Length: 3316
+
+Tycho Nightingale wrote:
+> 
+> On Thu, 11 Aug 2005, David Kahn wrote:
+> 
+>> Since Tycho didn't respond ...
+> 
+> 
+> Time-zone challenges ;-)
+
+Please include FWARC alias in your responses so that the discussions
+is archived and other members are part of the discussions.  See my
+comments below.
+
+> 
+>> Hitendra Zhangada wrote:
+>>
+>>>> In section 2.2, it refers to "previously" supplied buffer.  What
+>>>> does "previously" mean?  I think it means the buffer supplied
+>>>> by the NIAGARA_MMUSTAT_CONF (0x102) API, right?  If so, please
+>>>> clarify that in the description of this API.
+>>
+>>
+>> * 2.0 Hypervisor API for Niagara MMU statistics collection
+>>
+>>  On Niagara, hypervisor maintains MMU statistics.  Privileged code
+>>  provides Hypervisor a buffer wherein these statistics can be collected.
+>>  After the successful configuration of the buffer, it is continuously
+>>  updated (hits increased and ticks updated).
+>>
+>>> Now, my question is why this API is needed.  If this API
+>>> returns the same raddr returned by the NIAGARA_MMUSTAT_CONF
+>>> API then client can save the raddr it got from it.  Probably,
+>>> I am not understanding these APIs properly.  Please clarify.
+>>
+>>
+>> "conf" configures the buffer and starts the collection process,
+>> or unconfigures the buffer and ends the collections process
+>> if raddr is zero.
+>>
+>> "info" returns the current buffer address or zero. (whatever
+>> it was last set to via "conf", or zero if it was never set.)
+>>
+>> I didn't see a real need for the "info" interface either,
+>> but Tycho said that it mirrored the trap buffer interfaces
+>> and it was reviewed by the team.
+>>
+>> It's not incorrect, so I didn't think it was worth arguing
+>> about.
+> 
+> 
+> Indeed, strictly there's not a real need for the "info" interface; I 
+> didn't have it originally either.  However, I was convinced by the team 
+> that the precedent was to have a "getter" for every "setter" so I complied.
+
+I am still not clear.  If it is the same address being returned (as per
+David's reply - whatever was set via "conf" or zero if not set) then I
+still do not see a need for this API.
+
+> 
+>> If you want any clarifications to the interface/wording,
+>> please work directly with Tycho. If you need to extend the timeout,
+>> just do it. (in other words, feel free to work with Tycho,
+>> update the materials, etc, etc, if that's what you want
+>> to do.)
+> 
+> 
+> David, thanks for answering Hitu's questions.
+> 
+> Hitu, thanks for looking of the API.  Please let me know if I can 
+> provide any additional clarification.
+
+Apart from my question on why this API is needed, I would also like
+answer to my first question in the mail yesterday which neither you
+or David has answered.  This was about can we make this API CPU-type
+neutral?
+
+Assuming that you convince me the reasons to keep the "info" API, you
+will need to update the specification so that it is clear.  What I mean
+is replacing "previous" with reference to "conf" API in the specification.
+
+If you want to discuss with me before you respond to this mail then
+feel free to call me.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Fri Aug 12 13:25:23 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j7CKPNEu015488
+	for <fwarc@sac.eng.Sun.COM>; Fri, 12 Aug 2005 13:25:23 -0700 (PDT)
+Received: from eastmail1bur.East.Sun.COM (eastmail1bur.East.Sun.COM [129.148.9.49])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j7CKPMb08524
+	for <fwarc@sun.com>; Fri, 12 Aug 2005 14:25:22 -0600 (MDT)
+Received: from phys-bur1-1 (phys-bur1-1.East.Sun.COM [129.148.13.15])
+	by eastmail1bur.East.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j7CKPM5K015797
+	for <fwarc@sun.com>; Fri, 12 Aug 2005 16:25:22 -0400 (EDT)
+Received: from conversion-daemon.bur-mail2.east.sun.com by
+ bur-mail2.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IL400H01LZDOL@bur-mail2.east.sun.com>
+ (original mail from tychon@east.sun.com) for fwarc@sun.com; Fri,
+ 12 Aug 2005 16:25:21 -0400 (EDT)
+Received: from sr1-ubur-04 (sr1-ubur-04.East.Sun.COM [129.148.9.83])
+ by bur-mail2.east.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTP id <0IL4008NFM29HN@bur-mail2.east.sun.com>; Fri,
+ 12 Aug 2005 16:25:21 -0400 (EDT)
+Date: Fri, 12 Aug 2005 16:25:21 -0400 (EDT)
+From: Tycho Nightingale <tychon@east.sun.com>
+Subject: Re: 2005/467 - Niagara mmustat HV API - fast track timeout 16 Aug 2005
+In-reply-to: <42FCD31B.20705@sun.com>
+X-X-Sender: tychon@sr1-ubur-04
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware ARC <fwarc@sun.com>, Ashley Saulsbury <Ashley.Saulsbury@sun.com>
+Reply-to: Tycho Nightingale <Tycho.Nightingale@sun.com>
+Message-id: <Pine.GSO.4.61.0508121607510.23965@sr1-ubur-04>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_QEYAw5Pw0EF9Zobf28MHLA)"
+References: <42FBFAF5.6030807@sun.com>
+ <Pine.GSO.4.61.0508120848290.23965@sr1-ubur-04> <42FCD31B.20705@sun.com>
+Status: RO
+Content-Length: 11527
+
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--Boundary_(ID_QEYAw5Pw0EF9Zobf28MHLA)
+Content-type: TEXT/PLAIN; charset=US-ASCII; format=flowed
+
+
+On Fri, 12 Aug 2005, Hitendra Zhangada wrote:
+
+> Tycho Nightingale wrote:
+>> 
+>> On Thu, 11 Aug 2005, David Kahn wrote:
+>> 
+>>> Hitendra Zhangada wrote:
+>>> 
+>>> * 2.0 Hypervisor API for Niagara MMU statistics collection
+>>> 
+>>>  On Niagara, hypervisor maintains MMU statistics.  Privileged code
+>>>  provides Hypervisor a buffer wherein these statistics can be collected.
+>>>  After the successful configuration of the buffer, it is continuously
+>>>  updated (hits increased and ticks updated).
+>>> 
+>>>> Now, my question is why this API is needed.  If this API
+>>>> returns the same raddr returned by the NIAGARA_MMUSTAT_CONF
+>>>> API then client can save the raddr it got from it.  Probably,
+>>>> I am not understanding these APIs properly.  Please clarify.
+>>> 
+>>> 
+>>> "conf" configures the buffer and starts the collection process,
+>>> or unconfigures the buffer and ends the collections process
+>>> if raddr is zero.
+>>> 
+>>> "info" returns the current buffer address or zero. (whatever
+>>> it was last set to via "conf", or zero if it was never set.)
+>>> 
+>>> I didn't see a real need for the "info" interface either,
+>>> but Tycho said that it mirrored the trap buffer interfaces
+>>> and it was reviewed by the team.
+>>> 
+>>> It's not incorrect, so I didn't think it was worth arguing
+>>> about.
+>> 
+>> 
+>> Indeed, strictly there's not a real need for the "info" interface; I didn't 
+>> have it originally either.  However, I was convinced by the team that the 
+>> precedent was to have a "getter" for every "setter" so I complied.
+>
+> I am still not clear.  If it is the same address being returned (as per
+> David's reply - whatever was set via "conf" or zero if not set) then I
+> still do not see a need for this API.
+
+The "info" interface exists to provide an idempotent mechanism to query the
+current state of the statistics collection (enabled or disabled) and if
+enabled, to provide the current real-address of the buffer.  For instance,
+it maybe used by layered software different from the original caller of the
+"conf" interface.
+
+>>> If you want any clarifications to the interface/wording,
+>>> please work directly with Tycho. If you need to extend the timeout,
+>>> just do it. (in other words, feel free to work with Tycho,
+>>> update the materials, etc, etc, if that's what you want
+>>> to do.)
+>> 
+>> 
+>> David, thanks for answering Hitu's questions.
+>> 
+>> Hitu, thanks for looking of the API.  Please let me know if I can provide 
+>> any additional clarification.
+>
+> Apart from my question on why this API is needed, I would also like
+> answer to my first question in the mail yesterday which neither you
+> or David has answered.  This was about can we make this API CPU-type
+> neutral?
+
+This API is specifically tailored to the MMU implementation of Niagara1.
+All current upcoming sun4v-complaint SPARC CPUs have hardware support for
+TLB reloading thereby making the statistics collection implemented by these
+interfaces irrelevant on architectures.
+
+> Assuming that you convince me the reasons to keep the "info" API, you
+> will need to update the specification so that it is clear.  What I mean
+> is replacing "previous" with reference to "conf" API in the specification.
+>
+> If you want to discuss with me before you respond to this mail then
+> feel free to call me.
+
+Indeed.  Off-line, we worked on the API.  I'm attaching the updated 
+version we arrived at.
+
+Thanks for all your help!
+
+Tycho
+
+--Boundary_(ID_QEYAw5Pw0EF9Zobf28MHLA)
+Content-id: <Pine.GSO.4.61.0508121625210.23965@sr1-ubur-04>
+Content-type: TEXT/PLAIN; charset=US-ASCII; name=mmustat.txt
+Content-transfer-encoding: BASE64
+Content-disposition: attachment; filename=mmustat.txt
+Content-description: 
+
+KiAxLjAgSW50cm9kdWN0aW9uDQoNCiAgVGhpcyBkb2N1bWVudCBkZXNjcmliZXMg
+dGhlIGh5cGVydmlzb3IgQVBJIHRvIHN1cHBvcnQgTU1VIHN0YXRpc3RpY3MNCiAg
+Y29sbGVjdGlvbiBvbiBhIE5pYWdhcmEtYmFzZWQgc3lzdGVtLiAgVGhpcyBBUEkg
+aXMgaW50ZW5kZWQgZm9yDQogIE5pYWdhcmEtc3BlY2lmaWMgcGVyZm9ybWFuY2Ug
+bWVhc3VyZW1lbnQuDQoNCiogMi4wIEh5cGVydmlzb3IgQVBJIGZvciBOaWFnYXJh
+IE1NVSBzdGF0aXN0aWNzIGNvbGxlY3Rpb24NCg0KICBPbiBOaWFnYXJhLCBoeXBl
+cnZpc29yIG1haW50YWlucyBNTVUgc3RhdGlzdGljcy4gIFByaXZpbGVnZWQgY29k
+ZQ0KICBwcm92aWRlcyBIeXBlcnZpc29yIGEgYnVmZmVyIHdoZXJlaW4gdGhlc2Ug
+c3RhdGlzdGljcyBjYW4gYmUgY29sbGVjdGVkLg0KICBBZnRlciB0aGUgc3VjY2Vz
+c2Z1bCBjb25maWd1cmF0aW9uIG9mIHRoZSBidWZmZXIsIGl0IGlzIGNvbnRpbnVv
+dXNseQ0KICB1cGRhdGVkIChoaXRzIGluY3JlYXNlZCBhbmQgdGlja3MgdXBkYXRl
+ZCkuDQoNCiogMi4xIG5pYWdhcmFfbW11c3RhdF9jb25mIEFQSSBjYWxsDQoNCiAg
+VG8gc3VwcG9ydCB0aGUgY29sbGVjdGlvbiBvZiBOaWFnYXJhIE1NVSBzdGF0aXN0
+aWNzIHRoZSBmb2xsb3dpbmcNCiAgZnVuY3Rpb24gaXMgb2ZmZXJlZDoNCg0KICBF
+bnRyeToNCiAgICAgICAgdHJhcCMgICAgICAgICAgIEZBU1RfVFJBUA0KICAgICAg
+ICBmdW5jdGlvbiMgICAgICAgTklBR0FSQV9NTVVTVEFUX0NPTkYgKDB4MTAyKQ0K
+ICAgICAgICBhcmcwICAgICAgICAgICAgcmFkZHINCg0KICBFeGl0Og0KICAgICAg
+ICByZXQwICAgICAgICAgICAgc3RhdHVzDQogICAgICAgIHJldDEgICAgICAgICAg
+ICByYWRkcg0KDQogIEVycm9yczoNCiAgICAgICAgRU5PUkFERFIgICAgICAgIElu
+dmFsaWQgcmFkZHINCiAgICAgICAgRUJBREFMSUdOICAgICAgIHJhZGRyIG5vdCBh
+bGlnbmVkIG9uIDY0LWJ5dGUgYm91bmRhcnkNCglFQkFEVFJBUAlBUEkgbm90IHN1
+cHBvcnRlZCAoYWxsIG5vbi1OaWFnYXJhMSBhcmNoaXRlY3R1cmVzKQ0KDQogIFRo
+aXMgZnVuY3Rpb24gZW5hYmxlcyBNTVUgc3RhdGlzdGljIGNvbGxlY3Rpb24gYW5k
+IHN1cHBsaWVzIHRoZSBidWZmZXIgdG8NCiAgZGVwb3NpdCB0aGUgcmVzdWx0cyBm
+b3IgdGhlIGN1cnJlbnQgdmlydHVhbCBDUFUuICBUaGUgcmVhbCBhZGRyZXNzIG9m
+IHRoZQ0KICBidWZmZXIsIHJhZGRyLCBpcyBzdXBwbGllZCBpbiBhcmcwLiAgVGhl
+IHJldHVybiB2YWx1ZSwgcmV0MSwgaXMgdGhlDQogIHByZXZpb3VzbHkgc3BlY2lm
+aWVkIGJ1ZmZlciwgb3IgemVybyBmb3IgdGhlIGZpcnN0IGludm9jYXRpb24uDQoN
+CiAgSWYgcmFkZHIgaXMgemVybyBNTVUgc3RhdGlzdGljIGNvbGxlY3Rpb24gaXMg
+ZGlzYWJsZWQgZm9yIHRoZSBjdXJyZW50DQogIHZpcnR1YWwgQ1BVIGFuZCBhbnkg
+cHJldmlvdXNseSBzdXBwbGllZCBidWZmZXIgaXMgbm8gbG9uZ2VyIGFjY2Vzc2Vk
+Lg0KDQogIElmIGFuIGVycm9yIGlzIHJldHVybmVkIG5vIHN0YXRpc3RpY3MgYXJl
+IGNvbGxlY3RlZCAoZXF1aXZhbGVudCB0bw0KICBwYXNzaW5nIGFuIHJhZGRyIG9m
+IHplcm8pLg0KDQogIFRoZSBpbml0aWFsIGNvbnRlbnRzIG9mIHRoZSBidWZmZXIg
+c2hvdWxkIHplcm8gb3RoZXJ3aXNlIHRoZSBjb2xsZWN0ZWQNCiAgc3RhdGlzdGlj
+cyB3aWxsIGJlIG1lYW5pbmdsZXNzLg0KDQoqIDIuMiBuaWFnYXJhX21tdXN0YXRf
+aW5mbyBBUEkgY2FsbA0KDQogIFRoaXMgZnVuY3Rpb24gcHJvdmlkZXMgYW4gaWRl
+bXBvdGVudCBtZWNoYW5pc20gdG8gcXVlcnkgdGhlIHN0YXRlIGFuZA0KICByZWFs
+IGFkZHJlc3Mgb2YgdGhlIGN1cnJlbnRseSBjb25maWd1cmVkIGJ1ZmZlci4NCg0K
+ICBFbnRyeToNCiAgICAgICAgdHJhcCMgICAgICAgICAgIEZBU1RfVFJBUA0KICAg
+ICAgICBmdW5jdGlvbiMgICAgICAgTklBR0FSQV9NTVVTVEFUX0lORk8gKDB4MTAz
+KQ0KICBFeGl0Og0KICAgICAgICByZXQwICAgICAgICAgICAgc3RhdHVzDQogICAg
+ICAgIHJldDEgICAgICAgICAgICByYWRkcg0KDQogIEVycm9yczoNCglFQkFEVFJB
+UAlBUEkgbm90IHN1cHBvcnRlZCAoYWxsIG5vbi1OaWFnYXJhMSBhcmNoaXRlY3R1
+cmVzKQ0KDQogIFRoZSByZWFsIGFkZHJlc3Mgb2YgdGhlIGN1cnJlbnQgYnVmZmVy
+LCByYWRkciwgb3IgemVybywgaWYgbm8gYnVmZmVyIGlzDQogIGRlZmluZWQsIGlz
+IHJldHVybmVkIGluIHJldDEuDQoNCiogMi4zIE1NVSBzdGF0aXN0aWMgYnVmZmVy
+IGZvcm1hdA0KDQogIG9mZnNldCAoYnl0ZXMpICAgICAgICBzaXplIChieXRlcykg
+ICAgZmllbGQNCiAgLS0tLS0tLS0tLS0tLS0gICAgICAgIC0tLS0tLS0tLS0tLSAg
+ICAtLS0tLQ0KICAweDAgICAgICAgICAgICAgICAgICAgMHg4ICAgICAgICAgICAg
+IElNTVUgVFNCIGhpdHMgY3R4MCwgOGtiIFRURQ0KICAweDggICAgICAgICAgICAg
+ICAgICAgMHg4ICAgICAgICAgICAgIElNTVUgVFNCIHRpY2tzIGN0eDAsIDhrYiBU
+VEUNCiAgMHgxMCAgICAgICAgICAgICAgICAgIDB4OCAgICAgICAgICAgICBJTU1V
+IFRTQiBoaXRzIGN0eDAsIDY0a2IgVFRFDQogIDB4MTggICAgICAgICAgICAgICAg
+ICAweDggICAgICAgICAgICAgSU1NVSBUU0IgdGlja3MgY3R4MCwgNjRrYiBUVEUN
+CiAgMHgyMCAgICAgICAgICAgICAgICAgIDB4MTAgICAgICAgICAgICByZXNlcnZl
+ZA0KICAweDMwICAgICAgICAgICAgICAgICAgMHg4ICAgICAgICAgICAgIElNTVUg
+VFNCIGhpdHMgY3R4MCwgNG1iIFRURQ0KICAweDM4ICAgICAgICAgICAgICAgICAg
+MHg4ICAgICAgICAgICAgIElNTVUgVFNCIHRpY2tzIGN0eDAsIDRtYiBUVEUNCiAg
+MHg0MCAgICAgICAgICAgICAgICAgIDB4MTAgICAgICAgICAgICByZXNlcnZlZA0K
+ICAweDUwICAgICAgICAgICAgICAgICAgMHg4ICAgICAgICAgICAgIElNTVUgVFNC
+IGhpdHMgY3R4MCwgMjU2bWIgVFRFDQogIDB4NTggICAgICAgICAgICAgICAgICAw
+eDggICAgICAgICAgICAgSU1NVSBUU0IgdGlja3MgY3R4MCwgMjU2bWIgVFRFDQog
+IDB4NjAgICAgICAgICAgICAgICAgICAweDIwICAgICAgICAgICAgcmVzZXJ2ZWQN
+CiAgMHg4MCAgICAgICAgICAgICAgICAgIDB4OCAgICAgICAgICAgICBJTU1VIFRT
+QiBoaXRzIGN0eG5vbjAsIDhrYiBUVEUNCiAgMHg4OCAgICAgICAgICAgICAgICAg
+IDB4OCAgICAgICAgICAgICBJTU1VIFRTQiB0aWNrcyBjdHhub24wLCA4a2IgVFRF
+DQogIDB4OTAgICAgICAgICAgICAgICAgICAweDggICAgICAgICAgICAgSU1NVSBU
+U0IgaGl0cyBjdHhub24wLCA2NGtiIFRURQ0KICAweDk4ICAgICAgICAgICAgICAg
+ICAgMHg4ICAgICAgICAgICAgIElNTVUgVFNCIHRpY2tzIGN0eG5vbjAsIDY0a2Ig
+VFRFDQogIDB4QTAgICAgICAgICAgICAgICAgICAweDEwICAgICAgICAgICAgcmVz
+ZXJ2ZWQNCiAgMHhCMCAgICAgICAgICAgICAgICAgIDB4OCAgICAgICAgICAgICBJ
+TU1VIFRTQiBoaXRzIGN0eG5vbjAsIDRtYiBUVEUNCiAgMHhCOCAgICAgICAgICAg
+ICAgICAgIDB4OCAgICAgICAgICAgICBJTU1VIFRTQiB0aWNrcyBjdHhub24wLCA0
+bWIgVFRFDQogIDB4QzAgICAgICAgICAgICAgICAgICAweDEwICAgICAgICAgICAg
+cmVzZXJ2ZWQNCiAgMHhEMCAgICAgICAgICAgICAgICAgIDB4OCAgICAgICAgICAg
+ICBJTU1VIFRTQiBoaXRzIGN0eG5vbjAsIDI1Nm1iIFRURQ0KICAweEQ4ICAgICAg
+ICAgICAgICAgICAgMHg4ICAgICAgICAgICAgIElNTVUgVFNCIHRpY2tzIGN0eG5v
+bjAsIDI1Nm1iIFRURQ0KICAweEUwICAgICAgICAgICAgICAgICAgMHgyMCAgICAg
+ICAgICAgIHJlc2VydmVkDQogIDB4MTAwICAgICAgICAgICAgICAgICAweDggICAg
+ICAgICAgICAgRE1NVSBUU0IgaGl0IGN0eDAsIDhrYiBUVEUNCiAgMHgxMDggICAg
+ICAgICAgICAgICAgIDB4OCAgICAgICAgICAgICBETU1VIFRTQiB0aWNrcyBjdHgw
+LCA4a2IgVFRFDQogIDB4MTEwICAgICAgICAgICAgICAgICAweDggICAgICAgICAg
+ICAgRE1NVSBUU0IgaGl0IGN0eDAsIDY0a2IgVFRFDQogIDB4MTE4ICAgICAgICAg
+ICAgICAgICAweDggICAgICAgICAgICAgRE1NVSBUU0IgdGlja3MgY3R4MCwgNjRr
+YiBUVEUNCiAgMHgxMjAgICAgICAgICAgICAgICAgIDB4MTAgICAgICAgICAgICBy
+ZXNlcnZlZA0KICAweDEzMCAgICAgICAgICAgICAgICAgMHg4ICAgICAgICAgICAg
+IERNTVUgVFNCIGhpdCBjdHgwLCA0bWIgVFRFDQogIDB4MTM4ICAgICAgICAgICAg
+ICAgICAweDggICAgICAgICAgICAgRE1NVSBUU0IgdGlja3MgY3R4MCwgNG1iIFRU
+RQ0KICAweDE0MCAgICAgICAgICAgICAgICAgMHgxMCAgICAgICAgICAgIHJlc2Vy
+dmVkDQogIDB4MTUwICAgICAgICAgICAgICAgICAweDggICAgICAgICAgICAgRE1N
+VSBUU0IgaGl0IGN0eDAsIDI1Nm1iIFRURQ0KICAweDE1OCAgICAgICAgICAgICAg
+ICAgMHg4ICAgICAgICAgICAgIERNTVUgVFNCIHRpY2tzIGN0eDAsIDI1Nm1iIFRU
+RQ0KICAweDE2MCAgICAgICAgICAgICAgICAgMHgyMCAgICAgICAgICAgIHJlc2Vy
+dmVkDQogIDB4MTgwICAgICAgICAgICAgICAgICAweDggICAgICAgICAgICAgRE1N
+VSBUU0IgaGl0IGN0eG5vbjAsIDhrYiBUVEUNCiAgMHgxODggICAgICAgICAgICAg
+ICAgIDB4OCAgICAgICAgICAgICBETU1VIFRTQiB0aWNrcyBjdHhub24wLCA4a2Ig
+VFRFDQogIDB4MTkwICAgICAgICAgICAgICAgICAweDggICAgICAgICAgICAgRE1N
+VSBUU0IgaGl0IGN0eG5vbjAsIDY0a2IgVFRFDQogIDB4MTk4ICAgICAgICAgICAg
+ICAgICAweDggICAgICAgICAgICAgRE1NVSBUU0IgdGlja3MgY3R4bm9uMCwgNjRr
+YiBUVEUNCiAgMHgxQTAgICAgICAgICAgICAgICAgIDB4MTAgICAgICAgICAgICBy
+ZXNlcnZlZA0KICAweDFCMCAgICAgICAgICAgICAgICAgMHg4ICAgICAgICAgICAg
+IERNTVUgVFNCIGhpdCBjdHhub24wLCA0bWIgVFRFDQogIDB4MUI4ICAgICAgICAg
+ICAgICAgICAweDggICAgICAgICAgICAgRE1NVSBUU0IgdGlja3MgY3R4bm9uMCwg
+NG1iIFRURQ0KICAweDFDMCAgICAgICAgICAgICAgICAgMHgxMCAgICAgICAgICAg
+IHJlc2VydmVkDQogIDB4MUQwICAgICAgICAgICAgICAgICAweDggICAgICAgICAg
+ICAgRE1NVSBUU0IgaGl0IGN0eG5vbjAsIDI1Nm1iIFRURQ0KICAweDFEOCAgICAg
+ICAgICAgICAgICAgMHg4ICAgICAgICAgICAgIERNTVUgVFNCIHRpY2tzIGN0eG5v
+bjAsIDI1Nm1iIFRURQ0KICAweDFFMCAgICAgICAgICAgICAgICAgMHgyMCAgICAg
+ICAgICAgIHJlc2VydmVkDQoNCiAgd2hlcmUgInRpY2tzIiBpcyB0aGUgY3VtdWxh
+dGl2ZSB0aW1lIHNwZW5kIGhhbmRsaW5nIHRoZSBzcGVjaWZpZWQgaGl0DQogIG1l
+YXN1cmVkIHZpYSBkZWx0YXMgaW4gdGhlICV0aWNrIHJlZ2lzdGVyDQoNCiogMy4w
+IFJlZmVyZW5jZXMNCg0KICBGb3IgZnVydGhlciBpbmZvcm1hdGlvbiBvbiB0aGUg
+aHlwZXJ2aXNvci9zdW40diBBUEksIGluY2x1ZGluZyBjYWxsaW5nDQogIGNvbnZl
+bnRpb25zLCBzdGF0dXMgcmV0dXJuIHZhbHVlcyBhbmQgZXJyb3IgY29kZXMsIHNl
+ZTogRldBUkMgY2FzZQ0KICAyMDA1LzExNiAtIHN1bjR2IGNvcmUgQVBJLg0K
+
+--Boundary_(ID_QEYAw5Pw0EF9Zobf28MHLA)--
+
+From sacadmin Fri Aug 12 13:52:19 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j7CKqIEu017174
+	for <fwarc@sac.eng.sun.com>; Fri, 12 Aug 2005 13:52:18 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j7CKqIf19259
+	for <fwarc@sun.com>; Fri, 12 Aug 2005 13:52:18 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j7CKqGao011471;
+	Fri, 12 Aug 2005 13:52:16 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j7CKqEkt083123;
+	Fri, 12 Aug 2005 13:52:15 -0700 (PDT)
+Message-ID: <42FD0BFD.9060004@sun.com>
+Date: Fri, 12 Aug 2005 13:52:13 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.6 (Windows/20050716)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Tycho Nightingale <tychon@east.sun.com>
+CC: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+   Firmware ARC <fwarc@sun.com>, Ashley Saulsbury <Ashley.Saulsbury@sun.com>
+Subject: Re: 2005/467 - Niagara mmustat HV API - fast track timeout 16 Aug
+ 2005
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 209
+
+The new version is in the materials subdir
+in the case dir. (There was a word missing
+in line 45 or so. I fixed that.)
+
+It's under sccs, if anybody wants to
+see what changed from the previous
+version.
+
+-David
+
+From sacadmin Tue Aug 16 19:05:55 2005
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j7H25tEu017605
+	for <FWARC@sac.sfbay.sun.com>; Tue, 16 Aug 2005 19:05:55 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j7H25sf8025378;
+	Tue, 16 Aug 2005 19:05:54 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j7H25rkt048731;
+	Tue, 16 Aug 2005 19:05:54 -0700 (PDT)
+Message-ID: <43029B81.6060901@sun.com>
+Date: Tue, 16 Aug 2005 19:05:53 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.6 (Windows/20050716)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com, Tycho Nightingale <Tycho.Nightingale@sun.com>
+Subject: Re: FWARC 2005/467 - Niagara mmustat HV API
+References: <Pine.GSO.4.61.0508162144510.22639@sr1-ubur-04> <4302991A.5050307@sun.com> <43029ACC.8000109@Sun.COM>
+In-Reply-To: <43029ACC.8000109@Sun.COM>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 111
+
+The timer on this case has expired.
+All issues have been resolved.
+
+The case is approved (fast-track).
+
+-David
+

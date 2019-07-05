@@ -1,0 +1,204 @@
+
+1. Introduction
+   1.1. Project/Component Working Name:
+	Niagara2 NIU Hypervisor API Extensions
+
+   1.2. Name of Document Author/Supplier:
+	David.Finberg@sun.com
+
+   1.3. Date of This Document:
+        Tue Apr  8 13:29:24 PDT 2008
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		HS PAC
+
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Mike Sanfratello
+
+	1.4.4. The name of your business unit:
+		SPARC Software Group (SSG)
+		(Central Engineering)
+
+   1.5. Email Aliases:
+    	1.5.1. Responsible Manager: David.Banman@Sun.Com
+    	1.5.2. Responsible Engineer: David.Finberg@Sun.Com
+    	1.5.3. Marketing Manager: Honglin.Su@sun.com
+
+2. Project Summary
+   2.1. Project Description:
+
+	This case extends the Niagara2 Network Interface Unit (NIU) Hypervisor
+        API approved under FWARC/2006/524, to support Hybrid IO in a LDoms
+        environment. 
+
+        The Logical Domains releases to date,  provide virtualized I/O for all
+        I/O in and out of the system. While compelling for a variety of
+        application workloads, virtualized I/O will not provide high performance 
+        I/O capabilities that networked I/O oriented workloads require.
+        
+        The Hybrid I/O model provides the opportunity to share device resources
+        across multiple client domains with better granularity while overcoming
+        the performance bottlenecks of virtualized I/O.
+	
+   2.2. Risks and Assumptions:
+
+	See FWARC/2006/524
+
+3. Business Summary
+   3.1. Problem Area:
+
+        With the current virtual IO model, a logical domain is not provided
+        direct access to network adapters. A service domain with virtual IO
+        services proxies the capabilities of the network device to the logical
+        domain. Though this support is functionally adequate, it lacks the
+        required level of performance and scalability for most applications.
+        Hence, it is critical that the virtual IO model be extended to provide
+        direct access to either the entire network device or some shareable
+        portion of the network device. 
+
+   3.2. Market/Requester:
+
+	Niagara platform customers
+
+   3.3. Business Justification:
+
+	Providing improved performance and scalibility for networking
+	is critical to the success of the Niagara based platforms
+	with either N2-NIU or Neptune.
+
+   3.4. Competitive Analysis:
+
+	N/A
+
+   3.5. Opportunity Window/Exposure:
+
+   3.6. How will you know when you are done?:
+
+4. Technical Description:
+
+    4.1 Overview
+
+    The first release of Logical Domains, Logical Domains version 1.0, 
+    provides virtualized I/O for all I/O in and out of the system. 
+    While compelling for a variety of application workloads, virtualized 
+    I/O will not provide high performance I/O capabilities that networked 
+    I/O oriented workloads require. 
+
+    This project proposes extensions to Hypervisor API needed to support the
+    hybrid IO networking architecture for Niagara II's Network Interface Unit
+    (NIU), a network I/O interface integrated on chip. The Hybrid I/O model
+    provides the ability to share device resources across multiple logical
+    domains with better granularity while overcoming the performance bottlenecks 
+    of virtualized I/O. The Hybrid I/O model provides direct access of a portion
+    of the I/O device owned and managed by the domain that owns the I/O device.
+    In this model, the I/O bus infrastructure is virtualized and manage by the
+    service domain that owns the I/O bus. 
+	
+    4.2 Imported Interfaces :
+
+      Interface              Classification     Comments
+      =======================================================================
+
+      sun4v core API            Sun Private     Core APIs defined by
+                                                FWARC/2005/116
+
+      Niagara2 NIU API          Sun Private     NIU APIs defined by
+                                                FWARC/2006/524
+
+    4.3 Exported Interfaces:
+
+      Interface               Classification  Comments
+      ========================================================================
+
+      N2NIU_VR_ASSIGN         Sun Private     Trap 0x80 function number 0x146
+      N2NIU_VR_UNASSIGN	      Sun Private     Trap 0x80 function number 0x147
+      N2NIU_VR_GETINFO        Sun Private     Trap 0x80 function number 0x148
+
+      N2NIU_RX_DMA_ASSIGN     Sun Private     Trap 0x80 function number 0x149
+      N2NIU_RX_DMA_UNASSIGN   Sun Private     Trap 0x80 function number 0x14a
+      N2NIU_TX_DMA_ASSIGN     Sun Private     Trap 0x80 function number 0x14b
+      N2NIU_TX_DMA_UNASSIGN   Sun Private     Trap 0x80 function number 0x14c
+
+      N2NIU_VR_GET_RX_MAP     Sun Private     Trap 0x80 function number 0x14d
+      N2NIU_VR_GET_TX_MAP     Sun Private     Trap 0x80 function number 0x14e
+
+      N2NIU_VRRX_SET_INO      Sun Private     Trap 0x80 function number 0x150
+      N2NIU_VRTX_SET_INO      Sun Private     Trap 0x80 function number 0x151
+
+      N2NIU_VRRX_GET_INFO     Sun Private     Trap 0x80 function number 0x152
+      N2NIU_VRTX_GET_INFO     Sun Private     Trap 0x80 function number 0x153
+
+      N2NIU_VRRX_LP_SET       Sun Private     Trap 0x80 function number 0x154
+      N2NIU_VRRX_LP_GET       Sun Private     Trap 0x80 function number 0x155
+      N2NIU_VRTX_LP_SET       Sun Private     Trap 0x80 function number 0x156
+      N2NIU_VRTX_LP_GET       Sun Private     Trap 0x80 function number 0x157
+
+      N2NIU_VRRX_PARAM_GET    Sun Private     Trap 0x80 function number 0x158
+      N2NIU_VRRX_PARAM_SET    Sun Private     Trap 0x80 function number 0x159
+      N2NIU_VRTX_PARAM_GET    Sun Private     Trap 0x80 function number 0x15a
+      N2NIU_VRTX_PARAM_SET    Sun Private     Trap 0x80 function number 0x15b
+
+5. Reference Documents:
+	
+     The updated Niagara-2 NIU HV API specification detailing the new APIs 
+     is provided.
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+	
+	Q2 FY09
+
+   6.2. Cost of Effort:
+
+
+   6.3. Cost of Capital Resources:
+
+	Capital resources are subsumed as part of overall product development.
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation Name:
+		Delivery of firmware will be platform teams
+		Delivery of sun4v OS will be platform teams (ON) 
+		
+   	6.4.2. Contributing OpCo/BU/Division Name:
+		
+		SPARC Software Group
+		
+	6.4.3. Type of PAC Review and Approval expected:
+
+		Standard
+
+        6.4.4. Project Boundary Conditions:
+		N/A
+
+	6.4.5. Is this a necessary project for OEM agreements:
+		No.
+
+	6.4.6. Notes/Dependencies:
+		SUN SPARC CPU specification
+
+	6.4.7. Target RTI Date/Release:
+	        N/A - Not a separate deliverable.
+
+	6.4.8. Target Code Design Review Date:
+		Q4FY08
+
+	6.4.9. Update approval addition:
+	        N/A
+
+   6.5. ARC review type:
+	Fast Track
+
+7. Prototype Availability: 
+   7.1. Prototype Availability:
+	Q3FY08
+
+   7.2. Prototype Cost:
+	Done using existing resources.
+
+
+

@@ -1,0 +1,274 @@
+From sacadmin Fri May  2 06:32:18 2008
+Received: from sr1-umpk-32.sfbay.sun.com (sr1-umpk-32.SFBay.Sun.COM [129.145.154.82])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m42DWHxq017528;
+	Fri, 2 May 2008 06:32:18 -0700 (PDT)
+Received: from sr1-umpk-32.sfbay.sun.com (localhost [127.0.0.1])
+	by sr1-umpk-32.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m42DWHM0004866;
+	Fri, 2 May 2008 06:32:17 -0700 (PDT)
+Received: (from rsmaeda@localhost)
+	by sr1-umpk-32.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit) id m42DWHJ2004849;
+	Fri, 2 May 2008 06:32:17 -0700 (PDT)
+Date: Fri, 2 May 2008 06:32:17 -0700 (PDT)
+From: Ryan Maeda <rsmaeda@sr1-umpk-32.sfbay.sun.com>
+Message-Id: <200805021332.m42DWHJ2004849@sr1-umpk-32.sfbay.sun.com>
+To: FWARC-record@sac.sfbay.sun.com
+Subject: Crypto Unit DR Domain Service [FWARC/2008/296 FastTrack timeout 05/09/2008]
+Status: RO
+Content-Length: 567
+
+
+Template Version: @(#)sac_nextcase 1.66 04/17/08 SMI
+This information is Copyright 2008 Sun Microsystems
+1. Introduction
+    1.1. Project/Component Working Name:
+	 Crypto Unit DR Domain Service
+    1.2. Name of Document Author/Supplier:
+	 Author:  Gary Morton
+    1.3  Date of This Document:
+	02 May, 2008
+4. Technical Description
+    See the case directory for more detail
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		sysfw, on
+    6.5. ARC review type: FastTrack
+    6.6. ARC Exposure: open
+
+
+From sacadmin Fri May  2 07:30:49 2008
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m42EUnq9019296
+	for <fwarc@sac.sfbay.sun.com>; Fri, 2 May 2008 07:30:49 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m42EUikX004696
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 2 May 2008 07:30:49 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K0800815WBC1J00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 02 May 2008 07:30:48 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K080001QWBCU9B0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 02 May 2008 07:30:48 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m42EUmDh028142	for
+ <fwarc@sun.com>; Fri, 02 May 2008 07:30:48 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K0800G01W6GIS00@fe-sfbay-09.sun.com>
+ (original mail from Ryan.Maeda@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 02 May 2008 07:30:48 -0700 (PDT)
+Received: from [129.145.154.82] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K0800CQ9WBA3020@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 02 May 2008 07:30:47 -0700 (PDT)
+Date: Fri, 02 May 2008 07:30:46 -0700
+From: Ryan Maeda <Ryan.Maeda@sun.com>
+Subject: FWARC 2008/296 - Crypto Unit DR Domain Service
+Sender: Ryan.Maeda@sun.com
+To: fwarc@sun.com
+Cc: Gary Morton <Gary.Morton@sun.com>
+Reply-to: Ryan.Maeda@sun.com
+Message-id: <481B2596.2000609@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.15pre (X11/20080427)
+Status: RO
+Content-Length: 4411
+
+I am sponsoring this fast-track for Gary Morton.
+
+This case defines a new domain service to support DR (Dynamic
+Reconfiguration) of crypto units. All information can be found
+in the attached one-pager and in the protocol specification
+located in the materials directory:
+
+  http://sac.sfbay.sun.com/FWARC/2008/296/materials/Crypto_DR_DS-1.0.pdf
+
+The case times out on Friday, May 9, 2008.
+
+Release bindings: minor/micro/patch OS release
+                  minor/micro firmware release
+
+-Ryan
+
+-=-=-=-=-=-=-
+
+1. Introduction
+   1.1. Project/Component Working Name:
+        Crypto Dynamic Reconfiguration Domain Services 1.0
+
+   1.2. Name of Document Author/Supplier:
+        Gary Morton
+
+   1.3. Date of This Document:
+        5/01/08
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+        1.4.1. The PAC or CPT you expect to review your project:
+                LDOMs
+        1.4.2. The ARC(s) you expect to review your project:
+                FWARC
+        1.4.3. The Director/VP who is "Sponsoring" this project:
+                Yatin Gajjar
+        1.4.4. The name of your business unit:
+                NSN
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: mehdi.bonyadi@sun.com
+        1.5.2. Responsible Engineer: gary.morton@sun.com
+        1.5.3. Marketing Manager:
+        1.5.4. Interest List: ldoms-internal@sun.com,
+               cpg-sw@sun.com
+
+2. Project Summary
+   2.1. Project Description:
+        This project implements a new domain service to support
+        crypto Dynamic Reconfiguration (DR) for UltraSPARC-T1/T2
+        based platforms.
+
+   2.2. Risks and Assumptions:
+
+3. Business Summary
+   3.1. Problem Area:
+        Currently crypto units can not be dynamically added/removed from
+        a domain.  This is cumbersome from a usability standpoint since
+        a domain needs to be shutdown, reconfigured and brought back up
+        to add/remove a crypto unit. Additionally the ability to dynamically
+        reconfigure is required for live migration.
+
+   3.2. Market/Requester:
+        LDoms team
+
+   3.3. Business Justification:
+   3.4. Competitive Analysis:
+   3.5. Opportunity Window/Exposure:
+   3.6. How will you know when you are done?:
+
+4. Technical Description
+
+   4.1 Overview
+       The crypto DR domain services protocol allows the LDoms Manager
+       to request the addition and removal of crypto units from domains
+       which support those services.
+
+   4.2 Bug/RFE Number(s)
+
+       [Solaris]
+       6641483 Niagara crypto drivers do not support the
+               dynamic addition/removal of crypto units
+
+       [LDoms Manager]
+       6641486 support needed for dynamic addition/removal of crypto units
+
+   4.3 In Scope
+       N/A
+
+   4.4 Out of Scope
+       N/A
+
+   4.5 Interfaces
+       4.5.1 Overview
+             The new interface is specified in the following document:
+
+             Crypto_DR_DS-1.0.pdf
+
+       4.5.2 Imported Interfaces
+
+             Interface           Classification  Comments
+             =========================================================
+             Domain Services     Sun Private     FWARC/2006/055
+             MAU MD nodes        Sun Private     FWARC/2006/105
+             CWQ MD nodes        Sun Private     FWARC/2006/175
+
+       4.5.3 Exported Interfaces
+
+             Interface           Classification  Comments
+             =========================================================
+             Crypto DR Domain    Sun Private     Describes format of
+             Services Message                    messages exchanged
+             Formats                             between LDoms manager
+                                                 and guest for crypto
+                                                 reconfiguration.
+
+5. Reference Documents:
+        FWARC 2006/55 - Domain Services Specification
+        FWARC 2006/105 - LDoms Support for NCP
+        FWARC 2006/175 - MD definition for N2 CWQ
+
+        CR 6641483 - Niagara crypto drivers do not support the dynamic
+                     addition/removal of crypto units
+        CR 6641486 - support needed for dynamic addition/removal of
+                     crypto units
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+        S10U6
+
+   6.2. Cost of Effort:
+        1 staff month
+
+   6.3. Cost of Capital Resources:
+        N/A
+
+From sacadmin Fri May  9 13:55:05 2008
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m49Kt5r9027960
+	for <fwarc@sac.sfbay.sun.com>; Fri, 9 May 2008 13:55:05 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m49Kt5QA003939
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 9 May 2008 13:55:05 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K0M00005CRSHW00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 09 May 2008 13:55:04 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K0M00JB8CRRW940@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 09 May 2008 13:55:03 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m49Kt3WK004053	for
+ <fwarc@sun.com>; Fri, 09 May 2008 13:55:03 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K0M00I01CFF4200@fe-sfbay-09.sun.com>
+ (original mail from Ryan.Maeda@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 09 May 2008 13:55:03 -0700 (PDT)
+Received: from [129.145.154.82] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K0M00B1HCRQ2Q60@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 09 May 2008 13:55:03 -0700 (PDT)
+Date: Fri, 09 May 2008 13:55:02 -0700
+From: Ryan Maeda <Ryan.Maeda@sun.com>
+Subject: Re: FWARC 2008/296 - Crypto Unit DR Domain Service
+In-reply-to: <481B2596.2000609@Sun.COM>
+Sender: Ryan.Maeda@sun.com
+To: fwarc@sun.com
+Cc: Gary Morton <Gary.Morton@sun.com>
+Reply-to: Ryan.Maeda@sun.com
+Message-id: <4824BA26.9080508@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <481B2596.2000609@Sun.COM>
+User-Agent: Thunderbird 2.0.0.15pre (X11/20080427)
+Status: RO
+Content-Length: 129
+
+This fast track case has timed out and is now approved.
+
+IAM file and domain services registry have been updated.
+
+Thanks,
+Ryan
+
+

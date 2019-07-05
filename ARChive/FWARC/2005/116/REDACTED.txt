@@ -1,0 +1,13 @@
+The following files and directories have been redacted:
+
+    20050307.2005.116.inception.mp3 - ignored file
+    20050321.2005.116.commitment.mp3 - ignored file
+    SCCS - ignored directory
+    commitment.materials/SCCS - ignored directory
+    commitment2.materials/SCCS - ignored directory
+    inception.materials/SCCS - ignored directory
+    mail.old - ignored file
+    sc - ignored directory
+    uirb - ignored directory
+
+See http://hub.opensolaris.org/bin/view/Community+Group+arc/arc-publish-historical-checklist for further information

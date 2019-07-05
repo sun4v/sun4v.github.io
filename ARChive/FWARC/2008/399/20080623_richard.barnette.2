@@ -1,0 +1,208 @@
+From sac-owner Mon Jun 23 17:46:25 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m5O0kOtp022983
+	for <one-pager@sac.eng.Sun.COM>; Mon, 23 Jun 2008 17:46:24 -0700 (PDT)
+Received: from sunmail4.singapore.sun.com (localhost [127.0.0.1])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m5O0kNui005022
+	for <one-pager-not-2b-used-directly@sunmail4.singapore.sun.com>; Tue, 24 Jun 2008 08:46:23 +0800 (SGT)
+Received: (from noaccess@localhost)
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/Submit) id m5O0kNLI005021
+	for one-pager-not-2b-used-directly; Tue, 24 Jun 2008 08:46:23 +0800 (SGT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m5O0jm0c004646;
+	Tue, 24 Jun 2008 08:46:23 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K2X00E0BZH73H00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 23 Jun 2008 17:46:19 -0700 (PDT)
+Received: from uask4it.sfbay.sun.com ([10.7.80.228])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K2X00B54ZH7IT20@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 23 Jun 2008 17:46:19 -0700 (PDT)
+Received: from dhcp-usca11-234-234.SFBay.Sun.COM
+ (dhcp-usca11-234-234.SFBay.Sun.COM [129.145.234.234])
+	by uask4it.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id m5O0jCfN002284;
+ Mon, 23 Jun 2008 17:46:08 -0700 (PDT)
+Date: Mon, 23 Jun 2008 17:46:18 -0700
+From: Richard Barnette <Richard.Barnette@Sun.Com>
+Subject: [2008/399]Rock Performance Counters/Samplers Hypervisor API
+To: one-pager@Sun.Com
+Cc: rs-staff <rs-staff@Sun.Com>
+Message-id: <A8BA3F49-4CE5-4875-8F44-6666DCCE0451@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.924)
+Content-type: text/plain; charset=US-ASCII; format=flowed; delsp=yes
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+Status: RO
+Content-Length: 5091
+
+Template Version: @(#)onepager.txt 1.35 07/11/07 SMI
+Copyright 2007 Sun Microsystems
+
+1. Introduction
+    1.1. Project/Component Working Name:
+	Rock Performance Counters/Samplers Hypervisor API
+
+    1.2. Name of Document Author/Supplier:
+	Richard Barnette
+
+    1.3. Date of This Document:
+	6/23/2008
+
+	1.3.1. Date this project was conceived:
+		5/3/2006
+
+    1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		N/A
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Ravi.Subbarao@sun.com
+	1.4.4. The name of your business unit:
+		Systems
+
+    1.5. Email Aliases:
+     	1.5.1. Responsible Manager: Umesh.Sharma@sun.com
+     	1.5.2. Responsible Engineer: Richard.Barnette@sun.com
+     	1.5.3. Marketing Manager:
+	1.5.4. Interest List: us-staff@sun.com
+
+2. Project Summary
+    2.1. Project Description:
+	This project adds a Rock CPU specific API to the hypervisor
+	to support Rock's performance counter and sampler capabilities.
+
+    2.2. Risks and Assumptions:
+	The project requires Rock Silicon with the relevant features
+	working according to the PRM, possibly after the application
+	of software workarounds.
+
+3. Business Summary
+    3.1. Problem Area:
+	The new API is a fundamental tool needed for performance
+	analysis on Supernova systems.
+
+    3.2. Market/Requester:
+	The users of the API will be engineers responsbile for
+	analyzing and tuning performance of the Solaris kernel and
+	Solaris based applications on Supernova systems.  The API
+	may be useful for performance tuning on 3rd party operating
+	systems such as Linux or FreeBSD.
+
+    3.3. Business Justification:
+	Maximal possible performance is a key business requirement for
+	Supernova systems.  That goal is a practical impossibility
+	without tools of this sort to enable analysis and debug.
+
+    3.4. Competitive Analysis:
+	N/A
+
+    3.5. Opportunity Window/Exposure:
+	N/A
+
+    3.6. How will you know when you are done?:
+	The project is done when the API is implemented as specified
+	on hardware that supports the underlying capability.
+
+4. Technical Description:
+     4.1. Details:
+	The API will add one new Hypervisor API group, RK_PERF.  The
+	API group will contain 13 API functions.  A summary of these
+	functions is in the "Interfaces" section.
+
+     4.2. Bug/RFE Number(s):
+	N/A
+
+     4.3. In Scope:
+	N/A
+
+     4.4. Out of Scope:
+	N/A
+
+     4.5. Interfaces:
+     Interface                   Classification  Comments
+      
+====================================================================
+     RK_PERF			Committed	API group
+     RK_PERF_COUNT_INIT		Committed	API call
+     RK_PERF_COUNT_RELEASE	Committed	API call
+     RK_PERF_COUNT_SET		Committed	API call
+     RK_PERF_COUNT_GET		Committed	API call
+     RK_PERF_COUNT_CONFIG	Committed	API call
+     RK_PERF_COUNT_OVERFLOW	Committed	API call
+     RK_PERF_COUNT_STOP		Committed	API call
+     RK_PERF_SAMPLE_INIT		Committed	API call
+     RK_PERF_SAMPLE_RELEASE	Committed	API call
+     RK_PERF_SAMPLE_START	Committed	API call
+     RK_PERF_SAMPLE_PENDING	Committed	API call
+     RK_PERF_SAMPLE_STOP		Committed	API call
+
+     4.6. Doc Impact:
+
+     4.7. Admin/Config Impact:
+	N/A
+
+     4.8. HA Impact:
+	N/A
+
+     4.9. I18N/L10N Impact:
+	N/A
+
+     4.10. Packaging & Delivery:
+	N/A
+
+     4.11. Security Impact:
+	N/A
+
+     4.12. Dependencies:
+	N/A
+
+5. Reference Documents:
+	// List of related documents, if any (BugID's, RFP's, papers).
+	// Explain how/where to obtain the documents, and what each
+	// contains, not just their titles.  Identify any related projects
+	// (by ID or case number, if possible).
+
+6. Resources and Schedule:
+    6.1. Projected Availability:
+
+    6.2. Cost of Effort:
+
+    6.3. Cost of Capital Resources:
+
+    6.4. Product Approval Committee requested information:
+    	6.4.1. Consolidation or Component Name:
+	6.4.3. Type of CPT Review and Approval expected:
+         6.4.4. Project Boundary Conditions:
+	6.4.5. Is this a necessary project for OEM agreements:
+	6.4.6. Notes:
+	6.4.7. Target RTI Date/Release:
+	6.4.8. Target Code Design Review Date:
+	6.4.9. Update approval addition:
+
+    6.5. ARC review type:
+		Standard
+    6.6. ARC Exposure:
+		closed
+        6.6.1. Rationale:
+		[ redacted ]
+
+7. Prototype Availability:
+    7.1. Prototype Availability:
+
+    7.2. Prototype Cost:
+
+--
+Richard Barnette            | Gather ye rosebuds while ye may,
+Sun Microsystems            | Old Time is still a-flying:
+Enterprise Systems Software | And this same flower that smiles to-day
+SCA11 2384 / USCA11-205     | To-morrow will be dying.
+(408) 276-7541 / x17541     |   -- Robert Herrick
+.                           |      "To the Virgins, to Make Much of  
+Time"
+
+

@@ -1,0 +1,723 @@
+From sacadmin Fri Mar 26 16:22:41 2010
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o2QNMfuG025434
+	for <fwarc@sac.sfbay.sun.com>; Fri, 26 Mar 2010 16:22:41 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.4) with ESMTP id o2QNMeEf058691
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 26 Mar 2010 17:22:41 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KZW00701WXT9O00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 26 Mar 2010 16:22:41 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KZW00EFRWXS0XB0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 26 Mar 2010 16:22:40 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id o2QNMeeq002271	for
+ <fwarc@sun.com>; Fri, 26 Mar 2010 16:22:40 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KZW00D00WWWT700@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 26 Mar 2010 16:22:40 -0700 (PDT)
+Received: from [129.150.179.175] ([unknown] [129.150.179.175])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KZW008M5WXORL70@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 26 Mar 2010 16:22:37 -0700 (PDT)
+Date: Fri, 26 Mar 2010 16:22:34 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Fast-track : 2010/104 - Allocate LDC mapping Table
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: Jim Quigley <Jim.Quigley@sun.com>
+Message-id: <4BAD41BA.3060409@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.8)
+ Gecko/20100227 Lightning/1.0b1 Thunderbird/3.0.3
+Status: RO
+Content-Length: 667
+
+I am sponsoring this fast-track case for Jim Quigley.  This case proposes to
+increase either or both the 8K page and large page table size to a size 
+requested
+by the Guest.  See details in the specification at,
+
+http://sac.eng.sun.com/arc/FWARC/2010/104/Materials/ldc-map-table.txt
+
+This case times out a week from today on April 04, 2010.
+
+This case is seeking approval for release bindings,
+firmware: minor/micro firmware release
+OS: minor/micro/patch OS release.
+
+
+-- 
+Hitendra Zhangada
+==============================================
+Platform SW Technologies, Oracle America, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Tue Mar 30 12:30:50 2010
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o2UJUoMG014597
+	for <fwarc@sac.sfbay.sun.com>; Tue, 30 Mar 2010 12:30:50 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.4) with ESMTP id o2UJUmaH040021;
+	Tue, 30 Mar 2010 13:30:49 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0L04007090VC0C00@brm-avmta-1.central.sun.com>; Tue,
+ 30 Mar 2010 13:30:48 -0600 (MDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0L040064R0VB2Y20@brm-avmta-1.central.sun.com>; Tue,
+ 30 Mar 2010 13:30:47 -0600 (MDT)
+Received: from rcsinet15.oracle.com (rcsinet15.oracle.com [148.87.113.117])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id o2UJUl8f020137; Tue,
+ 30 Mar 2010 19:30:47 +0000 (GMT)
+Received: from acsmt355.oracle.com (acsmt355.oracle.com [141.146.40.155])
+	by rcsinet15.oracle.com (Switch-3.4.2/Switch-3.4.1)
+ with ESMTP id o2UJUi2K023508; Tue, 30 Mar 2010 19:30:44 +0000 (GMT)
+Received: from abhmt001.oracle.com by acsmt353.oracle.com	with ESMTP id
+ 130925581269977417; Tue, 30 Mar 2010 12:30:17 -0700
+Received: from [129.150.33.111] (/129.150.33.111)
+	by default (Oracle Beehive Gateway v4.0)	with ESMTP ; Tue,
+ 30 Mar 2010 12:30:17 -0700
+Date: Tue, 30 Mar 2010 12:30:17 -0700
+From: Hitendra Zhangada <hitendra.zhangada@oracle.com>
+Subject: Re: Fast-track : 2010/104 - Allocate LDC mapping Table
+In-reply-to: <4BAD41BA.3060409@sun.com>
+To: Firmware ARC <fwarc@sun.com>
+Cc: Jim Quigley <Jim.Quigley@sun.com>
+Message-id: <4BB25149.1020606@oracle.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_dZxQ7ikQBJh8f5XSv6yXdA)"
+X-PMX-Version: 5.4.1.325704
+X-Source-IP: acsmt355.oracle.com [141.146.40.155]
+X-Auth-Type: Internal IP
+X-CT-RefId: str=0001.0A090209.4BB25167.001B:SCFMA4539814,ss=1,fgs=0
+References: <4BAD41BA.3060409@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.8)
+ Gecko/20100227 Lightning/1.0b1 Thunderbird/3.0.3
+Status: RO
+Content-Length: 5704
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_dZxQ7ikQBJh8f5XSv6yXdA)
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+
+On 3/26/2010 4:22 PM, Hitendra Zhangada wrote:
+> I am sponsoring this fast-track case for Jim Quigley.  This case 
+> proposes to
+> increase either or both the 8K page and large page table size to a 
+> size requested
+> by the Guest.  See details in the specification at,
+>
+> http://sac.eng.sun.com/arc/FWARC/2010/104/Materials/ldc-map-table.txt
+>
+> This case times out a week from today on April 04, 2010.
+
+There have been some offline discussions on this case and specification
+is revised due to that discussions.  I am moving case to "waiting need spec"
+and will set new 1-week timer when updated specification is available for
+FWARC review.
+
+
+Thanks.
+
+
+>
+> This case is seeking approval for release bindings,
+> firmware: minor/micro firmware release
+> OS: minor/micro/patch OS release.
+>
+>
+
+
+-- 
+Oracle <http://www.oracle.com>
+Hitendra Zhangada | Principal Engineer
+
+Oracle Firmware
+CA
+Green Oracle <http://www.oracle.com/commitment> Oracle is committed to 
+developing practices and products that help protect the environment
+
+--Boundary_(ID_dZxQ7ikQBJh8f5XSv6yXdA)
+Content-type: multipart/related; boundary="Boundary_(ID_u3t6Kg9xt6bSB5rcET6Y+A)"
+
+
+--Boundary_(ID_u3t6Kg9xt6bSB5rcET6Y+A)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+On 3/26/2010 4:22 PM, Hitendra Zhangada wrote:
+<blockquote cite="mid:4BAD41BA.3060409@sun.com" type="cite">I am
+sponsoring this fast-track case for Jim Quigley.&nbsp; This case proposes to
+  <br>
+increase either or both the 8K page and large page table size to a size
+requested
+  <br>
+by the Guest.&nbsp; See details in the specification at,
+  <br>
+  <br>
+<a class="moz-txt-link-freetext" href="http://sac.eng.sun.com/arc/FWARC/2010/104/Materials/ldc-map-table.txt">http://sac.eng.sun.com/arc/FWARC/2010/104/Materials/ldc-map-table.txt</a>
+  <br>
+  <br>
+This case times out a week from today on April 04, 2010.
+  <br>
+</blockquote>
+<br>
+There have been some offline discussions on this case and specification<br>
+is revised due to that discussions.&nbsp; I am moving case to "waiting need
+spec"<br>
+and will set new 1-week timer when updated specification is available
+for<br>
+FWARC review.<br>
+<br>
+<br>
+Thanks.<br>
+<br>
+<br>
+<blockquote cite="mid:4BAD41BA.3060409@sun.com" type="cite"><br>
+This case is seeking approval for release bindings,
+  <br>
+firmware: minor/micro firmware release
+  <br>
+OS: minor/micro/patch OS release.
+  <br>
+  <br>
+  <br>
+</blockquote>
+<br>
+<br>
+<div class="moz-signature">-- <br>
+<a href="http://www.oracle.com" target="_blank"><img
+ src="cid:part1.00050706.01000008@oracle.com" alt="Oracle" border="0"
+ height="26" width="114"></a><br>
+<font color="#666666" face="Verdana, Arial, Helvetica, sans-serif"
+ size="2">Hitendra Zhangada | Principal Engineer<br>
+<br>
+<font color="#ff0000">Oracle</font> Firmware<br>
+CA </font>
+<br>
+<a href="http://www.oracle.com/commitment" target="_blank"><img
+ src="cid:part2.01060404.09020903@oracle.com" alt="Green Oracle"
+ align="abscenter" border="0" height="28" width="44"></a>
+<font color="#4b7d42" face="Verdana, Arial, Helvetica, sans-serif"
+ size="1">Oracle is committed to developing practices and products that
+help protect the environment</font>
+<!-- This signature was generated by the MyDesktop Oracle Business Signature utility version 3.6.0 --><!-- Visit http://mydesktop.oracle.com/ and try it for yourself -->
+</div>
+</body>
+</html>
+
+--Boundary_(ID_u3t6Kg9xt6bSB5rcET6Y+A)
+Content-id: <part1.00050706.01000008@oracle.com>
+Content-type: image/gif; name=oracle_sig_logo.gif
+Content-transfer-encoding: base64
+Content-disposition: attachment; filename=oracle_sig_logo.gif
+
+R0lGODlhcgAaAMQAAP8QEP/w8P/Q0P/g4P8wMP9gYP8gIP+goP9QUP+QkP+wsP9wcP+AgP9A
+QP/AwP8AAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+ACH5BAAAAAAALAAAAAByABoAAAX/ICSOZGmeaKqubOu+cCzPdC0GCqPvvBKUDp5wp1gFdIPV
+IDfcOQa6A8yRaO4gweQoUHh4v2Bw4SdihM9egyBF8ALIpkEXDR44vA2XwkD/IgYGAAZbbX1n
+BGRmhl8AWiUJYicCAIsPDFh4LXOGjQ4NAAhrEIUPBQcOqKmoB5sEZV4JqqoHhQVxlGAOJQG4
+AAunsqg/dw95KwdfBgzBqKIEBMaQDwCiKpOwEIq6KANuJg14igZwEHPULMTGKbxetjF8D1It
+xK7aKl8lCl8DAfALW1+2rUi3QtqgGN2mwYCXzYvAON624LoEQZ9DEfRcEFSBIE2DjyBDfnyI
+qRgMcA8a/z5AZQWXOxEdHxwUgfIgsX/zMqlAWclVCQFefLpAqdJBAFJn3owgtpJEQkslEWjU
+mYLnomokcDlS4s0eFzQNqvXDEyzmAwFPyaXYmGJBuxlzELWIacueiE0AFGyF4HbaNTquUEpF
+RxUFUC9YXQzARYAkEJSNipKQ9kDu0i9SKKNZ9iXswMIoYgI4oJYFskpgzkkmcdrviELqmPVt
+1HpRAaaLqCE1lBgjvEpqRtgl8Tevygd7TcCuiKvPm8OVEkAIYLYPThSsRIpEQJr1x94QBIT0
+9FH6QJC6AiRAoB1kEb7tRb4MvyB+AwSlbejfz7+///8ABijggAQWaOCBCCao4A+CDDbo4IMQ
+RijhhBQKGAIAOw==
+
+--Boundary_(ID_u3t6Kg9xt6bSB5rcET6Y+A)
+Content-id: <part2.01060404.09020903@oracle.com>
+Content-type: image/gif; name=green-for-email-sig_0.gif
+Content-transfer-encoding: base64
+Content-disposition: attachment; filename=green-for-email-sig_0.gif
+
+R0lGODlhLAAcAMQAAP///0x9RHmec9Pf0aa+oleFULHGrmKNW+nv6I+uivT39N7n3W6VZ7zP
+uZu2lsjXxYSmfwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+ACH5BAAAAAAALAAAAAAsABwAQAXhICCOZGmeaDoaReC+sKAMR7GopIA6boIvLgPAVSAgALxj
+SYdrOp/Q6NPgYqIEPkTBV2taTwgGbEw+PAZo3FfKbqMQQfeJ8DoY0Hg0wxhAKBgHCl5XLgMq
+DwFCAAIFPIYDgidrOUQGkSh0cQMJAQyXOXKhoqOkpaanI2aoIwMErq+uCY0BMlANKpxkYwQG
+BH82TpMicD0pAgQACToDAchqhAG3KQ4HIlQNnErG0IYqB9EAiEQvwEsozC43hy0CAeXMwsLD
+LS8MAvf497ruCZ+gOA0gfNt3AIK0J/JWKVzIsEQIADs=
+
+--Boundary_(ID_u3t6Kg9xt6bSB5rcET6Y+A)--
+
+--Boundary_(ID_dZxQ7ikQBJh8f5XSv6yXdA)--
+
+From sacadmin Mon Jun  7 18:39:10 2010
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o581dAn6001882
+	for <fwarc@sac.sfbay.sun.com>; Mon, 7 Jun 2010 18:39:10 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.4) with ESMTP id o581d7mp013547;
+	Mon, 7 Jun 2010 19:39:08 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0L3O0060N9X8NE00@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 07 Jun 2010 18:39:08 -0700 (PDT)
+Received: from sca-ea-mail-4.sun.com ([192.18.43.22])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0L3O00BN49X75H30@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 07 Jun 2010 18:39:07 -0700 (PDT)
+Received: from rcsinet13.oracle.com (rcsinet13.oracle.com [148.87.113.125])
+	by sca-ea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id o581d6DV002088;
+ Tue, 08 Jun 2010 01:39:06 +0000 (GMT)
+Received: from acsmt355.oracle.com (acsmt355.oracle.com [141.146.40.155])
+	by rcsinet13.oracle.com (Switch-3.4.2/Switch-3.4.1)
+ with ESMTP id o56NwAHH004921; Tue, 08 Jun 2010 01:39:05 +0000 (GMT)
+Received: from abhmt018.oracle.com by acsmt353.oracle.com	with ESMTP id
+ 328444331275961101; Mon, 07 Jun 2010 18:38:21 -0700
+Received: from [129.153.85.16] (/129.153.85.16)
+	by default (Oracle Beehive Gateway v4.0)	with ESMTP ; Mon,
+ 07 Jun 2010 18:38:20 -0700
+Date: Mon, 07 Jun 2010 18:38:17 -0700
+From: Hitendra Zhangada <hitendra.zhangada@oracle.com>
+Subject: Re: Fast-track : 2010/104 - Allocate LDC mapping Table
+In-reply-to: <4BB25149.1020606@oracle.com>
+To: Firmware ARC <fwarc@sun.com>
+Cc: Jim Quigley <Jim.Quigley@sun.com>
+Message-id: <4C0D9F09.2060208@oracle.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_sbHtXMU0TVJKgf9MnsFW4A)"
+X-PMX-Version: 5.4.1.325704
+X-Source-IP: acsmt355.oracle.com [141.146.40.155]
+X-Auth-Type: Internal IP
+X-CT-RefId: str=0001.0A090207.4C0D9F3A.00FF:SCFMA4539814,ss=1,fgs=0
+References: <4BAD41BA.3060409@sun.com> <4BB25149.1020606@oracle.com>
+User-Agent: Thunderbird 2.0.0.23 (X11/20090910)
+Status: RO
+Content-Length: 4393
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_sbHtXMU0TVJKgf9MnsFW4A)
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+
+On 03/30/10 12:30, Hitendra Zhangada wrote:
+> On 3/26/2010 4:22 PM, Hitendra Zhangada wrote:
+>> I am sponsoring this fast-track case for Jim Quigley.  This case 
+>> proposes to
+>> increase either or both the 8K page and large page table size to a 
+>> size requested
+>> by the Guest.  See details in the specification at,
+>>
+>> http://sac.eng.sun.com/arc/FWARC/2010/104/Materials/ldc-map-table.txt
+>>
+>> This case times out a week from today on April 04, 2010.
+>
+> There have been some offline discussions on this case and specification
+> is revised due to that discussions.  I am moving case to "waiting need 
+> spec"
+> and will set new 1-week timer when updated specification is available for
+> FWARC review.
+>
+
+I am restarting timer on this case.  Updated specification is available in
+the materials directory at,
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2010/104/Materials/ldc-mapin.txt
+
+Note that this updated specification is lot different from original
+specification (which is now renamed as old-ldc-map-table.txt file) and
+it also includes a new property in OpenBoot's memory node.
+
+
+This case is seeking approval for,
+
+
+This case is seeking approval for release bindings,
+firmware: minor/micro firmware release
+OS: minor/micro/patch OS release.
+
+
+Timer is set for a week from today, June 14, 2010.
+
+
+Thanks.
+
+-- 
+
+Hitendra Zhangada
+=============================================
+Platform SW Technologies, Oracle America, Inc.
+Work Ph# (858) 625 3757, Work Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_sbHtXMU0TVJKgf9MnsFW4A)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+  <title></title>
+</head>
+<body bgcolor="#ffffff" text="#000000">
+On 03/30/10 12:30, Hitendra Zhangada wrote:
+<blockquote cite="mid:4BB25149.1020606@oracle.com" type="cite">
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="Content-Type">
+On 3/26/2010 4:22 PM, Hitendra Zhangada wrote:
+  <blockquote cite="mid:4BAD41BA.3060409@sun.com" type="cite">I am
+sponsoring this fast-track case for Jim Quigley.&nbsp; This case proposes to
+    <br>
+increase either or both the 8K page and large page table size to a size
+requested <br>
+by the Guest.&nbsp; See details in the specification at, <br>
+    <br>
+    <a moz-do-not-send="true" class="moz-txt-link-freetext"
+ href="http://sac.eng.sun.com/arc/FWARC/2010/104/Materials/ldc-map-table.txt">http://sac.eng.sun.com/arc/FWARC/2010/104/Materials/ldc-map-table.txt</a>
+    <br>
+    <br>
+This case times out a week from today on April 04, 2010. <br>
+  </blockquote>
+  <br>
+There have been some offline discussions on this case and specification<br>
+is revised due to that discussions.&nbsp; I am moving case to "waiting need
+spec"<br>
+and will set new 1-week timer when updated specification is available
+for<br>
+FWARC review.<br>
+  <br>
+</blockquote>
+<br>
+I am restarting timer on this case.&nbsp; Updated specification is available
+in<br>
+the materials directory at,<br>
+<br>
+<a class="moz-txt-link-freetext" href="http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2010/104/Materials/ldc-mapin.txt">http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2010/104/Materials/ldc-mapin.txt</a><br>
+<br>
+Note that this updated specification is lot different from original<br>
+specification (which is now renamed as old-ldc-map-table.txt file) and<br>
+it also includes a new property in OpenBoot's memory node.<br>
+<br>
+<br>
+This case is seeking approval for,<br>
+<br>
+<br>
+This case is seeking approval for release bindings, <br>
+firmware: minor/micro firmware release <br>
+OS: minor/micro/patch OS release. <br>
+<br>
+<br>
+Timer is set for a week from today, June 14, 2010.<br>
+<br>
+<br>
+Thanks.<br>
+<br>
+<pre class="moz-signature" cols="72">-- 
+
+Hitendra Zhangada
+=============================================
+Platform SW Technologies, Oracle America, Inc.
+Work Ph# (858) 625 3757, Work Ext. x53757
+Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_sbHtXMU0TVJKgf9MnsFW4A)--
+
+From sacadmin Wed Jun 16 10:08:16 2010
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o5GH8Fft025731
+	for <fwarc@sac.sfbay.sun.com>; Wed, 16 Jun 2010 10:08:15 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id o5GH888F021971;
+	Wed, 16 Jun 2010 10:08:14 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0L4400L2FA9PPO00@brm-avmta-1.central.sun.com>; Wed,
+ 16 Jun 2010 11:08:13 -0600 (MDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0L4400ACQA9PAYB0@brm-avmta-1.central.sun.com>; Wed,
+ 16 Jun 2010 11:08:13 -0600 (MDT)
+Received: from rcsinet13.oracle.com (rcsinet13.oracle.com [148.87.113.125])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id o5GH8C68006183; Wed,
+ 16 Jun 2010 17:08:13 +0000 (GMT)
+Received: from acsmt354.oracle.com (acsmt354.oracle.com [141.146.40.154])
+	by rcsinet13.oracle.com (Switch-3.4.2/Switch-3.4.1)
+ with ESMTP id o5GH85Dg017879; Wed, 16 Jun 2010 17:08:05 +0000 (GMT)
+Received: from abhmt018.oracle.com by acsmt354.oracle.com	with ESMTP id
+ 350339951276708074; Wed, 16 Jun 2010 10:07:54 -0700
+Received: from [129.150.177.169] (/129.150.177.169)
+	by default (Oracle Beehive Gateway v4.0)	with ESMTP ; Wed,
+ 16 Jun 2010 10:07:53 -0700
+Date: Wed, 16 Jun 2010 10:07:51 -0700
+From: Hitendra Zhangada <hitendra.zhangada@oracle.com>
+Subject: Re: Fast-track : 2010/104 - Allocate LDC mapping Table
+In-reply-to: <4C0D9F09.2060208@oracle.com>
+To: Firmware ARC <fwarc@sun.com>
+Cc: Jim Quigley <Jim.Quigley@sun.com>
+Message-id: <4C1904E7.4040904@oracle.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_Z3nOvYTCDUQZUdY9pP+Xdg)"
+X-PMX-Version: 5.4.1.325704
+X-Source-IP: acsmt354.oracle.com [141.146.40.154]
+X-Auth-Type: Internal IP
+X-CT-RefId: str=0001.0A090204.4C1904FB.022D:SCFMA4539814,ss=1,fgs=0
+References: <4BAD41BA.3060409@sun.com> <4BB25149.1020606@oracle.com>
+ <4C0D9F09.2060208@oracle.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.9)
+ Gecko/20100317 Lightning/1.0b1 Thunderbird/3.0.4
+Status: RO
+Content-Length: 8263
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_Z3nOvYTCDUQZUdY9pP+Xdg)
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+
+On 6/7/2010 6:38 PM, Hitendra Zhangada wrote:
+> On 03/30/10 12:30, Hitendra Zhangada wrote:
+>> On 3/26/2010 4:22 PM, Hitendra Zhangada wrote:
+>>> I am sponsoring this fast-track case for Jim Quigley.  This case 
+>>> proposes to
+>>> increase either or both the 8K page and large page table size to a 
+>>> size requested
+>>> by the Guest.  See details in the specification at,
+>>>
+>>> http://sac.eng.sun.com/arc/FWARC/2010/104/Materials/ldc-map-table.txt
+>>>
+>>> This case times out a week from today on April 04, 2010.
+>>
+>> There have been some offline discussions on this case and specification
+>> is revised due to that discussions.  I am moving case to "waiting 
+>> need spec"
+>> and will set new 1-week timer when updated specification is available for
+>> FWARC review.
+>>
+>
+> I am restarting timer on this case.  Updated specification is available in
+> the materials directory at,
+>
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2010/104/Materials/ldc-mapin.txt
+>
+> Note that this updated specification is lot different from original
+> specification (which is now renamed as old-ldc-map-table.txt file) and
+> it also includes a new property in OpenBoot's memory node.
+>
+>
+> This case is seeking approval for,
+>
+
+This case has timed out and hence approved for the requested
+bindings as below,
+
+>
+> This case is seeking approval for release bindings,
+> firmware: minor/micro firmware release
+> OS: minor/micro/patch OS release.
+>
+>
+> Timer is set for a week from today, June 14, 2010.
+>
+>
+> Thanks.
+>
+> -- 
+>
+> Hitendra Zhangada
+> =============================================
+> Platform SW Technologies, Oracle America, Inc.
+> Work Ph# (858) 625 3757, Work Ext. x53757
+> Internal homepagehttp://esp.west/~hitu
+>    
+
+
+-- 
+Oracle <http://www.oracle.com>
+Hitendra Zhangada | Principal Engineer
+
+Oracle Firmware
+CA
+Green Oracle <http://www.oracle.com/commitment> Oracle is committed to 
+developing practices and products that help protect the environment
+
+--Boundary_(ID_Z3nOvYTCDUQZUdY9pP+Xdg)
+Content-type: multipart/related; boundary="Boundary_(ID_EpzcdL3xPO/tWgdJWAUNxA)"
+
+
+--Boundary_(ID_EpzcdL3xPO/tWgdJWAUNxA)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+On 6/7/2010 6:38 PM, Hitendra Zhangada wrote:
+<blockquote cite="mid:4C0D9F09.2060208@oracle.com" type="cite">
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="Content-Type">
+  <title></title>
+On 03/30/10 12:30, Hitendra Zhangada wrote:
+  <blockquote cite="mid:4BB25149.1020606@oracle.com" type="cite">
+    <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="Content-Type">
+On 3/26/2010 4:22 PM, Hitendra Zhangada wrote:
+    <blockquote cite="mid:4BAD41BA.3060409@sun.com" type="cite">I am
+sponsoring this fast-track case for Jim Quigley.&nbsp; This case proposes to
+      <br>
+increase either or both the 8K page and large page table size to a size
+requested <br>
+by the Guest.&nbsp; See details in the specification at, <br>
+      <br>
+      <a moz-do-not-send="true" class="moz-txt-link-freetext"
+ href="http://sac.eng.sun.com/arc/FWARC/2010/104/Materials/ldc-map-table.txt">http://sac.eng.sun.com/arc/FWARC/2010/104/Materials/ldc-map-table.txt</a>
+      <br>
+      <br>
+This case times out a week from today on April 04, 2010. <br>
+    </blockquote>
+    <br>
+There have been some offline discussions on this case and specification<br>
+is revised due to that discussions.&nbsp; I am moving case to "waiting need
+spec"<br>
+and will set new 1-week timer when updated specification is available
+for<br>
+FWARC review.<br>
+    <br>
+  </blockquote>
+  <br>
+I am restarting timer on this case.&nbsp; Updated specification is available
+in<br>
+the materials directory at,<br>
+  <br>
+  <a moz-do-not-send="true" class="moz-txt-link-freetext"
+ href="http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2010/104/Materials/ldc-mapin.txt">http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2010/104/Materials/ldc-mapin.txt</a><br>
+  <br>
+Note that this updated specification is lot different from original<br>
+specification (which is now renamed as old-ldc-map-table.txt file) and<br>
+it also includes a new property in OpenBoot's memory node.<br>
+  <br>
+  <br>
+This case is seeking approval for,<br>
+  <br>
+</blockquote>
+<br>
+This case has timed out and hence approved for the requested<br>
+bindings as below,<br>
+<br>
+<blockquote cite="mid:4C0D9F09.2060208@oracle.com" type="cite"><br>
+This case is seeking approval for release bindings, <br>
+firmware: minor/micro firmware release <br>
+OS: minor/micro/patch OS release. <br>
+  <br>
+  <br>
+Timer is set for a week from today, June 14, 2010.<br>
+  <br>
+  <br>
+Thanks.<br>
+  <br>
+  <pre class="moz-signature" cols="72">-- 
+
+Hitendra Zhangada
+=============================================
+Platform SW Technologies, Oracle America, Inc.
+Work Ph# (858) 625 3757, Work Ext. x53757
+Internal homepage <a moz-do-not-send="true"
+ class="moz-txt-link-freetext" href="http://esp.west/%7Ehitu">http://esp.west/~hitu</a>
+  </pre>
+</blockquote>
+<br>
+<br>
+<div class="moz-signature">-- <br>
+<a href="http://www.oracle.com" target="_blank"><img
+ src="cid:part1.05010103.06030205@oracle.com" alt="Oracle" border="0"
+ height="26" width="114"></a><br>
+<font size="2" color="#666666"
+ face="Verdana, Arial, Helvetica, sans-serif">Hitendra Zhangada |
+Principal Engineer<br>
+<br>
+<font color="#ff0000">Oracle</font> Firmware<br>
+CA </font>
+<br>
+<a href="http://www.oracle.com/commitment" target="_blank"><img
+ src="cid:part2.08060109.00080603@oracle.com" alt="Green Oracle"
+ align="abscenter" border="0" height="28" width="44"></a>
+<font size="1" color="#4b7d42"
+ face="Verdana, Arial, Helvetica, sans-serif">Oracle is committed to
+developing practices and products that help protect the environment</font>
+<!-- This signature was generated by the MyDesktop Oracle Business Signature utility version 3.6.0 --><!-- Visit http://mydesktop.oracle.com/ and try it for yourself -->
+</div>
+</body>
+</html>
+
+--Boundary_(ID_EpzcdL3xPO/tWgdJWAUNxA)
+Content-id: <part1.05010103.06030205@oracle.com>
+Content-type: image/gif; name=oracle_sig_logo.gif
+Content-transfer-encoding: base64
+Content-disposition: attachment; filename=oracle_sig_logo.gif
+
+R0lGODlhcgAaAMQAAP8QEP/w8P/Q0P/g4P8wMP9gYP8gIP+goP9QUP+QkP+wsP9wcP+AgP9A
+QP/AwP8AAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+ACH5BAAAAAAALAAAAAByABoAAAX/ICSOZGmeaKqubOu+cCzPdC0GCqPvvBKUDp5wp1gFdIPV
+IDfcOQa6A8yRaO4gweQoUHh4v2Bw4SdihM9egyBF8ALIpkEXDR44vA2XwkD/IgYGAAZbbX1n
+BGRmhl8AWiUJYicCAIsPDFh4LXOGjQ4NAAhrEIUPBQcOqKmoB5sEZV4JqqoHhQVxlGAOJQG4
+AAunsqg/dw95KwdfBgzBqKIEBMaQDwCiKpOwEIq6KANuJg14igZwEHPULMTGKbxetjF8D1It
+xK7aKl8lCl8DAfALW1+2rUi3QtqgGN2mwYCXzYvAON624LoEQZ9DEfRcEFSBIE2DjyBDfnyI
+qRgMcA8a/z5AZQWXOxEdHxwUgfIgsX/zMqlAWclVCQFefLpAqdJBAFJn3owgtpJEQkslEWjU
+mYLnomokcDlS4s0eFzQNqvXDEyzmAwFPyaXYmGJBuxlzELWIacueiE0AFGyF4HbaNTquUEpF
+RxUFUC9YXQzARYAkEJSNipKQ9kDu0i9SKKNZ9iXswMIoYgI4oJYFskpgzkkmcdrviELqmPVt
+1HpRAaaLqCE1lBgjvEpqRtgl8Tevygd7TcCuiKvPm8OVEkAIYLYPThSsRIpEQJr1x94QBIT0
+9FH6QJC6AiRAoB1kEb7tRb4MvyB+AwSlbejfz7+///8ABijggAQWaOCBCCao4A+CDDbo4IMQ
+RijhhBQKGAIAOw==
+
+--Boundary_(ID_EpzcdL3xPO/tWgdJWAUNxA)
+Content-id: <part2.08060109.00080603@oracle.com>
+Content-type: image/gif; name=green-for-email-sig_0.gif
+Content-transfer-encoding: base64
+Content-disposition: attachment; filename=green-for-email-sig_0.gif
+
+R0lGODlhLAAcAMQAAP///0x9RHmec9Pf0aa+oleFULHGrmKNW+nv6I+uivT39N7n3W6VZ7zP
+uZu2lsjXxYSmfwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+ACH5BAAAAAAALAAAAAAsABwAQAXhICCOZGmeaDoaReC+sKAMR7GopIA6boIvLgPAVSAgALxj
+SYdrOp/Q6NPgYqIEPkTBV2taTwgGbEw+PAZo3FfKbqMQQfeJ8DoY0Hg0wxhAKBgHCl5XLgMq
+DwFCAAIFPIYDgidrOUQGkSh0cQMJAQyXOXKhoqOkpaanI2aoIwMErq+uCY0BMlANKpxkYwQG
+BH82TpMicD0pAgQACToDAchqhAG3KQ4HIlQNnErG0IYqB9EAiEQvwEsozC43hy0CAeXMwsLD
+LS8MAvf497ruCZ+gOA0gfNt3AIK0J/JWKVzIsEQIADs=
+
+--Boundary_(ID_EpzcdL3xPO/tWgdJWAUNxA)--
+
+--Boundary_(ID_Z3nOvYTCDUQZUdY9pP+Xdg)--
+

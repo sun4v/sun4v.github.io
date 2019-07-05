@@ -1,0 +1,31 @@
+
+ ____________________________________________________________________________
+|                            Interfaces Imported                             |
+|____________________________|________________|______________________________|
+|Interface                   |  Classification|  Comments                    |
+|____________________________|________________|______________________________|
+|                            |                |                              |
+| sun4v Bindings             |  Evolving      | FWARC/2005/111, 2008/099     |
+|                            |                |                              |
+| "iodevice" MD node         |  Committed     | MD node name and properties  |
+|                            |                | described in FWARC 2007/070  |
+|                            |                | 2007/386, 2008/270, 2008/761 |
+|____________________________|________________|______________________________|
+                   
+
+ ____________________________________________________________________________
+|                            Interfaces Exported                             |
+|____________________________|________________|______________________________|
+|Interface                   |  Classification|  Comments                    |
+|____________________________|________________|______________________________|
+|                            |                |                              |
+| "dma-sync-options"         |  Uncommitted   | A property under PCIE        |
+|                            |                | Root Complexes nodes         |
+|                            |                |                              |
+| "max-pci-depth"            |  Uncommitted   | Max Device tree depth        |
+|                            |                |                              |
+| "hotplug-memsize           |  Uncommitted   | Max PCI MEM32 space          |
+|                            |                |                              |
+| "dma-sync-options"         |  Uncommitted   | IO Device MD node property   |
+|                            |                | for dma sync options         |
+|____________________________|________________|______________________________|

@@ -1,0 +1,131 @@
+
+1. Introduction
+   1.1. Project/Component Working Name:
+	Crypto Dynamic Reconfiguration Domain Services 1.0
+
+   1.2. Name of Document Author/Supplier:
+	Gary Morton	
+
+   1.3. Date of This Document:
+	5/01/08
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		LDOMs	
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Yatin Gajjar	
+	1.4.4. The name of your business unit:
+		NSN	
+
+   1.5. Email Aliases:
+    	1.5.1. Responsible Manager: mehdi.bonyadi@sun.com
+    	1.5.2. Responsible Engineer: gary.morton@sun.com
+    	1.5.3. Marketing Manager: 
+	1.5.4. Interest List: ldoms-internal@sun.com,
+	       cpg-sw@sun.com
+
+2. Project Summary
+   2.1. Project Description:
+	This project implements a new domain service to support
+	crypto Dynamic Reconfiguration (DR) for ultraSPARC-T1/T2
+	based platforms.
+
+   2.2. Risks and Assumptions:
+
+3. Business Summary
+   3.1. Problem Area:
+	Currently crypto units can not be dynamically added/removed from
+	a domain.  This is cumbersome from a usability standpoint since
+	a domain needs to be shutdown, reconfigured and brought back up
+	to add/remove a crypto unit. Additionally the ability to dynamically
+	reconfigure is required for live migration.
+
+   3.2. Market/Requester:
+	LDOMs team
+	
+
+   3.3. Business Justification:
+
+   3.4. Competitive Analysis:
+
+   3.5. Opportunity Window/Exposure:
+
+   3.6. How will you know when you are done?:
+
+4. Technical Description
+
+   4.1 Overview
+
+       The crypto DR domain services protocol allows
+       the LDoms Manager to request the addition and
+       removal of crypto units from domains which
+       support those services.
+
+
+   4.2 Bug/RFE Number(s)
+
+       [Solaris]
+       6641483 Niagara crypto drivers do not support the
+	       dynamic addition/removal of crypto units
+
+       [LDoms Manager]
+       6641486 support needed for dynamic addition/removal of crypto unitS
+
+   4.3 In Scope
+
+       NA
+
+   4.4 Out of Scope
+
+       NA
+
+   4.5 Interfaces
+
+       4.5.1 Overview		
+
+	     The new interface is specified in the following document:
+
+	     Crypto_DR_DS-1.0.pdf	
+
+       4.5.2 Imported Interfaces	
+
+	     Interface           Classification  Comments 
+	     =========================================================
+	     Domain Services     Sun Private     FWARC/2006/055
+
+	     MAU MD nodes	 Sun Private     FWARC/2006/105
+
+	     CWQ MD nodes	 Sun Private     FWARC/2006/175
+		
+       4.5.3 Exported Interfaces	
+
+	     Interface           Classification  Comments 
+	     =========================================================
+	     Crypto DR Domain	 Sun Private     Describes format of	
+	     Services Message			 messages exchanged
+	     Formats				 between LDoms manager 
+					         and guest for crypto
+						 reconfiguration.
+
+5. Reference Documents:
+	FWARC 2006/55 - Domain Services Specification
+	FWARC 2006/105 - LDoms Support for NCP
+	FWARC 2006/175 - MD definition for N2 CWQ 
+	
+	CR 6641483 - Niagara crypto drivers do not support the dynamic
+	             addition/removal of crypto units
+        CR 6641486 - support needed for dynamic addition/removal of
+	             crypto units
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+	S10U6
+
+   6.2. Cost of Effort:
+	1 staff month
+
+   6.3. Cost of Capital Resources:
+	N/A
+

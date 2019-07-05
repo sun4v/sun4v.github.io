@@ -1,0 +1,312 @@
+1.0 VIO DR Messages Specification
+
+1.1 Overview
+
+       The Domain Services protocol (FWARC 2006/055) provides the
+       means for the LDoms Manager to communicate requests and receive
+       responses from existing services which run in domains.  This
+       project defines a new Domain Service to allow the LDoms Manager
+       to add and remove virtual devices from domains.  On the control
+       domain the ldm command line interface already accepts the
+       commands required to add or remove devices to/from a guest
+       domain.  Currently, however, these commands result in a delayed
+       reconfiguration.  When this project is complete, those same
+       commands will result in a dynamic reconfiguration instead.
+
+       This project creates a new Domain Service that consists of two
+       new message types.  The first message type requests that a
+       virtual I/O device or service be added to or removed from the
+       domain receiving the message.  This message type also provides
+       support to request the status of a particular virtual I/O
+       device or service.  The second message is a response from the
+       domain for a message of the first type.  It includes the result
+       of the attempted operation and the current status of the target
+       device.  Optionally, in response to an add or remove request, a
+       human-readable string may be returned.
+
+
+1.2 Detail
+
+    1.2.1 VIO DR Version 1.0
+
+          The ability to add or remove virtual devices from a logical
+          domain is driven from the LDoms Manager CLI through a new
+          domain service called VIO DR (Virtual I/O Dynamic
+          Reconfiguration).
+
+
+    1.2.2 Service ID
+
+          The following service ID will uniquely identify the domain
+          service protocol used for Virtual IO DR:
+
+          Service ID Description
+          ---------- -----------
+
+          "dr-vio"   Dynamic Reconfiguration for virtual I/O devices
+
+
+     1.2.3 Request Message
+
+           All VIO DR request messages will have the following format:
+
+           Offset Size   Field name    Description
+           ------ ----   ----------    -----------
+
+           0      8      req_num       Request number
+           8      8      dev_id        Device ID
+           16     4      msg_type      Message type
+           20     <var>  name          Device name
+
+
+           typedef struct {
+                   uint64_t   req_num;
+                   uint64_t   dev_id;
+                   uint32_t   msg_type;
+                   char       name[];
+           } dr_vio_req_t;
+
+
+    1.2.3.1 Message Type
+
+            The message type (msg_type) field will contain a value
+            indicating the type of operation being requested.  The
+            following constants are defined for VIO DR Domain Service
+            as message type values:
+
+            Type                   Value     ASCII   Definition
+            ----                   -----     -----   ----------
+
+            DR_VIO_CONFIGURE       0x494f43  'IOC'   Configure a new device
+            DR_VIO_UNCONFIGURE     0x494f55  'IOU'   Unconfigure a device
+            DR_VIO_FORCE_UNCONFIG  0x494f46  'IOF'   Forcibly unconfigure
+                                                     a device
+            DR_VIO_STATUS          0x494f53  'IOS'   Request the status of
+                                                     a device
+
+
+    1.2.3.1.1 DR_VIO_CONFIGURE request
+
+              This command requests that a guest providing this
+              service attempt to configure and bring online a virtual
+              I/O device that has been dynamically added or configured
+              into the logical domain.  The response to this request
+              indicates success or failure for this attempt.
+
+              Before a configure request, the selected device must be
+              part of the logical domain's machine description.  No
+              other assumptions may be made about the state of the
+              device before a configure request.  In particular,
+              attempts to configure a device already in the configured
+              state must succeed.  This service supports adding new
+              virtual IO devices under the channel-devices node of the
+              MD, but not directly under its parent, the
+              virtual-devices node.
+
+              If the guest registers a service for notifying it of a
+              Machine Description update (see FWARC 2006/055 section
+              3.1), that update notification must be provided to the
+              guest prior to the configure request being given.
+
+              After a successful configure request, the device is in
+              the configured state, which means that it is available
+              for general use by the guest.  Further steps required to
+              reach the configured state is guest operating system
+              specific.
+
+
+    1.2.3.1.2 DR_VIO_UNCONFIGURE request
+
+              This command requests that a guest take offline and
+              unconfigure the specified device.  The response to this
+              request indicates success or failure of the request.
+
+              Before an unconfigure request, a device must be part of
+              the logical domain's machine description.  No other
+              assumptions may be made about the state of the device
+              before an unconfigure request.  In particular, attempts
+              to unconfigure a device already in the unconfigured
+              state must succeed.
+
+              After a successful unconfigure request, the device is in
+              the unconfigured state, which means that it is no longer
+              available for general use by the guest operating system.
+              The device is still present in the guest's Machine
+              Description.  The steps required to reach the
+              unconfigured state is guest operating system specific.
+
+              If the guest provides a service for registering a
+              Machine Description update (see FWARC 2006/055 section
+              3.1), that update notification will be provided only
+              after steps have been taken to remove the device from
+              the logical domain in the hypervisor and from the
+              guest's Machine Description.
+
+
+    1.2.3.1.3 DR_VIO_FORCE_UNCONFIG request
+
+              This request is equivalent to DR_VIO_UNCONFIGURE in that
+              it requests that a guest take offline and unconfigure
+              the specified device.  In addition however, the guest
+              may choose to implement an override to conditions that
+              may have caused failure for any step of a
+              DR_VIO_UNCONFIGURE operation.
+
+              The response to this request indicates success or
+              failure of the request.
+
+              If the guest provides a service for registering a
+              Machine Description update (see FWARC 2006/055 section
+              3.1), that update notification will be provided only
+              after steps have been taken to remove the device from
+              the logical domain in the hypervisor and from the
+              guest's Machine Description.
+
+
+    1.2.3.1.4 DR_VIO_STATUS
+
+              This command requests the configuration status of a
+              specific device.  The response to this request indicates
+              the current state of the device, which can include an
+              optional descriptive string.
+
+
+    1.2.3.2 Request number
+
+             The request number in the message header is a
+             monotonically increasing number that uniquely identifies
+             each request message.
+
+             Responses to requests are expected to use the same
+             request number so they can be paired with their original
+             request.
+
+             New requests may be issued without waiting for a response
+             to a preceding request.  The underlying transport
+             protocol is responsible to ensure reliable, in-order and
+             unduplicated message packets.
+
+             Requests are to be processed in the order received.
+
+    1.2.3.3 Device Name
+
+            This element of the request message identifies the type of
+            the device which is the target of the request.
+
+            See FWARC 2008/016 section 1.1.3. The Device Name 'name'
+            field in the request message corresponds to the 'name'
+            property of the Virtual device node in the Machine
+            Description.  It consists of a null-terminated string.
+            The maximum length of this string shall be 256 characters,
+            including the terminating NULL.
+
+    1.2.3.4 Device ID
+
+            See FWARC 2008/016 section 1.1.3.  The Device ID 'dev_id'
+            field in the request message correponds to the cfg-handle
+            of the Virtual device node in the Machine Description.
+
+    1.2.4 VIO DR response message
+
+          The overall VIO DR protocol consists of a command sent to
+          the client guest which then responds with a reply indicating
+          the overall result of the request.
+
+    1.2.4.1 VIO DR response message format
+
+            The VIO DR response message has the following format.
+
+            Offset Size   Field name    Description
+            ------ ----   ----------    -----------
+
+            0      8      req_num       Request number
+            8      4      result        Result code
+            12     4      status        Status code
+            16     <var>  reason        reason string (cause of error)
+
+
+            typedef struct {
+                   uint64_t    req_num;
+                   uint32_t    result;
+                   uint32_t    status;
+                   char        reason[]; /* null terminated string */
+            } dr_vio_res_t;
+
+
+    1.2.4.2 VIO DR Result codes
+
+            The result field in the above message indicates the result of
+            the requested operation on the specified device.
+
+            The result codes are defined as follows:
+
+
+            Name                          Value   Definition
+            ----                          -----   ----------
+
+            DR_VIO_RES_OK                  0x0     Operation succeeded
+            DR_VIO_RES_FAILURE             0x1     Operation failed
+            DR_VIO_RES_BLOCKED             0x2     Operation was blocked
+            DR_VIO_RES_NOT_IN_MD           0x3     Device undefined in MD
+
+
+            For DR_VIO_UNCONFIGURE the result code DR_VIO_RES_BLOCKED
+            is equivalent to DR_VIO_RES_FAILURE except that the guest
+            is indicating that the operation may succeed with a
+            subsequent DR_VIO_FORCE_UNCONFIG operation.
+
+
+    1.2.4.3 VIO DR status codes
+
+            The status field in the response message indicates the
+            resulting status of the specified device after the
+            requested operation.  For the response message to a
+            configure or unconfigure request, the result field
+            indicates the outcome of the operation (see 1.2.1.2
+            above).  The status field will contain one of the status
+            codes below to indicate state of the device after the
+            attempted operation.
+
+            For the response message corresponding to a successful
+            DR_VIO_STATUS request, the status field will contain one
+            of the codes below, and the result field will contain
+            DR_VIO_RES_OK.  If the DR_VIO_STATUS operation fails, the
+            result field will contain DR_VIO_RES_FAILURE and the
+            status field will not be meaningful.
+
+            The status codes are defined as follows:
+
+            Name                             Value   Definition
+            ----                             -----   ----------
+
+            DR_VIO_STAT_NOT_PRESENT          0x0     Device does not exist in MD
+
+            DR_VIO_STAT_UNCONFIGURED         0x1     Device exists in MD, but
+                                                     is not configured for use
+                                                     by guest
+
+            DR_VIO_STAT_CONFIGURED           0x2     Device is configured for use
+                                                     by the guest.
+
+            A VIO device in the DR_VIO_STAT_UNCONFIGURED state may be
+            safely removed from the domain configuration. Conversely,
+            a VIO device in the DR_VIO_STAT_CONFIGURED state must not
+            be removed from the domain configuration as the guest may
+            be accessing it.
+
+
+    1.2.4.4 VIO DR 'reason' string
+
+            The response message may optionally include a
+            human-readable string so that the guest may return a
+            null-terminated ASCII string containing additional
+            information regarding the requested operation.  The
+            maximum length of this string shall be 1024 characters
+            including the terminating NULL.
+
+            If there is no 'reason' string, this field shall contain a
+            single NULL character at the start of the field.  In the
+            case of a successful operation no response string will be
+            returned.
+
+

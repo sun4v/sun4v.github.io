@@ -1,0 +1,85 @@
+From sacadmin Fri Jan 11 07:59:11 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m0BFxA7r029982
+	for <fwarc@sac.sfbay.sun.com>; Fri, 11 Jan 2008 07:59:10 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m0BFwrZu020653
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 11 Jan 2008 15:59:09 GMT
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JUH00F05LQHVF00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Fri, 11 Jan 2008 08:59:05 -0700 (MST)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JUH008J8LQGSO70@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Fri, 11 Jan 2008 08:59:04 -0700 (MST)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m0BFx31c012054	for
+ <fwarc@Sun.COM>; Fri, 11 Jan 2008 15:59:04 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JUH00G01KWI4500@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Fri, 11 Jan 2008 08:59:03 -0700 (MST)
+Received: from dhcp-ubur03-180-180.East.Sun.COM ([129.148.180.180])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JUH00ANHLPJNF70@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Fri, 11 Jan 2008 08:58:32 -0700 (MST)
+Date: Fri, 11 Jan 2008 10:58:31 -0500
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Self-Review: 2008/017 - VIO Protocol Update
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>
+Message-id: <B65C5EE1-861D-4E37-9C52-180BCD94AC51@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.915)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+Status: RO
+Content-Length: 1600
+
+I am sponsoring this self-review case for myself.  This case makes a  
+minor
+modification to the xfer_type field in the VIO attribute message. The  
+VIO
+protocol specification was approved under FWARC/2006/195 and then  
+modified
+under FWARC/2006/583, FWARC/2006/602, and FWARC/2007/672.
+
+This case will be approved for minor/micro/patch OS binding and
+minor/micro binding for the firmware.
+
+All of the changes are highlighted in the updated document which
+can be found at,
+
+http://sac.sfbay.sun.com/arc/FWARC/2008/017/materials/vio-protocol-update-4.pdf
+
+The brief description of the changes are,
+
+The supported transfer modes in versions 1.0 and 1.1 of the VIO  
+protocol are:
+         VIO_PKT_MODE        0x1        /* packet based transfer */
+         VIO_DESC_MODE       0x2        /* in-band descriptors */
+         VIO_DRING_MODE      0x3        /* descriptor rings */
+
+In version 1.2, the VIO protocol will allow concurrent use of the  
+different
+transfer modes, specifically packet based transfer and descriptor ring
+modes. In order to do this, the xfer_mode field in the attribute info
+message will be changed to a bit mask with the following values:
+
+         VIO_PKT_MODE        0x1        /* packet based transfer */
+         VIO_DESC_MODE       0x2        /* in-band descriptors */
+         VIO_DRING_MODE      0x4        /* descriptor rings */
+
+In version 1.2, the virtual network and switch clients will use both the
+packet transfer mode in addition to the descriptor ring mode
+(xfer_mode=0x5) to send high priority ethernet frames as data packets
+for faster out-of-band processing.
+
+

@@ -1,0 +1,79 @@
+From sacadmin Wed Aug 16 17:40:53 2006
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7H0eqLC028247
+	for <FWARC@sac.sfbay.sun.com>; Wed, 16 Aug 2006 17:40:52 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id k7H0eq3x025761;
+	Wed, 16 Aug 2006 17:40:52 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7H0ep60014711;
+	Wed, 16 Aug 2006 17:40:51 -0700 (PDT)
+Message-ID: <44E3BB12.8040803@sun.com>
+Date: Wed, 16 Aug 2006 17:40:50 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 1.5.0.5 (Windows/20060719)
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+CC: Eric Pilmore <Eric.Pilmore@sun.com>, David.Jacobson@sun.com
+Subject: FWARC/2006/481 - Niagara2 Random Number Generator HV API - fast track
+ timeout Aug 23, 2006
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 612
+
+
+I'm sponsoring this fast-track case for Eric Pilmore.
+The timer expires on August 23.
+
+This case introduces new HV APIs for software management
+and use of the Niagara2 RNG. The APIs will be part of a
+new API group: 0x104 (N2 RNG). It also includes an MD node
+and OBP /virtual-devices node for the software driver
+to attach to.
+
+The document is in the materials directory and includes
+an interface table at the end of the document.
+
+The project requests a minor/micro binding for firmware
+changes and a micro/minor/patch binding for the OS.
+
+The trap registry will be updated when the case is
+approved.
+
+-David
+
+
+From sacadmin Fri Aug 25 12:47:21 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7PJlLdn029631
+	for <FWARC@sac.sfbay.sun.com>; Fri, 25 Aug 2006 12:47:21 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k7PJlKJ9006303;
+	Fri, 25 Aug 2006 12:47:20 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id k7PJlKld054571;
+	Fri, 25 Aug 2006 12:47:20 -0700 (PDT)
+Message-ID: <44EF53C7.1090206@sun.com>
+Date: Fri, 25 Aug 2006 12:47:19 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 1.5.0.5 (Windows/20060719)
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+CC: Eric Pilmore <Eric.Pilmore@sun.com>,
+        David Jacobson <David.Jacobson@sun.com>
+Subject: Re: FWARC/2006/481 - Niagara2 Random Number Generator HV API - fast
+ track timeout Aug 23, 2006
+References: <44E3BB12.8040803@sun.com> <44EF28D0.4070005@sun.com>
+In-Reply-To: <44EF28D0.4070005@sun.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 33
+
+
+This case is approved.
+
+-David
+
+

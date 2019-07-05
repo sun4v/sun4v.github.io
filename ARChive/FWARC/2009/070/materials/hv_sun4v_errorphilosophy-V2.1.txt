@@ -1,0 +1,1135 @@
+"@(#)hv_sun4v_errorphilosophy-V2.1.txt 1.6     09/02/10 "
+
+
+Sun4v Hypervisor Error Handling Interfaces 
+-------------------------------------------
+
+NOTE:
+    This document describes the error handling interfaces for CPU, memory,
+    internal register and programmed I/O errors. The error handling
+    interfaces for host bus adapter errors and directly accessible I/O device
+    errors are still being developed and are not described in this version
+    of the document.
+
+    This interface is being extended to include a mechanism for notifying the
+    sun4v guest of Service Processor (SP) state changes, ie, when the Service
+    Processor in a system becomes available/unavailable.
+
+1.0 Introduction
+
+Hardware errors which do not reset the system generate a trap to the
+hypervisor. The hyperprivileged trap handler virtualizes the errors
+from the CPU, memory, and virtual I/O devices like the host bus
+adapter, and sends an error notification to the affected guests. For errors
+that do not reset the guest, an error report indicating the impact of
+the error is sent to the guest. Section 5 of this document
+describes the structure of the error report sent to the guest.
+
+Service Processor state changes (SP becoming available again after being
+offline or becoming unavailable) on systems which have the necessary
+hardware support will generate an interrupt to the hypervisor. An
+error report indicating this SP state change will be sent to the
+guest.
+
+Errors from devices that are directly accessed by the sun4v guest are not
+virtualized by the hypervisor. They are handled by the device drivers of
+the sun4v guest.
+
+The sun4v architecture[1] defines two classes of errors based on their
+impact on the interrupted instruction stream: resumable errors and
+non-resumable errors. Resumable errors are those that do not affect the
+current instruction stream. Non-resumable errors are those that affect
+the current instruction stream and require software intervention before
+the interrupted instruction stream can be resumed.
+
+The sun4v architecture defines queues for the hypervisor to send error
+reports to its guests. The sun4v error reports for CPU, memory, and PIO
+errors are queued on to the resumable error queue or non-resumable
+error queue depending on the type of the error. The sun4v error reports
+for errors in virtual or direct I/O devices are queued on to the
+dev_mondo queue.
+
+SP state change error reports are queued on to the resumable error queue.
+
+The simplest implementation of a sun4v guest could, for example,
+simply perform a 'retry' on resumable error notifications and 'panic'
+on non-resumable error notifications. But the intent is to have enough
+information in the hypervisor generated error reports to the sun4v guests
+such that an advanced guest would be able to take corrective actions
+and make forward progress when possible.
+
+The remainder of this document is divided as follows. Section 2 defines
+new terms introduced in this document.  Section 3 describes the sun4v
+hypervisor error handling philosophy. Section 4 provides a brief
+overview of the hypervisor generated error notifications for errors.
+Section 5 describes the sun4v error handling interfaces. Section 6
+describes the hypervisor error handling principles of operation.
+
+2.0 Terms and Definitions
+
+2.1 Diagnosis Service Provider. The platform is expected to include
+an FMA Fault Manager that provides a Diagnosis Service for the hardware
+components. The diagnosis service must provide a transport for FMA
+Error Reports, and can be implemented on any of the following:
+	(1) The only sun4v guest partition on the platform
+	(2) A sun4v service partition
+	(3) The Service Processor
+The diagnosis service implements the appropriate hardware diagnosis
+algorithms and triggers corrective actions, messaging, and other tasks
+resulting from the diagnosis of a fault in the platform hardware.
+
+2.2 FMA Error Report Generator Service Provider. If a hypervisor implementation
+does not itself produce FMA Error Reports, then an FMA Error Report Generator
+must be implemented to convert the hypervisor implementation-specific error
+data structures to FMA Error Reports and transport them to the diagnosis
+service.
+
+2.3 Service Provider Interface. A platform-specific Service Provider 
+Interface must be implemented on the platform to transmit hypervisor
+generated error reports to the FMA Error Report Generator (if one is 
+required) or to the Diagnosis Service Provider (if the hypervisor
+itself produces FMA Error Reports).
+
+For information on Sun SPARC error terminology, please refer to [2].
+
+For more information on FMA, see http://fma.eng.
+
+3.0 Philosophy
+
+The sun4v hypervisor error handling philosophy is based on the
+following principles:
+	(1) Abstract the underlying hardware characteristics from
+	    errors reported to a sun4v guest so as to enable
+	    sun4v guest error handlers to be implemented without
+	    built-in knowledge of the underlying hardware implementation.
+	(2) Provide a separate mechanism to report errors for analysis
+	    and diagnosis of hardware faults that should be subscribed
+	    to by the FMA Error Report generator and diagnosis service provider.
+
+4.0 Brief Overview of Error Notifications
+
+Hardware errors which do not reset the system trap to the hypervisor.
+For each error handled by the hypervisor:
+	(1) If the error does not reset the sun4v guest, then a sun4v error
+	    report that virtualizes the underlying hardware error and
+	    describes the impact of the error is sent to the sun4v
+	    guest.
+       (2) A service error report containing the raw error logs
+	    captured by the hardware and additional diagnostic data is
+	    sent to the diagnostic service provider.
+
+For an SP state change, a sun4v error describing the change is sent to the
+sun4v guest. There is no associated service error report.
+
+As shown in Figure 1 below, the sun4v error report is sent to the
+affected sun4v guest via the queues defined by the sun4v
+architecture. The service error report is sent via the Service Provider
+Interface to the FMA Error Report Generator which sends an FMA Error Report
+to the Diagnosis Service Provider.
+
+
+
+
+                                                            Diagnosis Service
+				                            Provider
+                                       _________              _________
+                                      (         )  forward   (         )
+                                     ( FMA Agent )=========>( FMA Agent )
+                                      (_________)            (_________)
+                                          ^ FMA Error            ^ FMA Error
+                                          | Report               | Report    
+     +--------------+ +-------------+ +-------------+      +------------+
+     |CPU/Mem/PIO   | |Virtual i/o  | |Direct i/o   |      | FMA Error  |
+     |error handler | |error handler| |error handler|      | Report     |
+     +--------------+ +-------------+ +-------------+      | Generator  |
+              ^                 ^          ^               +------------+
+      +-------|-------+         |----+-----|                     ^
+      |               |              |                           |
+ +-------------+ +-----------+ +-----------+              +--------------+
+ |non-resumable| |resumable  | |device 	   |              |Service       |
+ |error queue  | |error queue| |mondo queue|              |Provider I/F  |
+ +-------------+ +-----------+ +-----------+	          +--------------+
+       ^	      ^             ^	                         ^
+       |	      |	            |	                         |
+       +--------------+	            |	                         |
+ 	      |cpu,                 |virtual i/o                 |service
+ 	      |memory,              |error report,               |error
+	      |PIO error            |direct i/o                  |report
+	      |report               |error interrupt             |
+              +---------------------+             		 |
+                        |                       		 |
+		        |                       		 |
+		  +-------------+                       	 |
+		  | Hypervisor  |--------------------------------+
+		  +-------------+
+                        ^
+		        | hardware errors
+
+   Fig 1. Hypervisor Error Reports to sun4v Guest and FMA Service Provider
+
+                                                            
+				                           
+                                       _________
+                                      (         )
+                                     ( FMA Agent )
+                                      (_________)
+                                          ^ FMA Error
+                                          | Report  
+				     +--------------+
+				     |SP state      |
+				     |error handler |
+				     +--------------+
+				              ^     
+				      +-------|
+				      |       
+				 +-------------+
+				 | resumable   |
+				 |error queue  |
+				 +-------------+
+				       ^
+				       |
+				       +------+
+				 	      |
+				 	      |
+					      |
+					      |
+				              +---------+ 
+				                        |     
+						        |      
+						  +-------------+
+						  | Hypervisor  |
+						  +-------------+
+				                        ^
+						        | SP state change interrupt
+
+   Fig 1.1. Hypervisor SP Change Reports to sun4v Guest and FMA Service Provider
+
+Some notes on Figure 1 above:
+	(1) Virtual I/O refers to devices that cannot be directly accessed
+	    by the guest. They are either complete abstractions of
+	    the underlying physical devices, like virtual console
+	    device, or are indirectly accessed using hypervisor calls,
+	    like to access the host bus adapter.
+	(2) The CPU, memory, and virtual I/O errors are diagnosed
+	    by the Diagnosis Service Provider based on the service error
+	    report data sent.
+	(3) Direct I/O device errors are handled by the sun4v guest device
+	    drivers. Hardened drivers generate FMA Error Reports. Those FMA
+	    Error Reports are sent to the FMA Agent (as shown in Figure 1) on
+	    the sun4v guest and are forwarded to the FMA Agent on the
+	    Diagnosis Service Provider. Forwarding the FMA Error Reports may
+	    not be necessary if the Diagnosis Service Provider and the sun4v
+	    guest are on the same partition.
+	(4) The sun4v error report is a virtualized error report used by 
+	    the sun4v guest, and is not the same as the FMA Error Report
+	    that captures platform-specific information for the Diagnosis
+	    Service.
+
+Figure 1 shows the error reports generated by the hypervisor when handling
+hardware errors and how they are propagated to the Diagnosis Service
+Provider and the sun4v guest.
+
+The sun4v error report is sent to the sun4v guest. The CPU, memory,
+and PIO error reports are sent via the sun4v resumable_error and 
+nonresumable_error queues. Both virtual and direct I/O device error
+reports are sent via the sun4v dev_mondo queue. These queues are allocated
+per CPU. Each queue has a head and a tail pointers. When the queue is
+empty, the head and tail pointers are equal. The hypervisor queues
+the error report at the tail and updates the tail pointer to the next
+entry.
+
+The SP state change  error reports are sent via the sun4v resumable_error
+queues.
+
+For resumable_error and dev_mondo queues, the hardware generates a
+disrupting trap whenever the head and tail pointers are not equal. The
+disrupting trap is taken on the CPU if the interrupts are enabled 
+(PSTATE.IE = 1) or remains pending if the interrupts are disabled.
+The sun4v guest interrupt handler processes the sun4v error reports starting 
+from the head pointer to the tail pointer (excluding) and updates the 
+head pointer to equal the tail pointer leaving the queue in
+a non-interrupting state.
+
+For nonresumable_error queues the hardware does not generate a trap
+automatically when the head and tail pointers are not equal. The hypervisor 
+emulates a nonresumable_error trap on the CPU by transferring control to the
+nonresumable_error trap handler of the sun4v guest. The sun4v guest
+trap handler processes the sun4v error reports starting from the head
+pointer to the tail pointer (excluding) and updates the head pointer to
+equal the tail pointer.
+
+For direct I/O device errors, the sun4v guest hardened device drivers
+generate the FMA Error Report to be sent for diagnosis. For CPU, memory, and
+virtual I/O device errors, the sun4v guest does not generate FMA
+Error Reports, instead an FMA Error Report is generated based on the service
+error report sent via the service provider interface.
+
+The service error report is sent to the FMA Error Report Generator and
+Diagnosis Service Provider via a platform-specific interface called
+the Service Provider Interface. The FMA Error Report Generator receives
+the error logs and diagnostic data from the hypervisor and generates
+an FMA Error Report. It sends the FMA Error Report to the Diagnosis Service
+Provider for analysis and diagnosis.  The error recovery actions based
+on the platform's SERD policies and failure rates are then communicated
+back to the guests (not shown in Figure 1). Please refer to the
+proposed FMA Error Report Generator and Diagnosis Service Provider
+architecture[3] for more information.
+
+The sun4v guest error reports and the error reports sent through the
+Service Provider Interface each contain an Error Handle (see 5.2.1)
+that can be used to correlate the reports.
+
+This document describes the sun4v error reports for CPU, memory, and
+the virtual host bus adapter errors. For a description of the service
+error reports, please refer to the platform's FMA and Service Entity
+documentation.
+
+4.1 PIO store errors.
+
+Note that this error report format is *not* used for PIO store errors. These
+errors are reported to the guest using a different, I/O specific format.
+See [6] for details.
+
+5.0 Sun4v Error Handling Interfaces
+
+This section describes the sun4v error handling interfaces as a
+supplement to the Error Model section in the sun4v architecture
+specification[1].
+
+5.1 Classification of Errors
+An error as defined in [2] is when a signal or datum is wrong.
+Hypervisor classifies the hardware errors into three classes:
+	(1) Resumable errors, where the error does not affect the
+	    current instruction stream.
+	(2) Non-resumable errors, where the error affects the current
+	    instruction stream and requires software intervention before
+	    the program can be resumed.
+	(3) Unconstrained or terminating errors, where the error results in
+	    a loss of system coherency and/or data integrity that continuing
+	    execution can lead to further damage. 
+
+For unconstrained or terminating errors, a sun4v error report is not queued
+to the affected sun4v guests; the affected guests are reset. 
+
+For resumable and non-resumable errors, a sun4v error report is queued
+to the affected sun4v guest. The sun4v architecture[1] defines the
+resumable, non-resumable, and dev_mondo queues, and their workings.
+
+All I/O error interrupts are resumable errors as they are derived from
+asynchronous interrupts generated by I/O devices and do not affect
+the current instruction stream. However, their error reports are queued
+on the dev_mondo queue to be handled by the nexus and device drivers of
+the sun4v guest. The structure of the i/o error reports [TBD] is different
+from the sun4v error reports for CPU, memory and PIO errors defined
+in section 5.2 of this document.
+
+Regardless of the class of the error, the hypervisor creates a service
+error report and attempts to deliver it to the FMA Error Report Generator.
+Upon receipt of a service error report, the FMA Error Report Generator
+creates an FMA Error Report and attempts to deliver it to the Diagnosis
+Service Provider for error recovery and fault diagnosis. In the case where
+the Diagnosis Service Provider is implemented on the sun4v guest which
+is fatally affected by a non-resumable error, the FMA Error Report may 
+not be successfully delivered to the diagnosis service.
+
+5.1.1 Resumable Errors
+For an error that is a resumable error, the originating error may
+either be corrected by the hardware or hypervisor, or left unchanged.
+
+If the originating error was corrected, then the guest is not sent
+an error report. However, a service error report is sent to the
+Diagnosis Service Provider via the service provider interface
+for fault analysis.
+
+All SP state changes are classified as resumable errors.
+
+Some examples of hardware errors that are not reported to the guest because
+the error was corrected are: correctable ECC error in cache data, TLB
+data parity error, cache data parity error in a clean cache, and 
+uncorrectable ECC error in a clean cache line.
+
+If the originating error was left unchanged, then an error report is
+sent to the affected guest. The impact of the error on the sun4v
+guest, for example, whether there was memory corruption or whether a
+CPU became unavailable, is indicated in the error report.
+
+Some examples of hardware errors that are reported as resumable errors
+where the originating error was left unchanged are: uncorrectable data ECC
+error on cache writeback, transaction timeout on a PIO read, data parity
+error on a PIO read data return, bus error on a PIO read, and
+recursive unrecoverable errors on a CPU. In the case of an
+uncorrectable data ECC error on cache writeback, the memory region that
+was corrupted is indicated in the error report. In the case of
+recursive errors on a CPU, the ID of the CPU that was
+marked in error along with the execution mode of the CPU at the time of
+the error are indicated in the error report. In the case of
+a failed PIO transaction, the PIO transaction address is indicated in
+the error report.
+
+5.1.2 Non-Resumable Errors
+For an error that is a non-resumable error, the originating error is
+not corrected. The sun4v error report indicates the location of the 
+originating error. These errors require the intervention of the sun4v
+guest error handler to take corrective actions, when possible,
+before resuming or terminating the interrupted program. For example,
+the guest may use the hypervisor call to scrub the memory region in
+error indicated in the error report.
+
+A non-resumable error may be reported to the sun4v guest as
+either a precise trap or a deferred trap. The error report descriptor
+indicates the trap type. When multiple error reports
+are queued, the deferred error reports will be queued ahead of the
+precise error report according to the age of the instructions that
+induced the errors.
+
+Some examples of hardware errors that are reported as non-resumable
+errors are uncorrectable data ECC error in cache on loads,
+instruction fetches, or atomics from a dirty line, uncorrectable ECC
+error in DRAM on loads, instruction fetches, or atomics, and an
+uncorrectable ECC error in a CPU's register file. For
+uncorrectable ECC errors in the memory hierarchy, the non-resumable error
+report indicates the memory region in error. For uncorrectable ECC
+errors in register files which can be cleared, the register file as well 
+as the the ID of the CPU whose register file had the error are
+indicated in the error report.
+
+5.1.3 Unconstrained or Terminating Errors
+Unconstrained or terminating errors are not reported to the sun4v guest
+OS. They result in resetting the sun4v guest. In some cases, the
+hardware generates a reset trap, and in others the hypervisor resets
+the sun4v guest.
+
+Some examples of hardware errors that are treated as unconstrained or
+terminating errors to the guest are Niagara's L2 cache tag parity error
+and L2 cache directory parity error, ROCK's store buffer address or
+control parity error, and Niagara's TLB tag parity error. The L2 cache
+tag and directory parity errors are detected by hardware which causes a
+warm reset of the entire chip. For store buffer address or control
+parity error, the hardware generates a deferred trap to the
+hypervisor which resets the affected partitions. For the TLB tag parity
+error the hardware generates a precise trap to the hypervisor which
+resets the partitions using that TLB.
+
+Recursive errors on a CPU may result in the resetting of the
+partition if that results in all of the CPUs in that partition 
+to be in error.
+
+5.2 Sun4v Error Report For CPU, Memory, and Programmed I/O (PIO) Access
+The sun4v error report for CPU, memory, and PIO access errors is a fixed
+length error report that describes the underlying hardware error in
+terms of resumable or non-resumable error to the sun4v guest. The
+intent is to have enough information in the error reports to enable an
+advanced guest to take corrective actions, when possible, and make
+forward progress. The sun4v error report is not meant for hardware
+fault analysis or diagnosis.
+
+On startup, the sun4v guest and the hypervisor exchange the versions
+that they support and pick the latest version that is compatible.
+Please refer to [1] for more information. 
+
+The table 5.2-I below describes the format of the sun4v error report record.
+	--------------------------------------------------------------------
+	Offset	Size	Field	Description
+		(bytes)
+	--------------------------------------------------------------------
+	0x0	8	EHDL#	Unique error handle
+        0x8	8	STICK	Value of the %STICK register
+	0x10	3	Rsvd	Reserved, always set to zero.
+	0x13	1	DESC	Error descriptor (see section 5.2.3)
+	0x14	4	ATTR	Error attributes (see section 5.2.4)
+        0x18	8	ADDR	Real address of the affected memory region
+				or PIO transaction address
+				Virtual address for the ASI register
+        0x20	4	SZ	Size, in bytes, of the affected memory region
+				or the size (in bytes) of the ASI region in error
+        0x24	2	CPUID	ID of the affected CPU
+	0x26	2	SECS	Grace period for shutdown in seconds
+	0x28	1	ASI	Value of the %ASI register
+	0x29	1	Rsvd	Reserved, always set to zero.
+	0x30	2	REG	Value of the ASR register#
+	--------------------------------------------------------------------
+	    Table 5.2-I. Sun4v Error Report Format
+
+5.2.1 Error Handle (EHDL#). This field specifies the handle of the error.
+Error handles are unique opaque values that will not be reused until
+the hypervisor in the hardware domain is restarted. If multiple error reports
+are generated for the same error, they will all have the same EHDL value.
+
+5.2.2 Stick register (STICK). This field specifies the contents of the
+%STICK register that was captured by the hypervisor trap handler.
+
+5.2.3 Error Descriptor (DESC). This field specifies the type of the
+error report. The table 5.2.3-I below lists the currently defined values.
+ 	------------------------------------------------------------
+ 	Value	Mnemonic	Description
+ 	------------------------------------------------------------
+	0	UNDEF		Undefined
+ 	1	R_UE		Uncorrected resumable error report
+ 	2	NR_PR  		Precise non-resumable error report
+ 	3	NR_DF 		Deferred non-resumable error report
+	4	SHT_R		Shutdown request (resumable)
+	5	DCORE		Dump Core (non-resumable)
+	6	SP		SP state change (resumable)
+ 	------------------------------------------------------------
+		Table 5.2.3-I. Error Report Descriptors
+
+All other values are reserved.
+
+The values R_UE, SHT_R and SP are valid only for error reports that are queued
+on the resumable_error queue. The values NR_PREC, NR_DEF and DCORE are valid
+only for the error reports that are queued on the nonresumable_error queue.
+
+5.2.3.i Uncorrected resumable error report. An uncorrected resumable
+error report is always queued on the resumable_error queue of a CPU
+that belongs to the affected partition. It specifies that the
+underlying error was not corrected. The resource in
+error is specified by the ATTR (5.2.4) field of the error report.
+
+An uncorrected resumable error report is used to indicate a CPU in
+error. For example, in a partition with multiple CPUs when a permanent 
+error in a register file of a CPU is detected, the CPU is marked in error and
+an uncorrected resumable error report indicating the CPU in
+error is queued on a different CPU of the same partition.
+
+When the only running CPU in a partition is in error, the partition 
+is reset.
+
+5.2.3.ii Precise non-resumable error report. A precise non-resumable error
+report is always queued on the nonresumable_error queue of the CPU
+that executed the instruction that induced the error. It specifies
+that the nonresumable_error trap taken is a precise trap where TPC[TL] points
+to the instruction that induced the error. The error report contains
+enough information about the error for the guest to take appropriate 
+actions before resuming or terminating the interrupted instruction
+stream. The location of the error is specified by the ATTR (5.2.4) field 
+of the error report. A hypervisor call is provided for the guest to 
+scrub the error location.
+
+When multiple non-resumable error reports are queued on the
+nonresumable_error queue of a CPU the deferred error reports will be
+queued ahead of the precise non-resumable error reports.
+
+5.2.3.iii Deferred non-resumable error report. A deferred
+non-resumable error report is always queued on the nonresumable_error
+queue of the CPU that executed the instruction that induced the
+error. It specifies that the nonresumable_error trap taken is a
+deferred trap which means that the error is unrecoverable and the
+instruction stream should be terminated. The location of the error is
+specified by the ATTR (5.2.4) field of the error report. The MODE
+(5.2.4.viiii) field in the ATTR specifies the execution mode in which the
+error occurred.
+
+When multiple non-resumable error reports are queued on the
+nonresumable_error queue of a CPU the deferred error reports will be
+queued ahead of the precise non-resumable error reports.
+
+5.2.3.iv Shutdown request. This is used to request the guest to initiate 
+a graceful shutdown sequence. This report will be queued on the resumable
+error queue.
+
+5.2.3.v DCORE, (Dump Core). This is used to instruct the guest to initiate a
+dump core sequence. This report will be queued on the non-resumable error queue.
+
+5.2.3.vi SP, (Service Processor state change). This is used to notify the guest
+that the SP state has changed. The SP is now in the state denoted by the ATTR.SP_STATE value. The guest may decide to notify the user of the SP state change using some form of FMA messaging and/or perform any other actions it deems appropriate. This report will be queued on the resumable error
+queue.
+
+5.2.4 Error Attributes (ATTR). The meaning of this field depends on the
+error descriptor (see 5.2.3) of the error report. It also includes
+the resumable queue full indicator (see 5.2.11).
+
+In uncorrected resumable error reports, this field specifies the resource
+affected by the error. When a CPU has an uncorrected error, whether
+the CPU was executing in user or privileged mode, if known, is also
+included in the error report. 
+
+In precise non-resumable error reports, this field specifies the
+location in error.
+
+In deferred non-resumable error reports, this field specifies the
+location in error as well as the execution mode in which the error
+occurred, if that can be determined.
+
+The settings of this field also determines which of the additional information
+included in the error report have valid contents.
+
+The table 5.2.4-I below describes the format of this field.
+    ---------------------------------------------------------------------
+    Field	Bit 		Location/ 		Valid Fields
+		Position	Impact			In Error Report
+    ---------------------------------------------------------------------
+    RQFULL	31		Resumable Queue Full
+    RSVD	30:26		Undefined. Reserved
+				for future use.
+    MODE	25:24		Execution Mode
+				(see 5.2.5.viiii)
+    RSVD0	23:10		Undefined. Reserved
+				for future use.
+    SP_STATE	9:9		New SP state
+    PREG	8		Sun4v Privileged	CPUID, REG
+				Register
+    ASI		7		Sun4v ASI register	ASI, ADDR, SZ
+    ASR		6		Sun4v ASR		REG
+    SHUT	5		Shutdown request
+    FRF		4		Floating-point		CPUID, REG
+				Register File
+    IRF		3		Integer Register File	CPUID, REG
+    PIO		2		Programmed I/O Access	ADDR	
+    MEM 	1		Memory	Hierarchy	ADDR, SZ
+    CPU		0		CPU       		CPUID
+    ---------------------------------------------------------------------
+	Table 5.2.4-I. Format of the Error Attributes (ATTR) Field
+
+The unused bits may have undefined values and are reserved for future use.
+The PIO and MEM bits cannot be set in the same error report.
+
+The tables 5.2.4-II below shows the applicable attibute
+fields for the different types of error reports. 'Y' indicates applicable.
+'-' indicates not applicable.
++----------------------------------------------------------------------------------------------------+
+|Error|           Error Attributes          |    |SP   |     |                                       |
+|DESC |CPU |MEM |PIO |IRF |FRF |SHUT|ASR|ASI|PREG|STATE|MODE |RQFULL |  Notes                        |
++-----|----|----|----|----|----|----|---|---|----|-----|-----|---------------------------------------+
+|R_UE | Y  | Y  | -  | -  | -  | -  | - | - | -  |  -  | Y   |  Y    | PIO, IRF, FRF, ASR, ASI, PREG |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | and REG not applicable in     |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | uncorrected resumable error   |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | reports.     		     |
+|NR_PR| -  | Y  | Y  | Y  | Y  | -  | Y | Y | Y  |  -  | -   |  -    | CPU not applicable in         |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | precise non-resumable error   |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | reports. PIO and MEM cannot   |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | be set in the same report.    |
+|NR_DF| -  | Y  | Y  | -  | -  | -  | - | - | -  |  -  | Y   |  -    | CPU, IRF, FRF, ASR, ASI and   |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | PREG not applicable           |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | in deferred non-resumable     |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | error reports.                |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | PIO and MEM cannot be set in  |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | the same report.              |
+|SHT_R| -  | -  | -  | -  | -  | Y  | - | - | -  |  -  | -   |  -    |        		             |
+|DCORE| -  | -  | -  | -  | -  | -  | - | - | -  |  -  | -   |  -    | No attributes for DCORE       |
+|SP   | -  | -  | -  | -  | -  | -  | - | - | -  |  Y  | -   |  -    | 				     |
++----------------------------------------------------------------------------------------------------+
+	Table 5.2.4-II. Applicable Error Attributes Map
+
+	
+
+5.2.4.i CPU Field. In an uncorrected resumable error report, the CPU
+bit when set specifies that a CPU belonging to the same partition is in
+error. The ID of the CPU in error is specified by the CPUID (see
+5.2.5) field in the error report.
+
+The CPU bit is not used in non-resumable error reports.
+
+5.2.4.ii MEM Field. In uncorrected resumable error reports and in
+non-resumable error reports, the MEM bit when set specifies that there
+exists an uncorrected data error in the memory hierarchy. The
+uncorrected error could be either due to a bad ECC syndrome or NotData.
+The starting real address and the size, in bytes, of the affected
+memory region are specified by the ADDR (5.2.6) and SZ (5.2.7) fields in
+the error report, respectively.  Subsequent reads from the affected
+memory region would also generate an error unless there was an
+intervening hypervisor call to scrub the memory error. A hypervisor
+call is provided for the guest to scrub the memory region in error.
+
+The MEM field cannot be set in the same error report as the PIO field
+(5.2.4.iii), ASI field (5.2.4.vi) or ASR field (5.2.4.vii).
+
+5.2.4.iii PIO Field. In non-resumable error reports, the PIO bit when
+set specifies that an unrecoverable error was encountered on a PIO
+access. The PIO address accessed is specified by the ADDR (5.2.6) field
+in the error report. The I/O device corresponding to the PIO transaction
+that failed can be determined based on the PIO address specified by
+the ADDR field in the error report.
+
+The PIO bit is not used in resumable error reports.
+
+The PIO field cannot be set in the same error report as the MEM field
+(5.2.4.ii), ASI field (5.2.4.vi) or ASR field (5.2.4.vii).
+
+5.2.4.iv IRF Field. In precise non-resumable error reports, the IRF bit
+when set specifies that a non-permanent uncorrectable error in the
+integer register file occurred when executing that instruction (pointed
+to TPC[TL]). The data in one or more register operands of that
+instruction has been corrupted by the error, but the source of error
+has been cleared.
+
+The IRF field is not used in uncorrected resumable error reports.
+
+NOTE: For permanent errors in the integer register file of a CPU, 
+the CPU is marked in error. An uncorrected resumable error report
+is sent to a different CPU in the same partition indicating the
+ID of the CPU in error.
+
+5.2.4.v FRF Field. This is same as the IRF (5.2.4.iv) field except that
+when set it specifies that the error was in the floating-point register
+file instead of the integer register file. Please see IRF (5.2.4.iv)
+description for more information.
+
+NOTE: For permanent errors in the floating point register file of a CPU, 
+the CPU is marked in error. An uncorrected resumable error report
+is sent to a different CPU in the same partition indicating the
+ID of the CPU in error.
+
+5.2.4.vi ASR Field. An error occurred in one of the internal ASRs
+of the CPU. The ASR in error is identified by the REG field in
+the error report, see 5.2.9.
+
+5.2.4.vii ASI Field. An error occurred in one or more registers accessed via
+alternate Address Space Identifiers. The register or registers in error are
+identified by the combination of their ASI, their start address, and length
+using the ASI (see  5.2.8), the ADDR (see 5.2.6), and SZ (see 5.2.7) fields,
+repectively.
+
+5.2.4.viii PREG Field. An error occurred in one of the internal privileged
+registers of the CPU. The register in error is identified by the REG field in
+the error report, see 5.2.9.
+
+NOTE: For permanent errors in the privileged register file of a CPU, 
+the CPU is marked in error. An uncorrected resumable error report
+is sent to a different CPU in the same partition indicating the
+ID of the CPU in error.
+
+5.2.4.viiii Service Processor State (SP_STATE). This field specifies the
+current state of the SP.
+
+The table 5.2.4-III below lists the currently defined values.
+ 	---------------------------------
+ 	Value	Description
+ 	---------------------------------
+	0b0	SP is unavailable
+	0b1	SP is available
+ 	---------------------------------
+	 Table 5.2.4-III. Service Processor State
+
+5.2.4.x Execution Mode (MODE). This field specifies the execution
+mode of the operation that induced the error.
+
+The table 5.2.4-IV below lists the currently defined values.
+ 	---------------------------------
+ 	Value	Description
+ 	---------------------------------
+	0b00	Unknown
+	0b01	User mode
+	0b10	Privilege mode
+	0b11	Reserved
+ 	---------------------------------
+	 Table 5.2.4-IV. Execution Mode
+
+The 'Unknown' execution mode will be used in error reports when the
+hypervisor cannot determine the CPU's state at the time of the error.
+
+5.2.5 ID of the CPU (CPUID). This field specifies the ID of the CPU 
+affected by the reported error. It is valid when the ATTR field in
+the error report has either the CPU, IRF, or FRF bit set.
+
+5.2.6 Address (ADDR). If the MEM bit in the ATTR field in the error report
+is set, then this field contains the starting address of the memory
+region affected by the error.
+
+If the PIO bit in the ATTR field in the error report is set, then this
+field contains the PIO transaction address.
+
+If the ASI bit in the ATTR field in the error report is set, then this field
+contains the first virtual address of the ASI register(s) which caused the error.
+This is used in conjunction with the ASI field (see section 5.2.8), and the
+SZ field (see section 5.2.7) to identify the ASI register(s) in error.
+
+A value of (-1) implies that the ADDR is unknown or unused.
+
+5.2.7 Size of the Memory Region (SZ). This field specifies
+the size in bytes of the memory region affected by the reported error
+when the MEM bit in the error attributes (ATTR) field is set.
+
+When the ASI bit in the error attributes (ATTR) field is set this field
+is used to indicate the size (in bytes) of the ASI region in error.
+This must be a multiple of the sun4v ASI register size.
+For a single ASI/VA register the SZ field must be set to the size of a single
+register, (typically 8 bytes). 
+
+The range of ASI/VAs in error will be 
+
+	[ADDR]ASI ... [ADDR + (SZ -(size of single register))]ASI.
+
+Note that this implies that we can only support a contiguous range of
+VAs for a particular ASI region. Error handling software may however be aware
+of gaps in the range and act accordingly.
+
+NB: : SZ == 0 is reserved and must not be used.
+
+5.2.8 ASI. When the ASI bit of the ATTR field in the error report is set, this
+field contains the value of the sun4v %asi register when the error occurred.
+Together with the value of the ADDR and SZ fields, it identifies the register(s)
+which caused the error. If the error occurred on more than one register for that ASI,
+the SZ field can be used to specify the range of ASI virtual addresses, (see 5.2.7 above).
+which caused the error. For example, if an error occurred in the Niagara2 MMU
+Primary Context Register 0, this field would be set to 0x21, the ADDR
+field would be set to 0x8, and the SZ field set to 8 (bytes, the size of a
+register on N2).
+
+For the same CPU, if the error occurred on both primary and secondary context
+registers, this field would be set to 0x21, the ADDR field would be set to 0x8, and
+the SZ field set to 16 (bytes, the size of two registers on N2).
+
+5.2.9 REG. When the ASR bit of the ATTR field in the error report is set,
+this field specifies the sun4v ASR number, (for example if the error occurred
+in the system tick register, this field would be set to 24, => %asr24).
+
+When the IRF bit of the ATTR field in the error report is set, this
+field contains the number of the Sparc V9 general purpose register,
+(see [4], section 5.1.3.), which caused the error. For example, if the
+error occurred in register %o0, this field will contain the value
+8, for general purpose register r[8].
+
+When the FRF bit of the ATTR field in the error report is set, this
+field contains the number of the Sparc V9 floating point register,
+(see [4], section 5.1.4), which caused the error. For example, if the
+error occurred in register %f9, this field will contain the value
+9, for floating point register f[9].
+
+When the PREG bit bit of the ATTR field in the error report is set, this
+field contains the number of the Sparc V9 privileged register,
+(see [5], sections 5.8, 7.83), which caused the error.
+
+Note that this field is a 2-byte (16-bit) word but only bits[14:0] are
+allocated for use as the register number. Bit[15] is the VALID bit.
+This bit must be set to indicate that the REG value in bits[14:0] are valid.
+if this bit is set, guest software may assume that the REG value has
+a valid value encoded. If this bit is not set, guest software must assume
+that the value in the REG field is not valid for this error report and
+should not use that value in it's error handling.
+
+The table 5.2.4-IV below describes the format of this field.
+    ---------------------------------------------------------------------
+    Field	Bit 		Description
+		Position	
+    ---------------------------------------------------------------------
+    VALID	15		1: The contents of this field are valid
+				0: This field does not contain a valid
+				   register number
+    REG		14:0		Register number
+    ---------------------------------------------------------------------
+	Table 5.2.4-IV. Format of the Register Number (REG) Field
+
+5.2.10 SECS. The number of seconds the guest should allow before shutdown. 
+
+5.2.11 Resumable queue is full (RQFULL). This field applies only to
+resumable error reports. When set, it specifies that zero or more
+resumable errors might have been dropped since the queueing of that
+error report and the next one.
+
+6.0 Hypervisor Error Handling Principles of Operation
+
+This section describes the principles of operation of the hypervisor
+error handlers.
+
+6.1 Handling of Errors
+6.1.1 Corrected Errors
+For hardware corrected errors where the error is not automatically
+cleared, the hypervisor attempts to clear the source of the error by
+writing back the corrected data (an attempt to clear a stuck-at bit
+will fail). For example, if a correctable ECC error was reported on a
+L2 cache line or DRAM memory, the hypervisor will attempt to write the
+corrected data back to the error location.
+
+6.1.2 Uncorrectable Errors
+6.1.2.i Register errors
+For uncorrectable errors in the processor's integer or floating-point
+register files, the hypervisor attempts to clear the source of
+the error by writing a test pattern to the register and reading it
+back.  If the error in the register cannot be cleared due to a
+stuck-bit, then the CPU is stopped and a resumable error (uncorrected
+resumable error report) indicating the CPU in error is sent to another
+CPU of the same partition. If the uncorrectable error in the register
+is cleared, a precise non-resumable error report is reported to the
+guest on the CPU that took the trap with the register that was reported
+in error containing an undefined value.
+
+6.1.2.ii Cache errors
+For uncorrectable errors in the processor caches, the hypervisor
+clears the error from the cache by flushing the cache line with the bad
+data to memory as long as there is no expansion of data poisoning or
+corruption (which is determined based on the granularity of the error
+protection in the processor caches and memory.) If the flushing of the
+cache line with the bad datum would result in the expansion of data
+poisoning or corruption, the hypervisor leaves the bad data in the
+cache when reporting the error to the guest. (The guest can use the
+the hypervisor call to scrub the bad data which clears the cache line
+in error by filling it with zeroes and flushes it to memory.) If the 
+cache line with the bad data is clean, then the hypervisor evicts the
+line with the bad data out of the cache.
+
+Here is an example. Suppose that the L2 cache has ECC protection for every 4
+bytes and DRAM memory has ECC protection for every 16 bytes. In this
+case, an uncorrectable error in the L2 cache would mean that there are
+4 bytes of bad data. If the line containing the error was modified,
+then flushing the line out of the cache to the memory would expand the
+error to 16 bytes of bad data because the ECC protection granularity of
+memory is 16 bytes. That would result in the expanding the data
+corruption from 4 bytes to 16 bytes. To avoid such expansion, the
+hypervisor will not attempt to clear the uncorrectable error that was
+detected in the L2 cache line.
+
+6.1.2.iii Cache writeback errors
+For uncorrectable errors during cache writebacks, if the processor
+turns the signalling error to a non-signalling error thereby resulting
+in data corruption, the hypervisor will regard the writeback error as an
+unconstrained error and reset the affected guests. If the uncorrectable
+error on a cache writeback remains a signalling error after the writeback,
+then a uncorrected resumable error report is sent to the affected
+guests.
+
+NOTE: It is highly recommended that processors do not convert
+	a signalling error to a non-signalling error on cache writebacks.
+
+6.1.2.iv Memory errors
+For uncorrectable memory errors, the hypervisor does not attempt to
+clear the source of the error. The hypervisor notifies the sun4v guest
+of the memory region in error. The sun4v guest is responsible for
+its recovery policy. It can scrub the memory region in error using the
+hypervisor call to scrub memory, which clears the memory region in
+error by filling it with zeroes. The hypervisor call to scrub memory
+should return an error code to the guest if the scrub was not successful.
+Hypervisor should also notify the Diagnosis Service Provider about
+the scrub operations performed on behalf of the guest.
+
+6.1.2.v ASR errors.
+For uncorrectable ASR errors, the hypervisor does not attempt to
+clear the source of the error. The hypervisor notifies the sun4v guest
+of the ASR in error. The sun4v guest is responsible for identifying
+the ASR and determining the recovery policy. It may be able to correct
+the error or reload the ASR with correct data.
+
+	if (ATTR.ASR && REG == 24) /* system tick register */
+		read system time from TOD
+		write new system time to %asr24
+		retry
+
+6.1.2.vi ASI errors.
+For uncorrectable ASI errors, the hypervisor does not attempt to
+clear the source of the error. The hypervisor notifies the sun4v guest
+of the ASI in error using the ASI, ADDR and SZ fields of the error report.
+The sun4v guest is responsible for identifying the ASI register(s)
+and determining the recovery policy. It may be able to correct
+the error or reload the register with correct data.
+
+For example, for a Rock CRP error we have 
+
+	ASI=0x21   VA=0x8      ASI_Primary_Context_ID_0
+	ASI=0x21   VA=0x10     ASI_Secondary_Context_ID_0
+
+	if (ATTR.ASI  && ASI == 0x21) {
+	    if (ADDR == 0x8) {
+		reset primary context register()
+		if (SZ == 16)
+			reset secondary context register()
+	    }
+	    if (ADDR == 0x10)) {
+		reset secondary context register()
+	    }
+	}
+
+
+Note: The ASR/ASI error types are essentially targetted at errors
+in registers which contain data which is maintained by the guest OS.
+The guest should have a valid copy of the data to reload the register
+and clear the error. Alternatively it may be possible to continue operating
+without correcting the error by disabling or avoiding some guest
+features/functionality.
+
+6.1.2.vii CPU "error" state
+When hypervisor puts a CPU in error state, it must ensure the following:
+	(1) Hypervisor calls targetting CPUs in error state should
+	    return an error code to the guest indicating that one or more
+	    of the targetted CPUs are in error state.
+	(2) The guest cannot restart the CPU that is in error state.
+
+6.2 Reporting of Errors
+The guidelines for reporting errors are:
+	(1) All errors are reported to the FMA Error Report Generator
+	    and sent to the Diagnosis Service Provider.
+	(2) Always report an error that generates a precise or deferred trap
+	    to the CPU that took the trap unless the CPU is marked in error.
+	(3) For disrupting errors, notify only the affected guests
+	    as can be determined based on the error information logged.
+	(4) Errors in shared memory are reported to all of the affected
+	    guests. If the error was a precise or deferred error, then
+	    a non-resumable error report is sent to the guest that
+	    induced the operation, and a resumable error report is sent
+	    to the other guests that share the memory region in error.
+	    If the error was a disrupting trap (for example, as generated by a
+	    hardware scrub operation), then a resumable error is sent
+	    to all of the affected guests.
+	(5) Hypervisor should set the RQFULL bit in the error attributes
+	    field of the resumable error report that makes the queue full.
+	    (A queue is said to be full when the tail pointer if incremented 
+	    equals the head pointer.) Hypervisor drops the resumable error
+	    reports if the resumable error queue if full. The setting of the
+            RQFULL bit in the resumable error report indicates to the
+	    guest that zero or more resumable errors might have been 
+	    dropped since the queueing of that error report.
+	(6) If the nonresumable_error queue of a CPU is non-empty or
+	    if it does not have enough room to queue the error report(s),
+	    then the hypervisor marks that CPU in error and sends a
+	    resumable error report to a different CPU of the same partition.
+	    If all the CPUs in a partition are in error, then the
+	    partition is reset.
+	(7) Errors in virtualized I/O devices should be reported to only
+	    the affected guests.
+
+6.3 Handling Correctable Error Storms
+The hypervisor must attempt to prevent a storm of correctable errors
+from pinning the system in the hypervisor for long periods of time.
+This is done by disabling correctable error trap generation on the CPU
+that just took a correctable error trap for a finite period. At the
+expiration of the period, if no correctable errors are logged on that
+CPU then the correctable error trap generation is reenabled. The
+period for which the correctable error trap generation is disabled on a
+CPU is determined based on platform policy and can be tuned from
+the platform's Diagnosis Service Provider.
+
+6.4 Collecting diagnostic data for errors
+For errors, the hypervisor must perform CPU-specific work to gather
+information required to populate the service error reports for diagnosis.
+Please refer to the CPU's Error Handling document for more information.
+
+6.5 Switch Guest to New Hardware
+	TBD
+
+7.0 Rules for future expansion
+
+All bits of DESC/ATTR word are significant, including reserved bits.
+New errors not covered in the current specification will be indicated
+by using reserved bits in one or both of these two fields.
+
+If a guest CPU encounters an non_resumable_error trap, and the error
+payload contains an unrecognized encoding in the DESC/ATTR word, the
+guest is recommended to terminate.
+
+Reserved fields in in the structure from offsets 0x32-0x3f may be any
+value.  Hypervisors implementing the current spec will fill these fields
+with zeroes; however, guests implementing the current spec should not
+rely on this, but should ignore the fields altogether.
+
+8.0 References
+
+1. The sun4v Architecture Specification. http://projectq.sfbay/
+2. Sun SPARC Processor RAS and Error Handling Requirements
+	http://chipweb.sfbay/archperf/SPARC-Arch-SWG/RASEH-doc.txt
+3. Diagnosis Service Provider Architecture Proposal
+	http://dtsw.sfbay/~sriniv/docs/niagara/diag_service_provider.txt
+4. The Sparc V9 Architecture Manual
+	https://systemsweb.sfbay.sun.com/archperf/SPARC-Arch-SWG/SPARC-V9-current.pdf
+5. UltraSPARC Architecture 2006
+	https://systemsweb.sfbay.sun.com/archperf/SPARC-Arch-SWG/restricted/UA2006-current-draft-HP-Sun.pdf
+6. PCI-Express Root Complex Error Handling Interfaces for Sun4v
+	http://projectq.sfbay.sun.com/docs/sun4v-err.txt
+
+
+Appendix A. Sample Sun4v Guest OS Error Handler
+
+Disclaimer: This is not intended to be an example of advanced OS error
+	handler routines. It is an example of extremely simple guest
+	error handlers.
+
+A.1 Resumable error handler
+
+ 	if (DESC == 1)	{	/* Uncorrected resumable error */
+		if (ATTR.CPU) {
+			if (ATTR.MODE == User)
+				kill user process
+			else
+				panic
+		}
+		if (ATTR.MEM) {
+			get ADDR, SZ
+			call hypervisor to scrub memory
+			retry;
+		}
+	}
+	if (DESC == 4)	{	/* Shutdown request */
+		if (ATTR.SHUT) {
+			get SECS
+			delay SECS seconds
+			shutdown
+		}
+	}
+	if (DESC == 6)	{	/* SP State change */
+		if (ATTR.SP_STATE == SP_AVAILABLE) {
+			/*
+			 * SP is available now after a period of being
+			 * offline ....
+			 */
+		} else {
+			/*
+			 * SP is unavailable now, disable any services which
+			 * require SP interaction ...
+			 */
+		}
+	}
+
+A.2 Non-resumable error handler
+
+	if (DESC == 5)	{	/* dump core */
+		panic
+	}
+	if (DESC == 3)	{	/* deferred trap */
+		if (ATTR.MODE == User)
+			kill user process
+		else
+			panic
+	}
+
+	ASSERT(DESC == 2);	/* Precise non-resumable error */
+
+	if (ATTR.MEM) {
+		get ADDR, SZ
+		make hypervisor call to scrub memory
+		if (data not recoverable)
+			panic
+		else
+			retry
+	}
+	if (ATTR.PIO) {
+		get IOADDR
+		panic
+	}
+	if (ATTR.IRF or ATTR.FRF) {
+		if (user mode)	
+			kill user process
+		else
+			panic
+	}
+	if (ATTR.ASR) {
+		get ASR register from REG
+		if ASR valid for this CPU {
+		 	if ASR is reloadable/recoverable
+				reload/recover
+				retry
+		}
+		if (user mode)	
+			kill user process
+		else
+			panic
+	}
+	if (ATTR.ASI) {
+		get ASI, ADDR, SZ
+		if ASI register(s) valid for this CPU {
+			if ASI register(s) is reloadable/recoverable
+				reload/recover
+				retry
+		}
+		if (user mode)	
+			kill user process
+		else
+			panic
+	}
+	if (ATTR.PREG) {
+		get REG (privileged register)
+		if privileged register is reloadable/recoverable {
+			reload/recover
+			retry
+		}
+		if (user mode)	
+			kill user process
+		else
+			panic
+	}

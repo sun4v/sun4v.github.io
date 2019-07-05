@@ -1,0 +1,25 @@
+Subject: "path" property requirement in PRI [FWARC/2009/061 FastTrack timeout 02/05/2009]
+To:      
+Cc:      
+Bcc:     one-pager-list@sac.sfbay one-pager-log@sac.sfbay sac-bar@sac.sfbay
+
+
+Template Version: @(#)sac_nextcase %I% %G% SMI
+This information is Copyright 2009 Sun Microsystems
+1. Introduction
+    1.1. Project/Component Working Name:
+	 "path" property requirement in PRI
+    1.2. Name of Document Author/Supplier:
+	 Author:  Tom Pothier
+    1.3  Date of This Document:
+	29 January, 2009
+4. Technical Description
+    See the case directory for more detail
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		SysFW, ON
+    6.5. ARC review type: FastTrack
+    6.6. ARC Exposure: open
+

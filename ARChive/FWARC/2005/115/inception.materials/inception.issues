@@ -1,0 +1,60 @@
+
+Hitu
+----
+
+1.  In md-transport-api-ch4.pdf, section 4.7.3, refers to
+    DAG but DAG itself is not defined.  It is defined in
+    the md-info.pdf which is a background information for
+    the specification.  I suggest, describing DAG and ARC
+    concepts in the introduction section of the specification.
+    This will be section 4 of this specification.
+
+    STATUS: Closed. DAG and ARC need not be defined further. 
+
+2.  In md-transport-api-ch4.pdf, section 4.7.3, page 17, typo,
+    the first bullet on this page, remove "is".
+
+    STATUS: Issue can be closed when the typo is fixed in materials.
+    STATUS UPDATE: Closed. Typo fixed in new materials.
+
+3.  In md-bindings.pdf, section 4.5, typo, the last sentence
+    of the Description, remove "all".
+
+    STATUS: Issue can be closed when the typo is fixed in materials.
+    STATUS UPDATE: Closed. Typo fixed in new materials. 
+
+4.  In md-bindings.pdf, section 4.5.2, the properties table,
+    can we refer "id" as "cpuid" to be consistent with the
+    core API specification?
+
+    STATUS: Closed. "id" is within the "cpu" node's name space;
+    No change required.
+
+5.  In md-bindings.pdf, section 4.5.4, need clarification for
+    my understanding, there are multiple Mblocks, one per
+    fragmented segment of memory, right?  In other words,
+    memory can be fragmented but each segment of memory is
+    represented as a contiguous range of real memory by Mblock
+    node, right?
+
+    STATUS: Closed. Yes, multiple mblocks can be present, with each
+    mblock node representing a single contiguous range of memory. 
+
+6.  In md-bindings.pdf, section 4.5.5, is the properties table
+    missing "clock-frequency"?  The sun4v bindings defines
+    this property for root node.
+
+    STATUS: Closed. No change needed as per discussions. Fast track
+    to remove clock-frequency from sun4v bindings will be filed later. 
+
+7.  In md-bindings.pdf, section 4.6.1, in the properties table,
+    can you give some examples of "compatible-type"?
+
+    STATUS: Closed. "compatible-type" applies to "type". Example
+    values would be "instruction" or "data" (or both)
+
+8.  Interface table
+
+    STATUS: Closed. Clarifications etc. will be covered by mail 
+    announcing case approval.
+

@@ -1,0 +1,348 @@
+Copyright 2006 Sun Microsystems
+
+1. Introduction
+   1.1. Project/Component Working Name:
+
+        Machine Description IO Device Node Definitions
+
+   1.2. Name of Document Author/Supplier:
+   
+        Stephen Ehring
+
+   1.3. Date of This Document:
+   
+        02/01/2007
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+    1.4.1. The PAC or CPT you expect to review your project:
+        HS PAC
+    1.4.2. The ARC(s) you expect to review your project:
+        FWARC
+    1.4.3. The Director/VP who is "Sponsoring" this project:
+        N/A
+    1.4.4. The name of your business unit:
+        Systems Group
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: chad.solomon@sun.com
+        1.5.2. Responsible Engineer: stephen.ehring@sun.com
+        1.5.3. Marketing Manager: N/A
+    1.5.4. Interest List:
+
+2. Project Summary
+   2.1. Project Description:
+   
+        This project defines new MD nodes that describe the static IO topology
+        to the OpenBoot guest running in a domain. This allows OpenBoot to 
+        extract hardware-specific device information (MAC addresses, 
+        interrupt-maps, etc.) from the MD, thereby making the guest hardware 
+        agnostic.
+
+   2.2. Risks and Assumptions:
+   
+        These changes will constitute a flag day between reset/config, 
+        OpenBoot, and the possibly the LDOMs manager.
+
+3. Business Summary
+   3.1. Problem Area:
+   
+        The sun4v architecture necessitates that the guest domain (and hence 
+        OpenBoot) will need to become hardware agnostic. Currently, OpenBoot
+        hard codes MAC address to device path association, interrupt-map to 
+        device path association, PCI slot numbering/labeling information, and 
+        other information that should be instead extracted from the machine 
+        descriptions.
+
+   3.2. Market/Requester:
+   
+        The various firmware teams need these changes.
+
+   3.3. Business Justification:
+   
+        These changes allow future OpenBoot images to operate unmodified on 
+        multiple platforms, thereby drastically decreasing OpenBoot development
+        time.
+
+   3.4. Competitive Analysis:
+   
+        N/A
+
+   3.5. Opportunity Window/Exposure:
+
+        Project team is attempting to make changes available in time for Huron 
+        RR
+
+   3.6. How will you know when you are done?:
+      
+        When code has been integrated into released system firmware image.
+
+4. Technical Description:
+    4.1. Details:
+
+        This project defines new MD nodes to represent on board hardware IO 
+        devices. OpenBoot will use these nodes during IO device probing to 
+        determine which devices are present and need to be probed. The device 
+        nodes in the machine description will also contain hardware-specific 
+        properties that OpenBoot requires in order to create various device 
+        tree properties.
+
+        The new MD nodes and their properties are described below. To help 
+        illustrate what this case is trying to accomplish, the materials 
+        directory contains a small sample device tree [3], what the MD source 
+        file would look like for this IO topology [4], and a PDF file to help 
+        drive the concept home [5].
+
+        This case is attempting to solve problems that were also described in 
+        previous FWARC cases that concentrated on the MAC addresses [1] and 
+        interrupt-maps [2]. However, the solutions presented in those cases did
+        not fully solve all of the IO topolgy problems, and they were 
+        unpalatable to the ldoms manager team since they did not cleanly fit 
+        into the MD lint cleanup protocol (the MD lint cleanup protocol is how 
+        the ldoms manager controls domain to IO device association). Approval
+        of this case will cause those cases to be withdrawn.        
+
+    4.1.1 I/O device node
+
+        Name:                   iodevice
+        Category:               optional
+        Required subordinates:  -
+        Optional subordinates:  iodevice, interrupt-map-entry
+
+        Description:
+
+        This node describes properties necessary to create an I/O device node
+        in the OpenBoot device tree.
+
+        Properties:
+
+    Name              Tag        Req'd? Description
+    ----------------------------------------------------------------------
+    device-type       PROP_STR   Yes  A string type for this node. The 
+                                      remaining properties in the MD node 
+                                      for this device will vary depending 
+                                      on the value of this string. For 
+                                      each specific device-type allowed, 
+                                      the remaining properties are shown 
+                                      below. Current allowed device-type
+                                      values are:
+                                       - pci-switch-upstream
+                                         This value indicates the node is
+                                         an upstream port of a pci express
+                                         switch
+                                       - pci-switch-downstream
+                                         This value indicates the node is
+                                         a downstream  port of a pci express
+                                         switch
+                                       - pci-pci-bridge
+                                         This value indicates the node is
+                                         a type of pci or pci-express bridge.
+                                       - pci-network
+                                         This value indicates the node is
+                                         a pci-express or pci-x network
+                                         device
+                                       - pci-generic
+                                         This value indicates the node is
+                                         a pci-express or pci-x device
+    ----------------------------------------------------------------------
+
+
+        The following properties are allowed for device-types that have the 
+        values:
+         - pci-switch-upstream
+         - pci-switch-downstream
+         - pci-pcix-bridge
+         - pci-network
+         - pci-generic
+
+    ----------------------------------------------------------------------
+    device-number     PROP_VAL   Yes  The PCI device number for this PCI
+                                      device
+    ----------------------------------------------------------------------
+    function-number   PROP_VAL   Yes  The PCI function number for this PCI
+                                      device
+    ----------------------------------------------------------------------
+    devalias          PROP_STR   No   The OpenBoot devalias for this PCI
+                                      device, if one exists.
+    ----------------------------------------------------------------------
+
+
+        The following properties are allowed for device-types that have the 
+        values:
+         - pci-switch-upstream
+         - pci-switch-downstream
+         - pci-pcix-bridge
+
+    ----------------------------------------------------------------------
+    #interrupt-cells  PROP_VAL   No   This value will be converted
+                                      into the '#interrupt-cells'
+                                      property.
+                                      The value is the number of 32
+                                      bit integers required for the
+                                      representation of a single
+                                      interrupt specifier for this node.
+    ----------------------------------------------------------------------
+    interrupt-map-mask 
+                     PROP_DATA   No   This array of integers will specify
+                                      the interrupt-map-mask property that
+                                      OpenBoot needs to create in this PCI
+                                      device node.
+    ----------------------------------------------------------------------
+
+
+        The following properties are allowed for device-types that have the 
+        values:
+         - pci-switch-downstream
+         - pci-pcix-bridge
+
+    ----------------------------------------------------------------------
+    slot-present?     PROP_VAL   Yes  A non-zero value for this property
+                                      means that a PCI slot is present at
+                                      this device/function number.
+    ----------------------------------------------------------------------
+    slot-names        PROP_STR   No   The 'slot-names' property as
+                                      described by the IEEE 1275 PCI
+                                      device binding.
+    ----------------------------------------------------------------------
+
+
+        The following properties are allowed for device-types that have the 
+        values:
+         - pci-network
+
+    ----------------------------------------------------------------------
+    phy-type          PROP_STR   No   This property will contain a string
+                      that specifies the type of external
+                      physical layer transceiver is
+                      connected to the network device.
+                      The following are the allowed values
+                                      Value:    "xgc"  for 10Gb copper
+                                                "xgf"  for 10Gb fiber
+                                                "mif"  for  1G/100M/10M copper
+                                                "pcs"  for  1Gb fiber
+    ----------------------------------------------------------------------
+    mac-addresses     PROP_DATA  No   An array of MAC addresses allocated
+                                      to this network device.
+    ----------------------------------------------------------------------
+
+
+    4.1.2 Interrupt mapping node
+
+        Name:                   interrupt-map-entry
+        Category:               optional
+        Required subordinates:  -
+        Optional subordinates:  -
+
+        Description:
+
+        This node describes a hardware interrupt mapping from a child
+        device interrupt domain to a parent device interrupt domain. I/O
+        device nodes may have forward links to these interrupt mapping nodes.
+        Each node will correspond to a line in the device tree 'interrupt-map'
+        property.
+
+        Properties:
+
+    Name                Tag         Req'd? Description
+    ---------------------------------------------------------------------------
+        parent-interrupt
+                   PROP_DATA   Yes    An array of integers that
+                                      describes the interrupt
+                                      number in the parent
+                                      interrupt domain.
+    ---------------------------------------------------------------------------
+        child-interrupt
+                   PROP_DATA   Yes    An array of integers that
+                                      describes the interrupt
+                                      number in the child
+                                      interrupt domain.
+    ---------------------------------------------------------------------------
+        child-unit-address
+                   PROP_DATA   Yes    The unit address of the device
+                                      that generates the interrupt
+                                      in the child interrupt domain.
+    ---------------------------------------------------------------------------
+        parent-device-path
+                   PROP_STR    No     The textual device path of the
+                                      device tree node that serves as
+                                      the parent domain of the interrupt
+                                      mapping. If the parent device that
+                                      is specified by the 'parent-device-path'
+                                      property is not present in the device
+                                      tree, OpenBoot will eliminate the child
+                                      device node from the device tree.
+    ---------------------------------------------------------------------------
+
+
+    4.2. Bug/RFE Number(s):
+
+        N/A
+   
+    4.3. In Scope:
+   
+        MD node definitions and properties.
+
+    4.4. Out of Scope:
+
+        How OpenBoot extracts the MD information.
+   
+    4.5. Interfaces:
+
+    4.5.1 Imported Interfaces
+
+        Name                    Classification  Description
+        -----------------       --------------- -------------------
+        sun4v Machine           Sun Private     MD nodes definitions as
+        Description nodes                       defined by FWARC/2005/115
+
+    4.5.2 Exported Interfaces
+
+        Name                    Classification  Description
+        ----------------------  --------------  -------------------
+        "iodevice" MD node      Committed       MD node name and properties as 
+                                                described in section 4.1.1
+
+        "interrupt-map-entry"   Committed       MD node name and properties as
+        MD node                                 described in section 4.1.1
+ 
+5. Reference Documents:
+
+        [1] FWARC 2006/654 Machine Description MAC Address Representation
+            http://sac.eng/Archives/CaseLog/arc/FWARC/2006/654/
+
+        [2] FWARC 2006/636 Machine Description Interrupt Mapping
+            http://sac.eng/Archives/CaseLog/arc/FWARC/2006/636/
+
+        [3] Sample device tree
+            sample-device-tree
+
+        [4] Sample MD configuration source file
+            io.cfg
+
+        [5] Sample MD configuration visualization file
+            md-sample.pdf
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+   
+        Project teams wants completion by FY07Q2
+
+   6.2. Cost of Effort:
+   
+        Roughly 2 weeks uninterrupted development
+
+   6.3. Cost of Capital Resources:
+   
+        None
+
+   6.4. ARC review type:
+
+           Standard (convert to Fasttrack if no issues raised).
+
+7. Prototype Availability:
+   7.1. Prototype Availability:
+   
+        Working prototype is available.
+
+   7.2. Prototype Cost:
+
+        N/A

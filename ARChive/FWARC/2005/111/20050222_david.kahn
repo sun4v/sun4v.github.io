@@ -1,0 +1,174 @@
+From sac-owner Tue Feb 22 19:48:51 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j1N3moSp025286
+	for <one-pager@sac.eng.Sun.COM>; Tue, 22 Feb 2005 19:48:51 -0800 (PST)
+Received: (from noaccess@localhost)
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) id j1N3lZE19073
+	for one-pager-not-2b-used-directly; Tue, 22 Feb 2005 20:47:35 -0700 (MST)
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j1N3lYN19057;
+	Tue, 22 Feb 2005 20:47:34 -0700 (MST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.91.150])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j1N3lYjg015774;
+	Tue, 22 Feb 2005 19:47:34 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j1N3lWvZ082044;
+	Tue, 22 Feb 2005 19:47:33 -0800 (PST)
+Message-ID: <421BFCD4.2070304@sun.com>
+Date: Tue, 22 Feb 2005 19:47:32 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: one-pager@sun.com
+CC: sun4v-iteam@sun.com
+Subject: [/]sun4v bus bindings
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 3051
+
+
+1. Introduction
+    1.1. Project/Component Working Name:
+	sun4v bus bindings
+
+    1.2. Name of Document Author/Supplier:
+	David.Kahn@sun.com
+
+    1.3. Date of This Document:
+	Tue Feb 22 16:03:30 PST 2005
+
+    1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		HS-PAC
+
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Tony Barreca
+
+	1.4.4. The name of your business unit:
+		Scalable Systems Group (SSG)
+			(Central Engineering)
+
+    1.5. Email Aliases:
+     	1.5.1. Responsible Manager: David.Banman@Sun.Com
+     	1.5.2. Responsible Engineer: David.Kahn@sun.com
+     	1.5.3. Marketing Manager: Neil.Sadaranganey@sun.com XXX
+	1.5.4. Interest List: sun4v-iteam@sun.com
+
+2. Project Summary
+    2.1. Project Description:
+
+	This case is a part of the sun4v umbrella case
+	FWARC/2004/510.
+
+	This case defines the sun4v bus binding to Open Firmware
+
+    2.2. Risks and Assumptions:
+
+	See FWARC/2004/510
+
+3. Business Summary
+    3.1. Problem Area:
+
+	See FWARC/2004/510
+
+    3.2. Market/Requester:
+
+	See FWARC/2004/510
+
+    3.3. Business Justification:
+
+	See FWARC/2004/510
+
+    3.4. Competitive Analysis:
+
+	See FWARC/2004/510
+
+    3.5. Opportunity Window/Exposure:
+
+	See FWARC/2004/510
+
+    3.6. How will you know when you are done?:
+
+	See FWARC/2004/510
+
+4. Technical Description:
+
+    4.1 Overview
+
+	See FWARC/2004/510 for overview.
+
+	This case describes addressing formats, properties, and
+	methods for the virtual sun4v bus.
+
+5. Reference Documents:
+	
+	The architecture and PLC documents are available
+	at http://projectq.sfbay.sun.com and include:
+
+		Sun4v architecture specification.
+		Sun4v hyper-privileged reference architecture
+		Hypervisor API specifications
+		sun4v Functional specification
+		sun4v Solaris Functional specification
+
+
+6. Resources and Schedule:
+    6.1. Projected Availability:
+	
+	Ontario FCS
+
+    6.2. Cost of Effort:
+
+	See FWARC/2004/510
+
+    6.3. Cost of Capital Resources:
+
+	Capital resources are subsumed as part of overall product development.
+
+    6.4. Product Approval Committee requested information:
+    	6.4.1. Consolidation Name:
+		Delivery of firmware will be platform teams
+		Delivery of sun4v OS will be platform teams (ON)
+		
+    	6.4.2. Contributing OpCo/BU/Division Name:
+		
+		Scalable Systems Group
+		
+	6.4.3. Type of PAC Review and Approval expected:
+		N/A
+
+         6.4.4. Project Boundary Conditions:
+		N/A
+
+	6.4.5. Is this a necessary project for OEM agreements:
+		No.
+
+	6.4.6. Notes/Dependencies:
+		N/A
+
+	6.4.7. Target RTI Date/Release:
+	        N/A - Not a separate deliverable.
+
+	6.4.8. Target Code Design Review Date:
+		Q1CY05 for Niagara-I version 1.0
+
+	6.4.9. Update approval addition:
+	        N/A
+
+    6.5. ARC review type:
+		Full Review
+
+7. Prototype Availability:
+    7.1. Prototype Availability:
+	Q1FY05
+
+    7.2. Prototype Cost:
+	Done using existing resources.
+
+
+

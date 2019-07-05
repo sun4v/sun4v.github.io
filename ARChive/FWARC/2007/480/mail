@@ -1,0 +1,191 @@
+From sacadmin Wed Aug 22 12:40:53 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l7MJeqOi020816
+	for <fwarc@sac.eng.sun.com>; Wed, 22 Aug 2007 12:40:52 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l7MJcE6T008304;
+	Wed, 22 Aug 2007 20:38:19 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JN600603X7S9X00@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 22 Aug 2007 12:38:16 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JN60008HX7SD560@nwk-avmta-2.sfbay.sun.com>; Wed,
+ 22 Aug 2007 12:38:16 -0700 (PDT)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l7MJcGwS012748; Wed,
+ 22 Aug 2007 19:38:16 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JN600G01X374Y00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Wed,
+ 22 Aug 2007 13:38:16 -0600 (MDT)
+Received: from [129.148.180.37] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ with ESMTPSA id <0JN60031UX7RXR94@mail-amer.sun.com>; Wed,
+ 22 Aug 2007 13:38:16 -0600 (MDT)
+Date: Wed, 22 Aug 2007 15:38:15 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: FWARC 2007/480: sun4v Cpu MD node property updates
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>,
+        Wayne Mesard <Wayne.Mesard@sun.com>, hvrock-dev@sun.com
+Message-id: <6A3A6121-9525-4465-8671-DC864A96091A@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.2)
+Content-type: text/plain; format=flowed; delsp=yes; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+Status: RO
+Content-Length: 1898
+
+I am sponsoring this fast-track case for Wayne Mesard. This case
+adds optional properties to the sun4v Cpu node to inform the guest
+about underlying CPU features.
+
+This case will be approved for minor/micro/patch OS binding and
+minor/micro binding for the firmware.
+
+The document describing the new properties is available in the
+materials directory at,
+
+http://sac.sfbay.sun.com/arc/FWARC/2007/480/materials/one-pager.txt
+
+The brief description of the changes are:
+
+     Name        Tag        Req'd?    Description
+      
+----------------------------------------------------------------------
+     hwcap-list  PROP_DATA  No        A list of strings identifying
+                                      which ISA extensions are
+                                      implemented in this processor.
+                                      The currently defined values for
+                                      constructing an 'hwcap-list' are:
+                                       
+fjfmau","fmaf","ASIBlkInit","vis2",
+                                      "vis","popc","v8plus", "fsmuld",
+                                      "div32","mul32". [*]
+
+     memory-model-list
+                 PROP_DATA  No        A list of strings identifying
+                                      which memory models are supported,
+                                      as per UA-2009 (or future revs of
+                                      same) Appendix D (Formal
+                                      Specification of the Memory
+                                      Models).  Currently defined values
+                                      are: "tso", "rmo" and "wc".  These
+                                      are, respectively,
+                                      "Total Store Order",
+                                      "Relaxed Memory Order", and
+                                      "Weak Consistency".
+
+
+
+From sacadmin Thu Aug 30 11:38:56 2007
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l7UIctKQ023598
+	for <fwarc@sac.eng.sun.com>; Thu, 30 Aug 2007 11:38:55 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l7UIaEG1000032;
+	Thu, 30 Aug 2007 11:36:15 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JNL00L0JNOEJ500@brm-avmta-1.central.sun.com>; Thu,
+ 30 Aug 2007 12:36:14 -0600 (MDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JNL0079KNODTGE0@brm-avmta-1.central.sun.com>; Thu,
+ 30 Aug 2007 12:36:13 -0600 (MDT)
+Received: from fe-amer-09.sun.com ([192.18.108.183])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l7UIaDHk005228; Thu,
+ 30 Aug 2007 18:36:13 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-6.01 (built Apr  3 2006))
+ id <0JNL00201NHEQZ00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM); Thu,
+ 30 Aug 2007 12:36:13 -0600 (MDT)
+Received: from [10.0.248.246] ([129.150.65.14])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-6.01 (built Apr  3
+ 2006)) with ESMTPSA id <0JNL004PWNOAR4BJ@mail-amer.sun.com>; Thu,
+ 30 Aug 2007 12:36:12 -0600 (MDT)
+Date: Thu, 30 Aug 2007 14:36:20 -0400
+From: Narayan Venkat <Narayan.Venkat@Sun.COM>
+Subject: Re: FWARC 2007/480: sun4v Cpu MD node property updates
+In-reply-to: <6A3A6121-9525-4465-8671-DC864A96091A@sun.com>
+Sender: Narayan.Venkat@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Wayne Mesard <Wayne.Mesard@Sun.COM>,
+        Narayan Venkat <Narayan.Venkat@Sun.COM>, hvrock-dev@Sun.COM
+Message-id: <5B491BDE-C320-4B4B-8351-E6C78BB85980@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.2)
+Content-type: text/plain; format=flowed; delsp=yes; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <6A3A6121-9525-4465-8671-DC864A96091A@sun.com>
+Status: RO
+Content-Length: 2210
+
+Hi
+
+This case has timed out and hence is approved.  I will update the
+IAM file. This case is approved for minor/micro/patch OS binding and
+minor/micro binding for the firmware.
+
+Thanks
+-Narayan
+
+On Aug 22, 2007, at 3:38 PM, Narayan Venkat wrote:
+
+> I am sponsoring this fast-track case for Wayne Mesard. This case
+> adds optional properties to the sun4v Cpu node to inform the guest
+> about underlying CPU features.
+>
+> This case will be approved for minor/micro/patch OS binding and
+> minor/micro binding for the firmware.
+>
+> The document describing the new properties is available in the
+> materials directory at,
+>
+> http://sac.sfbay.sun.com/arc/FWARC/2007/480/materials/one-pager.txt
+>
+> The brief description of the changes are:
+>
+>     Name        Tag        Req'd?    Description
+>      
+> ----------------------------------------------------------------------
+>     hwcap-list  PROP_DATA  No        A list of strings identifying
+>                                      which ISA extensions are
+>                                      implemented in this processor.
+>                                      The currently defined values for
+>                                      constructing an 'hwcap-list' are:
+>                                       
+> fjfmau","fmaf","ASIBlkInit","vis2",
+>                                      "vis","popc","v8plus", "fsmuld",
+>                                      "div32","mul32". [*]
+>
+>     memory-model-list
+>                 PROP_DATA  No        A list of strings identifying
+>                                      which memory models are  
+> supported,
+>                                      as per UA-2009 (or future revs of
+>                                      same) Appendix D (Formal
+>                                      Specification of the Memory
+>                                      Models).  Currently defined  
+> values
+>                                      are: "tso", "rmo" and "wc".   
+> These
+>                                      are, respectively,
+>                                      "Total Store Order",
+>                                      "Relaxed Memory Order", and
+>                                      "Weak Consistency".
+>
+>
+
+

@@ -1,0 +1,16 @@
+The following files and directories have been redacted:
+
+    SCCS - ignored directory
+    materials/PRI_Specifiction.txt.~1~ - ignored file
+    sc - ignored directory
+    uirb - ignored directory
+    20100224_nicholas.o'donnell - case redacted
+    issues - case redacted
+    mail - case redacted
+    materials/1pager.txt - Sun Microsystems Sun Proprietary
+    materials/1pager_orig.txt - Sun Microsystems Sun Proprietary
+    materials/PRI_Specification.txt - case redacted
+    materials/PRI_Specifiction_112_113_diffs.txt - case redacted
+    materials/PRI_Specifiction_orig.txt - case redacted
+
+See http://hub.opensolaris.org/bin/view/Community+Group+arc/arc-publish-historical-checklist for further information

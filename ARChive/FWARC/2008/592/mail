@@ -1,0 +1,1292 @@
+From sacadmin Thu Sep 18 15:29:46 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8IMTjCI029297
+	for <fwarc@sac.sfbay.sun.com>; Thu, 18 Sep 2008 15:29:46 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m8IMTc6s021633
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 18 Sep 2008 23:29:45 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K7E00G01X5JQT00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 18 Sep 2008 15:29:43 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K7E00CUPX5I3U60@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 18 Sep 2008 15:29:42 -0700 (PDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m8IMTg6V006681	for
+ <fwarc@sun.com>; Thu, 18 Sep 2008 15:29:42 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K7E00201X557L00@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 18 Sep 2008 15:29:42 -0700 (PDT)
+Received: from [129.150.36.96] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K7E008CHX571450@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 18 Sep 2008 15:29:32 -0700 (PDT)
+Date: Thu, 18 Sep 2008 15:29:32 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: 2008/592 - Self-Review : MMU_EXT API group name and number change
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware ARC <fwarc@sun.com>
+Cc: James Barnette Jr <Richard.Barnette@sun.com>,
+        Charles Kunzman <Charles.Kunzman@sun.com>,
+        Prashanth Sreenivasa <Prashanth.Sreenivasa@sun.com>
+Message-id: <48D2D64C.60505@sun.com>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_tkXqX9fycjiodE6l0MhEQw)"
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.16 (Windows/20080708)
+Status: RO
+Content-Length: 16881
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_tkXqX9fycjiodE6l0MhEQw)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+I am sponsoring this self-review case for Richard Barnette.
+This case modifies the MMU_EXT API group name and the
+group number.  The MMU_EXT API group was created last
+week by 2008/401.  This case changes the group name
+and number as follows.
+
+Group Name : RK_MMU_SEARCH
+Group Number : 0x207
+
+
+I have modified the specification that was sent with
+2008/401 case to reflect the new name and number for
+the API group.  I have attached updated specification.
+I have removed the interface table from the specification
+to avoid confusion.  I will update IAM file for 2008/401
+with this note as well.  The only real change by this
+self-review case is deprecation of the group name MMU_EXT
+and group number that goes with this group and replacing
+it with group name RK_MMU_SEARCH and new number 0x207.
+
+
+   Interfaces:
+
+     Imported Interfaces:
+    Interface            Classification    Comments
+    ====================================================================
+    MMU Search APIs       Committed    Defined by FWARC/2008/401
+
+
+     Exported Interfaces:
+    Interface            Classification    Comments
+    ====================================================================
+
+    MMU_EXT               Obsolete     API group 0x4, defined by 2008/401
+    RK_MMU_SEARCH         Committed    API group 0x207, v1.0
+
+
+This case will be approved for minor/micro/patch OS binding
+and minor/micro binding for the firmware.
+
+
+
+I will soon update IAM files and HV API registry.
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_tkXqX9fycjiodE6l0MhEQw)
+Content-type: text/plain; name=sun4vMMUTLBsearch.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=sun4vMMUTLBsearch.txt
+
+Version : 1.1
+Date : 09/18/2008
+
+
+4. Technical Description:
+    4.1. Details:
+	As the capabilities of MMUs for SPARC processors increase, it is
+	no longer feasible in all cases to implement a TLB with a single
+	associative lookup.  UltraSPARC processors now allow for the
+	following inputs into the TLB lookup:
+	  * A Partition id (number of bits depends on CPU)
+	  * A tag from the VA (up to 51 bits)
+	  * A private context number (up to 16 bits)
+	  * One or more shared context numbers (up to 16 bits each)
+	Additionally, the TLB must be able to recognize mappings to as
+	many as 8 distinct page sizes.
+
+	The total number of inputs means that for CPU hardware to find
+	the mapping for a given memory access, multiple TLB probes may
+	be required.  With the CPU performing multiple probes, it may
+	be important for software to control either the number or order
+	of the probes:
+	  * Controlling the number of probes may improve performance by
+	    eliminating unnecessary probes.
+	  * Controlling the order of probes may improve performance by
+	    searching frequently accessed mappings before searching
+	    rarer ones.
+	  * Controlling the order of probes can make it possible to
+	    have multiple mappings for the same address without
+	    ambiguitiy, by indicating which mapping has precedence.
+
+	The API below provides control over the order and number of
+	probes performed by the MMU, where each probe can be different
+	in the following parameters:
+	  * Which context register (private or shared) is used to
+	    determine the context number.
+	  * The page size of the mapping to probe for.
+
+    4.1.1. MD property updates:
+    4.1.1.1. Default search order:
+	On systems supporting the TLB search API, there is a default
+	search order that is in effect for all MMU accesses (privileged
+	and non-privileged, instruction and data) if the guest does not
+	use the new API.  The characteristics of that default search
+	order are indicated by existing properties in the MD node:
+
+    Name			         Tag
+	    Description
+    ----------------------------------------------------------------------
+    mmu-#shared-contexts		PROP_VAL
+        A 64-bit unsigned integer giving the number of primary and secondary
+        shared context registers supported by this virtual CPU's MMU and
+        the number of shared contexts in the default search order.
+        If not present the default value is assumed to be 0. 
+
+    mmu-page-size-list			PROP_VAL
+        A 64-bit unsigned integer treated as a bit field describing the page
+        sizes that may be used on this virtual CPU and page sizes supported in
+        the default search order. Page size encodings are defined according to
+        the sun4v Architecture Specification. A bit N in this field, if set,
+        indicates that sun4v defined page size with encoding N is available
+        for use.
+
+	The default search order searches every combination of context
+	register and page size specified in these two properties.  The
+	order of the default search is not specified.
+
+	These properties exist merely to provide compatibility for
+	guests that do not use the TLB search API, and have no meaning
+	for a virtual CPU that has changed its search order.
+
+    4.1.1.2. New MD properties:
+	The properties below are part of the CPU node.  All of these
+	properties are required to be present for any CPU that supports
+	the new API calls described in this specification.  None are
+	present in the CPU node unless the CPU supports the calls.
+
+    Name			         Tag
+	    Description
+    ----------------------------------------------------------------------
+    mmu-search-#shared-contexts		PROP_VAL
+	    The number of shared contexts (in addition to the private
+	    context) supported in search list entries.  The
+	    interpretation is equivalent to the mmu-#shared-contexts
+	    property; however, the value may be different.
+
+    mmu-search-page-size-list		PROP_VAL
+	    The set of page sizes supported in search list entries.  The
+	    format is equivalent to the mmu-page-size-list property;
+	    however, the value may be different.
+
+    mmu-max-search-order		PROP_VAL
+	    The maximum number of entries allowed in a search list.  All
+	    search lists terminate after this many entries, with or
+	    without a terminator entry with its enable bit clear.
+
+    mmu-priv-search-unified		PROP_VAL
+    mmu-non-priv-search-unified		PROP_VAL
+	    Indicates whether the privileged and non-privileged search
+	    orders have unified or separate I- and D- search orders.  A
+	    value of 1 indicates the search order is unified (I- and D-
+	    search orders must be the same).  A value of 0 indicates
+	    that the I- and D- search orders may be different.
+
+    4.1.1.3. Notes and caveats for MD properties:
+	The mmu-page-size-list and mmu-search-page-size-list properties
+	are distinct, and may have different values; similarly for
+	mmu-#shared-contexts and mmu-search-#shared-contexts.  To
+	understand why, consider the case of a CPU that supports 8 page
+	sizes and 1 shared context (meaning 2 contexts total).  To
+	search every context for every page size requires 8*2=16 probes.
+	If mmu-max-search-order is less than 16, the default search
+	order cannot search every valid combination.
+
+	To guarantee compatibility for guests that don't use (or know
+	about) TLB search orders, the product of the number of sizes in
+	mmu-page-size-list and mmu-#shared-contexts must be selected to
+	be less than mmu-max-search-order.  To achieve this, in some
+	cases the default search order may disable page sizes, context
+	registers, or both.
+
+
+    4.1.2. API specification:    
+    4.1.2.1. Search lists for MMU translations and MMU flag :
+	The new API introduces a new data type for specifying MMU search
+	lists.  A search list is the real address of an array of
+	two-byte search entries; the size of the array is specified in
+	the mmu-max-search-order property.  Each entry specifies a
+	context register and page size for a TLB probe, plus an enable
+	bit.
+
+	To guarantee a hit for a particular mapping, the mapping must be
+	installed normally in a TSB, or with one of the mapping API
+	calls; additionally there must be an entry in the applicable TLB
+	search order specifying the page size for the mapping and a
+	context register that holds the context number of the mapping.
+
+	To guarantee a miss on a particular address it is necessary to
+	demap the address fully.  If a mapping is valid with the current
+	context registers and TSB contents, it may hit even if the
+	mapping cannot be found using the current applicable search
+	order.
+
+	The ordering of entries in the searchlist is significant in
+	two ways:
+	  * Probes to entries earlier in the search order may perform
+	    faster than probes to later entries.
+	  * For the non-privileged search list, if the MMU has two
+	    mappings for the same address distinguished by the size
+	    of the mappings, a page size that occurs earlier in
+	    the search order takes precedence over a size later in
+	    the search order.
+
+	Mappings in the MMU must be unique except in the case of
+	non-privileged mappings distinguished by page size.  This
+	includes the case of the same VA being mapped differently by two
+	different context registers, even if one of the context
+	registers is not used in the search order.  (This is the same
+	restriction documented in section 14.12.2 of the UltraSPARC
+	Architecture 2007 specification).
+
+	The API calls for configuring a search order allow specifying
+	flags indicating whether the search order is for instruction
+	accesses, data accesses, or both.  However, in some cases,
+	there may be a unified search order for both instruction and
+	data accesses.  In this case, the appropriate property in the MD
+	(either mmu-priv-search-unified or mmu-non-priv-search-unified)
+	will indicate that separate search lists are not available.
+
+	The individual bit fields of each search list table entry are
+	laid out as follows:
+	    | Enable | reserved | Context | reserved | Size |
+	      [15]     [14:11]    [10:7]    [6:3]      [2:0]
+
+	Enable - The Enable field is 1 to indicate a valid search entry.
+	    If a search entry has its Enable bit cleared, that entry
+	    and all higher-indexed entries are ignored.
+	Context - The Context field is 0 to indicate CONTEXT0 (the
+	    private context), 1 to indicate CONTEXT1 (the 1st shared
+	    context), and so forth.  The value of the field cannot
+	    exceed mmu-search-#shared-contexts (see below).  If shared
+	    contexts are not supported, the field must be 0.  The
+	    Context field is only supported for non-privileged search
+	    lists; privileged search lists must set Context to 0
+	    (indicating only CONTEXT0 is searched).
+	Size - The Size field encodes a standard page size field:
+		PageSize = 1 << (3 * Size + 13)
+	    The size must be one of the valid sizes indicated in
+	    mmu-search-page-size-list.
+        
+        
+    The MMU Flag argument for each API is the same as defined by core API
+    bindings (FWARC/2005/116, see link to Virtual Machine Specification in
+    section 5 below) but is duplicated here for quick reference.
+    
+    The flags argument applies the API operation to instruction translations
+    if bit 1 is set, and in addition applies the API operation to data
+    translation entries if bit 0 is set. For every API service requiring
+    a flags argument, at least one of bit 0 and/or bit 1 must be set.
+    
+
+    4.1.2.2. API function call summary:
+    RK_MMU_SEARCH (0x207) is created for the MMU extension APIs defined below.
+    These are the calls for configuring the new MMU mapping resources:
+
+    #Name			Group#	Trap#	Func#	Major#	Minor#
+    #====			======	=====	=====	======	======
+    MMU_GET_NONPRIV_SEARCH	0x4	0x80	0x104	1	0
+    MMU_SET_NONPRIV_SEARCH	0x4	0x80	0x105	1	0
+    MMU_GET_PRIV_SEARCH		0x4	0x80	0x106	1	0
+    MMU_SET_PRIV_SEARCH		0x4	0x80	0x107	1	0
+
+
+    4.1.2.3.
+	trap: FAST_TRAP
+	function: MMU_GET_NONPRIV_SEARCH
+	arg0: searchlist
+	arg1: flags
+	ret0: status
+
+	The flags argument indicates whether to get the search order
+	for instruction or data accesses.  Only one type of access
+	can be gotten with a single call.
+
+	Fill in the provided search list with the current search list
+	for the calling virtual CPU, as set by the
+	MMU_SET_NONPRIV_SEARCH call.
+
+	Errors:
+	EINVAL      flags is 0, or indicates both I- and D- accesses.
+	ENORADDR    The search list is not a valid real address.
+
+    4.1.2.4.
+	trap: FAST_TRAP
+	function: MMU_SET_NONPRIV_SEARCH
+	arg0: searchlist
+	arg1: flags
+	ret0: status
+
+	The flags argument indicates whether the search order applies
+	to instruction or data accesses, or both.  The encoding is the
+	same as for other MMU calls, such as MMU_MAP_ADDR.  If the value
+	of mmu-non-priv-search-unified is 1, the flags parameter must
+	specify both I- and D- searches together.
+
+	Set the calling virtual CPU's non-privileged search list.  This
+	search list will be used for both instruction and data lookups
+	performed in non-privileged mode, or when using any of the
+	"AS_IF_USER" ASIs in privileged mode.
+
+	(N.B. the search list applies to non-privileged TLB lookups,
+	regardless of the context to be searched.  This is different
+	from TSB lookup, which searches based on the context number).
+
+	Errors:
+	EINVAL      flags is 0
+	EINVAL      mmu-non-priv-search-unified is 1, and flags does not
+		    specify both I- and D- accesses.
+	EINVAL	    A page size in the search list isn't valid.
+	EINVAL	    A context register number in the search list isn't
+		    valid.
+	ENORADDR    The search list is not a valid real address.
+
+    4.1.2.5.
+	trap: FAST_TRAP
+	function: MMU_GET_PRIV_SEARCH
+	arg0: searchlist
+	arg1: flags
+	ret0: status
+
+	The flags argument indicates whether to get the search order
+	for instruction or data accesses.  Only one type of access
+	can be gotten with a single call.
+
+	Fill in the provided search list with the calling virtual CPU's
+	current search list for privileged translations, as set by the
+	MMU_SET_PRIV_SEARCH call.
+
+	Errors:
+	EINVAL      flags is 0, or indicates both I- and D- accesses.
+	ENORADDR    The search list is not a valid real address.
+
+    4.1.2.6.
+	trap: FAST_TRAP
+	function: MMU_SET_PRIV_SEARCH
+	arg0: searchlist
+	arg1: flags
+	ret0: status
+
+	The flags argument indicates whether the search order applies
+	to instruction or data accesses, or both.  The encoding is the
+	same as for other MMU calls, such as MMU_MAP_ADDR.  If the value
+	of mmu-priv-search-unified is 1, the flags parameter must
+	specify both I- and D- searches together.
+
+	Set the calling virtual CPU's search list for privileged
+	translations.
+
+	Errors:
+	EINVAL      flags is 0
+	EINVAL      mmu-priv-search-unified is 1, and flags does not
+		    specify both I- and D- accesses.
+	EINVAL	    A page size in sizelist isn't valid.
+	EINVAL	    A Context field in sizelist is not 0.
+	ENORADDR    The search list is not a valid real address.
+
+    4.2. Bug/RFE Number(s):
+	N/A
+
+    4.3. In Scope:
+	N/A
+
+    4.4. Out of Scope:
+	N/A
+
+    4.5. Interfaces:
+    4.5.1. Imported Interfaces:
+    Interface			Classification	Comments
+    ====================================================================
+    Machine Description (MD)	Sun Private	Defined by FWARC/2005/115
+    data structures
+
+    sun4v core API		Sun Private	Core APIs defined by
+						FWARC/2005/116
+
+    4.5.2. Exported Interfaces:
+    Interface			Classification	Comments
+    ====================================================================
+    mmu-search-#size-bits	Committed	MD property
+    mmu-search-#context-bits	Committed	MD property
+    mmu-search-page-size-list	Committed	MD property
+    mmu-max-search-order	Committed	MD property
+    mmu-non-priv-search-unified	Committed	MD property
+    mmu-priv-search-unified	Committed	MD property
+    RK_MMU_SEARCH			Committed	API group 0x207, v1.0
+    MMU_GET_NONPRIV_SEARCH	Committed	API call
+    MMU_SET_NONPRIV_SEARCH	Committed	API call
+    MMU_GET_PRIV_SEARCH		Committed	API call
+    MMU_SET_PRIV_SEARCH		Committed	API call
+
+    4.6. Doc Impact:
+	The UltraSPARC Virtual Machine Specification must be updated to
+	reflect this addition.
+
+    4.7. Admin/Config Impact:
+	No impact.
+
+    4.8. HA Impact:
+	No impact.
+
+    4.9. I18N/L10N Impact:
+	No impact.
+
+    4.10. Packaging & Delivery:
+	No impact.
+
+    4.11. Security Impact:
+	No impact.
+
+    4.12. Dependencies:
+	This interface depends on underlying hardware that provides
+	the capability.  The API and associated properties will not be
+	present on platforms that don't support the capability.
+
+5. Reference Documents:
+	UltraSPARC Architecture 2007 Specification
+	http://opensparc-t2.sunsource.net/specs/UA2007-current-draft-HP-EXT.pdf
+
+	UltraSPARC Virtual Machine Specification
+	http://opensparc-t1.sunsource.net/specs/Hypervisor-api-current-draft.pdf
+
+--Boundary_(ID_tkXqX9fycjiodE6l0MhEQw)--
+
+From sacadmin Tue Sep 30 09:26:11 2008
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8UGQBoH016221
+	for <fwarc@sac.sfbay.sun.com>; Tue, 30 Sep 2008 09:26:11 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m8UGQ2Hu027485
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 30 Sep 2008 09:26:10 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K800000FOBLNE00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 10:26:09 -0600 (MDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K8000KM3OBK7E40@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 10:26:08 -0600 (MDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m8UGQ8kd014059	for
+ <fwarc@sun.com>; Tue, 30 Sep 2008 16:26:08 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K8000501MGH7I00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 10:26:08 -0600 (MDT)
+Received: from dhcp-ubur03-184-18.East.Sun.COM ([129.148.184.18])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K8000LAEOB55320@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 10:25:53 -0600 (MDT)
+Date: Tue, 30 Sep 2008 12:25:51 -0400
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: Re: 2008/592 - Self-Review : MMU_EXT API group name and number change
+Sender: Stephen.Ehring@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Richard.Barnette@sun.com, Charles.Kunzman@sun.com,
+        Prashanth.Sreenivasa@sun.com
+Message-id: <48E2530F.3040104@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.17 (Macintosh/20080914)
+Status: RO
+Content-Length: 103
+
+Don't the function numbers have to change as well? They conflict with 
+previously defined APIs.
+
+Steve
+
+From sacadmin Tue Sep 30 12:15:44 2008
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8UJFiK2024662
+	for <fwarc@sac.sfbay.sun.com>; Tue, 30 Sep 2008 12:15:44 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m8UJFaAo006333
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 30 Sep 2008 12:15:43 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K8000C01W66NZ00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 13:15:42 -0600 (MDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K8000BEKW65TU10@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 13:15:42 -0600 (MDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m8UJFfNA016327	for
+ <fwarc@sun.com>; Tue, 30 Sep 2008 12:15:41 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K8000401W09S100@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 12:15:41 -0700 (PDT)
+Received: from [129.153.85.16] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K800077DW5QZZ30@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 12:15:27 -0700 (PDT)
+Date: Tue, 30 Sep 2008 12:15:26 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2008/592 - Self-Review : MMU_EXT API group name and number change
+In-reply-to: <48E2530F.3040104@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Richard.Barnette@sun.com, Charles.Kunzman@sun.com,
+        Prashanth.Sreenivasa@sun.com
+Message-id: <48E27ACE.9090307@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <48E2530F.3040104@sun.com>
+User-Agent: Thunderbird 2.0.0.14 (X11/20080505)
+Status: RO
+Content-Length: 2037
+
+On 09/30/08 09:25, Stephen Ehring wrote:
+> Don't the function numbers have to change as well? They conflict with 
+> previously defined APIs.
+
+My understanding is that the function numbers are sub-set of each group
+and the function number can be any number within that group.  Thus, having
+two group with the same function number would be allowed.
+
+I looked at API specification at,
+
+http://opensparc-t1.sunsource.net/specs/Hypervisor-api-current-draft.pdf
+
+In this specification I do not see any mention of needing to keep the
+function number unique across various groups.  I do see that most of
+the function numbers among various groups are unique except followings,
+
+#Name			Group#	Trap#	Func#	Major#	Minor#	Case#s	Comment
+#====			======	=====	=====	======	======	======	=======
+
+API_SET_VERSION		N/A	0xff	0x00	N/A	N/A	2005/116,499	(API_VER)
+API_PUTCHAR		N/A	0xff	0x01	N/A	N/A	2005/116
+API_EXIT		N/A	0xff	0x02	N/A	N/A	2005/116
+API_GET_VERSION		N/A	0xff	0x03	N/A	N/A	2005/499
+
+
+MACH_EXIT		0x1	0x80	0x00	1	0	2005/116
+MACH_DESC		0x1	0x80	0x01	1	0	2005/116
+MACH_SIR		0x1	0x80	0x02	1	0	2005/116
+MACH_SET_SOFT_STATE	0x1	0x80	0x03	1	1	2005/419 obsoleted by 2006/473
+
+
+And Rock MMU group introduced recently,
+
+VFALLS_GET_PERFREG	0x205	0x80	0x106	1	0	2007/237
+VFALLS_SET_PERFREG	0x205	0x80	0x107	1	0	2007/237
+
+
+MMU_GET_PRIV_SEARCH	0x207	0x80	0x106	1	0	2008/401
+MMU_SET_PRIV_SEARCH	0x207	0x80	0x107	1	0	2008/401
+
+
+
+If not having unique function number among groups is not desired and
+if that is what we want for all future designs then we should spell
+that out as a specification but I do not agree that is needed as
+groups are unique and function number within the group can have any
+function number.
+
+
+So, is there a need to make all function numbers unique regardless
+of which group they may be part of?
+
+
+Thanks.
+
+
+>
+> Steve
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Tue Sep 30 13:11:18 2008
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8UKBIu3027044
+	for <fwarc@sac.sfbay.sun.com>; Tue, 30 Sep 2008 13:11:18 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m8UKBHuH029602
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 30 Sep 2008 14:11:18 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K8000009YQSW800@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 13:11:16 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K8000ARQYQSMTA0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 13:11:16 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m8UKBGXP012934	for
+ <fwarc@sun.com>; Tue, 30 Sep 2008 20:11:16 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K8000G01YLGWD00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 14:11:16 -0600 (MDT)
+Received: from dhcp-ubur03-184-18.East.Sun.COM ([129.148.184.18])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K8000BP5YQQWM70@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 14:11:15 -0600 (MDT)
+Date: Tue, 30 Sep 2008 16:11:12 -0400
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: Re: 2008/592 - Self-Review : MMU_EXT API group name and number change
+In-reply-to: <48E27ACE.9090307@Sun.COM>
+Sender: Stephen.Ehring@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Richard.Barnette@sun.com,
+        Charles.Kunzman@sun.com, Prashanth.Sreenivasa@sun.com
+Message-id: <48E287E0.6040303@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <48E2530F.3040104@sun.com> <48E27ACE.9090307@Sun.COM>
+User-Agent: Thunderbird 2.0.0.17 (Macintosh/20080914)
+Status: RO
+Content-Length: 852
+
+Hitendra Zhangada wrote:
+>
+> If not having unique function number among groups is not desired and
+> if that is what we want for all future designs then we should spell
+> that out as a specification but I do not agree that is needed as
+> groups are unique and function number within the group can have any
+> function number.
+>
+>
+> So, is there a need to make all function numbers unique regardless
+> of which group they may be part of?
+>
+
+The trap only takes a function number as an argument, not a group 
+number. From my understanding, the group numbers are just used to 
+negotiate the version of a set of similar functions.
+
+If a guest negotiates two groups that have similar function numbers, I'm 
+not sure hypervisor can tell what function is being called.
+
+Basically, the function numbers have to be independent within a trap, 
+not a group.
+
+Steve
+
+From sacadmin Tue Sep 30 13:30:51 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8UKUnS8028024
+	for <fwarc@sac.sfbay.Sun.COM>; Tue, 30 Sep 2008 13:30:50 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m8UKUhLh023021
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 1 Oct 2008 04:30:49 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K8000201ZNAW000@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 13:30:46 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K80001Y5ZNAXE50@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 13:30:46 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m8UKUk4f025736	for
+ <fwarc@sun.com>; Tue, 30 Sep 2008 13:30:46 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K8000B01YZRK600@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 13:30:46 -0700 (PDT)
+Received: from [129.153.85.16] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K80007ODZMQZZ80@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 13:30:28 -0700 (PDT)
+Date: Tue, 30 Sep 2008 13:30:26 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2008/592 - Self-Review : MMU_EXT API group name and number change
+In-reply-to: <48E287E0.6040303@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Richard.Barnette@sun.com, Charles.Kunzman@sun.com,
+        Prashanth.Sreenivasa@sun.com
+Message-id: <48E28C62.7090700@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <48E2530F.3040104@sun.com> <48E27ACE.9090307@Sun.COM>
+ <48E287E0.6040303@sun.com>
+User-Agent: Thunderbird 2.0.0.14 (X11/20080505)
+Status: RO
+Content-Length: 2107
+
+On 09/30/08 13:11, Stephen Ehring wrote:
+> Hitendra Zhangada wrote:
+>>
+>> If not having unique function number among groups is not desired and
+>> if that is what we want for all future designs then we should spell
+>> that out as a specification but I do not agree that is needed as
+>> groups are unique and function number within the group can have any
+>> function number.
+>>
+>>
+>> So, is there a need to make all function numbers unique regardless
+>> of which group they may be part of?
+>>
+>
+> The trap only takes a function number as an argument, not a group 
+> number. From my understanding, the group numbers are just used to 
+> negotiate the version of a set of similar functions.
+>
+> If a guest negotiates two groups that have similar function numbers, 
+> I'm not sure hypervisor can tell what function is being called.
+>
+> Basically, the function numbers have to be independent within a trap, 
+> not a group.
+
+Good point.  So, we do have an issue here!  Since the overlap is between
+two CPU architectures in practice there may not be an issue but lets
+no set precedence here and keep them unique as we have done for
+other function numbers.
+
+Richard/Charles, the VF APIs existed before Rock MMU search
+APIs got introduced.  We need to renumber the function numbers
+for this API group.
+
+Can we move,
+
+Group RK_MMU_SEARCH (0x207)					2008/592
+MMU_GET_NONPRIV_SEARCH	0x207	0x80	0x104	1	0	2008/401
+MMU_SET_NONPRIV_SEARCH	0x207	0x80	0x105	1	0	2008/401
+MMU_GET_PRIV_SEARCH	0x207	0x80	0x106	1	0	2008/401
+MMU_SET_PRIV_SEARCH	0x207	0x80	0x107	1	0	2008/401
+to,
+
+Group RK_MMU_SEARCH (0x207)					2008/592
+MMU_GET_NONPRIV_SEARCH	0x207	0x80	0x13b	1	0	2008/xxx
+MMU_SET_NONPRIV_SEARCH	0x207	0x80	0x13c	1	0	2008/xxx
+MMU_GET_PRIV_SEARCH	0x207	0x80	0x13d	1	0	2008/xxx
+MMU_SET_PRIV_SEARCH	0x207	0x80	0x13e	1	0	2008/xxx
+
+
+
+Sorry to have missed this detail when we approved 2008/401.
+
+
+
+
+Thanks.
+
+>
+> Steve
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Wed Oct  1 11:24:52 2008
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m91IOqsu002646
+	for <fwarc@sac.sfbay.sun.com>; Wed, 1 Oct 2008 11:24:52 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m91IOqkd023213;
+	Wed, 1 Oct 2008 11:24:52 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K8200705OHGA400@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 01 Oct 2008 11:24:52 -0700 (PDT)
+Received: from uask4it.sfbay.sun.com ([10.7.80.228])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K82000QHOHG8SB0@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 01 Oct 2008 11:24:52 -0700 (PDT)
+Received: from dhcp-usca11-234-170.SFBay.Sun.COM
+ (dhcp-usca11-234-170.SFBay.Sun.COM [129.145.234.170])
+	by uask4it.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id m91IOpqg024785;
+ Wed, 01 Oct 2008 11:24:52 -0700 (PDT)
+Date: Wed, 01 Oct 2008 11:24:51 -0700
+From: Richard Barnette <Richard.Barnette@sun.com>
+Subject: Re: 2008/592 - Self-Review : MMU_EXT API group name and number change
+In-reply-to: <48E28C62.7090700@Sun.COM>
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Charles.Kunzman@sun.com,
+        Prashanth.Sreenivasa@sun.com
+Message-id: <E9F9646F-B439-4358-A165-C775385EC862@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.929.2)
+Content-type: text/plain; charset=US-ASCII; format=flowed; delsp=yes
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <48E2530F.3040104@sun.com> <48E27ACE.9090307@Sun.COM>
+ <48E287E0.6040303@sun.com> <48E28C62.7090700@Sun.COM>
+Status: RO
+Content-Length: 1354
+
+On Sep 30, 2008, at 1:30 PM, Hitendra Zhangada wrote:
+[ ... ]
+> Can we move,
+>
+> Group RK_MMU_SEARCH (0x207)					2008/592
+> MMU_GET_NONPRIV_SEARCH	0x207	0x80	0x104	1	0	2008/401
+> MMU_SET_NONPRIV_SEARCH	0x207	0x80	0x105	1	0	2008/401
+> MMU_GET_PRIV_SEARCH	0x207	0x80	0x106	1	0	2008/401
+> MMU_SET_PRIV_SEARCH	0x207	0x80	0x107	1	0	2008/401
+> to,
+>
+> Group RK_MMU_SEARCH (0x207)					2008/592
+> MMU_GET_NONPRIV_SEARCH	0x207	0x80	0x13b	1	0	2008/xxx
+> MMU_SET_NONPRIV_SEARCH	0x207	0x80	0x13c	1	0	2008/xxx
+> MMU_GET_PRIV_SEARCH	0x207	0x80	0x13d	1	0	2008/xxx
+> MMU_SET_PRIV_SEARCH	0x207	0x80	0x13e	1	0	2008/xxx
+>
+>
+>
+> Sorry to have missed this detail when we approved 2008/401.
+>
+This change will be easy for us.
+
+Thanks!
+
+
+>
+>
+>
+> Thanks.
+>
+>>
+>> Steve
+>
+>
+> --  
+> Hitendra Zhangada
+> ====================================
+> SPS Common SW Features Engineering
+> Software Group, Sun Microsystems, Inc.
+> Sun Ph# (858) 625 3757, Sun Ext. x53757
+> Internal homepage http://esp.west/~hitu
+
+--
+Richard Barnette            | Gather ye rosebuds while ye may,
+Sun Microsystems            | Old Time is still a-flying:
+Enterprise Systems Software | And this same flower that smiles to-day
+SCA11 2384 / USCA11-205     | To-morrow will be dying.
+(408) 276-7541 / x17541     |   -- Robert Herrick
+.                           |      "To the Virgins, to Make Much of  
+Time"
+
+
+From sacadmin Wed Oct  1 11:31:02 2008
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m91IV2oN002720
+	for <fwarc@sac.sfbay.sun.com>; Wed, 1 Oct 2008 11:31:02 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m91IUxEh025192
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 1 Oct 2008 11:31:02 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K820020XOROY500@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Oct 2008 11:31:00 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K82000A8ORMB6C0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Oct 2008 11:30:58 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m91IUwZ0022657	for
+ <fwarc@sun.com>; Wed, 01 Oct 2008 11:30:58 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K8200901ON6B400@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 01 Oct 2008 11:30:58 -0700 (PDT)
+Received: from [129.153.85.16] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K8200AQZORKO850@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Oct 2008 11:30:58 -0700 (PDT)
+Date: Wed, 01 Oct 2008 11:30:56 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: 2008/592 - Self-Review : MMU_EXT API group name and number change
+In-reply-to: <E9F9646F-B439-4358-A165-C775385EC862@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Richard Barnette <Richard.Barnette@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Charles.Kunzman@sun.com,
+        Prashanth.Sreenivasa@sun.com
+Message-id: <48E3C1E0.8040008@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <48E2530F.3040104@sun.com> <48E27ACE.9090307@Sun.COM>
+ <48E287E0.6040303@sun.com> <48E28C62.7090700@Sun.COM>
+ <E9F9646F-B439-4358-A165-C775385EC862@Sun.COM>
+User-Agent: Thunderbird 2.0.0.14 (X11/20080505)
+Status: RO
+Content-Length: 2204
+
+On 10/01/08 11:24, Richard Barnette wrote:
+> On Sep 30, 2008, at 1:30 PM, Hitendra Zhangada wrote:
+> [ ... ]
+>> Can we move,
+>>
+>> Group RK_MMU_SEARCH (0x207)                    2008/592
+>> MMU_GET_NONPRIV_SEARCH    0x207    0x80    0x104    1    0    2008/401
+>> MMU_SET_NONPRIV_SEARCH    0x207    0x80    0x105    1    0    2008/401
+>> MMU_GET_PRIV_SEARCH    0x207    0x80    0x106    1    0    2008/401
+>> MMU_SET_PRIV_SEARCH    0x207    0x80    0x107    1    0    2008/401
+>> to,
+>>
+>> Group RK_MMU_SEARCH (0x207)                    2008/592
+>> MMU_GET_NONPRIV_SEARCH    0x207    0x80    0x13b    1    0    2008/xxx
+>> MMU_SET_NONPRIV_SEARCH    0x207    0x80    0x13c    1    0    2008/xxx
+>> MMU_GET_PRIV_SEARCH    0x207    0x80    0x13d    1    0    2008/xxx
+>> MMU_SET_PRIV_SEARCH    0x207    0x80    0x13e    1    0    2008/xxx
+>>
+>>
+>>
+>> Sorry to have missed this detail when we approved 2008/401.
+>>
+> This change will be easy for us.
+>
+
+Great.  Just left you a message on this for you.
+
+I will file another self-review case to make this happen.
+(Not sure if re-opening the current self-review case is
+an option to correct the function numbers)
+
+Does anyone on this mail thread issue with the above change
+to the function numbers?
+
+
+I hope this will the last case for these set of APIs!
+
+
+Thanks.
+
+> Thanks!
+>
+>
+>>
+>>
+>>
+>> Thanks.
+>>
+>>>
+>>> Steve
+>>
+>>
+>> -- Hitendra Zhangada
+>> ====================================
+>> SPS Common SW Features Engineering
+>> Software Group, Sun Microsystems, Inc.
+>> Sun Ph# (858) 625 3757, Sun Ext. x53757
+>> Internal homepage http://esp.west/~hitu
+>
+> -- 
+> Richard Barnette            | Gather ye rosebuds while ye may,
+> Sun Microsystems            | Old Time is still a-flying:
+> Enterprise Systems Software | And this same flower that smiles to-day
+> SCA11 2384 / USCA11-205     | To-morrow will be dying.
+> (408) 276-7541 / x17541     |   -- Robert Herrick
+> .                           |      "To the Virgins, to Make Much of Time"
+>
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Wed Oct  1 11:36:04 2008
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m91Ia4qh003140
+	for <fwarc@sac.sfbay.sun.com>; Wed, 1 Oct 2008 11:36:04 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m91Ia3YM039588
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 1 Oct 2008 12:36:04 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K8200809P03I100@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Oct 2008 11:36:03 -0700 (PDT)
+Received: from dm-sfbay-02.sfbay.sun.com ([129.146.11.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K820002JP028SF0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Oct 2008 11:36:02 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-02.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id m91Ia1eD047935; Wed, 01 Oct 2008 11:36:01 -0700 (PDT)
+Received: from [192.168.0.9] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id m91Ia0iF027261; Wed,
+ 01 Oct 2008 11:36:00 -0700 (PDT)
+Date: Wed, 01 Oct 2008 11:36:00 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2008/592 - Self-Review : MMU_EXT API group name and number change
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Richard Barnette <Richard.Barnette@sun.com>, Firmware Arch <fwarc@sun.com>,
+        Charles.Kunzman@sun.com, Prashanth.Sreenivasa@sun.com
+Message-id: <48E3C310.4030202@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.17 (Windows/20080914)
+Status: RO
+Content-Length: 341
+
+
+> I will file another self-review case to make this happen.
+> (Not sure if re-opening the current self-review case is
+> an option to correct the function numbers) 
+
+No need for another case. All this is being logged
+in the case mail file. Just amend the docs and fix
+the registry and send out a final email when it's
+done.
+
+Thanks,
+-David
+
+
+From sacadmin Wed Oct  1 15:47:17 2008
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m91MlHmR015510
+	for <fwarc@sac.sfbay.sun.com>; Wed, 1 Oct 2008 15:47:17 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m91MlH9B008660
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 1 Oct 2008 15:47:17 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K8300I0L0MRK100@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Oct 2008 16:47:15 -0600 (MDT)
+Received: from dm-sfbay-02.sfbay.sun.com ([129.146.11.31])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K8300GIM0MQM410@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Oct 2008 16:47:14 -0600 (MDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-02.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id m91MlDUa021931; Wed, 01 Oct 2008 15:47:13 -0700 (PDT)
+Received: from [129.146.96.102] (x-files.SFBay.Sun.COM [129.146.96.102])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id m91MlCoN005748; Wed,
+ 01 Oct 2008 15:47:13 -0700 (PDT)
+Date: Wed, 01 Oct 2008 15:47:12 -0700
+From: Greg Onufer <greg.onufer@sun.com>
+Subject: Re: 2008/592 - Self-Review : MMU_EXT API group name and number change
+In-reply-to: <E9F9646F-B439-4358-A165-C775385EC862@Sun.COM>
+To: Richard Barnette <Richard.Barnette@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>,
+        Firmware Arch <fwarc@sun.com>, Charles.Kunzman@sun.com,
+        Prashanth.Sreenivasa@sun.com
+Message-id: <48E3FDF0.6000008@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <48E2530F.3040104@sun.com> <48E27ACE.9090307@Sun.COM>
+ <48E287E0.6040303@sun.com> <48E28C62.7090700@Sun.COM>
+ <E9F9646F-B439-4358-A165-C775385EC862@Sun.COM>
+User-Agent: Thunderbird 2.0.0.17pre (X11/20080921)
+Status: RO
+Content-Length: 981
+
+Richard Barnette wrote:
+> On Sep 30, 2008, at 1:30 PM, Hitendra Zhangada wrote:
+> [ ... ]
+>> Can we move,
+>>
+>> Group RK_MMU_SEARCH (0x207)                    2008/592
+>> MMU_GET_NONPRIV_SEARCH    0x207    0x80    0x104    1    0    2008/401
+>> MMU_SET_NONPRIV_SEARCH    0x207    0x80    0x105    1    0    2008/401
+>> MMU_GET_PRIV_SEARCH    0x207    0x80    0x106    1    0    2008/401
+>> MMU_SET_PRIV_SEARCH    0x207    0x80    0x107    1    0    2008/401
+>> to,
+>>
+>> Group RK_MMU_SEARCH (0x207)                    2008/592
+>> MMU_GET_NONPRIV_SEARCH    0x207    0x80    0x13b    1    0    2008/xxx
+>> MMU_SET_NONPRIV_SEARCH    0x207    0x80    0x13c    1    0    2008/xxx
+>> MMU_GET_PRIV_SEARCH    0x207    0x80    0x13d    1    0    2008/xxx
+>> MMU_SET_PRIV_SEARCH    0x207    0x80    0x13e    1    0    2008/xxx
+>>
+>>
+>>
+>> Sorry to have missed this detail when we approved 2008/401.
+>>
+> This change will be easy for us.
+
+The hypervisor twiki has been updated.
+
+Cheers!greg
+
+
+From sacadmin Wed Oct  1 17:53:40 2008
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m920rdsU021212
+	for <fwarc@sac.sfbay.sun.com>; Wed, 1 Oct 2008 17:53:39 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m920rdkW025663
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 1 Oct 2008 18:53:39 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K83004016HD0800@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Oct 2008 17:53:37 -0700 (PDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K8300L7A6HDHZF0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Oct 2008 17:53:37 -0700 (PDT)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id m920ras4007254	for
+ <fwarc@sun.com>; Wed, 01 Oct 2008 17:53:37 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K83009016G6UK00@fe-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 01 Oct 2008 17:53:36 -0700 (PDT)
+Received: from [129.153.85.16] by fe-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K8300EVH6HB8WE0@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 01 Oct 2008 17:53:36 -0700 (PDT)
+Date: Wed, 01 Oct 2008 17:53:35 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2008/592 - Self-Review : MMU_EXT API group name and number change
+In-reply-to: <48E3FDF0.6000008@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Richard Barnette <Richard.Barnette@Sun.COM>, Charles.Kunzman@Sun.COM,
+        Prashanth.Sreenivasa@Sun.COM
+Message-id: <48E41B8F.9080303@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <48E2530F.3040104@sun.com> <48E27ACE.9090307@Sun.COM>
+ <48E287E0.6040303@sun.com> <48E28C62.7090700@Sun.COM>
+ <E9F9646F-B439-4358-A165-C775385EC862@Sun.COM> <48E3FDF0.6000008@sun.com>
+User-Agent: Thunderbird 2.0.0.14 (X11/20080505)
+Status: RO
+Content-Length: 1856
+
+On 10/01/08 15:47, Greg Onufer wrote:
+> Richard Barnette wrote:
+>> On Sep 30, 2008, at 1:30 PM, Hitendra Zhangada wrote:
+>> [ ... ]
+>>> Can we move,
+>>>
+>>> Group RK_MMU_SEARCH (0x207)                    2008/592
+>>> MMU_GET_NONPRIV_SEARCH    0x207    0x80    0x104    1    0    2008/401
+>>> MMU_SET_NONPRIV_SEARCH    0x207    0x80    0x105    1    0    2008/401
+>>> MMU_GET_PRIV_SEARCH    0x207    0x80    0x106    1    0    2008/401
+>>> MMU_SET_PRIV_SEARCH    0x207    0x80    0x107    1    0    2008/401
+>>> to,
+>>>
+>>> Group RK_MMU_SEARCH (0x207)                    2008/592
+>>> MMU_GET_NONPRIV_SEARCH    0x207    0x80    0x13b    1    0    2008/xxx
+>>> MMU_SET_NONPRIV_SEARCH    0x207    0x80    0x13c    1    0    2008/xxx
+>>> MMU_GET_PRIV_SEARCH    0x207    0x80    0x13d    1    0    2008/xxx
+>>> MMU_SET_PRIV_SEARCH    0x207    0x80    0x13e    1    0    2008/xxx
+>>>
+>>>
+>>>
+>>> Sorry to have missed this detail when we approved 2008/401.
+>>>
+>> This change will be easy for us.
+>
+> The hypervisor twiki has been updated.
+
+And FWARC API registry have been updated too.
+
+The latest specification with the corrected group and function
+number have been placed in the materials directory,
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2008/592/materials/sun4vMMUTLBsearch.txt
+
+
+The only difference in this document is group and function number changes
+from the original case material part of 2008/401.  I have updated version
+number and added version history to keep track of different versions
+of this document.
+
+Since this change took place today, I have modified IAM file
+to reflect that (approval date of today).
+
+
+
+Thanks.
+
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+

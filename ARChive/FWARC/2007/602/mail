@@ -1,0 +1,214 @@
+From sacadmin Tue Oct 16 16:04:26 2007
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l9GN4QxQ022899
+	for <fwarc@sac.sfbay.sun.com>; Tue, 16 Oct 2007 16:04:26 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id l9GN13vG006858
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 16 Oct 2007 16:01:05 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JQ10082919TDG00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Tue, 16 Oct 2007 16:01:05 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JQ1000EB19SJF50@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Tue, 16 Oct 2007 16:01:04 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l9GN14Fo019310	for
+ <fwarc@Sun.COM>; Tue, 16 Oct 2007 23:01:04 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JQ1004010XDJK00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Tue, 16 Oct 2007 17:01:04 -0600 (MDT)
+Received: from [192.168.1.103] ([129.150.65.228])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0JQ100ED819EPS70@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Tue, 16 Oct 2007 17:00:52 -0600 (MDT)
+Date: Tue, 16 Oct 2007 19:00:49 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: FWARC/2007/602 - VIO vDisk Protocol Updates - fast-track timeout Oct
+ 23, 2007
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>,
+        Alexandre Chartre <Alexandre.Chartre@sun.com>,
+        Liam Merwick <Liam.Merwick@sun.com>
+Message-id: <3A52D158-8358-432A-A8DB-81A360FC5220@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.2)
+Content-type: text/plain; format=flowed; delsp=yes; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+Status: RO
+Content-Length: 1736
+
+I am sponsoring this fast-track case for Alexandre Chartre.  This case
+amends the VIO communication protocol as defined in FWARC/2006/195
+and FWARC/2006/583.
+
+This case requests a release binding of for minor/micro for any
+firmware changes and minor/micro/patch any OS changes.
+
+The fast-track timer is set to expire on October 23, 2007.
+
+All of the changes are highlighted in the updated document and
+the interface spec, and can be found in the materials directory at
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2007/602
+
+The brief description of the changes are:
+
+   1. Section 1.1.5.1 - Attribute Information
+
+      The vdisk type values in the attribute message were incorrect in
+      the original documentation and have been corrected to following:
+
+		VD_DISK_TYPE_SLICE	0x1	/* slice in blk device */
+		VD_DISK_TYPE_DISK	0x2	/* entire blk device */
+
+      The format of attribute message in version 1.0 of the vdisk  
+protocol
+      is corrected to no longer include the vdisk_size field.
+
+      Version 1.1 of the vdisk protocol will add the virtual disk  
+size and
+      media type fields to the attribute message sent by the vdisk  
+server.
+
+      The supported vdisk media type values in version 1.1 are:
+
+		VD_MEDIA_TYPE_FIXED	0x1	/* Fixed device */
+		VD_MEDIA_TYPE_CD	0x2	/* CD device */
+		VD_MEDIA_TYPE_DVD	0x3	/* DVD device */
+
+   2. Section 1.1.5.2 - vDisk descriptors
+
+      The following operations have been added to the version 1.0 of the
+      vdisk protocol.
+
+		VD_OP_GET_DEVID		0x0b	/* Get device ID */
+		VD_OP_GET_EFI		0x0c	/* Get EFI */
+		VD_OP_SET_EFI		0x0d	/* Set EFI */
+
+      See sections 1.1.5.14, 1.1.5.15 and 1.1.5.16 for more information
+      on the contents of the following vdisk protocol messages.
+
+
+
+
+From sacadmin Wed Oct 24 06:34:02 2007
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id l9ODY17k009544
+	for <fwarc@sac.sfbay.Sun.COM>; Wed, 24 Oct 2007 06:34:02 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id l9ODUODQ020116
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 24 Oct 2007 21:30:32 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JQF00A4546TJV00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Wed, 24 Oct 2007 06:30:29 -0700 (PDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JQF0076L46RXF20@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Wed, 24 Oct 2007 06:30:28 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id l9ODURRj001528	for
+ <fwarc@Sun.COM>; Wed, 24 Oct 2007 13:30:27 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JQF001013NXYE00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Wed, 24 Oct 2007 07:30:27 -0600 (MDT)
+Received: from [129.154.64.169] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JQF00IM946JXKE0@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Wed, 24 Oct 2007 07:30:20 -0600 (MDT)
+Date: Wed, 24 Oct 2007 09:30:10 -0400
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: FWARC/2007/602 - VIO vDisk Protocol Updates - fast-track timeout
+ Oct 23, 2007
+In-reply-to: <3A52D158-8358-432A-A8DB-81A360FC5220@sun.com>
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Alexandre Chartre <Alexandre.Chartre@sun.com>,
+        Liam Merwick <Liam.Merwick@sun.com>
+Message-id: <D3F544FF-0B3B-48CA-87BF-1CFBFF8D9489@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.2)
+Content-type: text/plain; format=flowed; delsp=yes; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <3A52D158-8358-432A-A8DB-81A360FC5220@sun.com>
+Status: RO
+Content-Length: 1989
+
+
+Timer for this case has expired on 10/23. This case is now closed
+approved, IAM file has been updated.
+
+Thanks
+-Narayan
+
+On Oct 16, 2007, at 7:00 PM, Narayan Venkat wrote:
+
+> I am sponsoring this fast-track case for Alexandre Chartre.  This case
+> amends the VIO communication protocol as defined in FWARC/2006/195
+> and FWARC/2006/583.
+>
+> This case requests a release binding of for minor/micro for any
+> firmware changes and minor/micro/patch any OS changes.
+>
+> The fast-track timer is set to expire on October 23, 2007.
+>
+> All of the changes are highlighted in the updated document and
+> the interface spec, and can be found in the materials directory at
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2007/602
+>
+> The brief description of the changes are:
+>
+>   1. Section 1.1.5.1 - Attribute Information
+>
+>      The vdisk type values in the attribute message were incorrect in
+>      the original documentation and have been corrected to following:
+>
+> 		VD_DISK_TYPE_SLICE	0x1	/* slice in blk device */
+> 		VD_DISK_TYPE_DISK	0x2	/* entire blk device */
+>
+>      The format of attribute message in version 1.0 of the vdisk  
+> protocol
+>      is corrected to no longer include the vdisk_size field.
+>
+>      Version 1.1 of the vdisk protocol will add the virtual disk  
+> size and
+>      media type fields to the attribute message sent by the vdisk  
+> server.
+>
+>      The supported vdisk media type values in version 1.1 are:
+>
+> 		VD_MEDIA_TYPE_FIXED	0x1	/* Fixed device */
+> 		VD_MEDIA_TYPE_CD	0x2	/* CD device */
+> 		VD_MEDIA_TYPE_DVD	0x3	/* DVD device */
+>
+>   2. Section 1.1.5.2 - vDisk descriptors
+>
+>      The following operations have been added to the version 1.0 of  
+> the
+>      vdisk protocol.
+>
+> 		VD_OP_GET_DEVID		0x0b	/* Get device ID */
+> 		VD_OP_GET_EFI		0x0c	/* Get EFI */
+> 		VD_OP_SET_EFI		0x0d	/* Set EFI */
+>
+>      See sections 1.1.5.14, 1.1.5.15 and 1.1.5.16 for more information
+>      on the contents of the following vdisk protocol messages.
+>
+>
+>
+
+

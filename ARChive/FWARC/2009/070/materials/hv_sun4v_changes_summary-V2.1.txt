@@ -1,0 +1,60 @@
+
+	Summary of proposed changes to the Sun4v Error Handling Interface
+	-----------------------------------------------------------------
+
+	This document summarises the proposed changes to the Sun4v
+	Error Handling Interface as detailed in FWARC 2006/200, [1].
+	and FWARC 2006/201, [2]. The change is to add a new sun4v error
+	report type for SP state changes.
+
+	- Section (1)
+	  - (1.0) Added short description 
+	- Section (2) UNCHANGED
+	- Section (3) UNCHANGED
+	- Section (4)
+	  - (4.0) Added short description and table 1.1
+	- Section (5) :-
+	  - (5.0) UNCHANGED
+	  - (5.1) UNCHANGED
+	  - (5.2)
+		- (5.2.1) UNCHANGED
+		- (5.2.1) UNCHANGED
+		- (5.2.3)
+		  - Table 5.2.3-I. Error Report Descriptors
+		    New fields SP
+		    New description
+		- (5.2.3.vi) ***NEW***
+		- (5.2.4)
+		  - Table 5.2.4-I. Format of the Error Attributes (ATTR) Field
+		    New field SP_STATE
+		  - Table 5.2.4-II. Applicable Error Attributes Map
+		    ASI not valid for R_UE
+		    New fields SP_STATE, new row SP
+		  - (5.2.4.viiii) ***NEW***
+		  - (5.2.4.x) unchanged from old (5.2.4.viiii)
+		- (5.2.5) UNCHANGED
+		- (5.2.6) UNCHANGED
+		- (5.2.7) UNCHANGED
+		- (5.2.8) UNCHANGED
+		- (5.2.9) UNCHANGED
+		- (5.2.10) UNCHANGED
+		- (5.2.11) UNCHANGED
+
+	- Section (6) UNCHANGED
+	- Section (7) UNCHANGED
+	- Section (8) UNCHANGED
+
+	- In Appendix A :-
+
+	- Tidied up the pseudo-code examples
+	- (A.1)
+		- ASI not valid for R_UE
+		- added "if (DESC == 6) ...." section
+
+	1. Sun4v Hypervisor Error Handling Interfaces 
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/200/materials-20060430/hv_sun4v_ver1.0.txt
+
+	2. Sun4v Hypervisor Error Handling Interfaces (Draft for review)
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/201/materials/hv_sun4v_errorphilosophy-V2.0.txt

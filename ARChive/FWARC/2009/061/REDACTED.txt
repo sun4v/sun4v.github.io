@@ -1,0 +1,9 @@
+The following files and directories have been redacted:
+
+    Materials/16-to-17.diff.txt.old - ignored file
+    Materials/PRI_Specification_17.txt.old - ignored file
+    SCCS - ignored directory
+    sc - ignored directory
+    uirb - ignored directory
+
+See http://hub.opensolaris.org/bin/view/Community+Group+arc/arc-publish-historical-checklist for further information

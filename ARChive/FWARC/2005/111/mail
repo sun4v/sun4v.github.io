@@ -1,0 +1,518 @@
+From sacadmin Fri Feb 25 14:59:49 2005
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j1PMxnSp002250
+	for <FWARC@sac.sfbay.sun.com>; Fri, 25 Feb 2005 14:59:49 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.91.150])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j1PMwVAH005310;
+	Fri, 25 Feb 2005 14:58:31 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j1PMwUvZ012558;
+	Fri, 25 Feb 2005 14:58:30 -0800 (PST)
+Message-ID: <421FAD96.3030905@sun.com>
+Date: Fri, 25 Feb 2005 14:58:30 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Landy Kweh <Landyana.Kweh@sun.com>, FWARC@sac.sfbay.sun.com
+CC: sun4v-iteam@sun.com
+Subject: FWARC 2005/111 - sun4v bus binding -- materials available
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 197
+
+
+Materials are available for this case in the inception.materials
+subdir of the case directory.
+
+sun4v-binding.txt - the spec
+interface-table.txt - interface table
+18q.txt - FWARC's questionaire
+
+
+
+From sacadmin Fri Feb 25 15:05:17 2005
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j1PN5HSp002491
+	for <FWARC@sac.sfbay.sun.com>; Fri, 25 Feb 2005 15:05:17 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.91.150])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j1PN3xAH008299;
+	Fri, 25 Feb 2005 15:03:59 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j1PN3wvZ013053;
+	Fri, 25 Feb 2005 15:03:59 -0800 (PST)
+Message-ID: <421FAEDE.8050207@sun.com>
+Date: Fri, 25 Feb 2005 15:03:58 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Landy Kweh <Landyana.Kweh@sun.com>
+CC: FWARC@sac.sfbay.sun.com, sun4v-iteam@sun.com
+Subject: Re: FWARC 2005/111 - sun4v virtual console device binding -- materials
+ available
+References: <421FAD96.3030905@sun.com>
+In-Reply-To: <421FAD96.3030905@sun.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 388
+
+
+
+Materials are available for this case in the inception.materials
+subdir of the case directory.
+
+console.txt - the spec
+
+Note, this is a fast-track case. If somebody wants
+to sponsor it, please update the IAM file and start the timer.
+
+The virtual console device is a specific instance of a 'virtual-devices'
+child node. 'virtual-devices' is defined in the sun4v bindings case.
+
+-David
+
+
+From sacadmin Fri Mar  4 17:57:21 2005
+Received: from noho.SFBay.Sun.COM (noho [10.6.92.101])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j251vLSp029295
+	for <FWARC@sac.SFBay.Sun.COM>; Fri, 4 Mar 2005 17:57:21 -0800 (PST)
+Received: from noho.SFBay.Sun.COM (localhost [127.0.0.1])
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0) with ESMTP id j251twcS002569;
+	Fri, 4 Mar 2005 17:55:58 -0800 (PST)
+Received: (from dmk@localhost)
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0/Submit) id j251twmY002568;
+	Fri, 4 Mar 2005 17:55:58 -0800 (PST)
+Date: Fri, 4 Mar 2005 17:55:58 -0800 (PST)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Message-Id: <200503050155.j251twmY002568@noho.SFBay.Sun.COM>
+To: David.Kahn@sun.com, FWARC@sac.sfbay.sun.com, Landyana.Kweh@sun.com
+Subject: Re: FWARC 2005/111 - sun4v bus binding -- materials available
+Cc: sun4v-iteam@sun.com
+Status: RO
+Content-Length: 471
+
+The sun4v-binding.txt document has been updated.
+The definition of the cpuid used in core-api calls
+has been moved into the core api case (2005/116).
+It uses the same defintion as devhandle (config-hi
+bits as a unique id.)
+
+The cpuid property has been deleted.
+
+-David
+
+>Materials are available for this case in the inception.materials
+>subdir of the case directory.
+>
+>sun4v-binding.txt - the spec
+>interface-table.txt - interface table
+>18q.txt - FWARC's questionaire
+
+
+From sacadmin Wed Mar  9 17:40:17 2005
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2A1eHSp004574
+	for <FWARC@sac.sfbay.sun.com>; Wed, 9 Mar 2005 17:40:17 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2A1cpjg000794
+	for <FWARC@sac.sfbay.sun.com>; Wed, 9 Mar 2005 17:38:51 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2A1coKw015955
+	for <FWARC@sac.sfbay.sun.com>; Wed, 9 Mar 2005 17:38:50 -0800 (PST)
+Message-ID: <422FA529.9020603@sun.com>
+Date: Wed, 09 Mar 2005 17:38:49 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+Subject: 2005/111 - sun4v binding updated
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 146
+
+
+I added three imported client interfaces in section 9
+at the end of the document.
+
+Other than that, there were no other changes.
+
+Thanks,
+David
+
+
+From sacadmin Wed Mar  9 19:12:30 2005
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2A3CUSp010303
+	for <FWARC@sac.sfbay.sun.com>; Wed, 9 Mar 2005 19:12:30 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2A3B4jg001268
+	for <FWARC@sac.sfbay.sun.com>; Wed, 9 Mar 2005 19:11:04 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2A3B3Kw021198
+	for <FWARC@sac.sfbay.sun.com>; Wed, 9 Mar 2005 19:11:03 -0800 (PST)
+Message-ID: <422FBAC6.5090609@sun.com>
+Date: Wed, 09 Mar 2005 19:11:02 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+Subject: Re: 2005/111 - open issues
+References: <422FA529.9020603@sun.com>
+In-Reply-To: <422FA529.9020603@sun.com>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 607
+
+
+There are two known issues with the sun4v bindings. I don't want us
+to waste any more time than we have to on these at the meeting on
+Monday, and it should be possible to approve this case without these
+interfaces.
+
+1. SUNW,set-trap-table .. the cif has another argument for the miss area.
+    This will be fast-tracked in later. The sun4v version has an
+    additional argument for the miss area.
+
+2. An unamed cif for dealing with HV API versioning negotiation via OBP
+    with the hypervisor. This will be fast-tracked in later.
+    It doesn't exist yet. Details need to be worked out on this.
+
+-David
+
+
+From sacadmin Thu Mar 10 16:28:28 2005
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2B0SSSp025256
+	for <fwarc@sac.sfbay.sun.com>; Thu, 10 Mar 2005 16:28:28 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2B0R1AH014563;
+	Thu, 10 Mar 2005 16:27:01 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2B0R0Kw085198;
+	Thu, 10 Mar 2005 16:27:00 -0800 (PST)
+Message-ID: <4230E5D3.40505@sun.com>
+Date: Thu, 10 Mar 2005 16:26:59 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: fwarc@sac.sfbay.sun.com
+CC: sun4v-iteam@sun.com
+Subject: FWARC/2005/111 - sun4v bindings materials update
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 395
+
+
+Based on some feedback from Hitendra, I updated
+the materials for this case.
+
+The current version of the spec is v1.14. If
+you don't see 1.14 in the sccs ident line in the
+spec, hit reload.
+
+1. Deleted "mmuid" property - it's not needed in v1.
+
+2. Added SUNW,retain to imported client interfaces
+    in section 9.
+
+And a few other minor typos and clarifications requested
+by Hitendra.
+
+-David
+
+
+From sacadmin Mon Mar 14 10:50:16 2005
+Received: from phys-san-2 (phys-san-2.West.Sun.COM [129.153.85.71])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2EIoGSp019079
+	for <fwarc@sac.sfbay.sun.com>; Mon, 14 Mar 2005 10:50:16 -0800 (PST)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IDC00201UMG14@san-mail1.west.sun.com>
+ (original mail from hitendra.zhangada@sun.com) for fwarc@sac.sfbay.sun.com;
+ Mon, 14 Mar 2005 10:48:47 -0800 (PST)
+Received: from [129.153.85.35] (sr1-usan-05.West.Sun.COM [129.153.85.35])
+ by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTPA id <0IDC000KSUXARH@san-mail1.west.sun.com>; Mon,
+ 14 Mar 2005 10:48:46 -0800 (PST)
+Date: Mon, 14 Mar 2005 10:48:46 -0800
+From: Hitendra Zhangada <hitendra.zhangada@sun.com>
+Subject: Issues: FWARC/2005/111 - sun4v bindings materials update
+In-reply-to: <4230E5D3.40505@sun.com>
+To: fwarc@sac.sfbay.sun.com
+Cc: sun4v-iteam@sun.com
+Reply-to: hitendra.zhangada@sun.com
+Message-id: <4235DC8E.1090005@sun.com>
+Organization: Sun Microsystems Inc.
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7.5) Gecko/20041229
+References: <4230E5D3.40505@sun.com>
+Status: RO
+Content-Length: 1370
+
+I have couple of issues to discuss.
+
+1.  Nit, section 2.2.1.3. Unit Address Representation
+     provides examples which includes "/cmp@100".  Since
+     cmp nodes does not exists under sun4v architecture
+     we may want to not mention CMP anywhere in the document.
+     I suggest changing "/cmp@100" to "cpu@100".
+
+     Also, the section 1.1, reference [6] can be deleted on
+     the same basis as above.  Since CPU or chip topology
+     is not included in device tree (as per section 5.1) nothing
+     is imported from the CMP bindings.
+
+2.  Section 9.1.2 mentions that cpuid is 28-bit quantity.
+     This is significantly large value then what we have
+     dealt with in past.  E.g., the cpuid for UltraSPARC-III,
+     III+, IV, etc. is just 10 bits.
+
+     What I would like to know (more of a curiosity) is how
+     sun4v Solaris uses the cpuid.  Are the CPU related structures
+     based on the 28 bit CPUIDs?  Is NCPU 28 bit quantity?
+     May be concept of NCPU does not exist in sun4v Solaris.
+
+     I would like brief discussion on this at the meeting.
+
+
+That's all.  David has taken cared of all of my other comments
+last week.
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+From sacadmin Mon Mar 14 11:46:59 2005
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2EJkwSp025257
+	for <fwarc@sac.sfbay.sun.com>; Mon, 14 Mar 2005 11:46:59 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2EJjTAH003487;
+	Mon, 14 Mar 2005 11:45:29 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2EJjSha031132;
+	Mon, 14 Mar 2005 11:45:28 -0800 (PST)
+Message-ID: <4235E9D8.6030701@sun.com>
+Date: Mon, 14 Mar 2005 11:45:28 -0800
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Mozilla Thunderbird 1.0 (Windows/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: Hitendra Zhangada <hitendra.zhangada@sun.com>
+CC: fwarc@sac.sfbay.sun.com, sun4v-iteam@sun.com
+Subject: Re: Issues: FWARC/2005/111 - sun4v bindings materials update
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 1772
+
+
+Even though this is a real nit, since it's just an
+example of the unit-address represenation in the
+address formats section of the document,
+I changed it from "cmp" to "cpu" and deleted
+reference [6].
+
+As far as question 2 is concerned, you'll have
+to ask the OS folks. I'm sure they are *not*
+setting NCPU to 2**28 for version 1, which
+only supports Niagara/Ontario.
+
+As I mentioned to you previously, the OS
+is free to use the cpuid anyway it sees fit,
+as long as it arranges to use that value
+in HV API calls where a cpuid is required.
+
+-David
+
+
+Hitendra Zhangada wrote:
+> I have couple of issues to discuss.
+> 
+> 1.  Nit, section 2.2.1.3. Unit Address Representation
+>     provides examples which includes "/cmp@100".  Since
+>     cmp nodes does not exists under sun4v architecture
+>     we may want to not mention CMP anywhere in the document.
+>     I suggest changing "/cmp@100" to "cpu@100".
+> 
+>     Also, the section 1.1, reference [6] can be deleted on
+>     the same basis as above.  Since CPU or chip topology
+>     is not included in device tree (as per section 5.1) nothing
+>     is imported from the CMP bindings.
+> 
+> 2.  Section 9.1.2 mentions that cpuid is 28-bit quantity.
+>     This is significantly large value then what we have
+>     dealt with in past.  E.g., the cpuid for UltraSPARC-III,
+>     III+, IV, etc. is just 10 bits.
+> 
+>     What I would like to know (more of a curiosity) is how
+>     sun4v Solaris uses the cpuid.  Are the CPU related structures
+>     based on the 28 bit CPUIDs?  Is NCPU 28 bit quantity?
+>     May be concept of NCPU does not exist in sun4v Solaris.
+> 
+>     I would like brief discussion on this at the meeting.
+> 
+> 
+> That's all.  David has taken cared of all of my other comments
+> last week.
+> 
+> 
+> Thanks.
+> 
+
+From sacadmin Mon Mar 14 14:24:54 2005
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2EMOsSp014203
+	for <fwarc-members@sac.eng.sun.com>; Mon, 14 Mar 2005 14:24:54 -0800 (PST)
+Received: from jurassic.eng.sun.com (jurassic.SFBay.Sun.COM [129.146.89.50])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2EMNNg00868;
+	Mon, 14 Mar 2005 14:23:23 -0800 (PST)
+Received: from Sun.COM (sr1-umpk-19.SFBay.Sun.COM [129.146.11.205])
+	by jurassic.eng.sun.com (8.13.3+Sun/8.13.3) with ESMTP id j2EMNLCl714838;
+	Mon, 14 Mar 2005 14:23:23 -0800 (PST)
+Message-ID: <42360ED9.5050306@Sun.COM>
+Date: Mon, 14 Mar 2005 14:23:21 -0800
+From: Landy Burnett <Landyana.Burnett@Sun.COM>
+Reply-To: Landyana.Burnett@Sun.COM
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: fwarc-members@Sun.COM, James Barnette Jr <Richard.Barnette@Sun.COM>,
+   Holly Yang <Huizhong.Yang@Sun.COM>, Minh Nguyen <Minh.Nguyen@Sun.COM>,
+   sun4v-iteam@Sun.COM
+Subject: FWARC Meeting Minutes 03/15/2005 Inception: 2005/111
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 414
+
+Hello,
+
+Meeting minutes from today's meeting is available at:
+http://sac.sfbay.sun.com/ARC/FWARC/2005/111/20050315
+
+Audio:
+http://sac.sfbay.sun.com/ARC/FWARC/2005/111/20050315.2005.111.inception.mp3
+
+thanks,
+landy
+-
+
+
+-- 
+Landyana Burnett				landyana.burnett@sun.com
+Program Manager, System Architecture		650.786.3664
+Sun Microsystems, Inc.
+=======================================================================
+
+
+From sacadmin Mon Mar 14 16:28:55 2005
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2F0StSp025445
+	for <fwarc@sac.eng.Sun.COM>; Mon, 14 Mar 2005 16:28:55 -0800 (PST)
+Received: from westmail2san.west.sun.com (westmail2san.West.Sun.COM [129.153.85.6])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2F0RP219445;
+	Mon, 14 Mar 2005 17:27:25 -0700 (MST)
+Received: from phys-san-2 (phys-san-2.West.Sun.COM [129.153.85.71])
+	by westmail2san.west.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2F0RP69029169;
+	Mon, 14 Mar 2005 16:27:25 -0800 (PST)
+Received: from conversion-daemon.san-mail1.west.sun.com by
+ san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0IDD00H01AHF6I@san-mail1.west.sun.com>
+ (original mail from ysun@san-mail1.West.sun.com); Mon,
+ 14 Mar 2005 16:27:25 -0800 (PST)
+Received: from san-mail1.West.Sun.COM
+ (esun1as-be21.Central.Sun.COM [129.147.60.150]) by san-mail1.west.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTP id <0IDD005PQALJN0@san-mail1.west.sun.com>; Mon,
+ 14 Mar 2005 16:27:25 -0800 (PST)
+Date: Mon, 14 Mar 2005 16:35:08 -0800
+From: ysun@san-mail1.west.sun.com
+Subject: closed approved  fast-track: 2005/111 - sun4v bus bindings
+To: fwarc@sun.com, sun4v-iteam@sun.com
+Reply-to: ysun@west.sun.com
+Message-id: <0IDD005PTALLN0@san-mail1.west.sun.com>
+MIME-version: 1.0
+X-Mailer: Sun NetMail 2.3
+Content-type: text/plain; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+Status: RO
+Content-Length: 757
+
+
+We reviewed this case today at the FWARC meeting.  All of the issues 
+raised have been addressed by David Kahn.  See the issue file at:
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/111/issues
+
+At the meeting we took vote on converting and approving this case
+as a fast-track.  This case is now approved.
+
+The final specification, interface table and 18Q are available at,
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2005/111/final.materials/
+
+
+Please note that even though this case is approved it can not be
+delivered into a consolidation until after the case this case
+depends upon is approved by FWARC.  The dependency includes following
+FWARC case,
+
+FWARC/2005/116 - sun4v hypervisor core API
+
+IAM file has been updated.
+
+Yanmin
+
+
+From sacadmin Fri Mar 25 14:50:14 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2PMoDSp012621
+	for <fwarc-record@sac.eng.sun.com>; Fri, 25 Mar 2005 14:50:13 -0800 (PST)
+Received: from noho.SFBay.Sun.COM (noho.SFBay.Sun.COM [10.6.92.101])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2PMmbw18292
+	for <fwarc-record@sun.com>; Fri, 25 Mar 2005 14:48:37 -0800 (PST)
+Received: from noho.SFBay.Sun.COM (localhost [127.0.0.1])
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0) with ESMTP id j2PMmbf5011374
+	for <fwarc-record@sun.com>; Fri, 25 Mar 2005 14:48:37 -0800 (PST)
+Received: (from dmk@localhost)
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0/Submit) id j2PMmaJK011373
+	for fwarc-record@sun.com; Fri, 25 Mar 2005 14:48:36 -0800 (PST)
+Date: Fri, 25 Mar 2005 14:48:36 -0800 (PST)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Message-Id: <200503252248.j2PMmaJK011373@noho.SFBay.Sun.COM>
+To: fwarc-record@sun.com
+Subject: Re: closed approved  fast-track: 2005/111 - sun4v bus bindings
+Status: RO
+Content-Length: 131
+
+
+Note, this is case is approved for integration
+into a minor release of the firmware and a
+micro/patch release of the OS.
+
+-David
+
+

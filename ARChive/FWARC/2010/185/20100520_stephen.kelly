@@ -1,0 +1,25 @@
+Subject: PRI Changes for Direct Attached Disks [FWARC/2010/185 FastTrack timeout 05/27/2010]
+To:      FWARC-record@sac.sfbay.sun.com
+Cc:      
+Bcc:     one-pager-list@sac.sfbay one-pager-log@sac.sfbay sac-bar@sac.sfbay
+
+
+Template Version: @(#)sac_nextcase 1.70 03/30/10 SMI
+This information is Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
+1. Introduction
+    1.1. Project/Component Working Name:
+	 PRI Changes for Direct Attached Disks
+    1.2. Name of Document Author/Supplier:
+	 Author:  Stephen Kelly
+    1.3  Date of This Document:
+	20 May, 2010
+4. Technical Description
+    See the case directory for more detail
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		unknown
+    6.5. ARC review type: FastTrack
+    6.6. ARC Exposure: open
+

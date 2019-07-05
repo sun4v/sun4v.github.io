@@ -1,0 +1,326 @@
+From sacadmin Mon Mar 13 16:39:25 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k2E0dPIQ016605
+	for <fwarc@sac.eng.Sun.COM>; Mon, 13 Mar 2006 16:39:25 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k2E0dOG11855
+	for <@sunmail1brm.central.sun.com:fwarc@sun.com>; Mon, 13 Mar 2006 17:39:24 -0700 (MST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IW30060BDTM7V00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 13 Mar 2006 17:39:22 -0700 (MST)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IW300II8DTL4WB0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 13 Mar 2006 17:39:21 -0700 (MST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k2E0dLLn023022; Mon, 13 Mar 2006 16:39:21 -0800 (PST)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k2E0dKZO023034;
+ Mon, 13 Mar 2006 16:39:20 -0800 (PST)
+Date: Mon, 13 Mar 2006 16:39:20 -0800
+From: David Kahn <David.Kahn@sun.com>
+Subject: 2006/174 NCS HVI Update fast track timeout 3/20/2006
+To: Firmware Arch <fwarc@sun.com>
+Cc: Eric Pilmore <Eric.Pilmore@sun.com>
+Message-id: <441610B8.8040205@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+User-Agent: Thunderbird 1.5 (Windows/20051201)
+Status: RO
+Content-Length: 695
+
+
+I'm sponsoring this case for Eric Pilmore.
+
+It updates the Niagara Crypto HV interfaces.
+No change to the existing HV API, but it
+adds new APIs that will be used moving forward.
+
+It also adds support for the CWQ hw in Niagara-2
+and adds interrupt support for both the MAU and the CWQ.
+
+Description of md and device nodes is included for
+both the mau and cwq nodes.
+
+An interface table is included in the document.
+
+A minor/micro/patch binding is requested for
+integration of the new interfaces.
+
+The document is in the case materials directory.
+
+Since I'm going on vacation starting Mar 15, Hitendra
+has agreed to drive the case to closure. (including
+updating the HV API registry.)
+
+-David
+
+
+
+
+From sacadmin Mon Mar 20 18:33:40 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k2L2XeIQ001019
+	for <fwarc@sac.eng.sun.com>; Mon, 20 Mar 2006 18:33:40 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k2L2Xc720540;
+	Mon, 20 Mar 2006 18:33:39 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IWG00503HS15K00@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 20 Mar 2006 18:33:37 -0800 (PST)
+Received: from nwkes-gis-mail-1.sun.com ([10.4.134.5])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IWG001KHHRZNOE0@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 20 Mar 2006 18:33:35 -0800 (PST)
+Received: from d1-sfbay-06.sun.com ([192.18.39.116])
+	by nwkes-gis-mail-1.sun.com (8.12.9/8.12.9) with ESMTP id k2L2XZIU009459; Mon,
+ 20 Mar 2006 18:33:35 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-06.sun.com by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IWG00401ERBBG00@d1-sfbay-06.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Mon,
+ 20 Mar 2006 18:33:35 -0800 (PST)
+Received: from [129.153.85.10] by d1-sfbay-06.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IWG000NBHRZJO30@d1-sfbay-06.sun.com>; Mon,
+ 20 Mar 2006 18:33:35 -0800 (PST)
+Date: Mon, 20 Mar 2006 18:33:34 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/174 NCS HVI Update fast track timeout 3/20/2006
+In-reply-to: <441610B8.8040205@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Eric Pilmore <Eric.Pilmore@Sun.COM>,
+   LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <441F65FE.6050508@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <441610B8.8040205@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 1126
+
+David Kahn wrote On 03/13/06 16:39,:
+> 
+> I'm sponsoring this case for Eric Pilmore.
+> 
+> It updates the Niagara Crypto HV interfaces.
+> No change to the existing HV API, but it
+> adds new APIs that will be used moving forward.
+> 
+> It also adds support for the CWQ hw in Niagara-2
+> and adds interrupt support for both the MAU and the CWQ.
+> 
+> Description of md and device nodes is included for
+> both the mau and cwq nodes.
+> 
+> An interface table is included in the document.
+> 
+> A minor/micro/patch binding is requested for
+> integration of the new interfaces.
+> 
+> The document is in the case materials directory.
+> 
+> Since I'm going on vacation starting Mar 15, Hitendra
+> has agreed to drive the case to closure. (including
+> updating the HV API registry.)
+
+This case has timed-out today and hence it is approved.
+
+I will update the registry tomorrow.
+
+
+Thanks.
+
+> 
+> -David
+> 
+> 
+> 
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Tue Mar 21 16:50:46 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k2M0okIQ021394
+	for <fwarc@sac.eng.sun.com>; Tue, 21 Mar 2006 16:50:46 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k2M0oj722190;
+	Tue, 21 Mar 2006 16:50:45 -0800 (PST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IWI00F0J7OI1S00@brm-avmta-1.central.sun.com>; Tue,
+ 21 Mar 2006 17:50:42 -0700 (MST)
+Received: from nwkes-gis-mail-1.sun.com ([10.4.134.5])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IWI00CHH7OHJQ90@brm-avmta-1.central.sun.com>; Tue,
+ 21 Mar 2006 17:50:41 -0700 (MST)
+Received: from d1-sfbay-05.sun.com ([192.18.39.115])
+	by nwkes-gis-mail-1.sun.com (8.12.9/8.12.9) with ESMTP id k2M0ofIU009745; Tue,
+ 21 Mar 2006 16:50:41 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-05.sun.com by d1-sfbay-05.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IWI00C016B7DU00@d1-sfbay-05.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Tue,
+ 21 Mar 2006 16:50:40 -0800 (PST)
+Received: from [129.153.85.10] by d1-sfbay-05.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IWI0081X7OG6A60@d1-sfbay-05.sun.com>; Tue,
+ 21 Mar 2006 16:50:40 -0800 (PST)
+Date: Tue, 21 Mar 2006 16:50:40 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/174 NCS HVI Update fast track timeout 3/20/2006
+In-reply-to: <441F65FE.6050508@Sun.COM>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Eric Pilmore <Eric.Pilmore@Sun.COM>,
+   LDoms Internal <ldoms-internal@Sun.COM>
+Message-id: <44209F60.10407@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <441610B8.8040205@sun.com> <441F65FE.6050508@Sun.COM>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 1580
+
+Hitendra Zhangada wrote On 03/20/06 18:33,:
+> David Kahn wrote On 03/13/06 16:39,:
+> 
+>>
+>> I'm sponsoring this case for Eric Pilmore.
+>>
+>> It updates the Niagara Crypto HV interfaces.
+>> No change to the existing HV API, but it
+>> adds new APIs that will be used moving forward.
+>>
+>> It also adds support for the CWQ hw in Niagara-2
+>> and adds interrupt support for both the MAU and the CWQ.
+>>
+>> Description of md and device nodes is included for
+>> both the mau and cwq nodes.
+>>
+>> An interface table is included in the document.
+>>
+>> A minor/micro/patch binding is requested for
+>> integration of the new interfaces.
+>>
+>> The document is in the case materials directory.
+>>
+>> Since I'm going on vacation starting Mar 15, Hitendra
+>> has agreed to drive the case to closure. (including
+>> updating the HV API registry.)
+> 
+> 
+> This case has timed-out today and hence it is approved.
+> 
+> I will update the registry tomorrow.
+
+Following has been added to the HV API registry,
+
+http://sac.eng.sun.com/arc/FWARC/Registries/trap-registry.txt
+
+NCS_QCONF		0x103	0x80	0x111   2  	0	2006/174
+NCS_QINFO		0x103	0x80	0x112   2  	0	2006/174
+NCS_GETHEAD		0x103	0x80	0x113   2  	0	2006/174
+NCS_GETTAIL		0x103	0x80	0x114   2  	0	2006/174
+NCS_SETTAIL		0x103	0x80	0x115   2  	0	2006/174
+NCS_QHANDLE_TO_DEVINO	0x103	0x80	0x116   2  	0	2006/174
+
+
+Thanks
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Fri Mar 31 19:03:01 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k31330IQ007442
+	for <fwarc-record@sac.eng.Sun.COM>; Fri, 31 Mar 2006 19:03:00 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k31330d02060
+	for <@sunmail1brm.central.sun.com:fwarc-record@sun.com>; Fri, 31 Mar 2006 20:03:00 -0700 (MST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IX000K01WH0CN00@brm-avmta-1.central.sun.com> for fwarc-record@sun.com
+ (ORCPT fwarc-record@sun.com); Fri, 31 Mar 2006 20:03:00 -0700 (MST)
+Received: from nwkes-gis-mail-1.sun.com ([10.4.134.5])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IX000HT8WGZKK30@brm-avmta-1.central.sun.com> for
+ fwarc-record@sun.com (ORCPT fwarc-record@sun.com); Fri,
+ 31 Mar 2006 20:03:00 -0700 (MST)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkes-gis-mail-1.sun.com (8.12.9/8.12.9) with ESMTP id k3132xIU019716	for
+ <fwarc-record@sun.com>; Fri, 31 Mar 2006 19:02:59 -0800 (PST)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IX000701VGGAL00@d1-sfbay-09.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc-record@sun.com (ORCPT fwarc-record@sun.com); Fri,
+ 31 Mar 2006 19:02:59 -0800 (PST)
+Received: from [129.150.64.106] by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IX00080BWGV3900@d1-sfbay-09.sun.com> for
+ fwarc-record@sun.com (ORCPT fwarc-record@sun.com); Fri,
+ 31 Mar 2006 19:02:59 -0800 (PST)
+Date: Fri, 31 Mar 2006 19:02:55 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: OS/FW release binding for FWARC/2006/174
+Sender: Hitendra.Zhangada@Sun.COM
+To: fwarc-record@Sun.COM
+Message-id: <442DED5F.3000909@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 348
+
+This case is approved for integration into a minor release of
+the firmware and a micro/patch release of the OS.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Scalable Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+
+

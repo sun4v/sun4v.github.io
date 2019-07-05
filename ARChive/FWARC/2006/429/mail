@@ -1,0 +1,247 @@
+From sacadmin Wed Jul 12 17:25:57 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k6D0Pvah025178
+	for <FWARC@sac.sfbay.sun.com>; Wed, 12 Jul 2006 17:25:57 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k6D0PumC016420;
+	Wed, 12 Jul 2006 17:25:56 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k6D0PtP1078409;
+	Wed, 12 Jul 2006 17:25:55 -0700 (PDT)
+Message-ID: <44B59313.3020205@sun.com>
+Date: Wed, 12 Jul 2006 17:25:55 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 1.5.0.4 (Windows/20060516)
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+CC: Sree.Vemuri@sun.com, Greg Onufer <greg.onufer@sun.com>,
+        Girish.Goyal@sun.com
+Subject: FWARC/2006/429 - Niagara2 Perf Regs HV API - fast-track timeout 19
+ July 2006
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 804
+
+
+I'm sponsoring this fast track case for Sree Vemuri.
+The case times out on July 19, 2006
+
+The document is in the materials directory. Section 3
+of the document defines the interfaces.
+
+This case creates two new N2-specific HV API's:
+
+	NIAGARA2_GET_PERFREG		0x104
+	NIAGARA2_SET_PERFREG		0x105
+
+The new APIs are part of a new Niagara2 CPU API group,
+0x202. The APIs will be version 1.0 of the new group.
+(See section 3.2 of the spec.)
+
+Section 3 of the spec defines the interface, which
+includes the "perfreg" register number values 0 - 8
+which are used as arguments to the APIs.
+
+The new APIs will be added to the trap registry
+upon case approval.
+
+All interfaces are classified as evolving.
+
+Release Binding:
+	firmware: minor/micro firmware release
+	OS: patch or micro or minor OS release.
+
+-David
+
+
+
+
+
+
+From sacadmin Thu Jul 13 08:27:18 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k6DFRIjQ018548
+	for <FWARC@sac.sfbay.sun.com>; Thu, 13 Jul 2006 08:27:18 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com (nwkes-gis-mail-2.SFBay.Sun.COM [10.4.134.6])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k6DFRICu008344
+	for <FWARC@sac.sfbay.sun.com>; Thu, 13 Jul 2006 08:27:18 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k6DFRCqn024492
+	for <FWARC@sac.sfbay.sun.com>; Thu, 13 Jul 2006 08:27:12 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J2C00D01LJUSO00@d1-sfbay-09.sun.com>
+ (original mail from Sree.Vemuri@Sun.COM) for FWARC@sac.sfbay.sun.com; Thu,
+ 13 Jul 2006 08:27:12 -0700 (PDT)
+Received: from Sun.COM ([129.146.90.66])
+ by d1-sfbay-09.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0J2C00257LLCRC90@d1-sfbay-09.sun.com>; Thu,
+ 13 Jul 2006 08:27:12 -0700 (PDT)
+Date: Thu, 13 Jul 2006 08:15:05 -0700
+From: Sree-Lakshmi Vemuri <Sree.Vemuri@Sun.COM>
+Subject: Re: FWARC/2006/429 - Niagara2 Perf Regs HV API - fast-track timeout 19
+ July 2006
+In-reply-to: <44B59313.3020205@sun.com>
+Sender: Sree.Vemuri@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: FWARC@sac.sfbay.sun.com, Greg Onufer <greg.onufer@Sun.COM>,
+        Girish.Goyal@Sun.COM
+Reply-to: Sree.Vemuri@Sun.COM
+Message-id: <44B66379.8020802@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+References: <44B59313.3020205@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20041214
+Status: RO
+Content-Length: 1060
+
+I got some minor edit comments from Greg. The updated file is at:
+http://dtsw.sfbay.sun.com./~svemuri/projects/n2/niagara2_perf_api.txt
+
+-thanks
+sree
+
+David Kahn wrote On 07/12/06 17:25,:
+> I'm sponsoring this fast track case for Sree Vemuri.
+> The case times out on July 19, 2006
+> 
+> The document is in the materials directory. Section 3
+> of the document defines the interfaces.
+> 
+> This case creates two new N2-specific HV API's:
+> 
+> 	NIAGARA2_GET_PERFREG		0x104
+> 	NIAGARA2_SET_PERFREG		0x105
+> 
+> The new APIs are part of a new Niagara2 CPU API group,
+> 0x202. The APIs will be version 1.0 of the new group.
+> (See section 3.2 of the spec.)
+> 
+> Section 3 of the spec defines the interface, which
+> includes the "perfreg" register number values 0 - 8
+> which are used as arguments to the APIs.
+> 
+> The new APIs will be added to the trap registry
+> upon case approval.
+> 
+> All interfaces are classified as evolving.
+> 
+> Release Binding:
+> 	firmware: minor/micro firmware release
+> 	OS: patch or micro or minor OS release.
+> 
+> -David
+> 
+> 
+> 
+> 
+> 
+
+
+From sacadmin Thu Jul 13 13:43:11 2006
+Received: from sfbaymail1sca.SFBay.Sun.COM (sfbaymail1sca.SFBay.Sun.COM [129.145.154.35])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k6DKhBQ3008187
+	for <FWARC@sac.sfbay.sun.com>; Thu, 13 Jul 2006 13:43:11 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2) with ESMTP id k6DKhA6w005662;
+	Thu, 13 Jul 2006 13:43:10 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k6DKh8fe011808;
+	Thu, 13 Jul 2006 13:43:09 -0700 (PDT)
+Message-ID: <44B6B056.4020606@sun.com>
+Date: Thu, 13 Jul 2006 13:43:02 -0700
+From: David Kahn <David.Kahn@sun.com>
+User-Agent: Thunderbird 1.5.0.4 (Windows/20060516)
+MIME-Version: 1.0
+To: FWARC@sac.sfbay.sun.com
+CC: Sree.Vemuri@sun.com, Greg Onufer <greg.onufer@sun.com>,
+        Girish.Goyal@sun.com
+Subject: Re: FWARC/2006/429 - Niagara2 Perf Regs HV API - fast-track timeout
+ 19 July 2006
+References: <44B59313.3020205@sun.com> <44B66379.8020802@Sun.COM>
+In-Reply-To: <44B66379.8020802@Sun.COM>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 1318
+
+
+The updated spec and the old spec are in the
+materials directory, named appropriately.
+
+I diff-ed them and the changes all appear to be
+editorial in nature, so the timer is unchanged.
+
+-David
+
+
+Sree-Lakshmi Vemuri wrote:
+> I got some minor edit comments from Greg. The updated file is at:
+> http://dtsw.sfbay.sun.com./~svemuri/projects/n2/niagara2_perf_api.txt
+> 
+> -thanks
+> sree
+> 
+> David Kahn wrote On 07/12/06 17:25,:
+>> I'm sponsoring this fast track case for Sree Vemuri.
+>> The case times out on July 19, 2006
+>>
+>> The document is in the materials directory. Section 3
+>> of the document defines the interfaces.
+>>
+>> This case creates two new N2-specific HV API's:
+>>
+>> 	NIAGARA2_GET_PERFREG		0x104
+>> 	NIAGARA2_SET_PERFREG		0x105
+>>
+>> The new APIs are part of a new Niagara2 CPU API group,
+>> 0x202. The APIs will be version 1.0 of the new group.
+>> (See section 3.2 of the spec.)
+>>
+>> Section 3 of the spec defines the interface, which
+>> includes the "perfreg" register number values 0 - 8
+>> which are used as arguments to the APIs.
+>>
+>> The new APIs will be added to the trap registry
+>> upon case approval.
+>>
+>> All interfaces are classified as evolving.
+>>
+>> Release Binding:
+>> 	firmware: minor/micro firmware release
+>> 	OS: patch or micro or minor OS release.
+>>
+>> -David
+>>
+>>
+>>
+>>
+>>
+> 
+
+From sacadmin Wed Jul 19 18:55:07 2006
+Received: from noho.SFBay.Sun.COM (noho.SFBay.Sun.COM [10.6.92.101])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k6K1t7fs002343
+	for <FWARC@sac.SFBay.Sun.COM>; Wed, 19 Jul 2006 18:55:07 -0700 (PDT)
+Received: from noho.SFBay.Sun.COM (localhost [127.0.0.1])
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0) with ESMTP id k6K1t7l2011121;
+	Wed, 19 Jul 2006 18:55:07 -0700 (PDT)
+Received: (from dmk@localhost)
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0/Submit) id k6K1t774011120;
+	Wed, 19 Jul 2006 18:55:07 -0700 (PDT)
+Date: Wed, 19 Jul 2006 18:55:07 -0700 (PDT)
+From: David Kahn <dmk@noho.SFBay.Sun.COM>
+Message-Id: <200607200155.k6K1t774011120@noho.SFBay.Sun.COM>
+To: David.Kahn@sun.com, FWARC@sac.sfbay.sun.com
+Subject: Re: FWARC/2006/429 - Niagara2 Perf Regs HV API - fast-track timeout 19 July 2006
+Cc: Girish.Goyal@sun.com, Sree.Vemuri@sun.com, greg.onufer@sun.com
+Status: RO
+Content-Length: 46
+
+This fast-track case is now approved.
+
+-David
+

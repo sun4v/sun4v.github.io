@@ -1,0 +1,643 @@
+Version 1.1
+Date : 03/07/2007
+
+Revision History :
+
+1.0   Approved by FWARC/2006/700.
+1.1   Added memory segment nodes and updates to component node.
+      Added section numbers to the entire document
+
+Physical Resource Inventory (PRI) Specification
+===============================================
+
+1.0  Introduction
+
+This is the specification for the Physical Resource Inventory (PRI). The PRI
+is intended to contain physical information about a system. Much of
+this information had previously been contained in the Machine Description (MD)
+provided to the guest. With the advent of Logical Domains (LDoms), it becomes 
+essential to have a clean separation between the physical and virtual views of 
+a system. To achieve this, much of the physical information is no longer part 
+of the MD within a guest domain. This provides a strictly virtual view of the 
+system within an LDom.
+
+However, besides the System Controller (SC), other management entities (e.g. 
+FMA, the LDom Manager) still require a physical view of the system. This is 
+now provided by the PRI. The PRI includes the physical information which is no 
+longer available in the MD (needed by FMA to perform diagnosis). It also
+includes additional information necessary for the LDom Manager to configure and
+manage individual logical domains, including acting as a template for the LDom 
+Manager to construct MDs for the various logical domains it is managing.
+
+The PRI is provided by the System Controller (SC) to the domain. The PRI
+contains physical information about system resources in a format identical
+to that used by the guest MD. The names for the nodes and properties used 
+to access that information are defined to be platform independent, as are 
+many of the values. Some of the values may be platform-dependent and may 
+require additional documentation to parse them.
+
+The PRI may be updated at anytime on the SC depending on the state of its 
+resources. Protocols and transports may be agreed upon with the domain for 
+delivering the PRI to it so that it may use the information for activities 
+such as configuring LDOM guest domains or diagnosing error data.
+
+One of the primary consumers of the PRI on the domain is the LDOM Manager. It
+uses the PRI to generate guest MDs by extracting information from it that
+serves as a template for new domains. The PRI may contain any of the nodes and 
+properties that may be found in a guest MD on a system. For this reason, this
+case imports all past and future cases that specify new nodes or properties for 
+the guest MD that may be used on a system. Since future cases cannot be 
+explicitly imported, any new cases that arise should specify that they apply
+to both the guest MD and the PRI.
+
+In addition to containing the information needed by the LDOM Manager for 
+creating guest MDs, the PRI also supplies the information it needs to generate
+the hypervisor data needed to boot a set of configured guest domains. This
+hypervisor data may include information about either the SC or other firmware
+components that it needs to know about. Some items in this specification in
+this category include the LDC endpoints and host prom information.
+
+Another of the primary consumers of the PRI are FMA modules such as diagnosis
+engines. There is a requirement to provide additional information in the PRI
+so that FMA may make diagnoses and act on them through fault, repair or logging
+actions. To enable this, the PRI contains system-wide information that may not
+be available in the guest MD in the domain on which FMA modules are running. As 
+an example, FMA modules running in the control domain (the single domain running
+the LDOM Manager) may handle ereports generated for resources owned by other
+guest domains in the system. It may access the PRI to get information it needs
+to diagnose and act on data in the ereports. For more background, see the FWARC
+case 2006/141 FMA Domain Services. 
+
+In addition to the requirements spelled out in the FMA Domain Services case, 
+there is a requirement to add additional information to the PRI so that FMA
+may generate reports with more specific details about components that have been
+diagnosed faulty. Some of this information is available in a FRUID present on 
+the component or on another component that is proxying the information. It
+is the responsibility of the SC to derive this information for components 
+present on a system and to populate the relevant property values in the PRI.
+
+The PRI also represents how components are contained within other components
+in a hierarchical fashion in the system. Each component can be identified as a 
+FRU or not based on a property. The parent component that contains each 
+component can also be found by following an arc property back to it. Based
+on this, for any component in a system, its closest parent component that is a
+FRU can be found so that it may be replaced if faulty. There should be only one
+parent component for each component, but a component may have multiple children
+components if they are all physically contained by it. The idea of a component
+physically containing another component is meant to indicate how they may be
+removed or replaced and is determined on a platform-specific basis.
+
+
+
+1.1  Components Node
+
+Name		Category	Required subordinates
+----		--------	---------------------
+components	core		component
+
+Description
+-----------
+This node is the parent of all component nodes and has a back arc to the
+root node.
+
+
+1.2 Component Node
+
+Name		Category	Required subordinates	Optional subordinates
+----		--------	---------------------	---------------------
+component	resource				component
+		required
+
+Description
+-----------
+Represents physical entities in the system in order to provide component
+information and system topology to the domain.
+
+
+1.2.1  type Property
+
+Name		Tag		Required
+----		---		--------
+type		PROP_STR	yes
+
+Description
+-----------
+This property contains the type of the component. Only types that have
+been submitted with an ARC case should be present.
+
+Current acceptable values for the type property include:
+
+systemboard		A system board.
+
+dimm			A single memory dimm.
+
+processor		A physical processor that is logically a single agent
+			on the system interconnect fabric. It may contain
+			several processor cores or strands.
+
+strand			A physical strand in the processor.
+
+io                      An io device such as a switch, bridge, slot or leaf
+                        device.
+
+1.2.1.1  Type-specific property requirements
+
+The following requirements hold for component nodes of these types:
+
+For processor type nodes, the fwd property should link to a strand type node.
+If there are multiple component nodes for multiple processors in the system, 
+this can be used to determine which processor a strand is on.
+
+Only strand type nodes should have an id property as defined below.
+
+Any type of node may have a nac property.
+
+An io type node may have a path property, as described below.
+
+1.2.2  nac Property
+
+Name		Tag		Required
+----		---		--------
+nac		PROP_STR	no
+
+Description
+-----------
+This property contains the NAC for the component, as described in the
+system nomenclature document for the system. It may appear in any type of
+component node.
+
+
+1.2.3  fru Property
+
+Name		Tag		Required
+----		---		--------
+fru		PROP_VAL	no
+
+Description
+-----------
+This property is present and has a value of 1 if the component is a FRU.
+
+
+1.2.4  serial_number Property
+
+Name		Tag		Required
+----		---		--------
+serial_number	PROP_STR	no
+
+Description
+-----------
+This property contains the component serial number contained in the FRUID.
+
+
+1.2.5  part_number Property
+
+Name		Tag		Required
+----		---		--------
+part_number	PROP_STR	no
+
+Description
+-----------
+This property contains the component part number contained in the FRUID.
+
+
+1.2.6  rev_number Property
+
+Name		Tag		Required
+----		---		--------
+rev_number	PROP_STR	no
+
+Description
+-----------
+This property contains the component rev number contained in the FRUID.
+
+
+1.2.7  dash_number Property
+
+Name		Tag		Required
+----		---		--------
+dash_number	PROP_STR	no
+
+Description
+-----------
+This property contains the component dash number contained in the FRUID.
+
+
+1.2.8  id Property
+
+Name		Tag		Required
+----		---		--------
+id		PROP_VAL	yes
+
+Description
+-----------
+This property contains the strand id on the processor and should only be
+present in strand type nodes.
+
+
+1.2.9  path Property
+
+Name            Tag             Required
+----            ---             --------
+path            PROP_STR        no
+
+Description
+-----------
+This property contains the canonical path of an io device, composed of its
+full device path with device names removed.
+
+It is possible to find the FRU parent of an io device by doing a search
+beginning with its parent and continuing through its ancestry until reaching
+a component node with a fru property with value of 1.
+
+
+1.2.10  label Property
+
+Name            Tag             Required
+----            ---             --------
+label           PROP_STR        no
+
+Description
+-----------
+This property is currently only defined to appear in dimm type component nodes.
+It will contain the J number that is silk-screened on the board next to the
+dimm slot.
+
+
+1.3  Firmware Node
+
+Name		Category	Required subordinates	Optional subordinates
+----		--------	---------------------	---------------------
+firmware	core		read_only_memory
+
+Description
+-----------
+This node contains information describing firmware constraints needed by the 
+LDOM Manager for configuring guest domains.
+
+
+1.3.1  max_guests Property
+
+Name		Tag		Required
+----		---		--------
+max_guests	PROP_VAL	yes
+
+Description
+-----------
+This property describes the maximum number of guests that the firmware 
+supports.
+
+
+1.3.2   max_hv_ldcs Property
+
+Name		Tag		Required
+----		---		--------
+max_hv_ldcs	PROP_VAL	yes
+
+Description
+-----------
+This property describes the maximum number of hypervisor LDC endpoints that the 
+hypervisor supports.
+
+
+1.3.3   max_guest_ldcs Property
+
+Name		Tag		Required
+----		---		--------
+max_guest_ldcs	PROP_VAL	yes
+
+Description
+-----------
+This property describes the maximum number of guest LDC endpoints that the 
+hypervisor supports.
+
+
+1.4  Read_Only_Memory Node
+
+Name		 Category	Required subordinates	Optional subordinates
+----		 --------	---------------------	---------------------
+read_only_memory core		rom_img
+
+Description
+-----------
+This node contains information about the contents of read-only memory on the
+system, such as the host or system PROM.
+
+
+1.4.1  name Property
+
+Name		Tag		Required
+----		---		--------
+name		PROP_STR	yes
+
+Description
+-----------
+This property contains a human readable string for identifying the read-only 
+memory that this node represents. For example, "System PROM" may be used to
+indicate that this is the PROM for the system firmware.
+
+
+1.4.2  base Property
+
+Name		Tag		Required
+----		---		--------
+base		PROP_VAL	yes
+
+Description
+-----------
+This property contains the base address of the read-only memory in the system
+address space.
+
+
+1.4.3  size Property
+
+Name		Tag		Required
+----		---		--------
+size		PROP_VAL	yes
+
+Description
+-----------
+This property contains the size of the read-only memory in bytes.
+
+
+1.5  Rom_Img Node
+
+Name		Category	Required subordinates	Optional subordinates
+----		--------	---------------------	---------------------
+rom_img		core
+
+Description
+-----------
+This node contains information about a firmware component in read-only memory.
+
+===============================================================================
+Name		Tag		Required
+----		---		--------
+name		PROP_STR	yes
+
+Description
+-----------
+This property contains a human readable string for identifying this firmware
+image in the read-only memory. For example, "Openboot" may be used to indicate
+that this image is the Openboot image used to boot the guest.
+
+
+1.5.1  offset Property
+
+Name		Tag		Required
+----		---		--------
+offset		PROP_VAL	yes
+
+Description
+-----------
+This property contains the offset into read-only memory of this firmware image.
+
+
+1.5.2 size Property
+
+Name		Tag		Required
+----		---		--------
+size		PROP_VAL	yes
+
+Description
+-----------
+This property contains the size of the firmware image in bytes.
+
+
+1.5.3  alignment Property
+
+Name		Tag		Required
+----		---		--------
+alignment	PROP_VAL	no
+
+Description
+-----------
+This property contains any memory alignment requirements of the firmware image,
+for placing that image in memory so that it runs and boots successfully.
+
+
+1.5.4  min_allocation Property
+
+Name		Tag		Required
+----		---		--------
+min_allocation	PROP_VAL	no
+
+Description
+-----------
+This property contains any minimum memory allocation requirements of the 
+firmware image.
+
+
+1.5.5  guest_use Property
+
+Name		Tag		Required
+----		---		--------
+guest_use	PROP_VAL	no
+
+Description
+-----------
+This property indicates that this firmware image is suitable for use as the 
+startup image for a guest.
+
+
+1.6  Ldc_Endpoints Node
+
+Name		Category	Required subordinates	Optional subordinates
+----		--------	---------------------	---------------------
+ldc_endpoints	core		ldc_endpoint
+
+Description
+-----------
+This node aggregates fwd arc links to all the ldc_endpoint nodes needed by the
+LDOM Manager for generating the information hypervisor needs to configure its 
+internal data structures to route packets between LDC channel endpoints.
+
+
+1.7  Ldc_Endpoint Node
+
+Name		Category	Required subordinates	Optional subordinates
+----		--------	---------------------	---------------------
+ldc_endpoint	core
+
+Description
+-----------
+This node contains the information hypervisor needs to configure its 
+internal data structures to route packets between LDC channel endpoints.
+
+
+1.7.1  resource_id Property
+
+Name		Tag		Required
+----		---		--------
+resource_id	PROP_VAL	yes
+
+Description
+-----------
+This property contains a unique id for each ldc_endpoint node.
+
+
+1.7.2  target_type Property
+
+Name		Tag		Required
+----		---		--------
+target_type	PROP_VAL	yes
+
+Description
+-----------
+This property contains a value indicating one of several types of targets that 
+is on the other end of a pair of LDC endpoints.
+
+Acceptable values are
+
+	0	The target endpoint is in the guest
+	1	The target endpoint is in the hypervisor
+	2	The target endpoint is in the SC
+
+
+1.7.3  channel Property
+
+Name		Tag		Required
+----		---		--------
+channel		PROP_VAL	yes
+
+Description
+-----------
+This property contains the endpoint id for the channel endpoint this node
+represents. The channel endpoint may be owned by a guest, hypervisor or the SP.
+
+
+1.7.4  target_channel Property
+
+Name		Tag		Required
+----		---		--------
+target_channel	PROP_VAL	yes
+
+Description
+-----------
+This property contains the endpoint id for the target endpoint on the other end
+of this channel. The target channel endpoint may be owned by a guest, hypervisor 
+or the SP.
+
+
+1.7.5  tx-ino and rx-ino Properties
+
+Name		Tag		Required
+----		---		--------
+tx-ino		PROP_VAL	yes
+rx-ino		PROP_VAL	yes
+
+Description
+-----------
+These properties contains the same values as the corresponding tx-ino and rx-ino
+properties in the channel-endpoint node in the guest MD. The channel-endpoint 
+node has an id property value matching this ldc_endpoint node channel property 
+value. This enables hypervisor to target interrupts to the guest LDC endpoint.
+
+
+1.8  Memory Segments and related nodes
+
+Memory-Segments Node
+
+Name            Category        Required subordinates   Optional subordinates
+----            --------        ---------------------   ---------------------
+memory-segments resource        memory-segment
+                required
+
+Description
+-----------
+Child of the root node with fwd arcs to the memory-segment nodes.
+
+
+1.9  Memory-Segment Node
+
+Name            Category        Required subordinates   Optional subordinates
+----            --------        ---------------------   ---------------------
+memory-segment  resource        memory-bank
+                required
+
+Description
+-----------
+Describes a contiguous memory address range. Its properties define that
+address range and they link to child nodes that specify criteria for locating
+a physical address in the memory segment to a set of one or more dimms that 
+constitute a memory-bank.
+
+A memory-segment node has the following properties.
+
+
+1.9.1  base Property
+
+Name            Tag             Required
+----            ---             --------
+base            PROP_VAL        yes
+
+Description
+-----------
+The base physical address of the range represented by this memory segment.
+
+
+1.9.2  size Property
+
+Name            Tag             Required
+----            ---             --------
+size            PROP_VAL        yes
+
+Description
+-----------
+The size of the address range represented by this memory segment.
+
+
+
+1.10  Memory-Bank Node
+
+Name            Category        Required subordinates   Optional subordinates
+----            --------        ---------------------   ---------------------
+memory-bank     resource        component
+                required
+
+Description
+-----------
+Contains properties that describe the constraints for determining if a physical
+address is located on the set of one or more dimms that comprise this memory 
+bank.
+
+The memory-bank node has fwd arcs to component nodes with dimm type properties.
+The dimm type component nodes contain nac properties used to identify the dimm.
+If an address belongs to this memory bank, it is located on one of the dimm
+type component nodes that are linked to by this node.
+
+
+1.10.1  size Property
+
+Name            Tag             Required
+----            ---             --------
+size            PROP_VAL        yes
+
+Description
+-----------
+The size of this memory bank.
+
+
+1.6.2.2  mask Property
+
+Name            Tag             Required
+----            ---             --------
+mask            PROP_VAL        yes
+
+Description
+-----------
+The value of the mask register is logically and'd with a physical address and
+the result is compared with the value in the match register to determine if the
+physical address is in this memory-bank.
+
+
+1.10.3  match Property
+
+Name            Tag             Required
+----            ---             --------
+match           PROP_VAL        yes
+
+Description
+-----------
+After the value of the mask property is and'd with a physical address, if the
+resultant value is equal to the value of the match property, the address is on 
+one of the dimms in this memory bank.

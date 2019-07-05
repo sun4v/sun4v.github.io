@@ -1,0 +1,294 @@
+1. Introduction
+
+   1.1. Project/Component Working Name:
+
+        Virtual IO DR Domain Service
+
+   1.2. Name of Document Author/Supplier:
+
+        Jim Marks (james.marks@sun.com)
+        
+   1.3. Date of This Document:
+
+        03/31/2008
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+
+        1.4.1. The PAC or CPT you expect to review your project:
+
+        1.4.2. The ARC(s) you expect to review your project:
+
+                FWARC
+
+        1.4.3. The Director/VP who is "Sponsoring" this project:
+
+                jerriann.meyer@sun.com
+
+        1.4.4. The name of your business unit:
+
+                Solaris Core OS
+
+   1.5. Email Aliases:
+
+        1.5.1. Responsible Manager:     jay.jayachandran@sun.com
+
+        1.5.2. Responsible Engineer:    james.marks@sun.com
+                                        liam.merwick@sun.com
+
+        1.5.3. Marketing Manager:       honglin.su@sun.com
+
+        1.5.4. Interest List:           ldoms-internal@sun.com
+
+2. Project Summary
+
+   2.1. Project Description:
+
+        This project will provide the capability to dynamically add
+        or remove virtual I/O devices and services to/from a domain.
+
+   2.2. Risks and Assumptions:
+
+        None.
+
+3. Business Summary
+
+   3.1. Problem Area:
+
+        Each domain requires a set of I/O devices for use by the guest
+        operating system which will run in that domain.  The initial
+        set of devices is specified when the domain is created by the
+        LDoms Manager.  Based on time of day, unexpected increase or
+        decrease in workloads, etc., the set of devices assigned to a
+        particular guest OS may need to change.
+
+        Currently, adding a virtual I/O device to a guest requires a
+        "delayed reconfiguration", which implies a reboot of the
+        domain.  This is generally undesirable for our users.  This
+        project defines a domain service which will allow the control
+        domain to dynamically add a virtual device to a domain or
+        dynamically remove a device from a domain.  The domain service
+        also provides a means to report the result of the operation as
+        well to query the status of any virtual device independent of
+        a reconfiguration operation.
+
+        Additionally, the domain service protocol will provide
+        support to add or remove a new virtual IO server (service)
+        to/from a domain.
+
+   3.2. Market/Requestor:
+
+        See FWARC/2005/633.
+        
+   3.3. Business Justification:
+
+        See FWARC/2005/633.
+
+   3.4. Competitive Analysis:
+
+        All of Sun's competitors providing virtualization solutions
+        offer some form of dynamic reconfiguration (DR) for cpus,
+        devices and memory.  Sun's customers have indicated that this
+        is high on their wish list.  Providing DR capability for I/O
+        devices, when combined with a later project to provide DR of
+        memory, will remedy this current competitive disadvantage.
+        See also FWARC/2005/633.
+
+   3.5. Opportunity Window/Exposure:
+
+        See FWARC/2005/633.
+        
+   3.6. How will you know when you are done?:
+
+        The work will be completed when the final code changes to
+        dynamically add or remove virtual I/O devices are integrated
+        into the Solaris NV and Solaris 10 Update gates and the LDoms
+        Manager gate.
+
+4. Technical Description
+
+   4.1 Overview
+
+       The Domain Services protocol (FWARC 2006/055) provides the
+       means for the LDoms Manager to communicate requests and receive
+       responses from existing services which run in domains.  This
+       project defines a new Domain Service to allow the LDoms Manager
+       to add and remove virtual devices from domains.  On the control
+       domain the ldm command line interface already accepts the
+       commands required to add or remove devices to/from a guest
+       domain.  Currently, however, these commands result in a delayed
+       reconfiguration.  When this project is complete, those same
+       commands will result in a dynamic reconfiguration instead.
+
+       This project creates a new Domain Service that consists of two
+       new message types.  The first message type requests that a
+       virtual I/O device or service be added to or removed from the
+       domain receiving the message.  This message type also provides
+       support to request the status of a particular virtual I/O
+       device or service.  The second message is a response from the
+       domain for a message of the first type.  It includes the result
+       of the attempted operation and the current status of the target
+       device.  Optionally, in response to an add or remove request, a
+       human-readable string may be returned.
+
+
+   4.2 Bug/RFE Number(s)
+
+       [Solaris]
+       6651197 Add support for LDoms Virtual I/O Dynamic Reconfiguration
+
+       [LDoms Manager]
+       6665919 Add support for LDoms Virtual I/O Dynamic Reconfiguration
+
+
+   4.3 In Scope
+
+       Not Applicable
+
+   4.4 Out of Scope
+
+       Not Applicable
+
+   4.5 Interfaces
+
+       4.5.1 Overview
+
+             The new interface is embodied in the format of the
+             messages passed between the control domain to the guest
+             or I/O domain OS.
+
+             For a detailed description of the interface see
+             dr_vio_messages_specification.txt
+
+       4.5.2 Imported Interfaces
+
+             Interface           Classification  Comments
+             =================================================================
+
+             Domain Services      Sun Private    Domain Services protocol
+                                                 and messages formats
+                                                 FWARC/2006/055
+
+             sun4v Machine        Sun Private    MD node changes to
+             Description nodes                   support virtual devices
+                                                 defined by FWARC/2007/122
+
+
+       4.5.3 Exported Interfaces
+
+             Interface           Classification  Comments
+             ================================================================
+
+             Virtual I/O Device  Sun Private     Describes format of
+             Dynamic Reconfig.                   messages exchanged between
+             Message Formats                     LDoms Manager and guest or
+                                                 I/O domain OS for recon-
+                                                 figuring I/O devices
+
+             Domain Services ID   Sun Private    service id ("dr-vio")
+                                                 to represent this new service
+
+   4.6 Doc Impact
+
+       None.
+
+   4.7 Admin/Config Impact
+
+       Current behavior:
+
+       Adding or removing an I/O device to/from an active domain using
+       the LDoms Manager CLI in the control domain currently causes a
+       "delayed configuration" message to be displayed to the user.
+       The actual change does not take place until the affected guest
+       domain is rebooted.
+
+       New behavior:
+
+       The requested change will take place immediately and will not
+       require a reboot of the target domain.
+
+   4.8 HA Impact
+
+       None.
+
+   4.9  I18N/L10N
+
+        Not affected.
+
+   4.10 Packaging & Delivery
+
+        This case defines a generic interface and is not tied to a particular
+        architecture.
+
+   4.11 Security Impact
+
+        None.
+
+   4.12 Dependencies
+
+        None.
+
+5. Reference Documents
+
+   FWARC 2005/633 LDoms: Project Q Logical Domaining Umbrella
+   FWARC 2006/055 Domain Services
+   FWARC 2007/122 VIO MD Node updates
+
+6. Resources and Schedule
+
+   6.1 Projected Availability
+
+       Available on 06/30/2008
+
+   6.2 Cost of Effort
+
+       2 person months
+
+   6.3 Cost of Capital Resources
+
+   6.4 Product Approval Committee requested information
+
+       6.4.1 Consolidation Or Component Name
+
+             OS-Networking (ON)
+
+             LDoms Manager (project private)
+
+       6.4.3 Type of CPT Approval Expected
+
+             Fast Track
+
+       6.4.4 Project Boundary Conditions
+
+       6.4.5 Is this a necessary project for OEM agreements:
+
+             No.
+
+      6.4.6 Notes
+
+      6.4.7 Target RTI Date/Release
+
+            LDoms 1.1
+
+      6.4.8 Target Code Design Review Date:
+
+      6.4.9 Update approval addition:
+
+            Not applicable
+
+   6.5 ARC review type
+
+       Fast Track (FWARC)
+
+   6.6 ARC Exposure
+
+       open (kernel portions)
+
+7. Prototype Availability:
+
+   7.1 Prototype Availability
+
+       One week from submission date.
+
+   7.2 Prototype Cost:
+
+       Two person weeks

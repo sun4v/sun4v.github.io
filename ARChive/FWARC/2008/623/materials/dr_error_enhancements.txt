@@ -1,0 +1,373 @@
+
+
+1. Introduction
+
+1.1 Project/Component Working Name
+
+        Improved Error Reporting for DR Domain Services
+
+1.2 Name of Document Author/Supplier
+
+        Jim Marks
+
+1.3 Date of This Document
+
+        09/17/2008
+
+1.4 Name of Major Document Customer(s)/Consumer(s)
+
+        1.4.1 The PAC or CPT you expect to review your project
+
+        1.4.2 The ARC(s) you expect to review your project
+
+                FWARC
+
+        1.4.3 The Director/VP who is sponsoring this project
+
+                jerriann.meyer@sun.com
+
+        1.4.4 The Name of Your Business Unit
+
+                Solaris Core OS
+
+1.5 Email Aliases
+
+        1.5.1 Responsible Manager:      jay.jayachandran@sun.com
+
+        1.5.2 Responsible Engineer:     james.marks@sun.com
+
+        1.5.3 Marketing Manager:
+
+        1.5.4 Interest List:            ldoms-internal@sun.com
+
+2. Project Summary
+
+2.1 Project Description
+
+	Enhance the LDoms DR Domain Services to provide better
+	error reporting to the user for certain types of failure
+	for which no explanation is currently given.  The error
+	messages must describe the cause of the failure in the
+	target domain.
+
+2.2 Risks and Assumptions
+
+        None.
+
+3. Business Summary
+
+3.1 Problem Area
+
+	There are currently three Domain Services for Dynamic
+	Reconfiguration of an LDoms domain: DR CPU, DR VIO and DR
+	Memory.  (See reference below.) These services allow
+	management software to make dynamic configuration changes to a
+	target domain.  The existing version of these domain services
+	provides for passing an error string back from the guest for
+	certain types of failure.
+
+	For other types of failure, such as problems interacting with
+	other software components in the target domain, a generic
+	message is displayed to the user.  This message does not aid
+	the user in diagnosing the cause of the problem so that
+	attempts can be made to rectify it.
+
+	Example: if the guest domain that is the target of an 'ldm
+	rm-vcpu' request is running Solaris, and is not running the
+	reconfiguration daemon (drd), the request will be rejected.
+	The user will see this message in response to the ' 'ldm
+	rm-vcpu' command:
+
+		Unable to remove the requested VCPU(s) from LDom ldg1
+		Resource removal failed
+
+	Using the current version of the domain service is inadequate,
+	and the target domain cannot send as part of its error
+	response the reason for the failure.  It would be much more
+	helpful to the user to see a descriptive message like this:
+
+		Cannot communicate with reconfiguration daemon (drd) in
+		target domain.  drd(1M) SMF service may not be enabled.
+
+
+3.2 Market/Requestor
+
+        See FWARC/2005/633
+
+3.3 Business Justification
+
+        See FWARC/2005/633
+
+3.4 Competitive Analysis
+
+	This is a usability issue which needs to be rectified in order
+	for LDoms to be seen as a competitive virtualization solution.
+
+3.5 Opportunity Window/Exposure
+
+        See FWARC/2005/663.
+
+3.6 How will you know when you are done?
+
+        The work will be completed when the final code changes to
+        implement a new version (1.1) of the three DR Domain Services
+        are integrated into the Solaris NV and Solaris 10 Update gates
+        and the LDoms Manager gate.
+
+4. Technical Description
+
+4.1 Overview
+
+	This project will improve the error reporting capability
+	associated with dynamic reconfiguration of virtual cpus,
+	(VCPUs), virtual I/O devices, and memory.  The response
+	message formats of the three DR services all provide for
+	passing back an error string for certain types of failure.
+	For example, if attempting to remove multiple vcpus, and some
+	succeed and some fail, the user will see error messages
+	describing why the failed vcpus could not be removed.  On the
+	other hand, if the failure was a problem related to the entire
+	request, the protocol does not currently provide for passing
+	back a descriptive error message.  This project will make
+	small changes to the message formats (and semantics) so that
+	an error string can be returned for ALL failures.
+
+	The minor version number of the DR domain services will be
+	incremented such that the version will move from 1.0 to 1.1.
+	The target domain DR modules and the initiator module for DR
+	requests will be modified to conform to this new version of
+	the domain service.  If an initiator module using version 1.1
+	is interacting with a target domain DR module also using 1.1,
+	the new domain service will be utilized, and the user will see
+	the improved error messages.  If either of the modules is
+	running version 1.0, the peer will adjust downward, so that
+	version 1.0 of the domain service will be utilized, and the
+	error reporting behavior will remain at its current level.
+	For a more complete description of versioning see FWARC
+	2006/055 section 2.5.5 "DS Capability Version Negotiation &
+	Registration".
+
+4.2 Bug/RFE Number(s)
+
+	6719903 DR error message should be more helpful when 'drd' is disabled
+
+4.3 Scope
+
+        Not Applicable.
+
+4.4 Out of Scope
+
+        Not Applicable.
+
+4.5 Interfaces
+
+        4.5.1 Interfaces
+
+                The modified interface consists of a change to the
+                format of existing message exchanged between the
+                guest DR modules and the initiator module for DR
+                requests.  Section 3.4.5 of FWARC/2006/055 states:
+
+		"The message type DR_CPU_ERROR is a response to a
+		malformed request message.  No additional payload is
+		provided with this message type."  Similar statements
+		apply to DR VIO (for the DR_VIO_RES_FAILURE result
+		code) and DR Memory (for the DR_MEM_ERROR result
+		code).
+
+		This project will change the semantics of these error
+		response codes (described below) as well as the
+		corresponding response message as follows:
+
+        4.5.2 Imported Interfaces
+
+             Interface           Classification  Comments
+             =================================================================
+
+             Domain Services      Sun Private    DR CPU Domain Service
+             (CPU DR)                            message formats
+                                                 FWARC/2006/055
+             Domain Services      Sun Private    DR Memory Domain Service
+             (Memory DR)                         message formats
+                                                 FWARC/2008/540
+
+       4.5.3 Exported Interfaces
+
+             Interface           Classification  Comments
+             ================================================================
+
+             Domain Services      Sun Private    Domain Services
+             (CPU DR)                            messages formats
+                                                 FWARC/2006/055 with
+						 modified CPU DR response
+
+             Domain Services      Sun Private    Domain Services
+             (CPU Memory)                        messages formats
+                                                 FWARC/2008/540
+						 modified Memory DR response
+
+	4.5.4 DR CPU Message Format
+
+		The interface change consists of a modification to an
+		existing message format, by adding the new field 'err_msg'
+		as shown below.  It modifies section FWARC 2006/055
+		section 3.4.5 "CPU DR Error response"
+
+		Common message header (unchanged)
+
+		Offset Size   Field Name    Description
+		------ ----   ----------    -----------
+
+		0      8      req_num       Request number
+		8      4      msg_type      Message type
+                12     4      num_records   Number of records
+
+		Payload (immediately following above header)
+
+		Offset Size             Field Name     Description
+		------ ----             ----------     -----------
+
+		16     4*num_records	req_cpus       array of vcpu ids
+                                                       (applies to requests)
+		16     16*num_records   resp_cpu_stats array of status structs
+                                                       (applies to responses)
+		16     <variable>       err_msg        null-terminated string
+                                                       (applies to responses)
+
+		Note: the new err_msg field of the response message
+		payload applies only to response messages, and then
+		only when the 'msg_type' element of the header is
+		DR_CPU_ERROR.
+
+	4.5.5 DR VIO Message Format (unchanged)
+
+		The interface change does not involve any change to
+		the format of the response message.
+
+		The result codes also remain unchanged.  The DR VIO
+		case (FWARC 2008/299) already provides for passing
+		an error message on failures.
+
+
+	4.5.6 DR Memory Message Format
+
+	The interface change consists of a modification to an existing
+	message format, by adding a payload field for the case when
+	the 'msg_type' of the response header is DR_MEM_ERROR.  It
+	modifies FWARC 2008/540 section 1.5 of the messages document.
+
+		Message header (unchanged):
+
+		Offset Size   Field Name    Description
+		------ ----   ----------    -----------
+
+		0      4      msg_type      Message type
+		4      4      msg_arg       Message argument
+		8      8      req_num       Request number
+
+		Payload field (new) immediately following the header:
+
+		Offset Size   Field Name    Description
+		------ ----   ----------    -----------
+
+		16     <var>  err_msg       Error msg (null-terminated string)
+
+		The maximum length of the err_msg field including the
+		terminal null shall be 1024 characters.  The error
+		message will indicate the nature of the failure, such
+		as badly formatted request, intra-guest communication
+		failure, etc.
+
+   4.6 Doc Impact
+
+       None.
+
+   4.7 Admin/Config Impact
+
+   4.8 HA Impact
+
+       None.
+
+   4.9  I18N/L10N
+
+        Not affected.
+
+   4.10 Packaging & Delivery
+
+        This project defines a generic interface and is not tied to a
+        particular architecture.  No change to packages
+
+   4.11 Security Impact
+
+        None.
+
+   4.12 Dependencies
+
+        None.
+
+5. Reference Documents
+
+        FWARC 2005/633 LDoms: Project Q Logical Domaining Umbrella
+        FWARC 2006/055 Domain Services (section 3.4 CPU DR)
+	FWARC/2008/229 Virtual IO DR Domain Service
+	FWARC/2008/540 Memory DR Domain Service
+
+6. Resources and Schedule
+
+   6.1 Projected Availability
+
+       Available on <fill in prior to submission to FWARC>
+
+   6.2 Cost of Effort
+
+       1 person week
+
+   6.3 Cost of Capital Resources
+
+   6.4 Product Approval Committee requested information
+
+       6.4.1 Consolidation Or Component Name
+
+             OS-Networking (ON)
+
+             LDoms Manager (project private)
+
+       6.4.3 Type of CPT Approval Expected
+
+             Self-Review
+
+       6.4.4 Project Boundary Conditions
+
+       6.4.5 Is this a necessary project for OEM agreements:
+
+             No.
+
+      6.4.6 Notes
+
+      6.4.7 Target RTI Date/Release
+
+            LDoms 1.2
+
+      6.4.8 Target Code Design Review Date:
+
+      6.4.9 Update approval addition:
+
+            Not applicable
+
+   6.5 ARC review type
+
+        Self-Review (FWARC)
+
+   6.6 ARC Exposure
+
+        open (kernel portions)
+
+7. Prototype Availability:
+
+    7.1 Prototype Availability
+
+        Now
+
+    7.2 Prototype Cost:
+
+        Not applicable.

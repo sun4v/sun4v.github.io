@@ -1,0 +1,22 @@
+Imported Interfaces :
+
+     Interface                   Classification     Comments
+     =========                   ==============     ========
+
+     PRI structures              Sun Private        Defined by FWARC/2006/700
+      
+     "iodevice" node and related Committed          Defined by FWARC/2007/070
+     properties in MD
+
+     Component node properties   Sun Private        Defined by FWARC/2008/291
+     for Power Management (PM)                  
+      
+
+
+Exported Interfaces:
+
+      Interface                  Classification     Comments
+      ================           ==============     ========
+
+      "pri-version" property     Sun Private        Defined in section 1.1 of
+      in PRI                                        the specification.

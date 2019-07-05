@@ -1,0 +1,131 @@
+*** /home/sharakan/SAC/rcid/PRI_Specification_1.7.txt	Tue Feb  3 18:39:36 2009
+--- PRI_Specification_1.8.txt	Tue May  5 15:55:25 2009
+***************
+*** 1,5 ****
+! Version 1.7
+! Date : 02/03/2009
+  
+  Revision History :
+  
+--- 1,5 ----
+! Version 1.8
+! Date : 05/05/2009
+  
+  Revision History :
+  
+***************
+*** 24,31 ****
+        Deprecated 'cfg-handle' property to node components where
+          "topo-hc-name=pciexrc"
+        Corrected a few minor typos.
+  
+- 
+  Physical Resource Inventory (PRI) Specification
+  ===============================================
+  
+--- 24,34 ----
+        Deprecated 'cfg-handle' property to node components where
+          "topo-hc-name=pciexrc"
+        Corrected a few minor typos.
++ 1.8   Added additional constraints on the 'id' property in the root complex
++       component node, clarified the definition of root complex vs. root
++       port component nodes, and removed incorrect wording in the description
++       of the 'cfg-handle' and 'path' properties in the 'iodevice' node.
+  
+  Physical Resource Inventory (PRI) Specification
+  ===============================================
+  
+***************
+*** 213,222 ****
+  component nodes for multiple processors in the system, this can be used to
+  determine which processor a core is on, and which core a strand is on.
+  
+! Any type of node may have an id property. The id property must be unique
+! within a set of nodes with the same topo-hc-name value. This property is 
+! required for nodes that do *not* set the topo-skip property. Grandfather
+! clause: 'id' is *always* required for strand, mem-board, and cpu-board nodes.
+  
+  Any type of node may have a nac property. nac is required for component
+  nodes that are FRUs (fru property = 0x1)
+--- 216,229 ----
+  component nodes for multiple processors in the system, this can be used to
+  determine which processor a core is on, and which core a strand is on.
+  
+! Any type of node may have an id property. The id property must be unique within
+! a set of nodes with the same topo-hc-name value as well as immutable across
+! system reset events. In addition, for root complex IO nodes (i.e. nodes whose
+! topo-hc-name value is "hostbridge"), the id property is further constrained to
+! have whatever platform-specific binding is required for this value to denote a
+! unique and persistent root complex ID. This property is required for nodes that
+! do *not* set the topo-skip property. Grandfather clause: 'id' is *always*
+! required for strand, mem-board, and cpu-board nodes.
+  
+  Any type of node may have a nac property. nac is required for component
+  nodes that are FRUs (fru property = 0x1)
+***************
+*** 228,237 ****
+  
+  Any type of node may set the topo-skip property.
+  
+! Nodes representing a root complex must use a topo-hc-name of "pciexrc" and
+  set the path property. Previous requirements for setting the cfg-handle
+  property for a node representing a root complex is now deprecated.
+  
+  Any type node that is a FRU (fru = 0x1) are required to include the
+  serial_number, part_number, rev_number, and dash_number properties.
+  
+--- 235,248 ----
+  
+  Any type of node may set the topo-skip property.
+  
+! Nodes representing a root complex must use a topo-hc-name of "hostbridge" and
+  set the path property. Previous requirements for setting the cfg-handle
+  property for a node representing a root complex is now deprecated.
+  
++ Nodes representing a root port must use a topo-hc-name of "pciexrc".  This
++ apparent misnomer is intentional, as it follows the convention established on
++ the x64 platforms.
++ 
+  Any type node that is a FRU (fru = 0x1) are required to include the
+  serial_number, part_number, rev_number, and dash_number properties.
+  
+***************
+*** 346,352 ****
+  -----------
+  This property contains the canonical path of an io device, composed of its
+  full device path with device names removed. It is required on nodes where
+! the topo-hc-name property is set to "pciexrc".
+  
+  It is possible to find the FRU parent of an io device by doing a search
+  beginning with its parent and continuing through its ancestry until reaching
+--- 357,363 ----
+  -----------
+  This property contains the canonical path of an io device, composed of its
+  full device path with device names removed. It is required on nodes where
+! the topo-hc-name property is set to "hostbridge" or "pciexrc".
+  
+  It is possible to find the FRU parent of an io device by doing a search
+  beginning with its parent and continuing through its ancestry until reaching
+***************
+*** 961,968 ****
+  -----------
+  A 64 bit value that is unique to this device on the sun4v bus.
+  
+- This property is required except for nodes where topo-hc-name="pciexrc".
+- 
+  Name            Tag             Required
+  ----            ---             --------
+  path		PROP_STR	Yes
+--- 972,977 ----
+***************
+*** 972,980 ****
+  A string which contains the address of, and is unique to, this device on the
+  sun4v bus.
+  
+- This property is required for nodes where topo-hc-name="pciexrc", otherwise
+- it is not required.
+- 
+  Name            Tag             Required
+  ----            ---             --------
+  address-ranges	PROP_DATA	Yes
+--- 981,986 ----

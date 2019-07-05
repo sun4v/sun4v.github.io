@@ -1,0 +1,16 @@
+2c2
+< Version 1.3
+< Date : 05/22/2008
+---
+> Version 1.4
+> Date : 07/21/2008
+17a18
+> 1.4   Change to suggested topologies for use with FMA PI.
+214,216c215,217
+< provided in the components node: memory-buffer/bank/dimm. No intervening 
+< nodes are allowed. Node hierarchy above memory-buffer is arbitrary per
+< platform.
+---
+> provided in the components node: chip/memory-buffer *OR* 
+> memory-controller/memory-buffer. No intervening nodes are allowed. Node 
+> hierarchy above or below is arbitrary per platform.

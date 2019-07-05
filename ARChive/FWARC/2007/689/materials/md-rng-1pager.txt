@@ -1,0 +1,194 @@
+
+	Version: "@(#)md-rng-1pager.txt 1.15     06/02/15 SMI"
+
+1. Introduction
+   1.1. Project/Component Working Name:
+	LDOMs support for RNG
+
+   1.2. Name of Document Author/Supplier:
+	Eric.sharakan@Sun.COM
+
+   1.3. Date of This Document:
+	12/13/07
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		???
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Mike.Sanfratello@Sun.COM
+	1.4.4. The name of your business unit:
+		SPARC Platform Software (SPS)
+
+   1.5. Email Aliases:
+    	1.5.1. Responsible Manager:	John.Falkenthal@Sun.COM
+    	1.5.2. Responsible Engineer:	Eric.Sharakan@Sun.COM
+    	1.5.3. Marketing Manager:
+	1.5.4. Interest List:
+	        Jay.Jayachandran@Sun.COM
+		Ashley.Saulsbury@Sun.COM
+		Joshua.Pincus@Sun.COM
+		Eric.Blanchard@Sun.COM
+
+2. Project Summary
+   2.1. Project Description: This project introduces changes to the Machine
+	Description (MD) tree and the Physical Resource Inventory (PRI) for
+	Niagara2 and Victoria Falls based platforms in order to support the
+	random number generator (RNG) portion of these chips.
+
+   2.2. Risks and Assumptions:
+   	a)      Appropriate changes will be made to VBSC to allow
+		incorporation of the RNG nodes specified here into the PRI.
+	b) 	Appropriate changes will be made to the LDOM manager to allow
+		incorporation of RNG "devices" into Domain MDs, and into the
+		Hypervisor MD.  This is necessary to enable both the RNG driver
+		within LDOM primary & guest domains, and the Hypervisor itself,
+		to support the RNG HV API specified in FWARC/2007/558.
+
+3. Business Summary
+   3.1. Problem Area:
+	Support for RNG access from within Logical Domains.
+
+   3.2. Market/Requester:
+
+   3.3. Business Justification:
+	Support for the hardware RNG capability present in the Niagara2 &
+	Victoria Falls processors is an important selling point for the
+	platforms based on these chips.
+
+   3.4. Competitive Analysis:
+
+   3.5. Opportunity Window/Exposure:
+	Built-in access to the hardware RNGs must be maintained at the time
+	that the N2 & VF based platforms are released.
+
+   3.6. How will you know when you are done?:
+	When the RNG driver can successfully plug into the Solaris
+	Cryptographic Framework from within both primary & guest
+	Logical Domains.
+
+	When SunVTS can exercise the full RNG functionality of the underlying
+	N2 & VF processors from within the primary & guest LDOM.
+
+
+
+
+4. Technical Description:
+    4.1. Details:
+
+	In order to support hardware acceleration via the Random Number
+	Generatio (RNG) portion of the N2 & VF chips, the following changes to
+	the Machine Description (MD) are proposed.
+
+    4.1.1. cpu node changes:
+
+	Description:
+		Augmented to include new optional exec-unit
+		subordinate as described below:
+
+	Name:		exec-unit
+	Category:	optionally required by cpu
+	Required subordinates:	-
+	Optional subordinates:	-
+	Description:	This node is a type of exec-unit and uniquely
+			represents a specific rng definition.  Includes
+			references to the physical cpu's which have
+			access to the given rng.
+	Properties:
+	  Name		Tag		Required	Description
+	  ----		---		--------	-----------
+	  type		PROP_DATA	yes		The string "rng"
+
+
+    4.2. Bug/RFE Number(s):
+	None.
+    
+    4.3. In Scope:
+	None.
+
+    4.4. Out of Scope:
+	None.
+    
+    4.5. Interfaces:
+	4.5.1 Imported Interfaces:
+
+	Interface		Classification		Comments
+	========================================================
+	sun4v Machine		Sun Private		MD nodes definitions as
+	Description nodes				defined by FWARC/2005/115
+	Physical Resource	Sun Private		PRI node definitions as				
+	Inventory		    			defined in FWARC/2006/700
+
+	4.5.2 Exported Interfaces:
+
+	Interface		Classification		Comments
+	========================================================
+	exec-unit node and	Sun Private		MD nodes to represent RNG
+	Machine Description				units
+
+    4.6. Doc Impact:
+	None.
+    
+    4.7. Admin/Config Impact:
+	None.
+    
+    4.8. HA Impact:
+	None.
+    
+    4.9. I18N/L10N Impact:
+	None.
+    
+    4.10. Packaging & Delivery:
+	None.
+    
+    4.11. Security Impact:
+	None.
+    
+    4.12. Dependencies:
+	FWARC/2005/115
+	FWARC/2006/700
+	FWARC/2007/558
+
+5. Reference Documents:
+	FWARC/2005/115 sun4v machine description data.
+	FWARC/2006/700 pri-spec.txt
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+	Maramba FCS
+
+   6.2. Cost of Effort:
+	2 staff weeks
+
+   6.3. Cost of Capital Resources:
+	None.
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation or Component Name:
+		LDom Manager, VBSC (System Firmware)
+	6.4.3. Type of CPT Review and Approval expected:
+		FastTrack
+        6.4.4. Project Boundary Conditions:
+		N/A
+	6.4.5. Is this a necessary project for OEM agreements:
+		No
+	6.4.6. Notes:
+		FWARC/2005/115
+		FWARC/2006/700
+	6.4.7. Target RTI Date/Release:
+		Q4CY07
+	6.4.8. Target Code Design Review Date:
+		12/20/07
+	6.4.9. Update approval addition:
+		N/A
+
+   6.5. ARC review type:
+   		FastTrack
+
+7. Prototype Availability:
+   7.1. Prototype Availability:
+	N/A
+
+   7.2. Prototype Cost:
+	N/A

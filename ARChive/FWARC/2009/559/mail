@@ -1,0 +1,202 @@
+From sacadmin Wed Oct 14 11:07:45 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n9EI7jhQ015474
+	for <fwarc@sac.sfbay.sun.com>; Wed, 14 Oct 2009 11:07:45 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3mpk.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.4) with ESMTP id n9EI7hla013288;
+	Wed, 14 Oct 2009 11:07:44 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KRI00A0HNOW6700@brm-avmta-1.central.sun.com>; Wed,
+ 14 Oct 2009 12:07:44 -0600 (MDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KRI00H9UNOWS8F0@brm-avmta-1.central.sun.com>; Wed,
+ 14 Oct 2009 12:07:44 -0600 (MDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n9EI7iKC016816;
+ Wed, 14 Oct 2009 11:07:44 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KRI00M00LZ7SE00@fe-sfbay-10.sun.com>; Wed,
+ 14 Oct 2009 11:07:44 -0700 (PDT)
+Received: from cpe-66-91-65-164.hawaii.res.rr.com ([unknown] [129.150.0.91])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KRI00EBUNOVMCA0@fe-sfbay-10.sun.com>; Wed,
+ 14 Oct 2009 11:07:43 -0700 (PDT)
+Date: Wed, 14 Oct 2009 08:07:41 -1000
+From: Ryan Maeda <Ryan.Maeda@sun.com>
+Subject: FWARC/2009/559 - Domain Suspend Domain Service
+Sender: Ryan.Maeda@sun.com
+To: fwarc@sun.com
+Cc: LDom Migration Dev <ldom-mig-dev@sun.com>,
+        Haik Aftandilian <Haik.Aftandilian@sun.com>
+Message-id: <4AD6136D.1020909@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.23 (Macintosh/20090812)
+Status: RO
+Content-Length: 581
+
+I am sponsoring this fast-track for Haik Aftandilian.
+
+This case defines a new domain service for requesting that a guest
+suspend itself using the Hypervisor API defined in FWARC/2009/452.
+This will be used as part of cooperative guest migration.
+
+Further details, including the interface table, can be found in the
+one pager included in the case directory:
+
+   http://sac.sfbay/FWARC/2009/559/materials/onepager.txt
+
+This case will be approved for a minor/micro/patch OS binding and
+a minor/micro binding for the firmware.
+
+Case timer is set to expire on October 22, 2009.
+
+-Ryan
+
+From sacadmin Wed Oct 21 10:30:53 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n9LHUrEI005706
+	for <fwarc@sac.sfbay.sun.com>; Wed, 21 Oct 2009 10:30:53 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n9LHUHum005140;
+	Wed, 21 Oct 2009 18:30:52 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KRV00L0NKND0C00@brm-avmta-1.central.sun.com>; Wed,
+ 21 Oct 2009 11:30:49 -0600 (MDT)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KRV00HBXKNCZZ30@brm-avmta-1.central.sun.com>; Wed,
+ 21 Oct 2009 11:30:48 -0600 (MDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n9LHUmFg015124;
+ Wed, 21 Oct 2009 10:30:48 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KRV00F00KBL2N00@fe-sfbay-10.sun.com>; Wed,
+ 21 Oct 2009 10:30:48 -0700 (PDT)
+Received: from [129.150.66.221] ([unknown] [129.150.66.221])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KRV00KA6KNABS10@fe-sfbay-10.sun.com>; Wed,
+ 21 Oct 2009 10:30:47 -0700 (PDT)
+Date: Wed, 21 Oct 2009 10:30:47 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC/2009/559 - Domain Suspend Domain Service
+In-reply-to: <4AD6136D.1020909@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: Ryan Maeda <Ryan.Maeda@sun.com>
+Cc: fwarc@sun.com, LDom Migration Dev <ldom-mig-dev@sun.com>,
+        Haik Aftandilian <Haik.Aftandilian@sun.com>
+Message-id: <4ADF4547.7070509@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4AD6136D.1020909@sun.com>
+User-Agent: Thunderbird 2.0.0.23 (Windows/20090812)
+Status: RO
+Content-Length: 1005
+
+Ryan Maeda wrote:
+> I am sponsoring this fast-track for Haik Aftandilian.
+>
+> This case defines a new domain service for requesting that a guest
+> suspend itself using the Hypervisor API defined in FWARC/2009/452.
+> This will be used as part of cooperative guest migration.
+>
+> Further details, including the interface table, can be found in the
+> one pager included in the case directory:
+>
+>   http://sac.sfbay/FWARC/2009/559/materials/onepager.txt
+>
+> This case will be approved for a minor/micro/patch OS binding and
+> a minor/micro binding for the firmware.
+>
+> Case timer is set to expire on October 22, 2009.
+>
+> -Ryan
+
+
+LGTM.
+
+When case is approved, make sure to update domain services registry at,
+http://sac.eng.sun.com/arc/FWARC/Registries/domain_services.txt
+
+
+Thanks.
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Fri Oct 23 10:42:50 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n9NHgnTs024958
+	for <fwarc@sac.sfbay.sun.com>; Fri, 23 Oct 2009 10:42:49 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n9NHgkia027397;
+	Fri, 23 Oct 2009 11:42:49 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KRZ0031PAJC3V00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 23 Oct 2009 10:42:48 -0700 (PDT)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KRZ003BSAJB0Q00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 23 Oct 2009 10:42:47 -0700 (PDT)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n9NHgl1P000025;
+ Fri, 23 Oct 2009 10:42:47 -0700 (PDT)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ id <0KRZ00M00A06RY00@fe-sfbay-10.sun.com>; Fri,
+ 23 Oct 2009 10:42:47 -0700 (PDT)
+Received: from [129.145.154.102] ([unknown] [129.145.154.102])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7u2-7.04 64bit (built Jul  2 2009))
+ with ESMTPSA id <0KRZ00KKGAJAAE50@fe-sfbay-10.sun.com>; Fri,
+ 23 Oct 2009 10:42:46 -0700 (PDT)
+Date: Fri, 23 Oct 2009 10:42:46 -0700
+From: Ryan Maeda <Ryan.Maeda@sun.com>
+Subject: Re: FWARC/2009/559 - Domain Suspend Domain Service
+In-reply-to: <4AD6136D.1020909@sun.com>
+Sender: Ryan.Maeda@sun.com
+To: fwarc@sun.com
+Cc: LDom Migration Dev <ldom-mig-dev@sun.com>,
+        Haik Aftandilian <Haik.Aftandilian@sun.com>
+Reply-to: Ryan.Maeda@sun.com
+Message-id: <4AE1EB16.8040101@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; CHARSET=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <4AD6136D.1020909@sun.com>
+User-Agent: Thunderbird 2.0.0.23pre (X11/20090812)
+Status: RO
+Content-Length: 128
+
+This fast-track case has timed out and is now approved.
+
+IAM file and domain services registry have been updated.
+
+Thanks,
+Ryan
+

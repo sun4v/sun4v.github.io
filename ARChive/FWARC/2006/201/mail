@@ -1,0 +1,1482 @@
+From sacadmin Mon Aug 14 20:04:12 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7F34BKj007361
+	for <fwarc@sac.eng.Sun.COM>; Mon, 14 Aug 2006 20:04:12 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k7F33t1g008493;
+	Tue, 15 Aug 2006 11:04:10 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J4000F01R6WBE00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 14 Aug 2006 20:04:08 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.6]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J4000EL7R6W8G50@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 14 Aug 2006 20:04:08 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7F347c4027542; Mon,
+ 14 Aug 2006 20:04:07 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4000C01R601900@d1-sfbay-09.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Mon,
+ 14 Aug 2006 20:04:07 -0700 (PDT)
+Received: from sun.com ([129.150.20.192])
+ by d1-sfbay-09.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0J40001J0R6Q3WB0@d1-sfbay-09.sun.com>; Mon,
+ 14 Aug 2006 20:04:07 -0700 (PDT)
+Date: Mon, 14 Aug 2006 20:04:05 -0700
+From: Tony Sumpter <Tony.Sumpter@sun.com>
+Subject: 2006/201 sun4v error handling update
+Sender: Tony.Sumpter@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: pq-arch@sun.com, Jim Quigley <Jim.Quigley@sun.com>
+Message-id: <44E139A5.6090101@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 697
+
+I'm sponsoring this case as a fast-track for Jim Quigley.
+The fast-track timeout is August 22, 2006.
+
+The materials are in the case directory under 'materials':
+http://sac.eng/arc/FWARC/2006/201/
+The normative text is in hv_sun4v_errorphilosophy-V2.0.txt,
+section 5.2.
+The interface table is in interface-table.txt.
+
+The case extends the sun4v report format introduced by FWARC/2006/200
+in accordance with "7.0 Rules for future expansion" documented in
+http://sac.eng/arc/FWARC/2006/200/materials/hv_sun4v_errorphilosophy-V1.0.txt.
+
+The requested binding is for a minor release of the firmware and
+a micro/patch release of the OS, the committment level of the interfaces
+is Sun Private.
+
+Tony. 
+
+
+
+From sacadmin Mon Aug 14 21:43:49 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7F4hmVX009030
+	for <fwarc@sac.eng.sun.com>; Mon, 14 Aug 2006 21:43:48 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k7F4hkGr016986;
+	Tue, 15 Aug 2006 05:43:47 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J4000103VSYI400@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 14 Aug 2006 21:43:46 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J40004M7VSYIGD0@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 14 Aug 2006 21:43:46 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k7F4hi8G021958; Mon, 14 Aug 2006 21:43:44 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7F4hhHE012793; Mon,
+ 14 Aug 2006 21:43:43 -0700 (PDT)
+Date: Mon, 14 Aug 2006 21:43:42 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/201 sun4v error handling update
+To: Tony Sumpter <Tony.Sumpter@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, pq-arch@sun.com,
+        Jim Quigley <Jim.Quigley@sun.com>
+Message-id: <44E150FE.2070609@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 1.5.0.5 (Windows/20060719)
+Status: RO
+Content-Length: 1157
+
+
+Is there a summary of what's changed?
+
+I looked at the document briefly, section 5.2
+is huge.
+
+So before I try to digest this in my spare time,
+a summary would be nice.
+
+Also section 7.0 simply states that if there are
+bits set that the guest doesn't understand that
+the recommendation is simply that the guest terminate.
+Is that really all the version control we have
+for this interface?
+
+-David
+
+
+Tony Sumpter wrote:
+> I'm sponsoring this case as a fast-track for Jim Quigley.
+> The fast-track timeout is August 22, 2006.
+> 
+> The materials are in the case directory under 'materials':
+> http://sac.eng/arc/FWARC/2006/201/
+> The normative text is in hv_sun4v_errorphilosophy-V2.0.txt,
+> section 5.2.
+> The interface table is in interface-table.txt.
+> 
+> The case extends the sun4v report format introduced by FWARC/2006/200
+> in accordance with "7.0 Rules for future expansion" documented in
+> http://sac.eng/arc/FWARC/2006/200/materials/hv_sun4v_errorphilosophy-V1.0.txt. 
+> 
+> 
+> The requested binding is for a minor release of the firmware and
+> a micro/patch release of the OS, the committment level of the interfaces
+> is Sun Private.
+> 
+> Tony.
+> 
+
+From sacadmin Mon Aug 14 22:41:22 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7F5fLm5010002
+	for <fwarc@sac.eng.Sun.COM>; Mon, 14 Aug 2006 22:41:22 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k7F5fGav006964;
+	Tue, 15 Aug 2006 13:41:18 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J4000L0XYGTK900@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 14 Aug 2006 22:41:17 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.5]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J4000H4LYGOK1D0@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 14 Aug 2006 22:41:12 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7F5fCh2000181; Mon,
+ 14 Aug 2006 22:41:12 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4000301YCT2X00@d1-sfbay-09.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Mon,
+ 14 Aug 2006 22:41:12 -0700 (PDT)
+Received: from sun.com ([129.150.21.145])
+ by d1-sfbay-09.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0J4000L5FYGN9X00@d1-sfbay-09.sun.com>; Mon,
+ 14 Aug 2006 22:41:12 -0700 (PDT)
+Date: Mon, 14 Aug 2006 22:41:14 -0700
+From: Tony Sumpter <Tony.Sumpter@sun.com>
+Subject: Re: 2006/201 sun4v error handling update
+In-reply-to: <44E150FE.2070609@sun.com>
+Sender: Tony.Sumpter@sun.com
+To: David Kahn <David.Kahn@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, pq-arch@sun.com,
+        Jim Quigley <Jim.Quigley@sun.com>
+Message-id: <44E15E7A.7090507@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <44E150FE.2070609@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 1500
+
+David Kahn wrote:
+
+> 
+> Is there a summary of what's changed?
+> 
+> I looked at the document briefly, section 5.2
+> is huge.
+> 
+> So before I try to digest this in my spare time,
+> a summary would be nice.
+
+I'll work with Jim to make one available.
+
+I also liked the ease of using the SCCS history in reviewing
+2006/474, so I'll make that available.
+
+> Also section 7.0 simply states that if there are
+> bits set that the guest doesn't understand that
+> the recommendation is simply that the guest terminate.
+> Is that really all the version control we have
+> for this interface?
+
+It is the intended simplicity that anything new is handled
+in a known way by an implementation based on the old spec.
+
+Tony.
+ 
+> -David
+> 
+> 
+> Tony Sumpter wrote:
+> 
+>> I'm sponsoring this case as a fast-track for Jim Quigley.
+>> The fast-track timeout is August 22, 2006.
+>>
+>> The materials are in the case directory under 'materials':
+>> http://sac.eng/arc/FWARC/2006/201/
+>> The normative text is in hv_sun4v_errorphilosophy-V2.0.txt,
+>> section 5.2.
+>> The interface table is in interface-table.txt.
+>>
+>> The case extends the sun4v report format introduced by FWARC/2006/200
+>> in accordance with "7.0 Rules for future expansion" documented in
+>> http://sac.eng/arc/FWARC/2006/200/materials/hv_sun4v_errorphilosophy-V1.0.txt. 
+>>
+>>
+>> The requested binding is for a minor release of the firmware and
+>> a micro/patch release of the OS, the committment level of the interfaces
+>> is Sun Private.
+>>
+>> Tony.
+>>
+
+
+
+From sacadmin Mon Aug 14 22:50:07 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7F5o7eY010065
+	for <fwarc@sac.eng.Sun.COM>; Mon, 14 Aug 2006 22:50:07 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k7F5o3r01160;
+	Mon, 14 Aug 2006 23:50:04 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J4000L1HYVEOB00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 14 Aug 2006 22:50:02 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J4000HZBYVCK1D0@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 14 Aug 2006 22:50:00 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id k7F5nxPW013577; Mon, 14 Aug 2006 22:49:59 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7F5nuAp014386; Mon,
+ 14 Aug 2006 22:49:57 -0700 (PDT)
+Date: Mon, 14 Aug 2006 22:49:55 -0700
+From: David Kahn <David.Kahn@Sun.COM>
+Subject: Re: 2006/201 sun4v error handling update
+In-reply-to: <44E15E7A.7090507@sun.com>
+To: Tony Sumpter <Tony.Sumpter@Sun.COM>, Jim Quigley <Jim.Quigley@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, pq-arch@Sun.COM
+Message-id: <44E16083.5080209@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <44E150FE.2070609@sun.com> <44E15E7A.7090507@sun.com>
+User-Agent: Thunderbird 1.5.0.5 (Windows/20060719)
+Status: RO
+Content-Length: 1336
+
+
+
+Tony Sumpter wrote:
+
+>> Also section 7.0 simply states that if there are
+>> bits set that the guest doesn't understand that
+>> the recommendation is simply that the guest terminate.
+>> Is that really all the version control we have
+>> for this interface?
+> 
+> It is the intended simplicity that anything new is handled
+> in a known way by an implementation based on the old spec.
+
+I can't recall from the original case, (and I know I'm
+being lazy here a bit), but the requirements are generally
+that new firmware works with old guests to the extent that
+there's a requirement to support old guests.
+
+If new bits show up in uprev firmware that an existing
+guest doesn't know how to handle, 7.0 says that the guest
+should simply terminate.
+
+I still don't think that's sufficient. It would be better
+if there was a version negotiation so old guests could continue
+to get ereports that they understand and the hv supplies a
+virtual view of the hardware (including ereports) that work
+with old guests. (Of course, there's a window there when the
+guest starts that it still might see an ereport with bits
+set in the reserved fields.)
+
+Otherwise, it seems to me, that we end up in a case where
+the old guest code simply has to panic because it has uprev
+firmware on an existing machine with existing previously
+supported hardware.
+
+-David
+
+
+
+From sacadmin Tue Aug 15 04:44:25 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7FBiOLw014735
+	for <fwarc@sac.eng.sun.com>; Tue, 15 Aug 2006 04:44:24 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k7FBiCJN029581;
+	Tue, 15 Aug 2006 12:44:21 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J4100E03F9X8Q00@brm-avmta-1.central.sun.com>; Tue,
+ 15 Aug 2006 05:44:21 -0600 (MDT)
+Received: from gmpea-pix-1.sun.com ([129.156.42.5])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J4100DJ9F9VCQ00@brm-avmta-1.central.sun.com>; Tue,
+ 15 Aug 2006 05:44:20 -0600 (MDT)
+Received: from d1-emea-09.sun.com
+ (d1-emea-09.sun.com [192.18.2.119] (may be forged))
+	by gmpea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7FBiJLp025170; Tue,
+ 15 Aug 2006 12:44:19 +0100 (BST)
+Received: from conversion-daemon.d1-emea-09.sun.com by d1-emea-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4100F01F9MBS00@d1-emea-09.sun.com>
+ (original mail from Jim.Quigley@Sun.COM); Tue, 15 Aug 2006 12:44:19 +0100 (BST)
+Received: from [129.156.220.16] by d1-emea-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J4100KPXF9T5CJI@d1-emea-09.sun.com>; Tue,
+ 15 Aug 2006 12:44:19 +0100 (BST)
+Date: Tue, 15 Aug 2006 12:44:17 +0100
+From: Jim.Quigley@sun.com
+Subject: Re: 2006/201 sun4v error handling update
+In-reply-to: <44E150FE.2070609@sun.com>
+Sender: Jim.Quigley@sun.com
+To: David Kahn <David.Kahn@sun.com>
+Cc: Tony Sumpter <Tony.Sumpter@sun.com>, Firmware Arch <fwarc@sun.com>,
+        pq-arch@sun.com, Jim Quigley <Jim.Quigley@sun.com>
+Reply-to: Jim.Quigley@sun.com
+Message-id: <44E1B391.9020706@Sun.COM>
+MIME-version: 1.0
+Content-type: multipart/mixed; boundary="Boundary_(ID_KPSfrGARk6XOX1zYiWDCyQ)"
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <44E150FE.2070609@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 4926
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_KPSfrGARk6XOX1zYiWDCyQ)
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+
+
+
+	Hi David,
+
+David Kahn wrote On 08/15/06 05:43,:
+> 
+> Is there a summary of what's changed?
+> 
+> I looked at the document briefly, section 5.2
+> is huge.
+> 
+> So before I try to digest this in my spare time,
+> a summary would be nice.
+> 
+
+	Summary of changes attached.
+
+
+> Also section 7.0 simply states that if there are
+> bits set that the guest doesn't understand that
+> the recommendation is simply that the guest terminate.
+> Is that really all the version control we have
+> for this interface?
+
+	We discussed version control at length and we finally
+	decided that the most practical approach was simply to
+	formalise what the guests actually do now which is
+	terminate on receipt of unknown error report types.
+
+	The old guests will still get all the ereports that they
+	understand - there is no proposal that the format/content of
+	existing ereports be changed - it is only when we add new
+	ereports which the old guests won't be aware of that this
+	is required. There should never be a case where a guest will
+	terminate when previously it was able to handle that condition.
+
+	regards
+
+	Jim Q.
+	
+> 
+> -David
+> 
+> 
+> Tony Sumpter wrote:
+> 
+>> I'm sponsoring this case as a fast-track for Jim Quigley.
+>> The fast-track timeout is August 22, 2006.
+>>
+>> The materials are in the case directory under 'materials':
+>> http://sac.eng/arc/FWARC/2006/201/
+>> The normative text is in hv_sun4v_errorphilosophy-V2.0.txt,
+>> section 5.2.
+>> The interface table is in interface-table.txt.
+>>
+>> The case extends the sun4v report format introduced by FWARC/2006/200
+>> in accordance with "7.0 Rules for future expansion" documented in
+>> http://sac.eng/arc/FWARC/2006/200/materials/hv_sun4v_errorphilosophy-V1.0.txt. 
+>>
+>>
+>> The requested binding is for a minor release of the firmware and
+>> a micro/patch release of the OS, the committment level of the interfaces
+>> is Sun Private.
+>>
+>> Tony.
+>>
+
+-- 
+
+
+--Boundary_(ID_KPSfrGARk6XOX1zYiWDCyQ)
+Content-type: text/plain; name=hv_sun4v_changes_summary.txt
+Content-transfer-encoding: 7BIT
+Content-disposition: inline; filename=hv_sun4v_changes_summary.txt
+
+
+	Summary of proposed changes to the Sun4v Error Handling Interface
+	-----------------------------------------------------------------
+
+	This document summarises the proposed changes to the Sun4v
+	Error Handling Interface as detailed in FWARC 2006/200, [1].
+	The changes are detailed in FWARC 2006/201, [2].
+
+	- Sections (1) through (4) inclusive are UNCHANGED apart from
+	  minor formatting and reference numbers.
+
+	- In Section (5) :-
+
+	  - (5.0) UNCHANGED
+	  - (5.1) UNCHANGED
+	  - (5.2)
+		- Table 5.2-I. Sun4v Error Report Format
+		   RA changed to ADDR
+		   New fields SZ, SECS, ASI, REG
+		- (5.2.1) UNCHANGED
+		- (5.2.1) UNCHANGED
+		- (5.2.3)
+		  - Table 5.2.3-I. Error Report Descriptors
+		    New fields SHT_R, DCORE
+		    New description
+		- (5.2.3.i) UNCHANGED
+		- (5.2.3.ii) UNCHANGED
+		- (5.2.3.iii) UNCHANGED
+		- (5.2.4)
+		  - Table 5.2.4-I. Format of the Error Attributes (ATTR) Field
+		    New fields, SHUT, ASI, ASR, PREG
+		  - Table 5.2.4-II. Applicable Error Attributes Map
+		    New fields, SHUT, ASI, ASR, PREG
+		  - (5.2.4.i) UNCHANGED
+		  - (5.2.4.ii)
+		    - RA changed to ADDR
+		  - (5.2.4.iii) UNCHANGED
+		  - (5.2.4.iv) UNCHANGED
+		  - (5.2.4.v) UNCHANGED
+		  - (5.2.4.vi) ***NEW***
+		  - (5.2.4.vii) ***NEW***
+		  - (5.2.4.viii) ***NEW***
+		  - (5.2.4.viiii) UNCHANGED from old (5.2.4.vi)
+		- (5.2.5) UNCHANGED
+		- (5.2.6)
+		  - RA changed to ADDR
+		  - added description for ASI report types
+		  - added note re how to handle (-1) value
+		- (5.2.7)
+		  - added description for ASI report types
+		- (5.2.8) ***NEW***
+		- (5.2.9) ***NEW***
+		- (5.2.10) ***NEW***
+		- (5.2.11) UNCHANGED from old (5.2.8)
+
+	- In Section (6) :-
+
+	- (6.0) UNCHANGED
+	- (6.1)
+		- (6.1.2.v) ***NEW***
+		- (6.1.2.vi) ***NEW***
+		- (6.1.2.vii) UNCHANGED from old (6.1.2.v)
+	- (6.2) UNCHANGED
+	- (6.3) UNCHANGED
+	- (6.4) UNCHANGED
+	- (6.5) UNCHANGED
+		
+	- In Section (7) :-
+
+	- (7.0) 
+
+	 	- "offsets 0x26-0x3f" changed to "offsets 0x32-0x3f"
+		
+	- In Section (8) :-
+
+	- added references [5], [6].
+
+	- In Appendix A :-
+
+	- (A.1)
+		- added "if (ATTR.ASI) ...." section
+		- added "if (DESC == 4) ...." section
+	- (A.2)
+
+		- added "if (DESC == 5) ...." section
+		- added "if (ATTR.ASR) ...." section
+		- added "if (ATTR.ASI) ...." section
+		- added "if (ATTR.PREG) ...." section
+
+
+
+
+
+	1. Sun4v Hypervisor Error Handling Interfaces 
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/200/materials-20060430/hv_sun4v_ver1.0.txt
+
+	2. Sun4v Hypervisor Error Handling Interfaces (Draft for review)
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/201/materials/hv_sun4v_errorphilosophy-V2.0.txt
+
+--Boundary_(ID_KPSfrGARk6XOX1zYiWDCyQ)--
+
+From sacadmin Tue Aug 15 09:32:10 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7FGW9aC019126
+	for <fwarc@sac.eng.sun.com>; Tue, 15 Aug 2006 09:32:10 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k7FGW7jl005374;
+	Tue, 15 Aug 2006 17:32:08 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J4100007SLJHG00@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 15 Aug 2006 09:32:07 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J4100DKYSLJXYD0@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 15 Aug 2006 09:32:07 -0700 (PDT)
+Received: from phys-hanwk-1 (phys-hanwk-1.SFBay.Sun.COM [129.149.2.111])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k7FGW7jg016617; Tue, 15 Aug 2006 09:32:07 -0700 (PDT)
+Received: from conversion-daemon.hanwk-mail1.sfbay.sun.com by
+ hanwk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0J4100301S5POV@hanwk-mail1.sfbay.sun.com>
+ (original mail from richard.barnette@sun.com); Tue,
+ 15 Aug 2006 09:32:06 -0700 (PDT)
+Received: from [192.168.1.105]
+ (vpn-129-150-23-152.SFBay.Sun.COM [129.150.23.152])
+ by hanwk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTP id <0J4100C8OSLIKH@hanwk-mail1.sfbay.sun.com>; Tue,
+ 15 Aug 2006 09:32:06 -0700 (PDT)
+Date: Tue, 15 Aug 2006 09:32:25 -0700
+From: Richard Barnette <richard.barnette@sun.com>
+Subject: Re: 2006/201 sun4v error handling update
+In-reply-to: <44E1B391.9020706@Sun.COM>
+To: Jim Quigley <Jim.Quigley@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, pq-arch@sun.com
+Message-id: <0f8afd5eac2f26ebba4d5c9d1ef267c2@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.624)
+Content-type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <44E150FE.2070609@sun.com> <44E1B391.9020706@Sun.COM>
+Status: RO
+Content-Length: 6318
+
+On Aug 15, 2006, at 4:44 AM, Jim.Quigley@Sun.COM wrote:
+
+>
+>
+> 	Hi David,
+>
+> David Kahn wrote On 08/15/06 05:43,:
+>> Is there a summary of what's changed?
+>> I looked at the document briefly, section 5.2
+>> is huge.
+>> So before I try to digest this in my spare time,
+>> a summary would be nice.
+>
+> 	Summary of changes attached.
+>
+>
+>> Also section 7.0 simply states that if there are
+>> bits set that the guest doesn't understand that
+>> the recommendation is simply that the guest terminate.
+>> Is that really all the version control we have
+>> for this interface?
+>
+> 	We discussed version control at length and we finally
+> 	decided that the most practical approach was simply to
+> 	formalise what the guests actually do now which is
+> 	terminate on receipt of unknown error report types.
+>
+> 	The old guests will still get all the ereports that they
+> 	understand - there is no proposal that the format/content of
+> 	existing ereports be changed - it is only when we add new
+> 	ereports which the old guests won't be aware of that this
+> 	is required. There should never be a case where a guest will
+> 	terminate when previously it was able to handle that condition.
+>
+To expand on this:  the semantic of a non_resumable_error trap
+is that the guest is required to take positive action to avoid
+data corruption in the current instruction stream.  New bits
+in the DESC/ATTR field indicate a new condition that requires
+new handling.  Old guests can't know what the new handling
+requirement is, so they have to terminate.
+
+For Rock, the best example of why new bits may be needed is the
+CRP error.  In Rock, the context registers are protected by
+parity.  A CRP error condition is reported to the hypervisor when
+any of the registers is found to have bad parity.  The hypervisor
+can't recover the guest's context registers, but the guest can,
+so the hypervisor delivers a non_resumable_error trap to the guest
+indicating the corrupted context registers.
+
+Existing versions of Solaris don't have code to recover the
+corrupted context registers, so if they see a CRP error, they
+need to terminate.  However, the version of Solaris that will
+support Rock will know how to handle CRP.  To accommodate both
+versions, it is sufficient that the hypervisor report CRP
+using new bits in the DESC/ATTR word.
+
+HTH!
+
+> 	regards
+>
+> 	Jim Q.
+> 	
+>> -David
+>> Tony Sumpter wrote:
+>>> I'm sponsoring this case as a fast-track for Jim Quigley.
+>>> The fast-track timeout is August 22, 2006.
+>>>
+>>> The materials are in the case directory under 'materials':
+>>> http://sac.eng/arc/FWARC/2006/201/
+>>> The normative text is in hv_sun4v_errorphilosophy-V2.0.txt,
+>>> section 5.2.
+>>> The interface table is in interface-table.txt.
+>>>
+>>> The case extends the sun4v report format introduced by FWARC/2006/200
+>>> in accordance with "7.0 Rules for future expansion" documented in
+>>> http://sac.eng/arc/FWARC/2006/200/materials/ 
+>>> hv_sun4v_errorphilosophy-V1.0.txt.
+>>>
+>>> The requested binding is for a minor release of the firmware and
+>>> a micro/patch release of the OS, the committment level of the  
+>>> interfaces
+>>> is Sun Private.
+>>>
+>>> Tony.
+>>>
+>
+> -- 
+>
+>
+> 	Summary of proposed changes to the Sun4v Error Handling Interface
+> 	-----------------------------------------------------------------
+>
+> 	This document summarises the proposed changes to the Sun4v
+> 	Error Handling Interface as detailed in FWARC 2006/200, [1].
+> 	The changes are detailed in FWARC 2006/201, [2].
+>
+> 	- Sections (1) through (4) inclusive are UNCHANGED apart from
+> 	  minor formatting and reference numbers.
+>
+> 	- In Section (5) :-
+>
+> 	  - (5.0) UNCHANGED
+> 	  - (5.1) UNCHANGED
+> 	  - (5.2)
+> 		- Table 5.2-I. Sun4v Error Report Format
+> 		   RA changed to ADDR
+> 		   New fields SZ, SECS, ASI, REG
+> 		- (5.2.1) UNCHANGED
+> 		- (5.2.1) UNCHANGED
+> 		- (5.2.3)
+> 		  - Table 5.2.3-I. Error Report Descriptors
+> 		    New fields SHT_R, DCORE
+> 		    New description
+> 		- (5.2.3.i) UNCHANGED
+> 		- (5.2.3.ii) UNCHANGED
+> 		- (5.2.3.iii) UNCHANGED
+> 		- (5.2.4)
+> 		  - Table 5.2.4-I. Format of the Error Attributes (ATTR) Field
+> 		    New fields, SHUT, ASI, ASR, PREG
+> 		  - Table 5.2.4-II. Applicable Error Attributes Map
+> 		    New fields, SHUT, ASI, ASR, PREG
+> 		  - (5.2.4.i) UNCHANGED
+> 		  - (5.2.4.ii)
+> 		    - RA changed to ADDR
+> 		  - (5.2.4.iii) UNCHANGED
+> 		  - (5.2.4.iv) UNCHANGED
+> 		  - (5.2.4.v) UNCHANGED
+> 		  - (5.2.4.vi) ***NEW***
+> 		  - (5.2.4.vii) ***NEW***
+> 		  - (5.2.4.viii) ***NEW***
+> 		  - (5.2.4.viiii) UNCHANGED from old (5.2.4.vi)
+> 		- (5.2.5) UNCHANGED
+> 		- (5.2.6)
+> 		  - RA changed to ADDR
+> 		  - added description for ASI report types
+> 		  - added note re how to handle (-1) value
+> 		- (5.2.7)
+> 		  - added description for ASI report types
+> 		- (5.2.8) ***NEW***
+> 		- (5.2.9) ***NEW***
+> 		- (5.2.10) ***NEW***
+> 		- (5.2.11) UNCHANGED from old (5.2.8)
+>
+> 	- In Section (6) :-
+>
+> 	- (6.0) UNCHANGED
+> 	- (6.1)
+> 		- (6.1.2.v) ***NEW***
+> 		- (6.1.2.vi) ***NEW***
+> 		- (6.1.2.vii) UNCHANGED from old (6.1.2.v)
+> 	- (6.2) UNCHANGED
+> 	- (6.3) UNCHANGED
+> 	- (6.4) UNCHANGED
+> 	- (6.5) UNCHANGED
+> 		
+> 	- In Section (7) :-
+>
+> 	- (7.0)
+>
+> 	 	- "offsets 0x26-0x3f" changed to "offsets 0x32-0x3f"
+> 		
+> 	- In Section (8) :-
+>
+> 	- added references [5], [6].
+>
+> 	- In Appendix A :-
+>
+> 	- (A.1)
+> 		- added "if (ATTR.ASI) ...." section
+> 		- added "if (DESC == 4) ...." section
+> 	- (A.2)
+>
+> 		- added "if (DESC == 5) ...." section
+> 		- added "if (ATTR.ASR) ...." section
+> 		- added "if (ATTR.ASI) ...." section
+> 		- added "if (ATTR.PREG) ...." section
+>
+>
+>
+>
+>
+> 	1. Sun4v Hypervisor Error Handling Interfaces
+>
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/200/ 
+> materials-20060430/hv_sun4v_ver1.0.txt
+>
+> 	2. Sun4v Hypervisor Error Handling Interfaces (Draft for review)
+>
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/201/ 
+> materials/hv_sun4v_errorphilosophy-V2.0.txt
+>
+--
+Richard Barnette        | Suddenly, suddenly, they heard a nasty sound,
+Sun Microsystems        | And Mustard growled, and they all looked  
+around.
+Supernova Software      | Meowch! cried Ink, and Ooh! cried Belinda,
+NWK20 3168 / UNWK20-310 | For there was a pirate, climbing in the winda.
+(510) 936-3986 / x13986 |  - Ogden Nash, "The Tale of Custard the  
+Dragon"
+
+
+From sacadmin Tue Aug 15 09:40:03 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7FGe2n4019174
+	for <fwarc@sac.eng.sun.com>; Tue, 15 Aug 2006 09:40:02 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k7FGdeBO006926;
+	Tue, 15 Aug 2006 17:40:01 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J410040RSYLOU00@brm-avmta-1.central.sun.com>; Tue,
+ 15 Aug 2006 10:39:57 -0600 (MDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J4100DA6SYKDBE0@brm-avmta-1.central.sun.com>; Tue,
+ 15 Aug 2006 10:39:57 -0600 (MDT)
+Received: from phys-hanwk-1 (phys-hanwk-1.SFBay.Sun.COM [129.149.2.111])
+	by sfbaymail1sca.SFBay.Sun.COM (8.13.6+Sun/8.13.6/ENSMAIL,v2.2)
+ with ESMTP id k7FGdulF028468; Tue, 15 Aug 2006 09:39:56 -0700 (PDT)
+Received: from conversion-daemon.hanwk-mail1.sfbay.sun.com by
+ hanwk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ id <0J4100301S5POV@hanwk-mail1.sfbay.sun.com>
+ (original mail from richard.barnette@sun.com); Tue,
+ 15 Aug 2006 09:39:56 -0700 (PDT)
+Received: from [192.168.1.105]
+ (vpn-129-150-23-152.SFBay.Sun.COM [129.150.23.152])
+ by hanwk-mail1.sfbay.sun.com
+ (iPlanet Messaging Server 5.2 HotFix 1.24 (built Dec 19 2003))
+ with ESMTP id <0J4100C9MSYKKH@hanwk-mail1.sfbay.sun.com>; Tue,
+ 15 Aug 2006 09:39:56 -0700 (PDT)
+Date: Tue, 15 Aug 2006 09:40:15 -0700
+From: Richard Barnette <richard.barnette@sun.com>
+Subject: Re: 2006/201 sun4v error handling update
+In-reply-to: <44E150FE.2070609@sun.com>
+To: Firmware Arch <fwarc@sun.com>
+Cc: pq-arch@sun.com, Jim Quigley <Jim.Quigley@sun.com>
+Message-id: <580ff2992b46aca46fa2baacdc920360@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.624)
+Content-type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <44E150FE.2070609@sun.com>
+Status: RO
+Content-Length: 2174
+
+On Aug 14, 2006, at 9:43 PM, David Kahn wrote:
+
+>
+> Is there a summary of what's changed?
+>
+> I looked at the document briefly, section 5.2
+> is huge.
+>
+> So before I try to digest this in my spare time,
+> a summary would be nice.
+>
+> Also section 7.0 simply states that if there are
+> bits set that the guest doesn't understand that
+> the recommendation is simply that the guest terminate.
+> Is that really all the version control we have
+> for this interface?
+>
+There are actually two different hooks for version control
+spelled out in section 7.0.  The first, as you've noted,
+is that if the guest sees unknown bits set in the DESC/ATTR
+word, the guest should terminate.
+
+The second is that guests are expected to ignore unknown
+settings of reserved bits outside of the DESC/ATTR word.
+This allows new hypervisors to provide information to new
+guests without impacting the old guests.  Old hypervisors
+are required to store zeros in the reserved bits, so new
+guests can distinguish new hypervisors from old.
+
+Thanks!
+
+> -David
+>
+>
+> Tony Sumpter wrote:
+>> I'm sponsoring this case as a fast-track for Jim Quigley.
+>> The fast-track timeout is August 22, 2006.
+>> The materials are in the case directory under 'materials':
+>> http://sac.eng/arc/FWARC/2006/201/
+>> The normative text is in hv_sun4v_errorphilosophy-V2.0.txt,
+>> section 5.2.
+>> The interface table is in interface-table.txt.
+>> The case extends the sun4v report format introduced by FWARC/2006/200
+>> in accordance with "7.0 Rules for future expansion" documented in
+>> http://sac.eng/arc/FWARC/2006/200/materials/hv_sun4v_errorphilosophy- 
+>> V1.0.txt. The requested binding is for a minor release of the  
+>> firmware and
+>> a micro/patch release of the OS, the committment level of the  
+>> interfaces
+>> is Sun Private.
+>> Tony.
+>>
+--
+Richard Barnette        | Suddenly, suddenly, they heard a nasty sound,
+Sun Microsystems        | And Mustard growled, and they all looked  
+around.
+Supernova Software      | Meowch! cried Ink, and Ooh! cried Belinda,
+NWK20 3168 / UNWK20-310 | For there was a pirate, climbing in the winda.
+(510) 936-3986 / x13986 |  - Ogden Nash, "The Tale of Custard the  
+Dragon"
+
+
+From sacadmin Tue Aug 15 10:33:10 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7FHX9Ym021591
+	for <fwarc@sac.eng.sun.com>; Tue, 15 Aug 2006 10:33:09 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k7FHX3Up019521;
+	Tue, 15 Aug 2006 18:33:08 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J410022FVF4B400@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 15 Aug 2006 10:33:04 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J41002AKVF30G10@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 15 Aug 2006 10:33:03 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k7FHX2FH016393; Tue, 15 Aug 2006 10:33:02 -0700 (PDT)
+Received: from [10.7.195.233] (loka1 [10.7.195.233])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7FHX1GP030196; Tue,
+ 15 Aug 2006 10:33:01 -0700 (PDT)
+Date: Tue, 15 Aug 2006 10:31:12 -0700
+From: Srinivasan Subramanian <sriniv@Sun.COM>
+Subject: Re: 2006/201 sun4v error handling update
+In-reply-to: <580ff2992b46aca46fa2baacdc920360@sun.com>
+To: Richard Barnette <richard.barnette@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, pq-arch@Sun.COM,
+        Jim Quigley <Jim.Quigley@Sun.COM>
+Reply-to: sriniv@Sun.COM
+Message-id: <44E204E0.7060903@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii; format=flowed
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <44E150FE.2070609@sun.com>
+ <580ff2992b46aca46fa2baacdc920360@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7.12) Gecko/20050928
+Status: RO
+Content-Length: 3221
+
+On 08/15/06 09:40 Richard Barnette wrote:
+> On Aug 14, 2006, at 9:43 PM, David Kahn wrote:
+> 
+>>
+>> Is there a summary of what's changed?
+>>
+>> I looked at the document briefly, section 5.2
+>> is huge.
+>>
+>> So before I try to digest this in my spare time,
+>> a summary would be nice.
+>>
+>> Also section 7.0 simply states that if there are
+>> bits set that the guest doesn't understand that
+>> the recommendation is simply that the guest terminate.
+>> Is that really all the version control we have
+>> for this interface?
+>>
+> There are actually two different hooks for version control
+> spelled out in section 7.0.  The first, as you've noted,
+> is that if the guest sees unknown bits set in the DESC/ATTR
+> word, the guest should terminate.
+> 
+> The second is that guests are expected to ignore unknown
+> settings of reserved bits outside of the DESC/ATTR word.
+> This allows new hypervisors to provide information to new
+> guests without impacting the old guests.  Old hypervisors
+> are required to store zeros in the reserved bits, so new
+> guests can distinguish new hypervisors from old.
+
+I think Dave Kahn's question is whether it is possible
+for an uprev firmware (hypervisor) on shipped/supported hardware
+platform to present an "unknown" error attr bit in the ereport
+to the shipped/supported guest?
+
+For example, can we add a new DESC/ATTR bit to the ereport to
+indicate a new type of error for Niagara 1?
+1) If yes, then the guest won't be able to handle it (unless it
+was also upgraded) even though hypervisor reported the error
+thinking the guest can handle it. I think that is the scenario
+that Dave's is asking about, where it would seem better for
+the uprev-ed hypervisor to realize that the guest was of "older" rev
+and not send ereport with DESC/ATTR bits that it can't handle.
+
+2) If no, i.e. new DESC/ATTR bits will not be added for existing/
+shipped hardware, then it would seem that a guest should treat
+cases where "unknown" bits are set in the ereport as a "hypervisor bug".
+
+Srinivasan
+
+
+> 
+> Thanks!
+> 
+>> -David
+>>
+>>
+>> Tony Sumpter wrote:
+>>
+>>> I'm sponsoring this case as a fast-track for Jim Quigley.
+>>> The fast-track timeout is August 22, 2006.
+>>> The materials are in the case directory under 'materials':
+>>> http://sac.eng/arc/FWARC/2006/201/
+>>> The normative text is in hv_sun4v_errorphilosophy-V2.0.txt,
+>>> section 5.2.
+>>> The interface table is in interface-table.txt.
+>>> The case extends the sun4v report format introduced by FWARC/2006/200
+>>> in accordance with "7.0 Rules for future expansion" documented in
+>>> http://sac.eng/arc/FWARC/2006/200/materials/hv_sun4v_errorphilosophy- 
+>>> V1.0.txt. The requested binding is for a minor release of the  
+>>> firmware and
+>>> a micro/patch release of the OS, the committment level of the  
+>>> interfaces
+>>> is Sun Private.
+>>> Tony.
+>>>
+> -- 
+> Richard Barnette        | Suddenly, suddenly, they heard a nasty sound,
+> Sun Microsystems        | And Mustard growled, and they all looked  around.
+> Supernova Software      | Meowch! cried Ink, and Ooh! cried Belinda,
+> NWK20 3168 / UNWK20-310 | For there was a pirate, climbing in the winda.
+> (510) 936-3986 / x13986 |  - Ogden Nash, "The Tale of Custard the  Dragon"
+> 
+
+
+From sacadmin Tue Aug 15 12:47:25 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7FJlO9K025139
+	for <fwarc@sac.eng.sun.com>; Tue, 15 Aug 2006 12:47:25 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k7FJlJf9019250;
+	Tue, 15 Aug 2006 20:47:22 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J42005011MWF300@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 15 Aug 2006 12:47:20 -0700 (PDT)
+Received: from sfbaymail2sca.sfbay.sun.com ([129.145.155.42])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J42002PG1MW0F80@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 15 Aug 2006 12:47:20 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.13.6+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k7FJlJQg017747; Tue, 15 Aug 2006 12:47:19 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7FJlGKY036049; Tue,
+ 15 Aug 2006 12:47:17 -0700 (PDT)
+Date: Tue, 15 Aug 2006 12:47:15 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/201 sun4v error handling update
+To: Srinivasan Subramanian <sriniv@sun.com>
+Cc: Richard Barnette <richard.barnette@sun.com>, Firmware Arch <fwarc@sun.com>,
+        pq-arch@sun.com, Jim Quigley <Jim.Quigley@sun.com>
+Message-id: <44E224C3.8000201@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+User-Agent: Thunderbird 1.5.0.5 (Windows/20060719)
+Status: RO
+Content-Length: 1194
+
+
+
+Srinivasan Subramanian wrote:
+
+> I think Dave Kahn's question is whether it is possible
+> for an uprev firmware (hypervisor) on shipped/supported hardware
+> platform to present an "unknown" error attr bit in the ereport
+> to the shipped/supported guest?
+
+I was ok with the explanation I got from Jim.
+
+It seems like there's a contract that existing
+ereports used with existing hardware can't change
+if it's the same existing hardware and we want to allow
+existing guests to be able to do something about that
+error, where possible.
+
+New ereports for new hardware can be added and if the
+guest sees a new ereport that it doesn't understand
+it has to do what's suggested in section 7. (terminate).
+
+Currently reserved bits can be used with existing ereports
+for new hardware as well. And, currently reserved bits
+can be used with existing hardware provided we understand
+that old guests are going to terminate if they get an ereport
+with those reserved bits set. (You may need a patch or whatever
+if you want to be able to handle that error more gracefully.)
+In any event, all errors will be logged as appropriate even
+if the guest doesn't understand the entire content of the
+ereport.
+
+-David
+
+From sacadmin Tue Aug 15 15:32:38 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7FMWcEe028648
+	for <fwarc@sac.eng.sun.com>; Tue, 15 Aug 2006 15:32:38 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k7FMWbQ09454;
+	Tue, 15 Aug 2006 15:32:37 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J4200C019AD8200@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 15 Aug 2006 15:32:37 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.6]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J4200A1F9ADK620@nwk-avmta-2.sfbay.sun.com>; Tue,
+ 15 Aug 2006 15:32:37 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7FMWbVW016725; Tue,
+ 15 Aug 2006 15:32:37 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4200D0193FVV00@d1-sfbay-09.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Tue,
+ 15 Aug 2006 15:32:37 -0700 (PDT)
+Received: from sun.com ([129.149.200.138])
+ by d1-sfbay-09.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0J4200LCD9AA9X40@d1-sfbay-09.sun.com>; Tue,
+ 15 Aug 2006 15:32:35 -0700 (PDT)
+Date: Tue, 15 Aug 2006 15:32:39 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: 2006/201 sun4v error handling update
+In-reply-to: <44E1B391.9020706@Sun.COM>
+Sender: Tony.Sumpter@Sun.COM
+To: Jim.Quigley@Sun.COM
+Cc: David Kahn <David.Kahn@Sun.COM>, Firmware Arch <fwarc@Sun.COM>,
+        pq-arch@Sun.COM
+Message-id: <44E24B87.6070907@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <44E150FE.2070609@sun.com> <44E1B391.9020706@Sun.COM>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 606
+
+Jim.Quigley@Sun.COM wrote:
+
+> 
+> 
+>     Hi David,
+> 
+> David Kahn wrote On 08/15/06 05:43,:
+> 
+>>
+>> Is there a summary of what's changed?
+>>
+>> I looked at the document briefly, section 5.2
+>> is huge.
+>>
+>> So before I try to digest this in my spare time,
+>> a summary would be nice.
+>>
+> 
+>     Summary of changes attached.
+
+I have placed the changes summary in the materials directory.
+
+Also a minor update to the spec text as follows:
+
+930c930
+< Reserved fields in in the structure from offsets 0x26-0x3f may be any
+---
+> Reserved fields in in the structure from offsets 0x32-0x3f may be any
+
+Tony.
+
+
+
+From sacadmin Wed Aug 16 02:00:11 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7G90ABi010215
+	for <fwarc@sac.eng.Sun.COM>; Wed, 16 Aug 2006 02:00:11 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k7G90Ar20879;
+	Wed, 16 Aug 2006 03:00:10 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J4300F0B2C7I000@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 16 Aug 2006 02:00:07 -0700 (PDT)
+Received: from gmpea-pix-1.sun.com ([129.156.42.5])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J43001A22C4WG40@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 16 Aug 2006 02:00:05 -0700 (PDT)
+Received: from d1-emea-10.sun.com
+ (d1-emea-10.sun.com [192.18.2.120] (may be forged))
+	by gmpea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7G904fP013560; Wed,
+ 16 Aug 2006 10:00:04 +0100 (BST)
+Received: from conversion-daemon.d1-emea-10.sun.com by d1-emea-10.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4300E0125KIO00@d1-emea-10.sun.com>
+ (original mail from Jim.Quigley@Sun.COM); Wed, 16 Aug 2006 10:00:04 +0100 (BST)
+Received: from [129.156.220.16] by d1-emea-10.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J43003MM2C2EW2O@d1-emea-10.sun.com>; Wed,
+ 16 Aug 2006 10:00:02 +0100 (BST)
+Date: Wed, 16 Aug 2006 10:00:02 +0100
+From: Jim.Quigley@Sun.COM
+Subject: Re: 2006/201 sun4v error handling update
+In-reply-to: <44E204E0.7060903@sun.com>
+Sender: Jim.Quigley@Sun.COM
+To: sriniv@Sun.COM
+Cc: Richard Barnette <richard.barnette@Sun.COM>, Firmware Arch <fwarc@Sun.COM>,
+        pq-arch@Sun.COM, Jim Quigley <Jim.Quigley@Sun.COM>
+Reply-to: Jim.Quigley@Sun.COM
+Message-id: <44E2DE92.60406@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <44E150FE.2070609@sun.com>
+ <580ff2992b46aca46fa2baacdc920360@sun.com> <44E204E0.7060903@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 5134
+
+
+
+	Hi Srini,
+
+
+> 
+> I think Dave Kahn's question is whether it is possible
+> for an uprev firmware (hypervisor) on shipped/supported hardware
+> platform to present an "unknown" error attr bit in the ereport
+> to the shipped/supported guest?
+	
+	Yes, it is possible, why not ? It could also be that
+	we run an existing sun4v guest on new h/w.
+	
+> 
+> For example, can we add a new DESC/ATTR bit to the ereport to
+> indicate a new type of error for Niagara 1?
+> 1) If yes, then the guest won't be able to handle it (unless it
+> was also upgraded) even though hypervisor reported the error
+> thinking the guest can handle it. 
+
+	Right, and the guest *can* handle it, it can terminate.
+
+I think that is the scenario
+> that Dave's is asking about, where it would seem better for
+> the uprev-ed hypervisor to realize that the guest was of "older" rev
+> and not send ereport with DESC/ATTR bits that it can't handle.
+
+	Leaving aside the fact for a moment that it is
+	unlikely that we ever have the situation where we find
+	a new error type in the h/w after we implement the
+	HV, what else is the HV supposed to do with this
+	error ?
+
+	If it would cause data corruption, the guest has to
+	terminate. So we have two options. Either the HV aborts
+	the system or the guest is notified that it should terminate.
+
+	Aborting the HV is bad, and should be avoided if at all
+	possible. We could have multiple domains/guests, we don't
+	get any debug info., etc.
+
+	So we have to notify the guest to terminate, or indeed to
+	handle the error if it can. If it is a new type of error by
+	definition we will need a new type of error report. If we could
+	use an existing error report, it would not be a new error.
+
+	So we send the report to the guest, it doesn't recognise
+	it, follows the spec. for unknown error report types and it
+	terminates, which is a good result.
+
+	Then the guest is upgraded with an improved algorithm and
+	is able to handle the error type more gracefully. The HV
+	is unchanged, sends the same error report and the guest
+	handles it. Again a good result.
+
+> 
+> 2) If no, i.e. new DESC/ATTR bits will not be added for existing/
+> shipped hardware, then it would seem that a guest should treat
+> cases where "unknown" bits are set in the ereport as a "hypervisor bug".
+
+	No. No, no, no, no, no. Why should it be a "hypervisor bug" ?
+	Why is everything that the OS doesn't handle  a HV bug ?
+
+	It is not a bug - it is a specified, fully defined, approved
+	(FWARC 2006/200), shipping feature.
+
+	If there are DESC/ATTR bits set you don't recognise, terminate.
+
+	Maybe, just maybe, the guest will be updated sometime and
+	will finally recognise those bits. We don't want to have
+	to couple a HV upgrade with a guest upgrade.
+
+	The error type is "unknown" to the guest, not to the HV. What
+	you are suggesting is a new API that would require a guest
+	to notify the HV of the error types it can accept. The
+	HV would then notify the guest of all these error types when
+	they happened, and for other error types, would notify it that
+	an "other"/"unknown" error type had occurred - which is what
+	happens now. Just that instead of having a single
+	"unknown"/"other" ATTR bit, we have multiple "unknown"/"other"
+	ATTR bits.
+
+	For a guest using version 1.0 of the spec.,
+
+		  RSVD0       23:5            Undefined. Reserved
+                                 	      for future use.
+
+	is the UNKNOWN field. For a guest using version 2.0 of the
+	spec.,
+
+		  RSVD0       23:9            Undefined. Reserved
+                                 	      for future use.
+
+	is the UNKNOWN field. To simply the issue, I could change
+	this to read
+
+		UNKNOWN       23:9		Unknown error type.
+						Reserved for future use.
+						If set, guests using
+						this version of the spec
+						should terminate.
+		
+
+	Would that help clarify the issue ?
+
+	regards
+
+	Jim Q.
+
+
+
+
+	regards
+
+	Jim Q.
+
+
+> 
+> Srinivasan
+> 
+> 
+>>
+>> Thanks!
+>>
+>>> -David
+>>>
+>>>
+>>> Tony Sumpter wrote:
+>>>
+>>>> I'm sponsoring this case as a fast-track for Jim Quigley.
+>>>> The fast-track timeout is August 22, 2006.
+>>>> The materials are in the case directory under 'materials':
+>>>> http://sac.eng/arc/FWARC/2006/201/
+>>>> The normative text is in hv_sun4v_errorphilosophy-V2.0.txt,
+>>>> section 5.2.
+>>>> The interface table is in interface-table.txt.
+>>>> The case extends the sun4v report format introduced by FWARC/2006/200
+>>>> in accordance with "7.0 Rules for future expansion" documented in
+>>>> http://sac.eng/arc/FWARC/2006/200/materials/hv_sun4v_errorphilosophy- 
+>>>> V1.0.txt. The requested binding is for a minor release of the  
+>>>> firmware and
+>>>> a micro/patch release of the OS, the committment level of the  
+>>>> interfaces
+>>>> is Sun Private.
+>>>> Tony.
+>>>>
+>> -- 
+>> Richard Barnette        | Suddenly, suddenly, they heard a nasty sound,
+>> Sun Microsystems        | And Mustard growled, and they all looked  
+>> around.
+>> Supernova Software      | Meowch! cried Ink, and Ooh! cried Belinda,
+>> NWK20 3168 / UNWK20-310 | For there was a pirate, climbing in the winda.
+>> (510) 936-3986 / x13986 |  - Ogden Nash, "The Tale of Custard the  
+>> Dragon"
+>>
+> 
+
+-- 
+
+
+From sacadmin Mon Aug 28 10:00:13 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k7SH0CS2002174
+	for <fwarc@sac.eng.Sun.COM>; Mon, 28 Aug 2006 10:00:13 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k7SH0Ch09901;
+	Mon, 28 Aug 2006 11:00:12 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J4P00D27WK66E00@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 28 Aug 2006 10:00:06 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.5]) by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J4P007O7WK5P4C0@nwk-avmta-2.sfbay.sun.com>; Mon,
+ 28 Aug 2006 10:00:05 -0700 (PDT)
+Received: from d1-sfbay-09.sun.com ([192.18.39.119])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k7SH05OJ010814; Mon,
+ 28 Aug 2006 10:00:05 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-09.sun.com by d1-sfbay-09.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J4P00201WACS100@d1-sfbay-09.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Mon,
+ 28 Aug 2006 10:00:05 -0700 (PDT)
+Received: from sun.com ([129.144.206.167])
+ by d1-sfbay-09.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0J4P00E88WK1DN30@d1-sfbay-09.sun.com>; Mon,
+ 28 Aug 2006 10:00:02 -0700 (PDT)
+Date: Mon, 28 Aug 2006 10:00:02 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: 2006/201 sun4v error handling update
+In-reply-to: <44E139A5.6090101@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: pq-arch@Sun.COM, Jim Quigley <Jim.Quigley@Sun.COM>
+Message-id: <44F32112.4010304@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <44E139A5.6090101@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 820
+
+The timeout has now expired - this case is approved.
+
+Tony.
+
+Tony Sumpter wrote:
+> I'm sponsoring this case as a fast-track for Jim Quigley.
+> The fast-track timeout is August 22, 2006.
+> 
+> The materials are in the case directory under 'materials':
+> http://sac.eng/arc/FWARC/2006/201/
+> The normative text is in hv_sun4v_errorphilosophy-V2.0.txt,
+> section 5.2.
+> The interface table is in interface-table.txt.
+> 
+> The case extends the sun4v report format introduced by FWARC/2006/200
+> in accordance with "7.0 Rules for future expansion" documented in
+> http://sac.eng/arc/FWARC/2006/200/materials/hv_sun4v_errorphilosophy-V1.0.txt. 
+> 
+> 
+> The requested binding is for a minor release of the firmware and
+> a micro/patch release of the OS, the committment level of the interfaces
+> is Sun Private.
+> 
+> Tony.
+> 
+
+
+

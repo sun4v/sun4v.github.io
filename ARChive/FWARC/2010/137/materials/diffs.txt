@@ -1,0 +1,44 @@
+
+------- io-api.txt -------
+1c1
+< #pragma ident	"@(#)io-api.txt	1.39	09/10/06 SMI"
+---
+> #pragma ident	"@(#)io-api.txt	1.40	10/04/21 Oracle"
+189,190d188
+< 		This definition applies to API versions 1.0 and 1.1 only.
+< 
+198,215d195
+< 	io_sync_attributes - dma attributes for pci_dma_sync
+< 
+< 		This definition applies to API versions 1.2 and later.
+< 
+< 		A bitmask specifying the attributes for a memory/io sync
+< 		operation, The sync directions are flags; one or both
+< 		directions may be specified by the caller. The caller must
+< 		also specify is the region contains executable data through
+< 		another flag in the bitmask.
+< 
+< 		  0x01 - For device (device read from memory)
+< 		  0x02 - For cpu (device write to memory)
+< 		  0x04 - No executable data in memory region
+< 
+< 		Note: For compatibility with future versions of this
+< 		specification, the caller must set all unused bits to
+< 		zero. The implementation shall ignore these bits.
+< 
+596,597c576
+< 	arg3		(API versions 1.0/1.1) io_sync_direction
+< 			(API versions 1.2 and later) io_sync_attributes
+---
+> 	arg3		io_sync_direction
+606,610d584
+< 	In API versions 1.2 and later, if the region does not contain data
+< 	which will be executed, the caller must include the flag indicating
+< 	this fact in the io_sync_attributes. Using this flag and later
+< 	executing instructions from the region has undefined results.
+< 
+619,620c593
+< 	EINVAL		invalid devhandle or
+< 			(API v1.0 and v1.1 only) invalid io_sync_direction
+---
+> 	EINVAL		invalid devhandle or invalid io_sync_direction

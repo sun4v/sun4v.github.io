@@ -1,0 +1,71 @@
+From sacadmin Tue Apr 28 16:32:15 2009
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n3SNWEKi015267;
+	Tue, 28 Apr 2009 16:32:14 -0700 (PDT)
+Received: (from dmk@localhost)
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit) id n3SNWDmi015263;
+	Tue, 28 Apr 2009 16:32:13 -0700 (PDT)
+Date: Tue, 28 Apr 2009 16:32:13 -0700 (PDT)
+From: David Kahn <dmk@sac.sfbay.sun.com>
+Message-Id: <200904282332.n3SNWDmi015263@sac.sfbay.sun.com>
+To: FWARC-record@sac.sfbay.sun.com
+Cc: David.Kahn@Sun.COM
+Subject: minor clarifications to sun4v io_api.txt [FWARC/2009/268 FastTrack]
+Status: RO
+Content-Length: 575
+
+
+Template Version: @(#)sac_nextcase 1.68 02/23/09 SMI
+This information is Copyright 2009 Sun Microsystems
+1. Introduction
+    1.1. Project/Component Working Name:
+	 minor clarifications to sun4v io_api.txt
+    1.2. Name of Document Author/Supplier:
+	 Author:  David Kahn
+    1.3  Date of This Document:
+	28 April, 2009
+4. Technical Description
+    See the case directory for more detail
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		sysfw
+    6.5. ARC review type: FastTrack
+    6.6. ARC Exposure: open
+
+
+From sacadmin Tue Apr 28 16:42:30 2009
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n3SNgTKI015459
+	for <FWARC@sac.sfbay.sun.com>; Tue, 28 Apr 2009 16:42:29 -0700 (PDT)
+Received: (from dmk@localhost)
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit) id n3SNgSKN015458
+	for FWARC@sac.sfbay.sun.com; Tue, 28 Apr 2009 16:42:28 -0700 (PDT)
+Date: Tue, 28 Apr 2009 16:42:28 -0700 (PDT)
+From: David Kahn <dmk@sac.sfbay.sun.com>
+Message-Id: <200904282342.n3SNgSKN015458@sac.sfbay.sun.com>
+To: FWARC@sac.sfbay.sun.com
+Subject: minor clarifications to sun4v io_api.txt [FWARC/2009/268 self-review]
+Status: RO
+Content-Length: 516
+
+I'm submitting this self-review case on behalf of myself.
+
+This case documents some minor clarifications to the sun4v
+io-api.txt document that were unable to be included in the
+last case that modified the document.
+
+Also, as part of this case, the io-api.txt (including it;s
+full SCCS history) will be moved to the fwarc/specifications
+directory.
+
+The updated io-api.txt, full sccs history and diffs.txt
+are in the materials directory.
+
+Since this is a self-review case, the case is automatically
+approved.
+
+-David
+
+

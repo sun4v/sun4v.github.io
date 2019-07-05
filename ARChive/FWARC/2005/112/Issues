@@ -1,0 +1,34 @@
+Inception: 2005/112 sunv4 io API
+March 7, 2005
+=====================================================
+
+Hitendra Zhangada
+
+1.  18Q, Q# 15, last bullet refers to "some measurable effect.."
+     Have measure the boot time effects?  Similar question for
+     the core API case (2005/116) states that there are no measurable
+     boot time effects.  So, is this true that IO APIs have boot
+     time effects but the core APIs don't?
+
+     Further, for the same answer, it states that the systems that
+     implement sun4v tend to be larger systems.  I don't think this
+     is true.  Sun4v is implemented on Ontario and Niagara-2 based
+     smaller systems.
+
+Following comments/issues are for IO API specification version 1.29.
+
+2.  Section 1, middle of third paragraph seems to have a typo.
+     "Results 0 - 5 are returned in %o0 - %o4" seems to be incorrect.
+     I think the correct sentence is "Results 0 - 4 are ..."/
+
+3.  Section 5.1, we may want to have registry for MSI function
+     numbers.  Is there a reason why we skipped 0xcf?
+
+4.  Section 5.3.13, typo, the last word should be "msiqid".
+
+5.  Section 5.3.13.1, typo, "msium" should be "msinum".
+
+6.  Section 5.3.17, typo, the last word should be "msiqid".
+
+
+

@@ -1,0 +1,3141 @@
+From sacadmin Fri Feb  6 08:31:19 2009
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n16GVJ2q018459;
+	Fri, 6 Feb 2009 08:31:19 -0800 (PST)
+Received: (from ehring@localhost)
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit) id n16GVJiI018455;
+	Fri, 6 Feb 2009 08:31:19 -0800 (PST)
+Date: Fri, 6 Feb 2009 08:31:19 -0800 (PST)
+From: Stephen Ehring <ehring@sac.sfbay.sun.com>
+Message-Id: <200902061631.n16GVJiI018455@sac.sfbay.sun.com>
+To: FWARC-record@sac.sfbay.sun.com
+Subject: sun4v error handling update [FWARC/2009/070 FastTrack timeout 02/13/2009]
+Status: RO
+Content-Length: 562
+
+
+Template Version: @(#)sac_nextcase %I% %G% SMI
+This information is Copyright 2009 Sun Microsystems
+1. Introduction
+    1.1. Project/Component Working Name:
+	 sun4v error handling update
+    1.2. Name of Document Author/Supplier:
+	 Author:  Jim Quigley
+    1.3  Date of This Document:
+	06 February, 2009
+4. Technical Description
+    See the case directory for more detail
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		unknown
+    6.5. ARC review type: FastTrack
+    6.6. ARC Exposure: open
+
+
+From sacadmin Fri Feb  6 08:44:09 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n16Gi9aj020029
+	for <fwarc@sac.sfbay.sun.com>; Fri, 6 Feb 2009 08:44:09 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n16Gi5mX031120
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 6 Feb 2009 09:44:08 -0700 (MST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KEN00F03L5JS700@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 06 Feb 2009 09:44:07 -0700 (MST)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KEN00AGFL5IU950@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 06 Feb 2009 09:44:07 -0700 (MST)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n16Gi60x010702	for
+ <fwarc@sun.com>; Fri, 06 Feb 2009 16:44:06 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KEN00800I586K00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 06 Feb 2009 09:44:06 -0700 (MST)
+Received: from dhcp-ubur-189-142.East.Sun.COM ([unknown] [129.148.189.142])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ with ESMTPSA id <0KEN00882L4VFGF0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 06 Feb 2009 09:43:44 -0700 (MST)
+Date: Fri, 06 Feb 2009 11:43:42 -0500
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: FWARC 2009/070 sun4v error handling update
+Sender: Stephen.Ehring@sun.com
+To: fwarc@sun.com, Jim.Quigley@sun.com
+Message-id: <498C68BE.6040509@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.19 (Macintosh/20081209)
+Status: RO
+Content-Length: 53083
+
+I'm sponsoring this case as a fast-track for Jim Quigley.
+The fast-track timeout is February 13, 2009.
+
+The new version of the specification, the diffs, a document describing 
+the diffs, and the interface table are in the case materials directory.
+
+The case extends the sun4v report format introduced by FWARC/2006/200 
+and updated by FWARC/2006/201
+
+The requested binding is for a minor release of the firmware and
+a micro/patch release of the OS, the committment level of the interfaces
+is Sun Private.
+
+Sun4v Hypervisor Error Handling Interfaces 
+-------------------------------------------
+
+NOTE:
+    This document describes the error handling interfaces for CPU, memory,
+    internal register and programmed I/O errors. The error handling
+    interfaces for host bus adapter errors and directly accessible I/O device
+    errors are still being developed and are not described in this version
+    of the document.
+
+    This interface is being extended to include a mechanism for notifying the
+    sun4v guest of Service Processor (SP) state changes, ie, when the Service
+    Processor in a system becomes available/unavailable.
+
+1.0 Introduction
+
+Hardware errors which do not reset the system generate a trap to the
+hypervisor. The hyperprivileged trap handler virtualizes the errors
+from the CPU, memory, and virtual I/O devices like the host bus
+adapter, and sends an error notification to the affected guests. For errors
+that do not reset the guest, an error report indicating the impact of
+the error is sent to the guest. Section 5 of this document
+describes the structure of the error report sent to the guest.
+
+Service Processor state changes (SP becoming available again after being
+offline or becoming unavailable) on systems which have the necessary
+hardware support will generate an interrupt to the hypervisor. An
+error report indicating this SP state change will be sent to the
+guest.
+
+Errors from devices that are directly accessed by the sun4v guest are not
+virtualized by the hypervisor. They are handled by the device drivers of
+the sun4v guest.
+
+The sun4v architecture[1] defines two classes of errors based on their
+impact on the interrupted instruction stream: resumable errors and
+non-resumable errors. Resumable errors are those that do not affect the
+current instruction stream. Non-resumable errors are those that affect
+the current instruction stream and require software intervention before
+the interrupted instruction stream can be resumed.
+
+The sun4v architecture defines queues for the hypervisor to send error
+reports to its guests. The sun4v error reports for CPU, memory, and PIO
+errors are queued on to the resumable error queue or non-resumable
+error queue depending on the type of the error. The sun4v error reports
+for errors in virtual or direct I/O devices are queued on to the
+dev_mondo queue.
+
+SP state change error reports are queued on to the resumable error queue.
+
+The simplest implementation of a sun4v guest could, for example,
+simply perform a 'retry' on resumable error notifications and 'panic'
+on non-resumable error notifications. But the intent is to have enough
+information in the hypervisor generated error reports to the sun4v guests
+such that an advanced guest would be able to take corrective actions
+and make forward progress when possible.
+
+The remainder of this document is divided as follows. Section 2 defines
+new terms introduced in this document.  Section 3 describes the sun4v
+hypervisor error handling philosophy. Section 4 provides a brief
+overview of the hypervisor generated error notifications for errors.
+Section 5 describes the sun4v error handling interfaces. Section 6
+describes the hypervisor error handling principles of operation.
+
+2.0 Terms and Definitions
+
+2.1 Diagnosis Service Provider. The platform is expected to include
+an FMA Fault Manager that provides a Diagnosis Service for the hardware
+components. The diagnosis service must provide a transport for FMA
+Error Reports, and can be implemented on any of the following:
+	(1) The only sun4v guest partition on the platform
+	(2) A sun4v service partition
+	(3) The Service Processor
+The diagnosis service implements the appropriate hardware diagnosis
+algorithms and triggers corrective actions, messaging, and other tasks
+resulting from the diagnosis of a fault in the platform hardware.
+
+2.2 FMA Error Report Generator Service Provider. If a hypervisor implementation
+does not itself produce FMA Error Reports, then an FMA Error Report Generator
+must be implemented to convert the hypervisor implementation-specific error
+data structures to FMA Error Reports and transport them to the diagnosis
+service.
+
+2.3 Service Provider Interface. A platform-specific Service Provider 
+Interface must be implemented on the platform to transmit hypervisor
+generated error reports to the FMA Error Report Generator (if one is 
+required) or to the Diagnosis Service Provider (if the hypervisor
+itself produces FMA Error Reports).
+
+For information on Sun SPARC error terminology, please refer to [2].
+
+For more information on FMA, see http://fma.eng.
+
+3.0 Philosophy
+
+The sun4v hypervisor error handling philosophy is based on the
+following principles:
+	(1) Abstract the underlying hardware characteristics from
+	    errors reported to a sun4v guest so as to enable
+	    sun4v guest error handlers to be implemented without
+	    built-in knowledge of the underlying hardware implementation.
+	(2) Provide a separate mechanism to report errors for analysis
+	    and diagnosis of hardware faults that should be subscribed
+	    to by the FMA Error Report generator and diagnosis service provider.
+
+4.0 Brief Overview of Error Notifications
+
+Hardware errors which do not reset the system trap to the hypervisor.
+For each error handled by the hypervisor:
+	(1) If the error does not reset the sun4v guest, then a sun4v error
+	    report that virtualizes the underlying hardware error and
+	    describes the impact of the error is sent to the sun4v
+	    guest.
+       (2) A service error report containing the raw error logs
+	    captured by the hardware and additional diagnostic data is
+	    sent to the diagnostic service provider.
+
+For an SP state change, a sun4v error describing the change is sent to the
+sun4v guest. There is no associated service error report.
+
+As shown in Figure 1 below, the sun4v error report is sent to the
+affected sun4v guest via the queues defined by the sun4v
+architecture. The service error report is sent via the Service Provider
+Interface to the FMA Error Report Generator which sends an FMA Error Report
+to the Diagnosis Service Provider.
+
+
+
+
+                                                            Diagnosis Service
+				                            Provider
+                                       _________              _________
+                                      (         )  forward   (         )
+                                     ( FMA Agent )=========>( FMA Agent )
+                                      (_________)            (_________)
+                                          ^ FMA Error            ^ FMA Error
+                                          | Report               | Report    
+     +--------------+ +-------------+ +-------------+      +------------+
+     |CPU/Mem/PIO   | |Virtual i/o  | |Direct i/o   |      | FMA Error  |
+     |error handler | |error handler| |error handler|      | Report     |
+     +--------------+ +-------------+ +-------------+      | Generator  |
+              ^                 ^          ^               +------------+
+      +-------|-------+         |----+-----|                     ^
+      |               |              |                           |
+ +-------------+ +-----------+ +-----------+              +--------------+
+ |non-resumable| |resumable  | |device 	   |              |Service       |
+ |error queue  | |error queue| |mondo queue|              |Provider I/F  |
+ +-------------+ +-----------+ +-----------+	          +--------------+
+       ^	      ^             ^	                         ^
+       |	      |	            |	                         |
+       +--------------+	            |	                         |
+ 	      |cpu,                 |virtual i/o                 |service
+ 	      |memory,              |error report,               |error
+	      |PIO error            |direct i/o                  |report
+	      |report               |error interrupt             |
+              +---------------------+             		 |
+                        |                       		 |
+		        |                       		 |
+		  +-------------+                       	 |
+		  | Hypervisor  |--------------------------------+
+		  +-------------+
+                        ^
+		        | hardware errors
+
+   Fig 1. Hypervisor Error Reports to sun4v Guest and FMA Service Provider
+
+                                                            
+				                           
+                                       _________
+                                      (         )
+                                     ( FMA Agent )
+                                      (_________)
+                                          ^ FMA Error
+                                          | Report  
+				     +--------------+
+				     |SP state      |
+				     |error handler |
+				     +--------------+
+				              ^     
+				      +-------|
+				      |       
+				 +-------------+
+				 | resumable   |
+				 |error queue  |
+				 +-------------+
+				       ^
+				       |
+				       +------+
+				 	      |
+				 	      |
+					      |
+					      |
+				              +---------+ 
+				                        |     
+						        |      
+						  +-------------+
+						  | Hypervisor  |
+						  +-------------+
+				                        ^
+						        | SP state change interrupt
+
+   Fig 1.1. Hypervisor SP Change Reports to sun4v Guest and FMA Service Provider
+
+Some notes on Figure 1 above:
+	(1) Virtual I/O refers to devices that cannot be directly accessed
+	    by the guest. They are either complete abstractions of
+	    the underlying physical devices, like virtual console
+	    device, or are indirectly accessed using hypervisor calls,
+	    like to access the host bus adapter.
+	(2) The CPU, memory, and virtual I/O errors are diagnosed
+	    by the Diagnosis Service Provider based on the service error
+	    report data sent.
+	(3) Direct I/O device errors are handled by the sun4v guest device
+	    drivers. Hardened drivers generate FMA Error Reports. Those FMA
+	    Error Reports are sent to the FMA Agent (as shown in Figure 1) on
+	    the sun4v guest and are forwarded to the FMA Agent on the
+	    Diagnosis Service Provider. Forwarding the FMA Error Reports may
+	    not be necessary if the Diagnosis Service Provider and the sun4v
+	    guest are on the same partition.
+	(4) The sun4v error report is a virtualized error report used by 
+	    the sun4v guest, and is not the same as the FMA Error Report
+	    that captures platform-specific information for the Diagnosis
+	    Service.
+
+Figure 1 shows the error reports generated by the hypervisor when handling
+hardware errors and how they are propagated to the Diagnosis Service
+Provider and the sun4v guest.
+
+The sun4v error report is sent to the sun4v guest. The CPU, memory,
+and PIO error reports are sent via the sun4v resumable_error and 
+nonresumable_error queues. Both virtual and direct I/O device error
+reports are sent via the sun4v dev_mondo queue. These queues are allocated
+per CPU. Each queue has a head and a tail pointers. When the queue is
+empty, the head and tail pointers are equal. The hypervisor queues
+the error report at the tail and updates the tail pointer to the next
+entry.
+
+The SP state change  error reports are sent via the sun4v resumable_error
+queues.
+
+For resumable_error and dev_mondo queues, the hardware generates a
+disrupting trap whenever the head and tail pointers are not equal. The
+disrupting trap is taken on the CPU if the interrupts are enabled 
+(PSTATE.IE = 1) or remains pending if the interrupts are disabled.
+The sun4v guest interrupt handler processes the sun4v error reports starting 
+from the head pointer to the tail pointer (excluding) and updates the 
+head pointer to equal the tail pointer leaving the queue in
+a non-interrupting state.
+
+For nonresumable_error queues the hardware does not generate a trap
+automatically when the head and tail pointers are not equal. The hypervisor 
+emulates a nonresumable_error trap on the CPU by transferring control to the
+nonresumable_error trap handler of the sun4v guest. The sun4v guest
+trap handler processes the sun4v error reports starting from the head
+pointer to the tail pointer (excluding) and updates the head pointer to
+equal the tail pointer.
+
+For direct I/O device errors, the sun4v guest hardened device drivers
+generate the FMA Error Report to be sent for diagnosis. For CPU, memory, and
+virtual I/O device errors, the sun4v guest does not generate FMA
+Error Reports, instead an FMA Error Report is generated based on the service
+error report sent via the service provider interface.
+
+The service error report is sent to the FMA Error Report Generator and
+Diagnosis Service Provider via a platform-specific interface called
+the Service Provider Interface. The FMA Error Report Generator receives
+the error logs and diagnostic data from the hypervisor and generates
+an FMA Error Report. It sends the FMA Error Report to the Diagnosis Service
+Provider for analysis and diagnosis.  The error recovery actions based
+on the platform's SERD policies and failure rates are then communicated
+back to the guests (not shown in Figure 1). Please refer to the
+proposed FMA Error Report Generator and Diagnosis Service Provider
+architecture[3] for more information.
+
+The sun4v guest error reports and the error reports sent through the
+Service Provider Interface each contain an Error Handle (see 5.2.1)
+that can be used to correlate the reports.
+
+This document describes the sun4v error reports for CPU, memory, and
+the virtual host bus adapter errors. For a description of the service
+error reports, please refer to the platform's FMA and Service Entity
+documentation.
+
+4.1 PIO store errors.
+
+Note that this error report format is *not* used for PIO store errors. These
+errors are reported to the guest using a different, I/O specific format.
+See [6] for details.
+
+5.0 Sun4v Error Handling Interfaces
+
+This section describes the sun4v error handling interfaces as a
+supplement to the Error Model section in the sun4v architecture
+specification[1].
+
+5.1 Classification of Errors
+An error as defined in [2] is when a signal or datum is wrong.
+Hypervisor classifies the hardware errors into three classes:
+	(1) Resumable errors, where the error does not affect the
+	    current instruction stream.
+	(2) Non-resumable errors, where the error affects the current
+	    instruction stream and requires software intervention before
+	    the program can be resumed.
+	(3) Unconstrained or terminating errors, where the error results in
+	    a loss of system coherency and/or data integrity that continuing
+	    execution can lead to further damage. 
+
+For unconstrained or terminating errors, a sun4v error report is not queued
+to the affected sun4v guests; the affected guests are reset. 
+
+For resumable and non-resumable errors, a sun4v error report is queued
+to the affected sun4v guest. The sun4v architecture[1] defines the
+resumable, non-resumable, and dev_mondo queues, and their workings.
+
+All I/O error interrupts are resumable errors as they are derived from
+asynchronous interrupts generated by I/O devices and do not affect
+the current instruction stream. However, their error reports are queued
+on the dev_mondo queue to be handled by the nexus and device drivers of
+the sun4v guest. The structure of the i/o error reports [TBD] is different
+from the sun4v error reports for CPU, memory and PIO errors defined
+in section 5.2 of this document.
+
+Regardless of the class of the error, the hypervisor creates a service
+error report and attempts to deliver it to the FMA Error Report Generator.
+Upon receipt of a service error report, the FMA Error Report Generator
+creates an FMA Error Report and attempts to deliver it to the Diagnosis
+Service Provider for error recovery and fault diagnosis. In the case where
+the Diagnosis Service Provider is implemented on the sun4v guest which
+is fatally affected by a non-resumable error, the FMA Error Report may 
+not be successfully delivered to the diagnosis service.
+
+5.1.1 Resumable Errors
+For an error that is a resumable error, the originating error may
+either be corrected by the hardware or hypervisor, or left unchanged.
+
+If the originating error was corrected, then the guest is not sent
+an error report. However, a service error report is sent to the
+Diagnosis Service Provider via the service provider interface
+for fault analysis.
+
+All SP state changes are classified as resumable errors.
+
+Some examples of hardware errors that are not reported to the guest because
+the error was corrected are: correctable ECC error in cache data, TLB
+data parity error, cache data parity error in a clean cache, and 
+uncorrectable ECC error in a clean cache line.
+
+If the originating error was left unchanged, then an error report is
+sent to the affected guest. The impact of the error on the sun4v
+guest, for example, whether there was memory corruption or whether a
+CPU became unavailable, is indicated in the error report.
+
+Some examples of hardware errors that are reported as resumable errors
+where the originating error was left unchanged are: uncorrectable data ECC
+error on cache writeback, transaction timeout on a PIO read, data parity
+error on a PIO read data return, bus error on a PIO read, and
+recursive unrecoverable errors on a CPU. In the case of an
+uncorrectable data ECC error on cache writeback, the memory region that
+was corrupted is indicated in the error report. In the case of
+recursive errors on a CPU, the ID of the CPU that was
+marked in error along with the execution mode of the CPU at the time of
+the error are indicated in the error report. In the case of
+a failed PIO transaction, the PIO transaction address is indicated in
+the error report.
+
+5.1.2 Non-Resumable Errors
+For an error that is a non-resumable error, the originating error is
+not corrected. The sun4v error report indicates the location of the 
+originating error. These errors require the intervention of the sun4v
+guest error handler to take corrective actions, when possible,
+before resuming or terminating the interrupted program. For example,
+the guest may use the hypervisor call to scrub the memory region in
+error indicated in the error report.
+
+A non-resumable error may be reported to the sun4v guest as
+either a precise trap or a deferred trap. The error report descriptor
+indicates the trap type. When multiple error reports
+are queued, the deferred error reports will be queued ahead of the
+precise error report according to the age of the instructions that
+induced the errors.
+
+Some examples of hardware errors that are reported as non-resumable
+errors are uncorrectable data ECC error in cache on loads,
+instruction fetches, or atomics from a dirty line, uncorrectable ECC
+error in DRAM on loads, instruction fetches, or atomics, and an
+uncorrectable ECC error in a CPU's register file. For
+uncorrectable ECC errors in the memory hierarchy, the non-resumable error
+report indicates the memory region in error. For uncorrectable ECC
+errors in register files which can be cleared, the register file as well 
+as the the ID of the CPU whose register file had the error are
+indicated in the error report.
+
+5.1.3 Unconstrained or Terminating Errors
+Unconstrained or terminating errors are not reported to the sun4v guest
+OS. They result in resetting the sun4v guest. In some cases, the
+hardware generates a reset trap, and in others the hypervisor resets
+the sun4v guest.
+
+Some examples of hardware errors that are treated as unconstrained or
+terminating errors to the guest are Niagara's L2 cache tag parity error
+and L2 cache directory parity error, ROCK's store buffer address or
+control parity error, and Niagara's TLB tag parity error. The L2 cache
+tag and directory parity errors are detected by hardware which causes a
+warm reset of the entire chip. For store buffer address or control
+parity error, the hardware generates a deferred trap to the
+hypervisor which resets the affected partitions. For the TLB tag parity
+error the hardware generates a precise trap to the hypervisor which
+resets the partitions using that TLB.
+
+Recursive errors on a CPU may result in the resetting of the
+partition if that results in all of the CPUs in that partition 
+to be in error.
+
+5.2 Sun4v Error Report For CPU, Memory, and Programmed I/O (PIO) Access
+The sun4v error report for CPU, memory, and PIO access errors is a fixed
+length error report that describes the underlying hardware error in
+terms of resumable or non-resumable error to the sun4v guest. The
+intent is to have enough information in the error reports to enable an
+advanced guest to take corrective actions, when possible, and make
+forward progress. The sun4v error report is not meant for hardware
+fault analysis or diagnosis.
+
+On startup, the sun4v guest and the hypervisor exchange the versions
+that they support and pick the latest version that is compatible.
+Please refer to [1] for more information. 
+
+The table 5.2-I below describes the format of the sun4v error report record.
+	--------------------------------------------------------------------
+	Offset	Size	Field	Description
+		(bytes)
+	--------------------------------------------------------------------
+	0x0	8	EHDL#	Unique error handle
+        0x8	8	STICK	Value of the %STICK register
+	0x10	3	Rsvd	Reserved, always set to zero.
+	0x13	1	DESC	Error descriptor (see section 5.2.3)
+	0x14	4	ATTR	Error attributes (see section 5.2.4)
+        0x18	8	ADDR	Real address of the affected memory region
+				or PIO transaction address
+				Virtual address for the ASI register
+        0x20	4	SZ	Size, in bytes, of the affected memory region
+				or the size (in bytes) of the ASI region in error
+        0x24	2	CPUID	ID of the affected CPU
+	0x26	2	SECS	Grace period for shutdown in seconds
+	0x28	1	ASI	Value of the %ASI register
+	0x29	1	Rsvd	Reserved, always set to zero.
+	0x30	2	REG	Value of the ASR register#
+	--------------------------------------------------------------------
+	    Table 5.2-I. Sun4v Error Report Format
+
+5.2.1 Error Handle (EHDL#). This field specifies the handle of the error.
+Error handles are unique opaque values that will not be reused until
+the hypervisor in the hardware domain is restarted. If multiple error reports
+are generated for the same error, they will all have the same EHDL value.
+
+5.2.2 Stick register (STICK). This field specifies the contents of the
+%STICK register that was captured by the hypervisor trap handler.
+
+5.2.3 Error Descriptor (DESC). This field specifies the type of the
+error report. The table 5.2.3-I below lists the currently defined values.
+ 	------------------------------------------------------------
+ 	Value	Mnemonic	Description
+ 	------------------------------------------------------------
+	0	UNDEF		Undefined
+ 	1	R_UE		Uncorrected resumable error report
+ 	2	NR_PR  		Precise non-resumable error report
+ 	3	NR_DF 		Deferred non-resumable error report
+	4	SHT_R		Shutdown request (resumable)
+	5	DCORE		Dump Core (non-resumable)
+	6	SP		SP state change (resumable)
+ 	------------------------------------------------------------
+		Table 5.2.3-I. Error Report Descriptors
+
+All other values are reserved.
+
+The values R_UE, SHT_R and SP are valid only for error reports that are queued
+on the resumable_error queue. The values NR_PREC, NR_DEF and DCORE are valid
+only for the error reports that are queued on the nonresumable_error queue.
+
+5.2.3.i Uncorrected resumable error report. An uncorrected resumable
+error report is always queued on the resumable_error queue of a CPU
+that belongs to the affected partition. It specifies that the
+underlying error was not corrected. The resource in
+error is specified by the ATTR (5.2.4) field of the error report.
+
+An uncorrected resumable error report is used to indicate a CPU in
+error. For example, in a partition with multiple CPUs when a permanent 
+error in a register file of a CPU is detected, the CPU is marked in error and
+an uncorrected resumable error report indicating the CPU in
+error is queued on a different CPU of the same partition.
+
+When the only running CPU in a partition is in error, the partition 
+is reset.
+
+5.2.3.ii Precise non-resumable error report. A precise non-resumable error
+report is always queued on the nonresumable_error queue of the CPU
+that executed the instruction that induced the error. It specifies
+that the nonresumable_error trap taken is a precise trap where TPC[TL] points
+to the instruction that induced the error. The error report contains
+enough information about the error for the guest to take appropriate 
+actions before resuming or terminating the interrupted instruction
+stream. The location of the error is specified by the ATTR (5.2.4) field 
+of the error report. A hypervisor call is provided for the guest to 
+scrub the error location.
+
+When multiple non-resumable error reports are queued on the
+nonresumable_error queue of a CPU the deferred error reports will be
+queued ahead of the precise non-resumable error reports.
+
+5.2.3.iii Deferred non-resumable error report. A deferred
+non-resumable error report is always queued on the nonresumable_error
+queue of the CPU that executed the instruction that induced the
+error. It specifies that the nonresumable_error trap taken is a
+deferred trap which means that the error is unrecoverable and the
+instruction stream should be terminated. The location of the error is
+specified by the ATTR (5.2.4) field of the error report. The MODE
+(5.2.4.viiii) field in the ATTR specifies the execution mode in which the
+error occurred.
+
+When multiple non-resumable error reports are queued on the
+nonresumable_error queue of a CPU the deferred error reports will be
+queued ahead of the precise non-resumable error reports.
+
+5.2.3.iv Shutdown request. This is used to request the guest to initiate 
+a graceful shutdown sequence. This report will be queued on the resumable
+error queue.
+
+5.2.3.v DCORE, (Dump Core). This is used to instruct the guest to initiate a
+dump core sequence. This report will be queued on the non-resumable error queue.
+
+5.2.3.vi SP, (Service Processor state change). This is used to notify the guest
+that the SP state has changed. The SP is now in the state denoted by the ATTR.SP_STATE value. The guest may decide to notify the user of the SP state change using some form of FMA messaging and/or perform any other actions it deems appropriate. This report will be queued on the resumable error
+queue.
+
+5.2.4 Error Attributes (ATTR). The meaning of this field depends on the
+error descriptor (see 5.2.3) of the error report. It also includes
+the resumable queue full indicator (see 5.2.11).
+
+In uncorrected resumable error reports, this field specifies the resource
+affected by the error. When a CPU has an uncorrected error, whether
+the CPU was executing in user or privileged mode, if known, is also
+included in the error report. 
+
+In precise non-resumable error reports, this field specifies the
+location in error.
+
+In deferred non-resumable error reports, this field specifies the
+location in error as well as the execution mode in which the error
+occurred, if that can be determined.
+
+The settings of this field also determines which of the additional information
+included in the error report have valid contents.
+
+The table 5.2.4-I below describes the format of this field.
+    ---------------------------------------------------------------------
+    Field	Bit 		Location/ 		Valid Fields
+		Position	Impact			In Error Report
+    ---------------------------------------------------------------------
+    RQFULL	31		Resumable Queue Full
+    RSVD	30:26		Undefined. Reserved
+				for future use.
+    MODE	25:24		Execution Mode
+				(see 5.2.5.viiii)
+    RSVD0	23:10		Undefined. Reserved
+				for future use.
+    SP_STATE	9:9		New SP state
+    PREG	8		Sun4v Privileged	CPUID, REG
+				Register
+    ASI		7		Sun4v ASI register	ASI, ADDR, SZ
+    ASR		6		Sun4v ASR		REG
+    SHUT	5		Shutdown request
+    FRF		4		Floating-point		CPUID, REG
+				Register File
+    IRF		3		Integer Register File	CPUID, REG
+    PIO		2		Programmed I/O Access	ADDR	
+    MEM 	1		Memory	Hierarchy	ADDR, SZ
+    CPU		0		CPU       		CPUID
+    ---------------------------------------------------------------------
+	Table 5.2.4-I. Format of the Error Attributes (ATTR) Field
+
+The unused bits may have undefined values and are reserved for future use.
+The PIO and MEM bits cannot be set in the same error report.
+
+The tables 5.2.4-II below shows the applicable attibute
+fields for the different types of error reports. 'Y' indicates applicable.
+'-' indicates not applicable.
++----------------------------------------------------------------------------------------------------+
+|Error|           Error Attributes          |    |SP   |     |                                       |
+|DESC |CPU |MEM |PIO |IRF |FRF |SHUT|ASR|ASI|PREG|STATE|MODE |RQFULL |  Notes                        |
++-----|----|----|----|----|----|----|---|---|----|-----|-----|---------------------------------------+
+|R_UE | Y  | Y  | -  | -  | -  | -  | - | Y | -  |  -  | Y   |  Y    | PIO, IRF, FRF, ASR, PREG      |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | and REG not applicable in     |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | uncorrected resumable error   |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | reports.     		     |
+|NR_PR| -  | Y  | Y  | Y  | Y  | -  | Y | Y | Y  |  -  | -   |  -    | CPU not applicable in         |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | precise non-resumable error   |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | reports. PIO and MEM cannot   |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | be set in the same report.    |
+|NR_DF| -  | Y  | Y  | -  | -  | -  | - | - | -  |  -  | Y   |  -    | CPU, IRF, FRF, ASR, ASI and   |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | PREG not applicable           |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | in deferred non-resumable     |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | error reports.                |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | PIO and MEM cannot be set in  |
+|     |    |    |    |    |    |    |   |   |    |     |     |       | the same report.              |
+|SHT_R| -  | -  | -  | -  | -  | Y  | - | - | -  |  -  | -   |  -    |        		             |
+|DCORE| -  | -  | -  | -  | -  | -  | - | - | -  |  -  | -   |  -    | No attributes for DCORE       |
+|SP   | -  | -  | -  | -  | -  | -  | - | - | -  |  Y  | -   |  -    | 				     |
++----------------------------------------------------------------------------------------------------+
+	Table 5.2.4-II. Applicable Error Attributes Map
+
+	
+
+5.2.4.i CPU Field. In an uncorrected resumable error report, the CPU
+bit when set specifies that a CPU belonging to the same partition is in
+error. The ID of the CPU in error is specified by the CPUID (see
+5.2.5) field in the error report.
+
+The CPU bit is not used in non-resumable error reports.
+
+5.2.4.ii MEM Field. In uncorrected resumable error reports and in
+non-resumable error reports, the MEM bit when set specifies that there
+exists an uncorrected data error in the memory hierarchy. The
+uncorrected error could be either due to a bad ECC syndrome or NotData.
+The starting real address and the size, in bytes, of the affected
+memory region are specified by the ADDR (5.2.6) and SZ (5.2.7) fields in
+the error report, respectively.  Subsequent reads from the affected
+memory region would also generate an error unless there was an
+intervening hypervisor call to scrub the memory error. A hypervisor
+call is provided for the guest to scrub the memory region in error.
+
+The MEM field cannot be set in the same error report as the PIO field
+(5.2.4.iii), ASI field (5.2.4.vi) or ASR field (5.2.4.vii).
+
+5.2.4.iii PIO Field. In non-resumable error reports, the PIO bit when
+set specifies that an unrecoverable error was encountered on a PIO
+access. The PIO address accessed is specified by the ADDR (5.2.6) field
+in the error report. The I/O device corresponding to the PIO transaction
+that failed can be determined based on the PIO address specified by
+the ADDR field in the error report.
+
+The PIO bit is not used in resumable error reports.
+
+The PIO field cannot be set in the same error report as the MEM field
+(5.2.4.ii), ASI field (5.2.4.vi) or ASR field (5.2.4.vii).
+
+5.2.4.iv IRF Field. In precise non-resumable error reports, the IRF bit
+when set specifies that a non-permanent uncorrectable error in the
+integer register file occurred when executing that instruction (pointed
+to TPC[TL]). The data in one or more register operands of that
+instruction has been corrupted by the error, but the source of error
+has been cleared.
+
+The IRF field is not used in uncorrected resumable error reports.
+
+NOTE: For permanent errors in the integer register file of a CPU, 
+the CPU is marked in error. An uncorrected resumable error report
+is sent to a different CPU in the same partition indicating the
+ID of the CPU in error.
+
+5.2.4.v FRF Field. This is same as the IRF (5.2.4.iv) field except that
+when set it specifies that the error was in the floating-point register
+file instead of the integer register file. Please see IRF (5.2.4.iv)
+description for more information.
+
+NOTE: For permanent errors in the floating point register file of a CPU, 
+the CPU is marked in error. An uncorrected resumable error report
+is sent to a different CPU in the same partition indicating the
+ID of the CPU in error.
+
+5.2.4.vi ASR Field. An error occurred in one of the internal ASRs
+of the CPU. The ASR in error is identified by the REG field in
+the error report, see 5.2.9.
+
+5.2.4.vii ASI Field. An error occurred in one or more registers accessed via
+alternate Address Space Identifiers. The register or registers in error are
+identified by the combination of their ASI, their start address, and length
+using the ASI (see  5.2.8), the ADDR (see 5.2.6), and SZ (see 5.2.7) fields,
+repectively.
+
+5.2.4.viii PREG Field. An error occurred in one of the internal privileged
+registers of the CPU. The register in error is identified by the REG field in
+the error report, see 5.2.9.
+
+NOTE: For permanent errors in the privileged register file of a CPU, 
+the CPU is marked in error. An uncorrected resumable error report
+is sent to a different CPU in the same partition indicating the
+ID of the CPU in error.
+
+5.2.4.viiii Service Processor State (SP_STATE). This field specifies the
+current state of the SP.
+
+The table 5.2.4-III below lists the currently defined values.
+ 	---------------------------------
+ 	Value	Description
+ 	---------------------------------
+	0b0	SP is unavailable
+	0b1	SP is available
+ 	---------------------------------
+	 Table 5.2.4-III. Service Processor State
+
+5.2.4.x Execution Mode (MODE). This field specifies the execution
+mode of the operation that induced the error.
+
+The table 5.2.4-IV below lists the currently defined values.
+ 	---------------------------------
+ 	Value	Description
+ 	---------------------------------
+	0b00	Unknown
+	0b01	User mode
+	0b10	Privilege mode
+	0b11	Reserved
+ 	---------------------------------
+	 Table 5.2.4-IV. Execution Mode
+
+The 'Unknown' execution mode will be used in error reports when the
+hypervisor cannot determine the CPU's state at the time of the error.
+
+5.2.5 ID of the CPU (CPUID). This field specifies the ID of the CPU 
+affected by the reported error. It is valid when the ATTR field in
+the error report has either the CPU, IRF, or FRF bit set.
+
+5.2.6 Address (ADDR). If the MEM bit in the ATTR field in the error report
+is set, then this field contains the starting address of the memory
+region affected by the error.
+
+If the PIO bit in the ATTR field in the error report is set, then this
+field contains the PIO transaction address.
+
+If the ASI bit in the ATTR field in the error report is set, then this field
+contains the first virtual address of the ASI register(s) which caused the error.
+This is used in conjunction with the ASI field (see section 5.2.8), and the
+SZ field (see section 5.2.7) to identify the ASI register(s) in error.
+
+A value of (-1) implies that the ADDR is unknown or unused.
+
+5.2.7 Size of the Memory Region (SZ). This field specifies
+the size in bytes of the memory region affected by the reported error
+when the MEM bit in the error attributes (ATTR) field is set.
+
+When the ASI bit in the error attributes (ATTR) field is set this field
+is used to indicate the size (in bytes) of the ASI region in error.
+This must be a multiple of the sun4v ASI register size.
+For a single ASI/VA register the SZ field must be set to the size of a single
+register, (typically 8 bytes). 
+
+The range of ASI/VAs in error will be 
+
+	[ADDR]ASI ... [ADDR + (SZ -(size of single register))]ASI.
+
+Note that this implies that we can only support a contiguous range of
+VAs for a particular ASI region. Error handling software may however be aware
+of gaps in the range and act accordingly.
+
+NB: : SZ == 0 is reserved and must not be used.
+
+5.2.8 ASI. When the ASI bit of the ATTR field in the error report is set, this
+field contains the value of the sun4v %asi register when the error occurred.
+Together with the value of the ADDR and SZ fields, it identifies the register(s)
+which caused the error. If the error occurred on more than one register for that ASI,
+the SZ field can be used to specify the range of ASI virtual addresses, (see 5.2.7 above).
+which caused the error. For example, if an error occurred in the Niagara2 MMU
+Primary Context Register 0, this field would be set to 0x21, the ADDR
+field would be set to 0x8, and the SZ field set to 8 (bytes, the size of a
+register on N2).
+
+For the same CPU, if the error occurred on both primary and secondary context
+registers, this field would be set to 0x21, the ADDR field would be set to 0x8, and
+the SZ field set to 16 (bytes, the size of two registers on N2).
+
+5.2.9 REG. When the ASR bit of the ATTR field in the error report is set,
+this field specifies the sun4v ASR number, (for example if the error occurred
+in the system tick register, this field would be set to 24, => %asr24).
+
+When the IRF bit of the ATTR field in the error report is set, this
+field contains the number of the Sparc V9 general purpose register,
+(see [4], section 5.1.3.), which caused the error. For example, if the
+error occurred in register %o0, this field will contain the value
+8, for general purpose register r[8].
+
+When the FRF bit of the ATTR field in the error report is set, this
+field contains the number of the Sparc V9 floating point register,
+(see [4], section 5.1.4), which caused the error. For example, if the
+error occurred in register %f9, this field will contain the value
+9, for floating point register f[9].
+
+When the PREG bit bit of the ATTR field in the error report is set, this
+field contains the number of the Sparc V9 privileged register,
+(see [5], sections 5.8, 7.83), which caused the error.
+
+Note that this field is a 2-byte (16-bit) word but only bits[14:0] are
+allocated for use as the register number. Bit[15] is the VALID bit.
+This bit must be set to indicate that the REG value in bits[14:0] are valid.
+if this bit is set, guest software may assume that the REG value has
+a valid value encoded. If this bit is not set, guest software must assume
+that the value in the REG field is not valid for this error report and
+should not use that value in it's error handling.
+
+The table 5.2.4-IV below describes the format of this field.
+    ---------------------------------------------------------------------
+    Field	Bit 		Description
+		Position	
+    ---------------------------------------------------------------------
+    VALID	15		1: The contents of this field are valid
+				0: This field does not contain a valid
+				   register number
+    REG		14:0		Register number
+    ---------------------------------------------------------------------
+	Table 5.2.4-IV. Format of the Register Number (REG) Field
+
+5.2.10 SECS. The number of seconds the guest should allow before shutdown. 
+
+5.2.11 Resumable queue is full (RQFULL). This field applies only to
+resumable error reports. When set, it specifies that zero or more
+resumable errors might have been dropped since the queueing of that
+error report and the next one.
+
+6.0 Hypervisor Error Handling Principles of Operation
+
+This section describes the principles of operation of the hypervisor
+error handlers.
+
+6.1 Handling of Errors
+6.1.1 Corrected Errors
+For hardware corrected errors where the error is not automatically
+cleared, the hypervisor attempts to clear the source of the error by
+writing back the corrected data (an attempt to clear a stuck-at bit
+will fail). For example, if a correctable ECC error was reported on a
+L2 cache line or DRAM memory, the hypervisor will attempt to write the
+corrected data back to the error location.
+
+6.1.2 Uncorrectable Errors
+6.1.2.i Register errors
+For uncorrectable errors in the processor's integer or floating-point
+register files, the hypervisor attempts to clear the source of
+the error by writing a test pattern to the register and reading it
+back.  If the error in the register cannot be cleared due to a
+stuck-bit, then the CPU is stopped and a resumable error (uncorrected
+resumable error report) indicating the CPU in error is sent to another
+CPU of the same partition. If the uncorrectable error in the register
+is cleared, a precise non-resumable error report is reported to the
+guest on the CPU that took the trap with the register that was reported
+in error containing an undefined value.
+
+6.1.2.ii Cache errors
+For uncorrectable errors in the processor caches, the hypervisor
+clears the error from the cache by flushing the cache line with the bad
+data to memory as long as there is no expansion of data poisoning or
+corruption (which is determined based on the granularity of the error
+protection in the processor caches and memory.) If the flushing of the
+cache line with the bad datum would result in the expansion of data
+poisoning or corruption, the hypervisor leaves the bad data in the
+cache when reporting the error to the guest. (The guest can use the
+the hypervisor call to scrub the bad data which clears the cache line
+in error by filling it with zeroes and flushes it to memory.) If the 
+cache line with the bad data is clean, then the hypervisor evicts the
+line with the bad data out of the cache.
+
+Here is an example. Suppose that the L2 cache has ECC protection for every 4
+bytes and DRAM memory has ECC protection for every 16 bytes. In this
+case, an uncorrectable error in the L2 cache would mean that there are
+4 bytes of bad data. If the line containing the error was modified,
+then flushing the line out of the cache to the memory would expand the
+error to 16 bytes of bad data because the ECC protection granularity of
+memory is 16 bytes. That would result in the expanding the data
+corruption from 4 bytes to 16 bytes. To avoid such expansion, the
+hypervisor will not attempt to clear the uncorrectable error that was
+detected in the L2 cache line.
+
+6.1.2.iii Cache writeback errors
+For uncorrectable errors during cache writebacks, if the processor
+turns the signalling error to a non-signalling error thereby resulting
+in data corruption, the hypervisor will regard the writeback error as an
+unconstrained error and reset the affected guests. If the uncorrectable
+error on a cache writeback remains a signalling error after the writeback,
+then a uncorrected resumable error report is sent to the affected
+guests.
+
+NOTE: It is highly recommended that processors do not convert
+	a signalling error to a non-signalling error on cache writebacks.
+
+6.1.2.iv Memory errors
+For uncorrectable memory errors, the hypervisor does not attempt to
+clear the source of the error. The hypervisor notifies the sun4v guest
+of the memory region in error. The sun4v guest is responsible for
+its recovery policy. It can scrub the memory region in error using the
+hypervisor call to scrub memory, which clears the memory region in
+error by filling it with zeroes. The hypervisor call to scrub memory
+should return an error code to the guest if the scrub was not successful.
+Hypervisor should also notify the Diagnosis Service Provider about
+the scrub operations performed on behalf of the guest.
+
+6.1.2.v ASR errors.
+For uncorrectable ASR errors, the hypervisor does not attempt to
+clear the source of the error. The hypervisor notifies the sun4v guest
+of the ASR in error. The sun4v guest is responsible for identifying
+the ASR and determining the recovery policy. It may be able to correct
+the error or reload the ASR with correct data.
+
+	if (ATTR.ASR && REG == 24) /* system tick register */
+		read system time from TOD
+		write new system time to %asr24
+		retry
+
+6.1.2.vi ASI errors.
+For uncorrectable ASI errors, the hypervisor does not attempt to
+clear the source of the error. The hypervisor notifies the sun4v guest
+of the ASI in error using the ASI, ADDR and SZ fields of the error report.
+The sun4v guest is responsible for identifying the ASI register(s)
+and determining the recovery policy. It may be able to correct
+the error or reload the register with correct data.
+
+For example, for a Rock CRP error we have 
+
+	ASI=0x21   VA=0x8      ASI_Primary_Context_ID_0
+	ASI=0x21   VA=0x10     ASI_Secondary_Context_ID_0
+
+	if (ATTR.ASI  && ASI == 0x21) {
+	    if (ADDR == 0x8) {
+		reset primary context register()
+		if (SZ == 16)
+			reset secondary context register()
+	    }
+	    if (ADDR == 0x10)) {
+		reset secondary context register()
+	    }
+	}
+
+
+Note: The ASR/ASI error types are essentially targetted at errors
+in registers which contain data which is maintained by the guest OS.
+The guest should have a valid copy of the data to reload the register
+and clear the error. Alternatively it may be possible to continue operating
+without correcting the error by disabling or avoiding some guest
+features/functionality.
+
+6.1.2.vii CPU "error" state
+When hypervisor puts a CPU in error state, it must ensure the following:
+	(1) Hypervisor calls targetting CPUs in error state should
+	    return an error code to the guest indicating that one or more
+	    of the targetted CPUs are in error state.
+	(2) The guest cannot restart the CPU that is in error state.
+
+6.2 Reporting of Errors
+The guidelines for reporting errors are:
+	(1) All errors are reported to the FMA Error Report Generator
+	    and sent to the Diagnosis Service Provider.
+	(2) Always report an error that generates a precise or deferred trap
+	    to the CPU that took the trap unless the CPU is marked in error.
+	(3) For disrupting errors, notify only the affected guests
+	    as can be determined based on the error information logged.
+	(4) Errors in shared memory are reported to all of the affected
+	    guests. If the error was a precise or deferred error, then
+	    a non-resumable error report is sent to the guest that
+	    induced the operation, and a resumable error report is sent
+	    to the other guests that share the memory region in error.
+	    If the error was a disrupting trap (for example, as generated by a
+	    hardware scrub operation), then a resumable error is sent
+	    to all of the affected guests.
+	(5) Hypervisor should set the RQFULL bit in the error attributes
+	    field of the resumable error report that makes the queue full.
+	    (A queue is said to be full when the tail pointer if incremented 
+	    equals the head pointer.) Hypervisor drops the resumable error
+	    reports if the resumable error queue if full. The setting of the
+            RQFULL bit in the resumable error report indicates to the
+	    guest that zero or more resumable errors might have been 
+	    dropped since the queueing of that error report.
+	(6) If the nonresumable_error queue of a CPU is non-empty or
+	    if it does not have enough room to queue the error report(s),
+	    then the hypervisor marks that CPU in error and sends a
+	    resumable error report to a different CPU of the same partition.
+	    If all the CPUs in a partition are in error, then the
+	    partition is reset.
+	(7) Errors in virtualized I/O devices should be reported to only
+	    the affected guests.
+
+6.3 Handling Correctable Error Storms
+The hypervisor must attempt to prevent a storm of correctable errors
+from pinning the system in the hypervisor for long periods of time.
+This is done by disabling correctable error trap generation on the CPU
+that just took a correctable error trap for a finite period. At the
+expiration of the period, if no correctable errors are logged on that
+CPU then the correctable error trap generation is reenabled. The
+period for which the correctable error trap generation is disabled on a
+CPU is determined based on platform policy and can be tuned from
+the platform's Diagnosis Service Provider.
+
+6.4 Collecting diagnostic data for errors
+For errors, the hypervisor must perform CPU-specific work to gather
+information required to populate the service error reports for diagnosis.
+Please refer to the CPU's Error Handling document for more information.
+
+6.5 Switch Guest to New Hardware
+	TBD
+
+7.0 Rules for future expansion
+
+All bits of DESC/ATTR word are significant, including reserved bits.
+New errors not covered in the current specification will be indicated
+by using reserved bits in one or both of these two fields.
+
+If a guest CPU encounters an non_resumable_error trap, and the error
+payload contains an unrecognized encoding in the DESC/ATTR word, the
+guest is recommended to terminate.
+
+Reserved fields in in the structure from offsets 0x32-0x3f may be any
+value.  Hypervisors implementing the current spec will fill these fields
+with zeroes; however, guests implementing the current spec should not
+rely on this, but should ignore the fields altogether.
+
+8.0 References
+
+1. The sun4v Architecture Specification. http://projectq.sfbay/
+2. Sun SPARC Processor RAS and Error Handling Requirements
+	http://chipweb.sfbay/archperf/SPARC-Arch-SWG/RASEH-doc.txt
+3. Diagnosis Service Provider Architecture Proposal
+	http://dtsw.sfbay/~sriniv/docs/niagara/diag_service_provider.txt
+4. The Sparc V9 Architecture Manual
+	https://systemsweb.sfbay.sun.com/archperf/SPARC-Arch-SWG/SPARC-V9-current.pdf
+5. UltraSPARC Architecture 2006
+	https://systemsweb.sfbay.sun.com/archperf/SPARC-Arch-SWG/restricted/UA2006-current-draft-HP-Sun.pdf
+6. PCI-Express Root Complex Error Handling Interfaces for Sun4v
+	http://projectq.sfbay.sun.com/docs/sun4v-err.txt
+
+
+Appendix A. Sample Sun4v Guest OS Error Handler
+
+Disclaimer: This is not intended to be an example of advanced OS error
+	handler routines. It is an example of extremely simple guest
+	error handlers.
+
+A.1 Resumable error handler
+
+ 	if (DESC == 1)	{	/* Uncorrected resumable error */
+		if (ATTR.CPU) {
+			if (ATTR.MODE == User)
+				kill user process
+			else
+				panic
+		}
+		if (ATTR.MEM) {
+			get ADDR, SZ
+			call hypervisor to scrub memory
+			retry;
+		}
+		if (ATTR.ASI) {
+			get ASI, ADDR, SZ
+			if ASI register(s) valid for this CPU {
+				if ASI register(s) is reloadable/recoverable {
+					reload/recover
+					retry
+				}
+			}
+			panic
+		}
+	}
+	if (DESC == 4)	{	/* Shutdown request */
+		if (ATTR.SHUT) {
+			get SECS
+			delay SECS seconds
+			shutdown
+		}
+	}
+	if (DESC == 6)	{	/* SP State change */
+		if (ATTR.SP_STATE == SP_AVAILABLE) {
+			/*
+			 * SP is available now after a period of being
+			 * offline ....
+			 */
+		} else {
+			/*
+			 * SP is unavailable now, disable any services which
+			 * require SP interaction ...
+			 */
+		}
+	}
+
+A.2 Non-resumable error handler
+
+	if (DESC == 5)	{	/* dump core */
+		panic
+	}
+	if (DESC == 3)	{	/* deferred trap */
+		if (ATTR.MODE == User)
+			kill user process
+		else
+			panic
+	}
+
+	ASSERT(DESC == 2);	/* Precise non-resumable error */
+
+	if (ATTR.MEM) {
+		get ADDR, SZ
+		make hypervisor call to scrub memory
+		if (data not recoverable)
+			panic
+		else
+			retry
+	}
+	if (ATTR.PIO) {
+		get IOADDR
+		panic
+	}
+	if (ATTR.IRF or ATTR.FRF) {
+		if (user mode)	
+			kill user process
+		else
+			panic
+	}
+	if (ATTR.ASR) {
+		get ASR register from REG
+		if ASR valid for this CPU {
+		 	if ASR is reloadable/recoverable
+				reload/recover
+				retry
+		}
+		if (user mode)	
+			kill user process
+		else
+			panic
+	}
+	if (ATTR.ASI) {
+		get ASI, ADDR, SZ
+		if ASI register(s) valid for this CPU {
+			if ASI register(s) is reloadable/recoverable
+				reload/recover
+				retry
+		}
+		if (user mode)	
+			kill user process
+		else
+			panic
+	}
+	if (ATTR.PREG) {
+		get REG (privileged register)
+		if privileged register is reloadable/recoverable {
+			reload/recover
+			retry
+		}
+		if (user mode)	
+			kill user process
+		else
+			panic
+	}
+
+
+
+From sacadmin Tue Feb 10 08:30:42 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n1AGUfSW025490
+	for <fwarc@sac.sfbay.sun.com>; Tue, 10 Feb 2009 08:30:42 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n1AGUab2019926
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 11 Feb 2009 00:30:40 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KEU0014JZ71FC00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Feb 2009 09:30:37 -0700 (MST)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KEU00A70Z6Z6DE0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Feb 2009 09:30:35 -0700 (MST)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n1AGUZsC019024	for
+ <fwarc@sun.com>; Tue, 10 Feb 2009 16:30:35 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KEU00300WD9WC00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Feb 2009 09:30:35 -0700 (MST)
+Received: from dhcp-ubur-189-142.East.Sun.COM ([unknown] [129.148.189.142])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ with ESMTPSA id <0KEU00H1ZZ6M4160@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Feb 2009 09:30:23 -0700 (MST)
+Date: Tue, 10 Feb 2009 11:30:21 -0500
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: Re: FWARC 2009/070 sun4v error handling update
+In-reply-to: <49915985.1010602@Sun.COM>
+Sender: Stephen.Ehring@sun.com
+To: fwarc@sun.com
+Message-id: <4991AB9D.6070406@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <498C68BE.6040509@sun.com> <49915985.1010602@Sun.COM>
+User-Agent: Thunderbird 2.0.0.19 (Macintosh/20081209)
+Status: RO
+Content-Length: 323
+
+Case materials have been slightly updated as per project team request:
+
+Jim.Quigley@Sun.COM wrote:
+>
+>     Steve Chessin wanted a minor change in the document unrelated
+>     to this FWARC case, clarifying that we can't use the resumable
+>     error queues for ASI UE errors.
+>
+>     Thanks
+>
+>     regards
+>
+>     Jim Q.
+
+
+From sacadmin Tue Feb 10 16:33:53 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n1B0Xrf7013557
+	for <fwarc@sac.sfbay.sun.com>; Tue, 10 Feb 2009 16:33:53 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n1B0Xr0o018658
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 10 Feb 2009 16:33:53 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KEV00A03LKGPC00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Feb 2009 16:33:52 -0800 (PST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KEV0095ULKF3450@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Feb 2009 16:33:51 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n1B0XpWu024515	for
+ <fwarc@sun.com>; Tue, 10 Feb 2009 16:33:51 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KEV00B00L74Q900@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Feb 2009 16:33:51 -0800 (PST)
+Received: from [129.153.85.32] ([unknown] [129.153.85.32])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ with ESMTPSA id <0KEV00E57LK2FKC0@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 10 Feb 2009 16:33:40 -0800 (PST)
+Date: Tue, 10 Feb 2009 16:33:38 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC 2009/070 sun4v error handling update
+In-reply-to: <498C68BE.6040509@sun.com>
+Sender: Hitendra.Zhangada@sun.com
+To: fwarc@sun.com
+Cc: Jim.Quigley@sun.com
+Message-id: <49921CE2.5090405@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <498C68BE.6040509@sun.com>
+User-Agent: Thunderbird 2.0.0.16 (X11/20080807)
+Status: RO
+Content-Length: 1533
+
+On 02/06/09 08:43, Stephen Ehring wrote:
+> I'm sponsoring this case as a fast-track for Jim Quigley.
+> The fast-track timeout is February 13, 2009.
+>
+> The new version of the specification, the diffs, a document describing 
+> the diffs, and the interface table are in the case materials directory.
+
+BTW, the interface table is not in the materials directory but
+I do see that the commitment level of Sun Private is mentioned
+below.
+
+I don't see any explanation about reasons for the SP state
+notifications via resumable trap.  Also, not clear is how this
+interface would impact other interfaces such as domain services.
+What prompted this interface change?
+
+Today, when SP goes down and comes back up we handle
+this as domains service going up and down for DS clients.
+With this new interface, how will that change?
+
+Also, I am wondering, why does sun4v guests need to
+know anything about SP's state.  What they care is the
+services going up and down. How will this proposed
+interface change with the up coming parallel boot architecture?
+
+
+Thanks.
+
+> The case extends the sun4v report format introduced by FWARC/2006/200 
+> and updated by FWARC/2006/201
+>
+> The requested binding is for a minor release of the firmware and
+> a micro/patch release of the OS, the committment level of the interfaces
+> is Sun Private.
+>
+
+-- 
+Hitendra Zhangada
+====================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Sun Ph# (858) 625 3757, Sun Ext. x53757
+Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Wed Feb 11 02:38:37 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n1BAcbFZ020423
+	for <fwarc@sac.sfbay.sun.com>; Wed, 11 Feb 2009 02:38:37 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n1BAcZsf010179
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 11 Feb 2009 03:38:36 -0700 (MST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KEW00J09DKCF800@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 11 Feb 2009 03:38:36 -0700 (MST)
+Received: from gmp-eb-inf-1.sun.com ([192.18.6.21])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KEW00CDDDK93D50@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 11 Feb 2009 03:38:34 -0700 (MST)
+Received: from fe-emea-10.sun.com (gmp-eb-lb-1-fe3.eu.sun.com [192.18.6.10])
+	by gmp-eb-inf-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n1BAcXQ4023863	for
+ <fwarc@sun.com>; Wed, 11 Feb 2009 10:38:33 +0000 (GMT)
+Received: from conversion-daemon.fe-emea-10.sun.com by fe-emea-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KEW00I00CD9O500@fe-emea-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 11 Feb 2009 10:38:33 +0000 (GMT)
+Received: from [129.156.220.75] ([unknown] [129.156.220.75])
+ by fe-emea-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ with ESMTPSA id <0KEW001KMDJXW6D0@fe-emea-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 11 Feb 2009 10:38:22 +0000 (GMT)
+Date: Wed, 11 Feb 2009 10:38:21 +0000
+From: Jim.Quigley@sun.com
+Subject: Re: FWARC 2009/070 sun4v error handling update
+In-reply-to: <49921CE2.5090405@Sun.COM>
+Sender: Jim.Quigley@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: fwarc@sun.com, Jim.Quigley@sun.com
+Message-id: <4992AA9D.4010209@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <498C68BE.6040509@sun.com> <49921CE2.5090405@Sun.COM>
+User-Agent: Thunderbird 2.0.0.16 (X11/20080807)
+Status: RO
+Content-Length: 3090
+
+
+
+	Hi Hitu,
+
+On 02/11/09 00:33, Hitendra Zhangada wrote:
+> On 02/06/09 08:43, Stephen Ehring wrote:
+>> I'm sponsoring this case as a fast-track for Jim Quigley.
+>> The fast-track timeout is February 13, 2009.
+>>
+>> The new version of the specification, the diffs, a document describing 
+>> the diffs, and the interface table are in the case materials directory.
+> 
+> BTW, the interface table is not in the materials directory but
+> I do see that the commitment level of Sun Private is mentioned
+> below.
+> 
+> I don't see any explanation about reasons for the SP state
+> notifications via resumable trap.  Also, not clear is how this
+> interface would impact other interfaces such as domain services.
+> What prompted this interface change?
+
+	This change is required for and driven by the parallel boot
+	project.
+
+	When the SP is unavailable we need some mechanism to inform
+	the user that there is a problem with the system - the
+	SP is down - and that some remedial action is required,
+	(eg, call the Sun SP repairman).
+
+	Currently, when we detect a fault the Hypervisor sends a service
+	error report to the SP which then sends an error report to the
+	FMA stack on the control domain. When the SP is down obviously
+	we can't do that, we need an alternative method of getting an
+	error report from the hypervisor to the guest.
+
+	As the Solaris FMA stack is the appropriate way to notify the
+	user of any system faults, we need a method of getting an error
+	message directly from the hypervisor into the Solaris FMA s/w.
+	The resumable error queue is an elegant solution to getting
+	the necessary error report to the guests FMA s/w. FMA
+	will then emit the relevant messages.
+
+	The Solaris CPU module resumable error queue will be responsible
+	for detecting this sun4v error report type, formatting the
+	appropriate FMA message and forwarding it into the FMA stack.
+	For guests which do not have this functionality the sun4v
+	error report can be ignored/discarded.
+	
+
+> 
+> Today, when SP goes down and comes back up we handle
+> this as domains service going up and down for DS clients.
+> With this new interface, how will that change?
+
+	It does not change, domain services will still go up/down
+	and the clients will handle the resulting error conditions
+	appropriately. This change is completely orthogonal to
+	the existing LDCs and domain services.
+
+> 
+> Also, I am wondering, why does sun4v guests need to
+> know anything about SP's state.  What they care is the
+> services going up and down. How will this proposed
+> interface change with the up coming parallel boot architecture?
+
+	The user needs to know when the SP fails, so we need a
+	way to get an FMA message to the user, and this is the
+	cleanest solution for passing a message from the hypervisor
+	to the guest.
+
+	regards
+
+	Jim Q.
+> 
+> 
+> Thanks.
+> 
+>> The case extends the sun4v report format introduced by FWARC/2006/200 
+>> and updated by FWARC/2006/201
+>>
+>> The requested binding is for a minor release of the firmware and
+>> a micro/patch release of the OS, the committment level of the interfaces
+>> is Sun Private.
+>>
+> 
+
+
+From sacadmin Wed Feb 11 11:10:31 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n1BJAVnv017942
+	for <fwarc@sac.sfbay.sun.com>; Wed, 11 Feb 2009 11:10:31 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n1BJASUb009982
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 11 Feb 2009 19:10:29 GMT
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KEX00J0D19FJE00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 11 Feb 2009 11:10:27 -0800 (PST)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KEX00ILM19FBV00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 11 Feb 2009 11:10:27 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id n1BJAPAf003654; Wed, 11 Feb 2009 11:10:25 -0800 (PST)
+Received: from jazz.home (x-files.SFBay.Sun.COM [129.146.96.102])
+	by dtmail.sfbay.sun.com (8.14.3+Sun/8.14.3) with ESMTP id n1BJANjq005416; Wed,
+ 11 Feb 2009 11:10:23 -0800 (PST)
+Date: Wed, 11 Feb 2009 11:10:25 -0800
+From: Greg Onufer <greg.onufer@sun.com>
+Subject: Re: FWARC 2009/070 sun4v error handling update
+In-reply-to: <4992AA9D.4010209@Sun.COM>
+To: Jim Quigley <Jim.Quigley@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>, fwarc@sun.com
+Message-id: <F70FAAC3-6E23-4725-A599-164A097D2976@sun.com>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.930.3)
+Content-type: multipart/signed; boundary=Apple-Mail-3-521671420; micalg=sha1;
+ protocol="application/pkcs7-signature"
+X-PMX-Version: 5.4.1.325704
+References: <498C68BE.6040509@sun.com> <49921CE2.5090405@Sun.COM>
+ <4992AA9D.4010209@Sun.COM>
+Status: RO
+Content-Length: 5202
+
+
+--Apple-Mail-3-521671420
+Content-Type: text/plain;
+	charset=US-ASCII;
+	format=flowed;
+	delsp=yes
+Content-Transfer-Encoding: 7bit
+
+On Feb 11, 2009, at 2:38 AM, Jim.Quigley@Sun.COM wrote:
+> Currently, when we detect a fault the Hypervisor sends a service
+> error report to the SP which then sends an error report to the
+> FMA stack on the control domain. When the SP is down obviously
+> we can't do that, we need an alternative method of getting an
+> error report from the hypervisor to the guest.
+
+> As the Solaris FMA stack is the appropriate way to notify the
+> user of any system faults, we need a method of getting an error
+> message directly from the hypervisor into the Solaris FMA s/w.
+
+> The resumable error queue is an elegant solution to getting
+
+It's mostly an expedient solution.  The error queues are (were?)  
+primarily for events that directly affect the virtual machine and the  
+SP is not part of the virtual machine.  I would think that the SP's  
+health is even less of a concern for the virtual machine in the  
+parallel boot world.
+
+> the necessary error report to the guests FMA s/w. FMA
+> will then emit the relevant messages.
+
+This is a workaround for not having a formal mechanism that can be  
+used to deliver FMA events directly to a guest.  It's a roundabout way  
+of poking the guest and having it create and deliver the FMA event on  
+behalf of the system.
+
+> The user needs to know when the SP fails, so we need a
+> way to get an FMA message to the user, and this is the
+> cleanest solution for passing a message from the hypervisor
+> to the guest.
+
+s/cleanest/most expedient/
+
+I'm not objecting to the solution, my qualm is only with how it is  
+portrayed.  It doesn't need lipstick.
+
+Cheers!greg
+
+
+--Apple-Mail-3-521671420
+Content-Disposition: attachment;
+	filename=smime.p7s
+Content-Type: application/pkcs7-signature;
+	name=smime.p7s
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIGJzCCAuAw
+ggJJoAMCAQICEFPn6uqYx5tz+jQXzCq9z10wDQYJKoZIhvcNAQEFBQAwYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMB4XDTA4MDgyMDE4MTIwNFoXDTA5MDgyMDE4MTIw
+NFowRTEfMB0GA1UEAxMWVGhhd3RlIEZyZWVtYWlsIE1lbWJlcjEiMCAGCSqGSIb3DQEJARYTZ3Jl
+Zy5vbnVmZXJAc3VuLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKaNeXNnj0WP
+URnajZ3CHQrnyzJb7azzNXRuN5S5DVXA4dksxdQ21KFwDyYn1yhvAu1CQdSDp5Yeymkg604TB94H
+reiaNngKS3Y6QP1G5VEBEc8Y9oASfPf89Pxj6F3KvbF1/YPEjIsOnGdCOSFculC5eac3HnR94bCe
+2sSFt/0fooX16vzCRqy7yopORwvWqcLHlvyCH2XzUGRAyB0NKcc43hr2x/aql9cuPSm5zPCWWxJ0
+phTq6Ii5hp1X7djZzBkHFTzOVh3/PwopK3CNZ8GyhOlHXR8upZLx/mb0fRMbv/1G3lxNgYVDT6o3
+MCpnoNF7akzc8k/XNXXNAtuKClMCAwEAAaMwMC4wHgYDVR0RBBcwFYETZ3JlZy5vbnVmZXJAc3Vu
+LmNvbTAMBgNVHRMBAf8EAjAAMA0GCSqGSIb3DQEBBQUAA4GBAMEwJb3sPF3QA9jFrwV6v4RBWIXp
+rg9iV+nVmJ4N8vW/BHXIBXmIcQXsXHfEjYNihUwea4aEWvmm6PPT2ThZ5rs7sjAhUWiLPAaP5fEI
++SXg3YFcYBev/fNyWXQpMA5kQflDs6EkWnvciV3Yz9EJNRsgH5yNNGLBh3nA1gNI75OpMIIDPzCC
+AqigAwIBAgIBDTANBgkqhkiG9w0BAQUFADCB0TELMAkGA1UEBhMCWkExFTATBgNVBAgTDFdlc3Rl
+cm4gQ2FwZTESMBAGA1UEBxMJQ2FwZSBUb3duMRowGAYDVQQKExFUaGF3dGUgQ29uc3VsdGluZzEo
+MCYGA1UECxMfQ2VydGlmaWNhdGlvbiBTZXJ2aWNlcyBEaXZpc2lvbjEkMCIGA1UEAxMbVGhhd3Rl
+IFBlcnNvbmFsIEZyZWVtYWlsIENBMSswKQYJKoZIhvcNAQkBFhxwZXJzb25hbC1mcmVlbWFpbEB0
+aGF3dGUuY29tMB4XDTAzMDcxNzAwMDAwMFoXDTEzMDcxNjIzNTk1OVowYjELMAkGA1UEBhMCWkEx
+JTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0ZSBQ
+ZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDE
+pjxVc1X7TrnKmVoeaMB1BHCd3+n/ox7svc31W/Iadr1/DDph8r9RzgHU5VAKMNcCY1osiRVwjt3J
+8CuFWqo/cVbLrzwLB+fxH5E2JCoTzyvV84J3PQO+K/67GD4Hv0CAAmTXp6a7n2XRxSpUhQ9IBH+n
+ttE8YQRAHmQZcmC3+wIDAQABo4GUMIGRMBIGA1UdEwEB/wQIMAYBAf8CAQAwQwYDVR0fBDwwOjA4
+oDagNIYyaHR0cDovL2NybC50aGF3dGUuY29tL1RoYXd0ZVBlcnNvbmFsRnJlZW1haWxDQS5jcmww
+CwYDVR0PBAQDAgEGMCkGA1UdEQQiMCCkHjAcMRowGAYDVQQDExFQcml2YXRlTGFiZWwyLTEzODAN
+BgkqhkiG9w0BAQUFAAOBgQBIjNFQg+oLLswNo2asZw9/r6y+whehQ5aUnX9MIbj4Nh+qLZ82L8D0
+HFAgk3A8/a3hYWLD2ToZfoSxmRsAxRoLgnSeJVCUYsfbJ3FXJY3dqZw5jowgT2Vfldr394fWxghO
+rvbqNOUQGls1TXfjViF4gtwhGTXeJLHTHUb/XV9lTzGCAxAwggMMAgEBMHYwYjELMAkGA1UEBhMC
+WkExJTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMTI1RoYXd0
+ZSBQZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBAhBT5+rqmMebc/o0F8wqvc9dMAkGBSsOAwIa
+BQCgggFvMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTA5MDIxMTE5
+MTAyNVowIwYJKoZIhvcNAQkEMRYEFPeWV7mYdX1BXtz7m935J0dpQknkMIGFBgkrBgEEAYI3EAQx
+eDB2MGIxCzAJBgNVBAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQu
+MSwwKgYDVQQDEyNUaGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIQU+fq6pjHm3P6
+NBfMKr3PXTCBhwYLKoZIhvcNAQkQAgsxeKB2MGIxCzAJBgNVBAYTAlpBMSUwIwYDVQQKExxUaGF3
+dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3dGUgUGVyc29uYWwgRnJlZW1h
+aWwgSXNzdWluZyBDQQIQU+fq6pjHm3P6NBfMKr3PXTANBgkqhkiG9w0BAQEFAASCAQBjS6+O5K1D
+NFJapz7GPmKHdBwZJRqTmlxBESHCwEX3hFw/7/DMhYwPZi/+5YQncN7+rP2GqzuLVY+G3qOqtdma
+Rujo3BrB9yjMh/J10C+x080yQbUIYKUgvS2T2GMzHu7d7imOEwSo5Sx3h5PhpDlLWhljmDjZjiPx
+JUnGKDCH5M1Q6RgjpT3CE5pi9vxamI7Oip7QuKMZryvTm4ne8NkraPLx1ophGDLhP2JKykzY0RKL
+bkue5V2eLPMg6KXGM3NbSSIHSsNbg/akiGAm3ywAHzWNuNbFcduWsdOfANr/nlkaKBYourQZ5KNr
+v7eIylOSK2mC9reedocz8kh540O5AAAAAAAA
+
+--Apple-Mail-3-521671420--
+
+From sacadmin Fri Feb 13 11:07:39 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n1DJ7cgT028354
+	for <fwarc@sac.sfbay.sun.com>; Fri, 13 Feb 2009 11:07:38 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n1DJ7XoX026441
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Sat, 14 Feb 2009 03:07:37 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KF000603QGN7800@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 13 Feb 2009 12:07:35 -0700 (MST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KF000E87QGNRG90@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 13 Feb 2009 12:07:35 -0700 (MST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n1DJ7YHe029536	for
+ <fwarc@sun.com>; Fri, 13 Feb 2009 11:07:34 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KF000L00Q492500@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 13 Feb 2009 11:07:34 -0800 (PST)
+Received: from [129.150.37.91] ([unknown] [129.150.37.91])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ with ESMTPSA id <0KF000KUSQGFJ5A0@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 13 Feb 2009 11:07:28 -0800 (PST)
+Date: Fri, 13 Feb 2009 11:07:25 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC 2009/070 sun4v error handling update
+In-reply-to: <4992AA9D.4010209@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Jim.Quigley@sun.com
+Cc: fwarc@sun.com, Scott Davenport <Scott.Davenport@sun.com>
+Message-id: <4995C4ED.3030708@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <498C68BE.6040509@sun.com> <49921CE2.5090405@Sun.COM>
+ <4992AA9D.4010209@Sun.COM>
+User-Agent: Thunderbird 2.0.0.19 (Windows/20081209)
+Status: RO
+Content-Length: 4343
+
+Jim.Quigley@Sun.COM wrote:
+>
+>
+>     Hi Hitu,
+>
+> On 02/11/09 00:33, Hitendra Zhangada wrote:
+>> On 02/06/09 08:43, Stephen Ehring wrote:
+>>> I'm sponsoring this case as a fast-track for Jim Quigley.
+>>> The fast-track timeout is February 13, 2009.
+>>>
+>>> The new version of the specification, the diffs, a document 
+>>> describing the diffs, and the interface table are in the case 
+>>> materials directory.
+>>
+>> BTW, the interface table is not in the materials directory but
+>> I do see that the commitment level of Sun Private is mentioned
+>> below.
+>>
+>> I don't see any explanation about reasons for the SP state
+>> notifications via resumable trap.  Also, not clear is how this
+>> interface would impact other interfaces such as domain services.
+>> What prompted this interface change?
+>
+>     This change is required for and driven by the parallel boot
+>     project.
+>
+>     When the SP is unavailable we need some mechanism to inform
+>     the user that there is a problem with the system - the
+>     SP is down - and that some remedial action is required,
+>     (eg, call the Sun SP repairman).
+>
+>     Currently, when we detect a fault the Hypervisor sends a service
+>     error report to the SP which then sends an error report to the
+>     FMA stack on the control domain. When the SP is down obviously
+>     we can't do that, we need an alternative method of getting an
+>     error report from the hypervisor to the guest.
+>
+>     As the Solaris FMA stack is the appropriate way to notify the
+>     user of any system faults, we need a method of getting an error
+>     message directly from the hypervisor into the Solaris FMA s/w.
+>     The resumable error queue is an elegant solution to getting
+>     the necessary error report to the guests FMA s/w. FMA
+>     will then emit the relevant messages.
+>
+>     The Solaris CPU module resumable error queue will be responsible
+>     for detecting this sun4v error report type, formatting the
+>     appropriate FMA message and forwarding it into the FMA stack.
+>     For guests which do not have this functionality the sun4v
+>     error report can be ignored/discarded.
+>     
+>
+>>
+>> Today, when SP goes down and comes back up we handle
+>> this as domains service going up and down for DS clients.
+>> With this new interface, how will that change?
+>
+>     It does not change, domain services will still go up/down
+>     and the clients will handle the resulting error conditions
+>     appropriately. This change is completely orthogonal to
+>     the existing LDCs and domain services.
+>
+>>
+>> Also, I am wondering, why does sun4v guests need to
+>> know anything about SP's state.  What they care is the
+>> services going up and down. How will this proposed
+>> interface change with the up coming parallel boot architecture?
+>
+>     The user needs to know when the SP fails, so we need a
+>     way to get an FMA message to the user, and this is the
+>     cleanest solution for passing a message from the hypervisor
+>     to the guest.
+
+Thanks for details responses to my questions.  I am fine with
+this solution as is but do have one more question.  The reason
+for this design is to pass error message to Solaris FMA.  This
+implies that there are Solaris FMA changes to pickup on these
+changes.  Is there a dependent PSARC case to add this to
+FMA portfolio or something?
+
+I have added Scott D. for comments.
+
+Scott, will this change require any PSARC case to add SP
+state changes to Solaris FMA?
+
+
+Finally, how would this change work with existing Solaris
+implementation which does not know anything about the
+new Mnemonic in the error descriptor?
+
+
+I know timer is set to time-out for this case today but I do
+like to understand above questions little better.  Can we
+extend timer to next Wednesday?
+
+
+Thanks.
+>
+>     regards
+>
+>     Jim Q.
+>>
+>>
+>> Thanks.
+>>
+>>> The case extends the sun4v report format introduced by 
+>>> FWARC/2006/200 and updated by FWARC/2006/201
+>>>
+>>> The requested binding is for a minor release of the firmware and
+>>> a micro/patch release of the OS, the committment level of the 
+>>> interfaces
+>>> is Sun Private.
+>>>
+>>
+>
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Fri Feb 13 13:25:24 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n1DLPNIZ026136
+	for <fwarc@sac.sfbay.sun.com>; Fri, 13 Feb 2009 13:25:24 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n1DLPGpe010928
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Sat, 14 Feb 2009 05:25:22 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KF00090FWU6IB00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 13 Feb 2009 13:25:18 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KF0008GYWU69H10@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 13 Feb 2009 13:25:18 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n1DLPIEk029403	for
+ <fwarc@sun.com>; Fri, 13 Feb 2009 13:25:18 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KF000D00WFR8U00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 13 Feb 2009 13:25:18 -0800 (PST)
+Received: from [10.40.20.4] ([unknown] [75.55.39.223])
+ by fe-sfbay-10.sun.com (Sun Java(tm) System Messaging Server 7.0-3.01 64bit
+ (built Dec 23 2008)) with ESMTPSA id <0KF000KERWTS1I10@fe-sfbay-10.sun.com> for
+ fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 13 Feb 2009 13:25:04 -0800 (PST)
+Date: Fri, 13 Feb 2009 13:26:45 -0800
+From: Scott Davenport <Scott.Davenport@sun.com>
+Subject: Re: FWARC 2009/070 sun4v error handling update
+In-reply-to: <4995C4ED.3030708@sun.com>
+Sender: Scott.Davenport@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Jim.Quigley@sun.com, fwarc@sun.com, Huay-Yong.Wang@sun.com
+Reply-to: Scott.Davenport@sun.com
+Message-id: <1234560405.1375.356.camel@hexterra>
+Organization: Sun Microsystems
+MIME-version: 1.0
+X-Mailer: Evolution 2.24.2
+Content-type: text/plain; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <498C68BE.6040509@sun.com> <49921CE2.5090405@Sun.COM>
+ <4992AA9D.4010209@Sun.COM> <4995C4ED.3030708@sun.com>
+Status: RO
+Content-Length: 5050
+
+
+On Fri, 2009-02-13 at 11:07 -0800, Hitendra Zhangada wrote:
+> Jim.Quigley@Sun.COM wrote:
+> >
+> >
+> >     Hi Hitu,
+> >
+> > On 02/11/09 00:33, Hitendra Zhangada wrote:
+> >> On 02/06/09 08:43, Stephen Ehring wrote:
+> >>> I'm sponsoring this case as a fast-track for Jim Quigley.
+> >>> The fast-track timeout is February 13, 2009.
+> >>>
+> >>> The new version of the specification, the diffs, a document 
+> >>> describing the diffs, and the interface table are in the case 
+> >>> materials directory.
+> >>
+> >> BTW, the interface table is not in the materials directory but
+> >> I do see that the commitment level of Sun Private is mentioned
+> >> below.
+> >>
+> >> I don't see any explanation about reasons for the SP state
+> >> notifications via resumable trap.  Also, not clear is how this
+> >> interface would impact other interfaces such as domain services.
+> >> What prompted this interface change?
+> >
+> >     This change is required for and driven by the parallel boot
+> >     project.
+> >
+> >     When the SP is unavailable we need some mechanism to inform
+> >     the user that there is a problem with the system - the
+> >     SP is down - and that some remedial action is required,
+> >     (eg, call the Sun SP repairman).
+> >
+> >     Currently, when we detect a fault the Hypervisor sends a service
+> >     error report to the SP which then sends an error report to the
+> >     FMA stack on the control domain. When the SP is down obviously
+> >     we can't do that, we need an alternative method of getting an
+> >     error report from the hypervisor to the guest.
+> >
+> >     As the Solaris FMA stack is the appropriate way to notify the
+> >     user of any system faults, we need a method of getting an error
+> >     message directly from the hypervisor into the Solaris FMA s/w.
+> >     The resumable error queue is an elegant solution to getting
+> >     the necessary error report to the guests FMA s/w. FMA
+> >     will then emit the relevant messages.
+> >
+> >     The Solaris CPU module resumable error queue will be responsible
+> >     for detecting this sun4v error report type, formatting the
+> >     appropriate FMA message and forwarding it into the FMA stack.
+> >     For guests which do not have this functionality the sun4v
+> >     error report can be ignored/discarded.
+> >     
+> >
+> >>
+> >> Today, when SP goes down and comes back up we handle
+> >> this as domains service going up and down for DS clients.
+> >> With this new interface, how will that change?
+> >
+> >     It does not change, domain services will still go up/down
+> >     and the clients will handle the resulting error conditions
+> >     appropriately. This change is completely orthogonal to
+> >     the existing LDCs and domain services.
+> >
+> >>
+> >> Also, I am wondering, why does sun4v guests need to
+> >> know anything about SP's state.  What they care is the
+> >> services going up and down. How will this proposed
+> >> interface change with the up coming parallel boot architecture?
+> >
+> >     The user needs to know when the SP fails, so we need a
+> >     way to get an FMA message to the user, and this is the
+> >     cleanest solution for passing a message from the hypervisor
+> >     to the guest.
+> 
+> Thanks for details responses to my questions.  I am fine with
+> this solution as is but do have one more question.  The reason
+> for this design is to pass error message to Solaris FMA.  This
+> implies that there are Solaris FMA changes to pickup on these
+> changes.  Is there a dependent PSARC case to add this to
+> FMA portfolio or something?
+> 
+> I have added Scott D. for comments.
+> 
+> Scott, will this change require any PSARC case to add SP
+> state changes to Solaris FMA?
+
+Yes. There are two RFEs filed for this:
+ 6773223 RFE: guest epkt for faulted SP
+ 6773225 RFE: Diagnosis of a faulted SP
+
+There'll be an FMA portfolio and PSARC case to institutionalize
+the FMA-side changes. Sometime in Q4FY09, maybe into Q1FY10.
+
+The intention is not to continually follow SP state changes.
+Just diagnose and message when the SP goes down.
+
+> Finally, how would this change work with existing Solaris
+> implementation which does not know anything about the
+> new Mnemonic in the error descriptor?
+
+It is my understanding that the current sun4v trap
+handler will ignore/drop any error packet received from
+Hypervisor it doesn't understand. So an older OS (say S10U6)
+running on a new HV with this capability would be fine.
+
+I've CC'd Huay Yong to confirm the sun4v behavior.
+
+-scott
+
+> 
+> I know timer is set to time-out for this case today but I do
+> like to understand above questions little better.  Can we
+> extend timer to next Wednesday?
+> 
+> 
+> Thanks.
+> >
+> >     regards
+> >
+> >     Jim Q.
+> >>
+> >>
+> >> Thanks.
+> >>
+> >>> The case extends the sun4v report format introduced by 
+> >>> FWARC/2006/200 and updated by FWARC/2006/201
+> >>>
+> >>> The requested binding is for a minor release of the firmware and
+> >>> a micro/patch release of the OS, the committment level of the 
+> >>> interfaces
+> >>> is Sun Private.
+> >>>
+> >>
+> >
+> 
+> 
+
+
+From sacadmin Mon Feb 16 04:34:34 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n1GCYYEt006346
+	for <fwarc@sac.sfbay.sun.com>; Mon, 16 Feb 2009 04:34:34 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n1GCYXQR028058
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Mon, 16 Feb 2009 04:34:34 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KF500M0VS9LJX00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 16 Feb 2009 04:34:33 -0800 (PST)
+Received: from gmp-eb-inf-2.sun.com ([192.18.6.24])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KF500A7AS9K7F90@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 16 Feb 2009 04:34:32 -0800 (PST)
+Received: from fe-emea-10.sun.com (gmp-eb-lb-1-fe3.eu.sun.com [192.18.6.10])
+	by gmp-eb-inf-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n1GCYV8J009856	for
+ <fwarc@sun.com>; Mon, 16 Feb 2009 12:34:31 +0000 (GMT)
+Received: from conversion-daemon.fe-emea-10.sun.com by fe-emea-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KF500H00RDNX500@fe-emea-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 16 Feb 2009 12:34:31 +0000 (GMT)
+Received: from [129.156.220.75] ([unknown] [129.156.220.75])
+ by fe-emea-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ with ESMTPSA id <0KF500LL5S94OO70@fe-emea-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Mon, 16 Feb 2009 12:34:16 +0000 (GMT)
+Date: Mon, 16 Feb 2009 12:34:16 +0000
+From: Jim.Quigley@sun.com
+Subject: Re: FWARC 2009/070 sun4v error handling update
+In-reply-to: <1234560405.1375.356.camel@hexterra>
+Sender: Jim.Quigley@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Scott.Davenport@sun.com, fwarc@sun.com, Huay-Yong.Wang@sun.com,
+        Jim.Quigley@sun.com
+Message-id: <49995D48.40108@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <498C68BE.6040509@sun.com> <49921CE2.5090405@Sun.COM>
+ <4992AA9D.4010209@Sun.COM> <4995C4ED.3030708@sun.com>
+ <1234560405.1375.356.camel@hexterra>
+User-Agent: Thunderbird 2.0.0.16 (X11/20080807)
+Status: RO
+Content-Length: 682
+
+
+	Hi Hitu,
+
+
+>> Finally, how would this change work with existing Solaris
+>> implementation which does not know anything about the
+>> new Mnemonic in the error descriptor?
+> 
+> It is my understanding that the current sun4v trap
+> handler will ignore/drop any error packet received from
+> Hypervisor it doesn't understand. So an older OS (say S10U6)
+> running on a new HV with this capability would be fine.
+> 
+
+
+	The sun4v trap handler for resumable errors prints a warning
+	for any unrecognised/unsupported report types and then just
+	drops the error report, so any older OS will work fine
+	with this change.
+
+	Does this close all the issues you have ?
+
+	thanks
+
+	regards
+
+	Jim Q.
+
+From sacadmin Wed Feb 18 12:25:10 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n1IKP9GV027999
+	for <fwarc@sac.sfbay.sun.com>; Wed, 18 Feb 2009 12:25:09 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n1IKOssH017574
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 19 Feb 2009 04:25:08 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KFA0051X3DTLL00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 13:25:05 -0700 (MST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KFA00HSC3DSNXE0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 13:25:04 -0700 (MST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n1IKP4Jh018305	for
+ <fwarc@sun.com>; Wed, 18 Feb 2009 12:25:04 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KFA00I002E58000@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 12:25:04 -0800 (PST)
+Received: from [129.150.35.159] ([unknown] [129.150.35.159])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ with ESMTPSA id <0KFA0070V3DH9LI0@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 12:24:55 -0800 (PST)
+Date: Wed, 18 Feb 2009 12:24:53 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC 2009/070 sun4v error handling update
+In-reply-to: <49995D48.40108@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Jim.Quigley@sun.com
+Cc: Scott.Davenport@sun.com, fwarc@sun.com, Huay-Yong.Wang@sun.com
+Message-id: <499C6E95.10706@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <498C68BE.6040509@sun.com> <49921CE2.5090405@Sun.COM>
+ <4992AA9D.4010209@Sun.COM> <4995C4ED.3030708@sun.com>
+ <1234560405.1375.356.camel@hexterra> <49995D48.40108@Sun.COM>
+User-Agent: Thunderbird 2.0.0.19 (Windows/20081209)
+Status: RO
+Content-Length: 1612
+
+Jim.Quigley@Sun.COM wrote:
+>
+>     Hi Hitu,
+>
+>
+>>> Finally, how would this change work with existing Solaris
+>>> implementation which does not know anything about the
+>>> new Mnemonic in the error descriptor?
+>>
+>> It is my understanding that the current sun4v trap
+>> handler will ignore/drop any error packet received from
+>> Hypervisor it doesn't understand. So an older OS (say S10U6)
+>> running on a new HV with this capability would be fine.
+>>
+>
+>
+>     The sun4v trap handler for resumable errors prints a warning
+>     for any unrecognised/unsupported report types and then just
+>     drops the error report, so any older OS will work fine
+>     with this change.
+
+Would this warnings be a call generator?  Would it alarm customers?
+Has this been tested?  What warning message will CU see?  Can you
+provide an output of this?
+
+Also, note that if this trap comes in OpenBoot then it immediately
+requests to exit the guest by calling partition-exit API.  This is a
+deficiency in the implementation which we can easily fix when the
+corresponding HV changes is made.  Lets makes sure both HV
+and OpenBoot changes go in the same build.
+
+>
+>     Does this close all the issues you have ?
+
+I would like to see the OS warning messages first. 
+
+Huay, any Solaris side of issues with these warning messages to be
+concerned about?
+
+
+Thanks.
+
+>
+>     thanks
+>
+>     regards
+>
+>     Jim Q.
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Wed Feb 18 12:29:29 2009
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n1IKTTW7028129
+	for <fwarc@sac.sfbay.sun.com>; Wed, 18 Feb 2009 12:29:29 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n1IKTQgY017267
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 18 Feb 2009 12:29:28 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KFA0081F3L3LE00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 12:29:27 -0800 (PST)
+Received: from gmp-eb-inf-2.sun.com ([192.18.6.24])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KFA00KBR3L08LE0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 12:29:25 -0800 (PST)
+Received: from fe-emea-10.sun.com (gmp-eb-lb-2-fe2.eu.sun.com [192.18.6.11])
+	by gmp-eb-inf-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n1IKTO6e005999	for
+ <fwarc@sun.com>; Wed, 18 Feb 2009 20:29:24 +0000 (GMT)
+Received: from conversion-daemon.fe-emea-10.sun.com by fe-emea-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KFA00A003GOOJ00@fe-emea-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 20:29:24 +0000 (GMT)
+Received: from [129.156.220.75] ([unknown] [129.156.220.75])
+ by fe-emea-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ with ESMTPSA id <0KFA00M1Y3KZMA00@fe-emea-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 20:29:24 +0000 (GMT)
+Date: Wed, 18 Feb 2009 20:29:23 +0000
+From: Jim.Quigley@sun.com
+Subject: Re: FWARC 2009/070 sun4v error handling update
+In-reply-to: <499C6E95.10706@sun.com>
+Sender: Jim.Quigley@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Scott.Davenport@sun.com, fwarc@sun.com, Huay-Yong.Wang@sun.com
+Message-id: <499C6FA3.2040600@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <498C68BE.6040509@sun.com> <49921CE2.5090405@Sun.COM>
+ <4992AA9D.4010209@Sun.COM> <4995C4ED.3030708@sun.com>
+ <1234560405.1375.356.camel@hexterra> <49995D48.40108@Sun.COM>
+ <499C6E95.10706@sun.com>
+User-Agent: Thunderbird 2.0.0.16 (X11/20080807)
+Status: RO
+Content-Length: 2099
+
+On 02/18/09 20:24, Hitendra Zhangada wrote:
+> Jim.Quigley@Sun.COM wrote:
+>>
+>>     Hi Hitu,
+>>
+>>
+>>>> Finally, how would this change work with existing Solaris
+>>>> implementation which does not know anything about the
+>>>> new Mnemonic in the error descriptor?
+>>>
+>>> It is my understanding that the current sun4v trap
+>>> handler will ignore/drop any error packet received from
+>>> Hypervisor it doesn't understand. So an older OS (say S10U6)
+>>> running on a new HV with this capability would be fine.
+>>>
+>>
+>>
+>>     The sun4v trap handler for resumable errors prints a warning
+>>     for any unrecognised/unsupported report types and then just
+>>     drops the error report, so any older OS will work fine
+>>     with this change.
+> 
+> Would this warnings be a call generator? 
+
+	No.
+
+  Would it alarm customers?
+
+	Not unless they were easily scred.
+
+> Has this been tested? 
+
+	If it hasn't then you should talk to the original Solaris
+	implementors, this is an existing message.
+
+  What warning message will CU see?
+
+	cmn_err(CE_WARN, "Error Descriptor 0x%llx "
+                             " invalid in resumable error handler",
+                             (long long) errh_flt.errh_er.desc);
+
+
+Can you
+> provide an output of this?
+
+	No.
+
+	Note that we expect to only be able to run a new KT CPU
+	module on the h/w that will have this message, so the
+	new error report type will be handled correctly.
+
+> 
+> Also, note that if this trap comes in OpenBoot then it immediately
+> requests to exit the guest by calling partition-exit API.  This is a
+> deficiency in the implementation which we can easily fix when the
+> corresponding HV changes is made.  Lets makes sure both HV
+> and OpenBoot changes go in the same build.
+> 
+>>
+>>     Does this close all the issues you have ?
+> 
+> I would like to see the OS warning messages first.
+> Huay, any Solaris side of issues with these warning messages to be
+> concerned about?
+
+	These are existing messages - why would we have an issue with
+	them ?
+
+	regards
+
+	Jim Q.
+
+> 
+> 
+> Thanks.
+> 
+>>
+>>     thanks
+>>
+>>     regards
+>>
+>>     Jim Q.
+> 
+> 
+
+
+From sacadmin Wed Feb 18 13:22:47 2009
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n1ILMkWs000235
+	for <fwarc@sac.sfbay.sun.com>; Wed, 18 Feb 2009 13:22:47 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id n1ILMiGX005039
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 18 Feb 2009 21:22:45 GMT
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KFA00E0161XOB00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 13:22:45 -0800 (PST)
+Received: from sca-es-mail-1.sun.com ([192.18.43.132])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KFA00AHL61XY840@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 13:22:45 -0800 (PST)
+Received: from fe-sfbay-09.sun.com ([192.18.43.129])
+	by sca-es-mail-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n1ILMiJ5025300	for
+ <fwarc@sun.com>; Wed, 18 Feb 2009 13:22:44 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-09.sun.com by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KFA002003MC2800@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 13:03:49 -0800 (PST)
+Received: from [129.150.35.159] ([unknown] [129.150.35.159])
+ by fe-sfbay-09.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ with ESMTPSA id <0KFA0026P56BKUR0@fe-sfbay-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 13:03:49 -0800 (PST)
+Date: Wed, 18 Feb 2009 13:22:42 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC 2009/070 sun4v error handling update
+In-reply-to: <499C6FA3.2040600@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Jim.Quigley@sun.com
+Cc: Scott.Davenport@sun.com, fwarc@sun.com, Huay-Yong.Wang@sun.com
+Message-id: <499C7C22.3030200@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <498C68BE.6040509@sun.com> <49921CE2.5090405@Sun.COM>
+ <4992AA9D.4010209@Sun.COM> <4995C4ED.3030708@sun.com>
+ <1234560405.1375.356.camel@hexterra> <49995D48.40108@Sun.COM>
+ <499C6E95.10706@sun.com> <499C6FA3.2040600@Sun.COM>
+User-Agent: Thunderbird 2.0.0.19 (Windows/20081209)
+Status: RO
+Content-Length: 3606
+
+Jim.Quigley@Sun.COM wrote:
+> On 02/18/09 20:24, Hitendra Zhangada wrote:
+>> Jim.Quigley@Sun.COM wrote:
+>>>
+>>>     Hi Hitu,
+>>>
+>>>
+>>>>> Finally, how would this change work with existing Solaris
+>>>>> implementation which does not know anything about the
+>>>>> new Mnemonic in the error descriptor?
+>>>>
+>>>> It is my understanding that the current sun4v trap
+>>>> handler will ignore/drop any error packet received from
+>>>> Hypervisor it doesn't understand. So an older OS (say S10U6)
+>>>> running on a new HV with this capability would be fine.
+>>>>
+>>>
+>>>
+>>>     The sun4v trap handler for resumable errors prints a warning
+>>>     for any unrecognised/unsupported report types and then just
+>>>     drops the error report, so any older OS will work fine
+>>>     with this change.
+>>
+>> Would this warnings be a call generator? 
+>
+>     No.
+>
+>  Would it alarm customers?
+>
+>     Not unless they were easily scred.
+>
+>> Has this been tested? 
+>
+>     If it hasn't then you should talk to the original Solaris
+>     implementors, this is an existing message.
+>
+>  What warning message will CU see?
+>
+>     cmn_err(CE_WARN, "Error Descriptor 0x%llx "
+>                             " invalid in resumable error handler",
+>                             (long long) errh_flt.errh_er.desc);
+>
+>
+> Can you
+>> provide an output of this?
+>
+>     No.
+>
+>     Note that we expect to only be able to run a new KT CPU
+>     module on the h/w that will have this message, so the
+>     new error report type will be handled correctly.
+
+The changes as specified are to sun4v error handling.
+I understand that these changes will come in effect with
+RF based platform releases but at that time, the same
+interface will also be supported for non-RF platforms too,
+right?  If it does then that's when CU may start seeing
+this warning message every time SP reset events are
+encountered.  My concern is that seeing this message
+can lead to CU getting confused and they may interpret
+the warning message as possible HW problems.  From
+the message they know that there is a resumable error
+which is associated with a CPU and further there was
+supposed to be an error descriptor which is invalid.  This
+can alarm CUs, IMO.
+
+Does anyone of the ARC member or intern concerned about
+this as I am? 
+>
+>>
+>> Also, note that if this trap comes in OpenBoot then it immediately
+>> requests to exit the guest by calling partition-exit API.  This is a
+>> deficiency in the implementation which we can easily fix when the
+>> corresponding HV changes is made.  Lets makes sure both HV
+>> and OpenBoot changes go in the same build.
+>>
+>>>
+>>>     Does this close all the issues you have ?
+>>
+>> I would like to see the OS warning messages first.
+>> Huay, any Solaris side of issues with these warning messages to be
+>> concerned about?
+>
+>     These are existing messages - why would we have an issue with
+>     them ?
+
+They are existing messages to catch resumable traps without proper
+error descriptor.  We are adding new error descriptor which the
+existing Solaris does not know about.  What this means is that
+with a FW upgrade CU may start to see the warning message
+and may get alarmed by it.
+
+So, that is my concern with use of "resumable" trap to inform
+guest about SP state changes. 
+
+>
+>     regards
+>
+>     Jim Q.
+>
+>>
+>>
+>> Thanks.
+>>
+>>>
+>>>     thanks
+>>>
+>>>     regards
+>>>
+>>>     Jim Q.
+>>
+>>
+>
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Wed Feb 18 13:31:31 2009
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n1ILVVQD000439
+	for <fwarc@sac.sfbay.sun.com>; Wed, 18 Feb 2009 13:31:31 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n1ILVUa9014307
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 18 Feb 2009 14:31:30 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KFA00F096GI6000@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 13:31:30 -0800 (PST)
+Received: from gmp-eb-inf-1.sun.com ([192.18.6.21])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KFA00A5B6GGXI70@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 13:31:29 -0800 (PST)
+Received: from fe-emea-09.sun.com (gmp-eb-lb-1-fe3.eu.sun.com [192.18.6.10])
+	by gmp-eb-inf-1.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n1ILVSKc010031	for
+ <fwarc@sun.com>; Wed, 18 Feb 2009 21:31:28 +0000 (GMT)
+Received: from conversion-daemon.fe-emea-09.sun.com by fe-emea-09.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KFA0040067B5J00@fe-emea-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 21:31:28 +0000 (GMT)
+Received: from jim-quigleys-macbook-pro.local ([unknown] [129.150.116.36])
+ by fe-emea-09.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ with ESMTPSA id <0KFA0011D6GF17H0@fe-emea-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 21:31:28 +0000 (GMT)
+Date: Wed, 18 Feb 2009 21:31:27 +0000
+From: Jim Quigley <Jim.Quigley@sun.com>
+Subject: Re: FWARC 2009/070 sun4v error handling update
+In-reply-to: <499C7C22.3030200@sun.com>
+Sender: Jim.Quigley@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Scott.Davenport@sun.com, fwarc@sun.com, Huay-Yong.Wang@sun.com,
+        Jim.Quigley@sun.com
+Message-id: <499C7E2F.3030209@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <498C68BE.6040509@sun.com> <49921CE2.5090405@Sun.COM>
+ <4992AA9D.4010209@Sun.COM> <4995C4ED.3030708@sun.com>
+ <1234560405.1375.356.camel@hexterra> <49995D48.40108@Sun.COM>
+ <499C6E95.10706@sun.com> <499C6FA3.2040600@Sun.COM> <499C7C22.3030200@sun.com>
+User-Agent: Thunderbird 2.0.0.19 (Macintosh/20081209)
+Status: RO
+Content-Length: 950
+
+
+>>
+>>     These are existing messages - why would we have an issue with
+>>     them ?
+>
+> They are existing messages to catch resumable traps without proper
+> error descriptor.  We are adding new error descriptor which the
+> existing Solaris does not know about.  What this means is that
+> with a FW upgrade CU may start to see the warning message
+> and may get alarmed by it.
+>
+    But this error report will only be generated by KT f/w, no
+    existing Solaris release should ever see them.
+> So, that is my concern with use of "resumable" trap to inform
+> guest about SP state changes.
+
+    Do you have an alternative suggestion for getting the information
+    to Solaris without extensive changes to the f/w and OS ?
+
+    We had this identical conversation for FWARC 2006/201 when we added
+    the dump-core request error report. If I recall we accepted the 
+possibility
+    then that we might have this situation.
+
+    regards
+
+    Jim Q.
+>
+>
+
+
+From sacadmin Wed Feb 18 13:36:13 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n1ILaDgw000593
+	for <fwarc@sac.sfbay.sun.com>; Wed, 18 Feb 2009 13:36:13 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n1ILZhFq025850
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 19 Feb 2009 05:36:11 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KFA00J116O98T00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 13:36:09 -0800 (PST)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KFA009OS6O62VA0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 13:36:07 -0800 (PST)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n1ILa6dV011033	for
+ <fwarc@sun.com>; Wed, 18 Feb 2009 21:36:06 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KFA003003Z4TX00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 14:36:06 -0700 (MST)
+Received: from dhcp-ubur03-180-160.East.Sun.COM ([unknown] [129.148.180.160])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ with ESMTPSA id <0KFA00M5N6NKWI50@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 14:35:45 -0700 (MST)
+Date: Wed, 18 Feb 2009 16:35:42 -0500
+From: Eric Sharakan <Eric.Sharakan@sun.com>
+Subject: Re: FWARC 2009/070 sun4v error handling update
+In-reply-to: <499C7C22.3030200@sun.com>
+Sender: Eric.Sharakan@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Jim.Quigley@sun.com, Scott.Davenport@sun.com, fwarc@sun.com,
+        Huay-Yong.Wang@sun.com
+Message-id: <7225B71F-81CF-4F7C-A53A-0799F88F1094@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.930.3)
+Content-type: text/plain; delsp=yes; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <498C68BE.6040509@sun.com> <49921CE2.5090405@Sun.COM>
+ <4992AA9D.4010209@Sun.COM> <4995C4ED.3030708@sun.com>
+ <1234560405.1375.356.camel@hexterra> <49995D48.40108@Sun.COM>
+ <499C6E95.10706@sun.com> <499C6FA3.2040600@Sun.COM> <499C7C22.3030200@sun.com>
+Status: RO
+Content-Length: 4022
+
+On Feb 18, 2009, at 4:22 PM, Hitendra Zhangada wrote:
+
+> Jim.Quigley@Sun.COM wrote:
+>> On 02/18/09 20:24, Hitendra Zhangada wrote:
+>>> Jim.Quigley@Sun.COM wrote:
+>>>>
+>>>>    Hi Hitu,
+>>>>
+>>>>
+>>>>>> Finally, how would this change work with existing Solaris
+>>>>>> implementation which does not know anything about the
+>>>>>> new Mnemonic in the error descriptor?
+>>>>>
+>>>>> It is my understanding that the current sun4v trap
+>>>>> handler will ignore/drop any error packet received from
+>>>>> Hypervisor it doesn't understand. So an older OS (say S10U6)
+>>>>> running on a new HV with this capability would be fine.
+>>>>>
+>>>>
+>>>>
+>>>>    The sun4v trap handler for resumable errors prints a warning
+>>>>    for any unrecognised/unsupported report types and then just
+>>>>    drops the error report, so any older OS will work fine
+>>>>    with this change.
+>>>
+>>> Would this warnings be a call generator?
+>>
+>>    No.
+>>
+>> Would it alarm customers?
+>>
+>>    Not unless they were easily scred.
+>>
+>>> Has this been tested?
+>>
+>>    If it hasn't then you should talk to the original Solaris
+>>    implementors, this is an existing message.
+>>
+>> What warning message will CU see?
+>>
+>>    cmn_err(CE_WARN, "Error Descriptor 0x%llx "
+>>                            " invalid in resumable error handler",
+>>                            (long long) errh_flt.errh_er.desc);
+>>
+>>
+>> Can you
+>>> provide an output of this?
+>>
+>>    No.
+>>
+>>    Note that we expect to only be able to run a new KT CPU
+>>    module on the h/w that will have this message, so the
+>>    new error report type will be handled correctly.
+>
+> The changes as specified are to sun4v error handling.
+> I understand that these changes will come in effect with
+> RF based platform releases but at that time, the same
+> interface will also be supported for non-RF platforms too,
+> right?  If it does then that's when CU may start seeing
+> this warning message every time SP reset events are
+> encountered.  My concern is that seeing this message
+> can lead to CU getting confused and they may interpret
+> the warning message as possible HW problems.  From
+> the message they know that there is a resumable error
+> which is associated with a CPU and further there was
+> supposed to be an error descriptor which is invalid.  This
+> can alarm CUs, IMO.
+>
+> Does anyone of the ARC member or intern concerned about
+> this as I am?
+
+Hitu, I'm not all that concerned because in reality, there _has_ been  
+an error (the SP has failed).  I'd be much more concerned if such a  
+notice were produced during normal operations (i.e. if it were a  
+spurious message).
+
+-Eric
+
+>
+>>
+>>>
+>>> Also, note that if this trap comes in OpenBoot then it immediately
+>>> requests to exit the guest by calling partition-exit API.  This is a
+>>> deficiency in the implementation which we can easily fix when the
+>>> corresponding HV changes is made.  Lets makes sure both HV
+>>> and OpenBoot changes go in the same build.
+>>>
+>>>>
+>>>>    Does this close all the issues you have ?
+>>>
+>>> I would like to see the OS warning messages first.
+>>> Huay, any Solaris side of issues with these warning messages to be
+>>> concerned about?
+>>
+>>    These are existing messages - why would we have an issue with
+>>    them ?
+>
+> They are existing messages to catch resumable traps without proper
+> error descriptor.  We are adding new error descriptor which the
+> existing Solaris does not know about.  What this means is that
+> with a FW upgrade CU may start to see the warning message
+> and may get alarmed by it.
+>
+> So, that is my concern with use of "resumable" trap to inform
+> guest about SP state changes.
+>>
+>>    regards
+>>
+>>    Jim Q.
+>>
+>>>
+>>>
+>>> Thanks.
+>>>
+>>>>
+>>>>    thanks
+>>>>
+>>>>    regards
+>>>>
+>>>>    Jim Q.
+>>>
+>>>
+>>
+>
+>
+> -- 
+> Hitendra Zhangada
+> =============================================
+> SPS Common SW Features Engineering
+> Systems Group, Sun Microsystems, Inc.
+> Work Ph# (858) 625 3757, Ext. x53757
+> SUN Internal homepage http://esp.west/~hitu
+>
+
+
+From sacadmin Wed Feb 18 13:42:08 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n1ILg897000651
+	for <fwarc@sac.sfbay.sun.com>; Wed, 18 Feb 2009 13:42:08 -0800 (PST)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n1ILg5Hr013561
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 18 Feb 2009 13:42:08 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KFA00F256Y7MM00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 13:42:07 -0800 (PST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KFA00AJ46Y6Y170@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 13:42:06 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n1ILg69V018974	for
+ <fwarc@sun.com>; Wed, 18 Feb 2009 13:42:06 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KFA00B006GZ4G00@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 13:42:06 -0800 (PST)
+Received: from [129.150.35.159] ([unknown] [129.150.35.159])
+ by fe-sfbay-10.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ with ESMTPSA id <0KFA00CC26Y3A1A0@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 13:42:04 -0800 (PST)
+Date: Wed, 18 Feb 2009 13:42:02 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC 2009/070 sun4v error handling update
+In-reply-to: <7225B71F-81CF-4F7C-A53A-0799F88F1094@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: fwarc@sun.com
+Cc: Jim.Quigley@sun.com, Scott.Davenport@sun.com, Huay-Yong.Wang@sun.com
+Message-id: <499C80AA.4070807@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <498C68BE.6040509@sun.com> <49921CE2.5090405@Sun.COM>
+ <4992AA9D.4010209@Sun.COM> <4995C4ED.3030708@sun.com>
+ <1234560405.1375.356.camel@hexterra> <49995D48.40108@Sun.COM>
+ <499C6E95.10706@sun.com> <499C6FA3.2040600@Sun.COM> <499C7C22.3030200@sun.com>
+ <7225B71F-81CF-4F7C-A53A-0799F88F1094@Sun.COM>
+User-Agent: Thunderbird 2.0.0.19 (Windows/20081209)
+Status: RO
+Content-Length: 3454
+
+Eric Sharakan wrote:
+> On Feb 18, 2009, at 4:22 PM, Hitendra Zhangada wrote:
+>
+>> Jim.Quigley@Sun.COM wrote:
+>>> On 02/18/09 20:24, Hitendra Zhangada wrote:
+>>>> Jim.Quigley@Sun.COM wrote:
+>>>>>
+>>>>>    Hi Hitu,
+>>>>>
+>>>>>
+>>>>>>> Finally, how would this change work with existing Solaris
+>>>>>>> implementation which does not know anything about the
+>>>>>>> new Mnemonic in the error descriptor?
+>>>>>>
+>>>>>> It is my understanding that the current sun4v trap
+>>>>>> handler will ignore/drop any error packet received from
+>>>>>> Hypervisor it doesn't understand. So an older OS (say S10U6)
+>>>>>> running on a new HV with this capability would be fine.
+>>>>>>
+>>>>>
+>>>>>
+>>>>>    The sun4v trap handler for resumable errors prints a warning
+>>>>>    for any unrecognised/unsupported report types and then just
+>>>>>    drops the error report, so any older OS will work fine
+>>>>>    with this change.
+>>>>
+>>>> Would this warnings be a call generator?
+>>>
+>>>    No.
+>>>
+>>> Would it alarm customers?
+>>>
+>>>    Not unless they were easily scred.
+>>>
+>>>> Has this been tested?
+>>>
+>>>    If it hasn't then you should talk to the original Solaris
+>>>    implementors, this is an existing message.
+>>>
+>>> What warning message will CU see?
+>>>
+>>>    cmn_err(CE_WARN, "Error Descriptor 0x%llx "
+>>>                            " invalid in resumable error handler",
+>>>                            (long long) errh_flt.errh_er.desc);
+>>>
+>>>
+>>> Can you
+>>>> provide an output of this?
+>>>
+>>>    No.
+>>>
+>>>    Note that we expect to only be able to run a new KT CPU
+>>>    module on the h/w that will have this message, so the
+>>>    new error report type will be handled correctly.
+>>
+>> The changes as specified are to sun4v error handling.
+>> I understand that these changes will come in effect with
+>> RF based platform releases but at that time, the same
+>> interface will also be supported for non-RF platforms too,
+>> right?  If it does then that's when CU may start seeing
+>> this warning message every time SP reset events are
+>> encountered.  My concern is that seeing this message
+>> can lead to CU getting confused and they may interpret
+>> the warning message as possible HW problems.  From
+>> the message they know that there is a resumable error
+>> which is associated with a CPU and further there was
+>> supposed to be an error descriptor which is invalid.  This
+>> can alarm CUs, IMO.
+>>
+>> Does anyone of the ARC member or intern concerned about
+>> this as I am?
+>
+> Hitu, I'm not all that concerned because in reality, there _has_ been 
+> an error (the SP has failed).  I'd be much more concerned if such a 
+> notice were produced during normal operations (i.e. if it were a 
+> spurious message).
+
+Thanks Eric for the comments.
+
+Jim said in other mail that this will only be implemented for
+RF Firmware and so I am not terribly concern about N2/VF
+platforms getting this warning message.  SP failed or reset
+is an event but IMO, OS need not know and CU need not
+know through an invalid error descriptor message about it.
+
+
+With the information provided on this mail thread, I am fine
+with the interface as is.  No more issues from me and so
+as far as I am concern, this case can time out today.
+
+
+Thanks!
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+From sacadmin Wed Feb 18 13:43:16 2009
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n1ILhFl8000672
+	for <fwarc@sac.sfbay.sun.com>; Wed, 18 Feb 2009 13:43:16 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id n1ILh36i004890
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 19 Feb 2009 05:43:14 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KFA00D59702CX00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 14:43:14 -0700 (MST)
+Received: from gmp-eb-inf-2.sun.com ([192.18.6.24])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KFA005N56ZYQED0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 14:43:11 -0700 (MST)
+Received: from fe-emea-09.sun.com (gmp-eb-lb-2-fe3.eu.sun.com [192.18.6.12])
+	by gmp-eb-inf-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id n1ILhAqJ008810	for
+ <fwarc@sun.com>; Wed, 18 Feb 2009 21:43:10 +0000 (GMT)
+Received: from conversion-daemon.fe-emea-09.sun.com by fe-emea-09.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KFA000006WGK500@fe-emea-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 21:43:10 +0000 (GMT)
+Received: from jim-quigleys-macbook-pro.local ([unknown] [129.150.116.36])
+ by fe-emea-09.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ with ESMTPSA id <0KFA00DLE6ZW6F70@fe-emea-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 18 Feb 2009 21:43:09 +0000 (GMT)
+Date: Wed, 18 Feb 2009 21:43:08 +0000
+From: Jim Quigley <Jim.Quigley@sun.com>
+Subject: Re: FWARC 2009/070 sun4v error handling update
+In-reply-to: <499C80AA.4070807@sun.com>
+Sender: Jim.Quigley@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: fwarc@sun.com, Scott.Davenport@sun.com, Huay-Yong.Wang@sun.com,
+        Jim.Quigley@sun.com
+Message-id: <499C80EC.4020007@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <498C68BE.6040509@sun.com> <49921CE2.5090405@Sun.COM>
+ <4992AA9D.4010209@Sun.COM> <4995C4ED.3030708@sun.com>
+ <1234560405.1375.356.camel@hexterra> <49995D48.40108@Sun.COM>
+ <499C6E95.10706@sun.com> <499C6FA3.2040600@Sun.COM> <499C7C22.3030200@sun.com>
+ <7225B71F-81CF-4F7C-A53A-0799F88F1094@Sun.COM> <499C80AA.4070807@sun.com>
+User-Agent: Thunderbird 2.0.0.19 (Macintosh/20081209)
+Status: RO
+Content-Length: 3407
+
+Hitendra Zhangada wrote:
+> Eric Sharakan wrote:
+>> On Feb 18, 2009, at 4:22 PM, Hitendra Zhangada wrote:
+>>
+>>> Jim.Quigley@Sun.COM wrote:
+>>>> On 02/18/09 20:24, Hitendra Zhangada wrote:
+>>>>> Jim.Quigley@Sun.COM wrote:
+>>>>>>
+>>>>>>    Hi Hitu,
+>>>>>>
+>>>>>>
+>>>>>>>> Finally, how would this change work with existing Solaris
+>>>>>>>> implementation which does not know anything about the
+>>>>>>>> new Mnemonic in the error descriptor?
+>>>>>>>
+>>>>>>> It is my understanding that the current sun4v trap
+>>>>>>> handler will ignore/drop any error packet received from
+>>>>>>> Hypervisor it doesn't understand. So an older OS (say S10U6)
+>>>>>>> running on a new HV with this capability would be fine.
+>>>>>>>
+>>>>>>
+>>>>>>
+>>>>>>    The sun4v trap handler for resumable errors prints a warning
+>>>>>>    for any unrecognised/unsupported report types and then just
+>>>>>>    drops the error report, so any older OS will work fine
+>>>>>>    with this change.
+>>>>>
+>>>>> Would this warnings be a call generator?
+>>>>
+>>>>    No.
+>>>>
+>>>> Would it alarm customers?
+>>>>
+>>>>    Not unless they were easily scred.
+>>>>
+>>>>> Has this been tested?
+>>>>
+>>>>    If it hasn't then you should talk to the original Solaris
+>>>>    implementors, this is an existing message.
+>>>>
+>>>> What warning message will CU see?
+>>>>
+>>>>    cmn_err(CE_WARN, "Error Descriptor 0x%llx "
+>>>>                            " invalid in resumable error handler",
+>>>>                            (long long) errh_flt.errh_er.desc);
+>>>>
+>>>>
+>>>> Can you
+>>>>> provide an output of this?
+>>>>
+>>>>    No.
+>>>>
+>>>>    Note that we expect to only be able to run a new KT CPU
+>>>>    module on the h/w that will have this message, so the
+>>>>    new error report type will be handled correctly.
+>>>
+>>> The changes as specified are to sun4v error handling.
+>>> I understand that these changes will come in effect with
+>>> RF based platform releases but at that time, the same
+>>> interface will also be supported for non-RF platforms too,
+>>> right?  If it does then that's when CU may start seeing
+>>> this warning message every time SP reset events are
+>>> encountered.  My concern is that seeing this message
+>>> can lead to CU getting confused and they may interpret
+>>> the warning message as possible HW problems.  From
+>>> the message they know that there is a resumable error
+>>> which is associated with a CPU and further there was
+>>> supposed to be an error descriptor which is invalid.  This
+>>> can alarm CUs, IMO.
+>>>
+>>> Does anyone of the ARC member or intern concerned about
+>>> this as I am?
+>>
+>> Hitu, I'm not all that concerned because in reality, there _has_ been 
+>> an error (the SP has failed).  I'd be much more concerned if such a 
+>> notice were produced during normal operations (i.e. if it were a 
+>> spurious message).
+>
+> Thanks Eric for the comments.
+>
+> Jim said in other mail that this will only be implemented for
+> RF Firmware and so I am not terribly concern about N2/VF
+> platforms getting this warning message.  SP failed or reset
+> is an event but IMO, OS need not know and CU need not
+> know through an invalid error descriptor message about it.
+>
+>
+> With the information provided on this mail thread, I am fine
+> with the interface as is.  No more issues from me and so
+> as far as I am concern, this case can time out today.
+
+    Great, thanks.
+
+    regards
+
+    Jim Q.
+>
+>
+> Thanks!
+>
+>
+
+
+From sacadmin Thu Feb 19 08:14:40 2009
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id n1JGEe26003687
+	for <fwarc@sac.sfbay.sun.com>; Thu, 19 Feb 2009 08:14:40 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id n1JGEcMV013537
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 19 Feb 2009 08:14:40 -0800 (PST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KFB00B05MGEPE00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 19 Feb 2009 08:14:38 -0800 (PST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KFB0013EMG90F70@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 19 Feb 2009 08:14:33 -0800 (PST)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id n1JGEXrD007618	for
+ <fwarc@sun.com>; Thu, 19 Feb 2009 16:14:33 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ id <0KFB00D00L0X4Z00@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 19 Feb 2009 09:14:33 -0700 (MST)
+Received: from dhcp-ubur-189-142.East.Sun.COM ([unknown] [129.148.189.142])
+ by mail-amer.sun.com
+ (Sun Java(tm) System Messaging Server 7.0-3.01 64bit (built Dec 23 2008))
+ with ESMTPSA id <0KFB000TKMG27M90@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 19 Feb 2009 09:14:27 -0700 (MST)
+Date: Thu, 19 Feb 2009 11:14:25 -0500
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: Re: FWARC 2009/070 sun4v error handling update
+In-reply-to: <499C80EC.4020007@sun.com>
+Sender: Stephen.Ehring@sun.com
+To: Jim Quigley <Jim.Quigley@sun.com>
+Cc: Hitendra Zhangada <Hitendra.Zhangada@sun.com>, fwarc@sun.com,
+        Scott.Davenport@sun.com, Huay-Yong.Wang@sun.com
+Message-id: <499D8561.4070701@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <498C68BE.6040509@sun.com> <49921CE2.5090405@Sun.COM>
+ <4992AA9D.4010209@Sun.COM> <4995C4ED.3030708@sun.com>
+ <1234560405.1375.356.camel@hexterra> <49995D48.40108@Sun.COM>
+ <499C6E95.10706@sun.com> <499C6FA3.2040600@Sun.COM> <499C7C22.3030200@sun.com>
+ <7225B71F-81CF-4F7C-A53A-0799F88F1094@Sun.COM> <499C80AA.4070807@sun.com>
+ <499C80EC.4020007@sun.com>
+User-Agent: Thunderbird 2.0.0.19 (Macintosh/20081209)
+Status: RO
+Content-Length: 69
+
+The timer on this case has expired, it is closed as approved.
+
+Steve
+

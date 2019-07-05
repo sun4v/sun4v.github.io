@@ -1,0 +1,214 @@
+
+Copyright 2007 Sun Microsystems
+
+1. Introduction
+   1.1. Project/Component Working Name:
+        sun4v Cpu MD node property updates
+
+   1.2. Name of Document Author/Supplier:
+	Wayne Mesard
+
+   1.3. Date of This Document:
+	2007-08-22
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		N/A (work will be part of the Supernova RR deliverable,
+		but this item will not be specifically reviewed by any
+		business team).
+
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Ravi Subbarao
+
+	1.4.4. The name of your business unit:
+		Systems
+
+   1.5. Email Aliases:
+    	1.5.1. Responsible Manager: umesh.sharma@sun.com
+    	1.5.2. Responsible Engineer: wayne.mesard@sun.com
+    	1.5.3. Marketing Manager:
+	1.5.4. Interest List: hvrock-dev@sun.com
+
+2. Project Summary
+   2.1. Project Description:
+	Implement new optional Machine Description Cpu node properties
+	to advertise processor capabilities and extensions.
+
+   2.2. Risks and Assumptions:
+	This proposal assumes other CPUs (including successors to Rock
+	such as Rock+ or Rock2) may or may not choose to implement the
+	properties.
+
+3. Business Summary
+   3.1. Problem Area:
+        Processor-specific information should be captured in the Machine
+        Description.  It should not be hard-coded in the kernel CPU
+        module, or anywhere else in the guest operating system.
+
+   3.2. Market/Requester:
+	Supernova Solaris engineering.
+
+   3.3. Business Justification:
+	- Minimize operating system changes required to support new
+          processors.
+	- Allow users booting with Solaris' "generic sun4v" CPU module
+          to take advantage of processor-specific ISA extentions and
+          other capabilities.
+
+   3.4. Competitive Analysis:
+
+   3.5. Opportunity Window/Exposure:
+	[ redacted ]
+
+   3.6. How will you know when you are done?:
+	The project will be done when the properties are implemented
+        according to specification, and the Solaris generic sun4v CPU
+        module can be booted on Rock, and support the Weak Consistency
+        memory model, and ISA extensions such as Transactional Memory.
+
+4. Technical Description:
+
+   4.1 Overview
+
+        The Machine Description Cpu node currently contains a Mandatory
+        "isalist" property which contains a "list of the instruction set
+        architectures supported by this virtual CPU."
+
+        There are other CPU instruction set features which should be
+        captured by the MD.  These are the instruction set extensions
+        and the memory models supported by the CPU.
+
+        Currently, the existence of these features have to be hard-coded
+        by the guest (e.g., in the Solaris kernel CPU module), which
+        presents some maintenance issues.
+
+        More importantly, when the customer configures the system for
+        generic sun4v operation (i.e., when the "sun4v" kernel CPU is
+        used in Solaris), userland applications lose access to these
+        performance features.  With the MD changes described herein,
+        this can be avoided.
+
+
+   4.1.1  Cpu node
+
+        The following optional properties will be added to the Cpu node
+        to inform the guest about underlying CPU features.  That is,
+        these are updates to Hypervisor API specification, section
+        8.13.3.1.
+
+        Properties:
+
+    Name        Tag        Req'd?    Description
+    ----------------------------------------------------------------------
+    hwcap-list  PROP_DATA  No        A list of strings identifying
+                                     which ISA extensions are
+                                     implemented in this processor.
+                                     The currently defined values for
+                                     constructing an 'hwcap-list' are:
+                                     "ima","fjfmau","trans","random","hpc",
+				     "vis3","fmau","fmaf","ASIBlkInit",
+				     "vis2","vis","popc","v8plus", "fsmuld",
+                                     "div32","mul32". [*]
+
+    memory-model-list
+                PROP_DATA  No        A list of strings identifying
+                                     which memory models are supported,
+                                     as per UA-2009 (or future revs of
+                                     same) Appendix D (Formal
+                                     Specification of the Memory
+                                     Models).  Currently defined values
+                                     are: "tso", "rmo" and "wc".  These
+                                     are, respectively, 
+                                     "Total Store Order",
+                                     "Relaxed Memory Order", and
+                                     "Weak Consistency".
+
+
+   [*] For details on the list of currently defined extensions to the
+       SPARC ISA, see the Solaris getisax(2) man page, or the PSARC
+       case where each of them was defined:
+         PSARC 2007/433 Integer Multiply-Add instruction set feature
+         PSARC 2007/245 Fujitsu unfused multiply-add instructions
+         PSARC 2006/238 Rock hardware capabilities and libc_hwcap
+         PSARC 2004/797 Processor specific platform libraries
+       In the longer-term, we are working with the owner of
+       UltraSPARC Architecture, to get the valid HWCAP values
+       listed in that document.
+
+
+   4.2 Imported Interfaces :
+
+        Interface              Classification     Comments
+         ====================================================================
+        sun4v Machine           Sun Private     MD nodes definitions as
+        Description nodes                       defined by FWARC 2005/115
+
+
+   4.3 Exported Interfaces:
+
+
+        Interface               Classification     Comments
+         ====================================================================
+        "hwcap-list"            Sun Private     A Cpu node MD property to
+                                                describe ISA extensions
+                                                supported by the CPU.
+
+        "memory-model-list"     Sun Private     A Cpu node MD property to
+                                                describe memory models
+                                                supported by the CPU.
+
+5. References:
+
+   - UltraSPARC Architecture: 
+        https://systemsweb.sfbay.sun.com/archperf/SPARC-Arch-SWG/
+   - The "Cpu node" was introduced in FWARC 2005/115:
+        http://sac.eng/FWARC/2005/115/final.materials/md-bindings.pdf
+
+6. Resources and Schedule:
+   6.1. Projected Availability:
+	Available now.
+   6.2. Cost of Effort:
+	Implementation/debug:
+	  Supernova Guest Manager: 1 week
+	  Solaris: 1 week
+	  Testing: 1 week
+
+   6.3. Cost of Capital Resources:
+	Negligible (existing bringup systems are adequate)
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation or Component Name:
+		SPARC System Firmware (Hypervisor)
+	6.4.3. Type of CPT Review and Approval expected:
+		N/A
+        6.4.4. Project Boundary Conditions:
+		N/A
+	6.4.5. Is this a necessary project for OEM agreements:
+		No
+	6.4.6. Notes:
+	6.4.7. Target RTI Date/Release:
+		TBD.  Will be part of Supernova RTI; other
+		platforms could choose to implement sooner.
+	6.4.8. Target Code Design Review Date:
+		Formal review of all Supernova Hypervisor code changes
+		will be held prior to RTI for the Supernova Hypervisor;
+		that review will include the Rock support for this API.
+
+		Initial review of this code change has already taken
+		place on the hvreview@sun.com alias.
+
+	6.4.9. Update approval addition:
+	        N/A
+
+   6.5. ARC review type:
+		FastTrack
+
+7. Prototype Availability:
+   7.1. Prototype Availability:
+	Currently available.
+
+   7.2. Prototype Cost:
+	Negligible.

@@ -1,0 +1,203 @@
+From sacadmin Tue Apr 20 22:31:27 2010
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o3L5VR3b007601;
+	Tue, 20 Apr 2010 22:31:27 -0700 (PDT)
+Received: (from dmk@localhost)
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit) id o3L5VRpJ007597;
+	Tue, 20 Apr 2010 22:31:27 -0700 (PDT)
+Date: Tue, 20 Apr 2010 22:31:27 -0700 (PDT)
+From: David Kahn <dmk@sac.sfbay.sun.com>
+Message-Id: <201004210531.o3L5VRpJ007597@sac.sfbay.sun.com>
+To: FWARC-record@sac.sfbay.sun.com
+Subject: sun4v io api vpci v2.0 [FWARC/2010/137 FastTrack]
+Status: RO
+Content-Length: 596
+
+
+Template Version: @(#)sac_nextcase 1.70 03/30/10 SMI
+This information is Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
+1. Introduction
+    1.1. Project/Component Working Name:
+	 sun4v io api vpci v2.0
+    1.2. Name of Document Author/Supplier:
+	 Author:  David Kahn
+    1.3  Date of This Document:
+	20 April, 2010
+4. Technical Description
+    See the case directory for more detail
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		sysfw
+    6.5. ARC review type: FastTrack
+    6.6. ARC Exposure: open
+
+
+From sacadmin Tue Apr 20 22:57:31 2010
+Received: from noho.sfbay.sun.com (noho.SFBay.Sun.COM [10.6.92.101])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o3L5vVpM008354
+	for <fwarc@sac.sfbay.sun.com>; Tue, 20 Apr 2010 22:57:31 -0700 (PDT)
+Received: from noho.sfbay.sun.com (localhost [127.0.0.1])
+	by noho.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id o3L5vTJu002732;
+	Tue, 20 Apr 2010 22:57:29 -0700 (PDT)
+Received: (from dmk@localhost)
+	by noho.sfbay.sun.com (8.13.7+Sun/8.13.7/Submit) id o3L5vT9Y002729;
+	Tue, 20 Apr 2010 22:57:29 -0700 (PDT)
+Date: Tue, 20 Apr 2010 22:57:29 -0700 (PDT)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Message-Id: <201004210557.o3L5vT9Y002729@noho.sfbay.sun.com>
+To: fwarc@sac.sfbay.sun.com
+Subject: io-api vpci v2.0 FWARC/2010/137 fast-track, timeout 4/23/2010
+Cc: Tayfun.Kocaoglu@oracle.com, alan.adamson@oracle.com
+Status: RO
+Content-Length: 1273
+
+
+I'm sponsoring this fast-track case for the hv team.
+
+Note, the i-teams have requested approval by Friday, Apr 23, so
+unless somebody objects and needs more time, this case will timeout
+on Friday, April 23.
+
+This case clarifies the current hv behavior for the vpci io api,
+for which versions 1.1 and 1.2 were previously approved but never
+enabled due to some issues, and creates version 2.0, which requires
+strict compliance with the interface spec and allows the guest to
+request mappings with the "relaxed ordering" attribute, which is
+a performace issue on some platforms.  The complete explanation
+of all this is in the file in the materials directory, which can
+also be seen here: 
+
+http://cpubringup.sfbay.sun.com/twiki/bin/view/CSWFirmware/VpciV2dot0
+
+Part of the case deprecates PCI_DMA_SYNC (fast trap 0x80,
+function number 0xb8, vpci v1.2, which never shipped on any
+platform), end enables negotiation of v2.0 for io api group 0x100.
+
+Requested release binding:
+
+	- Firmware - Any
+	- OS Components - Minor, Micro, Patch
+
+Upon approval, I will update the trap registry and put an updated
+version of the io-api.txt (with sccs history) with the updates
+defined by this case in the FWARC Specifications directory.
+(See section 5 in the case file document).
+
+-David
+
+
+From sacadmin Wed Apr 21 00:23:29 2010
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o3L7NTa6028422
+	for <fwarc@sac.sfbay.sun.com>; Wed, 21 Apr 2010 00:23:29 -0700 (PDT)
+Received: from [192.168.0.9] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.4+Sun/8.14.4) with ESMTP id o3L7NS5i022304;
+	Wed, 21 Apr 2010 00:23:28 -0700 (PDT)
+Message-ID: <4BCEA7F1.4020600@oracle.com>
+Date: Wed, 21 Apr 2010 00:23:29 -0700
+From: David Kahn <David.Kahn@oracle.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.9) Gecko/20100317 Thunderbird/3.0.4
+MIME-Version: 1.0
+To: fwarc@sac.sfbay.sun.com
+CC: Tayfun.Kocaoglu@oracle.com, alan.adamson@oracle.com
+Subject: Re: io-api vpci v2.0 FWARC/2010/137 fast-track, timeout 4/23/2010
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 376
+
+
+
+On 4/20/2010 11:00 PM,  wrote:
+
+> Upon approval, I will update the trap registry and put an updated
+> version of the io-api.txt (with sccs history) with the updates
+> defined by this case in the FWARC Specifications directory.
+> (See section 5 in the case file document).
+
+An updated io-api.txt (including sccs history) and diffs.txt
+are in the materials directory.
+
+-David
+
+From sacadmin Wed Apr 21 03:21:14 2010
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o3LALEtn001302
+	for <fwarc@sac.sfbay.sun.com>; Wed, 21 Apr 2010 03:21:14 -0700 (PDT)
+Received: from [192.168.0.9] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.4+Sun/8.14.4) with ESMTP id o3LALDsl009711;
+	Wed, 21 Apr 2010 03:21:13 -0700 (PDT)
+Message-ID: <4BCED19A.7030301@oracle.com>
+Date: Wed, 21 Apr 2010 03:21:14 -0700
+From: David Kahn <David.Kahn@oracle.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.9) Gecko/20100317 Thunderbird/3.0.4
+MIME-Version: 1.0
+CC: fwarc@sac.sfbay.sun.com, Tayfun.Kocaoglu@oracle.com,
+        alan.adamson@oracle.com
+Subject: Re: io-api vpci v2.0 FWARC/2010/137 fast-track, timeout 4/23/2010
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 534
+
+
+
+On 4/20/2010 11:00 PM,  wrote:
+
+> Part of the case deprecates PCI_DMA_SYNC (fast trap 0x80,
+> function number 0xb8, vpci v1.2, which never shipped on any
+> platform), end enables negotiation of v2.0 for io api group 0x100.
+
+Sorry, that wasn't quite correct. PCI_DMA_SYNC is not, itself,
+deprecated. The change in arguments that was part of v1.2 is
+deprecated. Since v1.2 never shipped and the reason for it
+"disappeared" we can safely deprecate that v1.2 change.
+
+Anyway, it's all explained correctly in the case materials.
+
+-David
+
+From sacadmin Tue Apr 27 17:23:29 2010
+Received: from noho.sfbay.sun.com (noho.SFBay.Sun.COM [10.6.92.101])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id o3S0NTdg014696
+	for <fwarc@sac.sfbay.sun.com>; Tue, 27 Apr 2010 17:23:29 -0700 (PDT)
+Received: from noho.sfbay.sun.com (localhost [127.0.0.1])
+	by noho.sfbay.sun.com (8.13.7+Sun/8.13.7) with ESMTP id o3S0NR0Z023690;
+	Tue, 27 Apr 2010 17:23:27 -0700 (PDT)
+Received: (from dmk@localhost)
+	by noho.sfbay.sun.com (8.13.7+Sun/8.13.7/Submit) id o3S0NRgn023689;
+	Tue, 27 Apr 2010 17:23:27 -0700 (PDT)
+Date: Tue, 27 Apr 2010 17:23:27 -0700 (PDT)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Message-Id: <201004280023.o3S0NRgn023689@noho.sfbay.sun.com>
+To: fwarc@sac.sfbay.sun.com
+Subject: Re: io-api vpci v2.0 FWARC/2010/137 fast-track, timeout 4/23/2010
+Cc: Tayfun.Kocaoglu@oracle.com, alan.adamson@oracle.com
+Status: RO
+Content-Length: 634
+
+>Note, the i-teams have requested approval by Friday, Apr 23, so
+
+>Requested release binding:
+>
+>	- Firmware - Any
+>	- OS Components - Minor, Micro, Patch
+
+This case timed out on and is marked as approved as of Friday
+April 23.
+
+>Upon approval, I will update the trap registry and put an updated
+>version of the io-api.txt (with sccs history) with the updates
+>defined by this case in the FWARC Specifications directory.
+>(See section 5 in the case file document).
+
+The trap-registry.txt has been updated in the FWARC Registries directory
+
+The io-api.txt specification has been updated in the FWARC Specifications
+directory.
+
+-David
+
+

@@ -1,0 +1,102 @@
+
+   
+                       SYSTEM ARCHITECTURE COUNCIL
+                              Firmware ARC
+                    ---------------------------------
+FWARC Regular Meeting time: Mondays 11:30-1:40pm 
+
+                          03/15/2005 MEETING MINUTES
+============================================================================
+CORRECTIONS, additions, deletions to landyana.kweh@sun.com.
+Minutes prepared by Landyana Kweh. Minutes are archived in
+sac.Eng:/sac/export/sac/Minutes/FWARC.
+
+Attendees:
+	
+		Kahn, David (chair)	yes		
+		Houk, Robert	        no
+		Redman, David	        yes			
+		Zhangada, Hitendra	yes
+		Sumpter, Tony	        no				
+		
+		Adamson, Alan 	        no					
+		Tse, Dawn	        no	
+		Yanmin Sun	        yes	
+		Fenech, Joe             no
+		Munson, Wayne           no
+		Nelangamala, Balaji	yes
+		Quigley, Jim            no
+		Prasad, Shankar		yes
+		Ehring, Stephen         no
+		
+		Landy Kweh 		yes	
+		
+Guests:		Richard Barnette
+		Holly Yang
+		Minh Nguyen
+				
+MEETING SUMMARY: 
+
+12:15-12:25	project issue id
+12:25-01:25     Inception: 2005/111 sunv4 bus bindings
+		Submitter:  david.kahn@sun.com
+		Owner:	    Hitendra Zhangada 
+		Intern:	    Yanmin Sun
+
+===========================================================================
+ARC BUSINESS:
+
+- Project issue id(s) for today's case
+
+- Case(s)
+
+  New Case(s) - 
+  
+  No
+   
+- DMK pointed out that there will be a commitment review for FWARC 2005/116
+if Ashley submits the docs by today or tomorrow and nobody objects to have
+the meeting next week. FWARC 2005/115 may be reviewed, as well next week.  
+
+<no further comments>
+===========================================================================
+Inception: 2005/111 sunv4 bus bindings
+Submitter:  david.kahn@sun.com
+Owner:	    Hitendra Zhangada 
+Intern:	    Yanmin Sun 		     	
+
+Going through issue list --
+
+DMK --
+
+1. SUNW,set-trap-table .. the cif has another argument for the miss area.
+    This will be fast-tracked in later. The sun4v version has an
+    additional argument for the miss area.
+
+2. An unamed cif for dealing with HV API versioning negotiation via OBP
+    with the hypervisor. This will be fast-tracked in later.
+    It doesn't exist yet. Details need to be worked out on this.
+
+Status for #1 and #2: CLOSED - will be fast-tracked later on.
+
+3. DMK has also updated the CPUID binding and some nits per Hitu's requests.
+
+FWARC members did not have any objections to convert this case into a fast-track.
+
+THE NEXT STEP
+=============
+Convert this into a fast-track and this case is approved.
+Hitu/Yanmin will send the fast-track officially to fwarc alias and pointed out 
+in the email that this case is dependent on the core API case (2005/116).
+
+===========================================================================   
+  
+  
+  
+   
+  
+  
+
+
+
+

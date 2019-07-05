@@ -1,0 +1,158 @@
+From sacadmin Tue Sep 30 09:11:41 2008
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8UGBf3k015315;
+	Tue, 30 Sep 2008 09:11:41 -0700 (PDT)
+Received: (from ehring@localhost)
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit) id m8UGBfwJ015311;
+	Tue, 30 Sep 2008 09:11:41 -0700 (PDT)
+Date: Tue, 30 Sep 2008 09:11:41 -0700 (PDT)
+From: Stephen Ehring <ehring@sac.sfbay.sun.com>
+Message-Id: <200809301611.m8UGBfwJ015311@sac.sfbay.sun.com>
+To: FWARC-record@sac.sfbay.sun.com
+Subject: KT Perf Reg HV API [FWARC/2008/615 FastTrack timeout 10/07/2008]
+Status: RO
+Content-Length: 554
+
+
+Template Version: @(#)sac_nextcase %I% %G% SMI
+This information is Copyright 2008 Sun Microsystems
+1. Introduction
+    1.1. Project/Component Working Name:
+	 KT Perf Reg HV API
+    1.2. Name of Document Author/Supplier:
+	 Author:  Sree Vemuri
+    1.3  Date of This Document:
+	30 September, 2008
+4. Technical Description
+    See the case directory for more detail
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		unknown
+    6.5. ARC review type: FastTrack
+    6.6. ARC Exposure: open
+
+
+From sacadmin Tue Sep 30 09:28:19 2008
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m8UGSJ3C016392
+	for <fwarc@sac.sfbay.sun.com>; Tue, 30 Sep 2008 09:28:19 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m8UGS0pm028304
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 30 Sep 2008 09:28:18 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K8000543OF5HC00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 09:28:17 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K80000GOOF4BZB0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 09:28:16 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m8UGSGvC014957	for
+ <fwarc@sun.com>; Tue, 30 Sep 2008 16:28:16 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K8000M01O42G500@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 10:28:16 -0600 (MDT)
+Received: from dhcp-ubur03-184-18.East.Sun.COM ([129.148.184.18])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K8000G4NOF25DF0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 30 Sep 2008 10:28:14 -0600 (MDT)
+Date: Tue, 30 Sep 2008 12:28:12 -0400
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: FWARC 2008/615 KT Perf Reg HV API
+Sender: Stephen.Ehring@sun.com
+To: Firmware Arch <fwarc@sun.com>, Sree-Lakshmi Vemuri <Sree.Vemuri@sun.com>
+Message-id: <48E2539C.1040109@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.17 (Macintosh/20080914)
+Status: RO
+Content-Length: 590
+
+I'm sponsoring this fast track for Sree Vemuri.
+The fast-track timeout is October 7th.
+
+The materials are in the "materials" case dir.
+
+Similar to all previous cpu-specific performance
+register APIs, this case adds 2 new HV APIs
+(0x122, 0x123), creates a new API group (0x209),
+and defines version 1.0 of these APIs. The API
+includes the function numbers used to access specific registers.
+
+I'll update the registry when the case is approved.
+
+All interfaces are classified as uncommitted.
+
+Release Binding:
+    firmware: minor/micro firmware release
+    OS: minor/micro/patch OS release.
+
+
+From sacadmin Tue Dec  2 09:25:00 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id mB2HOxAL003574
+	for <fwarc@sac.sfbay.sun.com>; Tue, 2 Dec 2008 09:25:00 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id mB2HOvJP005402
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 2 Dec 2008 17:24:58 GMT
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0KB900I01F1L9800@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 02 Dec 2008 09:24:57 -0800 (PST)
+Received: from brmea-mail-2.sun.com ([192.18.98.43])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0KB900DAQF1LPU30@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 02 Dec 2008 09:24:57 -0800 (PST)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-2.sun.com (8.13.6+Sun/8.12.9) with ESMTP id mB2HOvBo017759	for
+ <fwarc@sun.com>; Tue, 02 Dec 2008 17:24:57 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0KB900801EQWY300@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 02 Dec 2008 10:24:57 -0700 (MST)
+Received: from dhcp-ubur03-184-150.East.Sun.COM ([129.148.184.150])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0KB900E8IF1KWL80@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 02 Dec 2008 10:24:56 -0700 (MST)
+Date: Tue, 02 Dec 2008 12:24:54 -0500
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: Re: FWARC 2008/615 KT Perf Reg HV API
+In-reply-to: <48E2539C.1040109@sun.com>
+Sender: Stephen.Ehring@sun.com
+To: Firmware Arch <fwarc@sun.com>, Sree-Lakshmi Vemuri <Sree.Vemuri@sun.com>
+Message-id: <49356F66.1010004@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <48E2539C.1040109@sun.com>
+User-Agent: Thunderbird 2.0.0.18 (Macintosh/20081105)
+Status: RO
+Content-Length: 242
+
+Stephen Ehring wrote:
+> Release Binding:
+>    firmware: minor/micro firmware release
+>    OS: minor/micro/patch OS release.
+>
+
+The timer on this case expired some time ago, the case is closed as 
+approved (registry has been updated).
+
+Steve
+
+

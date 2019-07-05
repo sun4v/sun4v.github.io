@@ -1,0 +1,124 @@
+1. Introduction
+   1.1. Project/Component Working Name:   dma-sync-options property
+
+   1.2. Name of Document Author/Supplier: Alan Adamson/Pingchun Lee
+
+   1.3. Date of This Document:            04/09/09
+
+   1.4. Name of Major Document Customer(s)/Consumer(s): Solaris, OpenBoot
+
+2. Project Summary
+   2.1. Project Description
+
+        We are proposing to create a new property, "dma-sync-options"
+        under PCI Express Root Complex nodes.
+
+        The purpose of this property is to communicate memory object
+        synchronization requirements of the underlying hardware. This will
+        prevent executing costly synchronization functions when the hardware
+        does not require it.
+
+        The Solaris PCI Express Root Complex drivers
+        (platform/sun4v/kernel/drv/sparcv9/px and
+        platform/sun4u/kernel/drv/sparcv9/px) will be modified to check
+        for this property.
+
+3. Business Summary
+   3.1. Problem Area
+
+        Many existing hardware architectures require synchronization
+        after a DMA Write and/or before a DMA Read.  Post-Write syncs
+        (device to host memory) may be needed  to ensure software will
+        get up-to-date memory as written by the device. Pre-Read syncs
+        (host memory to device) may be needed to ensure the device will
+        read up-to-date memory, because recent changes to memory might
+        still sit in cache. Some architectures require both types of syncs
+        and some require neither.  Solaris device drivers not knowing what
+        type of platform it is running on, should initiate these syncs
+        by calling ddi_dma_sync() in both these cases.
+
+        If the nexus driver knows a sync is not necessary it can
+        treat the ddi_dma_sync() call as a no-op.  This is the case for
+        current generation of PCI Express platforms (Fire and N2/VF PIU). The
+        px nexus driver sets the DMA memory object's flags with DMP_NOSYNC
+        which results in all calls to ddi_dma_sync to immediately return
+        back to the caller.
+
+        Upcoming platforms like Supernova require synchronization after
+        DMA Writes, so the px nexus driver can not set the DMA memory object's
+        flags with DMP_NOSYNC.  The px nexus driver will have to be modified
+        to either:
+
+        - Never set the  DMA memory object's flags with DMP_NOSYNC thus forcing
+          a call to the sun4v hypervisor for all syncs.  This could cause
+          performance impacts to Fire and N2/VF PIU platforms.
+
+        - Or, use a property to indicate the platforms syncing requirements
+          allow the px nexus driver to decide to treat a sync as a no-op or
+          pass it along to the hypervisor.
+
+   3.2. Market/Requester
+
+        Supernova and future platforms.
+
+4. Technical Description
+
+        It will not be acceptable to introduce performance impacts on
+        existing legacy platforms when providing support for next generation
+        platforms so a property will be created under the PCI Express
+        Root Complex nodes 'pci' on Supernova and future platforms.
+
+        The px nexus driver will be modified to look for the property
+        "dma-sync-options". The "dma-sync-options" property will be an
+        encoded integer which will communicate the following hardware
+        synchronization requirements.
+
+                DMASYNC PREREAD   (0x00000001) Synchronization before there's a
+                DMA transfer from host memory to a device is required.
+                It's needed to ensure the device will read up-to-date
+                memory, because recent changes to memory might still sit in
+                a cache, so it actually flushes the CPU caches.
+
+                DMASYNC POSTREAD  (0x00000002) Synchronization after there's a
+                DMA transfer from host memory to a device is required.
+                IO caches needs to be flushed so it does not hold on to
+		stale data. (streaming cache would be a good example).
+
+                DMASYNC PREWRITE (0x00000004) Synchronization before there's a
+                DMA transfer from a device to host memory is required.
+		CPU caches need to be flushed so data in CPU caches become
+		stale as soon as DMA transaction happens. 
+
+                DMASYNC POSTWRITE (0x00000008) Synchronization after there's a
+                DMA transfer from the device to host memory is required.
+		IO caches need to be flushed so they don't hold on
+		to stale data.
+
+        The existence of the property indicates synchronization may be required,
+        while the absence of the property indicates all synchronization
+        may be treated as a no-op (as on Fire and N2/VF PIU platforms), but it
+	needs to call the dma-sync sun4v API.
+
+        dma-sync-options
+            Type: Integer
+            Contents:
+                This property shall be present if the hardware may require
+                the px nexus driver to perform synchronization operations.
+
+		Read and Write in the bit description below refers to
+		IO Device initiated memory read and memory write.
+
+                Bits
+                0       Set to 1 if hardware requires a Pre-Read  Sync.
+                1       Set to 1 if hardware requires a Post-Read  Sync.
+                2       Set to 1 if hardware requires a Pre-Write Sync.
+                3       Set to 1 if hardware requires a Post-Write Sync.
+                4-31    Reserved.
+
+            Value: Rock/Supernova systems - 0x00000008
+                   Fire/N2/VF systems - 0x00000000 or no property created.
+                   
+
+5. Reference Documents
+        http://monaco.sfbay.sun.com/detail.jsf?cr=6370154
+

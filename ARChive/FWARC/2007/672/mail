@@ -1,0 +1,438 @@
+From sacadmin Fri Nov 30 08:46:09 2007
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id lAUGk9EV009526
+	for <fwarc@sac.sfbay.sun.com>; Fri, 30 Nov 2007 08:46:09 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id lAUGk8Eu032199
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 30 Nov 2007 09:46:09 -0700 (MST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JSB00J0VVWVTX00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Fri, 30 Nov 2007 08:46:07 -0800 (PST)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JSB00IMCVWOHN00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Fri, 30 Nov 2007 08:46:00 -0800 (PST)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id lAUGk0GT011183	for
+ <fwarc@Sun.COM>; Fri, 30 Nov 2007 16:46:00 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JSB00701VNQD400@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Fri, 30 Nov 2007 09:46:00 -0700 (MST)
+Received: from [129.154.64.127] by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JSB00FSWVWDI580@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Fri, 30 Nov 2007 09:45:50 -0700 (MST)
+Date: Fri, 30 Nov 2007 11:45:47 -0500
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: FWARC/2007/672 - VIO vDisk Protocol Updates - fast-track timeout Dec
+ 7, 2007
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>
+Message-id: <96DE6D25-694C-401A-A79C-C7D2D2D10793@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.752.2)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+Status: RO
+Content-Length: 1090
+
+I am sponsoring this fast-track case for Alexandre Chartre.  This case
+amends the VIO communication protocol as defined in FWARC/2006/195,
+FWARC/2006/583 and FWARC/2007/602.
+
+This case requests a release binding of for minor/micro for any
+firmware changes and minor/micro/patch any OS changes.
+
+The fast-track timer is set to expire on December 7, 2007.
+
+All of the changes are highlighted in the updated document and
+the interface spec, and can be found in the materials directory at
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2007/672/
+
+The brief description of the changes are:
+
+  - update to vDisk attribute msg (section 1.1.5.1)
+  - update to vDisk command list (section 1.1.5.2)
+  - update to vDisk SCSI command (section 1.1.5.13)
+  - addition of vDisk Reset command (section 1.1.5.17)
+  - addition of vDisk Get Access command (section 1.1.5.18)
+  - addition of vDisk Set Access command (section 1.1.5.19)
+  - addition of vDisk Get Capacity command (section 1.1.5.20)
+
+These VIO vDisk protocol changes provide support for USCSI commands
+and multi-host reservations for virtual disks.
+
+From sacadmin Wed Dec  5 15:51:39 2007
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id lB5NpcOI016798
+	for <fwarc@sac.sfbay.Sun.COM>; Wed, 5 Dec 2007 15:51:38 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id lB5NpZZM011762
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 6 Dec 2007 07:51:37 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JSL00703OXY6R00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 05 Dec 2007 15:51:34 -0800 (PST)
+Received: from sca-es-mail-2.sun.com ([192.18.43.133])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JSL00GHAOXXIVA0@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 05 Dec 2007 15:51:34 -0800 (PST)
+Received: from fe-sfbay-10.sun.com ([192.18.43.129])
+	by sca-es-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id lB5NpXKd006915	for
+ <fwarc@sun.com>; Wed, 05 Dec 2007 15:51:33 -0800 (PST)
+Received: from conversion-daemon.fe-sfbay-10.sun.com by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JSL00J01OS0H000@fe-sfbay-10.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 05 Dec 2007 15:51:33 -0800 (PST)
+Received: from [129.150.38.93] by fe-sfbay-10.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JSL005TIOXTI840@fe-sfbay-10.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 05 Dec 2007 15:51:30 -0800 (PST)
+Date: Wed, 05 Dec 2007 15:53:10 -0800
+From: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Subject: Re: FWARC/2007/672 - VIO vDisk Protocol Updates - fast-track timeout
+ Dec 7, 2007
+In-reply-to: <96DE6D25-694C-401A-A79C-C7D2D2D10793@Sun.COM>
+Sender: Hitendra.Zhangada@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Alexandre Chartre <Alexandre.Chartre@sun.com>
+Message-id: <475739E6.5070807@sun.com>
+MIME-version: 1.0
+Content-type: multipart/alternative;
+ boundary="Boundary_(ID_rWsBvHVycoxVmUuWGdQaTA)"
+X-PMX-Version: 5.2.0.264296
+References: <96DE6D25-694C-401A-A79C-C7D2D2D10793@Sun.COM>
+User-Agent: Thunderbird 2.0.0.9 (Windows/20071031)
+Status: RO
+Content-Length: 5451
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_rWsBvHVycoxVmUuWGdQaTA)
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+Narayan Venkat wrote:
+> I am sponsoring this fast-track case for Alexandre Chartre.  This case
+> amends the VIO communication protocol as defined in FWARC/2006/195,
+> FWARC/2006/583 and FWARC/2007/602.
+>
+> This case requests a release binding of for minor/micro for any
+> firmware changes and minor/micro/patch any OS changes.
+>
+> The fast-track timer is set to expire on December 7, 2007.
+>
+> All of the changes are highlighted in the updated document and
+> the interface spec, and can be found in the materials directory at
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2007/672/
+>
+> The brief description of the changes are:
+>
+>  - update to vDisk attribute msg (section 1.1.5.1)
+>  - update to vDisk command list (section 1.1.5.2)
+>  - update to vDisk SCSI command (section 1.1.5.13)
+>  - addition of vDisk Reset command (section 1.1.5.17)
+>  - addition of vDisk Get Access command (section 1.1.5.18)
+>  - addition of vDisk Set Access command (section 1.1.5.19)
+>  - addition of vDisk Get Capacity command (section 1.1.5.20)
+>
+> These VIO vDisk protocol changes provide support for USCSI commands
+> and multi-host reservations for virtual disks.
+
+Couple of comments.
+
+1.  In section 1.1.5.2, the changes for version 1.1, it seems like
+     the version 1.0 has also changed by not supporting VD_OP_SCSICMD.
+     It used to be part of version 1.0 but now has moved to version 1.1
+     only.  This means the existing interface is also changing.  Further
+     I am assuming that this change is OK since VD_OP_SCSICMD
+     is not currently used by anyone, right?
+
+2.  In section 1.1.5.13, the TPRIO is 8-bit field but later in the 
+description
+     it is referred to as 4-bit field.  Does that mean only lower 4-bits are
+     meaningful?  If this is 4-bit field then other 4-bit should be marked
+     as unused or reserved.
+
+
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+
+--Boundary_(ID_rWsBvHVycoxVmUuWGdQaTA)
+Content-type: text/html; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+</head>
+<body bgcolor="#ffffff" text="#000000">
+Narayan Venkat wrote:
+<blockquote cite="mid:96DE6D25-694C-401A-A79C-C7D2D2D10793@Sun.COM"
+ type="cite">I am sponsoring this fast-track case for Alexandre
+Chartre.&nbsp; This case
+  <br>
+amends the VIO communication protocol as defined in FWARC/2006/195,
+  <br>
+FWARC/2006/583 and FWARC/2007/602.
+  <br>
+  <br>
+This case requests a release binding of for minor/micro for any
+  <br>
+firmware changes and minor/micro/patch any OS changes.
+  <br>
+  <br>
+The fast-track timer is set to expire on December 7, 2007.
+  <br>
+  <br>
+All of the changes are highlighted in the updated document and
+  <br>
+the interface spec, and can be found in the materials directory at
+  <br>
+  <br>
+<a class="moz-txt-link-freetext" href="http://sac.eng/Archives/CaseLog/arc/FWARC/2007/672/">http://sac.eng/Archives/CaseLog/arc/FWARC/2007/672/</a>
+  <br>
+  <br>
+The brief description of the changes are:
+  <br>
+  <br>
+&nbsp;- update to vDisk attribute msg (section 1.1.5.1)
+  <br>
+&nbsp;- update to vDisk command list (section 1.1.5.2)
+  <br>
+&nbsp;- update to vDisk SCSI command (section 1.1.5.13)
+  <br>
+&nbsp;- addition of vDisk Reset command (section 1.1.5.17)
+  <br>
+&nbsp;- addition of vDisk Get Access command (section 1.1.5.18)
+  <br>
+&nbsp;- addition of vDisk Set Access command (section 1.1.5.19)
+  <br>
+&nbsp;- addition of vDisk Get Capacity command (section 1.1.5.20)
+  <br>
+  <br>
+These VIO vDisk protocol changes provide support for USCSI commands
+  <br>
+and multi-host reservations for virtual disks.
+  <br>
+</blockquote>
+<font size="+1"><br>
+Couple of comments.<br>
+<br>
+1.&nbsp; In section 1.1.5.2, the changes for version 1.1, it seems like<br>
+&nbsp;&nbsp;&nbsp;&nbsp; the version 1.0 has also changed by not supporting VD_OP_SCSICMD.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; It used to be part of version 1.0 but now has moved to version 1.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp; only.&nbsp; This means the existing interface is also changing.&nbsp; Further<br>
+&nbsp;&nbsp;&nbsp;&nbsp; I am assuming that this change is OK since </font><font size="+1">VD_OP_SCSICMD
+<br>
+&nbsp; &nbsp;&nbsp; is not currently used by anyone, right?<br>
+<br>
+2.&nbsp; In section 1.1.5.13, the TPRIO is 8-bit field but later in the
+description<br>
+&nbsp;&nbsp;&nbsp;&nbsp; it is referred to as 4-bit field.&nbsp; Does that mean only lower
+4-bits are<br>
+&nbsp;&nbsp;&nbsp;&nbsp; meaningful?&nbsp; If this is 4-bit field then other 4-bit should be
+marked<br>
+&nbsp;&nbsp;&nbsp;&nbsp; as unused or reserved.<br>
+<br>
+<br>
+</font><font size="+1"><br>
+</font><br>
+<pre class="moz-signature" cols="80">-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Software Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage <a class="moz-txt-link-freetext" href="http://esp.west/~hitu">http://esp.west/~hitu</a>
+</pre>
+</body>
+</html>
+
+--Boundary_(ID_rWsBvHVycoxVmUuWGdQaTA)--
+
+From sacadmin Wed Dec  5 16:18:18 2007
+Received: from newsunmail1brm.central.sun.com (newsunmail1brm.Central.Sun.COM [129.147.62.245])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id lB60IIjT017713
+	for <fwarc@sac.sfbay.sun.com>; Wed, 5 Dec 2007 16:18:18 -0800 (PST)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by newsunmail1brm.central.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id lB60IIsN062815
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 5 Dec 2007 17:18:18 -0700 (MST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JSL00I0HQ6GME00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 05 Dec 2007 17:18:17 -0700 (MST)
+Received: from gmp-eb-mail-2.sun.com ([192.18.6.24])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JSL002MCQ6F9PC0@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 05 Dec 2007 17:18:16 -0700 (MST)
+Received: from fe-emea-09.sun.com (gmp-eb-lb-2-fe2.eu.sun.com [192.18.6.11])
+	by gmp-eb-mail-2.sun.com (8.13.7+Sun/8.12.9) with ESMTP id lB60IFMv009491	for
+ <fwarc@sun.com>; Thu, 06 Dec 2007 00:18:15 +0000 (GMT)
+Received: from conversion-daemon.fe-emea-09.sun.com by fe-emea-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JSL00B01Q1RVF00@fe-emea-09.sun.com>
+ (original mail from Alexandre.Chartre@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 06 Dec 2007 00:18:15 +0000 (GMT)
+Received: from [129.146.96.20] by fe-emea-09.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JSL008Y5Q6D4J10@fe-emea-09.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 06 Dec 2007 00:18:15 +0000 (GMT)
+Date: Wed, 05 Dec 2007 16:15:06 -0800
+From: Alexandre Chartre <Alexandre.Chartre@sun.com>
+Subject: Re: FWARC/2007/672 - VIO vDisk Protocol Updates - fast-track timeout
+ Dec 7, 2007
+In-reply-to: <475739E6.5070807@sun.com>
+Sender: Alexandre.Chartre@sun.com
+To: Hitendra Zhangada <Hitendra.Zhangada@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>,
+        Alexandre Chartre <Alexandre.Chartre@sun.com>
+Message-id: <47573F0A.7020903@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <96DE6D25-694C-401A-A79C-C7D2D2D10793@Sun.COM>
+ <475739E6.5070807@sun.com>
+User-Agent: Thunderbird 2.0.0.6 (X11/20070802)
+Status: RO
+Content-Length: 1215
+
+
+  Hi Hitu,
+
+> Couple of comments.
+> 
+> 1.  In section 1.1.5.2, the changes for version 1.1, it seems like
+>      the version 1.0 has also changed by not supporting VD_OP_SCSICMD.
+>      It used to be part of version 1.0 but now has moved to version 1.1
+>      only.  This means the existing interface is also changing.  Further
+>      I am assuming that this change is OK since VD_OP_SCSICMD
+>      is not currently used by anyone, right?
+
+  Yes, we are moving the support of VD_OP_SCSICMD from 1.0 to 1.1. This operation
+was never described in 1.0 so it was unusable, and nobody is using it.
+
+> 2.  In section 1.1.5.13, the TPRIO is 8-bit field but later in the 
+> description
+>      it is referred to as 4-bit field.  Does that mean only lower 4-bits are
+>      meaningful?  If this is 4-bit field then other 4-bit should be marked
+>      as unused or reserved.
+
+  The description mentions that only 4-bit are meaningful to match with the current
+interpretation of a task priority from the SCSI Architecture Model (SAM-3). As the
+task priority is number, I think it is better for the representation and implementation
+to reserve an entire byte (even with a limited range) instead of a bit field.
+
+  Rgds,
+
+alex.
+
+From sacadmin Fri Dec  7 15:37:58 2007
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id lB7NbvCs012790
+	for <fwarc@sac.sfbay.sun.com>; Fri, 7 Dec 2007 15:37:58 -0800 (PST)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id lB7Nbrix008263
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Fri, 7 Dec 2007 23:37:56 GMT
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JSP0050BDN6CN00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Fri, 07 Dec 2007 15:37:54 -0800 (PST)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JSP00DEGDN5W880@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@Sun.COM); Fri, 07 Dec 2007 15:37:53 -0800 (PST)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id lB7NbrKI004597	for
+ <fwarc@Sun.COM>; Fri, 07 Dec 2007 23:37:53 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JSP00H01DEF6L00@mail-amer.sun.com>
+ (original mail from Narayan.Venkat@Sun.COM)
+ for fwarc@Sun.COM (ORCPT fwarc@Sun.COM); Fri, 07 Dec 2007 16:37:53 -0700 (MST)
+Received: from dhcp-ubur03-180-143.East.Sun.COM ([129.148.180.143])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JSP0099ZDMYSQ40@mail-amer.sun.com> for fwarc@Sun.COM
+ (ORCPT fwarc@Sun.COM); Fri, 07 Dec 2007 16:37:47 -0700 (MST)
+Date: Fri, 07 Dec 2007 18:37:45 -0500
+From: Narayan Venkat <Narayan.Venkat@sun.com>
+Subject: Re: FWARC/2007/672 - VIO vDisk Protocol Updates - fast-track timeout
+ Dec 7, 2007
+In-reply-to: <96DE6D25-694C-401A-A79C-C7D2D2D10793@Sun.COM>
+Sender: Narayan.Venkat@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Cc: Narayan Venkat <Narayan.Venkat@sun.com>,
+        Alexandre CHARTRE - Solaris Sustaining <Alexandre.Chartre@sun.com>
+Message-id: <7BCF49CB-173D-4775-8504-959726401820@Sun.COM>
+MIME-version: 1.0
+X-Mailer: Apple Mail (2.915)
+Content-type: text/plain; format=flowed; charset=US-ASCII
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.2.0.264296
+References: <96DE6D25-694C-401A-A79C-C7D2D2D10793@Sun.COM>
+Status: RO
+Content-Length: 1287
+
+Timer for this case has expired. This case is now closed approved,
+IAM file has been updated.
+
+Thanks
+-Narayan
+
+On Nov 30, 2007, at 11:45 AM, Narayan Venkat wrote:
+
+> I am sponsoring this fast-track case for Alexandre Chartre.  This case
+> amends the VIO communication protocol as defined in FWARC/2006/195,
+> FWARC/2006/583 and FWARC/2007/602.
+>
+> This case requests a release binding of for minor/micro for any
+> firmware changes and minor/micro/patch any OS changes.
+>
+> The fast-track timer is set to expire on December 7, 2007.
+>
+> All of the changes are highlighted in the updated document and
+> the interface spec, and can be found in the materials directory at
+>
+> http://sac.eng/Archives/CaseLog/arc/FWARC/2007/672/
+>
+> The brief description of the changes are:
+>
+> - update to vDisk attribute msg (section 1.1.5.1)
+> - update to vDisk command list (section 1.1.5.2)
+> - update to vDisk SCSI command (section 1.1.5.13)
+> - addition of vDisk Reset command (section 1.1.5.17)
+> - addition of vDisk Get Access command (section 1.1.5.18)
+> - addition of vDisk Set Access command (section 1.1.5.19)
+> - addition of vDisk Get Capacity command (section 1.1.5.20)
+>
+> These VIO vDisk protocol changes provide support for USCSI commands
+> and multi-host reservations for virtual disks.
+
+

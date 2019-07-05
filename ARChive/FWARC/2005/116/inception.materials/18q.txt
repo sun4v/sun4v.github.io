@@ -1,0 +1,225 @@
+                               FWARC Questions
+
+
+1. What specifically is the proposal that we are reviewing?
+
+	This is the core api component of the sun4v/projectQ case.
+	(FWARC/2004/510)
+
+	This case describes the core CPU and memory APIs for sun4v.
+
+
+2. What is the motivation for it?
+
+	It provides a generic abstraction for CPUs and memory to allow
+	HW FCS to be asynchronous to solaris releases, and to allow
+	multiple guests to co-exist on the same hardware.
+
+
+3. What is its plan?
+
+     	These APIs will supported by the Ontario Platform at FCS.
+
+
+4. Are there related projects in Sun?
+
+	This is part of the sun4v/ProjectQ umbrella case (2004/510)
+
+	sun4v umbrella 			FWARC/2004/510
+	sun4v core API			FWARC/2005/116	20050222_john.johnson.3
+	sun4v io-api			FWARC/2005/112	20050222_david.kahn.2
+	sun4v bus bindings		FWARC/2005/111	20050222_david.kahn
+	sun4v machine description	FWARC/2005/115	20050222_john.johnson.2
+	sun4v Ontario Interfaces	FWARC/2005/117	20050222_john.johnson.4
+	sun4v vBSC			FWARC/2005/081	20050208_jack.hayward
+	sun4v vendor-specific FCodes	FWARC/2005/114	20050222_john.johnson
+	sun4v "pci" device binding	TBD - fast-track
+
+
+5. What is the technical content of the project?
+
+	A list of APIs provided by the sun4v hypervisor, including
+	descriptions, arguments, and return values.
+
+
+6. How is the project delivered into the system?
+
+	These interfaces are implemented and exported by the hypervisor,
+	which is delivered as part of the platform firmware, and included
+	in the firmware consolidation.
+
+
+7. What are the project's hardware platform dependencies? Is it expected to
+work on all systems (Desktop thru servers)?
+
+	The processor must implement the hyper-privileged extensions
+	described in the SUN SPARC 2.0 Specification.
+
+
+8. What is its FW operational environment:
+
+	The guest issues supervisor trap instructions to enter the
+	hypervisor, usually at tl=1.  The API call's arguments are in
+	the %o registers.
+
+	There are no signals, no command line syntax and no direct
+	interaction with IEEE 1275.
+
+
+9. What is its user interface (tty, graphical, leds, sound, etc.)?
+
+	None. System user interfaces are provided by a service processor,
+	with no direct interaction with these interfaces.
+
+
+10. What are your project's other external interfaces (exported and
+imported)?
+
+	The hypervisor also exports a PCI API (FWARC/2005/112), some
+	CPU and platform specific APIs (FWARC/2005/117), and a machine
+	description (FWARC/2005/115) to its guests.
+
+	These interfaces are classified as "Sun Private".
+
+
+11. What are its other significant internal interfaces (inter-subsystem and
+inter-invocation)?
+
+	None.
+
+
+12. Is the interface extensible? How is the interface expected to evolve?
+
+   * How is versioning handled?
+
+	The API includes a versioning call, which allows the guest and
+	hypervisor to negotiate a common API revision number.
+
+
+   * What was the commitment level of the previous version? Can this version
+     co-exist with existing standards and with earlier and later versions or
+     with alternative implementations (perhaps by other vendors)?
+
+	N/A. This is the first version.
+
+	The versioning API allows the guest and hypervisor to negotiate
+	a common API version, so a single hypervisor can simultaneously
+	support guests which expect different API versions.
+
+
+   * What are the clients over which a change should be managed? How is
+     transition to a new version to be accomplished? What are the
+     consequences to ISV's and their customers?
+
+	The clients are OBP and solaris.  In the future, there may also
+	be a linux port.  The APIs are not visible to ISVs.
+
+
+   * Does this scale from low-end Desktops to high-end Servers? What, if
+     any, trade-offs are involved?
+
+	It is designed to scale with no known tradeoffs.
+
+
+13. How do the interfaces adapt to a changing world?
+
+   * What is its relationship with (or difficulties with) System Service
+     Processors?
+
+	There is no direct relationship with the service processor
+	for the core APIs.  The hypervisor itself does communicate
+	with the SP over a platform-specific link.
+
+
+   * What security issues do you address in your project?
+
+	None.
+
+
+14. What internationalization issues are involved? N/A
+
+     None.
+
+
+15. How will the project contribute (positively or negatively) to "system
+load" and "perceived performance":
+
+   * What are the performance goals of the project? How were they evaluated?
+     On what type of test platform?
+
+	The goal was less than 5% overhead.  Our measurements have not exceeded
+	3% total instruction executing in hyperprivileged mode.  This number
+	most likely overstates the actual overhead.
+
+
+   * Does the application pause for significant amounts of time? Can the
+     user interact with the application while it is performing long-duration
+     tasks?
+
+	No.
+
+
+   * Does memory usage or heap space tend to grow with time/load? What
+     mechanisms does the user have to use to control this? What happens to
+     performance/system load?
+
+	N/A.
+
+
+   * What are the project's effects on boot time requirements?
+
+	Neither this API nor the hypervisore in general will have a
+	measurable effect on boot time.
+
+
+16. How does the project deal with failure and recovery?
+
+   * How will it respond to failures? (Does it ever require reset? Use of
+     stop key? Can it lock up?)
+
+	The core API includes an guest error specification, by which the
+	hypervisor communicates HW errors to guests.  In addition, it
+	reports the error to the SP for logging and forwrding to a
+	diagnostic agent.  If an error is encountered by the hypervisor
+	itself, it will attempt to isolate the error to a single partition,
+	rather than bringing down all partitions.
+
+
+   * Does it attempt to isolate and contain the failure to allow for
+     automatic recovery?
+
+	The hypervisor attemtps to isolate and contain all failures to a
+	single guest.
+
+
+   * How does it communicate a fault event? Does it depend on a working
+     console device?
+
+	The hypervisor communicates error information both to a guest
+	and to the SP.  The SP will generate an FMA fault report and
+	forward it to a FMA diagnostic engine.
+
+
+17. Issues? Please identify the issues which you would like the ARC to
+address.
+
+	None.
+
+
+18. Appendices:
+
+	See case materials.
+
+
+19. Security
+
+
+	These are internal private interfaces. HW provided identifiers
+	are used to distinguish and isolate requests from different guests
+	running on the platform. The hypervisor will enforce that a guest
+	can only access resources it has been assigned, so security is
+	effectively built-in.  The API can only be called by priv. code
+	running on the platform, such as OBP and the OS.
+
+
+	#pragma ident	"@(#)fwarc-18Q.txt	1.3	03/08/21 SMI"

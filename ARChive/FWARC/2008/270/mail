@@ -1,0 +1,833 @@
+From sacadmin Tue Apr 22 09:06:23 2008
+Received: from sac.sfbay.sun.com (localhost [127.0.0.1])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m3MG6NV7020611;
+	Tue, 22 Apr 2008 09:06:23 -0700 (PDT)
+Received: (from ehring@localhost)
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8/Submit) id m3MG6N0k020607;
+	Tue, 22 Apr 2008 09:06:23 -0700 (PDT)
+Date: Tue, 22 Apr 2008 09:06:23 -0700 (PDT)
+From: Stephen Ehring <ehring@sac.sfbay.sun.com>
+Message-Id: <200804221606.m3MG6N0k020607@sac.sfbay.sun.com>
+To: FWARC-record@sac.sfbay.sun.com
+Subject: PCI Address MD Node Properties [FWARC/2008/270 FastTrack timeout 04/29/2008]
+Status: RO
+Content-Length: 571
+
+
+Template Version: @(#)sac_nextcase 1.66 04/17/08 SMI
+This information is Copyright 2008 Sun Microsystems
+1. Introduction
+    1.1. Project/Component Working Name:
+	 PCI Address MD Node Properties
+    1.2. Name of Document Author/Supplier:
+	 Author:  Stephen Ehring
+    1.3  Date of This Document:
+	22 April, 2008
+4. Technical Description
+    See the case directory for more detail
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		unknown
+    6.5. ARC review type: FastTrack
+    6.6. ARC Exposure: open
+
+
+From sacadmin Tue Apr 22 09:12:06 2008
+Received: from sunmail2sca.sfbay.sun.com (sunmail2sca.SFBay.Sun.COM [129.145.155.234])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m3MGC5q2021312
+	for <fwarc@sac.sfbay.sun.com>; Tue, 22 Apr 2008 09:12:05 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail2sca.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m3MGC4t9003169
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 22 Apr 2008 09:12:05 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JZQ00B0VIC5UU00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 22 Apr 2008 09:12:05 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JZQ00957IC4SF70@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 22 Apr 2008 09:12:04 -0700 (PDT)
+Received: from fe-amer-09.sun.com ([192.18.109.79])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m3MGC4l9022185	for
+ <fwarc@sun.com>; Tue, 22 Apr 2008 16:12:04 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JZQ00M01H39SS00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Tue, 22 Apr 2008 10:12:04 -0600 (MDT)
+Received: from dhcp-ubur03-184-203.East.Sun.COM ([129.148.184.203])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0JZQ00NG9IBI4C70@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 22 Apr 2008 10:11:43 -0600 (MDT)
+Date: Tue, 22 Apr 2008 12:11:42 -0400
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: FWARC 2008/270: PCI Address MD Node Properties
+Sender: Stephen.Ehring@sun.com
+To: fwarc@sun.com, David.Kaffine@sun.com
+Message-id: <480E0E3E.70308@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.12 (Macintosh/20080213)
+Status: RO
+Content-Length: 7199
+
+I'm filing this fast track case for myself. The case creates a new MD 
+property "pci-address-ranges" which allows a guest to determine the 
+starting PCIE address to use when allocating addresses to PCIE device 
+BARs. The case is needed in order to share the same vpci FCode driver 
+between KT and Fire/PIU based systems.
+
+The interfaces can be released in a micro/minor version of the firmware. 
+The case is set to timeout 4/29/2008.
+
+http://sac.eng.sun.com/Archives/CaseLog/arc/FWARC/2008/270/materials/onepager.txt
+
+Steve
+
+1. Introduction
+   1.1. Project/Component Working Name:
+	PCI Address MD Node Properties
+
+   1.2. Name of Document Author/Supplier:
+	Stephen Ehring
+
+   1.3. Date of This Document:
+	04/21/2008
+
+   1.4. Email Aliases:
+    	1.4.1. Responsible Manager: Chad Solomon
+    	1.4.2. Responsible Engineer: Stephen Ehring
+	1.4.3. Interest List: David Kaffine
+
+2. Project Summary
+   2.1. Project Description:
+	New properties will be defined in a guest machine description that
+	will tell the guest what it should use for MEM32, MEM64, and IO space
+	addresses during PCIE resource probing.
+
+   2.2. Risks and Assumptions:
+	These properties should pose no risk, and are required to use the same
+	vpci driver on different host to PCIE bridge architectures.
+
+3. Business Summary
+
+   3.1. Problem Area:
+	With the Fire ASIC and the PIU found in N2 and VF chips, the PCIE IO,
+	MEM32, and MEM64 addresses (the ones programmed into the BARs of PCIE 
+	devices) started at zero, with the base PCIE address corresponding to 
+	the base of the physical address of that region (which is set by 
+	hypervisor in the mask and match registers of the chips). For example, 
+	one way to setup Fire's physical addresses and PCIE addresses would be 
+	the following scheme:
+
+	Physical Addr    PCIe Addr    Note
+	---------------------------------------------
+	ea.00000000-    00000000-    2GB Mem32 space
+	ea.7fffffff     7fffffff
+
+	ec.00000000-    00000000-    4GB Unassigned space
+	ec.ffffffff     ffffffff     (space is unassigned to
+	                             prevent invalid aliaising
+				     and illegal PCI transactions
+				     by Fire ASIC)
+
+	ed.00000000-    1.00000000-  12GB Mem64 space
+	ef.ffffffff     3.ffffffff
+
+	With KT's host to PCIE bridge, the MEM64 PCIE address has been changed 
+	so that the PCIE address is the same as the physical address, and is 
+	static (see the KT PRM [2] for details on the addressing scheme): 
+
+	Physical Addr    PCIe Addr    Note
+	---------------------------------------------
+	40.00000000-    00000000-    4GB Mem32 space
+	40.ffffffff     ffffffff
+
+	41.00000000-    41.00000000-    60GB Mem64 space
+	4f.ffffffff     4f.ffffffff
+
+	Ideally, the same guest PCIE root nexus driver will work in both cases, 
+	so we need to define a new property in the guest MD to allow the driver
+	to know what the PCIE base address is.
+
+4. Technical Description:
+    4.1. Details:
+        4.1.1 New property description:
+
+        Currently, a guest can get the physical address ranges from the MD node 
+	property "address-ranges" which is described by [1] as a required property 
+	in any "pciex" type MD node:
+
+    Name              Tag        Req'd? Description
+    ----------------------------------------------------------------------
+    address-ranges    PROP_DATA  Yes  An array of 64 bit value pairs which
+                                      specifies the address ranges
+                                      available to this device. Each pair
+                                      contains a base and range value. The
+                                      first pair of the array specifies
+                                      the PCI IO space addresses, the
+                                      second pair specifies the PCI 32 bit
+                                      memory address ranges, and the final
+                                      pair specifies the 64 bit
+                                      prefetchable memory address ranges.
+    ----------------------------------------------------------------------
+
+        What is being proposed is an additional property "pci-address-ranges" 
+	which will complement this property and describe the PCIE addresses 
+	which are allocated to devices and programmed into the BARs:
+
+    Name              Tag        Req'd? Description
+    ----------------------------------------------------------------------
+    pci-address-ranges PROP_DATA  No  An array of 64 bit value pairs which
+                                      specifies the PCIE address ranges
+                                      available to this device. Each pair
+                                      contains a base and range value. The
+                                      first pair of the array specifies
+                                      the PCI IO space addresses, the
+                                      second pair specifies the PCI 32 bit
+                                      memory address ranges, and the final
+                                      pair specifies the 64 bit
+                                      prefetchable memory address ranges.
+    ----------------------------------------------------------------------
+
+        This property is not required, and if it is absent the guest may assume 
+	that the PCIE address ranges start at zero.
+
+        4.1.2 iodevice MD Node Specification:
+          
+        In addition to defining this new property, this case will define a new 
+	specification on the FWARC main page which contains all the information 
+	about the various iodevice nodes. Currently, the description of all of 
+	these nodes and properties is simply a section of a onepager that gets 
+	updated, with the most recent version found at [1].
+
+        This case will not modify any of those properties (with the exception 
+	of the one being added by this case) but will turn that document into an 
+	official specification which will make that information more accessible. 
+	The document that will become the specification can be found at [3].
+    
+    4.2.1 Imported Interfaces
+
+        Name                    Classification  Description
+        -----------------       --------------- -------------------
+        sun4v Machine           Sun Private     MD nodes definitions as
+        Description nodes                       defined by FWARC/2005/115
+
+        "iodevice" MD node      Committed       MD node name and properties as
+                                                described in FWARC 2007/070 and
+                                                updated by FWARC 2007/386
+
+    4.5.2 Exported Interfaces
+
+        Name                    Classification  Description
+        ----------------------  --------------  -------------------
+        "pci-address-ranges"    Sun Private     MD node property defined
+        MD node property                        by this case
+
+5. Reference Documents:
+
+        [1] FWARC 2007/386 iodevice specification
+        http://sac.eng/Archives/CaseLog/arc/FWARC/2007/386/materials/updated-iodevice-details.txt
+        [2] KT PRM
+        https://systemsweb.sfbay.sun.com/kt/team/arch_specs/index.html
+
+        [3] iodevice MD Node Specification
+        iodevice.txt
+
+
+
+From sacadmin Tue Apr 22 11:38:33 2008
+Received: from sunmail3mpk.sfbay.sun.com (sunmail3mpk.SFBay.Sun.COM [129.146.11.52])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m3MIcXoD028905
+	for <fwarc@sac.sfbay.sun.com>; Tue, 22 Apr 2008 11:38:33 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail3mpk.sfbay.sun.com (8.13.7+Sun/8.13.7/ENSMAIL,v2.2) with ESMTP id m3MIcXsM013662
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Tue, 22 Apr 2008 11:38:33 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JZQ00109P47C300@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 22 Apr 2008 11:38:31 -0700 (PDT)
+Received: from dm-sfbay-01.sfbay.sun.com ([129.145.155.118])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JZQ00EZEP475K80@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Tue, 22 Apr 2008 11:38:31 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by dm-sfbay-01.sfbay.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2)
+ with ESMTP id m3MIcUtG021947; Tue, 22 Apr 2008 11:38:30 -0700 (PDT)
+Received: from [192.168.0.12] (noho.SFBay.Sun.COM [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.14.2+Sun/8.14.2) with ESMTP id m3MIcTHu011575; Tue,
+ 22 Apr 2008 11:38:30 -0700 (PDT)
+Date: Tue, 22 Apr 2008 11:38:29 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: FWARC 2008/270: PCI Address MD Node Properties
+To: Stephen Ehring <Stephen.Ehring@sun.com>
+Cc: fwarc@sun.com, David.Kaffine@sun.com
+Message-id: <480E30A5.5060307@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.12 (Windows/20080213)
+Status: RO
+Content-Length: 692
+
+
+I'm confused by this case and the existing case
+that you cited.
+
+Why don't we just define a property named "existing",
+which supplements the reg, ranges and available
+property?
+
+"existing" would just list the complete pcie address
+spaces available to the firmware for io, mem32,
+and mem64, which could be done in pcie-address
+format as with the current available property.
+
+The mapping from pcie addresses to system real
+addresses is already handled in the ranges property,
+right?
+
+So, I guess OBP needs to know what real address to
+publish in the ranges property? How does it do that
+today? We're certainly not exposing physical addresses
+to the guest with this stuff, are we?
+
+-David
+
+
+
+
+
+
+From sacadmin Thu Apr 24 06:44:09 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m3ODi8jg018089
+	for <fwarc@sac.sfbay.sun.com>; Thu, 24 Apr 2008 06:44:09 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.145.155.6])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m3ODhxnN010801
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Thu, 24 Apr 2008 14:44:07 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0JZU00K190TJDO00@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 24 Apr 2008 06:44:07 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0JZU00BUV0TIKME0@nwk-avmta-2.sfbay.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Thu, 24 Apr 2008 06:44:07 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m3ODi6A7014600	for
+ <fwarc@sun.com>; Thu, 24 Apr 2008 13:44:06 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0JZU00C010IV5700@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Thu, 24 Apr 2008 07:44:06 -0600 (MDT)
+Received: from ehring-macbook-pro.local ([129.150.152.47])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-8.04 (built Feb 28
+ 2007)) with ESMTPSA id <0JZU00H860T25U10@mail-amer.sun.com>; Thu,
+ 24 Apr 2008 07:43:54 -0600 (MDT)
+Date: Thu, 24 Apr 2008 09:43:49 -0400
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: Re: FWARC 2008/270: PCI Address MD Node Properties
+In-reply-to: <480E30A5.5060307@sun.com>
+Sender: Stephen.Ehring@sun.com
+To: David Kahn <David.Kahn@sun.com>
+Cc: fwarc@sun.com, David.Kaffine@sun.com
+Message-id: <48108E95.8020201@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+References: <480E30A5.5060307@sun.com>
+User-Agent: Thunderbird 2.0.0.12 (Macintosh/20080213)
+Status: RO
+Content-Length: 220
+
+Dave Kahn brought up some issues with this case (and our current 
+address-ranges MD property implementation) which I'm working offline to 
+resolve. Until I've updated the spec, I've put the case on hold for now.
+
+Steve
+
+
+From sacadmin Fri Jul 25 12:27:34 2008
+Received: from sunmail4.singapore.sun.com (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m6PJRXZR029589
+	for <fwarc@sac.sfbay.Sun.COM>; Fri, 25 Jul 2008 12:27:33 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail4.singapore.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id m6PJRIXo018953
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Sat, 26 Jul 2008 03:27:32 +0800 (SGT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K4K00005U1UCV00@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 25 Jul 2008 13:27:30 -0600 (MDT)
+Received: from brmea-mail-4.sun.com ([192.18.98.36])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K4K00H2QU1T2340@brm-avmta-1.central.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 25 Jul 2008 13:27:29 -0600 (MDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-4.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m6PJRTNl013179	for
+ <fwarc@sun.com>; Fri, 25 Jul 2008 19:27:29 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K4K00D01TIS2S00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Fri, 25 Jul 2008 13:27:29 -0600 (MDT)
+Received: from dhcp-ubur03-184-119.East.Sun.COM ([129.148.184.119])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K4K00063U1L1NG0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Fri, 25 Jul 2008 13:27:22 -0600 (MDT)
+Date: Fri, 25 Jul 2008 15:27:21 -0400
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: FWARC 2008/270 PCI Address MD Node Properties
+Sender: Stephen.Ehring@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Message-id: <488A2919.4090707@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.16 (Macintosh/20080707)
+Status: RO
+Content-Length: 9523
+
+I've updated this ARC case based on feedback From Dave Kahn. Instead of 
+a dual address-ranges properties (one to describe the parent real 
+addresses of the MEM64, MEM32 and IO spaces and one to describe the 
+child pci addresses) I'm defining three new MD properties, each of which 
+will consist of a mapping which will end up as an entry in the device 
+tree 'ranges' property.
+
+The three new properties are pci-mem64-range, pci-mem32-range, and 
+pci-io-range. This has the added benefit of allowing non-contiguous 
+ranges if we ever have a configuration which will require that.
+
+New one-pager here:
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2008/270/materials/onepager.txt
+
+Old materials here:
+
+http://sac.eng/Archives/CaseLog/arc/FWARC/2008/270/old.materials/
+
+I'm re-setting the timer to expire next Friday 8/1/2008
+
+Steve
+
+
+1. Introduction
+   1.1. Project/Component Working Name:
+	PCI Address MD Node Properties
+
+   1.2. Name of Document Author/Supplier:
+	Stephen Ehring
+
+   1.3. Date of This Document:
+	04/21/2008
+
+   1.4. Email Aliases:
+    	1.4.1. Responsible Manager: Chad Solomon
+    	1.4.2. Responsible Engineer: Stephen Ehring
+	1.4.3. Interest List: David Kaffine
+
+2. Project Summary
+   2.1. Project Description:
+	New properties will be defined in a guest machine description that
+	will tell the guest what it should use for MEM32, MEM64, and IO space
+	addresses during PCIE resource probing.
+
+   2.2. Risks and Assumptions:
+	These properties should pose no risk, and are required to use the same
+	vpci driver on different host to PCIE bridge architectures.
+
+3. Business Summary
+
+   3.1. Problem Area:
+	With the Fire ASIC and the PIU found in N2 and VF chips, the PCIE IO,
+	MEM32, and MEM64 addresses (the ones programmed into the BARs of PCIE 
+	devices) started at zero, with the base PCIE address corresponding to 
+	the base of the real address of that region (which is set by 
+	hypervisor in the mask and match registers of the chips). For example, 
+	one way to setup Fire's real addresses and PCIE addresses would be 
+	the following scheme:
+
+	Physical Addr    PCIe Addr    Note
+	---------------------------------------------
+	ea.00000000-    00000000-    2GB Mem32 space
+	ea.7fffffff     7fffffff
+
+	ec.00000000-    00000000-    4GB Unassigned space
+	ec.ffffffff     ffffffff     (space is unassigned to
+	                             prevent invalid aliaising
+				     and illegal PCI transactions
+				     by Fire ASIC)
+
+	ed.00000000-    1.00000000-  12GB Mem64 space
+	ef.ffffffff     3.ffffffff
+
+	With KT's host to PCIE bridge, the MEM64 PCIE address has been changed 
+	so that the PCIE address is the same as the real address, and is 
+	static (see the KT PRM [2] for details on the addressing scheme): 
+
+	Physical Addr    PCIe Addr    Note
+	---------------------------------------------
+	40.00000000-    00000000-    4GB Mem32 space
+	40.ffffffff     ffffffff
+
+	41.00000000-    41.00000000-    60GB Mem64 space
+	4f.ffffffff     4f.ffffffff
+
+	Ideally, the same guest PCIE root nexus driver will work in both cases, 
+	so we need to define a new property in the guest MD to allow the driver
+	to know what the PCIE base address is.
+
+4. Technical Description:
+    4.1. Details:
+        4.1.1 New property description:
+
+        Currently, a guest can get the real address ranges from the MD node 
+	property "address-ranges" which is described by [1] as a required property 
+	in any "pciex" type MD node:
+
+    Name              Tag        Req'd? Description
+    ----------------------------------------------------------------------
+    address-ranges    PROP_DATA  Yes  An array of 64 bit value pairs which
+                                      specifies the address ranges
+                                      available to this device. Each pair
+                                      contains a base and range value. The
+                                      first pair of the array specifies
+                                      the PCI IO space addresses, the
+                                      second pair specifies the PCI 32 bit
+                                      memory address ranges, and the final
+                                      pair specifies the 64 bit
+                                      prefetchable memory address ranges.
+    ----------------------------------------------------------------------
+
+        What is being proposed is to remove this property and add three new
+        optional properties, each of which describe a sun4v bus address (real
+        address) to a child pci address and the size of the region. As an added
+        benefit, this will remove the limitation of a single MEM64, MEM32, and
+        IO range entry in cases where the ranges are non-contiguous.
+
+    Name              Tag        Req'd? Description
+    ----------------------------------------------------------------------
+    pci-mem64-range   PROP_DATA  No   An array of three 64 bit values which
+                                      specify a MEM64 parent sun4v bus address
+                                      to a child pci bus address translation.
+                                      The first entry is the child PCI address,
+                                      the second entry is the parent sun4v bus
+                                      address, and the third entry is the size
+                                      of the translation. Each one of these
+                                      properties that exist in the MD node will
+                                      become an entry in the device tree node's
+                                      'ranges' property. 
+    ----------------------------------------------------------------------
+    pci-mem32-range   PROP_DATA  No   An array of three 64 bit values which
+                                      specify a MEM32 parent sun4v bus address
+                                      to a child pci bus address translation.
+                                      The first entry is the child PCI address,
+                                      the second entry is the parent sun4v bus
+                                      address, and the third entry is the size
+                                      of the translation. Each one of these
+                                      properties that exist in the MD node will
+                                      become an entry in the device tree node's
+                                      'ranges' property. 
+    ----------------------------------------------------------------------
+    pci-io-range      PROP_DATA  No   An array of three 64 bit values which
+                                      specify an IO parent sun4v bus address
+                                      to a child pci bus address translation.
+                                      The first entry is the child PCI address,
+                                      the second entry is the parent sun4v bus
+                                      address, and the third entry is the size
+                                      of the translation. Each one of these
+                                      properties that exist in the MD node will
+                                      become an entry in the device tree node's
+                                      'ranges' property. 
+    ----------------------------------------------------------------------
+        4.1.2 iodevice MD Node Specification:
+          
+        In addition to defining this new property, this case will define a new 
+	specification on the FWARC main page which contains all the information 
+	about the various iodevice nodes. Currently, the description of all of 
+	these nodes and properties is simply a section of a onepager that gets 
+	updated, with the most recent version found at [1].
+
+        This case will not modify any of those properties (with the exception 
+	of the ones being modified by this case) but will turn that document into an 
+	official specification which will make that information more accessible. 
+	The document that will become the specification can be found at [3].
+    
+    4.2.1 Imported Interfaces
+
+        Name                    Classification  Description
+        -----------------       --------------- -------------------
+        sun4v Machine           Sun Private     MD nodes definitions as
+        Description nodes                       defined by FWARC/2005/115
+
+        "iodevice" MD node      Committed       MD node name and properties as
+                                                described in FWARC 2007/070 and
+                                                updated by FWARC 2007/386
+
+    4.5.2 Exported Interfaces
+
+        Name                    Classification  Description
+        ----------------------  --------------  -------------------
+        "pci-mem64-range"       Sun Private     MD node property defined
+        MD node property                        by this case
+
+        "pci-mem32-range"       Sun Private     MD node property defined
+        MD node property                        by this case
+
+        "pci-io-range"          Sun Private     MD node property defined
+        MD node property                        by this case
+
+5. Reference Documents:
+
+        [1] FWARC 2007/386 iodevice specification
+        http://sac.eng/Archives/CaseLog/arc/FWARC/2007/386/materials/updated-iodevice-details.txt
+        [2] KT PRM
+        https://systemsweb.sfbay.sun.com/kt/team/arch_specs/index.html
+
+        [3] iodevice MD Node Specification
+        iodevice.txt
+
+
+
+
+From sacadmin Wed Jul 30 10:24:22 2008
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.8+Sun/8.13.8) with ESMTP id m6UHOLYB023017
+	for <fwarc@sac.sfbay.sun.com>; Wed, 30 Jul 2008 10:24:22 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.146.11.74])
+	by sunmail5.uk.sun.com (8.13.8+Sun/8.13.8/ENSMAIL,v2.2) with ESMTP id m6UHODkR028862
+	for <@sunmail2sca.sfbay.sun.com:fwarc@sun.com>; Wed, 30 Jul 2008 18:24:20 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0K4T00A0BXOIHW00@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 30 Jul 2008 10:24:18 -0700 (PDT)
+Received: from brmea-mail-3.sun.com ([192.18.98.34])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0K4T003W6XOIFH60@nwk-avmta-1.sfbay.Sun.COM> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 30 Jul 2008 10:24:18 -0700 (PDT)
+Received: from fe-amer-10.sun.com ([192.18.109.80])
+	by brmea-mail-3.sun.com (8.13.6+Sun/8.12.9) with ESMTP id m6UHOH7M017565	for
+ <fwarc@sun.com>; Wed, 30 Jul 2008 17:24:17 +0000 (GMT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ id <0K4T00I01TSHCF00@mail-amer.sun.com>
+ (original mail from Stephen.Ehring@Sun.COM)
+ for fwarc@sun.com (ORCPT fwarc@sun.com); Wed, 30 Jul 2008 11:24:17 -0600 (MDT)
+Received: from dhcp-ubur03-184-239.East.Sun.COM ([129.148.184.239])
+ by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-8.04 (built Feb 28 2007))
+ with ESMTPSA id <0K4T00064XO99GC0@mail-amer.sun.com> for fwarc@sun.com
+ (ORCPT fwarc@sun.com); Wed, 30 Jul 2008 11:24:10 -0600 (MDT)
+Date: Wed, 30 Jul 2008 13:24:09 -0400
+From: Stephen Ehring <Stephen.Ehring@sun.com>
+Subject: Re: FWARC 2008/270: PCI Address MD Node Properties
+Sender: Stephen.Ehring@sun.com
+To: Firmware Arch <fwarc@sun.com>
+Message-id: <4890A3B9.4070609@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.4.1.325704
+User-Agent: Thunderbird 2.0.0.16 (Macintosh/20080707)
+Status: RO
+Content-Length: 7535
+
+Based on more feedback, I've changed this case so that instead of 
+defining 3 new properties for each of mem64, mem32, and io range 
+entries, we simply define a 'ranges' property in the MD which will be 
+converted into the ranges property in the openboot tree (similar to what 
+we do with 'interrupt-map-mask' and other properties).
+
+New timeout will be 08/06/2008
+
+Steve
+
+
+1. Introduction
+   1.1. Project/Component Working Name:
+    PCI Address MD Node Properties
+
+   1.2. Name of Document Author/Supplier:
+    Stephen Ehring
+
+   1.3. Date of This Document:
+    04/21/2008
+
+   1.4. Email Aliases:
+        1.4.1. Responsible Manager: Chad Solomon
+        1.4.2. Responsible Engineer: Stephen Ehring
+    1.4.3. Interest List: David Kaffine
+
+2. Project Summary
+   2.1. Project Description:
+    A new property will be defined in a guest machine description that
+    will tell the guest what it should use forthe ranges property for
+        pci root nexus children
+
+   2.2. Risks and Assumptions:
+    These properties should pose no risk, and are required to use the same
+    vpci driver on different host to PCIE bridge architectures.
+
+3. Business Summary
+
+   3.1. Problem Area:
+    With the Fire ASIC and the PIU found in N2 and VF chips, the PCIE IO,
+    MEM32, and MEM64 addresses (the ones programmed into the BARs of PCIE
+    devices) started at zero, with the base PCIE address corresponding to
+    the base of the real address of that region (which is set by
+    hypervisor in the mask and match registers of the chips). For example,
+    one way to setup Fire's real addresses and PCIE addresses would be
+    the following scheme:
+
+    Physical Addr    PCIe Addr    Note
+    ---------------------------------------------
+    ea.00000000-    00000000-    2GB Mem32 space
+    ea.7fffffff     7fffffff
+
+    ec.00000000-    00000000-    4GB Unassigned space
+    ec.ffffffff     ffffffff     (space is unassigned to
+                                 prevent invalid aliaising
+                     and illegal PCI transactions
+                     by Fire ASIC)
+
+    ed.00000000-    1.00000000-  12GB Mem64 space
+    ef.ffffffff     3.ffffffff
+
+    With KT's host to PCIE bridge, the MEM64 PCIE address has been changed
+    so that the PCIE address is the same as the real address, and is
+    static (see the KT PRM [2] for details on the addressing scheme):
+
+    Physical Addr    PCIe Addr    Note
+    ---------------------------------------------
+    40.00000000-    00000000-    4GB Mem32 space
+    40.ffffffff     ffffffff
+
+    41.00000000-    41.00000000-    60GB Mem64 space
+    4f.ffffffff     4f.ffffffff
+
+    Ideally, the same guest PCIE root nexus driver will work in both cases,
+    so we need to define a new property in the guest MD to allow the driver
+    to know what the PCIE base address is.
+
+4. Technical Description:
+    4.1. Details:
+        4.1.1 New property description:
+
+        Currently, a guest can get the real address ranges from the MD node
+    property "address-ranges" which is described by [1] as a required 
+property
+    in any "pciex" type MD node:
+
+    Name              Tag        Req'd? Description
+    ----------------------------------------------------------------------
+    address-ranges    PROP_DATA  Yes  An array of 64 bit value pairs which
+                                      specifies the address ranges
+                                      available to this device. Each pair
+                                      contains a base and range value. The
+                                      first pair of the array specifies
+                                      the PCI IO space addresses, the
+                                      second pair specifies the PCI 32 bit
+                                      memory address ranges, and the final
+                                      pair specifies the 64 bit
+                                      prefetchable memory address ranges.
+    ----------------------------------------------------------------------
+
+        What is being proposed is to remove this property and add a new
+        property which will be similar in format to the actual ranges
+        property of the sun4v child device. The property will be an array
+        of 7 groups of 64 bit values, with each group of 7 values
+        representing a single entry in the ranges property. The first
+        three values will be the child-phys address cells (to use the
+        sun4v bus binding terminology, phys.hi, phys.mid, and phys.lo).
+        The second values will be the parent-phys cells (phys.hi and 
+phys.lo)
+        and the last to values will be the size cells. Since the 
+MD_PROP_DATA
+        arrays are arrays of 64 bit values but the Openboot device tree
+        properties are arrays of 32 bit cells, the upper 32 bits of each 64
+        bit MD property value will not be used.
+
+    Name              Tag        Req'd? Description
+    ----------------------------------------------------------------------
+    ranges            PROP_DATA  Yes  An array of 7 groups of 64 bit values
+                                      which specify an entry in the 
+sun4v bus
+                                      child device's ranges property. The
+                                      first three values represent the
+                                      child-phys address, the second two
+                                      values represent the parent-phys
+                                      address, and the last two values
+                                      represent the size.
+    ----------------------------------------------------------------------
+
+        4.1.2 iodevice MD Node Specification:
+          
+        In addition to defining this new property, this case will define 
+a new
+    specification on the FWARC main page which contains all the information
+    about the various iodevice nodes. Currently, the description of all of
+    these nodes and properties is simply a section of a onepager that gets
+    updated, with the most recent version found at [1].
+
+        This case will not modify any of those properties (with the 
+exception
+    of the ones being modified by this case) but will turn that document 
+into an
+    official specification which will make that information more 
+accessible.
+    The document that will become the specification can be found at [3].
+    
+    4.2.1 Imported Interfaces
+
+        Name                    Classification  Description
+        -----------------       --------------- -------------------
+        sun4v Machine           Sun Private     MD nodes definitions as
+        Description nodes                       defined by FWARC/2005/115
+
+        "iodevice" MD node      Committed       MD node name and 
+properties as
+                                                described in FWARC 
+2007/070 and
+                                                updated by FWARC 2007/386
+
+    4.5.2 Exported Interfaces
+
+        Name                    Classification  Description
+        ----------------------  --------------  -------------------
+        "ranges"                Sun Private     MD node property defined
+        MD node property                        by this case
+
+
+5. Reference Documents:
+
+        [1] FWARC 2007/386 iodevice specification
+        
+http://sac.eng/Archives/CaseLog/arc/FWARC/2007/386/materials/updated-iodevice-details.txt
+        [2] KT PRM
+        https://systemsweb.sfbay.sun.com/kt/team/arch_specs/index.html
+
+        [3] iodevice MD Node Specification
+        iodevice.txt
+
+

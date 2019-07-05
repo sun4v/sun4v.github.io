@@ -1,0 +1,166 @@
+Hitendra's Commitment review issues
+
+1.  Section 6.1.3, need clarification, when domain is restarted
+     after SIR request which CPU will it start?  Will this be
+     randomly selected or the same CPU which requested the SIR
+     request will be restarted?
+
+RESOLUTION:
+Spec will be modified to state that the CPU that starts after a SIR is not specified.
+
+2.  Section 7.1, this section tries to clarify what is cpu list
+     but it does not explain what is cpu id.  My expectation from
+     an inception review was that the definition of cpu id would be
+     added to this section.  Can we add one of the following texts
+     in section 7 after the second sentence?
+
+     "The CPU identifiers (cpu id) are assigned by hypervisor via
+      cpu_myid API".
+
+     Or
+
+     "The CPU identifiers (cpu id) are part of machine description
+      exported to OBP".
+
+RESOLUTION:
+Spec will be modified to state that the cpu id is a pre-assigned 16 bit 
+value. No further clarification necessary.
+
+3.  Section 8.5.7, typo, in the Note section, replace the first
+     "used" with "is".
+
+RESOLUTION:
+Spec will be fixed
+
+4.  Section 9.1.1, need clarification, Why scrubbing less memory
+     then client asked for is not an error?
+
+RESOLUTION:
+Closed after discussion
+
+
+
+Tony Sumpter's commitment review issues
+
+1. 6.1.1 mach_exit
+
+	It seems that an additional argument to request either restart or
+	"power-off" should be part of this call. Service Entity
+	can over-ride.
+
+	[Add the extra argument.]
+
+RESOLUTION:
+Closed after discussion about differences between mach_exit and mach_sir
+
+2. 6.1.3 mach_sir
+
+	"Immediately captured" needs clarification.
+
+	[Captured as soon as it is possible to interrupt them.]
+
+RESOLUTION:
+Spec will be modified so that the statement says 'as soon as possible' 
+instead of 'immediately'.
+
+3. All explicit and implicit references to OBP and Solaris should
+  be removed, and no dependencies made on documents not referenced
+  in the document. Eg. in the following sections:
+
+	7 CPU Services
+	10 Device interrupt services
+	10.1 definitions
+
+	  devhandle "hi-cell" and "reg" property are OBP-isms.
+	  This doc. is not stated to depend on the Open Firmware bus
+	  binding.
+
+	  devino has OBP-isms
+	
+	[Just remove them.]
+
+RESOLUTION:
+Move the 'devino' definition to a 'Note:' to make it informative
+
+4. 8.2 TSB specification
+
+	Change context to context index (which set of context registers)
+	to match SunSPARC hardware TSB walker design.
+
+	[Yes.]
+
+RESOLUTION:
+Spec will be modified by project team to implement this suggestion
+
+5. 8.5.1
+
+	Maximum of 16 TSBs seems arbitrary: Would prefer a minimum of
+	2 with a maximum coming from the MD.
+
+	[Yes.]
+
+RESOLUTION:
+Spec will be modified to state that the maximum number of TSBs will be 
+extracted from the MD (not 16).
+
+6. 8.5.6
+
+	Is it invalid to provide a TTE with no valid bit set?
+
+	[?]
+
+RESOLUTION:
+Spec will be modified to state that if no valid bit is set, behavior is undefined.
+
+7. 8.5.10 mmu_fault_area
+
+	Is disallowing real address 0 OK?
+
+	[Yes.]
+
+RESOLUTION:
+Issue is closed after verification.
+
+8. 12.1.2 cons_putchar
+
+	"currently" needs to be re-worded.
+
+	[Yes.]
+
+RESOLUTION:
+The word 'Currently' will be removed.
+
+9. 13 Core dump services
+
+	The mentioned service for the guest to update the buffer
+	is not present.
+
+	[?]
+
+RESOLUTION:
+Two items need to change:
+A sentence will be added stating that the buffer will be filled with opaque data by 
+the hypervisor. Also, the name of the command should change to dump_buf_fill.
+
+10. 14.1 ... control structure
+
+	Who owns the control structure? A malicious or faulty
+	guest must not be able to write it and cause a HV panic.
+
+	[Make it information only to guest.]
+
+RESOLUTION:
+A sentance will be added to the spec that states something like "The hypervisor 
+owns the control structure and the guest may not modify the data. Attempts to do 
+so will result in undefined behavior."
+
+11. Minor TCRs for to tighten up APIs
+
+	Provided in file "minor-api-tcrs.txt"
+
+	[Adopt them.]
+
+RESOLUTION:
+The file has been moved to the commitment materials directory. The project team 
+will update the spec with the changes suggested or will resolve conflicts via e-mail.
+

@@ -1,0 +1,647 @@
+
+Niagara-2 Network Interface Unit (NIU) Hypervisor API Extensions
+
+1.0 Introduction
+
+    This document describes extensions to the Niagara2 Network Interface
+    Unit (NIU) Hypervisor API currently available on Niagara2 based
+    platforms.
+
+    The new interfaces provides a domain that owns a NIU device with 
+    the ability to assign virtual regions, allocate DMA resources to
+    the virtual regions and re-direct interrupts associated with
+    these DMA channels.
+
+    The new interfaces will abide by FWARC/2006/052 with respect
+    to versioning. The new APIs presented here will be available
+    as part of version 1.1 of the NIU API group.
+
+2.0 References
+
+    FWARC/2006/052 sun4v version API update
+
+    Niagara-2 PRM, v1.4 (Sep 28, 2007), Chp 23 (Network Interface
+    Unit Interrupts and Virtualization), Chp 25 (Network Interface Unit 
+    Receive DMA Engine) and Chp 26 (Network Interface Unit Transmit 
+    DMA Engine)
+      - https://systemsweb.sfbay.sun.com/n2/team/specs/specs.html
+
+2.1 Definitions
+
+    Logical Device(LD) - A term used generically to refer to a functional 
+    block that may ultimately cause an interrupt.
+    
+    Logical Device Group (LDG) - A group of logical devices sharing an 
+    interrupt. A group may have only one LD.
+
+    Logical Device Flag (LDF) - Is a logical 'OR' of some LC
+
+    Logical Device Group Interrupt (LDGI) - The interrupt associated with a LDG.
+    This interrupt is controlled by a one shot mechanism, i.e. hardware will 
+    issue only one single interrupt, and software will need to arm the LDG 
+    again to enable it to issue another interrupt. 
+
+    Logical Device State Vector (LDSV) - a read only state vector capturing the 
+    LDFs of ALL the LDs.
+
+    Logical Domain (LDom, ldom) - Separation of platform resources into 
+    self-contained partition that is capable of supporting an operating system.
+
+    Logical Page - A contiguous range of memory location. If an address posted 
+    by software is within the logical page, it will be translated to a physical
+    address by replacing the base address of the logical page with the base 
+    address of the physical page. The size of the logical page is programmable.
+
+    Receive Block Ring(RBR) - It is a ring buffer of memory blocks posted by
+    software.
+
+    Receive Completion Ring(RCR) - The ring stores the addresses of the buffers 
+    used to store incoming packets.
+
+    Receive DMA Channel (RDC) - It is comprised of a RBR, a RCR and a set of
+    control and status registers. A receive DMA channel is selected after an
+    incoming packet is classified. A packet buffer is derived from the pool 
+    and used to store the incoming packet. Each channel is capable of issuing
+    interrupt to software based on the queue length of the Receive Completion
+    Ring or a time-out.
+    
+    Transmit Ring (TR) - The data structure built in system memory for software
+    to post transmission requests.
+ 
+    Transmit DMA Channel (TDC) - Consists of a transmit ring and a set of
+    control and status registers.
+
+2.2 NIU Virtualization Overview
+
+    A general definition and usage of virtualization is beyond the scope of 
+    this document. For the purpose of this document, we concern ourself with 
+    accessing the device via PIOs and the address used in read/write requests. 
+    The latter relates to memory protection. Together these two features enable
+    resource (both memory and DMAs) isolation, which is the basis of
+    virtualization. In UltraSPARC T2, since the device is part of the processor, 
+    it is up to hypervisor how the hardware is presented to the OS. Not all 
+    hardware resources support virtualization directly. 
+
+    In some cases, it is to simplify the design, in others, it is the 
+    fundamental physical limit (for example, the MAC hardware state machine). 
+    Software driver  access to these hardware blocks in an environment where 
+    virtualization is supported can be achieved via the virtualization 
+    management software layer.
+
+    In UltraSPARC T2, NIU is memory mapped to the system address. Hypervisor may
+    organize the hardware as a two-function device. Within each function, two 
+    address ranges are defined: one for management, one for virtualization. The     
+    entire device may be accessed through the management addresses.
+
+    Virtualization addresses, on the other hand, only have accesses to a set of 
+    defined DMAs. The CSRs of multiple DMA channels can be grouped into an 8KB 
+    page within the virtualization address ranges. The grouping itself is 
+    defined by a table in the management address range. To support memory 
+    protection, each transmit or receive DMA supports two logical pages. The
+    addresses in the configuration registers, packet gather list pointers on 
+    the transmit side, and the allocated buffer pointer on the receive side will 
+    be relocated accordingly. The logical page registers are only accessable 
+    via the management address ranges.
+
+    In UltraSPARC T2, hypervisor software may expose an 8KB page, with a few 
+    DMAs defined, to the driver software, enabing the driver software to control
+    the DMAs via PIOs. In addition, hypervisor also defines the logical page 
+    registers for these DMAs, which limits the addresses in the descriptors 
+    the driver posted. Together, this enforces DMA and memory resource the 
+    driver software may use.
+
+3.0 Description
+
+    The current set of NIU APIs allow a domain that owns the device
+    to configure, manage and send/receive data through the NIU device.
+    The new set of HV APIs proposed in this document extend this
+    ability to a domain that owns part of the NIU device, specifically
+    a virtual region with associated resources. It also adds a set
+    of APIs to enable the domain that owns the NIU device to share
+    it with another domain.
+
+    The list of APIs being added to support this functionality are:
+
+    HV Fast Trap:
+
+         N2NIU_VR_ASSIGN		0x146
+         N2NIU_VR_UNASSIGN		0x147
+         N2NIU_VR_GETINFO		0x148
+
+         N2NIU_VR_RX_DMA_ASSIGN		0x149
+         N2NIU_VR_RX_DMA_UNASSIGN	0x14a
+         N2NIU_VR_TX_DMA_ASSIGN		0x14b
+         N2NIU_VR_TX_DMA_UNASSIGN	0x14c
+
+         N2NIU_VR_GET_RX_MAP		0x14d
+         N2NIU_VR_GET_TX_MAP		0x14e
+
+         N2NIU_VRRX_SET_INO		0x150
+         N2NIU_VRTX_SET_INO		0x151
+
+         N2NIU_VRRX_GET_INFO		0x152
+         N2NIU_VRTX_GET_INFO		0x153
+
+         N2NIU_VRRX_LP_SET		0x154
+         N2NIU_VRRX_LP_GET		0x155
+         N2NIU_VRTX_LP_SET		0x156
+         N2NIU_VRTX_LP_GET		0x157
+
+         N2NIU_VRRX_PARAM_GET		0x158
+         N2NIU_VRRX_PARAM_SET		0x159
+         N2NIU_VRTX_PARAM_GET		0x15a
+         N2NIU_VRTX_PARAM_SET		0x15b
+
+    NIU Virtualized Register Access
+
+	 RDC_RED_PARA			0
+	 TDC_DMA_MAX			0
+
+
+3.1 NIU Virtual Region(VR) Specific APIs:
+
+3.1.1 Assign a VR to a Guest Domain:
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VR_ASSIGN
+     arg0         vr_idx
+     arg1         ldc_id
+     
+     ret0         status
+     ret1         vr_cookie
+
+     ARGUMENTS:
+       vr_idx     Virtualization Region index number (0-7)
+                  The NIU has 2 Functions, each Function has 2
+		  Virtualization regions, each region can be split
+		  into 2 access protected pages. 
+
+       ldc_id     LDC endpoint in the domain that owns the NIU device and the
+                  channel that runs between and the domain to which the
+                  virtual region is being assigned.
+     RETURNS:
+       vr_cookie  A 32 bit unique id returned by HV. This cookie represents
+                  a specific NIU and a specific Virtual Region(VR) in it.
+     
+     Assigns the specified virtual region to a domain identified by the
+     endpoint ID of the channel to the target domain. The returned 
+     vr_cookie can be used by a domain to obtain access to the virtual
+     region.
+
+     ERRORS:
+       ENOACCESS    Domain does not own the NIU
+       ECHANNEL     Invalid Channel (LDC ID)
+       EINVAL       Invalid VR idx / VR already assigned
+
+3.1.2 Unassign a VR:
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VR_UNASSIGN
+     arg0         vr_cookie
+     
+     ret0         status
+
+     ARGUMENTS:
+       vr_cookie    A 32 bit unique id that represents the NIU virtual region.
+
+     Unassign the virtual region that was previously assigned to a domain.
+     Only the domain that owns the NIU device is allowed to call this
+     interface.  This call cannot fail.  After the virtual region is
+     unassigned, access in the guest will fail with EINVAL to HV
+     calls, or memory access violations.
+
+     ERRORS:
+       ENOACCESS    Domain does not own NIU device
+       EINVAL       Invalid cookie / VR not assigned
+     
+
+3.1.3 Query VR address mapping info:
+	
+     trap         #FAST_TRAP
+     function#    N2NIU_VR_GETINFO
+     arg0         vr_cookie
+     
+     ret0         status
+     ret1         real_base
+     ret2         real_size
+
+     ARGUMENTS:
+       vr_cookie    A 32 bit unique id that represents an NIU/VR.
+
+     RETURNS:
+       real_base    Base real address of the start of the virtualization region.
+       real_size    Size of the VR mapping.
+
+     Obtain the real address base and size for the virtual region corresponding
+     to the vr_cookie.  This API can only be called from the guest that owns 
+     the virtual region associated with that cookie.
+
+     ERRORS:
+       ENOACCESS   Cookie not associated with this domain
+       EINVAL      Invalid Cookie
+
+
+3.2 NIU DMA Channel(DMAC) Specific APIs:
+
+3.2.1 Assign an RX/TX DMA Channel to a specific VR:
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VR_RX_DMA_ASSIGN
+     arg0         vr_cookie
+     arg1         gch_idx
+
+     ret0         status
+     ret1         vch_idx
+
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VR_TX_DMA_ASSIGN
+     arg0         vr_cookie
+     arg1         gch_idx
+
+     ret0         status
+     ret1         vch_idx
+
+
+     ARGUMENTS:
+       vr_cookie   A 32 bit unique id that represents an NIU/VR.
+       gch_idx     The Global DMA channel index number (0-15).
+
+     RETURNS:
+       vch_idx     The Virtual DMA channel index number (0-7).
+
+     Assign TX and RX DMA channel resources to a specific virtual region.
+     A virtual region has to be assigned to a domain before resources can
+     be assigned to the virtual region.  There is a hardware maximum
+     of 8 channels per virtual region, but implementations may
+     restrict the channels maximum further.  Each global channel may
+     only be assigned to one virtual region at a time.
+
+     Programming Note: 
+          The interrupt resources assigned to this gch_idx channel
+	  will be automatically migrated to the guest domain. In addition,
+          the interrupt resource is also marked disabled. Its the responsibility
+          of the domain that owns the NIU device to remove any interrupt 
+          handler associated with the channel.
+
+     ERRORS:
+       ENOACCESS   Guest does not own the NIU
+       EINVAL      Invalid Cookie/Channel
+       ENOMAP      Channel not available
+
+
+3.2.2 Unassign an RX/TX DMA Channel:
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VR_RX_DMA_UNASSIGN
+     arg0         vr_cookie
+     arg1         vch_idx
+
+     ret0         status
+
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VR_TX_DMA_UNASSIGN
+     arg0         vr_cookie
+     arg1         vch_idx
+
+     ret0         status
+
+     ARGUMENTS:
+       vr_cookie   A 32 bit unique id that represents VR.
+       vch_idx     The Virtual DMA channel index number (0-7).
+
+     Unassign RX and TX DMA channel resources from a virtual region.
+     Accesses to an unassigned virtual channel in the guest will return
+     EINVAL or memory access violations.  Once a channel has been unassigned
+     it may be reassigned to another region.
+
+     Programming Note: 
+     	  The unassign operation will migrate the interrupts back to the 
+          domain that owns the NIU device. It will also disable the channel
+          if it is not already disabled. The channels are restored back
+          to the domain that owns the NIU device. 
+
+     ERRORS:
+       ENOACCESS   Guest does not own the NIU
+       EINVAL      Invalid Cookie/Channel
+       ENOMAP      Channel is not assigned
+
+
+3.2.3 Query RX/TX DMA channel assignment to a VR:
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VR_GET_RX_MAP
+     arg0         vr_cookie
+
+     ret0         status
+     ret1         dma_map
+
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VR_GET_TX_MAP
+     arg0         vr_cookie
+
+     ret0         status
+     ret1         dma_map
+
+     ARGUMENTS:
+       vr_cookie  A 32 bit unique id that represents an NIU/VR.
+ 
+     RETURNS:
+       dma_map    Returns the Rx/Tx DMA channel map (bit mask) that shows 
+                  which slots in the virtual region have DMA channels mapped. 
+                  For instance, bit N will be set in the map iff virtual
+                  channel N (0-7) is assigned in the VR.
+
+     Obtain list of TX and RX DMA channel resources assigned to a 
+     virtual region.
+
+     ERRORS:
+       ENOACCESS  Cookie not associated with this domain
+       EINVAL     Invalid Cookie
+
+
+3.2.4 Virtual DMA channel interrupt information:
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VRRX_SET_INO
+     arg0         vr_cookie
+     arg1         vch_idx
+     arg2         ino
+
+     ret0         status
+
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VRTX_SET_INO
+     arg0         vr_cookie
+     arg1         vch_idx
+     arg2         ino
+
+     ret0         status
+
+     ARGUMENTS:
+       vr_cookie  A 32 bit unique id that represents an NIU/VR.
+       vch_idx    The Virtual DMA channel index number, retrieved
+		  through the N2NIU_VR_GET_*_MAP interface (0-7).
+       ino        A unique 32-bit device interrupt no. (devino) to be 
+                  associated with this channel. Each DMA Channel corresponds
+                  to an interrupt source and should be assigned a unique ino
+                  between 0 to 63. 
+
+    Assign a interrupt number for the specified RX/TX virtual DMA
+    channel in a virtual region. A unique interrupt number should be
+    assigned to each channel across all VRs assigned from a single
+    NIU device. 
+ 
+    Programming Note: 
+       These device inos must then be converted to system wide interrupt
+       numbers (sysinos) for use within the domain.
+
+    ERRORS:
+      ENOACCESS  Cookie not associated with this domain
+      EINVAL     Invalid Cookie
+
+
+3.2.5 Virtual DMA channel information:
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VRRX_GET_INFO
+     arg0         vr_cookie
+     arg1         vch_idx
+
+     ret0         status
+     ret1         group
+     ret2         logdev
+
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VRTX_GET_INFO
+     arg0         vr_cookie
+     arg1         vch_idx
+
+     ret0         status
+     ret1         group
+     ret2         logdev
+
+     ARGUMENTS:
+       vr_cookie  A 32 bit unique id that represents an NIU/VR.
+       vch_idx    The Virtual DMA channel index number (0-7).
+
+     RETURNS:
+       group      Virtual Group number (Bits 7:5 of the VRARDDR
+		  associated with that VR's LDSV management, see Table
+		  23-5 of the N2 PRM).
+       logdev     Logical device number (Table 23-8, N2 PRM).
+
+    Get the virtual group number and logical device associated with a 
+    RX/TX virtual DMA channel in a virtual region. Since interrupts are
+    delivered via bits in the LDSV that corresponds to the logical
+    device, the guest needs to map each virtual channel to a logical
+    device in order to identify the interrupted channel and re-arm the
+    interrupt.  The guest will use PIO's using these values to rearm
+    the associated interrupts.
+
+    ERRORS:
+      ENOACCESS  Cookie not associated with this domain
+      EINVAL     Invalid Cookie
+      ENOINTR    No virtual group exists for that channel in this domain
+
+
+
+3.2.6 Configure logical page for a RX/TX channel:
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VRRX_LP_SET
+     arg0         vr_cookie
+     arg1         vch_idx
+     arg2         pgidx
+     arg3         raddr
+     arg4         size
+
+     ret0         status
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VRTX_LP_SET
+     arg0         vr_cookie
+     arg1         vch_idx
+     arg2         pgidx
+     arg3         raddr
+     arg4         size
+
+     ret0         status
+
+     ARGUMENTS:
+       vr_cookie   A 32 bit unique id that represents an NIU/VR.
+       vch_idx     The virtual DMA channel index number. This value
+                   should be between 0 and 15.
+       pgidx       Logical page index number. Legal values are 0 or 1.
+       raddr       LP Real address (size aligned)
+       size        LP Size 
+ 
+     Configure a mapping described by arguments raddr and size in the NIU
+     DMA engine address translation (logical page) register
+     indicated by vch_idx and pgidx.
+
+     If there is already a valid mapping for the page specified by pgidx, 
+     that mapping is overwritten.
+
+     The specified mapping is un-configured if the size is 0. In this case, 
+     raddr is ignored. If the size is non-zero, the real address (raddr) 
+     should be size aligned and the size must be a power of 2.
+
+     This interface is identical to the NIU 1.0 interfaces approved under
+     FWARC/2006/524, except for the presence of a cookie, and it uses 
+     virtual channels instead of global channels.
+
+     Accessing this memory after the region has been usassigned will
+     cause access violations in the guest.
+
+     ERRORS:
+       ENOACCESS   Cookie not associated with this domain
+       EINVAL      Invalid Cookie / Invalid Channel index / Invalid Page index
+       EBADALIGN   Improper RA alignment
+
+
+
+3.2.7 Logical page information for a RX/TX channel:
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VRRX_LP_GET
+     arg0         vr_cookie
+     arg1         vch_idx
+     arg2         pgidx
+
+     ret0         status
+     ret1         raddr
+     ret2         size
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VRTX_LP_GET
+     arg0         vr_cookie
+     arg1         vch_idx
+     arg2         pgidx
+
+     ret0         status
+     ret1         raddr
+     ret2         size
+
+     ARGUMENTS:
+       vr_cookie   A 32 bit unique id that represents an NIU/VR.
+       vch_idx     The virtual DMA channel index number. This value should
+                   be in the range 0 to 7.
+       pgidx       Logical page index number. Legal values are 0 and 1.
+
+     RETURNS:
+       raddr       LP Real address
+       size        LP Size
+
+     Return the current mapping in the NIU DMA engine address translation
+     (logical page) register indicated by vch_idx and pgidx.  The real address
+     and size are returned to the caller.
+
+     If there is no current mapping for the given chidx and pgidx, then the 
+     return values raddr and size will both be 0.
+
+     This interface is identical to the NIU 1.0 interfaces except for
+     the presence of a cookie, and it uses virtual channels instead of
+     global channels.
+
+     ERRORS:
+       ENOACCESS   Cookie not associated with this domain
+       EINVAL      Invalid Cookie / Invalid Channel index / Invalid Page index
+
+
+
+3.3  Virtualized Access to Non-virtualized registers
+
+The domain that is the recipient of a virtual region and its DMA channel
+resources is only allowed limited access to various registers that control 
+DMA behavior. The APIs specified below, allow the domain to set or get
+non-virtualized DMA channel registers.
+
+3.3.1 Query the value of globally accessible DMA registers
+
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VRRX_PARAM_GET
+     arg0         vr_cookie
+     arg1         vch_idx
+     arg2         param
+
+     ret0         status
+     ret1         value
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VRTX_PARAM_GET
+     arg0         vr_cookie
+     arg1         vch_idx
+     arg2         param
+
+     ret0         status
+     ret1         value
+
+     ARGUMENTS:
+	vr_cookie  A 32 bit unique id that represents an NIU/VR.
+        vch_idx    The Virtual DMA channel index number.
+	param      The register to query (enumerated lookup)
+
+     RETURNS:
+	value      Current register value
+
+     Return current value of a RX/TX virtual channel parameter.
+
+     ERRORS:
+       ENOACCESS  Cookie not associated with this domain
+       ENOACCESS  Specified parameter is not accessible
+       EINVAL     Invalid Cookie / Invalid Channel / Invalid param
+
+     Legal Values for RX params (others return EINVAL):
+       Register:	Val	Reference
+       RDC_RED_PARA	0	N2PRM, Table 25-19
+
+     Legal Values for TX params (others return EINVAL):
+       Register:	Val	Reference
+       TDC_DMA_MAX	0	N2PRM, Table 26-25
+
+3.3.2 Set the value of globally accessible DMA registers
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VRRX_PARAM_SET
+     arg0         vr_cookie
+     arg1         vch_idx
+     arg2         param
+
+     ret0         status
+     ret1         value
+
+     trap         #FAST_TRAP
+     function#    N2NIU_VRTX_PARAM_SET
+     arg0         vr_cookie
+     arg1         vch_idx
+     arg2         param
+
+     ret0         status
+     ret1         value
+
+     ARGUMENTS:
+	vr_cookie  A 32 bit unique id that represents an NIU/VR.
+        vch_idx    The Virtual DMA channel index number.
+	param      The register to set
+	value      Register value
+
+     Sets the value of a RX/TX virtual channel parameter.
+
+     ERRORS:
+       ENOACCESS  Cookie not associated with this domain
+       ENOACCESS  Specified parameter cannot be set
+       EINVAL     Invalid Cookie / Invalid Channel / Invalid param
+
+     Legal Values for RX params (others return EINVAL):
+       Register:	Val	Reference
+       RDC_RED_PARA	0	N2PRM, Table 25-19
+
+     Legal Values for TX params (others return EINVAL):
+       Register:	Val	Reference
+       TDC_DMA_MAX	0	N2PRM, Table 26-25

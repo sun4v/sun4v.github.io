@@ -1,0 +1,172 @@
+	Version: "@(#)niu-hv-api.txt 1.3 08/10/31"
+
+Niagara2 Network Interface Unit - Hypervisor API
+
+    Introduction
+
+	This document describes a new Niagara2 Network Interface Unit
+	(NIU) Hypervisor API which becomes available on Niagara2
+	based platforms.
+
+	This interface provides the guest with the ability to set and 
+        get the NIU DMA channels' logical page configuration information.
+
+    API Versioning
+
+	This interface will abide by FWARC/2006/052 with respect
+	to versioning.  The interface presented here represents
+	version 1.0.
+
+	See section on Export Interfaces below for specific API
+	group-number.
+
+    References
+
+	FWARC/2006/052 sun4v version API update
+
+	Niagara-2 PRM, v1.2 (Mar 3, 2006), Chp 20 (Network Interface Unit 
+        Receive DMA Engine) and Chp 21 (Network Interface Unit Transmit 
+        DMA Engine)
+	- https://systemsweb.sfbay.sun.com/n2/team/specs/specs.html
+
+    Function Number
+
+	The following function numbers define the primary NIU entrypoints
+	per the Sun4v Hypervisor API:
+
+        N2NIU_RX_LP_SET          0x142
+        N2NIU_RX_LP_GET          0x143
+        N2NIU_TX_LP_SET          0x144
+        N2NIU_TX_LP_GET          0x145
+
+
+NIU API Definitions
+
+ 1. niu_rx_logical_page_set
+        trap#           FAST_TRAP
+        function#       N2NIU_RX_LP_SET
+        arg0            chidx
+        arg1            pgidx
+        arg2            raddr
+        arg3            size
+
+        ret0            status
+
+    Configure a mapping described by arguments raddr and size in the NIU
+    recieve DMA engine address translation (logical page) register
+    indicated by chidx and pgidx.
+
+    If there is already a valid mapping for the page specified by pgidx, 
+    that mapping is overwritten.
+
+    The specified mapping is un-configured if the size is 0. In this case, 
+    raddr is ignored.
+
+    chidx must be between 0 and 15.
+
+    pgidx must be 0 or 1.
+
+    raddr must be size aligned.
+
+    size must be a power-of-2.
+
+   errors
+        EBADALIGN       Invalid alignment for raddr or size
+        ENORADDR        Invalid real address
+        EINVAL          Invalid index for channel or register
+
+  2. niu_rx_logical_page_get
+        trap#           FAST_TRAP
+        function#       N2NIU_RX_LP_GET
+        arg0            chidx
+        arg1            pgidx
+
+        ret0            status
+        ret1            raddr
+        ret2            size
+
+    Return the current mapping in the NIU recieve DMA engine address
+    translation (logical page) register indicated by chidx and pgidx.  The
+    real address and size are returned in ret1 and ret2.
+
+    chidx must be between 0 and 15.
+
+    pgidx must be 0 or 1.
+
+    If there is no current mapping for the given chidx and pgidx, then the 
+    return values raddr and size will both be 0.
+
+   errors
+        EINVAL          Invalid index for channel or register
+ 
+  3. niu_tx_logical_page_set
+        trap#           FAST_TRAP
+        function#       N2NIU_TX_LP_SET
+        arg0            chidx
+        arg1            pgidx
+        arg2            raddr
+        arg3            size
+
+        ret0            status
+
+    Configure a mapping described by arguments raddr and size in the NIU
+    transmit DMA engine address translation (logical page) register
+    indicated by chidx and pgidx.
+
+    If there is already a valid mapping for the page specified by pgidx, 
+    that mapping is overwritten.
+
+    The specified mapping is un-configured if the size is 0. In this case, 
+    raddr is ignored.
+
+    chidx must be between 0 and 15.
+
+    pgidx must be 0 or 1.
+
+    raddr must be size aligned.
+
+    size must be a power-of-2.
+
+   errors
+        EBADALIGN       Invalid alignment for raddr or size
+        ENORADDR        Invalid real address
+        EINVAL          Invalid index for channel or register
+
+  4. niu_tx_logical_page_get
+        trap#           FAST_TRAP
+        function#       N2NIU_TX_LP_GET
+        arg0            chidx
+        arg1            pgidx
+
+        ret0            status
+        ret1            raddr
+        ret2            size
+
+    Return the current mapping in the NIU transmit DMA engine address
+    translation (logical page) register indicated by chidx and pgidx.  The
+    real address and size are returned in ret1 and ret2.
+
+    chidx must be between 0 and 15.
+
+    pgidx must be 0 or 1.
+
+    If there is no current mapping for the given chidx and pgidx, then the 
+    return values raddr and size will both be 0.
+
+   errors
+        EINVAL          Invalid index for channel or register
+
+========================================================================
+
+Exported Interfaces
+
+ HV Fast Trap:
+
+   0x142        Sun Private     N2NIU_RX_LP_SET
+   0x143        Sun Private     N2NIU_RX_LP_GET
+   0x144        Sun Private     N2NIU_TX_LP_SET
+   0x145        Sun Private     N2NIU_TX_LP_GET
+
+ NIU API Group Number:
+
+    0x204      Sun Private     Niagara2 Network Interface Unit

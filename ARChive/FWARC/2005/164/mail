@@ -1,0 +1,400 @@
+From sacadmin Mon Mar 14 04:00:45 2005
+Received: from noho.SFBay.Sun.COM (noho [10.6.92.101])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2EC0jSp026710;
+	Mon, 14 Mar 2005 04:00:45 -0800 (PST)
+Received: from noho.SFBay.Sun.COM (localhost [127.0.0.1])
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0) with ESMTP id j2EBxGCB006308;
+	Mon, 14 Mar 2005 03:59:16 -0800 (PST)
+Received: (from dmk@localhost)
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0/Submit) id j2EBxGg6006304;
+	Mon, 14 Mar 2005 03:59:16 -0800 (PST)
+Date: Mon, 14 Mar 2005 03:59:16 -0800 (PST)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Message-Id: <200503141159.j2EBxGg6006304@noho.SFBay.Sun.COM>
+To: FWARC@sac.sfbay.sun.com
+Cc: sun4v-iteam@sun.com
+Subject: sun4v Niagara CPU API [FWARC/2005/164 Timeout:  04/21/2005]
+Status: RO
+Content-Length: 4070
+
+Subject: FWARC FastTrack [04/21/2005]: sun4v Niagara CPU API
+
+
+Template Version: @(#)sac_nextcase 1.55 08/11/04 SMI
+1. Introduction
+    1.1. Project/Component Working Name:
+	 sun4v Niagara CPU API
+    1.2. Name of Document Author/Supplier:
+	 Author:  Girish Goyal
+    1.3  Date of This Document:
+	14 March, 2005
+4. Technical Description
+
+1. Introduction
+    1.1. Project/Component Working Name:
+	sun4v niagara-api
+
+    1.2. Name of Document Author/Supplier:
+	Girish.Goyal@sun.com
+
+    1.3. Date of This Document:
+	Sun Mar 13 16:03:30 PST 2005
+
+    1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		HS-PAC
+
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Tony Barreca
+
+	1.4.4. The name of your business unit:
+		Scalable Systems Group (SSG)
+			(Niagara/Rock Software Engineering)
+
+    1.5. Email Aliases:
+     	1.5.1. Responsible Manager: David.Banman@Sun.Com
+     	1.5.2. Responsible Engineer: Girish.Goyal@sun.com
+     	1.5.3. Marketing Manager: Neil.Sadaranganey@sun.com XXX
+	1.5.4. Interest List: sun4v-iteam@sun.com
+
+2. Project Summary
+    2.1. Project Description:
+
+	This case is a part of the sun4v umbrella case
+	FWARC/2004/510.
+
+	This case defines the Niagara processor specific API for sun4v,
+	and specifically for Niagara performance registers.
+
+	This case depends on and extends the Sun4v Core API case
+	FWARC/2005/116.
+
+	Abstractions are defined for referencing DRAM and JBUS
+	performance registers.
+
+	
+    2.2. Risks and Assumptions:
+
+	See FWARC/2004/510
+
+3. Business Summary
+    3.1. Problem Area:
+
+	See FWARC/2004/510
+
+    3.2. Market/Requester:
+
+	See FWARC/2004/510
+
+    3.3. Business Justification:
+
+	See FWARC/2004/510
+
+    3.4. Competitive Analysis:
+
+	See FWARC/2004/510
+
+    3.5. Opportunity Window/Exposure:
+
+	See FWARC/2004/510
+
+    3.6. How will you know when you are done?:
+
+	See FWARC/2004/510
+
+4. Technical Description:
+
+    4.1 Overview
+
+	See FWARC/2004/510 for overview.
+
+	Abstraction is provided to access Niagara specific performance
+	registers in order to protect the overall system.
+
+	Niagara CPU module uses this abstraction to read/write 
+	restrcted performance registers.
+
+
+5. Reference Documents:
+	
+	The architecture and PLC documents are available
+	at http://projectq.sfbay.sun.com and include:
+
+		Sun4v architecture specification.
+		Sun4v hyper-privileged reference architecture
+		Hypervisor API specifications
+		sun4v Functional specification
+		sun4v Solaris Functional specification
+
+
+6. Resources and Schedule:
+    6.1. Projected Availability:
+	
+	Ontario FCS
+
+    6.2. Cost of Effort:
+
+	See FWARC/2004/510
+
+    6.3. Cost of Capital Resources:
+
+	Capital resources are subsumed as part of overall product development.
+
+    6.4. Product Approval Committee requested information:
+    	6.4.1. Consolidation Name:
+		Delivery of firmware will be platform teams
+		Delivery of sun4v OS will be platform teams (ON)
+		
+    	6.4.2. Contributing OpCo/BU/Division Name:
+		
+		Scalable Systems Group
+		
+	6.4.3. Type of PAC Review and Approval expected:
+		N/A (see umbrella case)
+
+         6.4.4. Project Boundary Conditions:
+		N/A
+
+	6.4.5. Is this a necessary project for OEM agreements:
+		No.
+
+	6.4.6. Notes/Dependencies:
+
+		The sun4v niagara-api depends and expands on the sun4v 
+		API case (case number TBD).
+
+	6.4.7. Target RTI Date/Release:
+	        N/A - Not a separate deliverable.
+
+	6.4.8. Target Code Design Review Date:
+		Q1CY05 for Niagara-I version 1.0
+
+	6.4.9. Update approval addition:
+	        N/A
+
+    6.5. ARC review type:
+		Full Review (Fast Track???)
+
+7. Prototype Availability:
+    7.1. Prototype Availability:
+	Q1FY05
+
+    7.2. Prototype Cost:
+	Done using existing resources.
+
+
+
+
+
+6. Resources and Schedule
+    6.4. Steering Committee requested information
+   	6.4.1. Consolidation C-team Name:
+		unknown
+    6.5. ARC review type: FastTrack
+
+From sacadmin Mon Mar 14 04:07:27 2005
+Received: from noho.SFBay.Sun.COM (noho [10.6.92.101])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2EC7RSp026776
+	for <FWARC@sac.SFBay.Sun.COM>; Mon, 14 Mar 2005 04:07:27 -0800 (PST)
+Received: from noho.SFBay.Sun.COM (localhost [127.0.0.1])
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0) with ESMTP id j2EC5weR006374;
+	Mon, 14 Mar 2005 04:05:58 -0800 (PST)
+Received: (from dmk@localhost)
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0/Submit) id j2EC5wqQ006373;
+	Mon, 14 Mar 2005 04:05:58 -0800 (PST)
+Date: Mon, 14 Mar 2005 04:05:58 -0800 (PST)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Message-Id: <200503141205.j2EC5wqQ006373@noho.SFBay.Sun.COM>
+To: FWARC@sac.sfbay.sun.com
+Subject: Re: sun4v Niagara CPU API [FWARC/2005/164 Timeout:  03/21/2005]
+Cc: sun4v-iteam@sun.com
+Status: RO
+Content-Length: 348
+
+I'm sponsoring this case for Girish.
+
+The timeout for this case is March 21, 2005 (not April).
+
+materials are in the materials directory.
+
+This case uses two hv API function numbers, 0x100 and 0x101.
+These function numbers should be added to the trap number and
+function number registry being created by the Core API
+case, FWARC/2005/116.
+
+-David
+
+
+From sacadmin Mon Mar 14 13:47:35 2005
+Received: from sfbaymail2sca.sfbay.sun.com (sfbaymail2sca.SFBay.Sun.COM [129.145.155.42])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2ELlZSp009747
+	for <FWARC@sac.sfbay.sun.com>; Mon, 14 Mar 2005 13:47:35 -0800 (PST)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail2sca.sfbay.sun.com (8.12.10+Sun/8.12.10/ENSMAIL,v2.2) with ESMTP id j2ELk5AH004648;
+	Mon, 14 Mar 2005 13:46:05 -0800 (PST)
+Received: from [129.146.90.56] (pkg [129.146.90.56])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id j2ELk5ha040913;
+	Mon, 14 Mar 2005 13:46:05 -0800 (PST)
+Message-ID: <4236061D.80302@sun.com>
+Date: Mon, 14 Mar 2005 13:46:05 -0800
+From: Greg Onufer <greg.onufer@sun.com>
+User-Agent: Mozilla Thunderbird 1.0.2 (X11/20050305)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: David Kahn <dmk@noho.sfbay.sun.com>
+CC: FWARC@sac.sfbay.sun.com, sun4v-iteam@sun.com
+Subject: Re: sun4v Niagara CPU API [FWARC/2005/164 Timeout:  04/21/2005]
+References: <200503141159.j2EBxGg6006304@noho.SFBay.Sun.COM>
+In-Reply-To: <200503141159.j2EBxGg6006304@noho.SFBay.Sun.COM>
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Status: RO
+Content-Length: 1433
+
+David Kahn wrote:
+> Template Version: @(#)sac_nextcase 1.55 08/11/04 SMI
+> 1. Introduction
+>     1.1. Project/Component Working Name:
+> 	 sun4v Niagara CPU API
+
+The name is too generic as these probably aren't the only 
+Niagara-specific APIs.  I suggest "Niagara-specific Performance Counter 
+hypervisor API".
+
+>     1.1. Project/Component Working Name:
+> 	sun4v niagara-api
+
+Niagara performance counter hypervisor API
+
+> 	This case defines the Niagara processor specific API for sun4v,
+> 	and specifically for Niagara performance registers.
+
+"... processor-specific hypervisor API for a guest to access the Niagara 
+memory and JBus performance counters."
+
+> 	Abstraction is provided to access Niagara specific performance
+> 	registers in order to protect the overall system.
+
+      "_An_ abstraction is provided to access _the_ Niagara-specific
+      performance counters which are otherwise only accessible from
+      hyperprivileged mode and thus not available to the guest."
+
+> 	Niagara CPU module uses this abstraction to read/write 
+> 	restrcted performance registers.
+
+     "_The_ Solaris Niagara CPU module uses this abstraction to access
+     the performance counter registers."
+
+> 	6.4.6. Notes/Dependencies:
+> 
+> 		The sun4v niagara-api depends and expands on the sun4v 
+> 		API case (case number TBD).
+
+"The niagara performance counter hypervisor API ..."
+
+Cheers!greg
+
+From sacadmin Tue Mar 22 15:12:22 2005
+Received: from noho.SFBay.Sun.COM (noho [10.6.92.101])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2MNCMSp027478
+	for <FWARC@sac.SFBay.Sun.COM>; Tue, 22 Mar 2005 15:12:22 -0800 (PST)
+Received: from noho.SFBay.Sun.COM (localhost [127.0.0.1])
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0) with ESMTP id j2MNAmXP009923;
+	Tue, 22 Mar 2005 15:10:48 -0800 (PST)
+Received: (from dmk@localhost)
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0/Submit) id j2MNAmMg009922;
+	Tue, 22 Mar 2005 15:10:48 -0800 (PST)
+Date: Tue, 22 Mar 2005 15:10:48 -0800 (PST)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Message-Id: <200503222310.j2MNAmMg009922@noho.SFBay.Sun.COM>
+To: FWARC@sac.sfbay.sun.com
+Subject: Re: sun4v Niagara CPU API [FWARC/2005/164 Timeout:  03/21/2005]
+Cc: sun4v-iteam@sun.com
+Status: RO
+Content-Length: 201
+
+This case is approved as a fast-track for integration
+into a minor release of the firmware and OS.
+
+The committment level is "Sun Private"
+
+The function numbers will be added to the registry.
+
+-David
+
+
+From sacadmin Thu Mar 24 20:22:45 2005
+Received: from noho.SFBay.Sun.COM (noho [10.6.92.101])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2P4MjSp017184
+	for <FWARC@sac.SFBay.Sun.COM>; Thu, 24 Mar 2005 20:22:45 -0800 (PST)
+Received: from noho.SFBay.Sun.COM (localhost [127.0.0.1])
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0) with ESMTP id j2P4L9mb011073;
+	Thu, 24 Mar 2005 20:21:09 -0800 (PST)
+Received: (from dmk@localhost)
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0/Submit) id j2P4L93w011072;
+	Thu, 24 Mar 2005 20:21:09 -0800 (PST)
+Date: Thu, 24 Mar 2005 20:21:09 -0800 (PST)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Message-Id: <200503250421.j2P4L93w011072@noho.SFBay.Sun.COM>
+To: FWARC@sac.sfbay.sun.com
+Subject: Re: sun4v Niagara CPU API [FWARC/2005/164 Timeout:  03/21/2005]
+Cc: sun4v-iteam@sun.com
+Status: RO
+Content-Length: 273
+
+>This case is approved as a fast-track for integration
+>into a minor release of the firmware and OS.
+>
+>The committment level is "Sun Private"
+>
+>The function numbers will be added to the registry.
+
+Correction: This case is approved for a micro
+release of the OS.
+
+-David
+
+
+From sacadmin Fri Mar 25 15:04:39 2005
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id j2PN4dSp015162
+	for <fwarc-record@sac.eng.sun.com>; Fri, 25 Mar 2005 15:04:39 -0800 (PST)
+Received: from noho.SFBay.Sun.COM (noho.SFBay.Sun.COM [10.6.92.101])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id j2PN32w26412;
+	Fri, 25 Mar 2005 15:03:02 -0800 (PST)
+Received: from noho.SFBay.Sun.COM (localhost [127.0.0.1])
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0) with ESMTP id j2PN32PA011492;
+	Fri, 25 Mar 2005 15:03:02 -0800 (PST)
+Received: (from dmk@localhost)
+	by noho.SFBay.Sun.COM (8.13.0+Sun/8.13.0/Submit) id j2PN32sT011491;
+	Fri, 25 Mar 2005 15:03:02 -0800 (PST)
+Date: Fri, 25 Mar 2005 15:03:02 -0800 (PST)
+From: David Kahn <dmk@noho.sfbay.sun.com>
+Message-Id: <200503252303.j2PN32sT011491@noho.SFBay.Sun.COM>
+To: fwarc-record@sun.com
+Subject: Re: sun4v Niagara CPU API [FWARC/2005/164 Timeout:  03/21/2005]
+Cc: sun4v-iteam@sun.com
+Status: RO
+Content-Length: 392
+
+>>This case is approved as a fast-track for integration
+>>into a minor release of the firmware and OS.
+>>
+>>The committment level is "Sun Private"
+>>
+>>The function numbers will be added to the registry.
+>
+>Correction: This case is approved for a micro
+>release of the OS.
+
+Correction: This case is approved for a minor
+release of the firmware and a micro/patch release
+of the OS.
+
+-David
+
+x
+

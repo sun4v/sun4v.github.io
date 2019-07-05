@@ -1,0 +1,185 @@
+
+1.0 Introduction
+
+This document describes the KT hardware performance monitoring features and
+the sun4v API used for guest access to those features.
+
+Section 2.0 summarizes the performance instrumentation support provided by 
+KT processor.
+
+Section 3.0 describes the sun4v API used to access KT performance registers.
+
+
+2.0 KT Performance Instrumentation
+
+The KT processor provides the following categories of performance 
+instrumentation:
+
+	- SPARC performance instrumentation
+	- DRAM performance instrumentation
+	- CLC performance instrumentation
+
+UltraSPARC {KT} supports up to a four way glueless coherent system
+using 6 coherence link channels. UltraSPARC {KT} contains sixteen
+SPARC physical processor cores. Each SPARC physical processor core
+has full hardware support for eight strands. 
+
+
+2.1 SPARC Performance Instrumentation
+
+Each hardware strand has a pair of registers to control and capture
+CPU-specific performance information:
+
+	Description					Access
+	-------------------------------------		--------
+	SPARC Performance Control Register		ASR=0x10
+	SPARC Performance Instrumentation counter	ASR=0x11
+
+These registers are directly accessible by the privileged code. The HT
+bit in SPARC PCR controls the counting of hyperprivileged events and may
+be set only in hyperprivileged mode. A new sample mode(bit-32 of PCR) is 
+added to PCR.
+
+2.2 DRAM Performance Instrumentation
+
+Each memory controller has four performance counters, packed into two
+registers, plus a register to control what is counted. The counters count
+all events for that memory controller, which receives read and write traffic
+from 8 L2 banks.
+
+The following table summarizes the location of these counters:
+
+	Description			Location
+	--------------------------	------------------
+	DRAM Perf Control Register	0x84.0000.n408
+	DRAM Perf Counter Register	0x84.0000.n410
+	DRAM Perf Counter Register	0x84.0000.n418
+
+where 'n' is 0 through 1 for a total of two different DRAM channels.  These
+registers are only accessible from hyperprivileged mode.
+
+2.3 L2 Control Register
+
+The L2 Control Register adds address interleave ceiling mask and nodeid fileds. The
+PERF_CONFIG bits are the only bits that are exposed with this interface. The perf
+control bits in the L2 Control Register are 37:36 which are bits 1:0 in the
+virtualized L2 Control Register.
+
+	Description			Location
+	--------------------------	------------------
+	L2 Control Register		0xA9.0000.0000
+
+
+3.0 sun4v API for SPARC and DRAM Performance Registers
+
+These sun4v APIs provide an interface to read and write the DRAM 
+performance registers as they are not accessible by the privileged
+software.
+
+The privileged software can use this interface to write the HT bit
+in the SPARC performance control register as well. The access to write
+to the HT bit can be denied, in which case the sun4v API returns
+ENOACCESS. The code using these interfaces must handle such a failure
+gracefully.
+
+The SPARC performance registers are used to get CLC performance counters
+by setting the PERF_CONFIG bits in L2_CONTROL_REG. In default mode all L2
+misses are counted. The PERF_CONFIG bits in L2 control register can be
+programmed to count misses serviced from local memory, misses serviced
+from remote memory or misses serviced by cache-to-cache transfers. As
+most of the L2_CONTROL_REG is not accessable by the privilege code,
+a virtualized generic register is used to program PERF_CONFIG bits in
+all L2_CONTROL_REG.
+
+
+3.1 Definitions
+
+The SPARC PCR, the virtualized L2_CONTROL_REG, and the DRAM performance
+registers are assigned unique performance register numbers(PerfReg#) 
+which uniquely identifies each performance register.
+
+The table below describes PerfReg# to access the performance control and
+counter registers:
+
+PerfReg# Scope  Description       Local address   Global address
+-------- -----  -----------       -------------   --------------
+0        local  SPARC PCR           -               -
+
+1        local  all L2 Bank CRs     -               -
+
+2+i*6    node-i NODEi_MCU0_PCR    0x84.0000.0408  DRAMi.0000.0408
+3+i*6    node-i NODEi_MCU0_PIC01  0x84.0000.0410  DRAMi.0000.0410
+4+i*6    node-i NODEi_MCU0_PIC23  0x84.0000.0418  DRAMi.0000.0418
+5+i*6    node-i NODEi_MCU1_PCR    0x84.0000.1408  DRAMi.0000.1408
+6+i*6    node-i NODEi_MCU1_PIC01  0x84.0000.1410  DRAMi.0000.1410
+7+i*6    node-i NODEi_MCU1_PIC23  0x84.0000.1418  DRAMi.0000.1418
+---------------------------------------------------------------------
+
+The interface for accessing the SPARC Performance Control Register
+operates on the entire register and always on the current hardware
+strand.
+
+
+3.2 API calls
+
+The following function numbers are applicable when accessing the
+KT SPARC, and DRAM performance registers:
+
+	KT_GET_PERFREG		0x122
+	KT_SET_PERFREG		0x123
+
+These API calls are part of the following API group:
+
+	Group#		Description
+	-----		------------
+	0x209		KT Performance Counters
+
+
+A error code EINVAL is returned when the register number is out of range.
+A error code ENOTSUPPORTED is returned when the regid is not supported.
+When a guest does not have access to a register the api call returns 
+ENOACCESS error code.
+
+3.2.1 kt_get_perfreg
+
+	    Entry:
+		trap#		FAST_TRAP
+		function#	KT_GET_PERFREG
+		arg0		PerfReg#
+
+	    Exit:
+		ret0		status (success or error code) (%o0)
+		ret1		Performance register value (%o1)
+
+This call reads the value of the SPARC, virtualized L2_CONTROL_REG or DRAM 
+performance register as specified by the "PerfReg#" argument.
+
+On success, the call returns a status of EOK and the value of
+the requested PerfReg.  Otherwise, it returns one of the following errors:
+
+	EINVAL			Invalid performance register number
+	ENOTSUPPORTED		register number not supported
+	ENOACCESS		No access allowed to the performance register
+	EWOULDBLOCK		Can not complete operation without blocking
+
+3.2.2 kt_set_perfreg
+	    Entry:
+		trap#		FAST_TRAP
+		function#	KT_SET_PERFREG
+		arg0		PerfReg#
+		arg1		PerfReg value
+
+	    Exit:
+		ret0		status (success or error code) (%o0)
+
+This calls sets the SPARC, virtualized L2_CONTROL_REG, or DRAM
+performance register as specified by the "PerfReg#" argument to the value
+as specified by the "PerfReg value" argument.
+
+On success the call returns a status of EOK.  Otherwise, it returns one
+of the following errors:
+
+	EINVAL			Invalid performance register number
+	ENOTSUPPORTED		register number not supported
+	ENOACCESS		No access allowed to the performance register
+	EWOULDBLOCK		Can not complete operation without blocking

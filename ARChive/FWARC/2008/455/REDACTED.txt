@@ -1,0 +1,9 @@
+The following files and directories have been redacted:
+
+    SCCS - ignored directory
+    mail.old - ignored file
+    materials/SCCS - ignored directory
+    sc - ignored directory
+    uirb - ignored directory
+
+See http://hub.opensolaris.org/bin/view/Community+Group+arc/arc-publish-historical-checklist for further information

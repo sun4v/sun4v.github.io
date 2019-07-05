@@ -1,0 +1,476 @@
+Title: NIU Device Tree Bindings and Machine Description Definitions
+
+Copyright, 2008 Sun Microsystems Inc. All rights reserved.
+
+0.  Purpose
+
+This document specifies the application of Open Firmware to the Niagara2 
+(N2) and KT Processors's Network Interface Unit (NIU) subsystem.
+
+0.1. Task Group Members:
+
+The following individuals are members of the task group that produced
+this document.
+
+Stephen Ehring        - Sun Microsystems, Inc.
+
+0.2. Glossary:
+
+NIU - Network Interface Unit
+
+XAUI - Ten (Roman numeral) Attachment Unit Interface
+
+0.3. Revision history
+
+----------------------------------------------------------------------
+| Version | Edited By | Changes
+----------------------------------------------------------------------
+| 1.1     | SEhring   | Initial document creation
+----------------------------------------------------------------------
+| 1.2     | SEhring   | Change xcf to xgc (typo)
+----------------------------------------------------------------------
+| 1.3     | SEhring   | Replace '#mac-addresses' with 'mac-addresses',
+|         |           | replace [rt]x-dma-channel properties with new
+|         |           | scheme that uses single property, add SIU bus
+|         |           | address format section, change siu device
+|         |           | name, add 'device_type' property to siu and
+|         |           | niu OBP nodes
+----------------------------------------------------------------------
+| 1.4     | SEhring   | Elaborate section 2.1 (Child Address Formats)
+----------------------------------------------------------------------
+| 1.5     | SEhring   | Removed #interrupt-vectors property, replaced 
+|         |           | 'siu' names with 'niu', removed 'pio*' and 
+|         |           | 'vio*' properties in favor of a well-defined 
+|         |           | 'reg' property, added explicit statement 
+|         |           | defining interrupt translation and format in 
+|         |           | section 2.1.2.4. Added section 2.5 to describe 
+|         |           | OBP probing, modify 'mac-addresses' MD 
+|         |           | property description to make it required.
+----------------------------------------------------------------------
+| 1.6     | SEhring   | Replace cfg-handle with port, add regline to 
+|         |           | uniquely specify the network device port 
+|         |           | number, and rename title of document to remove 
+|         |           | 'SIU'.
+----------------------------------------------------------------------
+| 1.7     | SEhring   | Typo correction in section numbers
+----------------------------------------------------------------------
+| 1.8     | SEhring   | Name change from niu-siu-binding.txt to
+|         |           | n2-niu-binding.txt
+----------------------------------------------------------------------
+| 1.9     | Raghu S   | Update to "phy-type" property value
+----------------------------------------------------------------------
+| 1.10    | SEhring   | Update to "compatible" property value for KT 
+|         |           | host processor, re-word descriptions so they 
+|         |           | are no longer N2-centric, and change the name 
+|         |           | of this document from n2-niu-binding.txt to 
+|         |           | niu-binding.txt
+----------------------------------------------------------------------
+| 1.11    | Raghuram  | An optional max-frame-size property.
+|         | Kothakota |
+----------------------------------------------------------------------
+1.  Overview
+
+The NIU is the IO subsystem inside of the host processor chip which 
+connects the chip to two optional external transceivers via the 
+industry-standard XAUI bus in order to provide dual 10Gb/second 
+ethernet interfaces. 
+
+The NIU subsystem is unique since most other ethernet controllers are 
+PCI bus devices, and therefore adhere to the IEEE 1275 PCI binding. 
+The NIU is a separate highly integrated device inside of the host 
+processor so it deserves it's own separate binding. The NIU must be 
+a child of the sun4v bus and the two network devices will be children 
+of this device node.
+
+2. NIU Device Characteristics
+
+The NIU device is a sun4v bus child device and adheres to the sun4v bus 
+binding [2]. The device is a direct child of the root nexus. The device
+has no addressable resources but acts as a multiplexor for the two
+network child devices.
+
+2.1. Child Address Formats
+
+        NIU child device addresses have 2 address cells and 2 size cells. Thus the
+	#address-cells property in the root node must be the default value of 2
+	and need not be present. The #size-cells property in the root node
+	must be the non-default value of 2, and must be present.
+
+2.1.1. Numerical Representation
+
+	The address format is two 32-bit cells, real.hi, real.lo.
+	The numerical representation is given in the following table:
+
+
+	 63-60--------------------------------32
+	 |   				       |
+	 pppp.pppp.pppp.pppp.pppp.pppp.pppp.pppp
+
+	31-------------------------------------0
+	 |				       |
+	 llll.llll.llll.llll.llll.llll.llll.llll
+
+	The size format is two 32-bit cells, size.hi, size.lo. The first
+	cell represents the most significant bits of a 64-bit number and
+	the second cell represents the low order 32-bits of the 64-bit number.
+	The 64-bit number is the size of the resource in bytes. A size value
+	of 0 means there are no addressable resources.
+
+	Where
+
+	pp...pp - defines the device port number . This value is extracted 
+                  from the MD node's 'port' property. The upper 32 bits of 
+                  the 64 bit value in the MD must therefore, be 0.
+
+	ll...ll - Lower address bits.
+
+		The lower (least significant) offset or address bits. These
+                bits are the offset from the base of the register range and 
+                describe the child's configuration registers
+
+       These child address spaces are used in conjunction with the niu node 
+       'ranges' property to describe the NIU register addresses inside of the
+       host processor.
+
+       The upper 32 bit cell of the child address will be the NIU port number 
+       and will determine which 'ranges' entry is added to lower 32 bit cell 
+       to form the sun4v address used to access the registers. The first 'reg'
+       property entry of each network node will contain the unit address in 
+       the upper 32 bits and all lower 32 bits will be zero. This 'reg' entry 
+       will have zero length.
+
+2.1.2. Text Representation
+
+	PPPPPPPP
+
+	where	PPPPPPPP is the hex-ASCII representation of the port number
+		which is encoded as a 32-bit value in the pp...pp bits.
+		Leading zeros may be omitted.
+
+	The canonical form of a NIU address omits leading zeros, uses the 
+        lower case characters "a" through "f" to represent the corresponding 
+        hex-ASCII digits and a single '0' to represent PPPPPPPP when the pp..pp 
+        bits are all zero.
+
+2.1.3. Unit Address Representation
+
+	The unit-address format is described by the canonical form
+	of the configuration address representation defined above.
+	(The PPPPPPPP form, example: /network@0 or /network@1). The
+        first entry in the 'reg' property will contain the numerical
+        form of this unit address as described in section 2.1.1 above.
+
+2.1.4 Interrupt Translation and Format
+
+        The NIU node does not do any interrupt translation, so the 
+        child device 'interrupts' property contains actual devinos 
+        which are directly translated to sysinos.
+
+        Be default the device mondo format is in compliance with 
+        section 2.3 of FWARC 2005/111 [2]. The first of the eight 
+        words will contain the sysino (obtained from the 
+        devino2sysino hcall) and the remaining seven words are 
+        undefined.  If the interface defined in FWARC 2006/074 is 
+        negotiated it will be used instead. 
+
+2.2. NIU Device Properties
+
+	"name"							S
+                Type: Prop-encoded-string
+		Standard propname. Defines the node name.
+		Value: "niu"
+
+	"compatible"						S
+		Type: Prop-encoded-array of prop-encoded-strings
+		Standard propname, defines compatible devices.
+		Value: "SUNW,niumx"
+
+	"device_type"						S
+                Type: Prop-encoded-string
+		Standard propname. Defines the node device type.
+		Value: "sun4v"
+
+	"reg"							S
+                Type: Prop-encoded-array
+		Standard propname, defines the devices addresses.
+		Contains a single entry with the config
+		space address of the NIU node.
+		The size of the config space entry must be zero.
+
+	"ranges"						S
+                Type: Prop-encoded-array
+		Standard propname, defines the child to parent 
+                physical address translation. 
+
+	"#address-cells"					S
+                Type: Prop-encoded-integer
+		Standard propname, defines the child address format.
+		Value: 2
+
+	"#size-cells"						S
+                Type: Prop-encoded-integer
+		Standard propname, defines the child size format.
+		Value: 2
+
+2.3. NIU Device Methods
+
+	open ( -- okay? )					M
+		Prepare this device for subsequent use.
+
+	close ( -- )						M
+		Close this previously opened device.
+
+	decode-unit	( unit-addr unit-len -- device.addr )	M
+		Convert text unit-string to NIU device address.
+
+	encode-unit	( device.addr -- unit-str unit-len )	M
+		Convert NIU device address to text unit-string.
+
+	dma-map-in	( virt size cacheable? -- devaddr )	M
+		Convert virtual address to device bus DMA address.
+
+	dma-map-out	( virt devaddr size -- )		M
+		Free DMA mapping set up with dma-map-in.
+
+	dma-alloc	( size -- virt )			M
+		Allocate a memory region for later use.
+
+	dma-free	( virt size -- )			M
+		Free memory allocated with dma-alloc.
+
+	dma-sync	( virt devaddr size -- )		M
+		Synchronize (flush) DMA memory caches.
+
+2.4. NIU MD node
+
+        NIU device node
+        -------------------------
+
+        Name:                   iodevice
+        Category:               optional, under phys_io
+        Required subordinates:  -
+        Optional subordinates:  xaui-mac
+
+        Description:
+
+        This node describes the NIU nexus properties to the guest
+
+        Properties:
+
+    Name              Tag        Req'd? Description
+    ----------------------------------------------------------------------
+    device-type       PROP_STR   Yes  A string type for this node. This value 
+                                      is currently defined as 'sun4v'.
+    ----------------------------------------------------------------------
+    compatible        PROP_DATA  Yes  An array of string names for this node.
+                                      This value is currently defined as
+                                      'SUNW,niumx'.
+    ----------------------------------------------------------------------
+    cfg-handle        PROP_VAL   Yes  A 64-bit unsigned integer identifying 
+                                      this device uniquely.
+
+2.5 NIU Network Device Probing
+       When OBP attaches the FCode driver to the NIU, that FCode driver will 
+       traverse all forward links in the NIU MD node and read the 
+       'compatible' property of any MD nodes that are found. If an FCode 
+       driver exists with a name that matches the compatible property, a 
+       new device tree node will be created as a child of the NIU device 
+       tree node and the associated FCode driver will attach to that node.
+
+3 Network Device Characteristics
+
+The NIU module consists of a set of two 10Gb/second packet-oriented devices 
+that implement an industry standard XAUI interface that connects to an 
+external PHY. A group of transmit and receive DMA channels is allocated to 
+each of the two network ports out of a shared pool of resources. The DMA 
+channel properties, interrupts, phy, and MAC address properties are extracted 
+from the machine description.
+
+3.1. Network Device Properties
+
+	"name"							S
+                Type: Prop-encoded-string
+		Standard propname. Defines the node name.
+		Value: "network"
+
+	"compatible"						S
+		Type: Prop-encoded-array of prop-encoded-strings
+		Standard propname, defines compatible devices.
+		Values: "SUNW,niusl", "SUNW,niusl-kt"
+
+	"device_type"						S
+                Type: Prop-encoded-string
+		Standard propname. Defines the node device type.
+		Value: "network"
+
+        "local-mac-address"                                     S
+                Type: Prop-encoded-integer
+                Contents: Standard propname, specified preassigned
+                network address. An array of 6 bytes encoded with
+                encode-bytes.
+                Value : Derived from Machine description
+	
+	"interrupts"						S
+                Type: Prop-encoded-array
+		Standard propname, an array of system interrupts 
+		allocated for this network device. 
+
+	"reg"							S
+                Type: Prop-encoded-array
+		Standard propname, defines the devices' addresses. The 
+                'reg' property of each network device will have four 
+                entries:
+                - Port (configuration) address. The upper 32 bits of 
+                  this reg entry will be the device's unit address, and 
+                  it will uniquely specify the port number of this 
+                  device. The lower 32 bits of the address in this reg 
+                  entry will be zero, and the reg entry length will be 
+                  zero.
+                - Programmed I/O region (PIO). This addressable region 
+                  is 0x1000000 in size and contains the device 
+                  configuration registers.
+                - First virtualized region (VIO1) This addressable 
+                  region is 0x8000 in size and starts at base address 
+                  offset by 0x1000000 from the PIO region
+                - Second virtualized region (VIO2) This addressable 
+                  region is 0x8000 in size and starts at base address 
+                  offset by 0x5000000 from the PIO region
+
+	"tx-dma-channels"					S
+                Type: Prop-encoded-array
+                An array of pairs of integers (must contain a 
+                multiple of '2' integers). The first integer of 
+                each pair specifies a base transmit DMA channel 
+                number, the second integer of the pair specifies 
+                then number of transmit DMA channels (beginning 
+                at 'base') that the device node has been 
+                allocated.		
+
+	"rx-dma-channels"					S
+		Type: Prop-encoded-array
+                An array of pairs of integers (must contain a 
+                multiple of '2' integers). The first integer of 
+                each pair specifies a base receive DMA channel 
+                number, the second integer of the pair specifies 
+                then number of receive DMA channels (beginning 
+                at 'base') that the device node has been 
+                allocated.
+
+	"mac-addresses"						S
+                Type: Prop-encoded-array
+		An array of 6 byte entries encoded with 
+                encode-bytes. Each 6 byte entry is a 
+                preassigned MAC address that this NIU node may 
+                use.
+
+         "phy-type"						S
+                Type: Prop-encoded-string
+                This property will contain a string that specifies 
+                the type of external physical layer transceiver is 
+                connected to the XAUI bus of this NIU port. The 
+                currently defined values are:
+                   'xgf'  - 10 (roman numeral) gigabit fiber
+                   'xgc'  - 10 (roman numeral) gigabit copper 
+		   'xgsd' - 10 (roman numeral) gigabit SerDes
+		   'gsd'  -  1 (roman numeral) gigabit SerDes
+
+        "max-frame-size"                              		S
+                Type: Prop-encoded-integer
+                Contents: An integer value
+                Value : An optional property that provides the
+			maximum frame size that is currently
+			programmed in the MAC.
+
+3.2. Network Device Methods
+
+	open ( -- okay? )					M
+		Prepare this device for subsequent use.
+
+	close ( -- )						M
+		Close this previously opened device.
+
+	read ( addr len -- actual )				M
+		Read device into memory buffer; return actual 
+		byte count.
+
+	write ( addr len -- actual )				M
+		Write memory buffer to device; return actual 
+		byte count.
+
+	load ( addr -- size )					M
+		Load a client program from device into memory
+
+3.3. Network MD node
+
+        NIU device node
+        -------------------------
+
+        Name:                   xaui-mac
+        Category:               optional, under iodevice
+        Required subordinates:  -
+        Optional subordinates:  -
+
+        Description:
+
+        This node describes the NIU device properties, and the 
+        transceiver properties of the external phy that is connected 
+        to the XAUI bus on this NIU port
+
+        Properties:
+
+    Name              Tag        Req'd? Description
+    ----------------------------------------------------------------------
+    device-type       PROP_STR   Yes  A string type for this node. This 
+                                      value is currently defined as 
+                                      'network'.
+    ----------------------------------------------------------------------
+    compatible        PROP_DATA  Yes  An array of string names for this node.
+                                      This value is currently defined as
+                                      'SUNW,niusl' for N2 based systems, and
+                                      'SUNW,niusl-kt' for KT based systems
+    ----------------------------------------------------------------------
+    port              PROP_VAL   Yes  A 64-bit unsigned integer identifying 
+                                      this device uniquely.
+    ----------------------------------------------------------------------
+    phy-type          PROP_STR   Yes  This property will contain a string 
+				      that specifies the type of external 
+				      physical layer transceiver is 
+				      connected to the XAUI bus of this 
+				      NIU port. The currently defined 
+				      values are:
+				          'xgf'  - 10 (roman numeral) 
+					           gigabit fiber
+				          'xgc'  - 10 (roman numeral) 
+					           gigabit copper
+			                  'xgsd' - 10 (roman numeral)
+						   gigabit SerDes
+			                  'gsd'  - 1 (roman numeral)
+						   gigabit SerDes
+    ----------------------------------------------------------------------
+    mac-addresses     PROP_DATA  Yes  An array of MAC addresses allocated 
+                                      for use by this NIU node.
+    ----------------------------------------------------------------------
+    tx-dma-channels   PROP_VAL   Yes  Pairs of transmit DMA channels 
+                                      allocated to this NIU node (see 
+                                      description in device tree section).
+    ----------------------------------------------------------------------
+    rx-dma-channels   PROP_VAL   Yes  Pairs of receive DMA channels 
+                                      allocated to this NIU node (see 
+                                      description in device tree section).
+    ----------------------------------------------------------------------
+    interrupts        PROP_DATA  Yes  An array of system interrupts 
+		                      allocated for this NIU device
+    ----------------------------------------------------------------------
+
+References
+	[1] IEEE Std 1275-1994 Standard for Boot (Initialization,
+	    Configuration) Firmware, Core Practices and Requirements.
+
+        [2] Sun4v Bus Bindings
+	    http://sac.eng/Archives/CaseLog/arc/FWARC/2005/111/final.materials/sun4v-binding.txt
+
+	[3] Niagara2 PRM, Revision 1.2
+	    https://systemsweb.sfbay.sun.com/n2/team/specs/N2-HP-Sun-1.2.pdf
+
+        [4] sun4v machine description
+            http://sac.sfbay/FWARC/2005/115/final.materials/

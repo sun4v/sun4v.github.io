@@ -1,0 +1,136 @@
+1. Introduction
+   1.1. Project/Component Working Name:
+        PRI versioning
+
+   1.2. Name of Document Author/Supplier:
+        Eric Sharakan
+
+   1.3. Date of This Document:
+        12/12/2008
+
+   1.4. Name of Major Document Customer(s)/Consumer(s):
+        1.4.1. The PAC or CPT you expect to review your project:
+                None.
+
+        1.4.2. The ARC(s) you expect to review your project:
+                FWARC.
+
+        1.4.3. The Director/VP who is "Sponsoring" this project:
+                Jerri-Ann Meyer
+
+        1.4.4. The name of your business unit:
+                Software Group (SG)
+                        (Sparc Platform Software)
+
+   1.5. Email Aliases:
+        1.5.1. Responsible Manager: john.falkenthal@sun.com
+        1.5.2. Responsible Engineer: eric.sharakan@sun.com
+        1.5.3. Marketing Manager: glenn.rysko@sun.com
+        1.5.4. Interest List: ldoms-internal@sun.com
+
+2. Project Summary
+
+   2.1. Project Description:
+
+	This case adds a version number string to the PRI, allowing consumers
+	to make appropriate decisions about support and handling based on the
+	versions it knows about as compared to the version of the supplied PRI.
+
+   2.2. Risks and Assumptions:
+
+	It is assumed this property will be added coincidentally with the
+	introduction of the changes specified by FWARC/2008/300.
+
+
+3. Business Summary
+   3.1. Problem Area:
+
+   	Software needs to be able to interpret & intelligently act upon the PRI
+	as it is enhanced & updated.
+
+   3.2. Market/Requester:
+        Supernova/KT platforms, to allow the PRI & its consumers to evolve,
+	in particular to enable platform independent moduled such as the LDom
+	Manager to operate correctly across different generations of platforms
+	and associated PRI changes.
+
+   3.3. Business Justification:
+        
+
+   3.4. Competitive Analysis:
+        
+
+   3.5. Opportunity Window/Exposure:
+        Supernova Firmware.
+
+   3.6. How will you know when you are done?:
+        When the changes are integrated into the vBSC gates.
+
+4. Technical Description:
+
+    4.1 Overview
+
+    	The root node of the PRI is now required to include a "pri-version"
+	property
+
+   4.2 PRI updates
+
+   	The following is added as section 1.1 of the updated PRI Specfication
+	(version 1.5):
+
+
+		1.1  Root Node
+
+		Name		Category	Required subordinates
+		----		--------	---------------------
+		root		core		components
+
+		Description
+		-----------
+		This node is the top-most node of the PRI.
+
+		1.1.1 PRI version property
+
+		Name		Tag		Required
+		----		---		--------
+		pri-version	PROP_STR	yes
+
+		Description
+		-----------
+		Version string for the PRI.  Currently defined version is "1.0".
+
+5. Reference Documents:
+  [1] Physical Resource Inventory (PRI) FWARC case
+	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/700/
+  [2] Updates to PRI structures
+	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2007/138/
+  [3] Sun4v FMA Platform Independent FMA Topology Enumeration
+	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2008/300
+  [4] Physical Resource Inventory (PRI) Specification
+  	http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/Specifications/PRI_Specification.txt
+
+6. Resources and Schedule:
+   6.1. Projected Availability:	Q1FY09
+
+   6.2. Cost of Effort: 2 person months
+
+   6.3. Cost of Capital Resources: N/A
+
+   6.4. Product Approval Committee requested information:
+   	6.4.1. Consolidation or Component Name: vBSC, Solaris
+	6.4.3. Type of CPT Review and Approval expected: N/A
+        6.4.4. Project Boundary Conditions: N/A
+	6.4.5. Is this a necessary project for OEM agreements: No.
+	6.4.6. Notes: None
+	6.4.7. Target RTI Date/Release: TBD
+	6.4.8. Target Code Design Review Date: TBD
+	6.4.9. Update approval addition: N/A		
+
+   6.5. ARC review type: N/A
+		
+7. Prototype Availability:
+   7.1. Prototype Availability:
+	Q3FY08
+
+   7.2. Prototype Cost:
+      2 person months	

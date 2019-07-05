@@ -1,0 +1,119 @@
+   
+1. What specifically is the proposal that we are reviewing?
+
+     This proposal represents a migration of hardware-specific data from 
+     OpenBoot to the machine descriptions. The changes can be released in a  
+     major/minor firmware release version.
+
+2. What is the motivation for it?
+
+     On current sun4v platforms, many pieces of hardware-specific data is hard  
+     coded in OpenBoot. This hardware-specific data includes:
+          - interrupt-map topology
+          - MAC address allocation scheme
+          - dynamic IO configuration (XAUI vs. on board phy on Maramba)
+          - PCI/PCIE slot names
+
+     One of the goals of the sun4v architecture is to make each guest domain  
+     (and hence OpenBoot) agnostic regarding the underlying hardware. In order  
+     to accomplish this, all hardware-specific data needs to be extracted from  
+     the MD. This proposal accomplishes this goal.
+
+3. What is its plan?
+
+     The proposal has been reviewed by key members of the OpenBoot,  
+     reset/config, and LDOMS manager teams, and it has been deemed an  
+     acceptable solution to the problems outlined in the onepager.
+
+4. Are there related projects in Sun?
+
+     This project is related to the sub-root-nexus IO partitioning  
+     functionality that is being designed by the LDOMs team. The way the  
+     proposal has been designed allows the LDOMs manager to trim various IO  
+     devices from a guest, and the currently available MD cleanup routines  
+     will still work.
+
+5. What is the technical content of the project?
+
+     The content of the project is the definition of new MD nodes to represent  
+     on board hardware IO devices. Then modifications to OpenBoot will have to  
+     use these nodes during IO device probing.
+
+6. How is the project delivered into the system?
+
+     The project is delivered as a major/minor change to the firmware (OpenBoot 
+     and reset/config).
+
+7. What are the project's hardware platform dependencies? Is it expected to
+work on all systems (Desktop thru servers)?
+
+     The proposal will work on all sun4v systems.
+
+8. What is its FW operational environment:
+
+     The environment is similar to the current sun4v firmware environment,  
+     although OpenBoot will be reading much more information from the MDs.
+
+9. What is its user interface (tty, graphical, leds, sound, etc.)?
+
+     There is no user interface. Ideally, the end user will not notice a single 
+     difference in functionality.
+
+10. What are your project's other external interfaces (exported and
+imported)?
+
+     There are no external interfaces
+
+11. What are its other significant internal interfaces (inter-subsystem and
+inter-invocation)?
+
+     OpenBoot will now depend on the existence of IO device data in the machine 
+     description
+
+12. Is the interface extensible? How is the interface expected to evolve?
+
+   * How is versioning handled?
+
+     Via the pre-existing MD extraction versioning mechanisms.
+
+     The interface is extensible by defining new IO device-type nodes.
+
+13. How do the interfaces adapt to a changing world?
+
+     The interfaces attempt to make OpenBoot more stable in a changing world by 
+     moving hardware knowledge into the MDs.
+
+14. What internationalization issues are involved? N/A
+
+     [Note that Firmware is currently exempt from the "Big Rules" regarding
+     L10N and I18N because it represents a huge design and delivery problem
+     beyond the scope of the current architecture. Resolution is TBD.]
+
+15. How will the project contribute (positively or negatively) to "system
+load" and "perceived performance":
+
+     There should be no perceived performance effects. If anything, performance 
+     will improve since OpenBoot will not have to probe non-existent devices.
+
+16. How does the project deal with failure and recovery?
+
+     Failure of the MD to create the correct IO topology will cause incorrect  
+     IO device properties.
+
+17. Issues? Please identify the issues which you would like the ARC to
+address.
+
+      N/A
+
+18. Security
+
+      There are no major security issues.
+
+19. Database
+
+      N/A
+
+20. Appendices:
+
+     Materials are in the case directory.
+

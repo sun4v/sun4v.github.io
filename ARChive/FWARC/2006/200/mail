@@ -1,0 +1,1642 @@
+From sacadmin Thu Apr  6 23:01:35 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k3761ZIQ023040
+	for <fwarc@sac.eng.sun.com>; Thu, 6 Apr 2006 23:01:35 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k3761TO24119;
+	Thu, 6 Apr 2006 23:01:29 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IXC00G058QGBE00@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 06 Apr 2006 23:01:28 -0700 (PDT)
+Received: from brmea-mail-1.sun.com ([192.18.98.31])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IXC00FSH8QFTP00@nwk-avmta-2.sfbay.sun.com>; Thu,
+ 06 Apr 2006 23:01:27 -0700 (PDT)
+Received: from fe-amer-06.sun.com ([192.18.108.180])
+	by brmea-mail-1.sun.com (8.12.10/8.12.9) with ESMTP id k3761R3d013252; Fri,
+ 07 Apr 2006 00:01:27 -0600 (MDT)
+Received: from conversion-daemon.mail-amer.sun.com by mail-amer.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IXC00F0188VBW00@mail-amer.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Fri,
+ 07 Apr 2006 00:01:27 -0600 (MDT)
+Received: from sun.com ([129.150.21.252])
+ by mail-amer.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep  9
+ 2005)) with ESMTPSA id <0IXC007EU8QEEQ00@mail-amer.sun.com>; Fri,
+ 07 Apr 2006 00:01:27 -0600 (MDT)
+Date: Thu, 06 Apr 2006 23:01:27 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: 2006/200 sun4v error handling
+In-reply-to: <442980A0.7050605@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Jim Quigley <Jim.Quigley@Sun.COM>, pq-arch@Sun.COM
+Message-id: <44360037.5040700@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <442980A0.7050605@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 755
+
+I'm sponsoring this case as a fast-track for Jim Quigley.
+The fast-track timeout is April 17, 2006.
+
+The materials are in the case directory under 'materials':
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/200/
+The normative text in hv_sun4v_errorphilosophy.txt is in section 5.2.
+There is also an interface table.
+
+The case defines the structure of the error reports in the
+resumable and non-resumable error queues that are
+configured by API CPU_QCONF introduced by FWARC/2005/116.
+
+The shipping Ontario firmware (hypervisor) and Solaris already
+implement the interfaces in this case.
+
+The requested binding is for a minor release of the firmware and
+a micro release of the OS, the committment level of the interfaces
+is Sun Private.
+
+Tony.
+
+
+
+From sacadmin Fri Apr  7 00:48:26 2006
+Received: from sunmail4.Singapore.Sun.COM (sunmail4.Singapore.Sun.COM [129.158.71.19])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k377mOIQ024206
+	for <fwarc@sac.eng.Sun.COM>; Fri, 7 Apr 2006 00:48:25 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail4.Singapore.Sun.COM (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k377mI7x002875;
+	Fri, 7 Apr 2006 15:48:24 +0800 (SGT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IXC00F01DOL3V00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 07 Apr 2006 00:48:21 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IXC00JT6DOKQR60@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 07 Apr 2006 00:48:20 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k377mIoc011631; Fri, 07 Apr 2006 00:48:18 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.12.10+Sun/8.12.10) with ESMTP id k377mHZO094369;
+ Fri, 07 Apr 2006 00:48:17 -0700 (PDT)
+Date: Fri, 07 Apr 2006 00:48:16 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/200 sun4v error handling
+To: Tony Sumpter <Tony.Sumpter@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Jim Quigley <Jim.Quigley@sun.com>,
+   pq-arch@sun.com, Wesley Shao <wesley.shao@sun.com>,
+   Ashley Saulsbury <ashley.saulsbury@sun.com>
+Message-id: <44361940.7090505@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+User-Agent: Thunderbird 1.5 (Windows/20051201)
+Status: RO
+Content-Length: 2200
+
+
+There's a whole lotta text there, but we're only
+being asked to approve table 5.2-I ("I"?) and
+the explanatory sections for the field values,
+right? (I wish they wouldn't put C structs in
+docs like this without an annotation about how
+they expect the compiler to align the elements
+and the structure itself.)
+
+I would just rewrite the interface table, so that
+the interface being defined is the ereport. It's
+not the individual fields, it's just the ereport
+format.
+
+	Interfaces exported
+	ereport			...	See 5.2 of ...
+
+Plus, is this all consistent with the existing
+io ereports? Why is STICK in the second word?
+Is this different than the existing ereport
+mechanism or what?
+
+Also, Tony, as you know, the ereport format
+has to be associated with its own or some API
+group. (At this point, probably it's own group
+makes sense) and presumably this defines v1.x
+of the ereport API group (assuming this is what
+is currently implemented?) That way if ereports
+evolve (especially since there's no versioning
+in the data struct itself) a client can request
+a higher version of the ereport interface if it
+supports the higher version.
+
+Has Wes and his group looked at this?
+
+There was also some question about the ereports
+when we wanted to add argument fields to the
+interrupt reports. Please check with Ash too.
+I don't remember if we resolved the issue with
+this or not.
+
+-David
+
+
+
+Tony Sumpter wrote:
+> I'm sponsoring this case as a fast-track for Jim Quigley.
+> The fast-track timeout is April 17, 2006.
+> 
+> The materials are in the case directory under 'materials':
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/200/
+> The normative text in hv_sun4v_errorphilosophy.txt is in section 5.2.
+> There is also an interface table.
+> 
+> The case defines the structure of the error reports in the
+> resumable and non-resumable error queues that are
+> configured by API CPU_QCONF introduced by FWARC/2005/116.
+> 
+> The shipping Ontario firmware (hypervisor) and Solaris already
+> implement the interfaces in this case.
+> 
+> The requested binding is for a minor release of the firmware and
+> a micro release of the OS, the committment level of the interfaces
+> is Sun Private.
+> 
+> Tony.
+> 
+> 
+
+
+
+
+From sacadmin Mon Apr 17 18:29:21 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k3I1TKIQ006841
+	for <fwarc@sac.eng.sun.com>; Mon, 17 Apr 2006 18:29:20 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k3I1TGA26675;
+	Mon, 17 Apr 2006 18:29:16 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IXW00H019GREK00@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 17 Apr 2006 18:29:15 -0700 (PDT)
+Received: from nwkes-gis-mail-2.sun.com ([10.4.134.6])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IXW00MEN9GRHGB0@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 17 Apr 2006 18:29:15 -0700 (PDT)
+Received: from d1-sfbay-05.sun.com ([192.18.39.115])
+	by nwkes-gis-mail-2.sun.com (8.12.9/8.12.9) with ESMTP id k3I1TFgL029860; Mon,
+ 17 Apr 2006 18:29:15 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-05.sun.com by d1-sfbay-05.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IXW00M01796Z700@d1-sfbay-05.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Mon,
+ 17 Apr 2006 18:29:15 -0700 (PDT)
+Received: from sun.com ([129.144.27.236])
+ by d1-sfbay-05.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0IXW00FG59GQ1840@d1-sfbay-05.sun.com>; Mon,
+ 17 Apr 2006 18:29:14 -0700 (PDT)
+Date: Mon, 17 Apr 2006 18:29:22 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: 2006/200 sun4v error handling
+In-reply-to: <44361940.7090505@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, Jim Quigley <Jim.Quigley@Sun.COM>,
+   pq-arch@Sun.COM, Wesley Shao <wesley.shao@Sun.COM>,
+   Ashley Saulsbury <ashley.saulsbury@Sun.COM>
+Message-id: <444440F2.8070405@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <44361940.7090505@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 2554
+
+Apologies for the slow response.
+
+I will change the case status to 'waiting need spec' to give
+us time to answer the issues.
+
+The versioning issue needs to be thought through, in particular.
+
+Tony.
+
+David Kahn wrote:
+
+> 
+> There's a whole lotta text there, but we're only
+> being asked to approve table 5.2-I ("I"?) and
+> the explanatory sections for the field values,
+> right? (I wish they wouldn't put C structs in
+> docs like this without an annotation about how
+> they expect the compiler to align the elements
+> and the structure itself.)
+> 
+> I would just rewrite the interface table, so that
+> the interface being defined is the ereport. It's
+> not the individual fields, it's just the ereport
+> format.
+> 
+>     Interfaces exported
+>     ereport            ...    See 5.2 of ...
+> 
+> Plus, is this all consistent with the existing
+> io ereports? Why is STICK in the second word?
+> Is this different than the existing ereport
+> mechanism or what?
+> 
+> Also, Tony, as you know, the ereport format
+> has to be associated with its own or some API
+> group. (At this point, probably it's own group
+> makes sense) and presumably this defines v1.x
+> of the ereport API group (assuming this is what
+> is currently implemented?) That way if ereports
+> evolve (especially since there's no versioning
+> in the data struct itself) a client can request
+> a higher version of the ereport interface if it
+> supports the higher version.
+> 
+> Has Wes and his group looked at this?
+> 
+> There was also some question about the ereports
+> when we wanted to add argument fields to the
+> interrupt reports. Please check with Ash too.
+> I don't remember if we resolved the issue with
+> this or not.
+> 
+> -David
+> 
+> 
+> 
+> Tony Sumpter wrote:
+> 
+>> I'm sponsoring this case as a fast-track for Jim Quigley.
+>> The fast-track timeout is April 17, 2006.
+>>
+>> The materials are in the case directory under 'materials':
+>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/200/
+>> The normative text in hv_sun4v_errorphilosophy.txt is in section 5.2.
+>> There is also an interface table.
+>>
+>> The case defines the structure of the error reports in the
+>> resumable and non-resumable error queues that are
+>> configured by API CPU_QCONF introduced by FWARC/2005/116.
+>>
+>> The shipping Ontario firmware (hypervisor) and Solaris already
+>> implement the interfaces in this case.
+>>
+>> The requested binding is for a minor release of the firmware and
+>> a micro release of the OS, the committment level of the interfaces
+>> is Sun Private.
+>>
+>> Tony.
+>>
+>>
+> 
+> 
+> 
+
+
+
+From sacadmin Sun Apr 30 22:31:12 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.12.9+Sun/8.12.9) with ESMTP id k415VCIQ025405
+	for <fwarc@sac.eng.sun.com>; Sun, 30 Apr 2006 22:31:12 -0700 (PDT)
+Received: from nwk-avmta-2.sfbay.sun.com (nwk-avmta-2.SFBay.Sun.COM [129.149.247.22])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k415V8D28286;
+	Sun, 30 Apr 2006 22:31:08 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-2.sfbay.sun.com by
+ nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IYK00C03NBWYS00@nwk-avmta-2.sfbay.sun.com>; Sun,
+ 30 Apr 2006 22:31:08 -0700 (PDT)
+Received: from nwkes-gis-mail-1.sun.com ([10.4.134.5])
+ by nwk-avmta-2.sfbay.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IYK001N6NBVJO90@nwk-avmta-2.sfbay.sun.com>; Sun,
+ 30 Apr 2006 22:31:07 -0700 (PDT)
+Received: from d1-sfbay-04.sun.com ([192.18.39.114])
+	by nwkes-gis-mail-1.sun.com (8.12.9/8.12.9) with ESMTP id k415V76O002606; Sun,
+ 30 Apr 2006 22:31:07 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-04.sun.com by d1-sfbay-04.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IYK00C01DJG0700@d1-sfbay-04.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Sun,
+ 30 Apr 2006 22:31:07 -0700 (PDT)
+Received: from sun.com ([129.150.21.187])
+ by d1-sfbay-04.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0IYK008PFNBUOU40@d1-sfbay-04.sun.com>; Sun,
+ 30 Apr 2006 22:31:06 -0700 (PDT)
+Date: Sun, 30 Apr 2006 22:31:22 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: 2006/200 sun4v error handling
+In-reply-to: <444440F2.8070405@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Jim Quigley <Jim.Quigley@Sun.COM>, pq-arch@Sun.COM,
+   Wesley Shao <wesley.shao@Sun.COM>,
+   Ashley Saulsbury <ashley.saulsbury@Sun.COM>
+Message-id: <44559D2A.5090406@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <44361940.7090505@sun.com> <444440F2.8070405@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 3241
+
+Jim has provided a normative-only spec. file which I have placed at:
+
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/200/materials/hv_sun4v_ver1.0.txt
+
+Since API versions apply to only to APIs, structures can only be versioned
+by adding new APIs (if separate versioning mechanisms are to be avoided).
+
+A description of how this will work for the error queues will be sent out
+as part of the first case to update the queue structure (2006/201),
+but essentially there will need to be a new API function number
+to configure the error queues to get the new contents.
+
+Tony.
+
+Tony Sumpter wrote:
+
+> Apologies for the slow response.
+> 
+> I will change the case status to 'waiting need spec' to give
+> us time to answer the issues.
+> 
+> The versioning issue needs to be thought through, in particular.
+> 
+> Tony.
+> 
+> David Kahn wrote:
+> 
+>>
+>> There's a whole lotta text there, but we're only
+>> being asked to approve table 5.2-I ("I"?) and
+>> the explanatory sections for the field values,
+>> right? (I wish they wouldn't put C structs in
+>> docs like this without an annotation about how
+>> they expect the compiler to align the elements
+>> and the structure itself.)
+>>
+>> I would just rewrite the interface table, so that
+>> the interface being defined is the ereport. It's
+>> not the individual fields, it's just the ereport
+>> format.
+>>
+>>     Interfaces exported
+>>     ereport            ...    See 5.2 of ...
+>>
+>> Plus, is this all consistent with the existing
+>> io ereports? Why is STICK in the second word?
+>> Is this different than the existing ereport
+>> mechanism or what?
+>>
+>> Also, Tony, as you know, the ereport format
+>> has to be associated with its own or some API
+>> group. (At this point, probably it's own group
+>> makes sense) and presumably this defines v1.x
+>> of the ereport API group (assuming this is what
+>> is currently implemented?) That way if ereports
+>> evolve (especially since there's no versioning
+>> in the data struct itself) a client can request
+>> a higher version of the ereport interface if it
+>> supports the higher version.
+>>
+>> Has Wes and his group looked at this?
+>>
+>> There was also some question about the ereports
+>> when we wanted to add argument fields to the
+>> interrupt reports. Please check with Ash too.
+>> I don't remember if we resolved the issue with
+>> this or not.
+>>
+>> -David
+>>
+>>
+>>
+>> Tony Sumpter wrote:
+>>
+>>> I'm sponsoring this case as a fast-track for Jim Quigley.
+>>> The fast-track timeout is April 17, 2006.
+>>>
+>>> The materials are in the case directory under 'materials':
+>>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/200/
+>>> The normative text in hv_sun4v_errorphilosophy.txt is in section 5.2.
+>>> There is also an interface table.
+>>>
+>>> The case defines the structure of the error reports in the
+>>> resumable and non-resumable error queues that are
+>>> configured by API CPU_QCONF introduced by FWARC/2005/116.
+>>>
+>>> The shipping Ontario firmware (hypervisor) and Solaris already
+>>> implement the interfaces in this case.
+>>>
+>>> The requested binding is for a minor release of the firmware and
+>>> a micro release of the OS, the committment level of the interfaces
+>>> is Sun Private.
+>>>
+>>> Tony.
+>>>
+>>>
+>>
+>>
+>>
+> 
+> 
+
+
+
+From sacadmin Wed May 17 20:14:21 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4I3ELXr008944
+	for <fwarc@sac.eng.sun.com>; Wed, 17 May 2006 20:14:21 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k4I3EKl21445;
+	Wed, 17 May 2006 20:14:20 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IZF00901YBWMM00@brm-avmta-1.central.sun.com>; Wed,
+ 17 May 2006 21:14:20 -0600 (MDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IZF005UHYBVAVC0@brm-avmta-1.central.sun.com>; Wed,
+ 17 May 2006 21:14:19 -0600 (MDT)
+Received: from d1-sfbay-03.sun.com ([192.18.39.113])
+	by nwkea-pix-1.sun.com (8.12.10+Sun/8.12.9) with ESMTP id k4I3EJba015643; Wed,
+ 17 May 2006 20:14:19 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-03.sun.com by d1-sfbay-03.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IZF00H01VQZV300@d1-sfbay-03.sun.com>
+ (original mail from Hitendra.Zhangada@Sun.COM); Wed,
+ 17 May 2006 20:14:19 -0700 (PDT)
+Received: from [129.150.33.24] by d1-sfbay-03.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0IZF00F23YBTHD40@d1-sfbay-03.sun.com>; Wed,
+ 17 May 2006 20:14:19 -0700 (PDT)
+Date: Wed, 17 May 2006 20:14:18 -0700
+From: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Subject: Re: 2006/200 sun4v error handling
+In-reply-to: <44559D2A.5090406@sun.com>
+Sender: Hitendra.Zhangada@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Jim Quigley <Jim.Quigley@Sun.COM>, pq-arch@Sun.COM,
+        Wesley Shao <Wesley.Shao@Sun.COM>,
+        Ashley Saulsbury <ashley.saulsbury@Sun.COM>
+Message-id: <446BE68A.3000807@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <44361940.7090505@sun.com> <444440F2.8070405@sun.com>
+ <44559D2A.5090406@sun.com>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)
+ Gecko/20050915
+Status: RO
+Content-Length: 3818
+
+Tony Sumpter wrote:
+
+> Jim has provided a normative-only spec. file which I have placed at:
+> 
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/200/materials/hv_sun4v_ver1.0.txt 
+> 
+> 
+> Since API versions apply to only to APIs, structures can only be versioned
+> by adding new APIs (if separate versioning mechanisms are to be avoided).
+> 
+> A description of how this will work for the error queues will be sent out
+> as part of the first case to update the queue structure (2006/201),
+> but essentially there will need to be a new API function number
+> to configure the error queues to get the new contents.
+
+Are we expecting updates for this case?  I did not see any timer
+set for this case and the IAM file states "waiting need spec".
+This leads me to believe that the case is not ready for review yet,
+is it?
+
+Thanks.
+
+> 
+> Tony.
+> 
+> Tony Sumpter wrote:
+> 
+>> Apologies for the slow response.
+>>
+>> I will change the case status to 'waiting need spec' to give
+>> us time to answer the issues.
+>>
+>> The versioning issue needs to be thought through, in particular.
+>>
+>> Tony.
+>>
+>> David Kahn wrote:
+>>
+>>>
+>>> There's a whole lotta text there, but we're only
+>>> being asked to approve table 5.2-I ("I"?) and
+>>> the explanatory sections for the field values,
+>>> right? (I wish they wouldn't put C structs in
+>>> docs like this without an annotation about how
+>>> they expect the compiler to align the elements
+>>> and the structure itself.)
+>>>
+>>> I would just rewrite the interface table, so that
+>>> the interface being defined is the ereport. It's
+>>> not the individual fields, it's just the ereport
+>>> format.
+>>>
+>>>     Interfaces exported
+>>>     ereport            ...    See 5.2 of ...
+>>>
+>>> Plus, is this all consistent with the existing
+>>> io ereports? Why is STICK in the second word?
+>>> Is this different than the existing ereport
+>>> mechanism or what?
+>>>
+>>> Also, Tony, as you know, the ereport format
+>>> has to be associated with its own or some API
+>>> group. (At this point, probably it's own group
+>>> makes sense) and presumably this defines v1.x
+>>> of the ereport API group (assuming this is what
+>>> is currently implemented?) That way if ereports
+>>> evolve (especially since there's no versioning
+>>> in the data struct itself) a client can request
+>>> a higher version of the ereport interface if it
+>>> supports the higher version.
+>>>
+>>> Has Wes and his group looked at this?
+>>>
+>>> There was also some question about the ereports
+>>> when we wanted to add argument fields to the
+>>> interrupt reports. Please check with Ash too.
+>>> I don't remember if we resolved the issue with
+>>> this or not.
+>>>
+>>> -David
+>>>
+>>>
+>>>
+>>> Tony Sumpter wrote:
+>>>
+>>>> I'm sponsoring this case as a fast-track for Jim Quigley.
+>>>> The fast-track timeout is April 17, 2006.
+>>>>
+>>>> The materials are in the case directory under 'materials':
+>>>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/200/
+>>>> The normative text in hv_sun4v_errorphilosophy.txt is in section 5.2.
+>>>> There is also an interface table.
+>>>>
+>>>> The case defines the structure of the error reports in the
+>>>> resumable and non-resumable error queues that are
+>>>> configured by API CPU_QCONF introduced by FWARC/2005/116.
+>>>>
+>>>> The shipping Ontario firmware (hypervisor) and Solaris already
+>>>> implement the interfaces in this case.
+>>>>
+>>>> The requested binding is for a minor release of the firmware and
+>>>> a micro release of the OS, the committment level of the interfaces
+>>>> is Sun Private.
+>>>>
+>>>> Tony.
+>>>>
+>>>>
+>>>
+>>>
+>>>
+>>
+>>
+> 
+> 
+
+
+-- 
+Hitendra Zhangada
+=============================================
+SPS Common SW Features Engineering
+Systems Group, Sun Microsystems, Inc.
+Work Ph# (858) 625 3757, Ext. x53757
+SUN Internal homepage http://esp.west/~hitu
+
+From sacadmin Thu May 18 10:49:45 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4IHnjD2012357
+	for <fwarc@sac.eng.sun.com>; Thu, 18 May 2006 10:49:45 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k4IHnhA19615;
+	Thu, 18 May 2006 10:49:43 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IZH0060J2UTBD00@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 18 May 2006 10:49:41 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.6]) by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IZH006SS2US95C0@nwk-avmta-1.sfbay.Sun.COM>; Thu,
+ 18 May 2006 10:49:40 -0700 (PDT)
+Received: from d1-sfbay-04.sun.com ([192.18.39.114])
+	by nwkea-pix-1.sun.com (8.12.10+Sun/8.12.9) with ESMTP id k4IHneba019952; Thu,
+ 18 May 2006 10:49:40 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-04.sun.com by d1-sfbay-04.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IZH00A012OP2A00@d1-sfbay-04.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Thu,
+ 18 May 2006 10:49:40 -0700 (PDT)
+Received: from sun.com ([129.150.22.181])
+ by d1-sfbay-04.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0IZH006XO2URWR40@d1-sfbay-04.sun.com>; Thu,
+ 18 May 2006 10:49:40 -0700 (PDT)
+Date: Thu, 18 May 2006 10:49:38 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: 2006/200 sun4v error handling
+In-reply-to: <446BE68A.3000807@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: Hitendra Zhangada <Hitendra.Zhangada@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, Jim Quigley <Jim.Quigley@Sun.COM>,
+        pq-arch@Sun.COM, Wesley Shao <Wesley.Shao@Sun.COM>,
+        Ashley Saulsbury <ashley.saulsbury@Sun.COM>
+Message-id: <446CB3B2.1030207@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <44361940.7090505@sun.com> <444440F2.8070405@sun.com>
+ <44559D2A.5090406@sun.com> <446BE68A.3000807@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 3968
+
+Hitendra Zhangada wrote:
+
+> Tony Sumpter wrote:
+> 
+>> Jim has provided a normative-only spec. file which I have placed at:
+>>
+>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/200/materials/hv_sun4v_ver1.0.txt 
+>>
+>>
+>> Since API versions apply to only to APIs, structures can only be 
+>> versioned
+>> by adding new APIs (if separate versioning mechanisms are to be avoided).
+>>
+>> A description of how this will work for the error queues will be sent out
+>> as part of the first case to update the queue structure (2006/201),
+>> but essentially there will need to be a new API function number
+>> to configure the error queues to get the new contents.
+> 
+> 
+> Are we expecting updates for this case?  I did not see any timer
+> set for this case and the IAM file states "waiting need spec".
+> This leads me to believe that the case is not ready for review yet,
+> is it?
+
+Jim, Richard and I have been working to get things ready. The big thing at
+the moment is to get the versioning and forward/backward compatibility
+story right - it has evolved from the notes I've sent out before.
+
+Tony.
+
+> Thanks.
+> 
+>>
+>> Tony.
+>>
+>> Tony Sumpter wrote:
+>>
+>>> Apologies for the slow response.
+>>>
+>>> I will change the case status to 'waiting need spec' to give
+>>> us time to answer the issues.
+>>>
+>>> The versioning issue needs to be thought through, in particular.
+>>>
+>>> Tony.
+>>>
+>>> David Kahn wrote:
+>>>
+>>>>
+>>>> There's a whole lotta text there, but we're only
+>>>> being asked to approve table 5.2-I ("I"?) and
+>>>> the explanatory sections for the field values,
+>>>> right? (I wish they wouldn't put C structs in
+>>>> docs like this without an annotation about how
+>>>> they expect the compiler to align the elements
+>>>> and the structure itself.)
+>>>>
+>>>> I would just rewrite the interface table, so that
+>>>> the interface being defined is the ereport. It's
+>>>> not the individual fields, it's just the ereport
+>>>> format.
+>>>>
+>>>>     Interfaces exported
+>>>>     ereport            ...    See 5.2 of ...
+>>>>
+>>>> Plus, is this all consistent with the existing
+>>>> io ereports? Why is STICK in the second word?
+>>>> Is this different than the existing ereport
+>>>> mechanism or what?
+>>>>
+>>>> Also, Tony, as you know, the ereport format
+>>>> has to be associated with its own or some API
+>>>> group. (At this point, probably it's own group
+>>>> makes sense) and presumably this defines v1.x
+>>>> of the ereport API group (assuming this is what
+>>>> is currently implemented?) That way if ereports
+>>>> evolve (especially since there's no versioning
+>>>> in the data struct itself) a client can request
+>>>> a higher version of the ereport interface if it
+>>>> supports the higher version.
+>>>>
+>>>> Has Wes and his group looked at this?
+>>>>
+>>>> There was also some question about the ereports
+>>>> when we wanted to add argument fields to the
+>>>> interrupt reports. Please check with Ash too.
+>>>> I don't remember if we resolved the issue with
+>>>> this or not.
+>>>>
+>>>> -David
+>>>>
+>>>>
+>>>>
+>>>> Tony Sumpter wrote:
+>>>>
+>>>>> I'm sponsoring this case as a fast-track for Jim Quigley.
+>>>>> The fast-track timeout is April 17, 2006.
+>>>>>
+>>>>> The materials are in the case directory under 'materials':
+>>>>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/200/
+>>>>> The normative text in hv_sun4v_errorphilosophy.txt is in section 5.2.
+>>>>> There is also an interface table.
+>>>>>
+>>>>> The case defines the structure of the error reports in the
+>>>>> resumable and non-resumable error queues that are
+>>>>> configured by API CPU_QCONF introduced by FWARC/2005/116.
+>>>>>
+>>>>> The shipping Ontario firmware (hypervisor) and Solaris already
+>>>>> implement the interfaces in this case.
+>>>>>
+>>>>> The requested binding is for a minor release of the firmware and
+>>>>> a micro release of the OS, the committment level of the interfaces
+>>>>> is Sun Private.
+>>>>>
+>>>>> Tony.
+>>>>>
+>>>>>
+>>>>
+>>>>
+>>>>
+>>>
+>>>
+>>
+>>
+> 
+> 
+
+
+
+From sacadmin Wed May 24 00:55:45 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4O7tiOp029244
+	for <fwarc@sac.eng.sun.com>; Wed, 24 May 2006 00:55:44 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k4O7tXwq004564;
+	Wed, 24 May 2006 08:55:40 +0100 (BST)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IZR00I01FCQ2Z00@brm-avmta-1.central.sun.com>; Wed,
+ 24 May 2006 01:55:38 -0600 (MDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.5])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IZR00K35FCP4AF0@brm-avmta-1.central.sun.com>; Wed,
+ 24 May 2006 01:55:38 -0600 (MDT)
+Received: from d1-sfbay-02.sun.com ([192.18.39.112])
+	by nwkea-pix-1.sun.com (8.12.10+Sun/8.12.9) with ESMTP id k4O7tbkY022190; Wed,
+ 24 May 2006 00:55:37 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-02.sun.com by d1-sfbay-02.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IZR003018UCYO00@d1-sfbay-02.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Wed,
+ 24 May 2006 00:55:36 -0700 (PDT)
+Received: from sun.com ([129.150.20.242])
+ by d1-sfbay-02.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0IZR00431FCOOP10@d1-sfbay-02.sun.com>; Wed,
+ 24 May 2006 00:55:36 -0700 (PDT)
+Date: Wed, 24 May 2006 00:55:37 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: 2006/200 sun4v error handling
+In-reply-to: <44360037.5040700@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Jim Quigley <Jim.Quigley@Sun.COM>, pq-arch@Sun.COM,
+        Wesley Shao <Wesley.Shao@Sun.COM>,
+        Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>,
+        Richard Barnette <Richard.Barnette@Sun.COM>
+Message-id: <44741179.50701@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <442980A0.7050605@sun.com> <44360037.5040700@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 1748
+
+I'm sponsoring this case as a fast-track for Jim Quigley.
+The fast-track timeout is June 5, 2006. The materials have
+been updated since the case was last submitted.
+
+The materials are in the case directory under 'materials':
+http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/200/
+The normative text is in hv_sun4v_ver1.0.txt.
+The interface table is in interface-table.txt.
+
+Two additional files are provided: hv_sun4v_errorphilosophy.txt
+is the original Project Q text. hv_sun4v_errorphilosophy-V1.0.txt
+is the minor re-interpretation to set the scene for future
+enhancements - the rules for this are excerpted below.
+
+The case defines the structure of the error reports in the
+resumable and non-resumable error queues that are configured
+by version 1.0 of API CPU_QCONF introduced by FWARC/2005/116.
+
+The shipping Ontario firmware (hypervisor) and Solaris already
+implement the interfaces in this case.
+
+The requested binding is for a minor release of the firmware and
+a micro release of the OS, the committment level of the interfaces
+is Sun Private.
+
+Tony.
+
+----
+7.0 Rules for future expansion
+
+All bits of DESC/ATTR word are significant, including reserved bits.
+New errors not covered in the current specification will be indicated
+by using reserved bits in one or both of these two fields.
+
+If a guest CPU encounters an non_resumable_error trap, and the error
+payload contains an unrecognized encoding in the DESC/ATTR word, the
+guest is recommended to terminate.
+
+Reserved fields in in the structure from offsets 0x26-0x3f may be any
+value.  Hypervisors implementing the current spec will fill these fields
+with zeroes; however, guests implementing the current spec should not
+rely on this, but should ignore the fields altogether.
+
+
+
+From sacadmin Wed May 24 00:56:46 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4O7ukUt029280
+	for <fwarc@sac.eng.sun.com>; Wed, 24 May 2006 00:56:46 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k4O7ujM20579;
+	Wed, 24 May 2006 00:56:45 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0IZR00I01FEK4L00@brm-avmta-1.central.sun.com>; Wed,
+ 24 May 2006 01:56:44 -0600 (MDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0IZR00KEPFEJGFE0@brm-avmta-1.central.sun.com>; Wed,
+ 24 May 2006 01:56:43 -0600 (MDT)
+Received: from d1-sfbay-04.sun.com ([192.18.39.114])
+	by nwkea-pix-1.sun.com (8.12.10+Sun/8.12.9) with ESMTP id k4O7uh5P004814; Wed,
+ 24 May 2006 00:56:43 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-04.sun.com by d1-sfbay-04.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IZR00601B231B00@d1-sfbay-04.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Wed,
+ 24 May 2006 00:56:43 -0700 (PDT)
+Received: from sun.com ([129.150.20.242])
+ by d1-sfbay-04.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0IZR00MLCFEIYB30@d1-sfbay-04.sun.com>; Wed,
+ 24 May 2006 00:56:42 -0700 (PDT)
+Date: Wed, 24 May 2006 00:56:43 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: 2006/200 sun4v error handling
+In-reply-to: <44361940.7090505@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: David Kahn <David.Kahn@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, Jim Quigley <Jim.Quigley@Sun.COM>,
+        pq-arch@Sun.COM, Wesley Shao <Wesley.Shao@Sun.COM>,
+        Ashley Saulsbury <ashley.saulsbury@Sun.COM>
+Message-id: <447411BB.9000802@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <44361940.7090505@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 2745
+
+Responding to David's points prior to sending out new materials:
+
+David Kahn wrote:
+
+> 
+> There's a whole lotta text there, but we're only
+> being asked to approve table 5.2-I ("I"?) and
+> the explanatory sections for the field values,
+> right? (I wish they wouldn't put C structs in
+> docs like this without an annotation about how
+> they expect the compiler to align the elements
+> and the structure itself.)
+
+This should be clearer in the new materials.
+
+> I would just rewrite the interface table, so that
+> the interface being defined is the ereport. It's
+> not the individual fields, it's just the ereport
+> format.
+> 
+>     Interfaces exported
+>     ereport            ...    See 5.2 of ...
+
+Done.
+
+> Plus, is this all consistent with the existing
+> io ereports? Why is STICK in the second word?
+> Is this different than the existing ereport
+> mechanism or what?
+
+The PCI error report is defined elsewhere and
+the two are not expected to be the same.
+
+> Also, Tony, as you know, the ereport format
+> has to be associated with its own or some API
+> group. (At this point, probably it's own group
+> makes sense) and presumably this defines v1.x
+> of the ereport API group (assuming this is what
+> is currently implemented?) That way if ereports
+> evolve (especially since there's no versioning
+> in the data struct itself) a client can request
+> a higher version of the ereport interface if it
+> supports the higher version.
+
+I will note this in the new material announcement.
+
+> Has Wes and his group looked at this?
+
+Yes. There is no impact on vPCI error reporting.
+
+> There was also some question about the ereports
+> when we wanted to add argument fields to the
+> interrupt reports. Please check with Ash too.
+> I don't remember if we resolved the issue with
+> this or not.
+
+I don't believe this is an issue that needs to be
+resolved together with this case.
+
+Tony.
+
+> -David
+> 
+> 
+> 
+> Tony Sumpter wrote:
+> 
+>> I'm sponsoring this case as a fast-track for Jim Quigley.
+>> The fast-track timeout is April 17, 2006.
+>>
+>> The materials are in the case directory under 'materials':
+>> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/200/
+>> The normative text in hv_sun4v_errorphilosophy.txt is in section 5.2.
+>> There is also an interface table.
+>>
+>> The case defines the structure of the error reports in the
+>> resumable and non-resumable error queues that are
+>> configured by API CPU_QCONF introduced by FWARC/2005/116.
+>>
+>> The shipping Ontario firmware (hypervisor) and Solaris already
+>> implement the interfaces in this case.
+>>
+>> The requested binding is for a minor release of the firmware and
+>> a micro release of the OS, the committment level of the interfaces
+>> is Sun Private.
+>>
+>> Tony.
+>>
+>>
+> 
+> 
+> 
+
+
+
+
+From sacadmin Wed May 24 01:10:01 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4O8A1gE029380
+	for <fwarc@sac.eng.Sun.COM>; Wed, 24 May 2006 01:10:01 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k4O8A0B29560;
+	Wed, 24 May 2006 02:10:00 -0600 (MDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IZR00H01G0KCJ00@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 24 May 2006 01:09:56 -0700 (PDT)
+Received: from sfbaymail1sca.SFBay.Sun.COM ([129.145.154.35])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IZR00GDPG0KY0D0@nwk-avmta-1.sfbay.Sun.COM>; Wed,
+ 24 May 2006 01:09:56 -0700 (PDT)
+Received: from dtmail.sfbay.sun.com (pkg.SFBay.Sun.COM [129.146.90.56])
+	by sfbaymail1sca.SFBay.Sun.COM (8.12.10+Sun/8.12.10/ENSMAIL,v2.2)
+ with ESMTP id k4O89stx008075; Wed, 24 May 2006 01:09:54 -0700 (PDT)
+Received: from [192.168.0.3] (noho [10.6.92.101])
+	by dtmail.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4O89ram030343; Wed,
+ 24 May 2006 01:09:53 -0700 (PDT)
+Date: Wed, 24 May 2006 01:09:53 -0700
+From: David Kahn <David.Kahn@sun.com>
+Subject: Re: 2006/200 sun4v error handling
+To: Tony Sumpter <Tony.Sumpter@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Jim Quigley <Jim.Quigley@sun.com>,
+        pq-arch@sun.com, Wesley Shao <Wesley.Shao@sun.com>,
+        Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+        Richard Barnette <Richard.Barnette@sun.com>
+Message-id: <447414D1.9080604@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=ISO-8859-1; format=flowed
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+User-Agent: Thunderbird 1.5.0.2 (Windows/20060308)
+Status: RO
+Content-Length: 499
+
+
+
+Tony Sumpter wrote:
+
+> The case defines the structure of the error reports in the
+> resumable and non-resumable error queues that are configured
+> by version 1.0 of API CPU_QCONF introduced by FWARC/2005/116.
+
+CPU_QCONF is part of API group 0x1. Did you mean v1.0 of API
+group 1?
+
+Are you sure you don't want a separate API group number for
+cpu ereports? We're overloading the interface version of
+the core group with the ereport format. Maybe that's ok,
+as long as you're aware of that.
+
+-David
+
+
+From sacadmin Fri May 26 15:37:28 2006
+Received: from sunmail5.uk.sun.com (sunmail5.UK.Sun.COM [129.156.85.165])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4QMbRWs015790
+	for <fwarc@sac.eng.sun.com>; Fri, 26 May 2006 15:37:28 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail5.uk.sun.com (8.13.4+Sun/8.13.3/ENSMAIL,v2.2) with ESMTP id k4QMTn9X002044;
+	Fri, 26 May 2006 23:29:51 +0100 (BST)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0IZW00F1195QRL00@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 26 May 2006 15:29:50 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.6]) by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0IZW00CMA95PWUC0@nwk-avmta-1.sfbay.Sun.COM>; Fri,
+ 26 May 2006 15:29:49 -0700 (PDT)
+Received: from d1-sfbay-01.sun.com ([192.18.39.111])
+	by nwkea-pix-1.sun.com (8.12.10+Sun/8.12.9) with ESMTP id k4QMTn73024335; Fri,
+ 26 May 2006 15:29:49 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-01.sun.com by d1-sfbay-01.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0IZW001018QCZ500@d1-sfbay-01.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Fri,
+ 26 May 2006 15:29:49 -0700 (PDT)
+Received: from sun.com ([129.144.20.189])
+ by d1-sfbay-01.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0IZW00BJE95O1940@d1-sfbay-01.sun.com>; Fri,
+ 26 May 2006 15:29:49 -0700 (PDT)
+Date: Fri, 26 May 2006 15:29:50 -0700
+From: Tony Sumpter <Tony.Sumpter@sun.com>
+Subject: Re: 2006/200 sun4v error handling
+In-reply-to: <447414D1.9080604@sun.com>
+Sender: Tony.Sumpter@sun.com
+To: David Kahn <David.Kahn@sun.com>
+Cc: Firmware Arch <fwarc@sun.com>, Jim Quigley <Jim.Quigley@sun.com>,
+        pq-arch@sun.com, Wesley Shao <Wesley.Shao@sun.com>,
+        Ashley Saulsbury <Ashley.Saulsbury@sun.com>,
+        Richard Barnette <richard.barnette@sun.com>
+Message-id: <4477815E.60107@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <447414D1.9080604@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 829
+
+David Kahn wrote:
+
+> 
+> 
+> Tony Sumpter wrote:
+> 
+>> The case defines the structure of the error reports in the
+>> resumable and non-resumable error queues that are configured
+>> by version 1.0 of API CPU_QCONF introduced by FWARC/2005/116.
+> 
+> 
+> CPU_QCONF is part of API group 0x1. Did you mean v1.0 of API
+> group 1?
+
+Correct.
+
+> Are you sure you don't want a separate API group number for
+> cpu ereports? We're overloading the interface version of
+> the core group with the ereport format. Maybe that's ok,
+> as long as you're aware of that.
+
+We are.
+
+This latest version of the materials specifies the interface in a manner
+that is compatible with the intended operation of the Solaris
+error queue handlers and allows all the known extensions required
+to be added without an API function, group or version change.
+
+Tony.
+
+
+
+From sacadmin Mon May 29 00:23:39 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4T7NdaX004552
+	for <fwarc@sac.eng.sun.com>; Mon, 29 May 2006 00:23:39 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k4T7Ncu28635;
+	Mon, 29 May 2006 00:23:38 -0700 (PDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J0000H07N7CBG00@brm-avmta-1.central.sun.com>; Mon,
+ 29 May 2006 01:23:36 -0600 (MDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.6])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J00009HYN7CA9E0@brm-avmta-1.central.sun.com>; Mon,
+ 29 May 2006 01:23:36 -0600 (MDT)
+Received: from d1-sfbay-02.sun.com ([192.18.39.112])
+	by nwkea-pix-1.sun.com (8.12.10+Sun/8.12.9) with ESMTP id k4T7Na73012365; Mon,
+ 29 May 2006 00:23:36 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-02.sun.com by d1-sfbay-02.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J0000E01N7A3600@d1-sfbay-02.sun.com>
+ (original mail from Wesley.Shao@Sun.COM); Mon, 29 May 2006 00:23:35 -0700 (PDT)
+Received: from [129.150.20.246] by d1-sfbay-02.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J0000C9KN7AFC40@d1-sfbay-02.sun.com>; Mon,
+ 29 May 2006 00:23:34 -0700 (PDT)
+Date: Mon, 29 May 2006 00:23:34 -0700
+From: Wesley Shao <Wesley.Shao@Sun.COM>
+Subject: Re: 2006/200 sun4v error handling
+In-reply-to: <44741179.50701@sun.com>
+Sender: Wesley.Shao@Sun.COM
+To: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Cc: Firmware Arch <fwarc@Sun.COM>, Jim Quigley <Jim.Quigley@Sun.COM>,
+        pq-arch@Sun.COM, Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>,
+        Richard Barnette <Richard.Barnette@Sun.COM>
+Message-id: <447AA176.1070806@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <442980A0.7050605@sun.com> <44360037.5040700@sun.com>
+ <44741179.50701@sun.com>
+User-Agent: Thunderbird 1.5.0.2 (Windows/20060308)
+Status: RO
+Content-Length: 2110
+
+I have a question below.
+
+Tony Sumpter wrote:
+> I'm sponsoring this case as a fast-track for Jim Quigley.
+> The fast-track timeout is June 5, 2006. The materials have
+> been updated since the case was last submitted.
+> 
+> The materials are in the case directory under 'materials':
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/200/
+> The normative text is in hv_sun4v_ver1.0.txt.
+> The interface table is in interface-table.txt.
+> 
+> Two additional files are provided: hv_sun4v_errorphilosophy.txt
+> is the original Project Q text. hv_sun4v_errorphilosophy-V1.0.txt
+> is the minor re-interpretation to set the scene for future
+> enhancements - the rules for this are excerpted below.
+> 
+> The case defines the structure of the error reports in the
+> resumable and non-resumable error queues that are configured
+> by version 1.0 of API CPU_QCONF introduced by FWARC/2005/116.
+> 
+> The shipping Ontario firmware (hypervisor) and Solaris already
+> implement the interfaces in this case.
+
+Are you saying the current firmware already use the packet format
+for PIO errors on ontario?
+
+If yes, then it should be used for PIO read errors only. PIO write
+errors are reported via IO epkts. Can someone confirm that?
+
+Wes
+
+> 
+> The requested binding is for a minor release of the firmware and
+> a micro release of the OS, the committment level of the interfaces
+> is Sun Private.
+> 
+> Tony.
+> 
+> ----
+> 7.0 Rules for future expansion
+> 
+> All bits of DESC/ATTR word are significant, including reserved bits.
+> New errors not covered in the current specification will be indicated
+> by using reserved bits in one or both of these two fields.
+> 
+> If a guest CPU encounters an non_resumable_error trap, and the error
+> payload contains an unrecognized encoding in the DESC/ATTR word, the
+> guest is recommended to terminate.
+> 
+> Reserved fields in in the structure from offsets 0x26-0x3f may be any
+> value.  Hypervisors implementing the current spec will fill these fields
+> with zeroes; however, guests implementing the current spec should not
+> rely on this, but should ignore the fields altogether.
+> 
+> 
+
+From sacadmin Tue May 30 09:57:22 2006
+Received: from sunmail3.sfbay.sun.com (sunmail3.SFBay.Sun.COM [129.149.247.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4UGvLj4023277
+	for <fwarc@sac.eng.sun.com>; Tue, 30 May 2006 09:57:21 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail3.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k4UGvJY01346;
+	Tue, 30 May 2006 09:57:19 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J0300K0D8FGPX00@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 30 May 2006 09:57:16 -0700 (PDT)
+Received: from gmpea-pix-1.sun.com ([129.156.42.6])
+ by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J0300CB18FFXI70@nwk-avmta-1.sfbay.Sun.COM>; Tue,
+ 30 May 2006 09:57:16 -0700 (PDT)
+Received: from d1-emea-01.sun.com ([192.18.2.111])
+	by gmpea-pix-1.sun.com (8.12.9/8.12.9) with ESMTP id k4UGvE4x020705; Tue,
+ 30 May 2006 17:57:14 +0100 (BST)
+Received: from conversion-daemon.d1-emea-01.sun.com by d1-emea-01.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J03003016OAQ900@d1-emea-01.sun.com>
+ (original mail from Jim.Quigley@Sun.COM); Tue, 30 May 2006 17:57:14 +0100 (BST)
+Received: from [129.156.220.16] by d1-emea-01.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J03004DS8FEJR70@d1-emea-01.sun.com>; Tue,
+ 30 May 2006 17:57:14 +0100 (BST)
+Date: Tue, 30 May 2006 17:57:14 +0100
+From: Jim.Quigley@Sun.COM
+Subject: Re: 2006/200 sun4v error handling
+In-reply-to: <447AA176.1070806@sun.com>
+Sender: Jim.Quigley@Sun.COM
+To: Wesley Shao <Wesley.Shao@Sun.COM>
+Cc: Tony Sumpter <Tony.Sumpter@Sun.COM>, Firmware Arch <fwarc@Sun.COM>,
+        pq-arch@Sun.COM, Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>,
+        Richard Barnette <Richard.Barnette@Sun.COM>
+Reply-to: Jim.Quigley@Sun.COM
+Message-id: <447C796A.6050603@Sun.COM>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.1.2.240295
+References: <442980A0.7050605@sun.com> <44360037.5040700@sun.com>
+ <44741179.50701@sun.com> <447AA176.1070806@sun.com>
+User-Agent: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.7) Gecko/20050530
+Status: RO
+Content-Length: 1366
+
+
+
+	Hi Wes,
+
+>> The shipping Ontario firmware (hypervisor) and Solaris already
+>> implement the interfaces in this case.
+> 
+> 
+> Are you saying the current firmware already use the packet format
+> for PIO errors on ontario?
+> 
+> If yes, then it should be used for PIO read errors only. PIO write
+> errors are reported via IO epkts. Can someone confirm that?
+
+	Yes, confirmed. The I/O epkt format is used for PIO
+	write errors.
+
+	regards
+
+	Jim Q.
+	
+> 
+> Wes
+> 
+>>
+>> The requested binding is for a minor release of the firmware and
+>> a micro release of the OS, the committment level of the interfaces
+>> is Sun Private.
+>>
+>> Tony.
+>>
+>> ----
+>> 7.0 Rules for future expansion
+>>
+>> All bits of DESC/ATTR word are significant, including reserved bits.
+>> New errors not covered in the current specification will be indicated
+>> by using reserved bits in one or both of these two fields.
+>>
+>> If a guest CPU encounters an non_resumable_error trap, and the error
+>> payload contains an unrecognized encoding in the DESC/ATTR word, the
+>> guest is recommended to terminate.
+>>
+>> Reserved fields in in the structure from offsets 0x26-0x3f may be any
+>> value.  Hypervisors implementing the current spec will fill these fields
+>> with zeroes; however, guests implementing the current spec should not
+>> rely on this, but should ignore the fields altogether.
+>>
+>>
+
+-- 
+
+
+From sacadmin Tue May 30 10:04:13 2006
+Received: from sunmail1brm.Central.Sun.COM (sunmail1brm.Central.Sun.COM [129.147.62.17])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k4UH4CHa024078
+	for <fwarc@sac.eng.Sun.COM>; Tue, 30 May 2006 10:04:12 -0700 (PDT)
+Received: from brm-avmta-1.central.sun.com (brm-avmta-1.Central.Sun.COM [129.147.4.11])
+	by sunmail1brm.Central.Sun.COM (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k4UH4AQ13258;
+	Tue, 30 May 2006 11:04:10 -0600 (MDT)
+Received: from pmxchannel-daemon.brm-avmta-1.central.sun.com by
+ brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ id <0J0300F038QYKU00@brm-avmta-1.central.sun.com>; Tue,
+ 30 May 2006 11:04:10 -0600 (MDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.5])
+ by brm-avmta-1.central.sun.com
+ (Sun Java System Messaging Server 6.2-3.04 (built Jul 15 2005))
+ with ESMTP id <0J0300CNG8QXCB80@brm-avmta-1.central.sun.com>; Tue,
+ 30 May 2006 11:04:09 -0600 (MDT)
+Received: from d1-sfbay-05.sun.com ([192.18.39.115])
+	by nwkea-pix-1.sun.com (8.12.10+Sun/8.12.9) with ESMTP id k4UH49R5029668; Tue,
+ 30 May 2006 10:04:09 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-05.sun.com by d1-sfbay-05.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J0300M018FRBD00@d1-sfbay-05.sun.com>
+ (original mail from Wesley.Shao@Sun.COM); Tue, 30 May 2006 10:04:09 -0700 (PDT)
+Received: from [129.146.96.108] by d1-sfbay-05.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ with ESMTPSA id <0J0300CAT8QVJV20@d1-sfbay-05.sun.com>; Tue,
+ 30 May 2006 10:04:09 -0700 (PDT)
+Date: Tue, 30 May 2006 09:58:20 -0700
+From: Wesley Shao <Wesley.Shao@Sun.COM>
+Subject: Re: 2006/200 sun4v error handling
+In-reply-to: <447C796A.6050603@Sun.COM>
+Sender: Wesley.Shao@Sun.COM
+To: Jim.Quigley@Sun.COM
+Cc: Tony Sumpter <Tony.Sumpter@Sun.COM>, Firmware Arch <fwarc@Sun.COM>,
+        pq-arch@Sun.COM, Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>,
+        Richard Barnette <Richard.Barnette@Sun.COM>
+Message-id: <447C79AC.3010903@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=ISO-8859-1
+Content-transfer-encoding: 7BIT
+X-PMX-Version: 5.1.2.240295
+References: <442980A0.7050605@sun.com> <44360037.5040700@sun.com>
+ <44741179.50701@sun.com> <447AA176.1070806@sun.com> <447C796A.6050603@Sun.COM>
+User-Agent: Thunderbird 1.5.0.4 (X11/20060509)
+Status: RO
+Content-Length: 1597
+
+Jim.Quigley@Sun.COM wrote:
+>
+>
+>     Hi Wes,
+>
+>>> The shipping Ontario firmware (hypervisor) and Solaris already
+>>> implement the interfaces in this case.
+>>
+>>
+>> Are you saying the current firmware already use the packet format
+>> for PIO errors on ontario?
+>>
+>> If yes, then it should be used for PIO read errors only. PIO write
+>> errors are reported via IO epkts. Can someone confirm that?
+>
+>     Yes, confirmed. The I/O epkt format is used for PIO
+>     write errors.
+Great, then my only request is to state this more specifically in the
+case. The current case material does not mention it at all.
+
+Wes
+>
+>     regards
+>
+>     Jim Q.
+>     
+>>
+>> Wes
+>>
+>>>
+>>> The requested binding is for a minor release of the firmware and
+>>> a micro release of the OS, the committment level of the interfaces
+>>> is Sun Private.
+>>>
+>>> Tony.
+>>>
+>>> ----
+>>> 7.0 Rules for future expansion
+>>>
+>>> All bits of DESC/ATTR word are significant, including reserved bits.
+>>> New errors not covered in the current specification will be indicated
+>>> by using reserved bits in one or both of these two fields.
+>>>
+>>> If a guest CPU encounters an non_resumable_error trap, and the error
+>>> payload contains an unrecognized encoding in the DESC/ATTR word, the
+>>> guest is recommended to terminate.
+>>>
+>>> Reserved fields in in the structure from offsets 0x26-0x3f may be any
+>>> value.  Hypervisors implementing the current spec will fill these 
+>>> fields
+>>> with zeroes; however, guests implementing the current spec should not
+>>> rely on this, but should ignore the fields altogether.
+>>>
+>>>
+>
+
+
+From sacadmin Mon Jun  5 22:48:50 2006
+Received: from sunmail2.sfbay.sun.com (sunmail2.SFBay.Sun.COM [129.149.246.180])
+	by sac.sfbay.sun.com (8.13.6+Sun/8.13.6) with ESMTP id k565moH4006874
+	for <fwarc@sac.eng.sun.com>; Mon, 5 Jun 2006 22:48:50 -0700 (PDT)
+Received: from nwk-avmta-1.SFBay.Sun.COM (nwk-avmta-1.SFBay.Sun.COM [129.149.246.28])
+	by sunmail2.sfbay.sun.com (8.11.7p1+Sun/8.11.7/ENSMAIL,v2.2) with ESMTP id k565me320800;
+	Mon, 5 Jun 2006 22:48:40 -0700 (PDT)
+Received: from pmxchannel-daemon.nwk-avmta-1.sfbay.Sun.COM by
+ nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ id <0J0F00G01C528N00@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 05 Jun 2006 22:48:38 -0700 (PDT)
+Received: from nwkea-pix-1.sun.com ([10.4.134.5]) by nwk-avmta-1.sfbay.Sun.COM
+ (Sun Java System Messaging Server 6.2 (built Dec  2 2004))
+ with ESMTP id <0J0F004CHC527G40@nwk-avmta-1.sfbay.Sun.COM>; Mon,
+ 05 Jun 2006 22:48:38 -0700 (PDT)
+Received: from d1-sfbay-01.sun.com (d1-sfbay-01 [192.18.39.111])
+	by nwkea-pix-1.sun.com (8.13.6+Sun/8.12.9) with ESMTP id k565mcJe015419; Mon,
+ 05 Jun 2006 22:48:38 -0700 (PDT)
+Received: from conversion-daemon.d1-sfbay-01.sun.com by d1-sfbay-01.sun.com
+ (Sun Java System Messaging Server 6.2-4.02 (built Sep  9 2005))
+ id <0J0F000019IH5800@d1-sfbay-01.sun.com>
+ (original mail from Tony.Sumpter@Sun.COM); Mon,
+ 05 Jun 2006 22:48:38 -0700 (PDT)
+Received: from sun.com ([129.150.22.4])
+ by d1-sfbay-01.sun.com (Sun Java System Messaging Server 6.2-4.02 (built Sep 9
+ 2005)) with ESMTPSA id <0J0F0012PC4Z6M50@d1-sfbay-01.sun.com>; Mon,
+ 05 Jun 2006 22:48:37 -0700 (PDT)
+Date: Mon, 05 Jun 2006 22:48:36 -0700
+From: Tony Sumpter <Tony.Sumpter@Sun.COM>
+Subject: Re: 2006/200 sun4v error handling
+In-reply-to: <44741179.50701@sun.com>
+Sender: Tony.Sumpter@Sun.COM
+To: Firmware Arch <fwarc@Sun.COM>
+Cc: Jim Quigley <Jim.Quigley@Sun.COM>, pq-arch@Sun.COM,
+        Wesley Shao <Wesley.Shao@Sun.COM>,
+        Ashley Saulsbury <Ashley.Saulsbury@Sun.COM>,
+        Richard Barnette <Richard.Barnette@Sun.COM>
+Message-id: <44851734.5010605@sun.com>
+MIME-version: 1.0
+Content-type: text/plain; format=flowed; charset=us-ascii
+Content-transfer-encoding: 7BIT
+X-Accept-Language: en-us, en
+X-PMX-Version: 5.2.0.264296
+References: <442980A0.7050605@sun.com> <44360037.5040700@sun.com>
+ <44741179.50701@sun.com>
+User-Agent: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.4)
+ Gecko/20030624
+Status: RO
+Content-Length: 2483
+
+This case is approved.
+
+The note requested by Wesley was added to the informative text
+in hv_sun4v_errorphilosophy-V1.0.txt as follows:
+
+229a230,235
+> 4.1 PIO store errors.
+> 
+> Note that this error report format is *not* used for PIO store errors. These
+> errors are reported to the guest using a different, I/O specific format.
+> See [4] for details.
+> 
+760a767,768
+> 4. PCI-Express Root Complex Error Handling Interfaces for Sun4v
+> 	http://projectq.sfbay.sun.com/docs/sun4v-err.txt
+
+As noted by David, the version statement below should have stated
+version 1.0 of API group 1 (which includes the CPU_QCONF API).
+
+Tony.
+
+Tony Sumpter wrote:
+
+> I'm sponsoring this case as a fast-track for Jim Quigley.
+> The fast-track timeout is June 5, 2006. The materials have
+> been updated since the case was last submitted.
+> 
+> The materials are in the case directory under 'materials':
+> http://sac.sfbay.sun.com/Archives/CaseLog/arc/FWARC/2006/200/
+> The normative text is in hv_sun4v_ver1.0.txt.
+> The interface table is in interface-table.txt.
+> 
+> Two additional files are provided: hv_sun4v_errorphilosophy.txt
+> is the original Project Q text. hv_sun4v_errorphilosophy-V1.0.txt
+> is the minor re-interpretation to set the scene for future
+> enhancements - the rules for this are excerpted below.
+> 
+> The case defines the structure of the error reports in the
+> resumable and non-resumable error queues that are configured
+> by version 1.0 of API CPU_QCONF introduced by FWARC/2005/116.
+> 
+> The shipping Ontario firmware (hypervisor) and Solaris already
+> implement the interfaces in this case.
+> 
+> The requested binding is for a minor release of the firmware and
+> a micro release of the OS, the committment level of the interfaces
+> is Sun Private.
+> 
+> Tony.
+> 
+> ----
+> 7.0 Rules for future expansion
+> 
+> All bits of DESC/ATTR word are significant, including reserved bits.
+> New errors not covered in the current specification will be indicated
+> by using reserved bits in one or both of these two fields.
+> 
+> If a guest CPU encounters an non_resumable_error trap, and the error
+> payload contains an unrecognized encoding in the DESC/ATTR word, the
+> guest is recommended to terminate.
+> 
+> Reserved fields in in the structure from offsets 0x26-0x3f may be any
+> value.  Hypervisors implementing the current spec will fill these fields
+> with zeroes; however, guests implementing the current spec should not
+> rely on this, but should ignore the fields altogether.
+> 
+> 
+
+
+

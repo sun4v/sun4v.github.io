@@ -1,0 +1,13 @@
+The following files and directories have been redacted:
+
+    20060228_eric.sharakan - ignored file (manual case)
+    SCCS - ignored directory
+    issues - ignored file (manual case)
+    mail - ignored file (manual case)
+    materials/FMA_Domain_services_1pager.txt - ignored file (manual case)
+    materials/FMA_Domain_services_if_table.txt - ignored file (manual case)
+    materials/ZeusFMA-091.pdf - ignored file (manual case)
+    sc - ignored directory
+    uirb - ignored directory
+
+See http://hub.opensolaris.org/bin/view/Community+Group+arc/arc-publish-historical-checklist for further information

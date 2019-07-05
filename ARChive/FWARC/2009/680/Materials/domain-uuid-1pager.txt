@@ -1,0 +1,177 @@
+
+1. Introduction
+  1.1. Project/Component Working Name:
+
+	Domain UUID property
+
+  1.2. Name of Document Author/Supplier:
+
+	Michael Christensen
+
+  1.3. Date of This Document:
+	12/15/2009
+
+  1.4. Name of Major Document Customer(s)/Consumer(s):
+	1.4.1. The PAC or CPT you expect to review your project:
+		HS PAC
+
+	1.4.2. The ARC(s) you expect to review your project:
+		FWARC
+
+	1.4.3. The Director/VP who is "Sponsoring" this project:
+		Jerri-Ann Meyer
+
+	1.4.4. The name of your business unit:
+		Software
+
+  1.5. Email Aliases:
+   	1.5.1. Responsible Manager: Jay.Jayachandra@sun.com
+   	1.5.2. Responsible Engineer: Michael.Christensen@sun.com
+   	1.5.3. Marketing Manager: Trefor.Jones@sun.com
+	1.5.4. Interest List: ldoms-internal@sun.com
+
+2. Project Summary
+
+  2.1. Project Description:
+
+	This case is an extension of FWARC/2005/633 "LDoms: Project
+	Q Logical Domaining Umbrella (sun4v/hypervisor/LDoms)"
+	that is required to support identifying each logical
+        domain with its own Universally Unique Identifier (UUID).
+        This is described in RFE 6873151.
+
+	This case describes a new property to the machine
+        description (MD) data for Logical Domains (LDoms).
+        It proposes that the property "uuid" be added to the
+        "platform" MD node.
+	
+  2.2. Risks and Assumptions:
+
+	See FWARC/2005/633
+
+3. Business Summary
+  3.1. Problem Area:
+
+	See FWARC/2005/633
+
+  3.2. Market/Requester:
+
+	See FWARC/2005/633
+
+  3.3. Business Justification:
+
+	See FWARC/2005/633
+
+  3.4. Competitive Analysis:
+
+	See FWARC/2005/633
+
+  3.5. Opportunity Window/Exposure:
+
+	See FWARC/2005/633
+
+  3.6. How will you know when you are done?:
+
+	See FWARC/2005/633
+
+4. Technical Description:
+
+  4.1 Overview
+
+  4.1.1  Domain UUID property
+
+   	The following property will be added to the MD "platform"
+	node to allow for the implementation of RFE 6873151
+
+	"platform" node
+        -----------------------------
+
+	New Property:
+
+	Name        Tag        Req'd?    Description
+	--------------------------------------------------------------------
+        uuid        PROP_STR   No        A string that indicates the UUID
+                                         of the domain.  The format of the
+                                         string is defined by
+                                         uuid_unparse(3uuid)
+
+
+  4.2 Imported Interfaces :
+
+       Interface              Classification     Comments
+       ====================================================================
+
+       sun4v Machine           Sun Private     MD nodes definitions as
+       Description nodes                       defined by FWARC/2005/633
+
+
+  4.3 Exported Interfaces:
+
+
+       Interface          Classification     Comments
+       ====================================================================
+
+	uuid               Sun Private    A NUL-terminated string
+                                          indicating the LDoms domain
+                                          UUID
+
+
+5. Reference Documents:
+
+       None
+
+6. Resources and Schedule:
+  6.1. Projected Availability:
+	
+	See FWARC/2005/633
+
+  6.2. Cost of Effort:
+
+	See FWARC/2005/633
+
+  6.3. Cost of Capital Resources:
+
+	Capital resources are subsumed as part of overall product development.
+
+  6.4. Product Approval Committee requested information:
+  	6.4.1. Consolidation Name:
+		Delivery of firmware will be platform teams
+		Delivery of sun4v OS will be platform teams (ON) 
+		
+  	6.4.2. Contributing OpCo/BU/Division Name:
+		
+		Software
+		
+	6.4.3. Type of PAC Review and Approval expected:
+		Fast-track
+
+       6.4.4. Project Boundary Conditions:
+		N/A
+
+	6.4.5. Is this a necessary project for OEM agreements:
+		No.
+
+	6.4.6. Notes/Dependencies:
+		SUN SPARC CPU specification
+
+	6.4.7. Target RTI Date/Release:
+	        N/A - Not a separate deliverable.
+
+	6.4.8. Target Code Design Review Date:
+		Q1CY10
+
+	6.4.9. Update approval addition:
+	        N/A
+
+  6.5. ARC review type:
+		Fast-track
+
+7. Prototype Availability: 
+  7.1. Prototype Availability:
+	Q4CY08
+
+  7.2. Prototype Cost:
+	Done using existing resources.
+
+
+
